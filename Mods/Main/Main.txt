@@ -664,7 +664,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(AristocracyClass/600)
+					PROCESS value =  value - PerSeconds(AristocracyClass/150)
 					IF VassalPower == 0
 						SET Monarchy.value [ : : AristocracyClass ]
 					ENDIF
@@ -745,6 +745,9 @@ Main = {
 						WEIGHT [ max ] Min(100, value * 4 )
 				}
 			}		
+			
+			
+			
 			OverlandTrade = {
 				VALUE value [ 0 0 100 ]
 				VALUE output [ 0 0 10000 ]
@@ -1268,8 +1271,6 @@ Main = {
 				}
 			
 				TRIGGER_LEAVE BarbarianAtGates = {
-						SET Infantry.value [ : : 50 ]
-						SET Missile.value [ : : 50 ]
 						REMOVE Auxiliaries
 						REMOVE Foedus
 				}
@@ -1334,6 +1335,34 @@ Main = {
 				
 
 			}
+			
+			
+			TradeRoads = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+					RELATED_LINK Diplomacy LootingCampaigns OverlandTrade NavalTrade Harbours
+				}
+				SLEEP = {
+					IF ~MerchantExplorer
+						SPAWN
+					ENDIF
+				}
+				TICK = { 
+					SET OverlandTrade.value [ : : Min(100, 100 + value ) ]
+				}
+
+				LINK OverlandTrade = {
+						WEIGHT [ max ] Min(100, 100 + value )
+				}
+				
+				LINK NavalTrade = {
+					WEIGHT [ to ]
+				}	
+				LINK Harbours = {
+					WEIGHT [ to ]
+				}	
+			}	
 			
 			}
 		Levers = {
@@ -1438,6 +1467,12 @@ Main = {
 				}
 				
 				TICK = {
+					IF ~TradeRoads
+						SET NavalTrade.value [ : : Harbours + TradeRoads ]
+					ELSE
+						SET NavalTrade.value [ : : Harbours ]
+					ENDIF
+					
 					SET NavalTrade.value [ : : Harbours ]
 					SET Navy.value [ : : Harbours * 2.5 ]
 				}
@@ -1454,6 +1489,9 @@ Main = {
 				
 				LINK NavalTrade = {
 				WEIGHT [ max ] Harbours
+				}
+				LINK NavalTrade = {
+				WEIGHT [ max ] Harbours + TradeRoads
 				}
 				LINK Navy = {
 				WEIGHT [ max ] Harbours * 2.5
@@ -2992,6 +3030,7 @@ Main = {
 				TICK = {
 				PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
 				PROCESS $Wealth = $Wealth - PerSeconds(Diplomacy * 0.02)
+				PROCESS TradeRoads = TradeRoads + PerSeconds(Diplomacy * 0.001)
 				}
 				LINK NeighborhoodBellicism = {
 				IF value > 0
@@ -3817,7 +3856,7 @@ Main = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				RELATED_INFO = { 
-					RELATED_LINK MilitaryManpower MilitaryEfficiency OverlandTrade NavalTrade Food NeighborhoodBellicism
+					RELATED_LINK MilitaryManpower MilitaryEfficiency OverlandTrade NavalTrade Food NeighborhoodBellicism TradeRoads
 				}
 				// SLEEP = {
 					// IF (MilitaryManpower > 30 + ( ~OrganizedNomadism & MilitaryManpower ) )
@@ -3848,6 +3887,7 @@ Main = {
 					PROCESS NavalTrade = NavalTrade - PerSeconds(value / 25)
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(value / 55)
 					PROCESS Food = Food + PerSeconds(value / 10)
+					PROCESS TradeRoads = TradeRoads - PerSeconds(value / 10)
 					PROCESS $Wealth = $Wealth + PerSeconds(value/13)
 				ENDIF
 				
@@ -3868,6 +3908,12 @@ Main = {
 				}
 				LINK NavalTrade = {
 				IF MilitaryManpower > 20
+					COLOR red
+					FLUX value /12
+				ENDIF
+				}
+				LINK NavalTrade = {
+				IF TradeRoads > 20
 					COLOR red
 					FLUX value /12
 				ENDIF
@@ -4454,7 +4500,7 @@ Main = {
 			Famine = {
 				SOUND_EVENT "Main/SFX/Insects.wav"
 				SOUND_WINDOW "Main/SFX/Insects.wav"
-				EVENT_DEF [ 15 15 60 50% ]
+				EVENT_DEF [ 15 15 60 60% ]
 				SLEEP = {
 				EVENT_CHANCE 1
 				}
@@ -4518,7 +4564,7 @@ Main = {
 			RegionProsperity = {
 				SOUND_EVENT "Main/SFX/Prosperity.wav"
 				SOUND_WINDOW "Main/SFX/Prosperity.wav"
-				EVENT_DEF [ 20 15 60 20% ]
+				EVENT_DEF [ 20 15 100 20% ]
 				ARISE = {
 					EVENT_SPEED 1
 					IF ( BorderControls > 30 )
@@ -4586,7 +4632,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 25% ]
+				EVENT_DEF [ 40 60 450 20% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -5389,7 +5435,7 @@ Main = {
 			CoupDEtat = {
 				SOUND_EVENT "Main/SFX/MilitaryMarch.wav"
 				SOUND_WINDOW "Main/SFX/MilitaryMarch.wav"
-					EVENT_DEF [ 30 180 15 100% ]
+					EVENT_DEF [ 30 180 30 50% ]
 					ARISE = {
 						EVENT_SPEED 1
 						IF MilitaryManpower < 50 + Stability > 20
@@ -6000,7 +6046,7 @@ Main = {
 
 					
 				TRIGGER_SPAWN MercenaryUprising = {
-					PROCESS MilitaryManpower.Mercenaries_value = -50
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - 50
 				}
 					
 					
@@ -6013,7 +6059,71 @@ Main = {
 						
 			
 				}
+			HarshWinter = {
+				SOUND_EVENT "Main/SFX/Wolf.wav"
+				SOUND_WINDOW "Main/SFX/Wolf.wav"
+				EVENT_DEF [ 15 30 300 50% ]
+				SLEEP = {
+				EVENT_CHANCE = ( 100 - Temperature ) / 100
+				}
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Stability = Stability - PerSeconds(0.02 * 0.99 ? 1.01 )
+					PROCESS Population = Population - PerSeconds(0.1 + Population * 0.05 * 0.99 ? 1.01)
+					PROCESS Food = Food - PerSeconds(0.3 + Food * 0.03 * 0.99 ? 1.01)
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 1
+				}
+				LINK Food = {
+					COLOR red
+					FLUX 3
+				}
+				LINK Population = {
+					COLOR red
+					FLUX 3
+				}
+				TRIGGER_EVENT = {
+					IF ( Temperature < 65 & GameTime() > 9000 ) 
+						RISE
+					ENDIF
+				}
+			}
+			
+			MerchantExplorer = {
+				SOUND_EVENT "Main/SFX/MerchantExplorer.wav"
+				SOUND_WINDOW "Main/SFX/MerchantExplorer.wav"
+				EVENT_DEF [ 30 30 300 20% ]
+				ARISE = {
+					EVENT_SPEED 1	
+				}
+				SLEEP = {
+					EVENT_CHANCE = 0.2 +( 0.3 * ~Republic )
+				}
 				
+				TICK = {
+					PROCESS TradeRoads = TradeRoads + PerSeconds(0.5)
+				}
+				LINK TradeRoads = {
+					COLOR green
+					FLUX 3
+				}
+				TRIGGER_EVENT = {
+					IF (TradeGoods > 500 & TradeTax < 20 & LootingCampaigns < 20 & StateSize >= 100 & GameTime() > 10000 )
+						RISE
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN MerchantExplorer = {
+					PROCESS TradeGoods = TradeGoods - 200
+					SPAWN TradeRoads
+				}
+			}		
+			
+			
 
 			}
 			}
