@@ -1,3 +1,0 @@
-English: <b>For learning to play!</b>
-French: <b>Pour apprendre à jouer !</b>
-Japanese: <b>プレイするを学ぶために</b>
