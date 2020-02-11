@@ -1,0 +1,8 @@
+Presets = {
+		
+	Rome = {
+		NAME "Rome"
+		DESCRIPTION "Founded by sheepards between three mountain it become the center of the greatest empire of the west world"
+		}		
+		
+}

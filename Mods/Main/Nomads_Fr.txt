@@ -1,0 +1,47 @@
+Nomads = {
+
+	
+	Ressources = {
+		}
+	
+	Nodes = {
+		States = {
+			
+			Authority = {
+				NAME "Autorité"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Dans une société où les relations sont tacites et orales, la stabilité dépend surtout de l'autorité du chef. Cette valeur peut augmenter par les actions du chef, pillé sera plus prestigieux pour une <b>horde<b> et la piété si le clan repose sur la foi."
+				SUMMARY "L'autorité du chef"
+			}
+		}
+		Levers = {
+			SacredGuidance = {
+				NAME "Guidance divine"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Le chef du clan ne le dirige que par une autorisation sacrée et par de nombreux rites. Il est révéré comme une figure divine par son peuple et la piété de ce dernier lui sert directement pour affirmer son autorité."
+				SUMMARY "l'autorité découle de la piété"
+			}
+			Horde = {
+				NAME "Horde"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "L'autorité du chef de clan découle de démonstration de force et de puissance. Dans ces sociétés le pillage et le principal moyen de démontrer sa force"
+				SUMMARY "Un type de nomadisme où l'autorité découle du pillage"
+			}
+			Transhumance = {
+				NAME "Transhumance"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Notre peuple continue de se déplacer, mais reste plus longtemps au même endroit pour cultiver la terre, votre peuple est donc sur une région plus réduite."
+				SUMMARY "Le clan ne bouge que pour bouger son bétail"
+			}
+			Seminomadism = {
+				NAME "Semi-nomadisme"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les possibilités croissantes de la vie sédentaire attire de nombreux membres de votre clan. Les membres de votre clan ne bougent quasiment plus, vous permettant de créer des établissements sédentaires et de l'agriculture"
+				SUMMARY "Permet de créer de plus grands champs et communauté, peux guider vers une sédentarisation"
+			}
+			Migration = {
+				NAME "Migration"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Nos territoires sont hostiles, vous devriez nous guider sur des terres hospitalières afin de s'y installer. Mais attention l'ambition de ces actions vont saper l'autorité de votre chef."
+				SUMMARY "Augmente la flore, faune et la fertilité des sols mais dépense votre autorité."
+			}
+		}
+		Events = {
+			
+			}
+	}
+}

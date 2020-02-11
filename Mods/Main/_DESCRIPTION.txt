@@ -1,0 +1,3 @@
+English: <b>Base version of the game.</b>
+French: <b>Version de base</b>
+Japanese: <b>基本バージョン</b>

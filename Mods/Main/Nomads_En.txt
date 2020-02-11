@@ -1,0 +1,47 @@
+Nomads = {
+
+	
+	Ressources = {
+		}
+	
+	Nodes = {
+		States = {
+			
+			Authority = {
+				NAME "Authority"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Such a decentralized society, with its either untold or oral functioning, owes its stability to the power of the main clans and their leaders. This value can increase thanks to the actions and state of mind of these clans."
+				SUMMARY "The authority of your chief"
+			}
+		}
+		Levers = {
+			SacredGuidance = {
+				NAME "Sacred Guidance"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The clan chief has gone through many rites and can only be the guide of his people through divine approval. He is revered as a living god and the piety of his people allows him to strengthen his authority"
+				SUMMARY "Nomadism based on a clerical vision and lead by a divine guidance"
+			}
+			Horde = {
+				NAME "Horde"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The clan leader's authority is demonstrated by his most respecified military power and the one who defeated the most and brought the greatest war takes. Looting and other forceful demonstrations demonstrate the leader's strength and increase his authority"
+				SUMMARY "A type of nomadism where pillaging and looting is a major part of there way of life"
+			}
+			Transhumance = {
+				NAME "Transhumance"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "So that our people can cultivate the land and enjoy our movement, it has slowed down and is confined to a smaller region."
+				SUMMARY "The clan only move for the cattle, with a semi-agricultural culture"
+			}
+			Seminomadism = {
+				NAME "Seminomadism"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The growing possibilities of agriculture and the comfort of a sedentary life are attracting more and more people. Members of our clan almost no longer move and permanent villages are formed in the commercial and agricultural regions"
+				SUMMARY "You move fewer time than previous to be more in coordination with the growing crop permetting to build semi sedentary settlment and field"
+			}
+			Migration = {
+				NAME "Migration"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our land is harsh, but perhaps we can invade and settle in other lands. We can give our children a better future. But to set up such an ambitious and difficult endeavour will cost the chief’s authority."
+				SUMMARY "Our land is poor but if we moved to a different location mayby we will find a new and better home."
+			}
+		}
+		Events = {
+			
+		}
+	}
+}

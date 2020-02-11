@@ -1,0 +1,23 @@
+﻿Presets = {
+	
+	Languages = {
+		English "Tutorial\Presets_En.txt"
+	}
+	
+	TutorialPreset = {
+		COORDINATES = 32° 32' N 44° 25' E
+		FORCE_PRESET
+		Main.Humidity.value = 65
+		Main.Temperature.value = 60
+		Main.Flora.value = 60
+		Main.Fauna.value = 50
+		Main.Coastline.value = 50
+		Main.SoilFertility.value = 85
+		Main.Gold.value = 45
+		Main.Spices.value = 30
+		Main.Salt.value = 80
+		Main.NeighborhoodBellicism.value = 0
+		- Main.Island
+		- Main.NeighborhoodRise
+	}
+}

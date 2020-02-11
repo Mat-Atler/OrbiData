@@ -1,0 +1,144 @@
+Religious = {
+
+	
+	Ressources = {
+		}
+	
+	Nodes = {
+		States = {
+			Heretics = {
+				NAME "Hérétiques"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "La part de votre population suivant une religion hérétique, Nous devons les convertir ou les tolérer sinon ils vont créer du troubles."
+				SUMMARY "Pourcentage d'hérétique"
+			}
+			Heathens = {
+				NAME "Païen"
+				DESCRIPTION <b>"Valeur: "@[value] </b> " La part de votre population suivant une croyance païenne, Nous devons les convertir ou les tolérer sinon ils vont créer du troubles."
+				SUMMARY "Pourcentage de païen"
+			}	
+		}
+		Levers = {
+			ToleranceOfHeretics = {
+				NAME "Tolérance des hérétiques"
+				LEVEL value = {
+					0 = "Mort aux hérétiques"
+					25 = "Les hérétiques sont persécutés"
+					50 = "Les hérétiques sont tolérés tant qu'ils nous sont utiles"
+					75 = "Les hérétiques sont presque considérés à égalité de nos sujets"
+					}
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Nous pouvons tolérer les hérétiques afin de diminuer les troubles, l'investissement doit être constant."
+				SUMMARY "Votre politique envers les hérétiques"
+				}
+				
+			ToleranceOfHeathens = {
+				NAME "Tolérance des païen"
+				LEVEL value = {
+					0 = "Mort aux païens"
+					25 = "Les païens sont persécutés"
+					50 = "Les païens sont tolérés tant qu'ils nous sont utiles"
+					75 = "Les païens sont presque considérés à égalité de nos sujets"
+					}
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Nous pouvons tolérer les païens afin de diminuer les troubles, l'investissement doit être constant."
+				SUMMARY "Votre politique envers les païens"
+				}
+				
+			Syncretism = {
+				NAME "Syncrétisme"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Avec le temps nous avons compris que la religion de nos voisins n'es pas si différent de la notre. Cette reflexion va nous aider à augmenter la tolérance des païens."
+				SUMMARY "Augmente le maximum de la tolérance des hérétiques"
+				}
+			ReligiousMinorityTax = {
+				NAME "Taxe sur les minorités religieuse"
+				LEVEL value = {
+					0 = "Aucune"
+					0.01 = "Taxes annuel"
+					5 = "Taxes bi-annuel"
+					10 = "Taxes lourdes"
+					35 = "Taxes très lourdes"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> " Nos croyance actuelle nous autorise à taxer les minorités religieuses. Bien sûr de trop lourdes taxes peuvent les pousser à la révolte."
+				SUMMARY "A quelle point vous taxez les minorités religieuse"
+			}
+			
+			Conversion = {
+				NAME "Conversion"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les minorités religieuses constituent un danger pour notre unité nationale. Nous devons les convertir par tous les moyens. Plus nos rites et nos croyances sont définis et unitaires, plus leur conversions sera efficaces."
+				SUMMARY "Convertir les mécréants à la vrais foi"
+				}
+				
+			ReligiousOfferings = { 
+				NAME "Offrande religieuse"
+				LEVEL value = {
+					0 = "Aucune"
+					0.1 = "Quelques offrandes"
+					25 = "Une offrande à chaque cérémonie"
+					75 = "Plusieurs offrandes à chaque cérémonie"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Le nombre d'offrandes que nous donnons à chaque cérémonie. Plus nous donnons, plus notre foi sera renforcée."
+				SUMMARY "La fréquence des offrandes religieuses"
+			}
+
+			OfferingsNature = {
+				NAME "La nature des offrandes"
+				LEVEL value = {
+					0 = "Argents et bien commerciaux"
+					40 = "Bien commerciaux et nourritures"
+					80 = "Les Dieux veulent du sang frais"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "La nature des offrandes que nous faisons à chaque cérémonie. Des choses inanimées à une créature vivante."
+				SUMMARY "La nature des offrandes que nous offrons dans les cérémonies"
+			}
+
+			SacrificeNature = {
+				NAME "La nature des sacrifices"
+				LEVEL value = {
+					0 = "Des animaux"
+					20 = "Des animaux et des humains"
+					80 = "Seulement des humains"
+					100 = "Du sang pour le dieu du sang"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "La nature des sacrifices que nous offrons dans les cérémonies. Des animaux jusqu'aux humains."
+				SUMMARY "La nature des sacrifices que nous offrons dans les cérémonies"
+			}
+
+			FlowerWar = {
+				NAME "Guerres fleuries"
+				LEVEL value = {
+					0 = "Aucunes"
+					0.001 = "Rares"
+					40 = "Modérées"
+					70 = "Intensives"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Nos cérémonies nécessites du sang humains, nos guerres ont comme objectif de le récupérer chez nos voisins"
+				SUMMARY "Utilise la force militaire pour capturer des esclaves"
+			}			
+				
+		}
+		Events = {
+			Schism = {
+				NAME "Schisme"
+				DESCRIPTION "Nos théologiens les plus brillants ne peuvent s'entendre sur la nature profonde de nos croyances. Une partie de notre population est convaincue par les idées des groupes minoritaires"
+				SUMMARY "Augmente le nombre d'hérétiques"
+			}
+			ConversionForeignFaith = {
+				NAME "Conversions massive à une foi étrangère"
+				DESCRIPTION "Une partie de notre population a été témoin d'un soi-disant miracle perpétré par un faux prophète d'une religion étrangère ".
+				SUMMARY "Une grande part de notre peuple se convertit à une foi étrangère"
+			}
+			
+			ConversionTrueFaith = {
+				NAME "Conversions massive à la vrais foi"
+				DESCRIPTION "Certains hérétiques et païens vivant dans nos frontières ont été témoins d'un miracle prouvant la supériorité de la seule vraie foi ".
+				SUMMARY "Une grande part de notre peuple se convertissent à la vraie foi"
+			}
+			
+			ReligiousMinorityRevolt = {
+				NAME "Révolte des minorités religieuses"
+				DESCRIPTION "Les hérétiques et les païens qui vivent dans nos frontières se révoltent contre la façon dont nous les traitons."
+				SUMMARY "Les païens et les hérétiques se soulèvent contre notre gouvernement"
+			}
+			
+
+		}
+	}
+}

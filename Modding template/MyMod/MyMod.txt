@@ -1,0 +1,213 @@
+<Mod> = {
+
+	// ALL AVALIBLE LANGUAGES
+	Languages = {
+		<language> "MyMod/MyMod_En.txt"
+	}
+	
+	// ALL RESOURCES
+	Resources = {
+		<Resource> = {
+			IMAGE "MyMod/Image.png"
+			SOUND_FULL "MyMod/Sound.wav"
+			VALUE [ <Min> <Default> <Max> ]
+		}
+	}
+	
+	/// ALL ERAS
+	Eras = {
+		<Era> = {
+			AGE <Year>
+		}
+	}
+	
+	/// ALL ALERTS
+	Alerts = {
+		<Alert> = {
+			PRIORITY [ <1/2/3> ]
+			MUTE_TIME <Time>
+			PREVIEW
+		}
+	}
+	
+	// ALL WINDOWS
+	Windows = {
+		<Window> = {
+			REMOTE <Node> = {
+				// Called then window opened
+			}
+			CONTENT_VERTICAL = {
+				// Content of window goes here
+			}
+		}
+	}
+	
+	// ALL GLOBES
+	Globes = {
+		<Globe> = {
+			AREA_MASK [ <MaskValue> <MaskRange> ] "MyMod/Image.png"
+			SIZE <Size>
+			// Called then player rotates the globe
+			REMOTE <Node> = {
+				// Sets an icon to the specified globe
+				GLOBE_SET_ICON <Globe> [ <Index> ] [ <Expression> : <Expression> : <Expression> : "MyMod/Image.png" : <Color> ]
+				// Removes an icon from the specified globe
+				GLOBE_REMOVE_ICON <Globe> [ <Index> ]
+				// Refresh globe
+				WINDOW_INTERCEPT <Window> [ <ID> ] [ ]
+			}
+		}
+	}
+	
+	// ALL STORIES
+	Stories = {
+		<Story> = {
+			REMOTE <Node> = {
+				// Called then story starts
+			}
+			Chapters = {
+				<Index> = {
+					// Chapter 1
+					OBJECTIVE = {
+						// Complete the objective if the condition is fulfilled
+						UNLOCK_CONDITIONS = {
+							CONDITION_VALUE <Node.Value> == <Amount>
+						}
+						REMOTE <Node> = {
+							// Called then objective completed
+							// If no REMOTE = go to next chapter
+							// If CHAPTER = go to specified chapter
+							// If no CHAPTER = finish story
+							CHAPTER [ <Delay> ] <Index>
+						}
+						REWARD = {
+							// Adds <Amount> to the specified resource
+							<Resource> <Amount>
+							// Adds <Amount> per seconds to the specified resource
+							<Resource> [<Time>] <Amount>
+							// Adds <Amount> to the specified node (first node value)
+							<Node> <Amount>
+						}
+					}
+					OBJECTIVE = {
+						// Complete the objective then the button is clicked
+						BUTTON
+					}
+					TIMEOUT <Time> = {
+						REMOTE <Node> = {
+							// Called then countdown finishes
+						}
+					}
+				}
+				<Index> = {
+					// Chapter 2
+					OBJECTIVE = { }
+					OBJECTIVE = { }
+				}
+			}
+		}
+	}
+	
+	// ALL NODES
+	Nodes = {
+		// ALL STATES
+		States = {
+			<State> = {
+				IMAGE "MyMod/Image.png"
+				TAG <Tag>
+				VALUE <Value> [ <Min> <Default> <Max> ]
+				LOCAL_VAR <Count>
+				RELATED_INFO = {
+					RELATED_LOCK <Node> ...
+					RELATED_UNLOCK <Node> ...
+					RELATED_LINK <Node> ...
+				}
+				LINK <Node> = {
+					COLOR <red/green/blue/yellow/black/white>
+					FLUX <Speed>
+				}
+				LINK <Node> = {
+					WEIGHT [ from/to ]
+				}
+				LINK <Node> = {
+					WEIGHT [ min/max ] <Expression>
+				}
+				TICK = {
+					IF <Expression>
+						// Executes if <Expression> is larger than 0
+					ENDIF
+					
+					ONCE_EVERY <Expression>
+						// Executes once every <Expression> times
+					ENDONCE
+					
+					WHILE_LOOP <Expression>
+						// Executes <Expression> times in the same tick
+					ENDLOOP
+				}
+				TRIGGER_CUSTOM 1 = {
+					// Will executes the content of TRIGGER_CUSTOM of the specified index and node after the specified delay 
+					ALARM [ once/reset/multiple ] [ <TriggerIndex> <Node> ] <Expression>
+					// Stops all alarms with the same parameters
+					ALARM_STOP [ once/reset/multiple ] [ <TriggerIndex> <Node> ]
+				}
+			}
+		}
+		// ALL LEVERS
+		Levers = {
+			<Lever> = {
+				TYPE <Cultural/Technological>
+				VALUE <Value> [ <Min> <Default> <Max> >> <Speed> ]
+				UNLOCK_CONDITIONS = {
+					HINT <Expression>
+					CONDITION_VALUE <Node.Value> == <Amount>
+					CONDITION_NODE <+/-> <Node>
+					OR
+					CONDITION_EXCLUDE <Tag>
+					CONDITION_INCLUDE <Tag>
+					ALWAYS
+					CONDITION_ERA <</>/<=/>=> <Era>
+					CONDITION_CUSTOM <Name>
+				}
+				PRICE = {
+					<Resource> = <Amount>
+				}
+				UPGRADE = {
+					<Resource> = <Amount>
+				}
+				TICK = {
+					// Called every tick
+				}
+				TRIGGER_SPAWN <Node> = {
+					CONDITION_CUSTOM_VALIDATE <Name> = <Expression>
+				}
+			}
+		}
+		// ALL EVENTS
+		Events = {
+			<Event> = {
+				SOUND_EVENT "MyMod/Sound.wav"
+				SOUND_WINDOW "MyMod/Sound.wav"
+				EVENT_DEF [ <RiseTime> <StayTime> <RestTime> <TriggerChance> ]
+				ARISE = {
+					// Called then event appears
+				}
+				TICK = { }
+				TRIGGER_EVENT = {
+					// Called after rest time
+					RISE
+				}
+			}
+		}
+	}
+	
+	// ALL INJECTIONS
+	Injections = {
+		TICK [ <Node> <begin/end> ] = {
+			// Adds code to TICK of specified node
+		}
+		TRIGGER_SPAWN <Node> [ <Node> <begin/end> ] = {
+			// Adds code to TRIGGER_SPAWN of specified node
+		}
+	}
+}

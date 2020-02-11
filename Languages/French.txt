@@ -1,0 +1,145 @@
+_NATIVE Français
+_CODE Fr
+
+MENU_NEW NOUVEAU JEU
+MENU_PLAY JOUER
+MENU_LOAD CHARGER
+MENU_OPTIONS OPTIONS
+MENU_CREDITS CREDITS
+MENU_EXIT QUITTER
+MENU_ACTIVE Extensions Actives
+MENU_INACTIVE Extensions Inactives
+MENU_SELECT_MOD SELECTION DES EXTENSIONS
+MENU_MOD Mod
+MENU_ONE_MOD AU MOINS UNE EXTENSION ACTIVE EST NECESSAIRE POUR COMMENCER
+MENU_NO_MOD Aucun mod trouvé sur votre ordinateur.\n Vérifiez que le chemin des données est correctement configuré dans le menu des options.
+MENU_TUTORIAL Première fois ?\nEssaie le tutoriel pour apprendre les bases.
+MENU_PLAY_TUTORIAL LANCER LE TUTORIEL
+MENU_SKIP_TUTORIAL PASSER LE TUTORIEL
+MENU_REALY_QUIT Tu veux vraiment quitter Orbi Universo ?
+MENU_YES OUI
+MENU_NO NON
+MENU_OPTIONS_VIDEO PARAMETRES VIDEO
+MENU_OPTIONS_PATH_ITEM_PROGRAM Chemin du programme
+MENU_OPTIONS_PATH_ITEM_PERSISTENT Chemin persistant
+MENU_OPTIONS_PATH_PROGRAM Chemin: Programme
+MENU_OPTIONS_PATH_PERSISTENT Chemin: Persistant
+MENU_OPTIONS_PATH_TOOLTIP Le répertoire utilisé pour sauvegarder et charger les données.\nChemin Actuel : 
+MENU_OPTIONS_LANGUAGE Langue: 
+MENU_OPTIONS_MUSIC Volume Musique : 
+MENU_OPTIONS_SFX SFX Volume: 
+MENU_OPTIONS_SCREEN Mode: 
+MENU_OPTIONS_SCREEN_FULL Plein écran
+MENU_OPTIONS_SCREEN_WINDOW Fenêtré
+MENU_OPTIONS_DISPLAY Affichage : 
+MENU_OPTIONS_DISPLAY_ITEM Affichage 
+MENU_OPTIONS_RESOLUTION Résolution:
+MENU_OPTIONS_AUTOSAVE Sauvegarde auto: 
+MENU_OPTIONS_ON On
+MENU_OPTIONS_OFF Off
+MENU_WORKSHOP_SUBSCRIBED_LIST Abonné(s)
+MENU_WORKSHOP_UPLOAD_LIST Uploader vers Steam
+MENU_WORKSHOP_PUBLISH Publier
+MENU_WORKSHOP_PUBLISH_UPDATE Mettre à jour
+MENU_WORKSHOP_PUBLISH_PUBLIC Public
+MENU_WORKSHOP_PUBLISH_PRIVATE Privé
+MENU_WORKSHOP_PUBLISH_FRIENDS Amis Uniquement
+MENU_WORKSHOP_PUBLISH_TITLE Titre...
+MENU_WORKSHOP_PUBLISH_DESCRIPTION Description...
+MENU_WORKSHOP_PUBLISH_CHANGELOG Notes de changement...
+MENU_WORKSHOP_PUBLISH_LANGUAGE Langue...
+MENU_WORKSHOP_PUBLISH_PREVIEW Prévisualisation
+MENU_WORKSHOP_PUBLISH_PREVIEW_TOOLTIP preview.png dans le dossier du mod (max 1 MB)
+MENU_WORKSHOP_PUBLISH_POLICY En publiant ce mod, vous acceptez les conditions d'utilisation du Workshop.
+MENU_WORKSHOP_PUBLISH_UPLOAD Publication de [0] en cours...
+MENU_WORKSHOP_PUBLISH_ERROR Quelque chose s'est mal passé.\n Veuillez réessayer.\n([0])
+MENU_WORKSHOP_PUBLISH_WRONG_FORMAT Publication annulée.\nCertains fichiers ne sont pas autorisés.\nLes formats de fichiers autorisés sont les fichiers texte, image, son, pdf et xml.
+MENU_WORKSHOP_SUBSCRIBED_DETAILS utilisateur: [0]\nDernière mise à jour : [1] 
+GAME_PRESET_LIST Preset personnalisé
+GAME_PRESET_CREATE Créer un preset personnalisé
+GAME_PRESET_START Commencer civilisation
+GAME_PRESET_START_LOCATION Commencer votre civilisation ici
+GAME_PRESET_SAVE Sauvegarder ce preset
+GAME_PRESET_SAVE_DESCRIPTION Entrez une description
+GAME_PRESET_SAVE_NAME Entrez le nom du preset
+GAME_PAUSE En pause
+GAME_PAUSE_RESUME Reprendre
+GAME_PAUSE_SAVE Sauver
+GAME_PAUSE_QUIT Quitter
+GAME_PAUSE_SAVE_NAME Entrez le nom de votre sauvegarde...
+GAME_PAUSE_SAVE_BACK Retour
+GAME_PAUSE_SAVE_OVERRIDE Écraser fichier existant ?
+GAME_YES Oui
+GAME_NO Non
+GAME_SUMMARY_NODES États et Leviers
+GAME_SUMMARY_EVENTS Événements
+GAME_SUMMARY_TOGGLE Activer/Cacher le panneau
+GAME_SUMMARY_MAIN_MENU Retour au menu principal
+GAME_SUMMARY_NODE Node...
+GAME_SUMMARY_EVENT Événements...
+GAME_SUMMARY_CULTURAL Culturel
+GAME_SUMMARY_TECHNOLOGICAL Technologique
+GAME_SUMMARY_STATE État
+GAME_SUMMARY_ALL Tout
+GAME_SUMMARY_CLEAR Effacer
+GAME_SUMMARY_TIME Temps:
+GAME_SUMMARY_VALUE Valeur:
+GAME_FIND_NODE Node...
+GAME_WATCHER_EMPTY Le Veilleur est vide
+GAME_WATCHER_TOOLTIP Permet de garder un visuel permanent d'un node
+GAME_UNLOCK_NODE_UNAVALIBLE Ce node n'est pas encore disponible car certaines conditions ne sont pas remplies.
+GAME_UNLOCK_LEVER_UNAVALIBLE Ce levier n'est pas encore disponible car certaines exigences ne sont pas remplies :
+GAME_UNLOCK_LEVER_BANNED Ce levier n'est pas disponible pour le moment.
+GAME_UNLOCK_FREE Gratuit
+GAME_UNLOCK_CONDITION_OR OU
+GAME_UNLOCK_CONDITION_VALUE [0] <color=#bbbbbb>est [1]</color> [2]
+GAME_UNLOCK_CONDITION_ERA L'ère actuelle <color=#bbbbbb>est [0]</color> [1]
+GAME_UNLOCK_CONDITION_OPERATOR_AFTER après
+GAME_UNLOCK_CONDITION_OPERATOR_MORE_THAN plus de
+GAME_UNLOCK_CONDITION_OPERATOR_BEFORE avant
+GAME_UNLOCK_CONDITION_OPERATOR_LESS_THAN moins de
+GAME_UNLOCK_CONDITION_OPERATOR_AT_LEAST au moins
+GAME_UNLOCK_CONDITION_OPERATOR_NOT_AFTER pas après
+GAME_UNLOCK_CONDITION_OPERATOR_NOT_ABOVE pas plus de
+GAME_UNLOCK_CONDITION_OPERATOR_EQUAL_TO équal à
+GAME_UNLOCK_CONDITION_PRESENT_MULTI <color=#bbbbbb>Un de ces nodes est </color> présent:
+GAME_UNLOCK_CONDITION_PRESENT <color=#bbbbbb>est</color> présent
+GAME_UNLOCK_CONDITION_ABSENT <color=#bbbbbb>est</color> absent
+GAME_MUSIC Jukebox
+GAME_MUSIC_RANDOM Aléatoire
+GAME_MUSIC_LOOP Boucler
+GAME_STORIES Quêtes
+GAME_INCOMES Revenus :
+GAME_EXPENSES Dépenses :
+GAME_INVEST_CURRENT Certains levier sont en cours d'investissement
+GAME_INVEST_STOP Cliquer pour stoper tous les investissements
+GAME_INVEST_STOP_WINDOW Arrêter les investissement
+GAME_INVEST_STOP_WINDOW_TEXT Arrêter tous les investissement
+GAME_MOD_MISMATCH_WINDOW Changements détectés
+GAME_MOD_MISMATCH_WINDOW_TEXT_1 Les mods suivant ont été modifiés depuis la sauvegarde :
+GAME_MOD_MISMATCH_WINDOW_TEXT_2 Le jeu pourrait devenir instable !
+GAME_VALUE_LIMIT_MIN [0]<color=#bbbbbb> limite la valeur mininimum de </color>[1]<color=#bbbbbb> par </color><b>[2]%</b>
+GAME_VALUE_LIMIT_MAX [0]<color=#bbbbbb> limite la valeur maximum de </color>[1]<color=#bbbbbb> par </color><b>[2]%</b>
+GAME_CANNOT_MODIFY_LEVER Vous ne pouvez pas modifier ce levier maintenant.
+GAME_INVEST_COST Coût : 
+GAME_INVEST_REFOUND Investissement remboursé :
+GAME_INVEST Pas assez de ressource.\nInvestissement  : 
+GAME_INVEST_SET Fixe [0] à <b>[1]</b>
+GAME_REMOVE_ALERT_ONE_LABEL [0] a été retiré.
+GAME_REMOVE_ALERT_ONE_DESCRIPTION Le node [0] a été retiré par le node [1].
+GAME_REMOVE_ALERT_SELF_LABEL [0] a quitté votre civilisation.
+GAME_REMOVE_ALERT_SELF_DESCRIPTION Le node [0] a quitté votre civilisation.
+GAME_REMOVE_ALERT_MULTIPLE_LABEL [0] et [1] autre(s) node(s) ont été retiré.
+GAME_REMOVE_ALERT_MULTIPLE_DESCRIPTION Les nodes suivant(s) ont été retiré par [0]: [1]
+GAME_AUTOSAVE Sauvegarde automatique...
+GAME_NODE_RELATIONS Relations
+GAME_NODE_LOCK Empêche le node de bouger.
+GAME_NODE_WATCH Ajouter le node au veuilleur.
+GAME_NODE_APPLY FIXER
+GAME_NODE_REMOVE Enlever
+PRIVACY_TOOLTIP Données personelles
+PRIVACY_HEADER À PROPOS DES DONNÉES PERSONELLES
+PRIVACY_INFO Les développeurs de ce jeu <b>ne collectent aucune information privée</b> à travers ce programme. Cependant, vous pouvez toujours vouloir être informé des informations que Unity pourrait collecter. 
+PRIVACY_BUTTON Ouvrir la page Politique de confidentialité de Unity
+GAME_UNLOCK_IGNORE Ignorer
+GAME_UNLOCK_IGNORE_CANCEL Cliquez ici pour re-afficher tous les nodes ignorés.

@@ -1,0 +1,145 @@
+_NATIVE English
+_CODE En
+
+MENU_NEW NEW GAME
+MENU_PLAY START PLAYING
+MENU_LOAD LOAD GAME
+MENU_OPTIONS OPTIONS
+MENU_CREDITS CREDITS
+MENU_EXIT EXIT
+MENU_ACTIVE Active Mods
+MENU_INACTIVE Inactive Mods
+MENU_SELECT_MOD SELECT MODS
+MENU_MOD Mod
+MENU_ONE_MOD YOU NEED AT LEAST ONE ACTIVE MOD BEFORE STARTING A NEW GAME
+MENU_NO_MOD No mods found on your computer.\nMake sure the data path is correctly configured in the options menu.
+MENU_TUTORIAL First time playing the game?\nTry the tutorial to learn the basics.
+MENU_PLAY_TUTORIAL PLAY TUTORIAL
+MENU_SKIP_TUTORIAL SKIP TUTORIAL
+MENU_REALY_QUIT Do you really want to quit Orbi Universo?
+MENU_YES YES
+MENU_NO NO
+MENU_OPTIONS_VIDEO VIDEO SETTINGS
+MENU_OPTIONS_PATH_ITEM_PROGRAM Program path
+MENU_OPTIONS_PATH_ITEM_PERSISTENT Persistent path
+MENU_OPTIONS_PATH_PROGRAM Path: Program
+MENU_OPTIONS_PATH_PERSISTENT Path: Persistent
+MENU_OPTIONS_PATH_TOOLTIP The directory used to save and load data.\nCurrent path: 
+MENU_OPTIONS_LANGUAGE Language: 
+MENU_OPTIONS_MUSIC Music Volume: 
+MENU_OPTIONS_SFX SFX Volume: 
+MENU_OPTIONS_SCREEN Mode: 
+MENU_OPTIONS_SCREEN_FULL Fullscreen
+MENU_OPTIONS_SCREEN_WINDOW Windowed
+MENU_OPTIONS_DISPLAY Display: 
+MENU_OPTIONS_DISPLAY_ITEM Display 
+MENU_OPTIONS_RESOLUTION Resolution: 
+MENU_OPTIONS_AUTOSAVE Autosave: 
+MENU_OPTIONS_ON On
+MENU_OPTIONS_OFF Off
+MENU_WORKSHOP_SUBSCRIBED_LIST Subscribed
+MENU_WORKSHOP_UPLOAD_LIST Upload to Steam
+MENU_WORKSHOP_PUBLISH Publish
+MENU_WORKSHOP_PUBLISH_UPDATE Update
+MENU_WORKSHOP_PUBLISH_PUBLIC Public
+MENU_WORKSHOP_PUBLISH_PRIVATE Private
+MENU_WORKSHOP_PUBLISH_FRIENDS Friends only
+MENU_WORKSHOP_PUBLISH_TITLE Title...
+MENU_WORKSHOP_PUBLISH_DESCRIPTION Description...
+MENU_WORKSHOP_PUBLISH_CHANGELOG Change log...
+MENU_WORKSHOP_PUBLISH_LANGUAGE Language...
+MENU_WORKSHOP_PUBLISH_PREVIEW Preview
+MENU_WORKSHOP_PUBLISH_PREVIEW_TOOLTIP preview.png in mod folder (max 1 MB)
+MENU_WORKSHOP_PUBLISH_POLICY By publishing this mod, you agree to the Workshop's terms of use.
+MENU_WORKSHOP_PUBLISH_UPLOAD Publishing [0]...
+MENU_WORKSHOP_PUBLISH_ERROR Something went wrong.\nPlease try again.\n([0])
+MENU_WORKSHOP_PUBLISH_WRONG_FORMAT Publishing canceled.\nSome files are not allowed.\nAllowed file formats are text, image, sound, pdf and xml files.
+MENU_WORKSHOP_SUBSCRIBED_DETAILS User: [0]\nLast update: [1]
+GAME_PRESET_LIST Others Presets
+GAME_PRESET_CREATE Create custom preset
+GAME_PRESET_START Start Civilization
+GAME_PRESET_START_LOCATION Start Civilization Here
+GAME_PRESET_SAVE Save custom preset
+GAME_PRESET_SAVE_DESCRIPTION Enter description...
+GAME_PRESET_SAVE_NAME Enter preset name...
+GAME_PAUSE Paused
+GAME_PAUSE_RESUME Resume
+GAME_PAUSE_SAVE Save
+GAME_PAUSE_QUIT Quit
+GAME_PAUSE_SAVE_NAME Enter save name...
+GAME_PAUSE_SAVE_BACK Back
+GAME_PAUSE_SAVE_OVERRIDE Override this savefile?
+GAME_YES Yes
+GAME_NO No
+GAME_SUMMARY_NODES States and Levers
+GAME_SUMMARY_EVENTS Events
+GAME_SUMMARY_TOGGLE Toggle panel
+GAME_SUMMARY_MAIN_MENU Return to main menu
+GAME_SUMMARY_NODE Node...
+GAME_SUMMARY_EVENT Event...
+GAME_SUMMARY_CULTURAL Cultural
+GAME_SUMMARY_TECHNOLOGICAL Technological
+GAME_SUMMARY_STATE State
+GAME_SUMMARY_ALL All
+GAME_SUMMARY_CLEAR Clear
+GAME_SUMMARY_TIME Time:
+GAME_SUMMARY_VALUE Value:
+GAME_FIND_NODE Node...
+GAME_WATCHER_EMPTY The watcher is empty
+GAME_WATCHER_TOOLTIP Watch nodes
+GAME_UNLOCK_NODE_UNAVALIBLE This node is not available  yet because some requirements are not fulfilled.
+GAME_UNLOCK_LEVER_UNAVALIBLE This lever is not available  yet because some requirements are not fulfilled:
+GAME_UNLOCK_LEVER_BANNED This lever is unavailable right now.
+GAME_UNLOCK_FREE Free
+GAME_UNLOCK_CONDITION_OR OR
+GAME_UNLOCK_CONDITION_VALUE [0] <color=#bbbbbb>is [1]</color> [2]
+GAME_UNLOCK_CONDITION_ERA The current era <color=#bbbbbb>is [0]</color> [1]
+GAME_UNLOCK_CONDITION_OPERATOR_AFTER after
+GAME_UNLOCK_CONDITION_OPERATOR_MORE_THAN more than
+GAME_UNLOCK_CONDITION_OPERATOR_BEFORE before
+GAME_UNLOCK_CONDITION_OPERATOR_LESS_THAN less than
+GAME_UNLOCK_CONDITION_OPERATOR_AT_LEAST at least
+GAME_UNLOCK_CONDITION_OPERATOR_NOT_AFTER not after
+GAME_UNLOCK_CONDITION_OPERATOR_NOT_ABOVE not above
+GAME_UNLOCK_CONDITION_OPERATOR_EQUAL_TO equal to
+GAME_UNLOCK_CONDITION_PRESENT_MULTI <color=#bbbbbb>One of these node is</color> present:
+GAME_UNLOCK_CONDITION_PRESENT <color=#bbbbbb>is</color> present
+GAME_UNLOCK_CONDITION_ABSENT <color=#bbbbbb>is</color> absent
+GAME_MUSIC Music Player
+GAME_MUSIC_RANDOM Random
+GAME_MUSIC_LOOP Loop music
+GAME_STORIES Stories
+GAME_INCOMES Incomes:
+GAME_EXPENSES Expenses:
+GAME_INVEST_CURRENT Some levers are currently investing
+GAME_INVEST_STOP Click to stop all investments.
+GAME_INVEST_STOP_WINDOW Stop investments
+GAME_INVEST_STOP_WINDOW_TEXT Stop all current investments?
+GAME_MOD_MISMATCH_WINDOW Changes detected
+GAME_MOD_MISMATCH_WINDOW_TEXT_1 The following mods have been modified since the last save:
+GAME_MOD_MISMATCH_WINDOW_TEXT_2 The game might be unstable.
+GAME_VALUE_LIMIT_MIN [0]<color=#bbbbbb> limits the minimum value of </color>[1]<color=#bbbbbb> by </color><b>[2]%</b>
+GAME_VALUE_LIMIT_MAX [0]<color=#bbbbbb> limits the maximum value of </color>[1]<color=#bbbbbb> by </color><b>[2]%</b>
+GAME_CANNOT_MODIFY_LEVER You cannot modify this lever right now.
+GAME_INVEST_COST Cost: 
+GAME_INVEST_REFOUND Refound investment:
+GAME_INVEST Not enough ressources.\nInvest: 
+GAME_INVEST_SET Sets [0] to <b>[1]</b>
+GAME_REMOVE_ALERT_ONE_LABEL [0] has been removed.
+GAME_REMOVE_ALERT_ONE_DESCRIPTION The node [0] has been removed by the node [1].
+GAME_REMOVE_ALERT_SELF_LABEL [0] has left your civilization.
+GAME_REMOVE_ALERT_SELF_DESCRIPTION The node [0] has left your civilization.
+GAME_REMOVE_ALERT_MULTIPLE_LABEL [0] and [1] others have been removed.
+GAME_REMOVE_ALERT_MULTIPLE_DESCRIPTION The following nodes have been removed by the node [0]: [1]
+GAME_AUTOSAVE Auto-Saving...
+GAME_NODE_RELATIONS Relationships
+GAME_NODE_LOCK Prevents the node from moving.
+GAME_NODE_WATCH Add to watch list.
+GAME_NODE_APPLY APPLY
+GAME_NODE_REMOVE Remove
+PRIVACY_TOOLTIP Data Privacy
+PRIVACY_HEADER ABOUT DATA PRIVACY
+PRIVACY_INFO The developpers of this game <b>does not collect any private information </b>through this program. However, you may still want to be informed about the information Unity might collect. 
+PRIVACY_BUTTON Open Privacy Policy Page of Unity
+GAME_UNLOCK_IGNORE Ignore
+GAME_UNLOCK_IGNORE_CANCEL Click to display all ignored levers again.

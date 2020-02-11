@@ -1,0 +1,7 @@
+Presets = {
+
+	TutorialPreset = {
+		NAME "Tutorial Preset"
+		DESCRIPTION "Tutorial Preset."
+		}
+}

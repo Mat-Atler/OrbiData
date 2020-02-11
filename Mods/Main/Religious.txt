@@ -1,0 +1,631 @@
+Religious = {
+
+	Languages = {
+		English "Main/Religious_En.txt"
+		French "Main/Religious_Fr.txt"
+		Japanese "Main/Religious_Jp.txt"
+	}
+	
+	Nodes = {
+		States = {
+			Heretics = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF ~Schism
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ( Conversion.value <= 0 & Heretics > 50 )
+						PROCESS Heretics = Heretics - Heretics * ToleranceOfHeretics * 0.00003
+					ENDIF
+					
+					}
+				LINK NationalCohesion = {
+					WEIGHT [ to ]
+				}	
+				
+				LINK Piety = {
+					WEIGHT [ to ]
+				}				
+					
+			}
+			Heathens = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF StateSize > 100
+						SPAWN
+					ENDIF
+				}
+                TICK = {
+				IF ( Conversion.value <= 0 & Heathens > 50 )
+					PROCESS Heathens = Heathens - Heathens * ToleranceOfHeathens * 0.00002
+				ENDIF
+
+                IF StateSize' > 0
+					PROCESS Heathens = Heathens + StateSize' / 3.5
+                ELSE
+					PROCESS Heathens = Heathens + StateSize' / 8
+                ENDIF
+				
+				}
+					
+				LINK NationalCohesion = {
+					WEIGHT [ to ]
+				}
+
+				LINK StateSize = {
+					WEIGHT [ from ]
+				}
+				
+				LINK Piety = {
+					WEIGHT [ to ]
+				}					
+					
+			}
+		}
+		Levers = {
+			ToleranceOfHeretics = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				VALUE cost [ 0 0 100 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_NODE + Heretics
+				}
+				PRICE = {
+					$PoliticalPower = 10
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(ToleranceOfHeretics) + 1 ) * 1.1
+				}
+				TICK = {
+				IF ( value > 0 )
+					PROCESS cost =  value * Heretics  * 0.0002
+				ENDIF
+				IF ( value == 0 )
+					PROCESS cost =  0
+				ENDIF
+					
+				IF ( $PoliticalPower > 1 )
+					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
+				ENDIF
+				}
+				
+				LINK NationalCohesion = {
+					WEIGHT [ to ]
+				}
+				
+				LINK Pantheon = {
+					WEIGHT [ from ]
+				}
+
+			}
+			ToleranceOfHeathens = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				VALUE cost [ 0 0 100 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_NODE + Heathens
+				}
+				PRICE = {
+					$PoliticalPower = 10
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(ToleranceOfHeathens) + 1 ) * 1.1
+				}
+				TICK = {
+					IF ( value > 0 )
+						PROCESS cost =  ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) 
+					ENDIF
+					IF ( value == 0 )
+						PROCESS cost =  0
+					ENDIF
+					
+					IF ( $PoliticalPower > cost )
+						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
+					ENDIF	
+				
+				}
+				LINK NationalCohesion = {
+					WEIGHT [ to ]
+				}
+				
+				LINK Pantheon = {
+					WEIGHT [ from ]
+				}
+
+			}
+			Syncretism = {
+				TYPE Cultural
+				VALUE value [ 0 10 100 >> 1 ]
+				VALUE cost [ 0 0 100 ]
+				
+				
+				UNLOCK_CONDITIONS = {
+					HINT ~ToleranceOfHeathens
+					CONDITION_VALUE Philosophy > 40
+					CONDITION_NODE + ToleranceOfHeathens
+				}
+				PRICE = {
+					$PoliticalPower = 80
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Syncretism) + 1) * 2
+				}
+				
+				TICK = {					
+					IF ( Pantheon < 50 )
+						SET ToleranceOfHeathens.value [ : : Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value*1.5 + 25 )/100 )+25 )) ]
+					ENDIF
+					IF (Pantheon >= 50 )
+						SET ToleranceOfHeathens.value [ : : Min ( 100 ,((Syncretism.value / 2 * ((100 - Pantheon.value)*0.02 ))+25 )) ]
+					ENDIF
+					IF ( value > 0 )
+					PROCESS cost =  value * value  * 0.0001
+					ENDIF
+					IF ( value == 0)
+					PROCESS cost =  0
+					ENDIF
+					
+					IF ( $PoliticalPower > 1 )
+						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
+					ENDIF
+				}
+				
+				
+				LINK ToleranceOfHeathens = {
+					WEIGHT [ max ] Min( 75 ,(Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 )/100 ) + 25 )
+				}
+
+			}
+			ReligiousMinorityTax = {
+				TYPE Cultural
+				VALUE value [ 0 5 100 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Population
+				}
+				// SLEEP = {
+					// IF Population > 50 & Bureaucracy
+						// UNLOCK
+					// ENDIF
+				// }
+				UNLOCK_CONDITIONS = {
+					HINT ~Heretics | ~Heathens
+					CONDITION_NODE + Heretics
+					CONDITION_VALUE Heretics > 25
+					OR
+					CONDITION_NODE + Heathens
+					CONDITION_VALUE Heathens > 25
+				}
+				PRICE = {
+					$PoliticalPower = 60
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(ReligiousMinorityTax) + 1) * 2.5
+				}
+				
+				TICK = {
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * (Heretics + Heathens) ) / 25)
+				}
+				
+				LINK Heretics = {
+				WEIGHT [ from ] 
+				}
+				LINK Heathens = {
+				WEIGHT [ from ] 
+				}
+			}
+			Conversion = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				VALUE cost [ 0 0 100 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ( Heretics | Heathens )
+					CONDITION_NODE + Heretics
+					OR
+					CONDITION_NODE + Heathens
+					ALWAYS
+					CONDITION_VALUE Philosophy > 45
+				}
+				
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(Conversion) + 1) * 0.25
+				}
+				TICK = {
+				PROCESS Heretics = Heretics - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 )
+				PROCESS Heathens = Heathens - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 )
+				
+				IF ( value > 0)
+				PROCESS cost =  ( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000
+				ENDIF
+				IF ( value == 0)
+				PROCESS cost =  0
+				ENDIF
+					
+				IF ( $Wealth > 1)
+					PROCESS $Wealth = $Wealth - PerSeconds(cost)
+				ENDIF
+				
+				}
+				LINK Philosophy = {
+				WEIGHT [ from ] 
+				}
+				LINK Pantheon = {
+				WEIGHT [ from ] 
+				}
+				LINK Syncretism = {
+				WEIGHT [ from ] 
+				}
+				LINK Heretics = {
+					COLOR red
+					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 )
+				}
+				LINK Heathens = {
+					COLOR red
+					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 )
+				}
+			}
+			ReligiousOfferings = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				RELATED_INFO = {
+				}
+				
+				UNLOCK_CONDITIONS = {
+					HINT ~ReligiousCeremony
+					CONDITION_VALUE ReligiousCeremony > 35
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(ReligiousOfferings) + 1) * 0.3
+				}
+				TICK = {
+					IF OfferingsNature > 80 & Livestock > ( value * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value * ReligiousCeremony * SacrificeNature / 2000000 )))
+						PROCESS Livestock = Livestock - PerSeconds ( value * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 )
+						IF Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )
+							PROCESS Slaves = Slaves - PerSeconds ( value * ReligiousCeremony * SacrificeNature / 2000000 )
+						ENDIF
+						IF Slaves <= ( value * ReligiousCeremony * SacrificeNature / 2000000 )
+							PROCESS Population = Population - PerSeconds ( value * ReligiousCeremony * SacrificeNature / 2000000 )
+						ENDIF
+						PROCESS Piety = Piety + PerSeconds (  ( value + SacrificeNature ) * ReligiousCeremony * 0.00004 )
+					ENDIF
+					IF OfferingsNature <= 80 & OfferingsNature >= 40 & Food > ( value * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & TradeGoods > ( value * ReligiousCeremony * Pantheon / 2000000 )
+						PROCESS Food = Food - PerSeconds ( value * ReligiousCeremony * (100 - Pantheon ) / 2000000 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds ( value * ReligiousCeremony * Pantheon / 2000000 )
+						PROCESS Piety = Piety + PerSeconds ( value * ReligiousCeremony * 0.00004 )
+					ENDIF
+					IF OfferingsNature < 40 & TradeGoods > (value * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & $Wealth > ( value * ReligiousCeremony * Pantheon / 2000000 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds ( value * ReligiousCeremony * (100 - Pantheon ) / 2000000 )
+						PROCESS $Wealth = $Wealth - PerSeconds ( value * ReligiousCeremony * Pantheon / 2000000 )
+						PROCESS Piety = Piety + PerSeconds ( value * ReligiousCeremony * 0.00004 )
+					ENDIF
+				}
+				
+				LINK Piety = {
+				IF OfferingsNature > 80
+						COLOR green
+						FLUX value * 0.01
+				ELSE
+						COLOR green
+						FLUX value * 0.02
+				ENDIF
+				}
+				
+				LINK Livestock = {
+				IF OfferingsNature > 80
+						COLOR red
+						FLUX  value * (100 - SacrificeNature ) / 5000
+				ENDIF
+				}
+				
+				LINK Population = {
+				IF OfferingsNature > 80 & Slaves <= 0.5
+						COLOR red
+						FLUX  value * SacrificeNature / 5000
+				ENDIF
+				}
+
+				LINK Slaves = {
+				IF OfferingsNature > 80 & Slaves > 0.5
+						COLOR red
+						FLUX  value * SacrificeNature / 5000
+				ENDIF
+				}
+				
+				LINK Food = {
+				IF OfferingsNature <= 80 & OfferingsNature >= 40
+						COLOR red
+						FLUX  value * (100 - Pantheon ) / 5000
+				ENDIF
+				}
+				
+				LINK TradeGoods = {
+				IF OfferingsNature <= 80 & OfferingsNature >= 40
+						COLOR red
+						FLUX  value * Pantheon / 5000
+				ENDIF
+				IF OfferingsNature < 40
+							COLOR red
+							FLUX  value * (100 - Pantheon ) / 5000
+				ENDIF
+				}
+				
+				LINK ReligiousCeremony = {
+				WEIGHT [ from ] 
+				}
+				
+				LINK Pantheon = {
+				WEIGHT [ from ] 
+				}
+			
+				}
+			OfferingsNature = {
+				TYPE Cultural
+				VALUE value [ 0 50 100 >> 1 ]
+				
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ReligiousOfferings
+					CONDITION_NODE + ReligiousOfferings
+				}
+				PRICE = {
+					$PoliticalPower = 0
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(OfferingsNature) + 1) * 1.2
+				}
+				TICK = {
+
+				
+				}
+				LINK ReligiousOfferings = {
+					WEIGHT [ to ]
+				}
+				
+			}
+			SacrificeNature = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT OfferingsNature
+					CONDITION_VALUE OfferingsNature > 80
+
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(SacrificeNature) + 1) * 1.2
+				}
+				TICK = {
+
+				
+				}
+				LINK ReligiousOfferings = {
+					WEIGHT [ to ]
+				}
+				
+			}
+			FlowerWar = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				
+				RELATED_INFO = {
+
+				}
+				
+				UNLOCK_CONDITIONS = {
+					HINT SacrificeNature
+					CONDITION_VALUE SacrificeNature > 80
+					CONDITION_VALUE MilitaryManpower > 50
+
+				}
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(FlowerWar) + 1) * 0.5
+				}
+				TICK = {
+				
+				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 100 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 75 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 200 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 75 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS OverlandTrade = OverlandTrade - PerSeconds(value / 25)
+					PROCESS NavalTrade = NavalTrade - PerSeconds(value / 25)
+					PROCESS Piety = Piety + PerSeconds ( value * SacrificeNature * 0.00001 )
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds ( ( 3000 + value * SacrificeNature ) * 0.00002 )
+					PROCESS Slaves = Slaves + PerSeconds ( ( 2500 + value * SacrificeNature ) * 0.00002 )
+				ENDIF
+
+				}
+				
+				LINK ReligiousOfferings = {
+				WEIGHT [ to ]		
+				}				
+				LINK NeighborhoodBellicism = {
+				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+						COLOR green
+						FLUX value * SacrificeNature * 0.0001
+				ENDIF
+				}
+				LINK Slaves = {
+				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+						COLOR green
+						FLUX value * SacrificeNature * 0.0001
+				ENDIF
+				}
+				LINK MilitaryManpower = {
+				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+					COLOR red
+					FLUX value /25
+				ENDIF
+				}
+				LINK OverlandTrade = {
+				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+					COLOR red
+					FLUX value /12
+				ENDIF
+				}
+				LINK NavalTrade = {
+				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+					COLOR red
+					FLUX value /12
+				ENDIF
+				}
+				
+			}
+			}
+		Events = {
+			Schism = {
+				SOUND_EVENT "Main/SFX/Schism.wav"
+				SOUND_WINDOW "Main/SFX/Schism.wav"
+				EVENT_DEF [ 30 80 500 25% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Heretics = Heretics + PerSeconds( 0.5 ? 0.7 )
+				}
+				LINK Heretics = {
+					COLOR green
+					FLUX 1.5
+				}
+				
+				TRIGGER_EVENT = {
+					IF (Piety >= 15 & GameTime() > 1500 )
+						RISE
+					ENDIF
+				}
+			}
+			ConversionForeignFaith = {
+				SOUND_EVENT "Main/SFX/ConversionBad.wav"
+				SOUND_WINDOW "Main/SFX/ConversionBad.wav"
+				EVENT_DEF [ 15 40 500 20% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				
+				SLEEP = {
+				EVENT_CHANCE Min( 0.4 , 0.1 + Heathens / 200 )
+				}
+				
+				TICK = {
+					PROCESS Heathens = Heathens + PerSeconds( 0.25 ? 0.75 )
+				}
+				
+				LINK Heathens = {
+					COLOR green
+					FLUX 1.5
+				}
+				
+				TRIGGER_EVENT = {
+					IF ( ~Heathens & GameTime() > 1500 )
+						RISE
+					ENDIF
+				}
+				
+
+			}
+			ConversionTrueFaith = {
+				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
+				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
+				EVENT_DEF [ 15 30 500 40% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				
+				SLEEP = {
+				EVENT_CHANCE Min ( 0.4 , ( Heretics + Heathens ) / 350 )
+				}
+				
+				TICK = {
+					PROCESS Heretics = Heretics - PerSeconds( 0.25 ? 0.5 )
+					PROCESS Heathens = Heathens - PerSeconds( 0.25 ? 0.5 )
+				}
+				
+				LINK Heretics = {
+					COLOR red
+					FLUX 1
+				}
+				
+				LINK Heathens = {
+					COLOR red
+					FLUX 1
+				}
+				
+				TRIGGER_EVENT = {
+					IF ( ( ~Heretics | ~Heathens ) & GameTime() > 1500 )
+						RISE
+					ENDIF
+				}
+				
+			}
+			ReligiousMinorityRevolt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 30 240 33% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				
+				SLEEP = {
+				EVENT_CHANCE  (ReligiousMinorityTax * 50 / ( ToleranceOfHeretics + ToleranceOfHeathens + 50 )) / 100
+				}
+				
+				TICK = {
+					PROCESS Stability = Stability - PerSeconds (( Heretics * ( 100 - ToleranceOfHeretics )* 0.0002 ) + ( Heathens * ( 100 - ToleranceOfHeathens )* 0.00025 ))
+					PROCESS Piety = Piety - PerSeconds ( 0.3 *( Heretics / ( 10 + ToleranceOfHeretics / 20 ) + Heathens / ( 10 + ToleranceOfHeathens / 20 )))
+				}
+				
+				LINK Stability = {
+					COLOR red
+					FLUX 5 * ((Heretics * ( 100 - ToleranceOfHeretics )* 0.0001 ) + ( Heathens * ( 100 - ToleranceOfHeathens )* 0.0002 ))
+				}
+				LINK Piety = {
+					COLOR red
+					FLUX 5 * (0.25 *((Heretics + Heathens) / 5 )) 
+				}
+				
+				TRIGGER_EVENT = {
+					IF (Heretics + Heathens >= 25 & GameTime() > 1500 )
+						RISE
+					ENDIF
+				}
+			}
+			}
+	}
+}
+

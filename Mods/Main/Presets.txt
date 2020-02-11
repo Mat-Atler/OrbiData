@@ -1,0 +1,142 @@
+﻿Presets = {
+	
+	Languages = {
+		English "Main\Presets_En.txt"
+		French "Main\Presets_Fr.txt"
+		Japanese "Main\Presets_Jp.txt"
+	}
+	
+	/// NEW ///
+	Regions = {
+		MAP = "Main\DataMaps\Continents.png"
+	}
+	
+	Custom = {
+		Main.Humidity.value = 60
+		Main.Temperature.value = DataMapGetR("Main\DataMaps\Temperature.png",GetLongitude(),GetLatitude()) * 100
+		Main.Flora.value = DataMapGetR("Main\DataMaps\Flora.png",GetLongitude(),GetLatitude()) * 120
+		Main.Fauna.value = DataMapGetR("Main\DataMaps\Flora.png",GetLongitude(),GetLatitude()) * 95
+		Main.Coastline.value = 30
+		Main.Gold.value = 20
+		Main.Spices.value = 20
+		Main.Salt.value = 20
+		Main.SoilFertility.value = 50
+		Main.NeighborhoodBellicism.value = 10
+		? Main.DraftAnimals = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
+		? Main.HorseDomestication = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
+		? Main.GreatNomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
+		? Main.Island = 1 - DataMapGetR("Main\DataMaps\Island.png",GetLongitude(),GetLatitude())
+	}
+	
+	
+	Steppe = {
+		COORDINATES = 47° 55' N 106° 55' E
+		Main.Humidity.value = 24
+		Main.Temperature.value = 25
+		Main.Flora.value = 28
+		Main.Fauna.value = 60
+		Main.Coastline.value = 0
+		Main.Gold.value = 0
+		Main.SoilFertility.value = 25
+		Main.Spices.value = 0
+		Main.Salt.value = 40
+		Main.NeighborhoodBellicism.value = 0
+		- Main.Island
+	}
+	
+	Crete = {
+		COORDINATES = 36° 50' N 25° 00' E
+		Main.Humidity.value = 70
+		Main.Temperature.value = 60
+		Main.Flora.value = 60
+		Main.Fauna.value = 60    
+		Main.Coastline.value = 55
+		Main.SoilFertility.value = 60
+		Main.Gold.value = 20
+		Main.Salt.value = 30
+		Main.Spices.value = 0
+		Main.NeighborhoodBellicism.value = 30
+	}
+	
+	Yucatan = {
+		COORDINATES = 20° 50' N 87° 00' W
+		Main.Humidity.value = 70
+		Main.Temperature.value = 70
+		Main.Flora.value = 72
+		Main.Fauna.value = 100
+		Main.Coastline.value = 15
+		Main.SoilFertility.value = 49
+		Main.Gold.value = 70
+		Main.Salt.value = 60
+		Main.Spices.value = 20
+		Main.NeighborhoodBellicism.value = 30
+		- Main.DraftAnimals
+		- Main.HorseDomestication
+		- Main.GreatNomadInvasion
+		- Main.Island
+	}
+	Mesopotamia = {
+		COORDINATES = 32° 32' N 44° 25' E
+		Main.Humidity.value = 55
+		Main.Temperature.value = 60
+		Main.Flora.value = 50
+		Main.Fauna.value = 50
+		Main.Coastline.value = 30
+		Main.SoilFertility.value = 85
+		Main.Gold.value = 25
+		Main.Spices.value = 5
+		Main.Salt.value = 25
+		Main.NeighborhoodBellicism.value = 70
+		- Main.Island
+	}
+	
+	Java = {
+		COORDINATES = 7° 030' S 111° 00' E
+		Main.Humidity.value = 75
+		Main.Temperature.value = 75
+		Main.Flora.value = 80
+		Main.Fauna.value = 60
+		Main.Coastline.value = 80
+		Main.SoilFertility.value = 60
+		Main.Gold.value = 5
+		Main.Spices.value = 100
+		Main.Salt.value = 20
+		Main.NeighborhoodBellicism.value = 50
+	}
+	
+	
+	Yamatai = {
+		COORDINATES = 35° 000' N 135° 46' E
+		Main.Humidity.value = 60
+		Main.Temperature.value = 60
+		Main.Flora.value = 70
+		Main.Fauna.value = 40
+		Main.Coastline.value = 80
+		Main.SoilFertility.value = 50
+		Main.Gold.value = 20
+		Main.Spices.value = 10
+		Main.Salt.value = 30
+		Main.NeighborhoodBellicism.value = 10
+	}
+	
+	
+	Andes = {
+		COORDINATES = 13° 31' S 71° 58' W
+		Main.Humidity.value = 50
+		Main.Temperature.value = 40
+		Main.Flora.value = 40
+		Main.Fauna.value = 50
+		Main.Coastline.value = 0
+		Main.SoilFertility.value = 40
+		Main.Gold.value = 90
+		Main.Salt.value = 80
+		Main.Spices.value = 0
+		Main.NeighborhoodBellicism.value = 5
+		- Main.DraftAnimals
+		- Main.HorseDomestication
+		- Main.GreatNomadInvasion
+		- Main.Island
+	}
+	
+	
+}

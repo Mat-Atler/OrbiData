@@ -1,0 +1,126 @@
+Tutorial = {
+
+	Languages = {
+		English "Tutorial/Tutorial_En.txt"
+		French "Tutorial/Tutorial_Fr.txt"
+		Japanese "Tutorial/Tutorial_Jp.txt"
+	}
+	
+	Stories = {
+		StoryTutorial = {
+			REMOTE Main.Population = {
+				BAN Main.Fishing Main.Foraging Main.Hunting Main.Agriculture Main.Settlement Main.OrganizedNomadism Main.OralTradition Main.Music Main.Fire Main.InvasiveSpecies 
+			}
+			Chapters = {
+				1 = {
+					OBJECTIVE = {
+						BUTTON
+						IMAGE "Tutorial/Images/base.png"
+						
+						REMOTE Main.Foraging = {
+							UNBAN
+							CHAPTER 2
+						}
+					}
+				}
+				2 = {
+					IMAGE "Tutorial/Images/Shop.png"
+					OBJECTIVE = {
+						UNLOCK_CONDITIONS = {
+							CONDITION_NODE + Main.Foraging
+						}
+					}
+				}
+				3 = {
+					IMAGE "Tutorial/Images/Ressources.png"
+					OBJECTIVE = { BUTTON }
+				}
+				4 = {
+					IMAGE "Tutorial/Images/watcher.png"
+					OBJECTIVE = { BUTTON }
+				}
+				5 = {
+					OBJECTIVE = {
+					IMAGE "Tutorial/Images/invest.png"
+						UNLOCK_CONDITIONS = {
+							CONDITION_VALUE Main.Foraging.value >= 30
+						}
+						REMOTE Main.Agriculture = {
+							UNBAN
+							CHAPTER 6
+						}
+					}
+				}
+				6 = {
+					OBJECTIVE = {
+						UNLOCK_CONDITIONS = {
+							CONDITION_NODE + Main.Agriculture
+						}
+							REMOTE Main.Population = {
+							UNBAN Main.Fishing Main.Hunting
+							CHAPTER 7
+						}
+					}
+				}
+				7 = {
+					OBJECTIVE = {
+						UNLOCK_CONDITIONS = {
+							CONDITION_VALUE Main.Population.value >= 10
+						}
+						REMOTE Main.Settlement = {
+							UNBAN Main.Settlement
+							CHAPTER 8
+						}
+					}
+				}
+				8 = {
+					OBJECTIVE = {
+						UNLOCK_CONDITIONS = {
+							CONDITION_NODE + Main.Settlement
+						}
+					}
+				}
+				9 = {
+					IMAGE "Tutorial/Images/Cap.png"
+					OBJECTIVE = { BUTTON }
+				}
+				10 = {
+					IMAGE "Tutorial/Images/forbidden.png"
+					OBJECTIVE = { BUTTON }
+				}
+				11 = {
+					IMAGE "Tutorial/Images/groups.png"
+					OBJECTIVE = { BUTTON }
+				}
+				12 = {
+					OBJECTIVE = {
+						BUTTON
+						REMOTE Main.Population = {
+							UNBAN Main.Fishing Main.Hunting Main.OrganizedNomadism Main.OralTradition Main.Music Main.Fire Main.InvasiveSpecies 
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	Nodes = {
+		
+	}
+	
+	Injections = {
+		TRIGGER_SPAWN Main.Population [ Main.Population begin ] = {
+			STORY_START Tutorial.StoryTutorial
+			HIGHLIGHT Levers Main.Foraging
+		}
+		TRIGGER_SPAWN Main.Foraging [ Main.Foraging begin ] = {
+			HIGHLIGHT
+			HIGHLIGHT Ressources
+		}
+
+		TRIGGER_SPAWN Main.Agriculture [ Main.Agriculture begin ] = {
+			HIGHLIGHT
+		}
+
+	}
+}

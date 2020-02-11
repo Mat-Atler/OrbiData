@@ -1,0 +1,9 @@
+EgyptPreset = {
+
+	Languages = {
+		English "Tutorial/Tutorial_En.txt"
+		French "Tutorial/Tutorial_Fr.txt"
+		Japanese "Tutorial/Tutorial_Jp.txt"
+	}
+	
+}

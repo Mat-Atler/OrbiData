@@ -1,0 +1,69 @@
+Presets = {
+	Custom = {
+		Main.Humidity.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Temperature.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Flora.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Fauna.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Coastline.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Gold.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Spices.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Salt.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.SoilFertility.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.NeighborhoodBellicism.value @[value,LEVEL] " (" @[value,0.0] ")"
+	}
+	
+	
+	Regions = {
+		[ 255 0 0 ] = "Amérique du Nord"
+        [ 0 255 0 ] = "Amérique du Sud"
+        [ 0 0 255 ] = "Europe"
+        [ 255 255 0 ] = "Afrique"
+        [ 144 0 0 ] = "Moyen-Orient"
+        [ 0 255 255 ] = "Asie"
+        [ 255 0 255 ] = "Océanie"
+        [ 255 255 255 ] = "Antarctique"
+        [ 50 0 0 ] = "Océan Atlantique"
+        [ 0 50 0 ] = "Océan Pacifique"
+        [ 0 0 50 ] = "Océan Indien"
+        [ 0 0 0 ] = "Lac"
+	}
+	
+	
+	Tutorial = {
+		NAME "Didacticiel"
+		DESCRIPTION "Pour apprendre à jouer"
+		}
+		
+	Crete = {
+		NAME "Crète"
+		DESCRIPTION "La Crète est une plaque tournante de la méditerranée orientale, terre riche, bien situé et relativement isolé de menaces directes, elle est une bonne base pour construire une puissante thalassocratie."
+		}		
+		
+	Steppe = {
+		NAME "Mongolie"
+		DESCRIPTION "Les steppes orientales sont en environnement difficile à vivre, mais des humains ont tout de même réussis à vivre sur ces terres. La pauvreté des terres est contrebalancé par le nombre réduis de rivaux. Il est recommandé de devenir nomade."
+	}
+	Yucatan = {
+		NAME "Yucatan"
+		DESCRIPTION "Les jungles de l'Amérique centrale sont luxuriantes, l'abondance de faune et flore est un immense avantage mais l'impraticabilitée des côtes et le cruel manque d'animaux de trait peuvent rendre une civilisation avancée difficile à maîtriser. Il est recommandé de creuser vos sols riche en or pour un immense gain de richesse."
+	}
+	Mesopotamia = {
+		NAME "Mésopotamie"
+		DESCRIPTION "Le croissant fertile est le lieu de naissance de bien des civilisations et de grand empire. La grande polyvalence de cette région permet de donner littéralement toutes les directions que vous souhaitez à votre civilisation."
+		}
+
+	Java = {
+		NAME "Java"
+		DESCRIPTION "L'archipel indonésien est le berceau de nombreuse civilisation comme l'Empire Majapahit. Il est recommandé de capitaliser sur les grandes réserves d'épices qui se trouvent dans les îles. "
+		}
+		
+	Yamatai = {
+		NAME "Yamatai"
+		DESCRIPTION "L'archipel japonais est une zone reculée, relativement protégée de toute agression extérieure, propice à créer une société prospère et unique. "
+		}
+		
+	Andes = {
+		NAME "Cordillère des Andes"
+		DESCRIPTION "Les Andes ont un climat redoutable et représente un challenge formidable à tout civilisation tentant de s'installer durablement. Les ressources minières sont par contre très abondantes. "
+		}
+}

@@ -1,0 +1,144 @@
+Religious = {
+
+	
+	Ressources = {
+		}
+	
+	Nodes = {
+		States = {
+			Heretics = {
+				NAME "Heretics"
+				DESCRIPTION <b>"Value: "@[value] </b>  <br><br> "The part of our population that is heretical, we must tolerate them or convert them if we do not want them to cause troubles."
+				SUMMARY "Percentage of Heretic believers"
+			}
+			Heathens = {
+				NAME "Heathens"
+				DESCRIPTION <b>"Value: "@[value] </b>  <br><br> "The part of our population that is Heathens, we must tolerate them or convert them if we do not want them to cause troubles."
+				SUMMARY "Percentage of Heathens believers"
+			}	
+		}
+		Levers = {
+			ToleranceOfHeretics = {
+				NAME "Tolerance Of Heretics"
+				LEVEL value = {
+					0 = "Death to heretics"
+					25 = "The heretics are persecuted"
+					50 = "Heretics are tolerated as long as they are useful"
+					75 = "heretics are almost considered as any of our subjects"
+					}
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate heretics so that they do not pose any problems, But at the cost of a constant political investments."
+				SUMMARY " Our policy about heretics"
+				}
+				
+			ToleranceOfHeathens = {
+				NAME "Tolerance Of Heathens"
+				LEVEL value = {
+					0 = "Death to heathens"
+					25 = "The heathens are persecuted"
+					50 = "Heathens are tolerated as long as they are useful"
+					75 = "Heathens are almost considered as any of our subjects"
+					}
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate Heathens so that they do not pose any problems, But at the cost of a constant political investments "
+				SUMMARY " Our policy about Heathens"
+				}
+				
+			Syncretism = {
+				NAME "Syncretism"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Time has passed that we understand that the religions of others are not so different from ours. This philosophy can be used to better tolerate pagans."
+				SUMMARY "Increase our maximum tolerance of heathens "
+				}
+			ReligiousMinorityTax = {
+				NAME "Religious Minority Tax"
+				LEVEL value = {
+					0 = "None"
+					0.01 = "Annual taxes"
+					5 = "Bi-Annual taxes"
+					10 = "Heavy taxes"
+					35 = "Very heavy taxes"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> " Our current beliefs allows us to effectively tax the Unbeliever. Of course, they could rebeld because of the heavy taxes."
+				SUMMARY "How much we tax our Religious Minority"
+			}
+			
+			Conversion = {
+				NAME "Conversion"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> " Religious minorities are a danger to our national unity. We must convert them by all means. The more our rites and beliefs are defined and unitary, the more their conversion will be effective."
+				SUMMARY "Convert the unbelievers to the true faith "
+				}
+				
+			ReligiousOfferings = { 
+				NAME "Religious Offerings"
+				LEVEL value = {
+					0 = "None"
+					0.1 = "Few offerings"
+					25 = "Offerings at each Ceremony"
+					75 = "Multiple offerings at each Ceremony"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "The amounts of offerings we give a each ceremony. The more we give the more our faith is strengthen."
+				SUMMARY "The amounts of offerings we give a each ceremony"
+			}
+
+			OfferingsNature = {
+				NAME "Offerings Nature"
+				LEVEL value = {
+					0 = "Wealth and trade good"
+					40 = "Trade good and food"
+					80 = "The Gods are bloodthirsty"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "The nature of offerings we give at each ceremony. To inanimate thing to living creature."
+				SUMMARY "The nature of the offerings we give at each ceremony"
+			}
+
+			SacrificeNature = {
+				NAME "Sacrifice Nature"
+				LEVEL value = {
+					0 = "Only livestock Sacrifice"
+					20 = "We Sacrifice livestock and humans"
+					80 = "Only humans Sacrifice"
+					100 = "BLOOD FOR THE BLOOD GOD"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "The nature of the sacrifice we give at each ceremony. To animals to living humans."
+				SUMMARY "The nature of the sacrifice we give at each ceremony"
+			}
+
+			FlowerWar = {
+				NAME "Flower War"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Rare"
+					40 = "Moderate"
+					70 = "Intensive"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors "
+				SUMMARY "Enslvave the neighbors population with our military forces"
+			}			
+				
+		}
+		Events = {
+			Schism = {
+				NAME "Schism"
+				DESCRIPTION " Our most brilliant theologians can not agree on the profound nature of our beliefs. And part of our population is convinced by the ideas of the minority groups"
+				SUMMARY "Increase Heretics "
+			}
+			ConversionForeignFaith = {
+				NAME "Massive Conversion To Foreign Faith"
+				DESCRIPTION "Part of our population has witnessed a so-called miracle perpetrated by a false prophet of a foreign religion "
+				SUMMARY "Lot of our peoble are converting to Foreign Faith"
+			}
+			
+			ConversionTrueFaith = {
+				NAME "Massive Conversion To True Faith"
+				DESCRIPTION "Some of the heretics and heathens living in our borders have witnessed a miracle proving the superiority of the only true faith "
+				SUMMARY "Lot of our peoble are converting to the true Faith"
+			}
+			
+			ReligiousMinorityRevolt = {
+				NAME "Religious Minority Revolt"
+				DESCRIPTION "The Heretics and Heathens living in our borders are revolting against the way we treat them"
+				SUMMARY "The Heretics and Heathens rebels again our government"
+			}
+			
+
+		}
+	}
+}

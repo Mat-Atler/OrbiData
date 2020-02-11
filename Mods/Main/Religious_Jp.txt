@@ -1,0 +1,144 @@
+Religious = {
+
+	
+	Ressources = {
+		}
+	
+	Nodes = {
+		States = {
+			Heretics = {
+				NAME "異端者"
+				DESCRIPTION <b>"規模: "@[value] </b>  <br><br> "我々の人口のうち一部は異端者です。彼らとトラブルを抱えたくないならば、彼らを容認するか改宗させなければなりません。"
+				SUMMARY "異端者の割合"
+			}
+			Heathens = {
+				NAME "異教徒"
+				DESCRIPTION <b>"規模: "@[value] </b>  <br><br> "我々の人口のうち一部は異教徒です。彼らとトラブルを抱えたくないならば、彼らを容認するか改宗させなければなりません。"
+				SUMMARY "異教徒の割合"
+			}	
+		}
+		Levers = {
+			ToleranceOfHeretics = {
+				NAME "異端への寛容"
+				LEVEL value = {
+					0 = "異端死すべし"
+					25 = "迫害"
+					50 = "有用である限り容認されます"
+					75 = "ほとんど容認されます"
+					}
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "異端者が問題を起こさないようにすることはできますが一定の政治力を犠牲にします。"
+				SUMMARY " 異端者に関する方針"
+				}
+				
+			ToleranceOfHeathens = {
+				NAME "異教への寛容"
+				LEVEL value = {
+					0 = "異教死すべし"
+					25 = "迫害"
+					50 = "有用である限り容認されます"
+					75 = "ほとんど容認されます"
+					}
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "異教徒が問題を起こさないようにすることはできますが一定の政治力を犠牲にします。"
+				SUMMARY " 異教徒に関する方針"
+				}
+				
+			Syncretism = {
+				NAME "習合"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "他の宗教も我々の宗教とさほど変わらないことが理解できる時間が過ぎました。この哲学は異教徒をよりよく許容することができます。"
+				SUMMARY "異教徒の最大許容量を増やします。 "
+				}
+			ReligiousMinorityTax = {
+				NAME "宗教的少数派への税金"
+				LEVEL 値 = {
+					0 = "なし"
+					0.01 = "年毎"
+					5 = "半年毎"
+					10 = "重税"
+					35 = "八公二民"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> " 我々の信条は不信心者に課税することを許容します。 もちろん彼らは思い税金のために反抗することが出来ました。"
+				SUMMARY "宗教的少数派の課税額"
+			}
+			
+			Conversion = {
+				NAME "改宗"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> " 宗教的少数派は我々の団結にとって危険です。我々は彼らを全員改修する必要があります。我々の儀式と信仰が定義され統一されれば彼らの回心はより効果的になります。"
+				SUMMARY "不信心者を真の信仰に変える "
+				}
+				
+			ReligiousOfferings = { 
+				NAME "供物"
+				LEVEL value = {
+					0 = "なし"
+					0.1 = "少量"
+					25 = "儀式毎に"
+					75 = "儀式のたびに複数"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "儀式毎に捧げられる供物の量です。多ければ多いほど信仰が強くなります。"
+				SUMMARY "各式典で供される量"
+			}
+
+			OfferingsNature = {
+				NAME "供物の内容"
+				LEVEL value = {
+					0 = "財産と貿易品"
+					40 = "貿易品と食料"
+					80 = "神々は血に飢えている"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "供物の内容です。物だったり生き物だったりします。"
+				SUMMARY "各式典に供されるもの"
+			}
+
+			SacrificeNature = {
+				NAME "生贄の内容"
+				LEVEL value = {
+					0 = "家畜のみ"
+					20 = "家畜と人間"
+					80 = "人間のみ"
+					100 = "血を捧げよ"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "各儀式で捧げられる生贄の内容です。動物だったり人間だったりします。"
+				SUMMARY "各儀式で捧げられる生贄の性質"
+			}
+
+			FlowerWar = {
+				NAME "花戦争"
+				LEVEL value = {
+					0 = "なし"
+					0.001 = "珍しい"
+					40 = "たびたび"
+					70 = "集中的に"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "我々の神は人間の血を必要としており近隣からそれを得るのだ。"
+				SUMMARY "軍事力で近隣の人間を奴隷にする"
+			}			
+				
+		}
+		Events = {
+			Schism = {
+				NAME "分派"
+				DESCRIPTION " 我々の最も素晴らしい神学者は私たちの信仰に同意できません。そして、人々の一部は少数派の考えに納得しています。"
+				SUMMARY "異端者が増えます "
+			}
+			ConversionForeignFaith = {
+				NAME "異国の信仰への大転換"
+				DESCRIPTION "民衆の一部は異国の宗教の偽預言者によってしでかされるいわゆるキセキを目の当たりにしました。"
+				SUMMARY "多くの人々が異国の宗教に改宗している"
+			}
+			
+			ConversionTrueFaith = {
+				NAME "真の信仰への大転換"
+				DESCRIPTION "国境に住む異端者や異教徒の一部は唯一の真の信仰を優位性を証明する奇跡を目撃しました。"
+				SUMMARY "多くの人々が真の信仰に改宗している"
+			}
+			
+			ReligiousMinorityRevolt = {
+				NAME "宗教的少数派の反乱"
+				DESCRIPTION "国境に住む異端者や異教徒が扱いに不満を持ち反抗しています。"
+				SUMMARY "異端者と異教徒の反乱者は再び政府へ反抗します"
+			}
+			
+
+		}
+	}
+}

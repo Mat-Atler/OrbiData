@@ -1,0 +1,68 @@
+Presets = {
+	Custom = {
+		Main.Humidity.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Temperature.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Flora.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Fauna.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Coastline.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Gold.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Spices.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Salt.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.SoilFertility.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.NeighborhoodBellicism.value @[value,LEVEL] " (" @[value,0.0] ")"
+	}
+	
+	Regions = {
+		[ 255 0 0 ] = "北米"
+		[ 0 255 0 ] = "南米"
+		[ 0 0 255 ] = "欧州"
+		[ 255 255 0 ] = "アフリカ"
+		[ 144 0 0 ] = "中東"
+		[ 0 255 255 ] = "アジア"
+		[ 255 0 255 ] = "オセアニア"
+		[ 255 255 255 ] = "南極"
+		[ 50 0 0 ] = "大西洋"
+		[ 0 50 0 ] = "太平洋"
+		[ 0 0 50 ] = "インド洋"
+		[ 0 0 0 ] = "湖"
+	}
+	
+	Tutorial = {
+		NAME "チュートリアル"
+		DESCRIPTION "遊び方を学びましょう!"
+		}
+		
+	Crete = {
+		NAME "クレタ島"
+		DESCRIPTION "クレタ島は西地中海の要衝であり、直接的な脅威から孤立した豊かな土地で、強力な制海権を得るには最適です。"
+		}		
+		
+	Steppe = {
+		NAME "モンゴル"
+		DESCRIPTION "東部にある草原は厳しい環境ですが人間はここに住むことができます。食料不足は、より多くの開けた土地と少ないライバルによってバランスがとられています。遊牧を推奨します。"
+	}
+	Yucatan = {
+		NAME "ユカタン半島"
+		DESCRIPTION "中央アメリカのジャングルは豊かで大量の果物や生物が存在しますが、最終的には海岸線と牽引用の家畜の不足が足を引っ張るかもしれません。その豊かな土壌を掘りおこすことで富が得られるでしょう。"
+	}
+	Mesopotamia = {
+		NAME "メソポタミア"
+		DESCRIPTION "肥沃な三角地帯は多くの帝国と偉大な文明の発祥の地です。あなたが望むすべての道が開けています。"
+		}
+
+	Java = {
+		NAME "ジャワ"
+		DESCRIPTION "Iインドネシアは非常に豊かな群島であり、マジャパヒトのような少数の強力な国の基礎になっています。このプリセットでは大量のスパイスを売りさばきましょう。"
+		}
+		
+		
+	Yamatai = {
+		NAME "邪馬台国"
+		DESCRIPTION "日本列島は遠方の地域であり、外部からの攻撃から比較的に保護されています。特異で繁栄した社会の創造に適しています。 "
+		}
+		
+	Andes = {
+		NAME "アンデス"
+		DESCRIPTION "アンデスの気候は非常に厳しくここに恒久的に定住しようとする文明は非常に挑戦的です。一方、鉱物資源は非常に豊富です。"
+		}
+}

@@ -1,0 +1,68 @@
+Presets = {
+	Custom = {
+		Main.Humidity.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Temperature.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Flora.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Fauna.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Coastline.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Gold.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Spices.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.Salt.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.SoilFertility.value @[value,LEVEL] " (" @[value,0.0] ")"
+		Main.NeighborhoodBellicism.value @[value,LEVEL] " (" @[value,0.0] ")"
+	}
+	
+	Regions = {
+		[ 255 0 0 ] = "North America"
+		[ 0 255 0 ] = "South America"
+		[ 0 0 255 ] = "Europe"
+		[ 255 255 0 ] = "Africa"
+		[ 144 0 0 ] = "Middle-East"
+		[ 0 255 255 ] = "Asia"
+		[ 255 0 255 ] = "Oceania"
+		[ 255 255 255 ] = "Antarctica"
+		[ 50 0 0 ] = "Atlantic Ocean"
+		[ 0 50 0 ] = "Pacific Ocean"
+		[ 0 0 50 ] = "Indian Ocean"
+		[ 0 0 0 ] = "Lake"
+	}
+	
+	Tutorial = {
+		NAME "Tutorial"
+		DESCRIPTION "For learning to play!"
+		}
+		
+	Crete = {
+		NAME "Crete"
+		DESCRIPTION "Crete is a hub of the eastern Mediterranean, a rich, well located land and relatively isolated from direct threats, a good base for building a powerful thalassocracy."
+		}		
+		
+	Steppe = {
+		NAME "Mongolia"
+		DESCRIPTION "The eastern steppe are a harsh environement, but humans manage to live in here. The scarcity of food is balanced by more open space and fewer rival. Recommended to have organized nomadism."
+	}
+	Yucatan = {
+		NAME "Yucatan"
+		DESCRIPTION "The jungle of the central America are luxuriant, with a great amount of fruit and an abundant wild but the lack of coastline and the total lack of draft animal can be hard to handle in the end. Recommended to mine your rich soil to gain lot of wealth."
+	}
+	Mesopotamia = {
+		NAME "Mesopotamia"
+		DESCRIPTION "The fertile crescent is the birth place of many empires and great civilizations, the multitude of possibility open litteraly all the paths you can want."
+		}
+
+	Java = {
+		NAME "Java"
+		DESCRIPTION "Indonesia is a very rich archipelago, basis of few powerful realms like Majapahit. Use this preset to sell more spices than ever. "
+		}
+		
+	Yamatai = {
+		NAME "Yamatai"
+		DESCRIPTION "The Japanese archipelago is a remote area, relatively protected from any external aggression, propitious for the creation of a singular and prosperous society. "
+		}
+		
+	Andes = {
+		NAME "Andes"
+		DESCRIPTION "The Andes have a fearsome climate and is a formidable challenge to any civilization trying to settle here permanently. Mining resources, on the other hand, are very abundant. "
+		}
+		
+}
