@@ -41,7 +41,7 @@ Religious = {
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "異教徒が問題を起こさないようにすることはできますが一定の政治力を犠牲にします。"
 				SUMMARY " 異教徒に関する方針"
 				}
-				
+			
 			Syncretism = {
 				NAME "習合"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "他の宗教も我々の宗教とさほど変わらないことが理解できる時間が過ぎました。この哲学は異教徒をよりよく許容することができます。"
@@ -49,7 +49,7 @@ Religious = {
 				}
 			ReligiousMinorityTax = {
 				NAME "宗教的少数派への税金"
-				LEVEL 値 = {
+				LEVEL value = {
 					0 = "なし"
 					0.01 = "年毎"
 					5 = "半年毎"
@@ -111,7 +111,7 @@ Religious = {
 				}
 				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "我々の神は人間の血を必要としており近隣からそれを得るのだ。"
 				SUMMARY "軍事力で近隣の人間を奴隷にする"
-			}			
+			}				
 				
 		}
 		Events = {

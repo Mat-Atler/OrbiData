@@ -6,6 +6,7 @@ Religious = {
 		Japanese "Main/Religious_Jp.txt"
 	}
 	
+	
 	Nodes = {
 		States = {
 			Heretics = {
