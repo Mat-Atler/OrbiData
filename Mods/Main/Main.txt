@@ -3106,7 +3106,7 @@ Main = {
 				
 				
 				TICK = {
-					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						IF ~OrganizedNomadism
 							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 7000)
 						ELSE
@@ -3155,7 +3155,7 @@ Main = {
 				}
 				
 				TICK = {
-					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value + PerSeconds(value * Population / 8000 )
 					ENDIF
 				}
@@ -3199,9 +3199,7 @@ Main = {
 				}
 				
 				TICK = {
-				
-				
-					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value + PerSeconds(value * Population / 10000)
 					ENDIF
 				}
@@ -3234,7 +3232,7 @@ Main = {
 				}
 				
 				TICK = {
-					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 12000)
 						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 10000)
 						IF ~HorseDomestication
@@ -3371,7 +3369,7 @@ Main = {
 				}
 				
 				TICK = {
-					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(value / 90)
 					ENDIF
 				}
@@ -4433,11 +4431,11 @@ Main = {
 				
 				TICK = {
 				
-					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 7000)
 						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 8000)
 					ENDIF
-					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota ) )
+					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) )
 						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Feudality / 7000)
 					ENDIF
 					
@@ -4523,7 +4521,7 @@ Main = {
 						SET Navy.value [ : : NavyQuota.value ]
 				}
 				
-				LINK NavyQuota = {
+				LINK Navy = {
 						 WEIGHT [ max ] NavyQuota
 				}
 				
