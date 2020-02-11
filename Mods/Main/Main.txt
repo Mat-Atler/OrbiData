@@ -1273,6 +1273,8 @@ Main = {
 				TRIGGER_LEAVE BarbarianAtGates = {
 						REMOVE Auxiliaries
 						REMOVE Foedus
+						SET Infantry.value [ : : 50 ]
+						SET Missile.value [ : : 50 ]
 				}
 				
 			}					
