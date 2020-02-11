@@ -1135,7 +1135,7 @@ Main = {
 				}
 			}
 			Navy = {
-				VALUE value [ 0 0 1000000 ]
+				VALUE value [ 0 0 1000 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				RELATED_INFO = {
@@ -3104,11 +3104,14 @@ Main = {
 					$PoliticalPower = 1
 				}
 				
+				
 				TICK = {
-					IF ~OrganizedNomadism
-						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 7000)
-					ELSE
-						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 12000)
+					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+						IF ~OrganizedNomadism
+							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 7000)
+						ELSE
+							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 12000)
+						ENDIF
 					ENDIF
 					
 				}
@@ -3152,7 +3155,9 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value + PerSeconds(value * Population / 8000 )
+					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value + PerSeconds(value * Population / 8000 )
+					ENDIF
 				}
 			
 				LINK MilitaryManpower = {
@@ -3194,7 +3199,11 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value + PerSeconds(value * Population / 10000)
+				
+				
+					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value + PerSeconds(value * Population / 10000)
+					ENDIF
 				}
 				
 				LINK MilitaryManpower = {
@@ -3225,10 +3234,12 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 12000)
-					PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 10000)
-					IF ~HorseDomestication
-						PROCESS MilitaryManpower.Cavalry_value += PerSeconds(value * BarbarianAtGates / 15000)
+					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 12000)
+						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 10000)
+						IF ~HorseDomestication
+							PROCESS MilitaryManpower.Cavalry_value += PerSeconds(value * BarbarianAtGates / 15000)
+						ENDIF
 					ENDIF
 				}
 				
@@ -3360,7 +3371,9 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(value / 90)
+					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(value / 90)
+					ENDIF
 				}
 			
 				LINK MilitaryManpower = {
@@ -4420,9 +4433,11 @@ Main = {
 				
 				TICK = {
 				
-					PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 7000)
-					PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 8000)
-					IF ~HorseDomestication
+					IF ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota )
+						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 7000)
+						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 8000)
+					ENDIF
+					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower <= ArmyQuota ) )
 						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Feudality / 7000)
 					ENDIF
 					
@@ -4435,6 +4450,87 @@ Main = {
 				ENDIF
 				}		
 
+			}
+			
+			
+			ArmyQuota = {
+				TYPE Cultural
+				VALUE value [ 25 100 1000 >> 1 ]
+				
+				RELATED_INFO = {}
+
+				UNLOCK_CONDITIONS = {
+					HINT ~MilitaryManpower
+					CONDITION_VALUE MilitaryManpower > 75
+				}
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				UPGRADE = {
+					$PoliticalPower = 0.5
+				}
+				TICK = {
+						SET MilitaryManpower.value [ : : ArmyQuota.value ]
+				}
+				
+				LINK MilitaryManpower = {
+						 WEIGHT [ max ] ArmyQuota
+				}
+				
+				LINK Infantry = {
+						WEIGHT [ to ] 
+				}
+				LINK Cavalry = {
+						WEIGHT [ to ] 
+				}
+				LINK Missile = {
+						WEIGHT [ to ] 
+				}
+				LINK Mercenaries = {
+						WEIGHT [ to ] 
+				}
+				LINK Auxiliaries = {
+						WEIGHT [ to ] 
+				}
+				LINK Banners = {
+						WEIGHT [ to ] 
+				}
+				
+				TRIGGER_LEAVE ArmyQuota = {
+						SET MilitaryManpower.value [ : : 1000 ]
+				}		
+				
+			}
+			
+			
+			NavyQuota = {
+				TYPE Cultural
+				VALUE value [ 25 100 1000 >> 1 ]
+				
+				RELATED_INFO = {}
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Navy
+					CONDITION_VALUE Navy > 75
+				}
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				UPGRADE = {
+					$PoliticalPower = 0.5
+				}
+				TICK = {
+						SET Navy.value [ : : NavyQuota.value ]
+				}
+				
+				LINK NavyQuota = {
+						 WEIGHT [ max ] NavyQuota
+				}
+				
+				TRIGGER_LEAVE ArmyQuota = {
+						SET Navy.value [ : : 1000 ]
+				}		
+				
 			}
 			
 			}
