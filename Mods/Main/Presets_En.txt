@@ -34,25 +34,25 @@ Presets = {
 		
 	Crete = {
 		NAME "Crete"
-		DESCRIPTION "Crete is a hub of the eastern Mediterranean, a rich, well located land and relatively isolated from direct threats, a good base for building a powerful thalassocracy."
+		DESCRIPTION "Crete is a hub of the Eastern Mediterranean, a rich, well-located and relatively isolated land from direct threats, a good base for building a powerful thalassocracy.."
 		}		
 		
 	Steppe = {
 		NAME "Mongolia"
-		DESCRIPTION "The eastern steppe are a harsh environement, but humans manage to live in here. The scarcity of food is balanced by more open space and fewer rival. Recommended to have organized nomadism."
+		DESCRIPTION "The eastern steppe is a harsh environment, but people manage to live there. The scarcity of food is compensated by more open space and fewer rivals. Organized nomadism is recommended."
 	}
 	Yucatan = {
 		NAME "Yucatan"
-		DESCRIPTION "The jungle of the central America are luxuriant, with a great amount of fruit and an abundant wild but the lack of coastline and the total lack of draft animal can be hard to handle in the end. Recommended to mine your rich soil to gain lot of wealth."
+		DESCRIPTION "The jungle of Central America is luxuriant, with lots of fruit and abundant wildlife, but the lack of coastline and the total absence of draft animals can be difficult to manage. It's recommended that you exploit your rich soil to gain a lot of wealth."
 	}
 	Mesopotamia = {
 		NAME "Mesopotamia"
-		DESCRIPTION "The fertile crescent is the birth place of many empires and great civilizations, the multitude of possibility open litteraly all the paths you can want."
+		DESCRIPTION "The fertile crescent is the birthplace of many great empires and civilizations. The multiple possibilities make literally any path open for you."
 		}
 
 	Java = {
 		NAME "Java"
-		DESCRIPTION "Indonesia is a very rich archipelago, basis of few powerful realms like Majapahit. Use this preset to sell more spices than ever. "
+		DESCRIPTION "Indonesia is a very rich archipelago, from which emerged some powerful empires like the Majapahit. Use this preset if you want to sell more spice than ever. "
 		}
 		
 	Yamatai = {
