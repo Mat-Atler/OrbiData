@@ -5023,7 +5023,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF $Wealth < 20 & ~Stability  & GameTime() > 600
+					IF $Wealth < 10 & ~Stability  & GameTime() > 600
 						RISE
 					ENDIF
 				}
