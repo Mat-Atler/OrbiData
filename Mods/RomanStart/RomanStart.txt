@@ -1,8 +1,0 @@
-RomanStart = {
-
-	Languages = {
-		English "RomanStart/RomanStart_En.txt"
-		French "RomanStart/RomanStart_Fr.txt"
-		Japanese "RomanStart/RomanStart_Jp.txt"
-	}
-}
