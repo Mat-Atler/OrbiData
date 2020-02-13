@@ -107,12 +107,12 @@
 	
 	Yamatai = {
 		COORDINATES = 35° 000' N 135° 46' E
-		Main.Humidity.value = 60
+		Main.Humidity.value = 65
 		Main.Temperature.value = 60
 		Main.Flora.value = 70
-		Main.Fauna.value = 40
+		Main.Fauna.value = 45
 		Main.Coastline.value = 80
-		Main.SoilFertility.value = 50
+		Main.SoilFertility.value = 55
 		Main.Gold.value = 20
 		Main.Spices.value = 10
 		Main.Salt.value = 30
@@ -135,6 +135,22 @@
 		- Main.DraftAnimals
 		- Main.HorseDomestication
 		- Main.GreatNomadInvasion
+		- Main.Island
+	}
+	
+	
+	Egypt = {
+		COORDINATES = 25° 43' N 32° 39' E
+		Main.Humidity.value = 50
+		Main.Temperature.value = 70
+		Main.Flora.value = 60
+		Main.Fauna.value = 50
+		Main.Coastline.value = 40
+		Main.SoilFertility.value = 100
+		Main.Gold.value = 40
+		Main.Spices.value = 5
+		Main.Salt.value = 10
+		Main.NeighborhoodBellicism.value = 20
 		- Main.Island
 	}
 	

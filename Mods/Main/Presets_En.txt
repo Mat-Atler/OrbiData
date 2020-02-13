@@ -34,35 +34,40 @@ Presets = {
 		
 	Crete = {
 		NAME "Crete"
-		DESCRIPTION "Crete is a hub of the Eastern Mediterranean, a rich, well-located and relatively isolated land from direct threats, a good base for building a powerful thalassocracy.."
+		DESCRIPTION "<b>Easy</b><br>Crete is a hub of the Eastern Mediterranean, a rich, well-located and relatively isolated land from direct threats, a good base for building a powerful thalassocracy."
 		}		
 		
 	Steppe = {
 		NAME "Mongolia"
-		DESCRIPTION "The eastern steppe is a harsh environment, but people manage to live there. The scarcity of food is compensated by more open space and fewer rivals. Organized nomadism is recommended."
+		DESCRIPTION "<b>Average</b><br>The eastern steppe is a harsh environment, but people manage to live there. The scarcity of food is compensated by more open space and fewer rivals. Organized nomadism is recommended."
 	}
 	Yucatan = {
 		NAME "Yucatan"
-		DESCRIPTION "The jungle of Central America is luxuriant, with lots of fruit and abundant wildlife, but the lack of coastline and the total absence of draft animals can be difficult to manage. It's recommended that you exploit your rich soil to gain a lot of wealth."
+		DESCRIPTION "<b>Difficult</b><br>The jungle of Central America is luxuriant, with lots of fruit and abundant wildlife, but the lack of coastline and the total absence of draft animals can be difficult to manage. It's recommended that you exploit your rich soil to gain a lot of wealth."
 	}
 	Mesopotamia = {
 		NAME "Mesopotamia"
-		DESCRIPTION "The fertile crescent is the birthplace of many great empires and civilizations. The multiple possibilities make literally any path open for you."
+		DESCRIPTION "<b>Easy</b><br>The fertile crescent is the birthplace of many great empires and civilizations. The multiple possibilities make literally any path open for you."
 		}
 
 	Java = {
 		NAME "Java"
-		DESCRIPTION "Indonesia is a very rich archipelago, from which emerged some powerful empires like the Majapahit. Use this preset if you want to sell more spice than ever. "
+		DESCRIPTION "<b>Easy</b><br>Indonesia is a very rich archipelago, from which emerged some powerful empires like the Majapahit. Use this preset if you want to sell more spice than ever. "
 		}
 		
 	Yamatai = {
 		NAME "Yamatai"
-		DESCRIPTION "The Japanese archipelago is a remote area, relatively protected from any external aggression, propitious for the creation of a singular and prosperous society. "
+		DESCRIPTION "<b>Average</b><br>The Japanese archipelago is a remote area, relatively protected from any external aggression, propitious for the creation of a singular and prosperous society. "
 		}
 		
 	Andes = {
 		NAME "Andes"
-		DESCRIPTION "The Andes have a fearsome climate and is a formidable challenge to any civilization trying to settle here permanently. Mining resources, on the other hand, are very abundant. "
+		DESCRIPTION "<b>Very Difficult</b><br>The Andes have a fearsome climate and is a formidable challenge to any civilization trying to settle here permanently. Mining resources, on the other hand, are very abundant. "
+		}
+		
+	Egypt = {
+		NAME "Egypt"
+		DESCRIPTION "<b>Very Easy</b><br>Egypt probably has one of the most fertile lands in the world. Its advantageous location puts it on many trade routes while being protected by the desert and the sea. "
 		}
 		
 }

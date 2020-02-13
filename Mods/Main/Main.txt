@@ -99,7 +99,7 @@ Main = {
 		IronAge = { AGE -2000 }
 		LateAntiquity = { AGE 300 }
 		FeudalAge = { AGE 1000 }
-		GunpowerAge = { AGE 1500 }
+		DiscoveryAge = { AGE 1500 }
 	}
 	
 	Alerts = {
@@ -4728,7 +4728,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 20% ]
+				EVENT_DEF [ 40 60 450 15% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -4740,7 +4740,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ~NeighborhoodBellicism  & GameTime() > 1000
+					IF ~NeighborhoodBellicism  & GameTime() > 2000
 						RISE
 					ENDIF
 				}
@@ -5070,8 +5070,8 @@ Main = {
 				SOUND_WINDOW "Main/SFX/BuildingFall.wav"
 				EVENT_DEF [ 15 15 15 100% ]
 				ARISE = {
-					EVENT_SPEED Flora / 100
-                    IF Population > Urbanization
+					EVENT_SPEED Urbanization / 100
+                    IF Population * 1.35 > Urbanization
                         REMOVE CitiesInRuins
                     ENDIF
 				}
@@ -5090,7 +5090,7 @@ Main = {
 					FLUX 1
 				}
 				TRIGGER_EVENT = {
-					IF Population < Urbanization
+					IF Population * 1.35 < Urbanization
 						RISE
 					ENDIF
 				}
