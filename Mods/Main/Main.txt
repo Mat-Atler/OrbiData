@@ -780,9 +780,9 @@ Main = {
 					PROCESS Piety = Piety - PerSeconds( output / 1500 )
 					
 					IF ~Money & Money > 20
-						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 110 / ( Money / 35) )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 100 / ( Money / 35) )
 					ELSE
-						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 110 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 100 )
 					ENDIF
 					
 					
@@ -826,9 +826,9 @@ Main = {
 					
 					PROCESS Piety = Piety - PerSeconds( value / 1500 )
 					IF ~Money & Money > 20
-						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 100 / ( Money / 35) )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 85 / ( Money / 35) )
 					ELSE
-						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 100 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 85 )
 					ENDIF
 				}
 
@@ -1655,7 +1655,7 @@ Main = {
 					$PoliticalPower = 2.5
 				}
 				TICK = {
-					PROCESS output = value * Population / 1400
+					PROCESS output = value * Population / 1800
 					IF (output > 0)
 						PROCESS ArtisanClass = ArtisanClass + PerSeconds(output)
 						PROCESS TradeGoods = TradeGoods + PerSeconds(output * 1)
