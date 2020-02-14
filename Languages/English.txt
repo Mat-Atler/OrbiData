@@ -87,8 +87,8 @@ GAME_SUMMARY_VALUE Value:
 GAME_FIND_NODE Node...
 GAME_WATCHER_EMPTY The watcher is empty
 GAME_WATCHER_TOOLTIP Watch nodes
-GAME_UNLOCK_NODE_UNAVALIBLE This node is not available  yet because some requirements are not fulfilled.
-GAME_UNLOCK_LEVER_UNAVALIBLE This lever is not available  yet because some requirements are not fulfilled:
+GAME_UNLOCK_NODE_UNAVALIBLE This node is not available yet because some requirements are not fulfilled.
+GAME_UNLOCK_LEVER_UNAVALIBLE This lever is not available yet because some requirements are not fulfilled:
 GAME_UNLOCK_LEVER_BANNED This lever is unavailable right now.
 GAME_UNLOCK_FREE Free
 GAME_UNLOCK_CONDITION_OR OR
