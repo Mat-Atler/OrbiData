@@ -99,7 +99,7 @@ Main = {
 		IronAge = { AGE -2000 }
 		LateAntiquity = { AGE 300 }
 		FeudalAge = { AGE 1000 }
-		GunpowerAge = { AGE 1500 }
+		DiscoveryAge = { AGE 1500 }
 	}
 	
 	Alerts = {
@@ -664,17 +664,17 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(AristocracyClass/150)
+					PROCESS value =  value - PerSeconds(AristocracyClass/350)
 					IF VassalPower == 0
-						SET Monarchy.value [ : : AristocracyClass ]
+						SET Monarchy.value [ : : Max ( 50 , AristocracyClass ) ]
 					ENDIF
 					IF GetCurrentEra() < 300 
 						SET Officers.value [ : : AristocracyClass ]
 					ENDIF
 				}
 				LINK Monarchy = {
-						IF VassalPower == 0
-							WEIGHT [ max ] value
+						IF ( ~VassalPower == 0 | VassalPower == 0 ) 
+							WEIGHT [ max ] Max ( 50 , AristocracyClass )
 						ENDIF
 				}
 				LINK Officers = {
@@ -780,9 +780,9 @@ Main = {
 					PROCESS Piety = Piety - PerSeconds( output / 1500 )
 					
 					IF ~Money & Money > 20
-						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 110 / ( Money / 35) )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 100 / ( Money / 35) )
 					ELSE
-						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 110 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( output * output / 100 )
 					ENDIF
 					
 					
@@ -826,9 +826,9 @@ Main = {
 					
 					PROCESS Piety = Piety - PerSeconds( value / 1500 )
 					IF ~Money & Money > 20
-						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 100 / ( Money / 35) )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 85 / ( Money / 35) )
 					ELSE
-						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 100 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds( NavalTrade * NavalTrade / 85 )
 					ENDIF
 				}
 
@@ -1655,7 +1655,7 @@ Main = {
 					$PoliticalPower = 2.5
 				}
 				TICK = {
-					PROCESS output = value * Population / 1400
+					PROCESS output = value * Population / 1800
 					IF (output > 0)
 						PROCESS ArtisanClass = ArtisanClass + PerSeconds(output)
 						PROCESS TradeGoods = TradeGoods + PerSeconds(output * 1)
@@ -2127,7 +2127,7 @@ Main = {
 			Monarchy = {
 				TYPE Cultural
 				TAG Government
-				VALUE value [ 0 1 30 >> 1 ]
+				VALUE value [ 0 1 50 >> 1 ]
 				RELATED_INFO = {
 					RELATED_UNLOCK CelesteMandate Empire DivineRight
 					RELATED_LINK Stability AristocracyClass
@@ -2152,12 +2152,12 @@ Main = {
 					$PoliticalPower = (LinkCount(Monarchy) + 1) * 2
 				}
 				TICK = {
-					PROCESS Stability = Stability + PerSeconds(value/5000)
+					PROCESS Stability = Stability + PerSeconds(value/4000)
 				}
 				LINK Stability = {
 					IF (value > 0)
 						COLOR green
-						FLUX value * 0.01
+						FLUX value * 0.02
 					ENDIF
 				}
 				TRIGGER_SPAWN Monarchy = {
@@ -2279,7 +2279,7 @@ Main = {
 					$PoliticalPower = (LinkCount(BarbarianMonarchy) + 1) * 3
 				}
 				TICK = {
-					PROCESS Stability = Stability + PerSeconds(value/5000)
+					PROCESS Stability = Stability + PerSeconds(value/4000)
 					PROCESS BarbarianAtGates = BarbarianAtGates - PerSeconds(value/5000)
 				}
 				LINK Stability = {
@@ -4122,7 +4122,7 @@ Main = {
 			PopulationTax = {
 				TAG Sedentary
 				TYPE Cultural
-				VALUE value [ 0 5 100 >> 1 ]
+				VALUE value [ 0 5 20 >> 1 ]
 				RELATED_INFO = {
 					RELATED_LINK Population
 				}
@@ -4602,13 +4602,13 @@ Main = {
 				}
 				ARISE = {
 					EVENT_SPEED 1
-					IF ( ( PopulationTax < 0 & ~PopulationTax ) | Food > 50 )
+					IF ( Food > 25 )
 						REMOVE Famine
 					ENDIF
 				}
 				TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.1 * 0.99 ? 1.01 )
-					PROCESS Population = Population - PerSeconds(0.05 + Population * 0.05 * 0.99 ? 1.01)
+					PROCESS Population = Population - PerSeconds(0.03 + Population * 0.05 * 0.99 ? 1.01)
 				}
 				LINK Stability = {
 					COLOR red
@@ -4619,7 +4619,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ( (PopulationTax > 5 ) & ( Population > 12) ) | (Food < 10 & Population > 80 )
+					IF ( Food < 10 & Population > 70 )
 						RISE
 					ENDIF
 				}
@@ -4728,7 +4728,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 20% ]
+				EVENT_DEF [ 40 60 450 15% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -4740,7 +4740,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ~NeighborhoodBellicism  & GameTime() > 1000
+					IF ~NeighborhoodBellicism  & GameTime() > 2000
 						RISE
 					ENDIF
 				}
@@ -4974,7 +4974,7 @@ Main = {
 				EVENT_DEF [ 30 15 20 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
-                    IF $Wealth > 20
+                    IF $Wealth > 10
                         REMOVE EconomicCrisis
                     ENDIF
 				}
@@ -5023,7 +5023,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF $Wealth < 20 & ~Stability  & GameTime() > 600
+					IF $Wealth < 10 & ~Stability  & GameTime() > 600
 						RISE
 					ENDIF
 				}
@@ -5070,8 +5070,8 @@ Main = {
 				SOUND_WINDOW "Main/SFX/BuildingFall.wav"
 				EVENT_DEF [ 15 15 15 100% ]
 				ARISE = {
-					EVENT_SPEED Flora / 100
-                    IF Population > Urbanization
+					EVENT_SPEED Urbanization / 100
+                    IF Population * 1.35 > Urbanization
                         REMOVE CitiesInRuins
                     ENDIF
 				}
@@ -5090,7 +5090,7 @@ Main = {
 					FLUX 1
 				}
 				TRIGGER_EVENT = {
-					IF Population < Urbanization
+					IF Population * 1.35 < Urbanization
 						RISE
 					ENDIF
 				}

@@ -36,34 +36,39 @@ Presets = {
 		
 	Crete = {
 		NAME "Crète"
-		DESCRIPTION "La Crète est une plaque tournante de la méditerranée orientale, terre riche, bien situé et relativement isolé de menaces directes, elle est une bonne base pour construire une puissante thalassocratie."
+		DESCRIPTION "<b>Facile</b><br>La Crète est une plaque tournante de la méditerranée orientale, terre riche, bien situé et relativement isolé de menaces directes, elle est une bonne base pour construire une puissante thalassocratie."
 		}		
 		
 	Steppe = {
 		NAME "Mongolie"
-		DESCRIPTION "Les steppes orientales sont en environnement difficile à vivre, mais des humains ont tout de même réussis à vivre sur ces terres. La pauvreté des terres est contrebalancé par le nombre réduis de rivaux. Il est recommandé de devenir nomade."
+		DESCRIPTION "<b>Moyen</b><br>Les steppes orientales sont en environnement difficile à vivre, mais des humains ont tout de même réussis à vivre sur ces terres. La pauvreté des terres est contrebalancé par le nombre réduis de rivaux. Il est recommandé de devenir nomade."
 	}
 	Yucatan = {
 		NAME "Yucatan"
-		DESCRIPTION "Les jungles de l'Amérique centrale sont luxuriantes, l'abondance de faune et flore est un immense avantage mais l'impraticabilitée des côtes et le cruel manque d'animaux de trait peuvent rendre une civilisation avancée difficile à maîtriser. Il est recommandé de creuser vos sols riche en or pour un immense gain de richesse."
+		DESCRIPTION "<b>Difficile</b><br>Les jungles de l'Amérique centrale sont luxuriantes, l'abondance de faune et flore est un immense avantage mais l'impraticabilitée des côtes et le cruel manque d'animaux de trait peuvent rendre une civilisation avancée difficile à maîtriser. Il est recommandé de creuser vos sols riche en or pour un immense gain de richesse."
 	}
 	Mesopotamia = {
 		NAME "Mésopotamie"
-		DESCRIPTION "Le croissant fertile est le lieu de naissance de bien des civilisations et de grand empire. La grande polyvalence de cette région permet de donner littéralement toutes les directions que vous souhaitez à votre civilisation."
+		DESCRIPTION "<b>Facile</b><br>Le croissant fertile est le lieu de naissance de bien des civilisations et de grand empire. La grande polyvalence de cette région permet de donner littéralement toutes les directions que vous souhaitez à votre civilisation."
 		}
 
 	Java = {
 		NAME "Java"
-		DESCRIPTION "L'archipel indonésien est le berceau de nombreuse civilisation comme l'Empire Majapahit. Il est recommandé de capitaliser sur les grandes réserves d'épices qui se trouvent dans les îles. "
+		DESCRIPTION "<b>Facile</b><br>L'archipel indonésien est le berceau de nombreuse civilisation comme l'Empire Majapahit. Il est recommandé de capitaliser sur les grandes réserves d'épices qui se trouvent dans les îles. "
 		}
 		
 	Yamatai = {
 		NAME "Yamatai"
-		DESCRIPTION "L'archipel japonais est une zone reculée, relativement protégée de toute agression extérieure, propice à créer une société prospère et unique. "
+		DESCRIPTION "<b>Moyen</b><br>L'archipel japonais est une zone reculée, relativement protégée de toute agression extérieure, propice à créer une société prospère et unique. "
 		}
 		
 	Andes = {
 		NAME "Cordillère des Andes"
-		DESCRIPTION "Les Andes ont un climat redoutable et représente un challenge formidable à tout civilisation tentant de s'installer durablement. Les ressources minières sont par contre très abondantes. "
+		DESCRIPTION "<b>Très Difficile</b><br>Les Andes ont un climat redoutable et représente un challenge formidable à tout civilisation tentant de s'installer durablement. Les ressources minières sont par contre très abondantes. "
+		}
+		
+	Egypt = {
+		NAME "Égypte"
+		DESCRIPTION "<b>Très Facile</b><br>L'Égypte possède probablement l'une des terres les plus fertiles du monde. Sa situation avantageuse la positionne sur de nombreuses routes commerciales tout en étant protégée par le désert et la mer. "
 		}
 }

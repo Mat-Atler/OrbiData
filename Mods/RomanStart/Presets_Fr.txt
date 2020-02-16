@@ -1,8 +1,0 @@
-Presets = {
-		
-	Rome = {
-		NAME "Rome"
-		DESCRIPTION "Fondée par des bergers entre trois collines, il devint le centre du plus grand empire de la meditéranée."
-		}		
-		
-}
