@@ -123,7 +123,7 @@ GAME_VALUE_LIMIT_MAX [0]<color=#bbbbbb> limits the maximum value of </color>[1]<
 GAME_CANNOT_MODIFY_LEVER You cannot modify this lever right now.
 GAME_INVEST_COST Cost: 
 GAME_INVEST_REFOUND Refound investment:
-GAME_INVEST Not enough ressources.\nInvest: 
+GAME_INVEST Not enough resources.\nInvest: 
 GAME_INVEST_SET Sets [0] to <b>[1]</b>
 GAME_REMOVE_ALERT_ONE_LABEL [0] has been removed.
 GAME_REMOVE_ALERT_ONE_DESCRIPTION The node [0] has been removed by the node [1].
