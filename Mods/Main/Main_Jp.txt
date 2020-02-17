@@ -1391,6 +1391,18 @@ Main = {
 				SUMMARY "海軍の定員を変更する"
 				}
 			
+			University = {
+				NAME "University"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Formation of a body of students and professors"
+					40 = "Universities"
+					75 = "Great Universities"
+					100 = "House of Wisdom"
+				}
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our education has too often been dispersed. By bringing our most talented minds together in one place, we can hope to create far better teachings."
+				SUMMARY "Improves our intellectual research"
+				}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events
@@ -1609,6 +1621,13 @@ Main = {
 				DESCRIPTION "若い商人が世界の果てへの歴史己的な旅を始めました。貿易の好機が到来しています。"
 				SUMMARY "私たちの貿易は新たな地平に達するでしょう。"
 			}
+			
+			UrbanExodus = {
+				NAME "Urban Exodus"
+				DESCRIPTION "The prevailing insecurity in the cities has led our population to leave the urban areas and settle permanently in the countryside."
+				SUMMARY "Our population flees the cities"
+			}
+			
 		}
 	}
 }
