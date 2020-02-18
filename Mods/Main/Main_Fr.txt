@@ -1413,13 +1413,13 @@ Main = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Events
 			::APPEND "Main/Religious_Fr.txt" Religious.Nodes.Events
 			Fire = {
-				NAME "Feu de Fôret"
-				DESCRIPTION "Un feu dans les campagnes dévore la flore locale et détruit les champs. Nous devons réinvestire le secteur agricol dès que possible."
+				NAME "Feu de Forêt"
+				DESCRIPTION "Un feu dans les campagnes dévore la flore locale et détruit les champs. Nous devons réinvestire le secteur agricole dès que possible."
 				SUMMARY "Va réduire la flore et l'agriculture"
 			}
 			InvasiveSpecies = {
 				NAME "Nuée de parasite"
-				DESCRIPTION "Une nuée d'insectes vien détruire la flore locale et parasiter les animaux. Préparez-vous pour un lourds déclin de l'écosystème"
+				DESCRIPTION "Une nuée d'insectes vien détruire la flore locale et parasiter les animaux. Préparez-vous pour un lourd déclin de l'écosystème."
 				SUMMARY "Va réduire la flore et la faune"
 			}
 			Famine = {
@@ -1429,7 +1429,7 @@ Main = {
 			}
 			AbundantHarvest = {
 				NAME "Récolte abondante"
-				DESCRIPTION "Le climat, les précipitations et surement nos prières nous ont bénies par une récolte particulièrement abondante la sécurité alimentaire va augmenter la taille de la population supporté. Se signe vous a conforté dans le rôle de dirigeant."
+				DESCRIPTION "Le climat, les précipitations et surement nos prières nous ont bénies par une récolte particulièrement abondante la sécurité alimentaire va augmenter la taille de la population supporté. Ce signe vous a conforté dans le rôle de dirigeant."
 				SUMMARY "Augmente la faune et l'agriculture"
 			}
 			Pillaging = {
