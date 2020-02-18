@@ -4558,9 +4558,10 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Urbanization
+					HINT ~Education
 					CONDITION_VALUE Urbanization >= 50
 					CONDITION_VALUE Writing >= 30
+					CONDITION_NODE + Education
 					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {

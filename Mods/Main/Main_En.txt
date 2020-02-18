@@ -397,7 +397,7 @@ Main = {
 					0 = "No Navy"
 					0.001 = "Little Navy"
 					30 = "Regular Navy"
-					50 = "Large Navy"
+					100 = "Large Navy"
 				}
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br> "The maintenance of a military fleet has always been crucial to coastal states, concerned with protecting themselves and their valuable maritime trade from naval invasions."
 				SUMMARY "Our navy"
