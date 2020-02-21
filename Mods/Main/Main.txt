@@ -1437,8 +1437,8 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS output =  value * 0.005 * ( Coastline / 100 )
-					PROCESS Food = Food + output
+					PROCESS output =  value * 0.05 * ( Coastline / 100 )
+					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5 )
 				}
 				PRICE = {
