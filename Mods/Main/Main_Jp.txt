@@ -24,7 +24,7 @@ Main = {
 			NAME "鉄器時代"
 			DESCRIPTION "鉄器時代"
 		}
-		DarkAge = {
+		LateAntiquity = {
 			NAME "暗黒時代"
 			DESCRIPTION "暗黒時代"
 		}
