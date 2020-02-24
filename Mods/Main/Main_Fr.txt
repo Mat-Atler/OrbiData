@@ -122,7 +122,7 @@ Main = {
 				SUMMARY "Le climat de notre région principale"
 			}
 			Natalism = {
-				NAME "Natalisme"
+				NAME "Natalité"
 				LEVEL value = {
 					0 = "En déclin serieux"
 					40 = "En déclin"
@@ -1435,6 +1435,47 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Avec le temps, notre compréhension des mécanismes agraire s'est amélioré, nous savons désormais moudre le grain bien plus efficacement. Nous devons répandre cette technique dans tout notre pays."
 				SUMMARY "Améliore votre agriculture"
 			}	
+			
+			
+			Nobility = {
+				NAME "Noblesse"
+				LEVEL value = {
+					0 = "Rumeurs sur le sang bleu"
+					20 = "Étiquette et pensions à vie"
+					40 = "Cour royale"
+					70 = "Cour fastueuse"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organiser notre aristocratie en une classe au dessus des autres, la doter de droits et de pensions inaliénables et héréditaires, permettra de calmer les grands seigneurs de notre pays."
+				SUMMARY "Renforce notre pouvoir en achetant la loyauté des grands seigneurs"
+			}	
+			
+			MedievalArmors = {
+				NAME "Armures médiévales"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Les armures médiévales représente un champ vaste et complexe dont la progression avance par petits tâtonnements au gré des inventions des artisans."
+				SUMMARY "Technologie millitaire"
+			}	
+			
+			
+			SiegeWeapons = {
+				NAME "Armes de Siège"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Balistique douteuse"
+					50 = "Balistique incertaine"
+					100 = "Trébuchets"
+					150 = "Canon à bombarde"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
+				SUMMARY "Technologie millitaire"
+			}	
+			
 				
 		}
 		Events = {

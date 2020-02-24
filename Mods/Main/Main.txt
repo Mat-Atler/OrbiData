@@ -1060,8 +1060,8 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-				PROCESS value = Max ( (GameTime() - 2000 ) / 60 , 0 )
-				PROCESS MilitaryTechnology = MilitaryTechnology - PerSeconds(value / 32)
+				PROCESS value = Max ( (GameTime() - 2000 ) / 50 , 0 )
+				PROCESS MilitaryTechnology = MilitaryTechnology - PerSeconds(value / 30)
 				}
 
 				LINK MilitaryTechnology = {
@@ -4438,11 +4438,7 @@ Main = {
 			Banners = {
 				TYPE Technological
 				VALUE value [ 0 20 50 >> 3 ]
-				// SLEEP = {
-					// IF ~HorseDomestication
-						// SPAWN
-					// ENDIF
-				// }
+				VALUE multiplier [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT 0
 					CONDITION_NODE + Feudality
@@ -4455,13 +4451,17 @@ Main = {
 				}
 				
 				TICK = {
-				
+					IF ~Castles
+						PROCESS Banners.multiplier = 1 + 0.2 + ( Castles / 100 )
+					ELSE
+						PROCESS Banners.multiplier = 1 + 0.3
+					ENDIF
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
-						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 7000)
-						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 8000)
+						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * multiplier / 7000)
+						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * multiplier / 8000)
 					ENDIF
 					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) )
-						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Feudality / 7000)
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * multiplier / 7000)
 					ENDIF
 					
 				}
@@ -4644,7 +4644,7 @@ Main = {
 				}
 				UPGRADE = {
 					$PoliticalPower = 5
-					$Wealth = 20
+					$Wealth = 12
 				}
 				TICK = {
 				}
@@ -4653,7 +4653,142 @@ Main = {
 				WEIGHT [ to ] 
 				}
 
-			}			
+			}
+			
+			
+			Nobility = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | GetCurrentEra() == GetEra(FeudalAge)
+					CONDITION_VALUE Feudality > 75
+					CONDITION_VALUE AristocracyClass > 50
+				}
+				PRICE = {
+					$PoliticalPower = 150
+					$Wealth = 150
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Nobility) + 1) * 8
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55)
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 35)
+						PROCESS VassalPower =  VassalPower - PerSeconds(value / 2500 )
+				}
+				
+				LINK VassalPower = {
+				IF value > 0
+					FLUX value / 25
+					COLOR red
+				ENDIF
+				}		
+			}	
+			
+			
+			Castles = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | ~Fortifications
+					CONDITION_NODE + Feudality
+					CONDITION_NODE + Banners
+					CONDITION_VALUE AristocracyClass > 30
+					CONDITION_VALUE Fortifications > 50
+				}
+				PRICE = {
+					$PoliticalPower = 50
+					$Wealth = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 2
+					$Wealth = 20
+				}
+				TICK = {
+				}
+				
+				LINK Banners = {
+				WEIGHT [ to ] 
+				}
+
+			}
+			
+			
+			MedievalArmors = {
+				TYPE Technological
+				VALUE value [ 0 5 25 >> 1 ]
+				RELATED_INFO = { 
+					RELATED_LINK MilitaryTechnology
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality
+					CONDITION_NODE + MilitaryTechnology
+					CONDITION_VALUE Castles >= 30
+					CONDITION_VALUE Banners >= 20
+				}
+				PRICE = {
+					$PoliticalPower = 50
+					$Wealth = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+					$Wealth = 8
+				}
+				
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 100)
+				}
+
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 25
+					ENDIF
+				}
+
+			}
+			
+			
+			
+			
+			SiegeWeapons = {
+				TYPE Technological
+				VALUE value [ 0 5 100 >> 1 ]
+				RELATED_INFO = { 
+					RELATED_LINK MilitaryTechnology
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality
+					CONDITION_NODE + MilitaryTechnology
+					CONDITION_VALUE Mathematics >= 100
+					CONDITION_VALUE GenieCorps >= 100
+					CONDITION_VALUE Castles >= 10
+				}
+				PRICE = {
+					$PoliticalPower = 100
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 5
+					$Wealth = 5
+				}
+				
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 100)
+				}
+
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 25
+					ENDIF
+				}
+
+			}
+			
+			
+			
 			
 			}
 		Events = {
@@ -5049,7 +5184,7 @@ Main = {
 				EVENT_DEF [ 15 15 15 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 70
-                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~BarbarianMonarchy
+                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) 
                         REMOVE NoblesRebellion
                     ENDIF
 				}
@@ -5061,7 +5196,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF AristocracyClass > 70 & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
+					IF AristocracyClass > 70 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
 						RISE
 					ENDIF
 				}

@@ -1429,6 +1429,47 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
 				SUMMARY "Improve our agriculture"
 			}	
+			
+			
+			Nobility = {
+				NAME "Nobility"
+				LEVEL value = {
+					0 = "Rumors of blue blood"
+					20 = "Etiquette and lifetime pensions"
+					40 = "Royal court"
+					70 = "Sumptuous courtship"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organizing our aristocracy into a class above the others, endowing it with inalienable & hereditary rights and pensions, will appease the great lords of our country."
+				SUMMARY "Strengthen our power by buying the loyalty of the great lords."
+			}	
+			
+			MedievalArmors = {
+				NAME "Medieval Armors"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
+				SUMMARY "Military Technology"
+			}	
+			
+			
+			SiegeWeapons = {
+				NAME "Armes de Siège"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = " Doubtful ballistics "
+					50 = " Unreliable ballistics "
+					100 = "Trebuchets"
+					150 = "Bomb Cannon"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
+				SUMMARY "Military Technology"
+			}	
+			
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events
@@ -1653,7 +1694,6 @@ Main = {
 				DESCRIPTION "The prevailing insecurity in the cities has led our population to leave the urban areas and settle permanently in the countryside."
 				SUMMARY "Our population flees the cities"
 			}
-			
 			
 			PeasantRevolt = {
 				NAME "Peasant Revolt"
