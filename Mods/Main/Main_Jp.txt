@@ -62,7 +62,7 @@ Main = {
 				500 = "帝国"
 				1000 = "大帝国"
 			}
-			TEXT "<b>規模: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> "支配下にある土地の大きさですが利益を得るためにはしっかりと治める必要があります。最後の土地が失われたらゲームオーバーです。"
+			TEXT "<b>規模: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> 支配下にある土地の大きさですが利益を得るためにはしっかりと治める必要があります。最後の土地が失われたらゲームオーバーです。"
 		}
 	}
 	
@@ -201,7 +201,7 @@ Main = {
 					0 = "絶滅"
 					0.1 = "ほぼ絶滅"
 					10 = "貧弱"
-					20 = 減少"
+					20 = "減少"
 					40 = "健全"
 					50 = "豊富"
 					70 = "どこもかしこも森!"
@@ -279,12 +279,12 @@ Main = {
 			OverlandTrade = {
 				NAME "陸上貿易"
 				DESCRIPTION "陸上貿易 "<br><b>"規模: "@[value] </b> <br><br> "職人と商人の出現は物々交換を始めました。まず少数の勇敢なものたちが道を切り拓き、その後より遠くの場所との取引の準備がされます。"
-				SUMMARY "貿易は儲けをもたらしますが副作用もある"
+				SUMMARY "貿易は儲けをもたらしますが副作用もあります"
 			}	
 			NavalTrade = {
 				NAME "海上貿易"
 				DESCRIPTION "海上貿易 "<br><b>"規模: "@[value] </b> <br><br> "陸上貿易の発展と船の技術の改善により人々は河や海で貿易をはじめました。"
-				SUMMARY "海上貿易は効率的ですが、海へのアクセスが必要となる"
+				SUMMARY "海上貿易は効率的ですが、海へのアクセスが必要となります"
 			}	
 			Gold = {
 				NAME "金"
@@ -386,7 +386,7 @@ Main = {
 					30 = "標準的な陸軍"
 					50 = "大規模な陸軍"
 				}
-				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> ( @[value] ) <br> ( Infantry @[Infantry_value] ) <br> ( Cavalry @[Cavalry_value] ) <br> ( Missile @[Missile_value] ) <br> ( Mercenaries @[Mercenaries_value] )" "
+				DESCRIPTION <b>"規模: @[value,LEVEL] </b> ( @[value] ) <br> ( Infantry @[Infantry_value] ) <br> ( Cavalry @[Cavalry_value] ) <br> ( Missile @[Missile_value] ) <br> ( Mercenaries @[Mercenaries_value] )"
 				SUMMARY "陸軍"
 			}				
 				
@@ -424,7 +424,7 @@ Main = {
 				SUMMARY "交易を加速する"
 			}
 			NationalCohesion = {
-				NAME "国家への帰属意識" <br><br> ""
+				NAME "国家への帰属意識"
 				LEVEL value = {
 					0 = "バラバラ"
 					0.001 = "弱い"
@@ -432,8 +432,8 @@ Main = {
 					80 = "良好"
 					100 = "U・S・A！"
 				}
-				DESCRIPTION <b>"愛国心: "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br> "国家は年寄りも大きなグループに属しているという複雑が概念です。大帝国は新しい人口を統合する努力をしないと分離主義者によって社会が不安定になってしまいます。"
-				SUMMARY "社会安定に影響を与える"
+				DESCRIPTION <b>"愛国心: "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br> 国家は都市よりも大きなグループに属しているという複雑な概念です。大帝国は新しい人口を統合する努力をしないと分離主義者によって社会が不安定になってしまいます。"
+				SUMMARY "社会安定性に影響を与える"
 			}
 			Culture = {
 				NAME "文化"
@@ -854,7 +854,7 @@ Main = {
 					70 = "多数"
 				}
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> "( " @[value,0.###]" ) "<br><br> "我々社会不安定は少しの犯罪のためです。都市では法律がされていないことが要因です。都市民兵は秩序を確保し大火のような災害の対処もします。"
-				SUMMARY "政治的投資で公共の秩序を安定させる
+				SUMMARY "政治的投資で公共の秩序を安定させる"
 			}
 			BorderControls = {
 				NAME "国境管理"
@@ -973,7 +973,7 @@ Main = {
 			}
 			
 			LootingCampaigns = {
-				NAME "略奪運動"
+				NAME "遠征しての略奪"
 				LEVEL value = {
 					0 = "なし"
 					0.001 = "低い"
@@ -981,7 +981,7 @@ Main = {
 					70 = "高い"
 				}
 				DESCRIPTION <b>"頻度: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "私たちの隣人は裕福ですがさほど強力ではありません。私たちは彼らに「保護」を売ることも、財産を力で奪うこともできます。しかし、道路上の危険が増えると貿易が減少することを注意してください。"
-				SUMMARY "軍事力と羊のような隣人の関係"
+				SUMMARY "軍事力で周辺国から金を巻き上げる"
 			}
 			
 
@@ -1246,7 +1246,7 @@ Main = {
 					15 = "研究を進める"
 					100 = "技術をものにした"
 				}
-				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "カタクラフトアーマーは誇り高い重騎兵の前身です。馬を矢などの攻撃から守り衝撃的な騎兵隊の編成を可能にしました。"
+				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "カタクラフラトアーマーは誇り高い重騎兵の前身です。馬を矢などの攻撃から守り衝撃的な騎兵隊の編成を可能にしました。"
 				SUMMARY "軍事技術"
 			}
 
@@ -1282,7 +1282,7 @@ Main = {
 					120 = "元首選挙"
 					175 = "セレニッシマ共和国"
 				}
-				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "我々の共和制は常に進化しています。近頃、貿易は我々の社会の重要な部分になりました、われわれはそちらの報告に進化しなければいけません。"
+				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "我々の共和制は常に進化しています。近頃、貿易は我々の社会の重要な部分になりました、われわれはそちらの方向に進化しなければいけません。"
 				SUMMARY "共和制の改革"
 			}	
 			BarbarianMonarchy = {
@@ -1315,8 +1315,8 @@ Main = {
 					40 = "たびたび"
 					70 = "集中的"
 				}
-				DESCRIPTION <b>"頻度: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "遠い隣人は裕福で軍事的に弱いです。強力な船団で壊滅的で非常に有利な襲撃を行うことができます。"
-				SUMMARY "軍事力と海軍と羊のような隣人"
+				DESCRIPTION <b>"頻度: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> 遠い隣人は裕福で軍事的に弱いです。強力な船団で壊滅的で非常に有利な襲撃を行うことができます。"
+				SUMMARY "軍事力と海軍による略奪"
 			}
 			ReligiousLaw = {
 				NAME "宗教法"
@@ -1419,7 +1419,7 @@ Main = {
 			}
 			Famine = {
 				NAME "飢餓"
-				DESCRIPTION "食事はもはや毎日ではありません。裕福な人々は食料の備蓄をし貧しい人は飢えます。飢えている人数は起こっている人数です。"
+				DESCRIPTION "食事はもはや毎日ではありません。裕福な人々は食料の備蓄をし貧しい人は飢えます。飢えている人数は怒っている人数です。"
 				SUMMARY "人口を減少させる"
 			}
 			AbundantHarvest = {
@@ -1536,7 +1536,7 @@ Main = {
 			}
 			MoralDegeneracy = {
 				NAME "文化の廃退"
-				DESCRIPTION "私たちの文化今では不遜になりました。若者は古い世代を尊重しなくなりました。前途は暗いです。"
+				DESCRIPTION "私たちの文化は今では不遜になりました。若者は古い世代を尊重しなくなりました。前途は暗いです。"
 				SUMMARY "文化は衰退している"
 			}
 			Devaluation = {
@@ -1594,7 +1594,7 @@ Main = {
 			
 			BeingRaided = {
 				NAME "襲撃されている"
-				DESCRIPTION "豊かな貿易ルートや宗教的建造物は長年略奪者を引き付けているようです。彼らは河にも海にtも出られる奇妙な船から襲撃してきます。軍艦を強化しなくてはいけません。"
+				DESCRIPTION "豊かな貿易ルートや宗教的建造物は長年略奪者を引き付けているようです。彼らは河にも海にも出られる奇妙な船から襲撃してきます。軍艦を強化しなくてはいけません。"
 				SUMMARY "モニュメントと交易品とが減少する"
 			}
 
@@ -1618,7 +1618,7 @@ Main = {
 			
 			MerchantExplorer = {
 				NAME "商人冒険者"
-				DESCRIPTION "若い商人が世界の果てへの歴史己的な旅を始めました。貿易の好機が到来しています。"
+				DESCRIPTION "若い商人が世界の果てへの歴史的な旅を始めました。貿易の好機が到来しています。"
 				SUMMARY "私たちの貿易は新たな地平に達するでしょう。"
 			}
 			
@@ -1627,6 +1627,8 @@ Main = {
 				DESCRIPTION "The prevailing insecurity in the cities has led our population to leave the urban areas and settle permanently in the countryside."
 				SUMMARY "Our population flees the cities"
 			}
+			
+			
 			
 		}
 	}
