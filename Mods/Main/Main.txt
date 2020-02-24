@@ -1804,6 +1804,9 @@ Main = {
 					IF ~FarmingTools
 						PROCESS output = output * ( 1 + ( FarmingTools / 150 ) )
 					ENDIF
+					IF ~Mill
+						PROCESS output = output * ( 1 + ( Mill / 200 ) )
+					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
 				}
@@ -4172,7 +4175,7 @@ Main = {
 				WEIGHT [ from ] 
 				}
 
-			}		
+			}	
 			FarmingTools = {
 				TYPE Technological
 				VALUE value [ 0 20 100 >> 1 ]
@@ -4591,6 +4594,64 @@ Main = {
 						 WEIGHT [ max ] 50 + University.value / 2
 				}
 				
+
+			}	
+
+
+			FarmersTax = {
+				TAG Sedentary
+				TYPE Cultural
+				VALUE value [ 0 5 30 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Population
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality
+					CONDITION_NODE + Feudality
+					CONDITION_VALUE Agriculture > 70
+				}
+				PRICE = {
+					$PoliticalPower = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(FarmersTax) + 1) * 5
+				}
+				
+				TICK = {
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 12)
+				}
+				
+				LINK Agriculture = {
+				WEIGHT [ from ] 
+				}
+
+			}
+
+
+			Mill = {
+				TYPE Technological
+				VALUE value [ 0 5 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | ~FarmingTools
+					CONDITION_VALUE FarmingTools > 100
+					CONDITION_VALUE Agriculture > 100
+					CONDITION_NODE + Feudality
+				}
+				PRICE = {
+					$PoliticalPower = 150
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 5
+					$Wealth = 20
+				}
+				TICK = {
+				}
+				
+				LINK Agriculture = {
+				WEIGHT [ to ] 
+				}
 
 			}			
 			
@@ -6182,6 +6243,9 @@ Main = {
 					EVENT_DEF [ 10 30 500 75% ]
 					ARISE = {
 						EVENT_SPEED 1
+							IF $Wealth > 20
+								REMOVE MercenaryUprising
+							ENDIF
 					}
 					TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.33)
@@ -6318,6 +6382,47 @@ Main = {
 						
 			
 				}	
+				
+				
+			PeasantRevolt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 50 30 150 20% ]
+				SLEEP = {
+				EVENT_CHANCE = 10 + FarmersTax.value
+				}
+				ARISE = {
+					EVENT_SPEED 1
+							IF FarmersTax < 10
+								REMOVE MercenaryUprising
+							ENDIF
+				}
+					TICK = {
+					PROCESS Stability = Stability - PerSeconds(0.33)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(3 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(3 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(2 + MilitaryManpower.Mercenaries_value * 0.1 * (1.5 - MilitaryEfficiency /100 ) )
+					}
+
+					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					
+					LINK MilitaryManpower = {
+						COLOR red
+						FLUX 2
+					}
+					
+					TRIGGER_EVENT = {
+					IF ( FarmersTax > 10)
+							RISE
+					ENDIF
+					}
+						
+			
+				}
 			
 			
 

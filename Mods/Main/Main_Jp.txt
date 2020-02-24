@@ -1403,6 +1403,32 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our education has too often been dispersed. By bringing our most talented minds together in one place, we can hope to create far better teachings."
 				SUMMARY "Improves our intellectual research"
 				}
+				
+				
+			FarmersTax = {
+				NAME "Farmers' Tax"
+				LEVEL value = {
+					0 = "None"
+					0.01 = "Annual taxes"
+					5 = "Bi-Annual taxes"
+					10 = "Heavy taxes"
+					20 = "Very heavy taxes"
+				}
+				DESCRIPTION <b>"Value: "@[value] </b>  <br><br> "The evolution of our society has led farmers to play an important role in our economy. Fair taxation will enable us to finance our armies to protect them."
+				SUMMARY "Tax our farmers"
+			}
+			
+			
+			Mill = {
+				NAME "Mill"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Firsts Mills"
+					70 = "Mills"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
+				SUMMARY "Improve our agriculture"
+			}	
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events
@@ -1629,6 +1655,11 @@ Main = {
 			}
 			
 			
+			PeasantRevolt = {
+				NAME "Peasant Revolt"
+				DESCRIPTION "The peasants, burdened by taxes, have revolted!"
+				SUMMARY "Our peasants are revolting"
+			}
 			
 		}
 	}

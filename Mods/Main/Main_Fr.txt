@@ -703,7 +703,7 @@ Main = {
 			Urbanization = {
 				NAME "Urbanisation"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -714,7 +714,7 @@ Main = {
 			NonSecularEducation = {
 				NAME "Éducation religieuse"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -725,7 +725,7 @@ Main = {
 			SecularEducation = {
 				NAME "Éducation sécularisée"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -747,7 +747,7 @@ Main = {
 			Philosophy = {
 				NAME "Philosophie"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -952,7 +952,7 @@ Main = {
 			Fortifications = {
 				NAME "Fortifications"
 				LEVEL value = {
-					0 = "Auncune défense"
+					0 = "Aucune défense"
 					0.001 = "Barricades"
 					20 = "Palissade"
 					40 = "Mur en pierre"
@@ -965,7 +965,7 @@ Main = {
 			Expensionism = {
 				NAME "Expensionisme"
 				LEVEL value = {
-					0 = "Auncun"
+					0 = "Aucun"
 					0.001 = "Bas"
 					40 = "Moyen"
 					70 = "Intensif"
@@ -978,7 +978,7 @@ Main = {
 			LootingCampaigns = {
 				NAME "Campagne de pillage"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -1056,7 +1056,7 @@ Main = {
 			Crossbow = {
 				NAME "Arbalète"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Recherches infructeuses"
 					15 = "Calcule de la meilleure torsion"
 					100 = "Maîtrisée"
@@ -1080,7 +1080,7 @@ Main = {
 			FarmingTools = {
 				NAME "Outils Agricole"
 				LEVEL value = {
-					0 = "Auncun"
+					0 = "Aucun"
 					0.001 = "Commencement de la Transition"
 					50 = "Transition en bonne voie"
 					100 = "Transition faites"
@@ -1104,8 +1104,8 @@ Main = {
 				NAME "Taxation de la population"
 				LEVEL value = {
 					0 = "Aucune"
-					0.01 = "Taxes annuels"
-					5 = "Taxes bi-annuels"
+					0.01 = "Taxes annuelles"
+					5 = "Taxes bi-annuelles"
 					10 = "Lourdes taxes"
 					35 = "Très lourdes taxes"
 				}
@@ -1199,7 +1199,7 @@ Main = {
 			}	
 			Music = {
 				NAME "Musique"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] </b> <br><br> "La musique est l'une des plus anciennes forme d'arts, pratiquée par la quasi-totalité des civilisations. Un art noble, anciens et sans auncun doute la création d'une culture millénaires."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] </b> <br><br> "La musique est l'une des plus anciennes forme d'arts, pratiquée par la quasi-totalité des civilisations. Un art noble, anciens et sans Aucun doute la création d'une culture millénaires."
 				SUMMARY "Augmente la culture"
 			}	
 			Litterature = {
@@ -1406,9 +1406,35 @@ Main = {
 					75 = "Grande Universités"
 					100 = "Maison de la Sagesse"
 				}
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Notre éducation a trop souvent été trop dispersée. En regroupant nos plus talentueux esprit au même endroit, nous pouvons espérer créer de bien meilleurs enseignements."
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Notre éducation a trop souvent été trop dispersée. En regroupant nos plus talentueux esprit au même endroit, nous pouvons espérer créer de bien meilleurs enseignements."
 				SUMMARY "Améliore notre recherche intellectuelle"
 				}
+				
+				
+			FarmersTax = {
+				NAME "Taxe Paysanne"
+				LEVEL value = {
+					0 = "Aucune"
+					0.01 = "Taxes annuelles"
+					5 = "Taxes bi-annuelles"
+					10 = "Lourdes taxes"
+					20 = "Très lourdes taxes"
+				}
+				DESCRIPTION <b>"Valeur: "@[value] </b>  <br><br> "L'évolution de notre société a conduit les paysans a joué un rôle important dans notre économie. Une taxation juste nous permettra de financer nos armées pour les les protéger."
+				SUMMARY "Taxer nos paysans"
+			}
+			
+			
+			Mill = {
+				NAME "Moulins"
+				LEVEL value = {
+					0 = "Aucun"
+					0.001 = "Premiers moulins"
+					70 = "Moulins"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Avec le temps, notre compréhension des mécanismes agraire s'est amélioré, nous savons désormais moudre le grain bien plus efficacement. Nous devons répandre cette technique dans tout notre pays."
+				SUMMARY "Améliore votre agriculture"
+			}	
 				
 		}
 		Events = {
@@ -1628,6 +1654,12 @@ Main = {
 				NAME "Exode Urbain"
 				DESCRIPTION "L'insécurité régnante des villes a conduit notre population à quitter les centres citadins et à s'installer durablement à la campagne."
 				SUMMARY "Notre population fuit les villes"
+			}
+			
+			PeasantRevolt = {
+				NAME "Révolte paysanne"
+				DESCRIPTION "Les paysans, accablés par les impôts, se sont révoltés !"
+				SUMMARY "Nos paysans se révoltent"
 			}
 
 		}
