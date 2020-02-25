@@ -1457,7 +1457,7 @@ Main = {
 			
 			
 			SiegeWeapons = {
-				NAME "Armes de Siège"
+				NAME "Siege Weapons"
 				LEVEL value = {
 					0 = "None"
 					0.001 = "Unsuccessful searches"
@@ -1470,6 +1470,28 @@ Main = {
 				SUMMARY "Military Technology"
 			}	
 			
+			NationState = {
+				NAME "Nation State"
+				LEVEL value = {					
+					0 = "Theoretical concept"
+					10 = "Distant dream"
+					25 = "Legal evidence"
+					50 = "We are a nation"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Our jurists are formal, our country has an essence of its own called Nation. With this concept we could unite our people under a common idea."
+				SUMMARY "Strengthens our national cohesion"
+			}	
+			
+			
+			Tribunal = {
+				NAME "Tribunal"
+				LEVEL value = {
+					0 = "Arbitrary judgments"
+					25 = "Court of justice"
+					50 = "Corps of judges"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our law is a force of truth, however, we must sometimes specify certain vague outlines. By sanctifying a place, the Tribunal, as a symbol of justice, our power will grow."
+				SUMMARY "Strengthens our political power"
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events

@@ -45,10 +45,11 @@ Main = {
 				0 = "Sans Défense"
 				0.000001 = "Petite Armée"
 				30 = "Armée normale"
-				50 = "Grande Armée"
+				75 = "Grande Armée"
+				150 = "Très Grande Armée"
 			}
 			TEXT "État de l'armée:<br><size=26><b>" @[Main.MilitaryManpower.value,LEVEL] "</b></size><br> (" @[Main.MilitaryManpower.value] ")"
-			TEXT "infanterie: " @[Main.MilitaryManpower.Infantry_value] " <size=10>"§[Main.MilitaryManpower.Infantry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Infantry_value',F2] "</color></size>" "<br>" "Cavalries: " @[Main.MilitaryManpower.Cavalry_value] " <size=10>"§[Main.MilitaryManpower.Cavalry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Cavalry_value',F2] "</color></size>" "<br>" "Tireurs: " @[Main.MilitaryManpower.Missile_value] " <size=10>"§[Main.MilitaryManpower.Missile_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Missile_value',F2] "</color></size>" "<br>" "Mercenaires: " @[Main.MilitaryManpower.Mercenaries_value] " <size=10>"§[Main.MilitaryManpower.Mercenaries_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Mercenaries_value',F2] "</color></size>"
+			TEXT "Infanterie : " @[Main.MilitaryManpower.Infantry_value] " <size=10>"§[Main.MilitaryManpower.Infantry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Infantry_value',F2] "</color></size>" "<br>" "Cavalerie : " @[Main.MilitaryManpower.Cavalry_value] " <size=10>"§[Main.MilitaryManpower.Cavalry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Cavalry_value',F2] "</color></size>" "<br>" "Tireurs : " @[Main.MilitaryManpower.Missile_value] " <size=10>"§[Main.MilitaryManpower.Missile_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Missile_value',F2] "</color></size>" "<br>" "Mercenaires : " @[Main.MilitaryManpower.Mercenaries_value] " <size=10>"§[Main.MilitaryManpower.Mercenaries_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Mercenaries_value',F2] "</color></size>"
 			TEXT "PAS D'ARMÉE"
 		}
 		
@@ -1474,6 +1475,41 @@ Main = {
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
 				SUMMARY "Technologie millitaire"
+			}	
+
+			NationState = {
+				NAME "État-Nation"
+				LEVEL value = {
+					0 = "Concept théorique"
+					10 = "Rêve lointain"
+					25 = "Preuves légales"
+					50 = "Nous sommes une nation"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos légistes sont formels, notre pays a une essence propre appelée Nation. On s'appuyant sur ce concept nous pourrions unir notre peuple sous une idée commune."
+				SUMMARY "Renforce notre cohésion nationale"
+			}			
+
+			Tribunal = {
+				NAME "Tribunal"
+				LEVEL value = {
+					0 = "Jugements arbitraires"
+					25 = "Cour de justice"
+					50 = "Corps de juges"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Notre loi est force de vérité, cependant nous devons parfois en préciser certains contours flous. En sanctuarisant un lieu, le tribunal, comme symbole de justice notre pouvoir s'aggrandira."
+				SUMMARY "Renforce notre pouvoir politique"
+			}		
+			
+			Castles = {
+				NAME "Châteaux"
+				LEVEL value = {
+					0 = "Fortifications primaires"
+					25 = "Châteaux de bois"
+					50 = "Châteaux de pierre"
+					75 = "Forteresse"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos nobles locaux ont besoin d'un lieu symbolique comme résidence et comme place forte. Construisons des fortifications impresionnantes qui permettront de mieux organiser nos levées militaires."
+				SUMMARY "Améliore le recrutement des levées"
 			}	
 			
 				

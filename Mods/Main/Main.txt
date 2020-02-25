@@ -2769,7 +2769,7 @@ Main = {
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Legislation / 50)
 				}
-			}	
+			}
 			ReligiousLaw = {
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				TYPE Cultural
@@ -4683,7 +4683,7 @@ Main = {
 					COLOR red
 				ENDIF
 				}		
-			}	
+			}
 			
 			
 			Castles = {
@@ -4761,7 +4761,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality
 					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE Mathematics >= 100
+					CONDITION_VALUE Mathematics >= 120
 					CONDITION_VALUE GenieCorps >= 100
 					CONDITION_VALUE Castles >= 10
 				}
@@ -4785,6 +4785,72 @@ Main = {
 					ENDIF
 				}
 
+			}
+
+
+
+			Tribunal = {
+				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Legislation | GetCurrentEra() == GetEra(FeudalAge)
+					CONDITION_ERA >= FeudalAge
+					OR
+					CONDITION_VALUE Republic >= 150
+					ALWAYS
+					CONDITION_VALUE Legislation >= 50
+					CONDITION_VALUE Culture >= 25
+					CONDITION_VALUE Philosophy >= 100
+					CONDITION_VALUE Urbanization >= 50
+					
+				}
+				PRICE = {
+					$PoliticalPower = 400
+					$Wealth = 200
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Tribunal) + 1) * 5
+					$Wealth = (LinkCount(Tribunal) + 1) * 2
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Tribunal / 100)
+				}
+			}
+
+			NationState = {
+				TYPE Cultural
+				VALUE value [ 0 0 50 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~NationalCohesion | GetCurrentEra() == GetEra(FeudalAge)
+					CONDITION_VALUE NationalCohesion >= 75
+					CONDITION_VALUE Population >= 100
+					CONDITION_VALUE StateSize >= 120
+					CONDITION_VALUE Philosophy >= 200
+					CONDITION_VALUE Tribunal >= 50
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(NationState) + 1) * 10
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 80)
+						PROCESS VassalPower =  VassalPower - PerSeconds(value / 3000 )
+						SET NationalCohesion.value [ : : 100 + NationState.value ]
+				}
+				
+				LINK NationalCohesion = {
+						 WEIGHT [ max ] 100 + NationState
+				}
+				
+				LINK VassalPower = {
+				IF value > 0
+					FLUX value / 40
+					COLOR red
+				ENDIF
+				}	
 			}
 			
 			
@@ -6485,14 +6551,14 @@ Main = {
 			UrbanExodus = {
 				SOUND_EVENT "Main/SFX/CitiesInRuins.wav"
 				SOUND_WINDOW "Main/SFX/CitiesInRuins.wav"
-					EVENT_DEF [ 20 100 350 50% ]
+					EVENT_DEF [ 20 75 450 33% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
 					TICK = {
-						OVERRIDE_PARAM Settlement.value = GetParam(Settlement.value) + PerSeconds(0.5 * 0.75 ? 1.25)
+						OVERRIDE_PARAM Settlement.value = GetParam(Settlement.value) + PerSeconds(0.3 * 0.75 ? 1.25)
 						PROCESS Settlement = Min( GetParam(Settlement.value), Settlement )
-						OVERRIDE_PARAM Urbanization.value = GetParam(Urbanization.value) - PerSeconds(0.25 * 0.75 ? 1.25)
+						OVERRIDE_PARAM Urbanization.value = GetParam(Urbanization.value) - PerSeconds(0.075 * 0.75 ? 1.25)
 						PROCESS Urbanization = Min( GetParam(Urbanization.value), Urbanization )
 					}
 

@@ -1427,7 +1427,7 @@ Main = {
 					0.001 = "Firsts Mills"
 					70 = "Mills"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
 				SUMMARY "Improve our agriculture"
 			}	
 			
@@ -1440,7 +1440,7 @@ Main = {
 					70 = "Sumptuous courtship"
 				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organizing our aristocracy into a class above the others, endowing it with inalienable & hereditary rights and pensions, will appease the great lords of our country."
-				SUMMARY "Strengthen our power by buying the loyalty of the great lords."
+				SUMMARY "Strengthen our power by buying the loyalty of the great lords"
 			}	
 			
 			MedievalArmors = {
@@ -1451,13 +1451,13 @@ Main = {
 					15 = "Search for better models"
 					100 = "Mastery"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
 				SUMMARY "Military Technology"
 			}	
 			
 			
 			SiegeWeapons = {
-				NAME "Armes de Siège"
+				NAME "Siege Weapons"
 				LEVEL value = {
 					0 = "None"
 					0.001 = "Unsuccessful searches"
@@ -1466,10 +1466,48 @@ Main = {
 					100 = "Trebuchets"
 					150 = "Bomb Cannon"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
 				SUMMARY "Military Technology"
 			}	
+			
+			NationState = {
+				NAME "Nation State"
+				LEVEL value = {					
+					0 = "Theoretical concept"
+					10 = "Distant dream"
+					25 = "Legal evidence"
+					50 = "We are a nation"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Our jurists are formal, our country has an essence of its own called Nation. With this concept we could unite our people under a common idea."
+				SUMMARY "Strengthens our national cohesion"
+			}	
+			
+			
+			Tribunal = {
+				NAME "Tribunal"
+				LEVEL value = {
+					0 = "Arbitrary judgments"
+					25 = "Court of justice"
+					50 = "Corps of judges"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our law is a force of truth, however, we must sometimes specify certain vague outlines. By sanctifying a place, the Tribunal, as a symbol of justice, our power will grow."
+				SUMMARY "Strengthens our political power"
+				}
 				
+			Castles = {
+				NAME "Castles"
+				LEVEL value = {
+					0 = "Primary fortifications"
+					25 = "Wooden castles"
+					50 = "Stone castles"
+					75 = "Fortress"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our locals noble need a symbolic place as a residence and as a stronghold. Let's build impressive fortifications to better organize our military levies."
+				SUMMARY "Improve the recruitment of Banners"
+			}	
+
+
+
 		}
 		Events = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Events
