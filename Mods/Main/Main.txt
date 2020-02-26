@@ -730,7 +730,7 @@ Main = {
 					ENDIF
 				}
 				TICK = { 
-					PROCESS Piety = Piety - PerSeconds ( value / (150 - ( ( Heathens * (100 - ToleranceOfHeathens)  * 0.01  ) + ( Heretics * ( 100 - ToleranceOfHeretics ) * 0.005  ) ) ) )
+					PROCESS Piety = Piety - PerSeconds ( value / ( 150 - ( ( Heathens * ( 100 - ToleranceOfHeathens * ( 0.75 + ClergyCentralization / 400 ) )  * 0.01  ) + ( Heretics * ( 100 - ToleranceOfHeretics * ( 0.75 + ClergyCentralization / 400 ) ) * 0.005  ) ) ) )
 					PROCESS Stability = Stability + PerSeconds(value/3000)
 					SET DivineRight.value [ : : Min(100, Piety.value * 4 ) ]
 				}

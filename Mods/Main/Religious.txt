@@ -91,13 +91,13 @@ Religious = {
 				}
 				TICK = {
 				IF ( value > 0 )
-					PROCESS cost =  value * Heretics  * 0.0002
+					PROCESS cost =  ( value * Heretics  * 0.0002 ) * ( 0.75 + ClergyCentralization / 200 )
 				ENDIF
 				IF ( value == 0 )
 					PROCESS cost =  0
 				ENDIF
 					
-				IF ( $PoliticalPower > 1 )
+				IF ( $PoliticalPower > cost )
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 				ENDIF
 				}
@@ -130,7 +130,7 @@ Religious = {
 				}
 				TICK = {
 					IF ( value > 0 )
-						PROCESS cost =  ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) 
+						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
 					ENDIF
 					IF ( value == 0 )
 						PROCESS cost =  0
@@ -251,20 +251,20 @@ Religious = {
 				}
 				
 				UPGRADE = {
-					$PoliticalPower =  (LinkCount(Conversion) + 1) * 0.25
+					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 0.25
 				}
 				TICK = {
-				PROCESS Heretics = Heretics - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 )
-				PROCESS Heathens = Heathens - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 )
+				PROCESS Heretics = ( Heretics - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 )
+				PROCESS Heathens = ( Heathens - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 )
 				
 				IF ( value > 0)
-				PROCESS cost =  ( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000
+				PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
 				ENDIF
 				IF ( value == 0)
 				PROCESS cost =  0
 				ENDIF
 					
-				IF ( $Wealth > 1)
+				IF ( $Wealth > cost )
 					PROCESS $Wealth = $Wealth - PerSeconds(cost)
 				ENDIF
 				
@@ -280,11 +280,11 @@ Religious = {
 				}
 				LINK Heretics = {
 					COLOR red
-					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 )
+					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 ) * ( 0.75 + ClergyCentralization / 200 )
 				}
 				LINK Heathens = {
 					COLOR red
-					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 )
+					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 ) * ( 0.75 + ClergyCentralization / 200 )
 				}
 			}
 			ReligiousOfferings = {
@@ -508,6 +508,68 @@ Religious = {
 				}
 				
 			}
+			
+			ClergyCentralization = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_NODE + ReligiousLaw
+				}
+				PRICE = {
+					$PoliticalPower = 35
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(ClergyCentralization) + 1 ) * 1.2
+				}
+				TICK = {
+				
+				}
+				LINK Conversion = {
+					WEIGHT [ to ]
+				}
+				LINK ToleranceOfHeretics = {
+					WEIGHT [ to ]
+				}
+				LINK ToleranceOfHeathens = {
+					WEIGHT [ to ]
+				}
+
+			}
+			ClergyIndependance = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_NODE + ReligiousLaw
+				}
+				PRICE = {
+					$PoliticalPower = 35
+				}
+				UPGRADE = {
+				IF ClergyCentralization >= 50
+					$PoliticalPower =  (LinkCount(ClergyIndependance) + 1 ) * ( 1 + (ClergyIndependance + ClergyCentralization) / 300 )
+				ENDIF
+				IF ClergyCentralization < 50 & ClergyIndependance < 50
+					$PoliticalPower =  (LinkCount(ClergyIndependance) + 1 ) * ( 1 + (ClergyIndependance + ClergyCentralization) / 300 )
+				ENDIF
+				IF ClergyCentralization < 50 & ClergyIndependance >= 50
+					$PoliticalPower =  (LinkCount(ClergyIndependance) + 1 ) * ( 1 + (ClergyIndependance - ClergyCentralization / 2 ) / 300 )
+				ENDIF
+				}
+				TICK = {
+				PROCESS ClergyIndependance = ClergyIndependance - PerSeconds ( ClergyIndependance / 1000 )
+				}
+
+
+			}
+			
 			}
 		Events = {
 			Schism = {
@@ -626,6 +688,98 @@ Religious = {
 					ENDIF
 				}
 			}
+			GreatSchism = {
+				SOUND_EVENT "Main/SFX/Schism.wav"
+				SOUND_WINDOW "Main/SFX/Schism.wav"
+				EVENT_DEF [ 30 200 2000 25% ]
+				SLEEP = {
+				EVENT_CHANCE = Max ( ( 100 - Piety ) / 100 , 0.1 )
+				}
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Heretics = Heretics + PerSeconds( 0.1 ? 0.2 )
+				}
+				LINK Heretics = {
+					COLOR green
+					FLUX 0.5
+				}
+				
+				TRIGGER_EVENT = {
+					IF (GetCurrentEra() >= GetEra(FeudalAge) )
+						RISE
+					ENDIF
+				}
+			}
+			ReligiousLeagueWar = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 60 70 60% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+
+				TICK = {
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds( 0.1 ? 0.2 )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(2 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1.5 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(4 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(0.5)
+					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
+					PROCESS Stability = Stability - PerSeconds( 1 )
+					
+					IF ( ToleranceOfHeretics < 60 )
+					PROCESS Heretics = Heretics - PerSeconds( 0.1 )
+					PROCESS Population = Population - PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
+					ENDIF
+					IF ( ToleranceOfHeretics >= 60 )
+					PROCESS Heretics = Heretics + PerSeconds( 0.1 )
+					PROCESS Population = Population + PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
+					ENDIF
+				}
+
+				
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK Heretics = {
+					IF ( ToleranceOfHeretics < 60 )
+					COLOR red
+					FLUX 2
+					ENDIF
+					IF ( ToleranceOfHeretics >= 60 )
+					COLOR green
+					FLUX 2
+					ENDIF
+				}
+				
+				LINK UrbanMilitia = {
+					COLOR red
+					FLUX 2
+				}				
+				
+				LINK Stability = {
+					COLOR red
+					FLUX 2
+				}
+				
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2
+				}
+				
+			
+				TRIGGER_EVENT = {
+					IF  ~GreatSchism
+						RISE
+					ENDIF
+				}
+
+		}
 			}
 	}
 }
