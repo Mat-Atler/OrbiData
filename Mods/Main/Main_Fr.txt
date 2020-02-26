@@ -1512,6 +1512,13 @@ Main = {
 				SUMMARY "Améliore le recrutement des levées"
 			}	
 			
+			
+			Medecine = {
+				NAME "Médecine"
+				DESCRIPTION <b>"Valeur : "@[value,0.###] " )<br><br> Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
+				SUMMARY "Atténue les chances d'épidémies"
+			}	
+			
 				
 		}
 		Events = {
@@ -1519,12 +1526,12 @@ Main = {
 			::APPEND "Main/Religious_Fr.txt" Religious.Nodes.Events
 			Fire = {
 				NAME "Feu de Forêt"
-				DESCRIPTION "Un feu dans les campagnes dévore la flore locale et détruit les champs. Nous devons réinvestire le secteur agricole dès que possible."
+				DESCRIPTION "Un feu dans les campagnes dévore la flore locale et détruit les champs. Nous devons réinvestir le secteur agricole dès que possible."
 				SUMMARY "Va réduire la flore et l'agriculture"
 			}
 			InvasiveSpecies = {
 				NAME "Nuée de parasite"
-				DESCRIPTION "Une nuée d'insectes vien détruire la flore locale et parasiter les animaux. Préparez-vous pour un lourd déclin de l'écosystème."
+				DESCRIPTION "Une nuée d'insectes viens détruire la flore locale et parasiter les animaux. Préparez-vous pour un lourd déclin de l'écosystème."
 				SUMMARY "Va réduire la flore et la faune"
 			}
 			Famine = {
@@ -1534,33 +1541,33 @@ Main = {
 			}
 			AbundantHarvest = {
 				NAME "Récolte abondante"
-				DESCRIPTION "Le climat, les précipitations et surement nos prières nous ont bénies par une récolte particulièrement abondante la sécurité alimentaire va augmenter la taille de la population supporté. Ce signe vous a conforté dans le rôle de dirigeant."
+				DESCRIPTION "Le climat, les précipitations et surement nos prières nous ont bénies par une récolte particulièrement abondante la sécurité alimentaire va augmenter la taille de la population supportée. Ce signe vous a conforté dans le rôle de dirigeant."
 				SUMMARY "Augmente la faune et l'agriculture"
 			}
 			Pillaging = {
 				NAME "Pillage"
-				DESCRIPTION "La richesse de nos routes commercials et de nos monuments religieux ont attiré des pillards et autres bandits."
+				DESCRIPTION "La richesse de nos routes commerciales et de nos monuments religieux ont attiré des pillards et autres bandits."
 				SUMMARY "Va réduire le commerce et les monuments religieux"
 			}
 			Epidemic = {
 				NAME "Épidémie"
-				DESCRIPTION "La surpopulation, la promiscuité de notre peuple a transformer une maladie en épidémie décimant votre populations."
+				DESCRIPTION "La surpopulation, la promiscuité de notre peuple a transformé une maladie locale en épidémie décimant votre population."
 				SUMMARY "Va réduire la population"
 			}
 			MassiveTroubles = {
 				NAME "Trouble massif"
-				DESCRIPTION "Le peuple ne voit plus notre gouvernement comme légitime. Restaurez la situation rapidement ! Ou sinon l'ordre que vous avez établit va s'effondrer!"
+				DESCRIPTION "Le peuple ne voit plus notre gouvernement comme légitime. Restaurez la situation rapidement ! Ou sinon l'ordre que vous avez établit va s'effondrer !"
 				SUMMARY "Est-ce la fin ?!"
 			}
 			ClergyRebellion = {
 				NAME "Soulèvement du clergé"
-				DESCRIPTION "Les prêtres ne sont pas content de votre façon impise de gouverner, reformer en théocratie ou sinon les gardiens du sacrés vous dépposeront."
-				SUMMARY "Les prêtres haissent votre systèmes de gouvernements"
+				DESCRIPTION "Les prêtres ne sont pas content de votre façon impie de gouverner, reformer en théocratie ou sinon les gardiens du sacré vous déposeront."
+				SUMMARY "Les prêtres haïssent votre système de gouvernements"
 			}
 			NoblesRebellion = {
 				NAME "Soulèvement des aristocrates"
 				DESCRIPTION "La noblesse veux saisir le pouvoir, ils vont vous déposer puis couronner un roi parmis les leurs, vous devriez vous reformer vers une monarchie pour éviter plus de trouble."
-				SUMMARY "Les aristocrates haissent votre systèmes de gouvernements"
+				SUMMARY "Les aristocrates haïssent votre système de gouvernements"
 			}
 			ProTradeRiots = {
 				NAME "Soulèvement pour le libre-échange"
@@ -1584,8 +1591,8 @@ Main = {
 			}
 			GreatFire = {
 				NAME "Grand feu"
-				DESCRIPTION "Votre capital est en plein effervescence, à tout moment une nouvelle personne s'installe et magasin ouvre... il a suffit d'un accident pour l'embraser, des quartiers entiers sont partis en fumée."
-				SUMMARY "Un immense incendie ravage notre capital!"
+				DESCRIPTION "Votre capital est en plein effervescence, à tout moment une nouvelle personne s'installe et magasin ouvre... il a suffi d'un accident pour l'embraser, des quartiers entiers sont partis en fumée."
+				SUMMARY "Un immense incendie ravage notre capitale !"
 			}
 			RegionProsperity = {
 				NAME "Prospérité régionale"
@@ -1594,48 +1601,48 @@ Main = {
 			}
 			Separatism = {
 				NAME "Séparatisme"
-				DESCRIPTION "Vos avez de nombreuse terres uniquement sur le papier, car les gens habitants sur ces terres ne vous voient pas comme leurs dirigeant légitimes. La force armée de votre civilisations n'es pas à la hauteur de garder vos frontières intactes."
+				DESCRIPTION "Vos avez de nombreuses terres uniquement sur le papier, car les gens habitants sur ces terres ne vous voient pas comme leurs dirigeant légitimes. La force armée de votre civilisation n'est pas à la hauteur pour garder vos frontières intactes."
 				SUMMARY "Nous perdons des territoires non-gardé !"
 			}
 			BeingInvaded = {
 				NAME "Invasion Étrangère"
-				DESCRIPTION "Une puissance étrangère est en pleine campagne dans vos terres, si vos fortification et votre armée s'effondre vous allez perdre des territoires à leur avantage."
+				DESCRIPTION "Une puissance étrangère est en pleine campagne dans vos terres, si vos fortifications et votre armée s'effondre vous allez perdre des territoires à leur avantage."
 				SUMMARY "Repoussez l'envahisseur !"
 			}
 			NeighborhoodTroubles = {
 				NAME "Troubles dans le voisinage"
-				DESCRIPTION "Certains de nos voisins essuyent de terribles troubles internes. Cela baissera la chance d'une attaque de leur parts, mais le commerce s'en trouvera réduit de même."
+				DESCRIPTION "Certains de nos voisins connaissent de terribles troubles internes. Cela baissera la chance d'une attaque de leur part, mais le commerce s'en trouvera réduit de même."
 				SUMMARY "Le bellicisme des voisins et le commerce va chuter"
 			}
 			NeighborhoodRise = {
 				NAME "Ambitions du voisinage"
-				DESCRIPTION "Un de nos voisins est en trains de connaître une expansions fulgurante, nous sommes les suivant. Préparez vos défenses."
+				DESCRIPTION "Un de nos voisins est en trains de connaître une expansion fulgurante, nous sommes les suivant. Préparez vos défenses."
 				SUMMARY "Préparez vos défenses !"
 			}
 
 			WeakMonarch = {
 				NAME "Monarque inapte"
-				DESCRIPTION "Notre dirigeant actuelle se révélent comme étant incompétant et complétement inapte. Le pouvoir gouvernemental va en pâtire tant qu'il sera aux rênes."
+				DESCRIPTION "Notre dirigeant actuelle se révèlent comme étant incompétent et complétement inapte. Le pouvoir gouvernemental va en pâtir tant qu'il sera aux rênes."
 				SUMMARY "Votre gouvernement va en souffrir"
 			}
 			Devaluation = {
 				NAME "Dévaluation"
-				DESCRIPTION "Certaine situation économique font varier la force d'une devise. De grave événement ont fait perdre une stabilité à notre monnaie, vous devez réformer, vite."
-				SUMMARY "We need to reform money after the crisis"
+				DESCRIPTION "Certaine situations économiques font varier la force d'une devise. De graves événements ont fait perdre une stabilité à notre monnaie, vous devez réformer, vite."
+				SUMMARY "Nous devons réformer notre monnaie"
 			}
 			GreatGeneral = {
 				NAME "Grand général"
-				DESCRIPTION "Un de nos officier s'est révélé être un stratège et tacticiens sans pareil, augmentant l'efficacité de votre armées. "
+				DESCRIPTION "Un de nos officier s'est révélé être un stratège et tacticien sans pareil, augmentant l'efficacité de votre armée. "
 				SUMMARY "Apporte une grande efficacité à votre armée."
 			}
 			GreatNomadInvasion = {
 				NAME "Grande invasion nomade"
-				DESCRIPTION "Un de nos voisins maîtrisant les chevaux a commencé une invasions. Ils veulent détruire votre gouvernement et s'installer sur les restes."
-				SUMMARY "Une immense horde de nomade vous attaque!"
+				DESCRIPTION "Un de nos voisins maîtrisant les chevaux a commencé une invasion. Ils veulent détruire votre gouvernement et s'installer sur les restes."
+				SUMMARY "Une immense horde de nomade vous attaque !"
 			}
 			Piracy = {
 				NAME "Piraterie"
-				DESCRIPTION "Les riches routes commerciales maritimes attirent des pirates, endiguer le problème en patrouillant les mer."
+				DESCRIPTION "Les riches routes commerciales maritimes attirent des pirates, endiguer le problème en patrouillant les mers."
 				SUMMARY "Des troubles en mer"
 			}
 			CoupDEtat = {
@@ -1648,11 +1655,10 @@ Main = {
 				DESCRIPTION "Notre culture est impie. Notre jeune génération n'écoute plus les anciens. Les signes sont mauvais."
 				SUMMARY "Notre culture décline"
 			}
-
 			NavalInvasion = {
 				NAME "Invasion Navale"
-				DESCRIPTION "Une puissance étrangère va débarquer sur nos côtes. Votre flotte va essayer de les arrêter, en cas d'échec l'armée et les fortification prenderons le relais. Si ces derniers remparts chutent vous allez perdre du territoire."
-				SUMMARY "Repoussez l'envahisseur!"
+				DESCRIPTION "Une puissance étrangère va débarquer sur nos côtes. Votre flotte va essayer de les arrêter, en cas d'échec l'armée et les fortification prendrons le relais. Si ces derniers remparts chutent vous allez perdre du territoire."
+				SUMMARY "Repoussez l’envahisseur !"
 			}
 			BarbarianThrust = {
 				NAME "Poussée des barbares"
@@ -1666,7 +1672,7 @@ Main = {
 			}
 			EconomicCollapse = {
 				NAME "Effondrement économique"
-				DESCRIPTION "Le vide de vos coffres ont crée un grand désordre. Les finances sont-elles condamnées ?"
+				DESCRIPTION "Le vide de vos coffres ont créé un grand désordre. Les finances sont-elles condamnées ?"
 				SUMMARY "Nos coffres sont vides"
 			}
 			ClimateChange = {
@@ -1676,12 +1682,12 @@ Main = {
 			}
 			RecruitmentShortage = {
 				NAME "Pénurie de recrues"
-				DESCRIPTION "Notre armée professionelle est en crise, peu de citoyens sont intéressés par la carrière militaire, alors que les étrangers et les mercenaires sont toujours disponible."
+				DESCRIPTION "Notre armée professionnelle est en crise, peu de citoyens sont intéressés par la carrière militaire, alors que les étrangers et les mercenaires sont toujours disponible."
 				SUMMARY "Nous ne pouvons plus recruter de nouvelles personnes"
 			}
 			SalicSucession = {
 				NAME "Partage Salique"
-				DESCRIPTION "La mort du précédent roi a mené à une dispute entre les héritiers, d'après la loi, vos cadets auront une part de votre territoires. Mais il vous permet de vous recentrer sur une plus petite part de royaume."
+				DESCRIPTION "La mort du précédent roi a mené à une dispute entre les héritiers, d'après la loi, vos cadets auront une part de votre territoire. Mais il vous permet de vous recentrer sur une plus petite part de royaume."
 				SUMMARY "La mort du roi à divisée son territoire"
 			}
 
@@ -1699,13 +1705,13 @@ Main = {
 			
 			BeingRaided = {
 				NAME "Pillé"
-				DESCRIPTION "Les richesses de nos routes commerciales et monuments religieux ont mené à un pillage en règle, les attaquants sont sur de bien étranges bateaux, plats et capable de manoeuvrer autant sur mer que rivière. Nous devons améliorer notre flotte."
+				DESCRIPTION "Les richesses de nos routes commerciales et monuments religieux ont mené à un pillage en règle, les attaquants sont sur de bien étranges bateaux, plats et capable de manœuvrer autant sur mer que rivière. Nous devons améliorer notre flotte."
 				SUMMARY "Va réduire le commerce et nos monuments religieux"
 			}
 
 			MilitaryPlot = {
 				NAME "Complot Militaire"
-				DESCRIPTION "Alors que notre stabilité est basse, nos officiers millitaires prennent le pouvoir et éliminent les répugnants barbares des terres."
+				DESCRIPTION "Alors que notre stabilité est basse, nos officiers militaires prennent le pouvoir et éliminent les répugnants barbares des terres."
 				SUMMARY "Une dictature militaire va commencer !"
 			}
 			
@@ -1738,7 +1744,22 @@ Main = {
 				DESCRIPTION "Les paysans, accablés par les impôts, se sont révoltés !"
 				SUMMARY "Nos paysans se révoltent"
 			}
+			
+			GreatEpidemic = {
+				NAME "Grande Épidémie"
+				DESCRIPTION "Une maladie particulièrement létale se propage à nos frontières. Prions pour notre salut !"
+				SUMMARY "Va réduire drastiquement notre population"
+			}
+			
+			
+			CulturalRevival = {
+				NAME "Renaissance culturelle"
+				DESCRIPTION "Après un âge de déclin, notre culture profite de notre situation stable pour refleurir."
+				SUMMARY "Augmente nos leviers de culture"
+			}
+
 
 		}
+
 	}
 }

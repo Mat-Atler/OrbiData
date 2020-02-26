@@ -4854,6 +4854,26 @@ Main = {
 			}
 			
 			
+			Medecine = {
+				TYPE Cultural
+				VALUE value [ 0 1 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~University | ~CivilEngineering
+					CONDITION_VALUE CivilEngineering >= 50
+					CONDITION_VALUE University >= 50
+					CONDITION_VALUE Philosophy >= 100
+				}
+				PRICE = {
+					$PoliticalPower = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Medecine) + 1) * 5
+				}
+				TICK = {
+				}
+			}						
+			
+			
 			
 			
 			}
@@ -5136,8 +5156,16 @@ Main = {
 			Epidemic = {
 				SOUND_EVENT "Main/SFX/Cough.wav"
 				SOUND_WINDOW "Main/SFX/Cough.wav"
-				EVENT_DEF [ 20 15 90 20% ]
+				EVENT_DEF [ 20 15 90 30% ]
 
+				SLEEP = {
+				IF ~Medecine
+					EVENT_CHANCE 0.3 - Medecine.value / 4
+				ELSE
+					EVENT_CHANCE 0.3
+				ENDIF
+				}
+				
 				ARISE = {
 					EVENT_SPEED Population / 100
                     IF Population < 50
@@ -5172,6 +5200,8 @@ Main = {
 					ENDIF
 				}
 			}
+		
+			
 			MassiveTroubles = {
 				SOUND_EVENT "Main/SFX/MassiveTroubles.wav"
 				SOUND_WINDOW "Main/SFX/MassiveTroubles.wav"
@@ -6624,9 +6654,120 @@ Main = {
 						
 			
 				}
+				
+				
+			
+			GreatEpidemic = {
+				SOUND_EVENT "Main/SFX/Cough.wav"
+				SOUND_WINDOW "Main/SFX/Cough.wav"
+				EVENT_DEF [ 30 50 900 40% ]
+
+				SLEEP = {
+				IF ~Medecine
+					EVENT_CHANCE 0.4 - Medecine / 3
+				ELSE
+					EVENT_CHANCE 0.4
+				ENDIF
+				}
+				
+				ARISE = {
+					EVENT_SPEED Population / 100
+				}
+				TICK = {
+					PROCESS Population = Population - PerSeconds(0.5 + Population/120 * 0.75 ? 1.25)
+					PROCESS Piety = Piety - PerSeconds(0.5 * 0.75 ? 1.25)
+					PROCESS Stability = Stability - PerSeconds(0.75 * 0.75 ? 1.25)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1 * 0.75 ? 1.25)
+
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.15 + MilitaryManpower.Infantry_value /50 )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.15 + MilitaryManpower.Cavalry_value /50)
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.15 + MilitaryManpower.Missile_value /50)
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.15 + MilitaryManpower.Mercenaries_value /50)
+					
+				}
+				LINK Population = {
+					COLOR red
+					FLUX 5
+				}
+				LINK Piety = {
+					COLOR green
+					FLUX 3
+				}
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 3
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 4
+				}
+				TRIGGER_EVENT = {
+					IF Population > 50 & ~DraftAnimals  & GameTime() > 11000 & GetCurrentEra() >= GetEra(FeudalAge)
+						RISE
+					ENDIF
+				}
+				
+				
+			}
+				
+				
+			CulturalRevival = {
+				SOUND_EVENT "Main/SFX/Prosperity.wav"
+				SOUND_WINDOW "Main/SFX/Prosperity.wav"
+					EVENT_DEF [ 10 20 300 25% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+						OVERRIDE_PARAM Music.value = GetParam(Music.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Music = Max( GetParam(Music.value), Music )
+						OVERRIDE_PARAM Litterature.value = GetParam(Litterature.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Litterature = Max( GetParam(Litterature.value), Litterature )
+						OVERRIDE_PARAM Philosophy.value = GetParam(Philosophy.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Philosophy = Max( GetParam(Philosophy.value), Philosophy )
+						OVERRIDE_PARAM Mathematics.value = GetParam(Mathematics.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Mathematics = Max( GetParam(Mathematics.value), Mathematics )
+						PROCESS Stability = Stability + PerSeconds(0.25)
+						PROCESS Culture = Culture + PerSeconds(3.5)
+					}
+
+					LINK Music = {
+						COLOR green
+						FLUX 2
+					}
+					LINK Litterature = {
+						COLOR green
+						FLUX 2
+					}
+					LINK Culture = {
+						COLOR green
+						FLUX 5
+					}
+					LINK Mathematics = {
+						COLOR green
+						FLUX 4
+					}
+					LINK Philosophy = {
+						COLOR green
+						FLUX 4
+					}
+
+					LINK Stability = {
+						COLOR green
+						FLUX 1
+					}
+					
+					TRIGGER_EVENT = {
+						IF ~Culture & Culture < 50 & ( ~University | Stability > 80 ) & GetCurrentEra() >= GetEra(LateAntiquity)
+							RISE
+						ENDIF
+					}
+						
+			
+				}
 			
 			
 
 			}
-			}
+}
 }
