@@ -510,6 +510,20 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre commerce interne ne se suffit plus, nous devons exporter notre production dans des pays lointains pour faire des bénéfices toujours plus faramineux."
 				SUMMARY "Notre niveau de commerce international"
 				}
+				
+				
+			ScienceKnowledge = {
+				NAME "Connaissance Scientifique"
+				DESCRIPTION "Connaissances : " @[value,0.###]<br><br>" Nos conaissances, enfin obtenus par un empirisme plus ou moins rigoureux, elles nous assurent que chaque pas que nous faisons va dans une direction plus efficace."
+				SUMMARY "Nos connaissances actuelles"
+			}
+			
+			Minorities = {
+				NAME "Minorités"
+				DESCRIPTION "Nombre : " @[value,0.###]<br><br>" La disparité des peuples liés à nos conquêtes et nos disparités religieuses nous approte un certain trouble à notre cohésion nationale. En revanche cela multiplie nos possibilités de commerce."
+				SUMMARY "Renforcent notre commerce mais dégrade notre union"
+			}
+				
 		}
 		Levers = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Levers
@@ -1515,8 +1529,26 @@ Main = {
 			
 			Medecine = {
 				NAME "Médecine"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] " )<br><br> Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
 				SUMMARY "Atténue les chances d'épidémies"
+			}	
+			
+			Alchemy = {
+				NAME "Alchimie"
+				LEVEL value = {
+					0 = "Analyse des corps naturels"
+					25 = "Recherche élementaires"
+					50 = "Début de la chimie"
+					75 = "Théorie de la transmutation"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos plus intelligents savants s'engouffrent dans une discipline essayant de comprendre la nature même des choses. Leurs recherches paraissent obscures mais elle conduiront peut être-dans un avenir lointain à un avenir glorieux."
+				SUMMARY "Améliore notre connaissance scientifique"
+			}	
+			
+			Gunpowder = {
+				NAME "Poudre à Canon"
+				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Nos études avec des matériaux très étrange nous a donné une chose ressemblant à de la poudre noire. Hautement explosive, elle pourrait avoir beaucoup d'application notamment militaire."
+				SUMMARY "Améliore notre potentiel militaire"
 			}	
 			
 				
@@ -1756,6 +1788,12 @@ Main = {
 				NAME "Renaissance culturelle"
 				DESCRIPTION "Après un âge de déclin, notre culture profite de notre situation stable pour refleurir."
 				SUMMARY "Augmente nos leviers de culture"
+			}
+			
+			WitchHunt = {
+				NAME "Chasse aux sorcières"
+				DESCRIPTION "Notre population a provoqué un pogrom local contre nos minorités, si ce genre d'incident renforce notre identité religieuse et nationale, les conséquences pour le commerce et notre stabilité sont désastreuse."
+				SUMMARY "Réduit nos minorité et notre stabilité"
 			}
 
 

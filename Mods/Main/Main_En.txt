@@ -506,6 +506,33 @@ Main = {
 				}
 				
 				
+			ScienceKnowledge = {
+				NAME "Scientific Knowledge"
+				DESCRIPTION "Knowledge: " @[value,0.###]<br><br>" Our knowledge, at last obtained by a more or less rigorous empiricism, assures us that every step we take goes in a more efficient path."
+				SUMMARY "Our current knowledge"
+			}
+			
+			
+			Alchemy = {
+				NAME "Alchemy"
+				LEVEL value = {
+					0 = "Natural Body Analysis"
+					25 = "Elemental Research"
+					50 = "Beginning of Chemistry"
+					75 = "Theory of transmutation"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
+				SUMMARY "Improves our scientific knowledge"
+			}	
+
+		
+			Minorities = {
+				NAME "Minorities"
+				DESCRIPTION "Number: " @[value,0.###]<br><br>" The disparity of peoples linked to our conquests and our religious disparities brings us towards a certain disorder to our national cohesion. On the other hand it multiplies our trading opportunities."
+				SUMMARY "Strengthens our trade but degrades our union"
+			}
+				
+				
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -1510,6 +1537,24 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value,0.###] " )<br><br> Our growing knowledge has opened the doors to medical care. Making a clear distinction between diseases and curses, between prayers and drugs, we will gradually come to fight the plagues of men."
 				SUMMARY "Reduces the chance of epidemics"
 				}
+			
+			Alchemy = {
+				NAME "Alchemy"
+				LEVEL value = {
+					0 = "Natural Body Analysis"
+					25 = "Elemental Research"
+					50 = "Beginning of Chemistry"
+					75 = "Theory of transmutation"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
+				SUMMARY "Improves our scientific knowledge"
+			}	
+			
+			Gunpowder = {
+				NAME "Gunpowder"
+				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our studies with very strange materials gave us something resembling black powder. Highly explosive, it could have many applications, especially military."
+				SUMMARY "Enhances our military potential."
+			}	
 
 
 		}
@@ -1749,7 +1794,12 @@ Main = {
 				DESCRIPTION "After an age of decline, our culture takes advantage of our stable situation to flourish again."
 				SUMMARY "Increases our culture levers"
 			}
-
+			
+			WitchHunt = {
+				NAME "Witch Hunt"
+				DESCRIPTION "Our people have provoked a local pogrom against our minorities. If this kind of incident strengthens our religious and national identity, the consequences for trade and stability are disastrous."
+				SUMMARY "Reduces our minorities and our stability"
+			}
 
 		}
 	}

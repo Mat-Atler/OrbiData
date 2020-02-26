@@ -1169,7 +1169,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) + ( Culture * 2 ) + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
+					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 2 ) + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
 					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
 					ELSE
@@ -1369,7 +1369,64 @@ Main = {
 				LINK Harbours = {
 					WEIGHT [ to ]
 				}	
-			}	
+			}
+			
+			ScienceKnowledge = {
+				VALUE value [ 0 0 10000 ]
+				DISPLAY_VALUE
+				SLEEP = {
+					IF ~Alchemy
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				
+				}
+				} 
+				
+				
+			Minorities = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF ~Heretics | ~Heathens | OverlandTrade >= 100
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ~Money == 0
+						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
+						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
+					ELSE
+						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * ( Max( Money , 1) / 40) * 0.9 ? 1.1 )
+						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * ( Max( Money , 1) / 40) * 0.9 ? 1.1 )
+					ENDIF
+					
+                IF StateSize' > 0
+					Minorities Heathens = Minorities + StateSize' / 5
+                ENDIF
+					
+				}
+				LINK NavalTrade = {
+					IF (value > 0)
+						FLUX value * 0.013
+						COLOR green
+					ENDIF
+				}
+				LINK OverlandTrade = {
+					IF (value > 0)
+						FLUX value * 0.013 
+						COLOR green
+					ENDIF
+					
+				LINK NationalCohesion = {
+					WEIGHT [ to ]
+				}
+			
+					
+			}
 			
 			}
 		Levers = {
@@ -2864,7 +2921,15 @@ Main = {
 				TICK = {
 				SET CivilEngineering.value [ : : Min ( Urbanization , Mathematics ) ]
 				SET Fortifications.value [ : : StateSize * Mathematics / 100 ]
+				PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 12000 )
 				}
+				
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 60
+					COLOR green
+				ENDIF
+				}	
 				
 				LINK Fortifications = {
 						WEIGHT [ max ] StateSize * Mathematics / 100
@@ -3352,6 +3417,9 @@ Main = {
 					CONDITION_VALUE Mathematics >= 100
 					CONDITION_VALUE Philosophy >= 100
 					CONDITION_VALUE Navy >= 200
+					OR
+					CONDITION_VALUE Alchemy >= 50
+					
 				}		
 				
 				PRICE = {
@@ -4579,6 +4647,7 @@ Main = {
 				TICK = {
 						SET Litterature.value [ : : 100 + University.value ]
 						SET Philosophy.value [ : : 100 + University.value ]
+						SET Mathematics.value [ : : 100 + University.value ]
 						SET Education.value [ : : 50 + University.value / 2 ]
 				}
 				
@@ -4589,6 +4658,11 @@ Main = {
 				LINK Philosophy = {
 						 WEIGHT [ max ] 100 + University
 				}
+				
+				LINK Mathematics = {
+						 WEIGHT [ max ] 100 + University
+				}
+				
 				
 				LINK Education = {
 						 WEIGHT [ max ] 50 + University.value / 2
@@ -4815,7 +4889,15 @@ Main = {
 				}
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Tribunal / 100)
+						PROCESS Stability = Stability + PerSeconds(value/12000)
 				}
+				
+				LINK Stability = {
+				IF value > 0
+					FLUX value / 40
+					COLOR green
+				ENDIF
+				}	
 			}
 
 			NationState = {
@@ -4855,7 +4937,7 @@ Main = {
 			
 			
 			Medecine = {
-				TYPE Cultural
+				TYPE Technological
 				VALUE value [ 0 1 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~University | ~CivilEngineering
@@ -4867,11 +4949,77 @@ Main = {
 					$PoliticalPower = 400
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Medecine) + 1) * 5
+					$PoliticalPower = 10
 				}
 				TICK = {
+						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 10000 )
 				}
-			}						
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 50
+					COLOR green
+				ENDIF
+				}	
+			}
+
+
+			Alchemy = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~University
+					CONDITION_VALUE Medecine >= 60
+					CONDITION_VALUE University >= 70
+					CONDITION_VALUE Mathematics >= 150
+					CONDITION_VALUE Philosophy >= 150
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 15
+				}
+				TICK = {
+						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 8000 )
+				}
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 50
+					COLOR green
+				ENDIF
+				}	
+
+			}	
+
+
+			Gunpowder = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~ScienceKnowledge | SiegeWeapons
+					CONDITION_VALUE SiegeWeapons >= 100
+					OR
+					CONDITION_VALUE Alchemy >= 100
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge > 50
+				}
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+				}
+				TICK = {
+				SET SiegeWeapons.value [ : : SiegeWeapons.value + 100 ]
+				}
+				
+				LINK Fortifications = {
+						WEIGHT [ max ] 100 + Gunpowder
+				}
+				
+			
+
+			}
 			
 			
 			
@@ -5397,6 +5545,8 @@ Main = {
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(3)
 					OVERRIDE_PARAM Legislation.value = GetParam(Legislation.value) - PerSeconds(2)
 					PROCESS Legislation = Min( GetParam(Legislation.value), Legislation )
+					OVERRIDE_PARAM Tribunal.value = GetParam(Tribunal.value) - PerSeconds(2)
+					PROCESS Tribunal = Min( GetParam(Tribunal.value), Tribunal )
 					OVERRIDE_PARAM ReligiousLaw.value = GetParam(ReligiousLaw.value) - PerSeconds(1)
 					PROCESS ReligiousLaw = Min( GetParam(ReligiousLaw.value), ReligiousLaw )
 					OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(1)
@@ -5410,12 +5560,16 @@ Main = {
 					COLOR red
 					FLUX 5
 				}
+				LINK Tribunal = {
+					COLOR red
+					FLUX 5
+				}
 				LINK ReligiousLaw = {
 					COLOR red
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF $Wealth > 0.9 * GetResourceMaximum($Wealth) & ~Settlement & ( ~Legislation + ~CelesteMandate + ~ReligiousLaw) & GameTime() > 1000
+					IF $Wealth > 0.9 * GetResourceMaximum($Wealth) & ~Settlement & ( ~Legislation + ~Tribunal + ~CelesteMandate + ~ReligiousLaw) & GameTime() > 1500
 						RISE
 					ENDIF
 				}
@@ -6765,8 +6919,36 @@ Main = {
 						
 			
 				}
-			
-			
+				
+
+			WitchHunt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+					EVENT_DEF [ 30 25 400 30% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+					PROCESS Stability = Stability - PerSeconds(0.2)
+					PROCESS Minorities = Minorities - PerSeconds(0.33)
+					PROCESS Piety = Piety + PerSeconds(0.5)
+					}
+
+					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK Piety = {
+						COLOR green
+						FLUX 2
+					}
+					
+					TRIGGER_EVENT = {
+						IF ( ~Minorities & Minorities>0 & Stability < 60 )
+							RISE
+						ENDIF
+					}
+				}
 
 			}
 }
