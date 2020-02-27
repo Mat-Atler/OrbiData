@@ -391,7 +391,12 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / 2500 )
+					IF ~Guilds
+						PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / 2500 )
+					ELSE
+						PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / ( 2500 - Guilds * 10 )  )
+					ENDIF
+					
 					IF ~Money == 0
 						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.005 * 0.9 ? 1.1)
 						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.005 * 0.9 ? 1.1)
@@ -744,10 +749,7 @@ Main = {
 				LINK DivineRight = {
 						WEIGHT [ max ] Min(100, value * 4 )
 				}
-			}		
-			
-			
-			
+			}				
 			OverlandTrade = {
 				VALUE value [ 0 0 100 ]
 				VALUE output [ 0 0 10000 ]
@@ -889,8 +891,7 @@ Main = {
 					ALERT Stability
 				}
 				
-			}
-			
+			}		
 			StateSize = {
 				VALUE value [ 0 100 2000 ]
 				DISPLAY_VALUE
@@ -932,8 +933,7 @@ Main = {
 				TRIGGER_SPAWN StateSize = {
 					GLOBE_SET_AREA StateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 4500 : red ]
 				}
-			}
-			
+			}		
 			MilitaryManpower = {
 				VALUE value [ 0 0 1000000 ]
 				VALUE Cavalry_value [ 0 0 1000 ]
@@ -1294,9 +1294,8 @@ Main = {
 				}
 				LINK MilitaryShips = {
 				WEIGHT [ to ]
-				}
-			}
-			
+				} 
+			}				
 			VassalPower = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -1405,7 +1404,7 @@ Main = {
 					ENDIF
 					
                 IF StateSize' > 0
-					Minorities Heathens = Minorities + StateSize' / 5
+					PROCESS Minorities = Minorities + StateSize' / 5
                 ENDIF
 					
 				}
@@ -1420,13 +1419,43 @@ Main = {
 						FLUX value * 0.013 
 						COLOR green
 					ENDIF
-					
+				}
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
 				}
 			
 					
 			}
+			
+			
+			CraftmanshipSkills = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF ~Guilds
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				IF ~Guilds
+					PROCESS value = value + PerSeconds( 0.02 * Guilds / 100 )
+				ENDIF
+				}
+
+				LINK Guilds = {
+					WEIGHT [ from ]
+				}
+				
+				TICK = {
+				SET Pottery.value [ : : 100 + CraftmanshipSkills ]
+				}
+				
+				LINK Money = {
+						WEIGHT [ max ] 100 + value
+				}
+				
+			}		
 			
 			}
 		Levers = {
@@ -5013,7 +5042,7 @@ Main = {
 				SET SiegeWeapons.value [ : : SiegeWeapons.value + 100 ]
 				}
 				
-				LINK Fortifications = {
+				LINK SiegeWeapons = {
 						WEIGHT [ max ] 100 + Gunpowder
 				}
 				
@@ -5022,6 +5051,144 @@ Main = {
 			}
 			
 			
+			TradeFair = {
+				TYPE Cultural
+				VALUE value [ 0 5 100 >> 1 ]
+				VALUE output [ 0 0 100 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~OverlandTrade
+					CONDITION_ERA >= FeudalAge
+					CONDITION_VALUE OverlandTrade >= 75
+					CONDITION_VALUE Mathematics >= 120
+					CONDITION_VALUE Urbanization >= 50
+				}
+				PRICE = {
+					$PoliticalPower = 200
+					$Wealth = 400
+				}
+				UPGRADE = {
+				
+					$PoliticalPower = (LinkCount(TradeFair) + 1) * 1
+					$Wealth = (LinkCount(TradeFair) + 1) * 5
+				}
+				TICK = {
+					PROCESS output = value * 100 / 1400
+					PROCESS ArtisanClass = ArtisanClass + PerSeconds(output)
+					PROCESS OverlandTrade = OverlandTrade + PerSeconds(output * 0.5)
+					SET TradeGoods.value [ : : 1000 + TradeFair.value * 5  ]
+					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.3 )
+				}
+				LINK ArtisanClass = {
+					IF (output > 0)
+						COLOR green
+						FLUX output / 5
+					ENDIF
+				}
+				LINK TradeGoods = {
+					IF (output > 0)
+						COLOR green
+						FLUX output / 5
+					ENDIF
+				}
+				
+				
+				LINK TradeGoods = {
+						WEIGHT [ max ] 1000 + TradeFair * 5
+				}
+
+			}
+			
+			
+			Guilds = {
+				TYPE Cultural
+				VALUE value [ 0 5 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~TradeFair
+					CONDITION_VALUE TradeFair >= 40
+					CONDITION_VALUE Entreprises >= 100
+					CONDITION_VALUE Urbanization >= 75
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 50
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Guilds) + 1) * 8
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(value / 70)
+						PROCESS $Wealth = $Wealth + PerSeconds(value / 100)
+				}
+				
+				LINK Entreprises = {
+				WEIGHT [ to ] 
+				}
+
+			}
+			
+			
+
+			Banks = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				VALUE weath_max [ 0 -5000 100000 >> 1 ]
+				VALUE weath_min [ 0 -5000 100000 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Money | ~Guilds
+					CONDITION_VALUE Guilds >= 40
+					CONDITION_VALUE Money >= 80
+					CONDITION_VALUE Mining >= 105
+					CONDITION_VALUE Urbanization >= 40
+				}
+				PRICE = {
+					$PoliticalPower = 500
+					$Wealth = 800
+				}
+				UPGRADE = {
+					$PoliticalPower = 15
+				}
+				TICK = {
+					PROCESS weath_max = 1000 + value * 20
+					PROCESS weath_min = -500 - value * 20
+					RESOURCE_MAX $Wealth = weath_max
+					SET ScripturalMoney.value [ : : Banks.value ]
+					//RESOURCE_MIN $Wealth = weath_min
+				}
+				
+				LINK ScripturalMoney = {
+						WEIGHT [ max ] 100 + Banks
+				}
+			
+			}
+			
+			
+			ScripturalMoney = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~ScienceKnowledge | SiegeWeapons
+					CONDITION_VALUE Banks >= 30
+					CONDITION_VALUE Money >= 80
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 10
+				}
+				TICK = {
+				SET Money.value [ : : 100 + ScripturalMoney.value / 2 ]
+				}
+				
+				LINK Money = {
+						WEIGHT [ max ] 100 + value / 2
+				}
+				
+			
+
+			}
 			
 			
 			}
@@ -6197,7 +6364,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 25 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5000 ) | (StateSize >= 500 ) | ( GameTime() > 8000 ) | ( Stability <= 20 GameTime() > 5000 ) ) & GameTime() < 13000
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 25 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 500 ) | ( GameTime() > 8500 ) | ( Stability <= 20 GameTime() > 6500 ) ) & GameTime() < 13000
 							RISE
 						ENDIF
 				}
