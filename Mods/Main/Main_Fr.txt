@@ -45,10 +45,11 @@ Main = {
 				0 = "Sans Défense"
 				0.000001 = "Petite Armée"
 				30 = "Armée normale"
-				50 = "Grande Armée"
+				75 = "Grande Armée"
+				150 = "Très Grande Armée"
 			}
 			TEXT "État de l'armée:<br><size=26><b>" @[Main.MilitaryManpower.value,LEVEL] "</b></size><br> (" @[Main.MilitaryManpower.value] ")"
-			TEXT "infanterie: " @[Main.MilitaryManpower.Infantry_value] " <size=10>"§[Main.MilitaryManpower.Infantry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Infantry_value',F2] "</color></size>" "<br>" "Cavalries: " @[Main.MilitaryManpower.Cavalry_value] " <size=10>"§[Main.MilitaryManpower.Cavalry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Cavalry_value',F2] "</color></size>" "<br>" "Tireurs: " @[Main.MilitaryManpower.Missile_value] " <size=10>"§[Main.MilitaryManpower.Missile_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Missile_value',F2] "</color></size>" "<br>" "Mercenaires: " @[Main.MilitaryManpower.Mercenaries_value] " <size=10>"§[Main.MilitaryManpower.Mercenaries_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Mercenaries_value',F2] "</color></size>"
+			TEXT "Infanterie : " @[Main.MilitaryManpower.Infantry_value] " <size=10>"§[Main.MilitaryManpower.Infantry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Infantry_value',F2] "</color></size>" "<br>" "Cavalerie : " @[Main.MilitaryManpower.Cavalry_value] " <size=10>"§[Main.MilitaryManpower.Cavalry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Cavalry_value',F2] "</color></size>" "<br>" "Tireurs : " @[Main.MilitaryManpower.Missile_value] " <size=10>"§[Main.MilitaryManpower.Missile_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Missile_value',F2] "</color></size>" "<br>" "Mercenaires : " @[Main.MilitaryManpower.Mercenaries_value] " <size=10>"§[Main.MilitaryManpower.Mercenaries_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Mercenaries_value',F2] "</color></size>"
 			TEXT "PAS D'ARMÉE"
 		}
 		
@@ -122,7 +123,7 @@ Main = {
 				SUMMARY "Le climat de notre région principale"
 			}
 			Natalism = {
-				NAME "Natalisme"
+				NAME "Natalité"
 				LEVEL value = {
 					0 = "En déclin serieux"
 					40 = "En déclin"
@@ -509,6 +510,20 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre commerce interne ne se suffit plus, nous devons exporter notre production dans des pays lointains pour faire des bénéfices toujours plus faramineux."
 				SUMMARY "Notre niveau de commerce international"
 				}
+				
+				
+			ScienceKnowledge = {
+				NAME "Connaissance Scientifique"
+				DESCRIPTION "Connaissances : " @[value,0.###]<br><br>" Nos conaissances, enfin obtenus par un empirisme plus ou moins rigoureux, elles nous assurent que chaque pas que nous faisons va dans une direction plus efficace."
+				SUMMARY "Nos connaissances actuelles"
+			}
+			
+			Minorities = {
+				NAME "Minorités"
+				DESCRIPTION "Nombre : " @[value,0.###]<br><br>" La disparité des peuples liés à nos conquêtes et nos disparités religieuses nous approte un certain trouble à notre cohésion nationale. En revanche cela multiplie nos possibilités de commerce."
+				SUMMARY "Renforcent notre commerce mais dégrade notre union"
+			}
+				
 		}
 		Levers = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Levers
@@ -703,7 +718,7 @@ Main = {
 			Urbanization = {
 				NAME "Urbanisation"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -714,7 +729,7 @@ Main = {
 			NonSecularEducation = {
 				NAME "Éducation religieuse"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -725,7 +740,7 @@ Main = {
 			SecularEducation = {
 				NAME "Éducation sécularisée"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -747,7 +762,7 @@ Main = {
 			Philosophy = {
 				NAME "Philosophie"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -952,7 +967,7 @@ Main = {
 			Fortifications = {
 				NAME "Fortifications"
 				LEVEL value = {
-					0 = "Auncune défense"
+					0 = "Aucune défense"
 					0.001 = "Barricades"
 					20 = "Palissade"
 					40 = "Mur en pierre"
@@ -965,7 +980,7 @@ Main = {
 			Expensionism = {
 				NAME "Expensionisme"
 				LEVEL value = {
-					0 = "Auncun"
+					0 = "Aucun"
 					0.001 = "Bas"
 					40 = "Moyen"
 					70 = "Intensif"
@@ -978,7 +993,7 @@ Main = {
 			LootingCampaigns = {
 				NAME "Campagne de pillage"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Basse"
 					40 = "Moyenne"
 					70 = "Intensive"
@@ -1056,7 +1071,7 @@ Main = {
 			Crossbow = {
 				NAME "Arbalète"
 				LEVEL value = {
-					0 = "Auncune"
+					0 = "Aucune"
 					0.001 = "Recherches infructeuses"
 					15 = "Calcule de la meilleure torsion"
 					100 = "Maîtrisée"
@@ -1080,7 +1095,7 @@ Main = {
 			FarmingTools = {
 				NAME "Outils Agricole"
 				LEVEL value = {
-					0 = "Auncun"
+					0 = "Aucun"
 					0.001 = "Commencement de la Transition"
 					50 = "Transition en bonne voie"
 					100 = "Transition faites"
@@ -1104,8 +1119,8 @@ Main = {
 				NAME "Taxation de la population"
 				LEVEL value = {
 					0 = "Aucune"
-					0.01 = "Taxes annuels"
-					5 = "Taxes bi-annuels"
+					0.01 = "Taxes annuelles"
+					5 = "Taxes bi-annuelles"
 					10 = "Lourdes taxes"
 					35 = "Très lourdes taxes"
 				}
@@ -1199,7 +1214,7 @@ Main = {
 			}	
 			Music = {
 				NAME "Musique"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] </b> <br><br> "La musique est l'une des plus anciennes forme d'arts, pratiquée par la quasi-totalité des civilisations. Un art noble, anciens et sans auncun doute la création d'une culture millénaires."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] </b> <br><br> "La musique est l'une des plus anciennes forme d'arts, pratiquée par la quasi-totalité des civilisations. Un art noble, anciens et sans Aucun doute la création d'une culture millénaires."
 				SUMMARY "Augmente la culture"
 			}	
 			Litterature = {
@@ -1406,9 +1421,136 @@ Main = {
 					75 = "Grande Universités"
 					100 = "Maison de la Sagesse"
 				}
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Notre éducation a trop souvent été trop dispersée. En regroupant nos plus talentueux esprit au même endroit, nous pouvons espérer créer de bien meilleurs enseignements."
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Notre éducation a trop souvent été trop dispersée. En regroupant nos plus talentueux esprit au même endroit, nous pouvons espérer créer de bien meilleurs enseignements."
 				SUMMARY "Améliore notre recherche intellectuelle"
 				}
+				
+				
+			FarmersTax = {
+				NAME "Taxe Paysanne"
+				LEVEL value = {
+					0 = "Aucune"
+					0.01 = "Taxes annuelles"
+					5 = "Taxes bi-annuelles"
+					10 = "Lourdes taxes"
+					20 = "Très lourdes taxes"
+				}
+				DESCRIPTION <b>"Valeur: "@[value] </b>  <br><br> "L'évolution de notre société a conduit les paysans a joué un rôle important dans notre économie. Une taxation juste nous permettra de financer nos armées pour les les protéger."
+				SUMMARY "Taxer nos paysans"
+			}
+			
+			
+			Mill = {
+				NAME "Moulins"
+				LEVEL value = {
+					0 = "Aucun"
+					0.001 = "Premiers moulins"
+					70 = "Moulins"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Avec le temps, notre compréhension des mécanismes agraire s'est amélioré, nous savons désormais moudre le grain bien plus efficacement. Nous devons répandre cette technique dans tout notre pays."
+				SUMMARY "Améliore votre agriculture"
+			}	
+			
+			
+			Nobility = {
+				NAME "Noblesse"
+				LEVEL value = {
+					0 = "Rumeurs sur le sang bleu"
+					20 = "Étiquette et pensions à vie"
+					40 = "Cour royale"
+					70 = "Cour fastueuse"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organiser notre aristocratie en une classe au dessus des autres, la doter de droits et de pensions inaliénables et héréditaires, permettra de calmer les grands seigneurs de notre pays."
+				SUMMARY "Renforce notre pouvoir en achetant la loyauté des grands seigneurs"
+			}	
+			
+			MedievalArmors = {
+				NAME "Armures médiévales"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Les armures médiévales représente un champ vaste et complexe dont la progression avance par petits tâtonnements au gré des inventions des artisans."
+				SUMMARY "Technologie millitaire"
+			}	
+			
+			
+			SiegeWeapons = {
+				NAME "Armes de Siège"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Balistique douteuse"
+					50 = "Balistique incertaine"
+					100 = "Trébuchets"
+					150 = "Canon à bombarde"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
+				SUMMARY "Technologie millitaire"
+			}	
+
+			NationState = {
+				NAME "État-Nation"
+				LEVEL value = {
+					0 = "Concept théorique"
+					10 = "Rêve lointain"
+					25 = "Preuves légales"
+					50 = "Nous sommes une nation"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos légistes sont formels, notre pays a une essence propre appelée Nation. On s'appuyant sur ce concept nous pourrions unir notre peuple sous une idée commune."
+				SUMMARY "Renforce notre cohésion nationale"
+			}			
+
+			Tribunal = {
+				NAME "Tribunal"
+				LEVEL value = {
+					0 = "Jugements arbitraires"
+					25 = "Cour de justice"
+					50 = "Corps de juges"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Notre loi est force de vérité, cependant nous devons parfois en préciser certains contours flous. En sanctuarisant un lieu, le tribunal, comme symbole de justice notre pouvoir s'aggrandira."
+				SUMMARY "Renforce notre pouvoir politique"
+			}		
+			
+			Castles = {
+				NAME "Châteaux"
+				LEVEL value = {
+					0 = "Fortifications primaires"
+					25 = "Châteaux de bois"
+					50 = "Châteaux de pierre"
+					75 = "Forteresse"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos nobles locaux ont besoin d'un lieu symbolique comme résidence et comme place forte. Construisons des fortifications impresionnantes qui permettront de mieux organiser nos levées militaires."
+				SUMMARY "Améliore le recrutement des levées"
+			}	
+			
+			
+			Medecine = {
+				NAME "Médecine"
+				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
+				SUMMARY "Atténue les chances d'épidémies"
+			}	
+			
+			Alchemy = {
+				NAME "Alchimie"
+				LEVEL value = {
+					0 = "Analyse des corps naturels"
+					25 = "Recherche élementaires"
+					50 = "Début de la chimie"
+					75 = "Théorie de la transmutation"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos plus intelligents savants s'engouffrent dans une discipline essayant de comprendre la nature même des choses. Leurs recherches paraissent obscures mais elle conduiront peut être-dans un avenir lointain à un avenir glorieux."
+				SUMMARY "Améliore notre connaissance scientifique"
+			}	
+			
+			Gunpowder = {
+				NAME "Poudre à Canon"
+				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Nos études avec des matériaux très étrange nous a donné une chose ressemblant à de la poudre noire. Hautement explosive, elle pourrait avoir beaucoup d'application notamment militaire."
+				SUMMARY "Améliore notre potentiel militaire"
+			}	
+			
 				
 		}
 		Events = {
@@ -1416,12 +1558,12 @@ Main = {
 			::APPEND "Main/Religious_Fr.txt" Religious.Nodes.Events
 			Fire = {
 				NAME "Feu de Forêt"
-				DESCRIPTION "Un feu dans les campagnes dévore la flore locale et détruit les champs. Nous devons réinvestire le secteur agricole dès que possible."
+				DESCRIPTION "Un feu dans les campagnes dévore la flore locale et détruit les champs. Nous devons réinvestir le secteur agricole dès que possible."
 				SUMMARY "Va réduire la flore et l'agriculture"
 			}
 			InvasiveSpecies = {
 				NAME "Nuée de parasite"
-				DESCRIPTION "Une nuée d'insectes vien détruire la flore locale et parasiter les animaux. Préparez-vous pour un lourd déclin de l'écosystème."
+				DESCRIPTION "Une nuée d'insectes viens détruire la flore locale et parasiter les animaux. Préparez-vous pour un lourd déclin de l'écosystème."
 				SUMMARY "Va réduire la flore et la faune"
 			}
 			Famine = {
@@ -1431,33 +1573,33 @@ Main = {
 			}
 			AbundantHarvest = {
 				NAME "Récolte abondante"
-				DESCRIPTION "Le climat, les précipitations et surement nos prières nous ont bénies par une récolte particulièrement abondante la sécurité alimentaire va augmenter la taille de la population supporté. Ce signe vous a conforté dans le rôle de dirigeant."
+				DESCRIPTION "Le climat, les précipitations et surement nos prières nous ont bénies par une récolte particulièrement abondante la sécurité alimentaire va augmenter la taille de la population supportée. Ce signe vous a conforté dans le rôle de dirigeant."
 				SUMMARY "Augmente la faune et l'agriculture"
 			}
 			Pillaging = {
 				NAME "Pillage"
-				DESCRIPTION "La richesse de nos routes commercials et de nos monuments religieux ont attiré des pillards et autres bandits."
+				DESCRIPTION "La richesse de nos routes commerciales et de nos monuments religieux ont attiré des pillards et autres bandits."
 				SUMMARY "Va réduire le commerce et les monuments religieux"
 			}
 			Epidemic = {
 				NAME "Épidémie"
-				DESCRIPTION "La surpopulation, la promiscuité de notre peuple a transformer une maladie en épidémie décimant votre populations."
+				DESCRIPTION "La surpopulation, la promiscuité de notre peuple a transformé une maladie locale en épidémie décimant votre population."
 				SUMMARY "Va réduire la population"
 			}
 			MassiveTroubles = {
 				NAME "Trouble massif"
-				DESCRIPTION "Le peuple ne voit plus notre gouvernement comme légitime. Restaurez la situation rapidement ! Ou sinon l'ordre que vous avez établit va s'effondrer!"
+				DESCRIPTION "Le peuple ne voit plus notre gouvernement comme légitime. Restaurez la situation rapidement ! Ou sinon l'ordre que vous avez établit va s'effondrer !"
 				SUMMARY "Est-ce la fin ?!"
 			}
 			ClergyRebellion = {
 				NAME "Soulèvement du clergé"
-				DESCRIPTION "Les prêtres ne sont pas content de votre façon impise de gouverner, reformer en théocratie ou sinon les gardiens du sacrés vous dépposeront."
-				SUMMARY "Les prêtres haissent votre systèmes de gouvernements"
+				DESCRIPTION "Les prêtres ne sont pas content de votre façon impie de gouverner, reformer en théocratie ou sinon les gardiens du sacré vous déposeront."
+				SUMMARY "Les prêtres haïssent votre système de gouvernements"
 			}
 			NoblesRebellion = {
 				NAME "Soulèvement des aristocrates"
 				DESCRIPTION "La noblesse veux saisir le pouvoir, ils vont vous déposer puis couronner un roi parmis les leurs, vous devriez vous reformer vers une monarchie pour éviter plus de trouble."
-				SUMMARY "Les aristocrates haissent votre systèmes de gouvernements"
+				SUMMARY "Les aristocrates haïssent votre système de gouvernements"
 			}
 			ProTradeRiots = {
 				NAME "Soulèvement pour le libre-échange"
@@ -1481,8 +1623,8 @@ Main = {
 			}
 			GreatFire = {
 				NAME "Grand feu"
-				DESCRIPTION "Votre capital est en plein effervescence, à tout moment une nouvelle personne s'installe et magasin ouvre... il a suffit d'un accident pour l'embraser, des quartiers entiers sont partis en fumée."
-				SUMMARY "Un immense incendie ravage notre capital!"
+				DESCRIPTION "Votre capital est en plein effervescence, à tout moment une nouvelle personne s'installe et magasin ouvre... il a suffi d'un accident pour l'embraser, des quartiers entiers sont partis en fumée."
+				SUMMARY "Un immense incendie ravage notre capitale !"
 			}
 			RegionProsperity = {
 				NAME "Prospérité régionale"
@@ -1491,48 +1633,48 @@ Main = {
 			}
 			Separatism = {
 				NAME "Séparatisme"
-				DESCRIPTION "Vos avez de nombreuse terres uniquement sur le papier, car les gens habitants sur ces terres ne vous voient pas comme leurs dirigeant légitimes. La force armée de votre civilisations n'es pas à la hauteur de garder vos frontières intactes."
+				DESCRIPTION "Vos avez de nombreuses terres uniquement sur le papier, car les gens habitants sur ces terres ne vous voient pas comme leurs dirigeant légitimes. La force armée de votre civilisation n'est pas à la hauteur pour garder vos frontières intactes."
 				SUMMARY "Nous perdons des territoires non-gardé !"
 			}
 			BeingInvaded = {
 				NAME "Invasion Étrangère"
-				DESCRIPTION "Une puissance étrangère est en pleine campagne dans vos terres, si vos fortification et votre armée s'effondre vous allez perdre des territoires à leur avantage."
+				DESCRIPTION "Une puissance étrangère est en pleine campagne dans vos terres, si vos fortifications et votre armée s'effondre vous allez perdre des territoires à leur avantage."
 				SUMMARY "Repoussez l'envahisseur !"
 			}
 			NeighborhoodTroubles = {
 				NAME "Troubles dans le voisinage"
-				DESCRIPTION "Certains de nos voisins essuyent de terribles troubles internes. Cela baissera la chance d'une attaque de leur parts, mais le commerce s'en trouvera réduit de même."
+				DESCRIPTION "Certains de nos voisins connaissent de terribles troubles internes. Cela baissera la chance d'une attaque de leur part, mais le commerce s'en trouvera réduit de même."
 				SUMMARY "Le bellicisme des voisins et le commerce va chuter"
 			}
 			NeighborhoodRise = {
 				NAME "Ambitions du voisinage"
-				DESCRIPTION "Un de nos voisins est en trains de connaître une expansions fulgurante, nous sommes les suivant. Préparez vos défenses."
+				DESCRIPTION "Un de nos voisins est en trains de connaître une expansion fulgurante, nous sommes les suivant. Préparez vos défenses."
 				SUMMARY "Préparez vos défenses !"
 			}
 
 			WeakMonarch = {
 				NAME "Monarque inapte"
-				DESCRIPTION "Notre dirigeant actuelle se révélent comme étant incompétant et complétement inapte. Le pouvoir gouvernemental va en pâtire tant qu'il sera aux rênes."
+				DESCRIPTION "Notre dirigeant actuelle se révèlent comme étant incompétent et complétement inapte. Le pouvoir gouvernemental va en pâtir tant qu'il sera aux rênes."
 				SUMMARY "Votre gouvernement va en souffrir"
 			}
 			Devaluation = {
 				NAME "Dévaluation"
-				DESCRIPTION "Certaine situation économique font varier la force d'une devise. De grave événement ont fait perdre une stabilité à notre monnaie, vous devez réformer, vite."
-				SUMMARY "We need to reform money after the crisis"
+				DESCRIPTION "Certaine situations économiques font varier la force d'une devise. De graves événements ont fait perdre une stabilité à notre monnaie, vous devez réformer, vite."
+				SUMMARY "Nous devons réformer notre monnaie"
 			}
 			GreatGeneral = {
 				NAME "Grand général"
-				DESCRIPTION "Un de nos officier s'est révélé être un stratège et tacticiens sans pareil, augmentant l'efficacité de votre armées. "
+				DESCRIPTION "Un de nos officier s'est révélé être un stratège et tacticien sans pareil, augmentant l'efficacité de votre armée. "
 				SUMMARY "Apporte une grande efficacité à votre armée."
 			}
 			GreatNomadInvasion = {
 				NAME "Grande invasion nomade"
-				DESCRIPTION "Un de nos voisins maîtrisant les chevaux a commencé une invasions. Ils veulent détruire votre gouvernement et s'installer sur les restes."
-				SUMMARY "Une immense horde de nomade vous attaque!"
+				DESCRIPTION "Un de nos voisins maîtrisant les chevaux a commencé une invasion. Ils veulent détruire votre gouvernement et s'installer sur les restes."
+				SUMMARY "Une immense horde de nomade vous attaque !"
 			}
 			Piracy = {
 				NAME "Piraterie"
-				DESCRIPTION "Les riches routes commerciales maritimes attirent des pirates, endiguer le problème en patrouillant les mer."
+				DESCRIPTION "Les riches routes commerciales maritimes attirent des pirates, endiguer le problème en patrouillant les mers."
 				SUMMARY "Des troubles en mer"
 			}
 			CoupDEtat = {
@@ -1545,11 +1687,10 @@ Main = {
 				DESCRIPTION "Notre culture est impie. Notre jeune génération n'écoute plus les anciens. Les signes sont mauvais."
 				SUMMARY "Notre culture décline"
 			}
-
 			NavalInvasion = {
 				NAME "Invasion Navale"
-				DESCRIPTION "Une puissance étrangère va débarquer sur nos côtes. Votre flotte va essayer de les arrêter, en cas d'échec l'armée et les fortification prenderons le relais. Si ces derniers remparts chutent vous allez perdre du territoire."
-				SUMMARY "Repoussez l'envahisseur!"
+				DESCRIPTION "Une puissance étrangère va débarquer sur nos côtes. Votre flotte va essayer de les arrêter, en cas d'échec l'armée et les fortification prendrons le relais. Si ces derniers remparts chutent vous allez perdre du territoire."
+				SUMMARY "Repoussez l’envahisseur !"
 			}
 			BarbarianThrust = {
 				NAME "Poussée des barbares"
@@ -1563,7 +1704,7 @@ Main = {
 			}
 			EconomicCollapse = {
 				NAME "Effondrement économique"
-				DESCRIPTION "Le vide de vos coffres ont crée un grand désordre. Les finances sont-elles condamnées ?"
+				DESCRIPTION "Le vide de vos coffres ont créé un grand désordre. Les finances sont-elles condamnées ?"
 				SUMMARY "Nos coffres sont vides"
 			}
 			ClimateChange = {
@@ -1573,12 +1714,12 @@ Main = {
 			}
 			RecruitmentShortage = {
 				NAME "Pénurie de recrues"
-				DESCRIPTION "Notre armée professionelle est en crise, peu de citoyens sont intéressés par la carrière militaire, alors que les étrangers et les mercenaires sont toujours disponible."
+				DESCRIPTION "Notre armée professionnelle est en crise, peu de citoyens sont intéressés par la carrière militaire, alors que les étrangers et les mercenaires sont toujours disponible."
 				SUMMARY "Nous ne pouvons plus recruter de nouvelles personnes"
 			}
 			SalicSucession = {
 				NAME "Partage Salique"
-				DESCRIPTION "La mort du précédent roi a mené à une dispute entre les héritiers, d'après la loi, vos cadets auront une part de votre territoires. Mais il vous permet de vous recentrer sur une plus petite part de royaume."
+				DESCRIPTION "La mort du précédent roi a mené à une dispute entre les héritiers, d'après la loi, vos cadets auront une part de votre territoire. Mais il vous permet de vous recentrer sur une plus petite part de royaume."
 				SUMMARY "La mort du roi à divisée son territoire"
 			}
 
@@ -1596,13 +1737,13 @@ Main = {
 			
 			BeingRaided = {
 				NAME "Pillé"
-				DESCRIPTION "Les richesses de nos routes commerciales et monuments religieux ont mené à un pillage en règle, les attaquants sont sur de bien étranges bateaux, plats et capable de manoeuvrer autant sur mer que rivière. Nous devons améliorer notre flotte."
+				DESCRIPTION "Les richesses de nos routes commerciales et monuments religieux ont mené à un pillage en règle, les attaquants sont sur de bien étranges bateaux, plats et capable de manœuvrer autant sur mer que rivière. Nous devons améliorer notre flotte."
 				SUMMARY "Va réduire le commerce et nos monuments religieux"
 			}
 
 			MilitaryPlot = {
 				NAME "Complot Militaire"
-				DESCRIPTION "Alors que notre stabilité est basse, nos officiers millitaires prennent le pouvoir et éliminent les répugnants barbares des terres."
+				DESCRIPTION "Alors que notre stabilité est basse, nos officiers militaires prennent le pouvoir et éliminent les répugnants barbares des terres."
 				SUMMARY "Une dictature militaire va commencer !"
 			}
 			
@@ -1629,7 +1770,34 @@ Main = {
 				DESCRIPTION "L'insécurité régnante des villes a conduit notre population à quitter les centres citadins et à s'installer durablement à la campagne."
 				SUMMARY "Notre population fuit les villes"
 			}
+			
+			PeasantRevolt = {
+				NAME "Révolte paysanne"
+				DESCRIPTION "Les paysans, accablés par les impôts, se sont révoltés !"
+				SUMMARY "Nos paysans se révoltent"
+			}
+			
+			GreatEpidemic = {
+				NAME "Grande Épidémie"
+				DESCRIPTION "Une maladie particulièrement létale se propage à nos frontières. Prions pour notre salut !"
+				SUMMARY "Va réduire drastiquement notre population"
+			}
+			
+			
+			CulturalRevival = {
+				NAME "Renaissance culturelle"
+				DESCRIPTION "Après un âge de déclin, notre culture profite de notre situation stable pour refleurir."
+				SUMMARY "Augmente nos leviers de culture"
+			}
+			
+			WitchHunt = {
+				NAME "Chasse aux sorcières"
+				DESCRIPTION "Notre population a provoqué un pogrom local contre nos minorités, si ce genre d'incident renforce notre identité religieuse et nationale, les conséquences pour le commerce et notre stabilité sont désastreuse."
+				SUMMARY "Réduit nos minorité et notre stabilité"
+			}
+
 
 		}
+
 	}
 }

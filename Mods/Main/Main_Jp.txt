@@ -432,7 +432,7 @@ Main = {
 					80 = "良好"
 					100 = "U・S・A！"
 				}
-				DESCRIPTION <b>"愛国心: "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br> 国家は都市よりも大きなグループに属しているという複雑な概念です。大帝国は新しい人口を統合する努力をしないと分離主義者によって社会が不安定になってしまいます。"
+				DESCRIPTION <b>"愛国心: "@[value,LEVEL] </b> <br>" ( "@[value] " )<br><br> 国家は都市よりも大きなグループに属しているという複雑な概念です。大帝国は新しい人口を統合する努力をしないと分離主義者によって社会が不安定になってしまいます。"
 				SUMMARY "社会安定性に影響を与える"
 			}
 			Culture = {
@@ -670,7 +670,7 @@ Main = {
 				LEVEL value = {
 					0 = "なし"
 					0.001 = "小規模"
-					40 = "標準的
+					40 = "標準的"
 					70 = "大規模"
 				}
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> <br><br>  "畜産のおかげで我々はより速く移動できるようになりました。我らは氏族でまとまりはじめました。"
@@ -1403,6 +1403,104 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our education has too often been dispersed. By bringing our most talented minds together in one place, we can hope to create far better teachings."
 				SUMMARY "Improves our intellectual research"
 				}
+				
+				
+			FarmersTax = {
+				NAME "Farmers' Tax"
+				LEVEL value = {
+					0 = "None"
+					0.01 = "Annual taxes"
+					5 = "Bi-Annual taxes"
+					10 = "Heavy taxes"
+					20 = "Very heavy taxes"
+				}
+				DESCRIPTION <b>"Value: "@[value] </b>  <br><br> "The evolution of our society has led farmers to play an important role in our economy. Fair taxation will enable us to finance our armies to protect them."
+				SUMMARY "Tax our farmers"
+			}
+			
+			
+			Mill = {
+				NAME "Mill"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Firsts Mills"
+					70 = "Mills"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
+				SUMMARY "Improve our agriculture"
+			}	
+			
+			
+			Nobility = {
+				NAME "Nobility"
+				LEVEL value = {
+					0 = "Rumors of blue blood"
+					20 = "Etiquette and lifetime pensions"
+					40 = "Royal court"
+					70 = "Sumptuous courtship"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organizing our aristocracy into a class above the others, endowing it with inalienable & hereditary rights and pensions, will appease the great lords of our country."
+				SUMMARY "Strengthen our power by buying the loyalty of the great lords."
+			}	
+			
+			MedievalArmors = {
+				NAME "Medieval Armors"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
+				SUMMARY "Military Technology"
+			}	
+			
+			
+			SiegeWeapons = {
+				NAME "Siege Weapons"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = " Doubtful ballistics "
+					50 = " Unreliable ballistics "
+					100 = "Trebuchets"
+					150 = "Bomb Cannon"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
+				SUMMARY "Military Technology"
+			}	
+			
+			NationState = {
+				NAME "Nation State"
+				LEVEL value = {					
+					0 = "Theoretical concept"
+					10 = "Distant dream"
+					25 = "Legal evidence"
+					50 = "We are a nation"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Our jurists are formal, our country has an essence of its own called Nation. With this concept we could unite our people under a common idea."
+				SUMMARY "Strengthens our national cohesion"
+			}	
+			
+			
+			Tribunal = {
+				NAME "Tribunal"
+				LEVEL value = {
+					0 = "Arbitrary judgments"
+					25 = "Court of justice"
+					50 = "Corps of judges"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our law is a force of truth, however, we must sometimes specify certain vague outlines. By sanctifying a place, the Tribunal, as a symbol of justice, our power will grow."
+				SUMMARY "Strengthens our political power"
+				}
+			
+			Medicine = {
+				NAME "Medicine"
+				DESCRIPTION <b>"Value: "@[value,0.###] " )<br><br> Our growing knowledge has opened the doors to medical care. Making a clear distinction between diseases and curses, between prayers and drugs, we will gradually come to fight the plagues of men."
+				SUMMARY "Reduces the chance of epidemics"
+				}
+				
+				
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events
@@ -1628,7 +1726,23 @@ Main = {
 				SUMMARY "Our population flees the cities"
 			}
 			
+			PeasantRevolt = {
+				NAME "Peasant Revolt"
+				DESCRIPTION "The peasants, burdened by taxes, have revolted!"
+				SUMMARY "Our peasants are revolting"
+			}
 			
+			GreatEpidemic = {
+				NAME "Great Epidemic"
+				DESCRIPTION "A particularly lethal disease is spreading across our borders. We must pray for our salvation!"
+				SUMMARY "Will drastically reduce our population"
+			}
+			
+			CulturalRevival = {
+				NAME "Cultural Revival"
+				DESCRIPTION "After an age of decline, our culture takes advantage of our stable situation to flourish again."
+				SUMMARY "Increases our culture levers"
+			}
 			
 		}
 	}

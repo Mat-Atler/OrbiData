@@ -1060,8 +1060,8 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-				PROCESS value = Max ( (GameTime() - 2000 ) / 60 , 0 )
-				PROCESS MilitaryTechnology = MilitaryTechnology - PerSeconds(value / 32)
+				PROCESS value = Max ( (GameTime() - 2000 ) / 50 , 0 )
+				PROCESS MilitaryTechnology = MilitaryTechnology - PerSeconds(value / 30)
 				}
 
 				LINK MilitaryTechnology = {
@@ -1169,7 +1169,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) + ( Culture * 2 ) + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
+					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 2 ) + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
 					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
 					ELSE
@@ -1369,7 +1369,64 @@ Main = {
 				LINK Harbours = {
 					WEIGHT [ to ]
 				}	
-			}	
+			}
+			
+			ScienceKnowledge = {
+				VALUE value [ 0 0 10000 ]
+				DISPLAY_VALUE
+				SLEEP = {
+					IF ~Alchemy
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				
+				}
+				} 
+				
+				
+			Minorities = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF ~Heretics | ~Heathens | OverlandTrade >= 100
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ~Money == 0
+						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
+						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
+					ELSE
+						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * ( Max( Money , 1) / 40) * 0.9 ? 1.1 )
+						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * ( Max( Money , 1) / 40) * 0.9 ? 1.1 )
+					ENDIF
+					
+                IF StateSize' > 0
+					Minorities Heathens = Minorities + StateSize' / 5
+                ENDIF
+					
+				}
+				LINK NavalTrade = {
+					IF (value > 0)
+						FLUX value * 0.013
+						COLOR green
+					ENDIF
+				}
+				LINK OverlandTrade = {
+					IF (value > 0)
+						FLUX value * 0.013 
+						COLOR green
+					ENDIF
+					
+				LINK NationalCohesion = {
+					WEIGHT [ to ]
+				}
+			
+					
+			}
 			
 			}
 		Levers = {
@@ -1803,6 +1860,9 @@ Main = {
 					ENDIF
 					IF ~FarmingTools
 						PROCESS output = output * ( 1 + ( FarmingTools / 150 ) )
+					ENDIF
+					IF ~Mill
+						PROCESS output = output * ( 1 + ( Mill / 200 ) )
 					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
@@ -2766,7 +2826,7 @@ Main = {
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Legislation / 50)
 				}
-			}	
+			}
 			ReligiousLaw = {
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				TYPE Cultural
@@ -2861,7 +2921,15 @@ Main = {
 				TICK = {
 				SET CivilEngineering.value [ : : Min ( Urbanization , Mathematics ) ]
 				SET Fortifications.value [ : : StateSize * Mathematics / 100 ]
+				PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 12000 )
 				}
+				
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 60
+					COLOR green
+				ENDIF
+				}	
 				
 				LINK Fortifications = {
 						WEIGHT [ max ] StateSize * Mathematics / 100
@@ -3349,6 +3417,9 @@ Main = {
 					CONDITION_VALUE Mathematics >= 100
 					CONDITION_VALUE Philosophy >= 100
 					CONDITION_VALUE Navy >= 200
+					OR
+					CONDITION_VALUE Alchemy >= 50
+					
 				}		
 				
 				PRICE = {
@@ -4172,7 +4243,7 @@ Main = {
 				WEIGHT [ from ] 
 				}
 
-			}		
+			}	
 			FarmingTools = {
 				TYPE Technological
 				VALUE value [ 0 20 100 >> 1 ]
@@ -4435,11 +4506,7 @@ Main = {
 			Banners = {
 				TYPE Technological
 				VALUE value [ 0 20 50 >> 3 ]
-				// SLEEP = {
-					// IF ~HorseDomestication
-						// SPAWN
-					// ENDIF
-				// }
+				VALUE multiplier [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT 0
 					CONDITION_NODE + Feudality
@@ -4452,13 +4519,17 @@ Main = {
 				}
 				
 				TICK = {
-				
+					IF ~Castles
+						PROCESS Banners.multiplier = 1 + 0.2 + ( Castles / 100 )
+					ELSE
+						PROCESS Banners.multiplier = 1 + 0.3
+					ENDIF
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
-						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 7000)
-						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 8000)
+						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * multiplier / 7000)
+						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * multiplier / 8000)
 					ENDIF
 					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) )
-						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Feudality / 7000)
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * multiplier / 7000)
 					ENDIF
 					
 				}
@@ -4576,6 +4647,7 @@ Main = {
 				TICK = {
 						SET Litterature.value [ : : 100 + University.value ]
 						SET Philosophy.value [ : : 100 + University.value ]
+						SET Mathematics.value [ : : 100 + University.value ]
 						SET Education.value [ : : 50 + University.value / 2 ]
 				}
 				
@@ -4587,12 +4659,370 @@ Main = {
 						 WEIGHT [ max ] 100 + University
 				}
 				
+				LINK Mathematics = {
+						 WEIGHT [ max ] 100 + University
+				}
+				
+				
 				LINK Education = {
 						 WEIGHT [ max ] 50 + University.value / 2
 				}
 				
 
-			}			
+			}	
+
+
+			FarmersTax = {
+				TAG Sedentary
+				TYPE Cultural
+				VALUE value [ 0 5 30 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Population
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality
+					CONDITION_NODE + Feudality
+					CONDITION_VALUE Agriculture > 70
+				}
+				PRICE = {
+					$PoliticalPower = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(FarmersTax) + 1) * 5
+				}
+				
+				TICK = {
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 12)
+				}
+				
+				LINK Agriculture = {
+				WEIGHT [ from ] 
+				}
+
+			}
+
+
+			Mill = {
+				TYPE Technological
+				VALUE value [ 0 5 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | ~FarmingTools
+					CONDITION_VALUE FarmingTools > 100
+					CONDITION_VALUE Agriculture > 100
+					CONDITION_NODE + Feudality
+				}
+				PRICE = {
+					$PoliticalPower = 150
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 5
+					$Wealth = 12
+				}
+				TICK = {
+				}
+				
+				LINK Agriculture = {
+				WEIGHT [ to ] 
+				}
+
+			}
+			
+			
+			Nobility = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | GetCurrentEra() == GetEra(FeudalAge)
+					CONDITION_VALUE Feudality > 75
+					CONDITION_VALUE AristocracyClass > 50
+				}
+				PRICE = {
+					$PoliticalPower = 150
+					$Wealth = 150
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Nobility) + 1) * 8
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55)
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 35)
+						PROCESS VassalPower =  VassalPower - PerSeconds(value / 2500 )
+				}
+				
+				LINK VassalPower = {
+				IF value > 0
+					FLUX value / 25
+					COLOR red
+				ENDIF
+				}		
+			}
+			
+			
+			Castles = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | ~Fortifications
+					CONDITION_NODE + Feudality
+					CONDITION_NODE + Banners
+					CONDITION_VALUE AristocracyClass > 30
+					CONDITION_VALUE Fortifications > 50
+				}
+				PRICE = {
+					$PoliticalPower = 50
+					$Wealth = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 2
+					$Wealth = 20
+				}
+				TICK = {
+				}
+				
+				LINK Banners = {
+				WEIGHT [ to ] 
+				}
+
+			}
+			
+			
+			MedievalArmors = {
+				TYPE Technological
+				VALUE value [ 0 5 25 >> 1 ]
+				RELATED_INFO = { 
+					RELATED_LINK MilitaryTechnology
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality
+					CONDITION_NODE + MilitaryTechnology
+					CONDITION_VALUE Castles >= 30
+					CONDITION_VALUE Banners >= 20
+				}
+				PRICE = {
+					$PoliticalPower = 50
+					$Wealth = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+					$Wealth = 8
+				}
+				
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 100)
+				}
+
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 25
+					ENDIF
+				}
+
+			}
+			
+			
+			
+			
+			SiegeWeapons = {
+				TYPE Technological
+				VALUE value [ 0 5 100 >> 1 ]
+				RELATED_INFO = { 
+					RELATED_LINK MilitaryTechnology
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality
+					CONDITION_NODE + MilitaryTechnology
+					CONDITION_VALUE Mathematics >= 120
+					CONDITION_VALUE GenieCorps >= 100
+					CONDITION_VALUE Castles >= 10
+				}
+				PRICE = {
+					$PoliticalPower = 100
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 5
+					$Wealth = 5
+				}
+				
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 100)
+				}
+
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 25
+					ENDIF
+				}
+
+			}
+
+
+
+			Tribunal = {
+				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Legislation | GetCurrentEra() == GetEra(FeudalAge)
+					CONDITION_ERA >= FeudalAge
+					OR
+					CONDITION_VALUE Republic >= 150
+					ALWAYS
+					CONDITION_VALUE Legislation >= 50
+					CONDITION_VALUE Culture >= 25
+					CONDITION_VALUE Philosophy >= 100
+					CONDITION_VALUE Urbanization >= 50
+					
+				}
+				PRICE = {
+					$PoliticalPower = 400
+					$Wealth = 200
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Tribunal) + 1) * 5
+					$Wealth = (LinkCount(Tribunal) + 1) * 2
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Tribunal / 100)
+						PROCESS Stability = Stability + PerSeconds(value/12000)
+				}
+				
+				LINK Stability = {
+				IF value > 0
+					FLUX value / 40
+					COLOR green
+				ENDIF
+				}	
+			}
+
+			NationState = {
+				TYPE Cultural
+				VALUE value [ 0 0 50 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~NationalCohesion | GetCurrentEra() == GetEra(FeudalAge)
+					CONDITION_VALUE NationalCohesion >= 75
+					CONDITION_VALUE Population >= 100
+					CONDITION_VALUE StateSize >= 120
+					CONDITION_VALUE Philosophy >= 200
+					CONDITION_VALUE Tribunal >= 50
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(NationState) + 1) * 10
+				}
+				TICK = {
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 80)
+						PROCESS VassalPower =  VassalPower - PerSeconds(value / 3000 )
+						SET NationalCohesion.value [ : : 100 + NationState.value ]
+				}
+				
+				LINK NationalCohesion = {
+						 WEIGHT [ max ] 100 + NationState
+				}
+				
+				LINK VassalPower = {
+				IF value > 0
+					FLUX value / 40
+					COLOR red
+				ENDIF
+				}	
+			}
+			
+			
+			Medecine = {
+				TYPE Technological
+				VALUE value [ 0 1 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~University | ~CivilEngineering
+					CONDITION_VALUE CivilEngineering >= 50
+					CONDITION_VALUE University >= 50
+					CONDITION_VALUE Philosophy >= 100
+				}
+				PRICE = {
+					$PoliticalPower = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = 10
+				}
+				TICK = {
+						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 10000 )
+				}
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 50
+					COLOR green
+				ENDIF
+				}	
+			}
+
+
+			Alchemy = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~University
+					CONDITION_VALUE Medecine >= 60
+					CONDITION_VALUE University >= 70
+					CONDITION_VALUE Mathematics >= 150
+					CONDITION_VALUE Philosophy >= 150
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = 15
+				}
+				TICK = {
+						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 8000 )
+				}
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 50
+					COLOR green
+				ENDIF
+				}	
+
+			}	
+
+
+			Gunpowder = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~ScienceKnowledge | SiegeWeapons
+					CONDITION_VALUE SiegeWeapons >= 100
+					OR
+					CONDITION_VALUE Alchemy >= 100
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge > 50
+				}
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+				}
+				TICK = {
+				SET SiegeWeapons.value [ : : SiegeWeapons.value + 100 ]
+				}
+				
+				LINK Fortifications = {
+						WEIGHT [ max ] 100 + Gunpowder
+				}
+				
+			
+
+			}
+			
+			
+			
 			
 			}
 		Events = {
@@ -4874,8 +5304,16 @@ Main = {
 			Epidemic = {
 				SOUND_EVENT "Main/SFX/Cough.wav"
 				SOUND_WINDOW "Main/SFX/Cough.wav"
-				EVENT_DEF [ 20 15 90 20% ]
+				EVENT_DEF [ 20 15 90 30% ]
 
+				SLEEP = {
+				IF ~Medecine
+					EVENT_CHANCE 0.3 - Medecine.value / 4
+				ELSE
+					EVENT_CHANCE 0.3
+				ENDIF
+				}
+				
 				ARISE = {
 					EVENT_SPEED Population / 100
                     IF Population < 50
@@ -4910,6 +5348,8 @@ Main = {
 					ENDIF
 				}
 			}
+		
+			
 			MassiveTroubles = {
 				SOUND_EVENT "Main/SFX/MassiveTroubles.wav"
 				SOUND_WINDOW "Main/SFX/MassiveTroubles.wav"
@@ -4988,7 +5428,7 @@ Main = {
 				EVENT_DEF [ 15 15 15 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 70
-                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~BarbarianMonarchy
+                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) 
                         REMOVE NoblesRebellion
                     ENDIF
 				}
@@ -5000,7 +5440,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF AristocracyClass > 70 & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
+					IF AristocracyClass > 70 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
 						RISE
 					ENDIF
 				}
@@ -5105,6 +5545,8 @@ Main = {
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(3)
 					OVERRIDE_PARAM Legislation.value = GetParam(Legislation.value) - PerSeconds(2)
 					PROCESS Legislation = Min( GetParam(Legislation.value), Legislation )
+					OVERRIDE_PARAM Tribunal.value = GetParam(Tribunal.value) - PerSeconds(2)
+					PROCESS Tribunal = Min( GetParam(Tribunal.value), Tribunal )
 					OVERRIDE_PARAM ReligiousLaw.value = GetParam(ReligiousLaw.value) - PerSeconds(1)
 					PROCESS ReligiousLaw = Min( GetParam(ReligiousLaw.value), ReligiousLaw )
 					OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(1)
@@ -5118,12 +5560,16 @@ Main = {
 					COLOR red
 					FLUX 5
 				}
+				LINK Tribunal = {
+					COLOR red
+					FLUX 5
+				}
 				LINK ReligiousLaw = {
 					COLOR red
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF $Wealth > 0.9 * GetResourceMaximum($Wealth) & ~Settlement & ( ~Legislation + ~CelesteMandate + ~ReligiousLaw) & GameTime() > 1000
+					IF $Wealth > 0.9 * GetResourceMaximum($Wealth) & ~Settlement & ( ~Legislation + ~Tribunal + ~CelesteMandate + ~ReligiousLaw) & GameTime() > 1500
 						RISE
 					ENDIF
 				}
@@ -6182,6 +6628,9 @@ Main = {
 					EVENT_DEF [ 10 30 500 75% ]
 					ARISE = {
 						EVENT_SPEED 1
+							IF $Wealth > 20
+								REMOVE MercenaryUprising
+							ENDIF
 					}
 					TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.33)
@@ -6286,14 +6735,14 @@ Main = {
 			UrbanExodus = {
 				SOUND_EVENT "Main/SFX/CitiesInRuins.wav"
 				SOUND_WINDOW "Main/SFX/CitiesInRuins.wav"
-					EVENT_DEF [ 20 100 350 50% ]
+					EVENT_DEF [ 20 75 450 33% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
 					TICK = {
-						OVERRIDE_PARAM Settlement.value = GetParam(Settlement.value) + PerSeconds(0.5 * 0.75 ? 1.25)
+						OVERRIDE_PARAM Settlement.value = GetParam(Settlement.value) + PerSeconds(0.3 * 0.75 ? 1.25)
 						PROCESS Settlement = Min( GetParam(Settlement.value), Settlement )
-						OVERRIDE_PARAM Urbanization.value = GetParam(Urbanization.value) - PerSeconds(0.25 * 0.75 ? 1.25)
+						OVERRIDE_PARAM Urbanization.value = GetParam(Urbanization.value) - PerSeconds(0.075 * 0.75 ? 1.25)
 						PROCESS Urbanization = Min( GetParam(Urbanization.value), Urbanization )
 					}
 
@@ -6318,9 +6767,189 @@ Main = {
 						
 			
 				}	
+				
+				
+			PeasantRevolt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 50 30 150 20% ]
+				SLEEP = {
+				EVENT_CHANCE = 10 + FarmersTax.value
+				}
+				ARISE = {
+					EVENT_SPEED 1
+							IF FarmersTax < 10
+								REMOVE MercenaryUprising
+							ENDIF
+				}
+					TICK = {
+					PROCESS Stability = Stability - PerSeconds(0.33)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(3 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(3 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(2 + MilitaryManpower.Mercenaries_value * 0.1 * (1.5 - MilitaryEfficiency /100 ) )
+					}
+
+					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					
+					LINK MilitaryManpower = {
+						COLOR red
+						FLUX 2
+					}
+					
+					TRIGGER_EVENT = {
+					IF ( FarmersTax > 10)
+							RISE
+					ENDIF
+					}
+						
 			
+				}
+				
+				
 			
+			GreatEpidemic = {
+				SOUND_EVENT "Main/SFX/Cough.wav"
+				SOUND_WINDOW "Main/SFX/Cough.wav"
+				EVENT_DEF [ 30 50 900 40% ]
+
+				SLEEP = {
+				IF ~Medecine
+					EVENT_CHANCE 0.4 - Medecine / 3
+				ELSE
+					EVENT_CHANCE 0.4
+				ENDIF
+				}
+				
+				ARISE = {
+					EVENT_SPEED Population / 100
+				}
+				TICK = {
+					PROCESS Population = Population - PerSeconds(0.5 + Population/120 * 0.75 ? 1.25)
+					PROCESS Piety = Piety - PerSeconds(0.5 * 0.75 ? 1.25)
+					PROCESS Stability = Stability - PerSeconds(0.75 * 0.75 ? 1.25)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1 * 0.75 ? 1.25)
+
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.15 + MilitaryManpower.Infantry_value /50 )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.15 + MilitaryManpower.Cavalry_value /50)
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.15 + MilitaryManpower.Missile_value /50)
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.15 + MilitaryManpower.Mercenaries_value /50)
+					
+				}
+				LINK Population = {
+					COLOR red
+					FLUX 5
+				}
+				LINK Piety = {
+					COLOR green
+					FLUX 3
+				}
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 3
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 4
+				}
+				TRIGGER_EVENT = {
+					IF Population > 50 & ~DraftAnimals  & GameTime() > 11000 & GetCurrentEra() >= GetEra(FeudalAge)
+						RISE
+					ENDIF
+				}
+				
+				
+			}
+				
+				
+			CulturalRevival = {
+				SOUND_EVENT "Main/SFX/Prosperity.wav"
+				SOUND_WINDOW "Main/SFX/Prosperity.wav"
+					EVENT_DEF [ 10 20 300 25% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+						OVERRIDE_PARAM Music.value = GetParam(Music.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Music = Max( GetParam(Music.value), Music )
+						OVERRIDE_PARAM Litterature.value = GetParam(Litterature.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Litterature = Max( GetParam(Litterature.value), Litterature )
+						OVERRIDE_PARAM Philosophy.value = GetParam(Philosophy.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Philosophy = Max( GetParam(Philosophy.value), Philosophy )
+						OVERRIDE_PARAM Mathematics.value = GetParam(Mathematics.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Mathematics = Max( GetParam(Mathematics.value), Mathematics )
+						PROCESS Stability = Stability + PerSeconds(0.25)
+						PROCESS Culture = Culture + PerSeconds(3.5)
+					}
+
+					LINK Music = {
+						COLOR green
+						FLUX 2
+					}
+					LINK Litterature = {
+						COLOR green
+						FLUX 2
+					}
+					LINK Culture = {
+						COLOR green
+						FLUX 5
+					}
+					LINK Mathematics = {
+						COLOR green
+						FLUX 4
+					}
+					LINK Philosophy = {
+						COLOR green
+						FLUX 4
+					}
+
+					LINK Stability = {
+						COLOR green
+						FLUX 1
+					}
+					
+					TRIGGER_EVENT = {
+						IF ~Culture & Culture < 50 & ( ~University | Stability > 80 ) & GetCurrentEra() >= GetEra(LateAntiquity)
+							RISE
+						ENDIF
+					}
+						
+			
+				}
+				
+
+			WitchHunt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+					EVENT_DEF [ 30 25 400 30% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+					PROCESS Stability = Stability - PerSeconds(0.2)
+					PROCESS Minorities = Minorities - PerSeconds(0.33)
+					PROCESS Piety = Piety + PerSeconds(0.5)
+					}
+
+					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK Piety = {
+						COLOR green
+						FLUX 2
+					}
+					
+					TRIGGER_EVENT = {
+						IF ( ~Minorities & Minorities>0 & Stability < 60 )
+							RISE
+						ENDIF
+					}
+				}
 
 			}
-			}
+}
 }

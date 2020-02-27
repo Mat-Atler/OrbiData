@@ -506,6 +506,33 @@ Main = {
 				}
 				
 				
+			ScienceKnowledge = {
+				NAME "Scientific Knowledge"
+				DESCRIPTION "Knowledge: " @[value,0.###]<br><br>" Our knowledge, at last obtained by a more or less rigorous empiricism, assures us that every step we take goes in a more efficient path."
+				SUMMARY "Our current knowledge"
+			}
+			
+			
+			Alchemy = {
+				NAME "Alchemy"
+				LEVEL value = {
+					0 = "Natural Body Analysis"
+					25 = "Elemental Research"
+					50 = "Beginning of Chemistry"
+					75 = "Theory of transmutation"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
+				SUMMARY "Improves our scientific knowledge"
+			}	
+
+		
+			Minorities = {
+				NAME "Minorities"
+				DESCRIPTION "Number: " @[value,0.###]<br><br>" The disparity of peoples linked to our conquests and our religious disparities brings us towards a certain disorder to our national cohesion. On the other hand it multiplies our trading opportunities."
+				SUMMARY "Strengthens our trade but degrades our union"
+			}
+				
+				
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -1405,6 +1432,131 @@ Main = {
 				SUMMARY "Improves our intellectual research"
 				}
 				
+			
+			FarmersTax = {
+				NAME "Farmers' Tax"
+				LEVEL value = {
+					0 = "None"
+					0.01 = "Annual taxes"
+					5 = "Bi-Annual taxes"
+					10 = "Heavy taxes"
+					20 = "Very heavy taxes"
+				}
+				DESCRIPTION <b>"Value: "@[value] </b>  <br><br> "The evolution of our society has led farmers to play an important role in our economy. Fair taxation will enable us to finance our armies to protect them."
+				SUMMARY "Tax our farmers"
+			}
+			
+			
+			Mill = {
+				NAME "Mill"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Firsts Mills"
+					70 = "Mills"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
+				SUMMARY "Improve our agriculture"
+			}	
+			
+			Nobility = {
+				NAME "Nobility"
+				LEVEL value = {
+					0 = "Rumors of blue blood"
+					20 = "Etiquette and lifetime pensions"
+					40 = "Royal court"
+					70 = "Sumptuous courtship"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organizing our aristocracy into a class above the others, endowing it with inalienable & hereditary rights and pensions, will appease the great lords of our country."
+				SUMMARY "Strengthen our power by buying the loyalty of the great lords"
+			}	
+			
+			MedievalArmors = {
+				NAME "Medieval Armors"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
+				SUMMARY "Military Technology"
+			}	
+			
+			
+			SiegeWeapons = {
+				NAME "Siege Weapons"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = " Doubtful ballistics "
+					50 = " Unreliable ballistics "
+					100 = "Trebuchets"
+					150 = "Bomb Cannon"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
+				SUMMARY "Military Technology"
+			}	
+			
+			NationState = {
+				NAME "Nation State"
+				LEVEL value = {					
+					0 = "Theoretical concept"
+					10 = "Distant dream"
+					25 = "Legal evidence"
+					50 = "We are a nation"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Our jurists are formal, our country has an essence of its own called Nation. With this concept we could unite our people under a common idea."
+				SUMMARY "Strengthens our national cohesion"
+			}	
+			
+			
+			Tribunal = {
+				NAME "Tribunal"
+				LEVEL value = {
+					0 = "Arbitrary judgments"
+					25 = "Court of justice"
+					50 = "Corps of judges"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our law is a force of truth, however, we must sometimes specify certain vague outlines. By sanctifying a place, the Tribunal, as a symbol of justice, our power will grow."
+				SUMMARY "Strengthens our political power"
+				}
+				
+			Castles = {
+				NAME "Castles"
+				LEVEL value = {
+					0 = "Primary fortifications"
+					25 = "Wooden castles"
+					50 = "Stone castles"
+					75 = "Fortress"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our locals noble need a symbolic place as a residence and as a stronghold. Let's build impressive fortifications to better organize our military levies."
+				SUMMARY "Improve the recruitment of Banners"
+			}	
+			Medicine = {
+				NAME "Medicine"
+				DESCRIPTION <b>"Value: "@[value,0.###] " )<br><br> Our growing knowledge has opened the doors to medical care. Making a clear distinction between diseases and curses, between prayers and drugs, we will gradually come to fight the plagues of men."
+				SUMMARY "Reduces the chance of epidemics"
+				}
+			
+			Alchemy = {
+				NAME "Alchemy"
+				LEVEL value = {
+					0 = "Natural Body Analysis"
+					25 = "Elemental Research"
+					50 = "Beginning of Chemistry"
+					75 = "Theory of transmutation"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
+				SUMMARY "Improves our scientific knowledge"
+			}	
+			
+			Gunpowder = {
+				NAME "Gunpowder"
+				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our studies with very strange materials gave us something resembling black powder. Highly explosive, it could have many applications, especially military."
+				SUMMARY "Enhances our military potential."
+			}	
+
+
 		}
 		Events = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Events
@@ -1625,11 +1777,30 @@ Main = {
 				SUMMARY "Our trade will reach new horizons."
 			}
 			
-			UrbanExodus = { 
-				NAME "Urban Exodus" 
-				DESCRIPTION "The prevailing insecurity in the cities has led our population to leave the urban areas and settle permanently in the countryside." 
-				SUMMARY "Our population flees the cities" 
-			} 
+			PeasantRevolt = {
+				NAME "Peasant Revolt"
+				DESCRIPTION "The peasants, burdened by taxes, have revolted!"
+				SUMMARY "Our peasants are revolting"
+			}
+			
+			GreatEpidemic = {
+				NAME "Great Epidemic"
+				DESCRIPTION "A particularly lethal disease is spreading across our borders. We must pray for our salvation!"
+				SUMMARY "Will drastically reduce our population"
+			}
+			
+			CulturalRevival = {
+				NAME "Cultural Revival"
+				DESCRIPTION "After an age of decline, our culture takes advantage of our stable situation to flourish again."
+				SUMMARY "Increases our culture levers"
+			}
+			
+			WitchHunt = {
+				NAME "Witch Hunt"
+				DESCRIPTION "Our people have provoked a local pogrom against our minorities. If this kind of incident strengthens our religious and national identity, the consequences for trade and stability are disastrous."
+				SUMMARY "Reduces our minorities and our stability"
+			}
+
 		}
 	}
 }

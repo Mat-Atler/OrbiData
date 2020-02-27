@@ -24,7 +24,15 @@ Religious = {
 						PROCESS Heretics = Heretics - Heretics * ToleranceOfHeretics * 0.00003
 					ENDIF
 					
-					}
+				
+					PROCESS Minorities = Minorities + value * 0.0005
+				
+				}
+				
+				LINK Minorities = {
+					COLOR green
+					FLUX  value * 0.05
+				}
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
 				}	
@@ -55,7 +63,16 @@ Religious = {
 					PROCESS Heathens = Heathens + StateSize' / 8
                 ENDIF
 				
+				
+				PROCESS Minorities = Minorities + value * 0.0005
+				
 				}
+				
+				LINK Minorities = {
+					COLOR green
+					FLUX  value * 0.05
+				}
+				
 					
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
