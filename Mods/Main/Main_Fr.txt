@@ -1586,7 +1586,7 @@ Main = {
 			
 			Banks = {
 				NAME "Banques"
-				DESCRIPTION "Valeur : "@[value,0.###]<br>"Maximum : "@[weath_max,0.#]<br>"Minimum : "@[weath_min,0.#]"<br><br> Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
+				DESCRIPTION "Valeur : "@[value,0.###] <br> "Maximum : "@[weath_max,0.#] <br> "Minimum : "@[weath_min,0.#]" <br><br> Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
 				SUMMARY "Agrandit notre maximum et minimum de richesse"
 			}	
 			ScripturalMoney = {

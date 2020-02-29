@@ -1589,7 +1589,7 @@ Main = {
 			
 			Banks = {
 				NAME "Banks"
-				DESCRIPTION "Value: "@[value,0.###]<br>"Maximum: "@[weath_max,0.#]<br>"Minimum: "@[weath_min,0.#]"<br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
+				DESCRIPTION "Value: "@[value,0.###] <br> "Maximum: "@[weath_max,0.#] <br> "Minimum: "@[weath_min,0.#]" <br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
 				SUMMARY "Enlarges our maximum and minimum wealth"
 			}	
 			

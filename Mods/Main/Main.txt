@@ -961,10 +961,10 @@ Main = {
 				
 				
 				IF ~QualityVsQuantity
-					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - (QualityVsQuantity /100 ) ))
-					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/2400 * ( 1.5 - (QualityVsQuantity /100 ) ))
-					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/2500 * ( 1.5 - (QualityVsQuantity /100 ) ))
-					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/1300 * ( 1.5 - (QualityVsQuantity /100 ) ))
+					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/2400 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/2500 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/1300 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
 				ENDIF
 				IF  ~QualityVsQuantity == 0
 					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - (50 /100 ) ))
@@ -5133,8 +5133,8 @@ Main = {
 			Banks = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
-				VALUE weath_max [ 0 -5000 100000 >> 1 ]
-				VALUE weath_min [ 0 -5000 100000 >> 1 ]
+				VALUE weath_max [ -5000 0 100000 >> 1 ]
+				VALUE weath_min [ -5000 0 100000 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Money | ~Guilds
 					CONDITION_VALUE Guilds >= 40
