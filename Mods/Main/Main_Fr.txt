@@ -523,6 +523,14 @@ Main = {
 				DESCRIPTION "Nombre : " @[value,0.###]<br><br>" La disparité des peuples liés à nos conquêtes et nos disparités religieuses nous approte un certain trouble à notre cohésion nationale. En revanche cela multiplie nos possibilités de commerce."
 				SUMMARY "Renforcent notre commerce mais dégrade notre union"
 			}
+			
+			
+			CraftmanshipSkills = {
+				NAME "Compétences artisanales"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>" Les compétences artisanales englobent tout notre savoir technique. Nos guildes et la spécialisation nous permettent d'accroire notre savoir à un rythme rapide."
+				SUMMARY "Nous permet d'accrître nos possibilités techniques"
+			}
+			
 				
 		}
 		Levers = {
@@ -1549,6 +1557,48 @@ Main = {
 				NAME "Poudre à Canon"
 				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Nos études avec des matériaux très étrange nous a donné une chose ressemblant à de la poudre noire. Hautement explosive, elle pourrait avoir beaucoup d'application notamment militaire."
 				SUMMARY "Améliore notre potentiel militaire"
+			}	
+			
+			TradeFair = {
+				NAME "Foires"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Festivités occasionnelles"
+					35 = "Foire organisée annuellement"
+					80 = "Point incournable du continent"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Les foires sont un ensemble de festivités où sont conviés les marchands de tout bords. Ils permettent de centraliser la production de la région pour la mettre davantage en valeur et nous permettant même de gagner en peu d'argent en taxant légèrement l'évènement. Naturellement ça renforce également le poids des marchands."
+				SUMMARY "Améliore notre commerce"
+			}	
+			
+			
+			Guilds = {
+				NAME "Guildes"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Regroupements des professionnnels"
+					35 = "Guildes puissantes"
+					80 = "Guildes incournables"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Une guilde est une association ou une coopération de personnes engagées dans une activité commune, généralement des commerçants, qui adopte des règles et des privilèges spécifiques et demandent la protection des autorités d'une ville ou d'un État."
+				SUMMARY "Améliore nos entreprises"
+			}	
+			
+			Banks = {
+				NAME "Banques"
+				DESCRIPTION "Valeur : "@[value,0.###]<br>"Maximum : "@[weath_max,0.#]<br>"Minimum : "@[weath_min,0.#]"<br><br> Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
+				SUMMARY "Agrandit notre maximum et minimum de richesse"
+			}	
+			ScripturalMoney = {
+				NAME "Monnaie Scripturale"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Lettres de Changes"
+					50 = "Chèques"
+					80 = "Billets"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "La monnaie est un concept au final hautement théorique qui n'a forcément besoin d'être lié à une réelle valeur physique comme l'or ou l'argent, mais bien à la confiance que la monnaie procure. En forçant un peu la main nous pourrions nous éloigner de certaines contraintes matérielles."
+				SUMMARY "Améliore notre monnaie"
 			}	
 			
 				
