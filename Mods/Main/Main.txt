@@ -618,7 +618,12 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS output =  value * 0.0035
+					IF ~DevotionToTheHarvest
+					PROCESS output =  value * 0.0035 * ( 1 + DevotionToTheHarvest / 400 )
+					ELSE
+					PROCESS output =  value * 0.0035 
+					ENDIF
+				
 					PROCESS Flora = Flora - PerSeconds( output * 2.3 )
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
@@ -705,7 +710,13 @@ Main = {
 				TICK = {
 					PROCESS value =  value - PerSeconds(0.001)
 					PROCESS Piety = Piety + PerSeconds( value / 200 )
+					
+					IF ~DevotionToTheLaw
+					SET ReligiousLaw.value [ : : PriestClass * ( 1 + ( DevotionToTheLaw / 400 ) ) ]
+					ELSE
 					SET ReligiousLaw.value [ : : PriestClass ]
+					ENDIF
+					
 					SET PriestClass.value [ : : PriestClass ]
 				}
 				LINK Piety = {
@@ -735,7 +746,7 @@ Main = {
 					ENDIF
 				}
 				TICK = { 
-					PROCESS Piety = Piety - PerSeconds ( value / (150 - ( ( Heathens * (100 - ToleranceOfHeathens)  * 0.01  ) + ( Heretics * ( 100 - ToleranceOfHeretics ) * 0.005  ) ) ) )
+					PROCESS Piety = Piety - PerSeconds ( value / ( 150 - ( ( Heathens * ( 100 - ToleranceOfHeathens * ( 1 - ClergyCentralization / 400 ) )  * 0.01  ) + ( Heretics * ( 100 - ToleranceOfHeretics * ( 1 - ClergyCentralization / 400 ) ) * 0.005  ) ) ) )
 					PROCESS Stability = Stability + PerSeconds(value/3000)
 					SET DivineRight.value [ : : Min(100, Piety.value * 4 ) ]
 				}
@@ -1287,7 +1298,12 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-				 PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) )
+				IF ~DevotionToSea
+				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) + DevotionToSea / 500 )
+				ELSE
+				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) 
+				ENDIF
+				
 				}
 				LINK Navy = {
 				WEIGHT [ to ]
@@ -1422,10 +1438,9 @@ Main = {
 				}
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
-				}
-			
-					
+				}	
 			}
+			
 			
 			
 			CraftmanshipSkills = {
@@ -1503,6 +1518,12 @@ Main = {
 					PROCESS Food = Food + PerSeconds(output * 0.15)
 					PROCESS Fauna = Fauna - PerSeconds(output * 5.5)
 					PROCESS $Wealth += PerSeconds(output * 0.5)
+					
+					IF ~DevotionToNature
+					PROCESS Fauna = Fauna - PerSeconds(output * ( 5.5 - DevotionToNature / 100 ) )
+					ELSE
+					PROCESS Fauna = Fauna - PerSeconds(output * 5.5 )
+					ENDIF
 				}
 				//SLEEP = {
 					//IF Fauna > 20
@@ -1551,9 +1572,16 @@ Main = {
 				}
 				
 				TICK = {
+				
+					IF ~DevotionToSea
+					PROCESS output =  value * 0.05 * ( Coastline / 100 ) * ( 1 + DevotionToSea / 400 )
+					ELSE
 					PROCESS output =  value * 0.05 * ( Coastline / 100 )
+					ENDIF
+					
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5 )
+					
 				}
 				PRICE = {
 					$PoliticalPower = 20
@@ -1728,8 +1756,13 @@ Main = {
 				TICK = {
 					PROCESS output = value * ( Flora / 100 ) * .01 
 					PROCESS Food = Food + PerSeconds(output *0.15)
-					PROCESS Flora = Flora - PerSeconds(output * 2.5)
 					PROCESS $Wealth = $Wealth + PerSeconds(output*0.5)
+					
+					IF ~DevotionToNature
+					PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - DevotionToNature / 300 ) )
+					ELSE
+					PROCESS Flora = Flora - PerSeconds(output * 2.5 )
+					ENDIF
 				}
 				LINK Flora = {
 					IF output > 0
@@ -1921,6 +1954,9 @@ Main = {
 					IF ~Mill
 						PROCESS output = output * ( 1 + ( Mill / 200 ) )
 					ENDIF
+					IF ~DevotionToTheHarvest
+						PROCESS output = output * ( 1 + ( DevotionToTheHarvest / 400 ) )
+					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
 				}
@@ -2033,7 +2069,13 @@ Main = {
 					}
 				TICK = {
 					SET ReligiousMonuments.value [ : : Min (100 , Urbanization.value * 0.7 + 30 ) ]
-					SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
+					
+					IF ~DevotionToTheLaw
+						SET UrbanMilitia.value [ : : Urbanization.value + 10 * ( 1 + ( DevotionToTheLaw / 500 ) )  ]
+					ELSE
+						SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
+					ENDIF
+					
 					IF GetCurrentEra() < 300
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 500)
 					ENDIF
@@ -2247,6 +2289,11 @@ Main = {
 				
 				LINK Piety = {
 						WEIGHT [ max ] 70 + Theocracy.value / 2
+				}
+				
+				TRIGGER_LEAVE Theocracy = {
+						REMOVE CelestialMonarchy
+						REMOVE ClericalState
 				}
 				
 				}					

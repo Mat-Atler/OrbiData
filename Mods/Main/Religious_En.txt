@@ -113,6 +113,28 @@ Religious = {
 				SUMMARY "Enslvave the neighbors population with our military forces"
 			}			
 				
+				ClergyCentralization = {
+				NAME "ClergyCentralization"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Rare"
+					40 = "Moderate"
+					70 = "Intensive"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "O "
+				SUMMARY "E"
+			}
+			ClergyIndependance = {
+				NAME "ClergyIndependance"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Rare"
+					40 = "Moderate"
+					70 = "Intensive"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "O "
+				SUMMARY "E"
+			}
 		}
 		Events = {
 			Schism = {
@@ -137,7 +159,16 @@ Religious = {
 				DESCRIPTION "The Heretics and Heathens living in our borders are revolting against the way we treat them"
 				SUMMARY "The Heretics and Heathens rebels again our government"
 			}
-			
+			GreatSchism = {
+				NAME "GreatSchism"
+				DESCRIPTION " O"
+				SUMMARY "I "
+			}
+			ReligiousLeagueWar = {
+				NAME "ReligiousLeagueWar"
+				DESCRIPTION " O"
+				SUMMARY "I "
+			}
 
 		}
 	}

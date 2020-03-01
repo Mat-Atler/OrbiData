@@ -87,7 +87,151 @@ Religious = {
 				}					
 					
 			}
-		}
+			
+			Devotion = {
+				VALUE value [ 0 0 1000 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF Piety > 10
+						SPAWN
+					ENDIF
+				}
+                TICK = {
+				IF Pantheon <= 49
+				PROCESS Devotion = ( 3 + Pantheon / 50 ) * Piety * ( 0.75 + ClergyCentralization / 200 )
+				SET DevotionToNature.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				SET DevotionToSea.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				SET DevotionToTheHarvest.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				SET DevotionToTheLaw.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				SET DevotionToWar.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				SET DevotionToTrade.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				SET DevotionToCraftsmanship.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+				ENDIF
+				
+				IF  Pantheon > 49 
+				PROCESS Devotion = ( 4 - (Pantheon / 25 - 2 ) ) * Piety * ( 0.75 + ClergyCentralization / 200 )
+				SET DevotionToNature.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				SET DevotionToSea.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				SET DevotionToTheHarvest.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				SET DevotionToTheLaw.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				SET DevotionToWar.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				SET DevotionToTrade.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				SET DevotionToCraftsmanship.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+				ENDIF
+				
+				}
+				
+				LINK ClergyCentralization = {
+					WEIGHT [ from ]
+				}
+				
+				LINK Pantheon = {
+					WEIGHT [ from ]
+				}
+
+				LINK Piety = {
+					WEIGHT [ from ]
+				}
+
+				LINK DevotionToNature = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				LINK DevotionToSea = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				LINK DevotionToTheHarvest = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				LINK DevotionToTheLaw = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				LINK DevotionToWar = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				LINK DevotionToTrade = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				LINK DevotionToCraftsmanship = {
+				IF Pantheon <= 49
+					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+				ELSE
+					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+				ENDIF
+				}
+				
+				
+			}
+			
+			ReligiousHeadPower = {
+				VALUE value [ 0 33 100 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF PriestClass > 25
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ReligiousHeadPower < ClergyIndependance
+						PROCESS ReligiousHeadPower = ReligiousHeadPower + PerSeconds ( ( ClergyIndependance - ReligiousHeadPower ) / 150 )
+					ELSE
+						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ( ( ReligiousHeadPower - ClergyIndependance ) / 200 )
+					ENDIF	
+				}		
+			}
+			
+			CompetitingReligiousLeader = {
+				VALUE value [ 0 0 10 ]
+				DISPLAY_VALUE
+				RELATED_INFO = {
+				}
+				SLEEP = {
+					IF ~NewCompetitingReligiousLeader
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF CompetitingReligiousLeader > 0
+						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ( ReligiousHeadPower / (CompetitingReligiousLeader * CompetitingReligiousLeader / 10 ) )
+						PROCESS Piety = Piety - PerSeconds (CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 )
+					ENDIF	
+				}
+				LINK Piety = {
+				IF value > 0
+					FLUX value / 5
+					COLOR red
+				ENDIF
+				}				
+			}
+			
+	}	
 		Levers = {
 			ToleranceOfHeretics = {
 				TYPE Cultural
@@ -108,13 +252,13 @@ Religious = {
 				}
 				TICK = {
 				IF ( value > 0 )
-					PROCESS cost =  value * Heretics  * 0.0002
+					PROCESS cost =  ( value * Heretics  * 0.0002 ) * ( 0.75 + ClergyCentralization / 200 )
 				ENDIF
 				IF ( value == 0 )
 					PROCESS cost =  0
 				ENDIF
 					
-				IF ( $PoliticalPower > 1 )
+				IF ( $PoliticalPower > cost )
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 				ENDIF
 				}
@@ -147,7 +291,7 @@ Religious = {
 				}
 				TICK = {
 					IF ( value > 0 )
-						PROCESS cost =  ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) 
+						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
 					ENDIF
 					IF ( value == 0 )
 						PROCESS cost =  0
@@ -268,20 +412,20 @@ Religious = {
 				}
 				
 				UPGRADE = {
-					$PoliticalPower =  (LinkCount(Conversion) + 1) * 0.25
+					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 0.25
 				}
 				TICK = {
-				PROCESS Heretics = Heretics - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 )
-				PROCESS Heathens = Heathens - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 )
+				PROCESS Heretics = ( Heretics - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 )
+				PROCESS Heathens = ( Heathens - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 )
 				
 				IF ( value > 0)
-				PROCESS cost =  ( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000
+				PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
 				ENDIF
 				IF ( value == 0)
 				PROCESS cost =  0
 				ENDIF
 					
-				IF ( $Wealth > 1)
+				IF ( $Wealth > cost )
 					PROCESS $Wealth = $Wealth - PerSeconds(cost)
 				ENDIF
 				
@@ -297,11 +441,11 @@ Religious = {
 				}
 				LINK Heretics = {
 					COLOR red
-					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 )
+					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 ) * ( 0.75 + ClergyCentralization / 200 )
 				}
 				LINK Heathens = {
 					COLOR red
-					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 )
+					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 ) * ( 0.75 + ClergyCentralization / 200 )
 				}
 			}
 			ReligiousOfferings = {
@@ -472,7 +616,7 @@ Religious = {
 					$PoliticalPower = 50
 				}
 				UPGRADE = {
-					$PoliticalPower =  (LinkCount(FlowerWar) + 1) * 0.5
+					$PoliticalPower =  (LinkCount(FlowerWar) + 1 ) * 0.5
 				}
 				TICK = {
 				
@@ -525,6 +669,397 @@ Religious = {
 				}
 				
 			}
+			
+			ClergyCentralization = {
+				TYPE Cultural
+				VALUE value [ 0 25 100 >> 1 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~PriestClass
+					CONDITION_VALUE PriestClass > 25
+				}
+				PRICE = {
+					$PoliticalPower = 35
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(ClergyCentralization) + 1 ) * 1.2
+				}
+				TICK = {
+				
+				}
+				LINK Conversion = {
+					WEIGHT [ to ]
+				}
+				LINK ToleranceOfHeretics = {
+					WEIGHT [ to ]
+				}
+				LINK ToleranceOfHeathens = {
+					WEIGHT [ to ]
+				}
+
+			}
+			ClergyIndependance = {
+				TYPE Cultural
+				VALUE value [ 0 90 100 >> 1 ]
+				DISPLAY_DECAY
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~PriestClass
+					CONDITION_VALUE PriestClass > 25
+				}
+				PRICE = {
+					$PoliticalPower = 35
+				}
+				UPGRADE = {
+					$PoliticalPower =  (LinkCount(ClergyIndependance) + 1 ) * ( 1 + (ClergyIndependance + ClergyCentralization) / 300 )
+				
+				}
+				TICK = {
+
+				}
+			}
+			
+			DevotionToNature = {
+				TYPE Cultural
+				VALUE value [ 0 10 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_NODE + Devotion
+				}
+				PRICE = {
+					$PoliticalPower = 10
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToNature) + 1 ) * 0.5
+				}
+				TICK = {
+				
+				}
+				
+				LINK Foraging = {
+					WEIGHT [ to ]
+				}
+				LINK Hunting = {
+					WEIGHT [ to ]
+				}
+			}
+			
+			DevotionToSea = {
+				TYPE Cultural
+				VALUE value [ 0 10 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Devotion & Coastline > 30
+					CONDITION_NODE + Devotion
+					CONDITION_NODE + Fishing
+					CONDITION_VALUE Coastline > 30
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToSea) + 1 ) * 0.5
+				}
+				TICK = {
+				
+				}
+				
+				LINK Fishing = {
+					WEIGHT [ to ]
+				}
+				LINK NavyTechnology = {
+					WEIGHT [ to ]
+				}
+			}
+			
+			DevotionToTheHarvest = {
+				TYPE Cultural
+				VALUE value [ 0 10 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Devotion & Agriculture > 30
+					CONDITION_NODE + Devotion
+					CONDITION_NODE + Agriculture
+					CONDITION_VALUE Agriculture > 50
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToTheHarvest) + 1 ) * 0.5
+				}
+				TICK = {
+				}
+				
+				LINK Agriculture = {
+					WEIGHT [ to ]
+				}
+				LINK Livestock = {
+					WEIGHT [ to ]
+				}
+			}
+			
+			DevotionToTheLaw = {
+				TYPE Cultural
+				VALUE value [ 0 10 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Devotion & ~ReligiousLaw
+					CONDITION_NODE + Devotion
+					CONDITION_NODE + ReligiousLaw
+					CONDITION_VALUE ReligiousLaw > 50
+				}
+				PRICE = {
+					$PoliticalPower = 30
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToTheLaw) + 1 ) * 0.5
+				}
+				TICK = {
+				PROCESS PriestClass = PriestClass + PerSeconds ( value / 500 )
+				}
+				
+				LINK UrbanMilitia = {
+					WEIGHT [ to ]
+				}
+				LINK ReligiousLaw = {
+					WEIGHT [ to ]
+				}
+				
+				LINK PriestClass = {
+				IF value > 0
+					FLUX value / 25
+					COLOR green
+				ENDIF
+				}
+			}
+			
+			DevotionToWar = {
+				TYPE Cultural
+				VALUE value [ 0 0 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Devotion & ~MilitaryManpower
+					CONDITION_NODE + Devotion
+					CONDITION_NODE + Militarism
+				}
+				PRICE = {
+					$PoliticalPower = 30
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToWar) + 1 ) * 1
+				}
+				TICK = {
+				SET Militarism.value [ : : 50 + DevotionToWar.value / 10  ]
+				}
+				
+				LINK Militarism = {
+					WEIGHT [ max ] 50 + DevotionToWar.value / 10 
+				}
+			}
+			
+			DevotionToTrade = {
+				TYPE Cultural
+				VALUE value [ 0 10 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Devotion & ~Entreprises
+					CONDITION_NODE + Devotion
+					CONDITION_NODE + Entreprises
+					CONDITION_VALUE Entreprises > 40
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToTrade) + 1 ) * 0.5
+				}
+				TICK = {
+				PROCESS Entreprises = Entreprises + PerSeconds ( value / 400 ) 
+				}
+				
+				
+				LINK Entreprises = {
+				IF value > 0
+					FLUX value / 20
+					COLOR green
+				ENDIF
+				}
+			}
+			
+			DevotionToCraftsmanship = {
+				TYPE Cultural
+				VALUE value [ 0 10 200 >> 0.5 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~Devotion & ~ArtisanClass
+					CONDITION_NODE + Devotion
+					CONDITION_NODE + ArtisanClass
+					CONDITION_VALUE ArtisanClass > 30
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+				$PoliticalPower = (LinkCount(DevotionToCraftsmanship) + 1 ) * 0.5
+				}
+				TICK = {
+				PROCESS TradeGoods = TradeGoods + PerSeconds ( value / 100 )
+				PROCESS ArtisanClass = ArtisanClass + PerSeconds ( value / 400 )
+				}
+				
+				LINK TradeGoods = {
+				IF value > 0
+					FLUX value / 10
+					COLOR green
+				ENDIF
+				}
+				
+				LINK ArtisanClass = {
+				IF value > 0
+					FLUX value / 20
+					COLOR green
+				ENDIF
+				}
+			}
+			
+			EffortAgainstReligiousDissent = {
+				TYPE Cultural
+				VALUE value [ 0 10 100 >> 1 ]
+				RELATED_INFO = {
+
+				}
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_VALUE CompetitingReligiousLeader > 0
+				}
+				PRICE = {
+					$PoliticalPower = 20
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(EffortAgainstReligiousDissent) + 1 ) * 0.5
+				}
+				TICK = {
+				IF EffortAgainstReligiousDissent > 0 & CompetitingReligiousLeader > 0
+					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( value + CompetitingReligiousLeader / 100 )
+					PROCESS $Wealth = $Wealth - PerSeconds ( value + CompetitingReligiousLeader / 100 )
+				ELSE
+					PROCESS $PoliticalPower = $PoliticalPower
+					PROCESS $Wealth = $Wealth
+				ENDIF
+				}
+				
+				LINK CompetitingReligiousLeader = {
+					WEIGHT [ to ]
+				}
+				
+				}
+				
+			CelestialMonarchy = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Theocracy
+					RELATED_LOCK ClericalState
+				}
+				
+				UNLOCK_CONDITIONS = {
+					HINT ~Theocracy | ~DivineRight
+					CONDITION_VALUE Theocracy >= 50
+				OR
+					CONDITION_VALUE DivineRight >= 90
+				ALWAYS
+					CONDITION_NODE - ClericalState
+					CONDITION_VALUE Piety > 50
+					CONDITION_VALUE PriestClass >= 30
+				}
+				PRICE = {
+					$PoliticalPower = 120
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(CelestialMonarchy) + 1) * 2.5
+				}
+				TICK = {
+				
+					SET Theocracy.value [ : : 100 + CelestialMonarchy.value ]
+					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value * 0.002)
+				}
+				
+				LINK Theocracy = {
+				  
+					WEIGHT [ max ] 100 + CelestialMonarchy.value
+				
+				}
+				
+				TRIGGER_SPAWN CelestialMonarchy = {
+						RESOURCE_MAX $PoliticalPower = 500
+				}
+				TRIGGER_LEAVE CelestialMonarchy = {
+						SET Theocracy.value [ : : 100 ]
+				}
+			}
+			
+			ClericalState = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Theocracy
+					RELATED_LOCK CelestialMonarchy
+				}
+				
+				UNLOCK_CONDITIONS = {
+					HINT ~Theocracy
+					CONDITION_VALUE Theocracy >= 80
+					CONDITION_NODE - CelestialMonarchy
+					CONDITION_VALUE Piety > 50
+					CONDITION_VALUE PriestClass >= 40
+				}
+				PRICE = {
+					$PoliticalPower = 190
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(ClericalState) + 1) * 2.5
+				}
+				TICK = {
+				
+					SET Theocracy.value [ : : 100 + ClericalState.value ]
+					PROCESS $Wealth = $Wealth + PerSeconds(value * 0.002)
+				}
+				
+				LINK Theocracy = {
+				  
+					WEIGHT [ max ] 100 + ClericalState.value
+				
+				}
+				
+				TRIGGER_SPAWN ClericalState = {
+						RESOURCE_MAX $PoliticalPower = 600
+				}
+				TRIGGER_LEAVE ClericalState = {
+						SET Theocracy.value [ : : 100 ]
+				}
+			}
+				
+			
 			}
 		Events = {
 			Schism = {
@@ -643,6 +1178,314 @@ Religious = {
 					ENDIF
 				}
 			}
+			GreatSchism = {
+				SOUND_EVENT "Main/SFX/Schism.wav"
+				SOUND_WINDOW "Main/SFX/Schism.wav"
+				EVENT_DEF [ 30 200 2000 25% ]
+				SLEEP = {
+				EVENT_CHANCE = Max ( ( 100 - Piety ) / 100 , 0.1 )
+				}
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Heretics = Heretics + PerSeconds( 0.1 ? 0.2 )
+				}
+				LINK Heretics = {
+					COLOR green
+					FLUX 0.5
+				}
+				
+				TRIGGER_EVENT = {
+					IF (GetCurrentEra() >= GetEra(FeudalAge) )
+						RISE
+					ENDIF
+				}
+			}
+			ReligiousLeagueWar = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 60 70 60% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+
+				TICK = {
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds( 0.1 ? 0.2 )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(2 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1.5 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(4 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(0.5)
+					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
+					PROCESS Stability = Stability - PerSeconds( 1 )
+					
+					IF ( ToleranceOfHeretics < 60 )
+					PROCESS Heretics = Heretics - PerSeconds( 0.1 )
+					PROCESS Population = Population - PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
+					ENDIF
+					IF ( ToleranceOfHeretics >= 60 )
+					PROCESS Heretics = Heretics + PerSeconds( 0.1 )
+					PROCESS Population = Population + PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
+					ENDIF
+				}
+
+				
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK Heretics = {
+					IF ( ToleranceOfHeretics < 60 )
+					COLOR red
+					FLUX 2
+					ENDIF
+					IF ( ToleranceOfHeretics >= 60 )
+					COLOR green
+					FLUX 2
+					ENDIF
+				}
+				
+				LINK UrbanMilitia = {
+					COLOR red
+					FLUX 2
+				}				
+				
+				LINK Stability = {
+					COLOR red
+					FLUX 2
+				}
+				
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2
+				}
+				
+			
+				TRIGGER_EVENT = {
+					IF  ~GreatSchism
+						RISE
+					ENDIF
+				}
+
+			}
+		
+			ReinforcementOfTheClegy = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 20 100 100% ]
+				
+				SLEEP = {
+					EVENT_CHANCE Max( 0.1 ,(ReligiousHeadPower * PriestClass) / 20000 )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1 - Stability / 200
+                    
+				}
+				TICK = {
+					OVERRIDE_PARAM ClergyIndependance.value = GetParam(ClergyIndependance.value) + PerSeconds( 0.75 ? 1.25 )
+					PROCESS Stability = Stability - PerSeconds ( 0.25 ? 1 )
+				}
+				LINK ClergyIndependance = {
+					COLOR green
+					FLUX 5
+				}
+
+				TRIGGER_EVENT = {
+					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RISE
+					ENDIF
+				}
+			}
+			
+			ReinforcementOfTheGouvernement = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 20 100 15% ]
+				
+				
+				ARISE = {
+					EVENT_SPEED 1 - Stability / 200
+                    
+				}
+				TICK = {
+					OVERRIDE_PARAM ClergyIndependance.value = GetParam(ClergyIndependance.value) - PerSeconds( 0.5 ? 1 )
+					PROCESS Stability = Stability - PerSeconds ( 0.25 ? 1 )
+				}
+				LINK ClergyIndependance = {
+					COLOR red
+					FLUX 3.5
+				}
+
+				TRIGGER_EVENT = {
+					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RISE
+					ENDIF
+				}
+			}
+			
+			WeakReligiousHead = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 10 60 400 25% ]
+				
+				
+				ARISE = {
+					EVENT_SPEED 1 
+                    
+				}
+				TICK = {
+					PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ( 0.25 * 0.75 ? 1.25 )
+				}
+				LINK ReligiousHeadPower = {
+					COLOR red
+					FLUX 2
+				}
+
+				TRIGGER_EVENT = {
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RISE
+					ENDIF
+				}
+			}
+			
+			ReinforcementOfTheReligiousHead = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 20 100 100% ]
+				
+				SLEEP = {
+					EVENT_CHANCE Max( 0.1 ,(ClergyCentralization * ( 100 - ClergyIndependance) ) / 20000 )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1 - Stability / 200
+                    
+				}
+				TICK = {
+					PROCESS ReligiousHeadPower = ReligiousHeadPower + PerSeconds ( 0.75 ? 1.25 )
+					PROCESS Stability = Stability - PerSeconds ( 0.25 ? 1 )
+				}
+				LINK ReligiousHeadPower = {
+					COLOR green
+					FLUX 5
+				}
+
+				TRIGGER_EVENT = {
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RISE
+					ENDIF
+				}
+			}
+			
+			ExclusionFromTheReligion= {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 30 80 800 100% ]
+				
+				SLEEP = {
+					EVENT_CHANCE Max( 0.1 , ReligiousHeadPower / (Piety / 10 + 1 ) / 100 )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1 
+                    
+				}
+				TICK = {
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds ( 0.5 )
+					PROCESS Stability = Stability - PerSeconds ( 0.2 )
+					PROCESS Piety = Piety - PerSeconds ( 0.3 )
+					OVERRIDE_PARAM ClergyIndependance.value = GetParam(ClergyIndependance.value)
+					OVERRIDE_PARAM ClergyCentralization.value = GetParam(ClergyCentralization.value)
+				}
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2
+				}
+				LINK Stability = {
+					COLOR red 
+					FLUX 2
+				}
+				LINK Piety = {
+					COLOR red 
+					FLUX 2
+				}
+				LINK ClergyIndependance = {
+				WEIGHT [ to ]
+				}
+				LINK ClergyCentralization = {
+				WEIGHT [ to ]
+				}
+
+				TRIGGER_EVENT = {
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RISE
+					ENDIF
+				}
+			}
+		
+			NewCompetitingReligiousLeader = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 20 100 100% ]
+				
+				SLEEP = {
+					EVENT_CHANCE Max( 0.1 , 0.2 - ReligiousHeadPower / 200 )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1 - Stability / 200
+                    
+				}
+				TICK = {
+					PROCESS CompetitingReligiousLeader = CompetitingReligiousLeader + PerSeconds ( 0.05 )
+				}
+				LINK CompetitingReligiousLeader = {
+					COLOR green
+					FLUX 1
+				}
+
+				TRIGGER_EVENT = {
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RISE
+					ENDIF
+				}
+			}
+			
+			EndOfReligiousDisent = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 15 20 100 15% ]
+				
+				SLEEP = {
+					EVENT_CHANCE EffortAgainstReligiousDissent * ( 0.0015 - CompetitingReligiousLeader * 0.0001 )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1
+                    
+				}
+				TICK = {
+					
+				}
+				LINK CompetitingReligiousLeader = {
+					COLOR red
+					FLUX 10
+				}
+				
+				TRIGGER_SPAWN MercenaryUprising = {
+					PROCESS CompetitingReligiousLeader = 0
+				}
+
+				TRIGGER_EVENT = {
+					IF ~EffortAgainstReligiousDissent & CompetitingReligiousLeader > 0
+						RISE
+					ENDIF
+				}
+			}
+		
 			}
 	}
 }
