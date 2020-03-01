@@ -683,6 +683,7 @@ Main = {
 					30 = "Temples"
 					70 = "Amazing Temples"
 					90 = "Pyramids"
+					150 = "Cathedrals"
 				}
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( "@[value,0.###] " ) "<br><br>  "The magnificence of our religious monuments affects many areas, for example culture and especially the possibility of organizing larger and more elaborate ceremonies."
 				SUMMARY "Allows a complex religious activity"
@@ -1623,6 +1624,31 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Money is ultimately a highly theoretical concept that does not necessarily need to be linked to a real physical value such as gold or silver, but to the confidence that money provides. With a little bit of pressure, we could escape certain physical restrictions."
 				SUMMARY "Improves our currency"
 			}	
+			
+		
+			Monasteries = {
+				NAME "Monasteries"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Rare"
+					50 = "Common"
+					80 = "Widespread throughout the country"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Centralizing some of our priests in secluded places will allow them to live by dedicating themselves entirely to their faith. If we have a religious education, it will also be more effective."
+				SUMMARY "Strengthens our priests and our religious education."
+			}
+			
+			HolyOrders = {
+				NAME "Holy Orders"
+				LEVEL value = {
+					0 = "Disappeared "
+					0.001 = "Low"
+					20 = "Vitals"
+					40 = "Very powerful"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "The concept of the monk-soldier is both a way to get many fanatical soldiers and to ensure the holiness of our people. We must reinforce our castles and monasteries to increase recruitment."
+				SUMMARY "Recruitment for the army"
+			}
 			
 
 		}

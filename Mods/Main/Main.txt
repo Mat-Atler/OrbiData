@@ -1206,7 +1206,7 @@ Main = {
 				
 			}	
 			Culture = {
-				VALUE value [ 0 0 100 ]
+				VALUE value [ 0 0 200 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				RELATED_INFO = {
@@ -2068,8 +2068,10 @@ Main = {
 					RESOURCE_MAX $Wealth = 250
 					}
 				TICK = {
-					SET ReligiousMonuments.value [ : : Min (100 , Urbanization.value * 0.7 + 30 ) ]
-					
+				
+					IF ~ReligiousArt == 0
+						SET ReligiousMonuments.value [ : : Min (100 , Urbanization.value * 0.7 + 30 ) ]
+					ENDIF 
 					IF ~DevotionToTheLaw
 						SET UrbanMilitia.value [ : : Urbanization.value + 10 * ( 1 + ( DevotionToTheLaw / 500 ) )  ]
 					ELSE
@@ -2081,7 +2083,9 @@ Main = {
 					ENDIF
 				}
 				LINK ReligiousMonuments = {
+					IF ~ReligiousArt == 0
 						WEIGHT [ max ] Min (100 , Urbanization.value * 0.7 + 30 )
+						ENDIF
 				}
 				LINK UrbanMilitia = {
 						WEIGHT [ max ] Min (100 , Urbanization.value + 10 )
@@ -2839,8 +2843,13 @@ Main = {
 					PROCESS cost =  value * value * 0.0003
 					PROCESS PriestClass =  PriestClass + PerSeconds( value / 500)
 					IF ( $Wealth > 5 & PriestClass > 10)
-						PROCESS Education = Education + PerSeconds(value / 150)
-						PROCESS $Wealth = $Wealth - PerSeconds(cost)
+						IF ~Monasteries
+							PROCESS Education = Education + PerSeconds(value / ( 150 - Monasteries / 2 ))
+							PROCESS $Wealth = $Wealth - PerSeconds(cost * 1 - Monasteries / 200)
+						ELSE
+							PROCESS Education = Education + PerSeconds(value / 150)
+							PROCESS $Wealth = $Wealth - PerSeconds(cost)
+						ENDIF
 					ENDIF
 				}
 				LINK Education = {
@@ -4554,6 +4563,8 @@ Main = {
 					CONDITION_NODE + Monarchy
 					OR
 					CONDITION_NODE + Republic
+					OR
+					CONDITION_NODE + Theocracy
 					ALWAYS
 					CONDITION_VALUE Cavalry > 20
 					CONDITION_NODE + Cataphracts
@@ -5267,6 +5278,136 @@ Main = {
 				}
 				
 			
+
+			}
+			
+			
+			Monasteries = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | ~NonSecularEducation
+					CONDITION_VALUE Piety > 20
+					CONDITION_VALUE Pantheon > 50
+					CONDITION_NODE - SecularEducation
+					CONDITION_NODE + Feudality
+				}
+				PRICE = {
+					$PoliticalPower = 150
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Monasteries) + 1) * 3
+					$Wealth = (LinkCount(Monasteries) + 1) * 8
+				}
+				TICK = {
+					PROCESS PriestClass =  PriestClass + PerSeconds( value / 500)
+				}
+				
+				
+				LINK NonSecularEducation = {
+					WEIGHT [ to ] 
+				}
+				
+				LINK PriestClass = {
+				IF value > 0
+					FLUX value / 25
+					COLOR green
+				ENDIF
+				}
+
+			}
+			
+			
+			ReligiousArt = { 
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Monasteries | Culture
+					CONDITION_VALUE Monasteries >= 30
+					CONDITION_VALUE ReligiousMonuments >= 50
+					CONDITION_VALUE Culture >= 40
+				}
+				PRICE = {
+					$PoliticalPower = 100
+					$Wealth = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Monasteries) + 1) * 1
+					$Wealth = (LinkCount(Monasteries) + 1) * 10
+				}
+				
+				TICK = {
+					PROCESS Culture = Culture + PerSeconds ( value * 0.012 )
+					PROCESS Piety = Piety + PerSeconds ( value * 0.005 )
+					SET ReligiousMonuments.value [ : : 100 + ReligiousArt ]
+				}
+				LINK Culture = {
+						COLOR green
+						FLUX value / 25
+				}
+				LINK Piety = {
+						COLOR green
+						FLUX value / 25
+				}
+				
+				LINK ReligiousMonuments = {
+						WEIGHT [ max ] 100 + value
+				}
+			}
+			
+
+			HolyOrders = {
+				TYPE Cultural
+				VALUE value [ 0 20 50 >> 3 ]
+				VALUE multiplier [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Feudality | Culture
+					CONDITION_NODE + Feudality
+					CONDITION_VALUE Monasteries >= 40
+					CONDITION_VALUE Castles >= 30
+				}
+				PRICE = {
+					$PoliticalPower = 500
+					$Wealth = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Monasteries) + 1) * 5
+					$Wealth = (LinkCount(Monasteries) + 1) * 5
+				}
+				
+				TICK = {
+					PROCESS HolyOrders.multiplier = 0
+					IF ~Castles & ~Monasteries
+						PROCESS HolyOrders.multiplier = 0.5 + ( ( Castles / 100  ) * ( Monasteries / 100 ) )
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 120)
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 120)
+					ENDIF
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
+						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * multiplier / 8000)
+						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * multiplier / 10000)
+					ENDIF
+					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) )
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * multiplier / 6000)
+					ENDIF
+					
+				}
+				
+				LINK MilitaryManpower = {
+				IF value > 0
+					FLUX value / 25
+					COLOR green
+				ENDIF
+				}		
+				
+				LINK Castles = {
+					WEIGHT [ from ] 
+				}
+				
+				LINK Monasteries = {
+					WEIGHT [ from ] 
+				}
 
 			}
 			

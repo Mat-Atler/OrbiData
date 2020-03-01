@@ -674,6 +674,7 @@ Main = {
 					30 = "Temples"
 					70 = "Temples grandiose"
 					90 = "Pyramides"
+					150 = "Cathédrales"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) "<br><br>  "La grandeur des monuments religieux touche de nombreux secteur, par exemple la culture et surtout la possibilité d'exécuter des cérémonies plus grandes et fastes."
 				SUMMARY "Permet une activitée religieuse plus complexe"
@@ -1611,6 +1612,30 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "La monnaie est un concept au final hautement théorique qui n'a forcément besoin d'être lié à une réelle valeur physique comme l'or ou l'argent, mais bien à la confiance que la monnaie procure. En forçant un peu la main nous pourrions nous éloigner de certaines contraintes matérielles."
 				SUMMARY "Améliore notre monnaie"
 			}	
+			Monasteries = {
+				NAME "Monastères"
+				LEVEL value = {
+					0 = "Aucun"
+					0.001 = "Rares"
+					50 = "Communs"
+					80 = "Très répandus à travers tout le pays"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Centraliser certains de nos prêtres dans des lieux reclus leur permettra de vivre en se consacrant entièrement à leur foi. Si nous avons une éducation religieuse, elle sera égalemment plus efficace."
+				SUMMARY "Renforce nos prêtres et notre éducation religieuse"
+			}
+			
+			HolyOrders = {
+				NAME "Ordres Religieux"
+				LEVEL value = {
+					0 = "Disparus"
+					0.001 = "Faibles"
+					20 = "Essentiels"
+					40 = "Très puissants"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Le concept de moine-soldat permet à la fois d'obtenir de nombreux soldats fanatiques et d'assurer la sainteté de notre peuple. Nous devons renfocer nos châteaux et nos monstères pour augmenter les recrutements."
+				SUMMARY "Recrutements pour l'armée"
+			}
+		
 			
 				
 		}
