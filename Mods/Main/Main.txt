@@ -1440,7 +1440,7 @@ Main = {
 					WEIGHT [ to ]
 				}	
 			}
-			}
+			
 			
 			
 			CraftmanshipSkills = {
@@ -2261,6 +2261,11 @@ Main = {
 				
 				LINK Piety = {
 						WEIGHT [ max ] 70 + Theocracy.value / 2
+				}
+				
+				TRIGGER_LEAVE Theocracy = {
+						REMOVE CelestialMonarchy
+						REMOVE ClericalState
 				}
 				
 				}					
