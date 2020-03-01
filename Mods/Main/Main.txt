@@ -1441,18 +1441,44 @@ Main = {
 				IF ~Guilds
 					PROCESS value = value + PerSeconds( 0.02 * Guilds / 100 )
 				ENDIF
+				SET Pottery.value [ : : 100 + CraftmanshipSkills ]
 				}
 
 				LINK Guilds = {
 					WEIGHT [ from ]
 				}
 				
-				TICK = {
-				SET Pottery.value [ : : 100 + CraftmanshipSkills ]
-				}
-				
 				LINK Money = {
 						WEIGHT [ max ] 100 + value
+				}
+				
+			}		
+			
+			
+			RoadsSafety = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF ~GetCurrentEra() >= GetEra(LateAntiquity) & OverlandTrade > 50
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				IF ~UrbanMilitia == 0 && UrbanMilitia < StateSize / 2
+					PROCESS value = value + PerSeconds( 0.03 *  (StateSize - UrbanMilitia * 2 ) / 100 )
+				ENDIF
+					PROCESS OverlandTrade = OverlandTrade - PerSeconds(value / 50 * 0.75 ? 1.25)
+					PROCESS TradeGoods = TradeGoods - PerSeconds(value / 20 * 0.75 ? 1.25)
+				}
+				
+				LINK OverlandTrade = {
+					COLOR red
+					FLUX 1
+				}
+
+				LINK UrbanMilitia = {
+					WEIGHT [ from ]
 				}
 				
 			}		
@@ -3030,8 +3056,14 @@ Main = {
 						PROCESS Stability = Stability + PerSeconds(value/7500)
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 					ENDIF
+				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.0025)
 				}
 				
+				LINK RoadsSafety = {
+				IF value > 0
+					FLUX value / 25
+					COLOR red
+				ENDIF
 				
 				LINK Stability = {
 					IF (value > 0) & ( $PoliticalPower > 5)
@@ -4459,8 +4491,6 @@ Main = {
 				TYPE Cultural
 				VALUE value [ 0 50 100 >> 1 ]
 				
-
-
 				RELATED_INFO = {}
 
 				UNLOCK_CONDITIONS = {
@@ -5364,7 +5394,7 @@ Main = {
 				}
 				TICK = {
 					PROCESS NavalTrade = NavalTrade - PerSeconds(1.5 * 0.75 ? 1.25)
-					PROCESS OverlandTrade = NavalTrade - PerSeconds(1.5 * 0.75 ? 1.25)
+					PROCESS OverlandTrade = OverlandTrade - PerSeconds(1.5 * 0.75 ? 1.25)
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(0.5)
 				}
 				LINK NavalTrade = {
@@ -7116,6 +7146,103 @@ Main = {
 						ENDIF
 					}
 				}
+				
+			NomadInvasion = {
+				SOUND_EVENT "Main/SFX/Invasion.wav"
+				SOUND_WINDOW "Main/SFX/Invasion.wav"
+				EVENT_DEF [ 15 30 150 15% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				SLEEP = {
+				EVENT_CHANCE NeighborhoodBellicism / 100
+				}
+				TICK = {
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1)
+					IF Fortifications > 0
+						OVERRIDE_PARAM Fortifications.value = GetParam(Fortifications.value) - PerSeconds(1 + Fortifications.value * 0.005 * 0.75 ? 1.25)
+						PROCESS Fortifications = Min( GetParam(Fortifications.value), Fortifications )
+					ENDIF
+					IF Fortifications == 0
+						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(8 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(2 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(12 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(8 + MilitaryManpower.Mercenaries_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+						OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(4)
+						PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
+						OVERRIDE_PARAM Fortifications.value = GetParam(Fortifications.value) - PerSeconds(1 + Fortifications.value * 0.005 * 0.75 ? 1.25)
+						PROCESS Fortifications = Min( GetParam(Fortifications.value), Fortifications )
+					ENDIF
+					IF MilitaryManpower < 10 & UrbanMilitia < 10 & Fortifications == 0
+						PROCESS Stability = Stability - PerSeconds(0.75)
+						PROCESS StateSize = StateSize - PerSeconds(1 + StateSize * 0.0075)
+						PROCESS Population = Population - PerSeconds(2 + Population * 0.02)
+					ENDIF
+				}
+
+				
+				LINK MilitaryManpower = {
+					IF Fortifications == 0
+					COLOR red
+					FLUX 4
+					ENDIF
+				}
+				
+
+				LINK UrbanMilitia = {
+					IF Fortifications == 0
+					COLOR red
+					FLUX 5
+					ENDIF
+				}				
+
+				LINK Fortifications = {
+					IF Fortifications > 0
+					COLOR red
+					FLUX 3
+					ENDIF
+				}		
+				
+				LINK NeighborhoodBellicism = {
+					IF NeighborhoodBellicism > 0
+					COLOR red
+					FLUX 3
+					ENDIF
+				}					
+				
+				LINK Stability = {
+					IF MilitaryManpower < 10 & Fortifications == 0 & UrbanMilitia < 10
+					COLOR red
+					FLUX 4
+					ENDIF
+				}
+				LINK Population = {
+					IF MilitaryManpower < 10 & Fortifications == 0 & UrbanMilitia < 10
+					COLOR red
+					FLUX 2
+					ENDIF
+				}
+				LINK StateSize = {
+					IF MilitaryManpower < 10 & Fortifications == 0 & UrbanMilitia < 10
+					COLOR red
+					FLUX 3
+					ENDIF
+				}
+			
+				TRIGGER_EVENT = {
+					IF  ~StateSize & GameTime() > 12500 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) )
+						RISE
+					ENDIF
+				}
+				
+				
+				TRIGGER_SPAWN NomadInvasion = {
+					ALERT Invaded
+					ERA FeudalAge
+				}
+						
+				
+		}
 
 			}
 }

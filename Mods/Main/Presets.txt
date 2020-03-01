@@ -25,6 +25,7 @@
 		? Main.DraftAnimals = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.HorseDomestication = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.GreatNomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
+		? Main.NomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.Island = 1 - DataMapGetR("Main\DataMaps\Island.png",GetLongitude(),GetLatitude())
 	}
 	
@@ -73,6 +74,7 @@
 		- Main.DraftAnimals
 		- Main.HorseDomestication
 		- Main.GreatNomadInvasion
+		- Main.NomadInvasion
 		- Main.Island
 	}
 	Mesopotamia = {
@@ -135,6 +137,7 @@
 		- Main.DraftAnimals
 		- Main.HorseDomestication
 		- Main.GreatNomadInvasion
+		- Main.NomadInvasion
 		- Main.Island
 	}
 	
