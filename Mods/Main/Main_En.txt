@@ -538,6 +538,18 @@ Main = {
 				SUMMARY "Allows us to increase our technical possibilities"
 			}
 				
+			RoadsSafety = {
+				NAME "Roads Safety"
+				LEVEL value = {
+					0 = "No bandits"
+					0.001 = "Some bandits"
+					30 = "Our roads are no longer safe"
+					60 = "Highwaymen are everywhere"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "It happens that the most unfortunate ones flee into our forests and begin to practice banditry. We must ensure that we put in place a strong police force to avoid any insecurity that would compromise our land trade."
+				SUMMARY "Reduces our trade"
+				}
+
 				
 		}
 		Levers = {
@@ -1589,7 +1601,7 @@ Main = {
 			
 			Banks = {
 				NAME "Banks"
-				DESCRIPTION "Value: "@[value,0.###]<br>"Maximum: "@[weath_max,0.#]<br>"Minimum: "@[weath_min,0.#]"<br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
+				DESCRIPTION "Value: "@[value,0.###] <br> "Maximum: "@[weath_max,0.#] <br> "Minimum: "@[weath_min,0.#]" <br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
 				SUMMARY "Enlarges our maximum and minimum wealth"
 			}	
 			
@@ -1855,6 +1867,12 @@ Main = {
 				NAME "Witch Hunt"
 				DESCRIPTION "Our people have provoked a local pogrom against our minorities. If this kind of incident strengthens our religious and national identity, the consequences for trade and stability are disastrous."
 				SUMMARY "Reduces our minorities and our stability"
+			}
+			
+			NomadInvasion = {
+				NAME "Nomadic Invasion"
+				DESCRIPTION "One of our barbarian neighbors has started an invasion. They are looting and killing by the thousands. We must stop them!"
+				SUMMARY "A nomadic horde is attacking you!"
 			}
 
 		}

@@ -25,6 +25,7 @@
 		? Main.DraftAnimals = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.HorseDomestication = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.GreatNomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
+		? Main.NomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.Island = 1 - DataMapGetR("Main\DataMaps\Island.png",GetLongitude(),GetLatitude())
 	}
 	
@@ -73,6 +74,7 @@
 		- Main.DraftAnimals
 		- Main.HorseDomestication
 		- Main.GreatNomadInvasion
+		- Main.NomadInvasion
 		- Main.Island
 	}
 	Mesopotamia = {
@@ -135,6 +137,7 @@
 		- Main.DraftAnimals
 		- Main.HorseDomestication
 		- Main.GreatNomadInvasion
+		- Main.NomadInvasion
 		- Main.Island
 	}
 	
@@ -151,6 +154,22 @@
 		Main.Spices.value = 5
 		Main.Salt.value = 10
 		Main.NeighborhoodBellicism.value = 20
+		- Main.Island
+	}
+	
+	
+	ParisBasin = {
+		COORDINATES = 48° 51' N 2° 21' E
+		Main.Humidity.value = 60
+		Main.Temperature.value = 45
+		Main.Flora.value = 70
+		Main.Fauna.value = 70
+		Main.Coastline.value = 25
+		Main.SoilFertility.value = 60
+		Main.Gold.value = 20
+		Main.Spices.value = 0
+		Main.Salt.value = 50
+		Main.NeighborhoodBellicism.value = 80
 		- Main.Island
 	}
 	

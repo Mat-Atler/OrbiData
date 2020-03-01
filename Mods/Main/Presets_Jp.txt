@@ -70,4 +70,9 @@ Presets = {
 		NAME "エジプト"
 		DESCRIPTION ""<b>VERY EASY</b><br>エジプトには世界有数の肥沃な土地があります。この場所の有利なところは砂漠と海に守られながら多くの貿易ルートを持つことが出来るところです。"
 		}	
+		
+	ParisBasin = {
+		NAME "パリ盆地"
+		DESCRIPTION "<b>NORMAL</b><br>The Paris Basin is a relatively fertile land, located in a rather mild oceanic climate. Maritime trade, on the other hand, is rather limited, and its neighbors are quite agitated."
+		}
 }

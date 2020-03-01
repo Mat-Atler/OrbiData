@@ -71,4 +71,10 @@ Presets = {
 		NAME "Égypte"
 		DESCRIPTION "<b>Très Facile</b><br>L'Égypte possède probablement l'une des terres les plus fertiles du monde. Sa situation avantageuse la positionne sur de nombreuses routes commerciales tout en étant protégée par le désert et la mer. "
 		}
+		
+	ParisBasin = {
+		NAME "Bassin Parisien"
+		DESCRIPTION "<b>Moyen</b><br>Le bassin parisien est une terre relativement fertile, situé dans un climat océanique plutôt doux. Le commerce maritime est par contre plutôt limité, et ses voisins agités."
+		}
+		
 }
