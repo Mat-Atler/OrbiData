@@ -74,7 +74,7 @@ Presets = {
 		
 	ParisBasin = {
 		NAME "Bassin Parisien"
-		DESCRIPTION "<b>Moyen</b><br>Le bassin parisien est une terre relativement fertile, situé dans un climat océanique plutôt doux. Le commerce maritime est par contre plutôt limité, et ses voisins agités."
+		DESCRIPTION "<b>Difficile</b><br>Le bassin parisien est une terre relativement fertile, situé dans un climat océanique plutôt doux. Le commerce maritime est par contre plutôt limité, et ses voisins agités."
 		}
 		
 }

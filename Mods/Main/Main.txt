@@ -862,7 +862,7 @@ Main = {
 				}
 			}
 			Stability = {
-				VALUE value [ 0 50 100 ]
+				VALUE value [ 0 60 100 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				RELATED_INFO = {
@@ -1403,6 +1403,7 @@ Main = {
 			Minorities = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
+				DISPLAY_DECAY
 				RELATED_INFO = {
 				}
 				SLEEP = {
@@ -1411,6 +1412,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
+					PROCESS value =  value - PerSeconds(value / 5000 )
 					IF ~Money == 0
 						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
 						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
@@ -1420,7 +1422,7 @@ Main = {
 					ENDIF
 					
                 IF StateSize' > 0
-					PROCESS Minorities = Minorities + StateSize' / 5
+					PROCESS Minorities = Minorities + StateSize' / 6
                 ENDIF
 					
 				}
@@ -1480,6 +1482,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
+					PROCESS value = value + PerSeconds ( Max( 0.0001 , StateSize - UrbanMilitia * 2 ) / 1000  )
 				
 					PROCESS OverlandTrade = OverlandTrade - PerSeconds(value / 50 * 0.75 ? 1.25)
 					PROCESS TradeGoods = TradeGoods - PerSeconds(value / 20 * 0.75 ? 1.25)
@@ -2318,7 +2321,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~AristocracyClass
 					CONDITION_EXCLUDE Government
-					CONDITION_VALUE AristocracyClass > 25
+					CONDITION_VALUE AristocracyClass > 15
 					CONDITION_VALUE Urbanization > 20
 				}
 				PRICE = {
@@ -5609,7 +5612,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 15% ]
+				EVENT_DEF [ 40 60 450 25% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -5621,7 +5624,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ~NeighborhoodBellicism  & GameTime() > 2000
+					IF ~NeighborhoodBellicism  & GameTime() > 2300
 						RISE
 					ENDIF
 				}
@@ -7123,28 +7126,24 @@ Main = {
 			UrbanExodus = {
 				SOUND_EVENT "Main/SFX/CitiesInRuins.wav"
 				SOUND_WINDOW "Main/SFX/CitiesInRuins.wav"
-					EVENT_DEF [ 20 75 450 33% ]
+					EVENT_DEF [ 20 60 450 33% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
 					TICK = {
-						OVERRIDE_PARAM Settlement.value = GetParam(Settlement.value) + PerSeconds(0.3 * 0.75 ? 1.25)
+						OVERRIDE_PARAM Settlement.value = GetParam(Settlement.value) + PerSeconds(0.1 * 0.75 ? 1.25)
 						PROCESS Settlement = Min( GetParam(Settlement.value), Settlement )
-						OVERRIDE_PARAM Urbanization.value = GetParam(Urbanization.value) - PerSeconds(0.075 * 0.75 ? 1.25)
+						OVERRIDE_PARAM Urbanization.value = GetParam(Urbanization.value) - PerSeconds(0.05 * 0.75 ? 1.25)
 						PROCESS Urbanization = Min( GetParam(Urbanization.value), Urbanization )
 					}
 
-					LINK Infantry = {
-						COLOR red
-						FLUX 2
-					}
 					LINK Settlement = {
 						COLOR green
 						FLUX 2
 					}
 					LINK Urbanization = {
 						COLOR red
-						FLUX 2
+						FLUX 3
 					}
 
 					TRIGGER_EVENT = {
@@ -7323,6 +7322,11 @@ Main = {
 					}
 
 					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					
+					LINK Minorities = {
 						COLOR red
 						FLUX 2
 					}

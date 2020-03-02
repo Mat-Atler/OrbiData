@@ -25,7 +25,7 @@ Religious = {
 					ENDIF
 					
 				
-					PROCESS Minorities = Minorities + value * 0.0005
+					PROCESS Minorities = Minorities + value * 0.00015
 				
 				}
 				
@@ -64,7 +64,7 @@ Religious = {
                 ENDIF
 				
 				
-				PROCESS Minorities = Minorities + value * 0.0005
+				PROCESS Minorities = Minorities + value * 0.00015
 				
 				}
 				
