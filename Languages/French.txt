@@ -143,3 +143,14 @@ PRIVACY_INFO Les développeurs de ce jeu <b>ne collectent aucune information pri
 PRIVACY_BUTTON Ouvrir la page Politique de confidentialité de Unity
 GAME_UNLOCK_IGNORE Ignorer
 GAME_UNLOCK_IGNORE_CANCEL Cliquez ici pour re-afficher tous les nodes ignorés.
+MENU_OPTIONS_UI_CONTROLS Contôles d'interface : 
+MENU_OPTIONS_UI_CONTROLS_TOOLTIP Affiche des commandes sur l'interface du jeu pour modifier le zoom et créer des groupes au lieu d'utiliser la molette de la souris.
+MENU_OPTIONS_AUDIO PARAMETRES AUDIO
+GAME_NODE_RELATIONSHIP_AFFECT Nodes affectés
+GAME_NODE_RELATIONSHIP_UNLOCK Nodes débloqués
+GAME_NODE_RELATIONSHIP_FORBIDDEN Nodes interdits
+GAME_NODE_NEW_STATE <color=#bbbbbb>L'État </color> [0] <color=#bbbbbb> est apparu.</color>
+GAME_NODE_NEW_EVENT <color=#bbbbbb>L'Évènement </color> [0] <color=#bbbbbb> est apparu.</color>
+GAME_GROUP_NAME Nom...
+GAME_GROUP_OK OK
+GAME_GROUP_REMOVE Enlever

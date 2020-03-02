@@ -143,3 +143,14 @@ PRIVACY_INFO このゲームの開発者はこのプログラムを通じて<b>�
 PRIVACY_BUTTON Unityのプライバシーポリシーページを開く
 GAME_UNLOCK_IGNORE 無視する
 GAME_UNLOCK_IGNORE_CANCEL クリックすると無視された全てのレバーを再表示されます。
+MENU_OPTIONS_UI_CONTROLS Interface controls: 
+MENU_OPTIONS_UI_CONTROLS_TOOLTIP Shows controls on the game interface for changing zoom and creating groups instead of using the mouse scrollwheel.
+MENU_OPTIONS_AUDIO AUDIO SETTINGS
+GAME_NODE_RELATIONSHIP_AFFECT Nodes affected
+GAME_NODE_RELATIONSHIP_UNLOCK Nodes unlocked
+GAME_NODE_RELATIONSHIP_FORBIDDEN Nodes forbidden
+GAME_NODE_NEW_STATE <color=#bbbbbb>The state </color> [0] <color=#bbbbbb> has appeared.</color>
+GAME_NODE_NEW_EVENT <color=#bbbbbb>The event </color> [0] <color=#bbbbbb> has appeared.</color>
+GAME_GROUP_NAME Name...
+GAME_GROUP_OK OK
+GAME_GROUP_REMOVE Remove
