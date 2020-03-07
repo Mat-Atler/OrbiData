@@ -100,25 +100,25 @@ Religious = {
 				}
                 TICK = {
 				IF Pantheon <= 49
-				PROCESS Devotion = ( 3 + Pantheon / 50 ) * Piety * ( 0.75 + ClergyCentralization / 200 )
-				SET DevotionToNature.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
-				SET DevotionToSea.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
-				SET DevotionToTheHarvest.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
-				SET DevotionToTheLaw.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
-				SET DevotionToWar.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
-				SET DevotionToTrade.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
-				SET DevotionToCraftsmanship.value [ : : Devotion.value / ( 3 + Pantheon / 50 )  ]
+					PROCESS Devotion = ( 3 + Pantheon / 50 ) * Piety * ( 0.75 + ClergyCentralization / 200 )
+					SET DevotionToNature.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					SET DevotionToSea.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					SET DevotionToTheHarvest.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					SET DevotionToTheLaw.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					SET DevotionToWar.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					SET DevotionToTrade.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					SET DevotionToCraftsmanship.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
 				ENDIF
 				
 				IF  Pantheon > 49 
-				PROCESS Devotion = ( 4 - (Pantheon / 25 - 2 ) ) * Piety * ( 0.75 + ClergyCentralization / 200 )
-				SET DevotionToNature.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
-				SET DevotionToSea.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
-				SET DevotionToTheHarvest.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
-				SET DevotionToTheLaw.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
-				SET DevotionToWar.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
-				SET DevotionToTrade.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
-				SET DevotionToCraftsmanship.value [ : : Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )  ]
+					PROCESS Devotion = ( 4 - (Pantheon / 25 - 2 ) ) * Piety * ( 0.75 + ClergyCentralization / 200 )
+					SET DevotionToNature.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					SET DevotionToSea.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					SET DevotionToTheHarvest.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					SET DevotionToTheLaw.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					SET DevotionToWar.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					SET DevotionToTrade.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					SET DevotionToCraftsmanship.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
 				ENDIF
 				
 				}
@@ -137,51 +137,51 @@ Religious = {
 
 				LINK DevotionToNature = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				LINK DevotionToSea = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				LINK DevotionToTheHarvest = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				LINK DevotionToTheLaw = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				LINK DevotionToWar = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				LINK DevotionToTrade = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				LINK DevotionToCraftsmanship = {
 				IF Pantheon <= 49
-					WEIGHT [ max ] Devotion.value / ( 3 + Pantheon / 50 )
+					WEIGHT [ max ] Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )
 				ELSE
-					WEIGHT [ max ] Devotion.value / ( 4 - (Pantheon / 25 - 2 ) )
+					WEIGHT [ max ] Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))
 				ENDIF
 				}
 				
@@ -194,7 +194,8 @@ Religious = {
 				RELATED_INFO = {
 				}
 				SLEEP = {
-					IF PriestClass > 25
+					IF PriestClass > 25 & ~ClergyIndependance
+					
 						SPAWN
 					ENDIF
 				}
@@ -204,7 +205,10 @@ Religious = {
 					ELSE
 						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ( ( ReligiousHeadPower - ClergyIndependance ) / 200 )
 					ENDIF	
-				}		
+				}	
+				LINK ClergyIndependance = {
+					WEIGHT [ from ]
+				}				
 			}
 			
 			CompetitingReligiousLeader = {
@@ -220,7 +224,7 @@ Religious = {
 				TICK = {
 					IF CompetitingReligiousLeader > 0
 						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ( ReligiousHeadPower / (CompetitingReligiousLeader * CompetitingReligiousLeader / 10 ) )
-						PROCESS Piety = Piety - PerSeconds (CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 )
+						PROCESS Piety = Piety - PerSeconds (CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 * ( 0.75 + ClergyCentralization / 200 ) )
 					ENDIF	
 				}
 				LINK Piety = {
@@ -677,7 +681,8 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~PriestClass
+					HINT ~PriestClass & GetCurrentEra() == GetEra(IronAge)
+					CONDITION_ERA >= IronAge
 					CONDITION_VALUE PriestClass > 25
 				}
 				PRICE = {
@@ -708,7 +713,8 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~PriestClass
+					HINT ~PriestClass & GetCurrentEra() == GetEra(IronAge)
+					CONDITION_ERA >= IronAge
 					CONDITION_VALUE PriestClass > 25
 				}
 				PRICE = {
@@ -724,6 +730,7 @@ Religious = {
 			}
 			
 			DevotionToNature = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -752,6 +759,7 @@ Religious = {
 			}
 			
 			DevotionToSea = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -782,6 +790,7 @@ Religious = {
 			}
 			
 			DevotionToTheHarvest = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -811,6 +820,7 @@ Religious = {
 			}
 			
 			DevotionToTheLaw = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -848,6 +858,7 @@ Religious = {
 			}
 			
 			DevotionToWar = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 0 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -874,6 +885,7 @@ Religious = {
 			}
 			
 			DevotionToTrade = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -905,6 +917,7 @@ Religious = {
 			}
 			
 			DevotionToCraftsmanship = {
+				TAG DevotionType
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				RELATED_INFO = {
@@ -960,8 +973,8 @@ Religious = {
 				}
 				TICK = {
 				IF EffortAgainstReligiousDissent > 0 & CompetitingReligiousLeader > 0
-					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( value + CompetitingReligiousLeader / 100 )
-					PROCESS $Wealth = $Wealth - PerSeconds ( value + CompetitingReligiousLeader / 100 )
+					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( (value + CompetitingReligiousLeader) / 100 * ( 0.75 + ClergyCentralization / 200 ) )
+					PROCESS $Wealth = $Wealth - PerSeconds ( (value + CompetitingReligiousLeader) / 100 * ( 0.75 + ClergyCentralization / 200 ) )
 				ELSE
 					PROCESS $PoliticalPower = $PoliticalPower
 					PROCESS $Wealth = $Wealth
@@ -1271,7 +1284,7 @@ Religious = {
 
 			}
 		
-			ReinforcementOfTheClegy = {
+			ReinforcementOfTheClergy = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
 				EVENT_DEF [ 15 20 100 100% ]
@@ -1396,7 +1409,7 @@ Religious = {
 				TICK = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds ( 0.5 )
 					PROCESS Stability = Stability - PerSeconds ( 0.2 )
-					PROCESS Piety = Piety - PerSeconds ( 0.3 )
+					PROCESS Piety = Piety - PerSeconds ( 0.2 )
 					OVERRIDE_PARAM ClergyIndependance.value = GetParam(ClergyIndependance.value)
 					OVERRIDE_PARAM ClergyCentralization.value = GetParam(ClergyCentralization.value)
 				}
@@ -1448,7 +1461,7 @@ Religious = {
 				}
 
 				TRIGGER_EVENT = {
-					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~EndOfReligiousDisent == 0
 						RISE
 					ENDIF
 				}
@@ -1480,7 +1493,7 @@ Religious = {
 				}
 
 				TRIGGER_EVENT = {
-					IF ~EffortAgainstReligiousDissent & CompetitingReligiousLeader > 0
+					IF ~EffortAgainstReligiousDissent & ~NewCompetitingReligiousLeader == 0 & CompetitingReligiousLeader > 0
 						RISE
 					ENDIF
 				}
