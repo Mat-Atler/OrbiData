@@ -1008,7 +1008,6 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Notre civilisation est la plus avancée, la plus puissante et la plus pure. Nous devons apporter notre modèle à travers les territoires barbares à l'aide de nos forces militaires."
 				SUMMARY "Étend votre territoire à l'aide de votre armée"
 			}
-			//RELECTURE ICI 
 			
 			LootingCampaigns = {
 				NAME "Campagne de pillage"
@@ -1635,6 +1634,21 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Le concept de moine-soldat permet à la fois d'obtenir de nombreux soldats fanatiques et d'assurer la sainteté de notre peuple. Nous devons renfocer nos châteaux et nos monstères pour augmenter les recrutements."
 				SUMMARY "Recrutements pour l'armée"
 			}
+			
+			
+			HolyWar = {
+				NAME "Guerre Sainte"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Faible"
+					40 = "Moyenne"
+					70 = "Intensive"
+				}
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Notre foi est l'unique vraie, la plus puissante et la plus pure. Nous devons l'exporter par la force des armes afin de soumettre les infidèles."
+				SUMMARY "Étend votre territoire et renforce votre piété à l'aide de votre armée"
+			}
+			
+			
 		
 			
 				

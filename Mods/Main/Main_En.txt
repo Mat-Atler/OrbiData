@@ -1650,6 +1650,18 @@ Main = {
 				SUMMARY "Recruitment for the army"
 			}
 			
+			HolyWar = {
+				NAME "Holy War"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Low"
+					40 = "Average"
+					70 = "Intensive"
+				}
+				DESCRIPTION <b> "Value: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "Our faith is the one and only true, the mightiest and purest. We must export it through strength in order to subjugate the unfaithful."
+				SUMMARY "Expand your territory and strengthen your piety with your army"
+			}
+			
 
 		}
 		Events = {
@@ -1863,6 +1875,12 @@ Main = {
 				NAME "Harsh Winter"
 				DESCRIPTION "The hazards of our climate caused us to experience a winter unprecedented in generations. Our people will suffer greatly."
 				SUMMARY "The winter is particularly harsh and hits our food reserves very hard."
+			}
+			
+			UrbanExodus = {
+				NAME "Urban Exodus"
+				DESCRIPTION "The prevailing insecurity in the cities has led our population to leave the urban areas and settle permanently in the countryside."
+				SUMMARY "Our population flees the cities"
 			}
 			
 			MerchantExplorer = {

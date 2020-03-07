@@ -506,6 +506,51 @@ Main = {
 				}
 				
 				
+			ScienceKnowledge = {
+				NAME "Scientific Knowledge"
+				DESCRIPTION "Knowledge: " @[value,0.###]<br><br>" Our knowledge, at last obtained by a more or less rigorous empiricism, assures us that every step we take goes in a more efficient path."
+				SUMMARY "Our current knowledge"
+			}
+			
+			
+			Alchemy = {
+				NAME "Alchemy"
+				LEVEL value = {
+					0 = "Natural Body Analysis"
+					25 = "Elemental Research"
+					50 = "Beginning of Chemistry"
+					75 = "Theory of transmutation"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
+				SUMMARY "Improves our scientific knowledge"
+			}	
+
+		
+			Minorities = {
+				NAME "Minorities"
+				DESCRIPTION "Number: " @[value,0.###]<br><br>" The disparity of peoples linked to our conquests and our religious disparities brings us towards a certain disorder to our national cohesion. On the other hand it multiplies our trading opportunities."
+				SUMMARY "Strengthens our trade but degrades our union"
+			}
+			
+			CraftmanshipSkills = {
+				NAME "Craftsmanship Skills"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"Craftsmanship skills includes all our technical knowledge. Our guilds and specialization allow us to increase our expertise at a rapid pace."
+				SUMMARY "Allows us to increase our technical possibilities"
+			}
+				
+			RoadsSafety = {
+				NAME "Roads Safety"
+				LEVEL value = {
+					0 = "No bandits"
+					0.001 = "Some bandits"
+					30 = "Our roads are no longer safe"
+					60 = "Highwaymen are everywhere"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "It happens that the most unfortunate ones flee into our forests and begin to practice banditry. We must ensure that we put in place a strong police force to avoid any insecurity that would compromise our land trade."
+				SUMMARY "Reduces our trade"
+				}
+				
+				
 		}
 		Levers = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Levers
@@ -1391,6 +1436,7 @@ Main = {
 				SUMMARY "海軍の定員を変更する"
 				}
 			
+			
 			University = {
 				NAME "University"
 				LEVEL value = {
@@ -1404,7 +1450,7 @@ Main = {
 				SUMMARY "Improves our intellectual research"
 				}
 				
-				
+			
 			FarmersTax = {
 				NAME "Farmers' Tax"
 				LEVEL value = {
@@ -1426,10 +1472,9 @@ Main = {
 					0.001 = "Firsts Mills"
 					70 = "Mills"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
 				SUMMARY "Improve our agriculture"
 			}	
-			
 			
 			Nobility = {
 				NAME "Nobility"
@@ -1440,7 +1485,7 @@ Main = {
 					70 = "Sumptuous courtship"
 				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organizing our aristocracy into a class above the others, endowing it with inalienable & hereditary rights and pensions, will appease the great lords of our country."
-				SUMMARY "Strengthen our power by buying the loyalty of the great lords."
+				SUMMARY "Strengthen our power by buying the loyalty of the great lords"
 			}	
 			
 			MedievalArmors = {
@@ -1451,7 +1496,7 @@ Main = {
 					15 = "Search for better models"
 					100 = "Mastery"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
 				SUMMARY "Military Technology"
 			}	
 			
@@ -1466,7 +1511,7 @@ Main = {
 					100 = "Trebuchets"
 					150 = "Bomb Cannon"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
 				SUMMARY "Military Technology"
 			}	
 			
@@ -1493,13 +1538,128 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our law is a force of truth, however, we must sometimes specify certain vague outlines. By sanctifying a place, the Tribunal, as a symbol of justice, our power will grow."
 				SUMMARY "Strengthens our political power"
 				}
-			
+				
+			Castles = {
+				NAME "Castles"
+				LEVEL value = {
+					0 = "Primary fortifications"
+					25 = "Wooden castles"
+					50 = "Stone castles"
+					75 = "Fortress"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our locals noble need a symbolic place as a residence and as a stronghold. Let's build impressive fortifications to better organize our military levies."
+				SUMMARY "Improve the recruitment of Banners"
+			}	
 			Medicine = {
 				NAME "Medicine"
 				DESCRIPTION <b>"Value: "@[value,0.###] " )<br><br> Our growing knowledge has opened the doors to medical care. Making a clear distinction between diseases and curses, between prayers and drugs, we will gradually come to fight the plagues of men."
 				SUMMARY "Reduces the chance of epidemics"
 				}
-				
+			
+			Alchemy = {
+				NAME "Alchemy"
+				LEVEL value = {
+					0 = "Natural Body Analysis"
+					25 = "Elemental Research"
+					50 = "Beginning of Chemistry"
+					75 = "Theory of transmutation"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
+				SUMMARY "Improves our scientific knowledge"
+			}	
+			
+			Gunpowder = {
+				NAME "Gunpowder"
+				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our studies with very strange materials gave us something resembling black powder. Highly explosive, it could have many applications, especially military."
+				SUMMARY "Enhances our military potential."
+			}	
+
+
+			TradeFair = {
+				NAME "Trade Fair"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Occasional festivities"
+					35 = "Fair organized annually"
+					80 = "Landmark on the continent"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Fairs are a mix of festivities where merchants of all kinds are invited. They allow us to centralize the production of the region to make it more attractive, and even allow us to earn little money by slightly taxing the event. Of course, it also strengthens the merchants' power."
+				SUMMARY "Improves our trade"
+			}	
+			
+			Guilds = {
+				NAME "Guilds"
+				LEVEL value = {
+					0 = "None"
+					0.001 = " Professionals grouping"
+					35 = "Mighty Guilds"
+					80 = " Uncontrollable Guilds"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "A guild is an association or cooperation of persons engaged in a common activity, usually merchants, which adopts specific rules and privileges and seeks the protection of the authorities of a city or state."
+				SUMMARY "Improves our businesses"
+			}	
+			
+			Banks = {
+				NAME "Banks"
+				DESCRIPTION "Value: "@[value,0.###] <br> "Maximum: "@[weath_max,0.#] <br> "Minimum: "@[weath_min,0.#]" <br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
+				SUMMARY "Enlarges our maximum and minimum wealth"
+			}	
+			
+			ScripturalMoney = {
+				NAME "Scriptural Money"
+				DESCRIPTION <b>"Value: "@[value,0.###]</b> <br> <b>"Maximum : "@[weath_max,0.#]</b> <br> <b>"Minimum : "@[weath_min,0.#]</b> "<br><br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. However, Banks are sometimes double-edged."
+				SUMMARY "Enlarges our maximum and minimum wealth"
+			}
+			
+			
+			ScripturalMoney = {
+				NAME "Scriptural Money"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Bills of Exchange"
+					50 = "Checks"
+					80 = "Banknote"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Money is ultimately a highly theoretical concept that does not necessarily need to be linked to a real physical value such as gold or silver, but to the confidence that money provides. With a little bit of pressure, we could escape certain physical restrictions."
+				SUMMARY "Improves our currency"
+			}	
+			
+		
+			Monasteries = {
+				NAME "Monasteries"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Rare"
+					50 = "Common"
+					80 = "Widespread throughout the country"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Centralizing some of our priests in secluded places will allow them to live by dedicating themselves entirely to their faith. If we have a religious education, it will also be more effective."
+				SUMMARY "Strengthens our priests and our religious education."
+			}
+			
+			HolyOrders = {
+				NAME "Holy Orders"
+				LEVEL value = {
+					0 = "Disappeared "
+					0.001 = "Low"
+					20 = "Vitals"
+					40 = "Very powerful"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "The concept of the monk-soldier is both a way to get many fanatical soldiers and to ensure the holiness of our people. We must reinforce our castles and monasteries to increase recruitment."
+				SUMMARY "Recruitment for the army"
+			}
+			
+			HolyWar = {
+				NAME "Holy War"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Low"
+					40 = "Average"
+					70 = "Intensive"
+				}
+				DESCRIPTION <b> "Value: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "Our faith is the one and only true, the mightiest and purest. We must export it through strength in order to subjugate the unfaithful."
+				SUMMARY "Expand your territory and strengthen your piety with your army"
+			}
 				
 		}
 		Events = {
@@ -1744,6 +1904,18 @@ Main = {
 				SUMMARY "Increases our culture levers"
 			}
 			
+			WitchHunt = {
+				NAME "Witch Hunt"
+				DESCRIPTION "Our people have provoked a local pogrom against our minorities. If this kind of incident strengthens our religious and national identity, the consequences for trade and stability are disastrous."
+				SUMMARY "Reduces our minorities and our stability"
+			}
+			
+			NomadInvasion = {
+				NAME "Nomadic Invasion"
+				DESCRIPTION "One of our barbarian neighbors has started an invasion. They are looting and killing by the thousands. We must stop them!"
+				SUMMARY "A nomadic horde is attacking you!"
+			}
+
 		}
 	}
 }

@@ -5415,6 +5415,101 @@ Main = {
 			}
 			
 			
+			HolyWar = {
+				TAG Sedentary
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 3 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~HolyOrders
+					CONDITION_VALUE MilitaryManpower > 75
+					CONDITION_VALUE Piety > 40
+					CONDITION_VALUE Pantheon > 75
+					CONDITION_VALUE HolyOrders > 25
+					CONDITION_NODE + Expensionism
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(HolyWar) + 1) * 3
+				}
+				
+				TICK = {
+				IF ( MilitaryManpower > 40 & ~Island == 0 )
+					PROCESS Piety = Piety + PerSeconds(value / 500)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 40 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
+					IF ~BarbarianAtGates
+						PROCESS BarbarianAtGates -= PerSeconds(value / 100)
+					ELSE
+						PROCESS StateSize = StateSize + PerSeconds(value / 300)
+					ENDIF
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
+				ENDIF
+				IF (MilitaryManpower > 40 & Navy > 40 & ~Island )
+					PROCESS Piety = Piety + PerSeconds(value / 500)
+					PROCESS Navy = Navy - PerSeconds(value / 75)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 100 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 100 * ( 1.5 - MilitaryEfficiency /100 ) )
+					IF ~BarbarianAtGates
+						PROCESS BarbarianAtGates -= PerSeconds(value / 100)
+					ELSE
+						PROCESS StateSize = StateSize + PerSeconds(value / 300)
+					ENDIF
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(value * 0.0025)
+				ENDIF
+				}
+				
+				LINK MilitaryManpower = {
+				IF (MilitaryManpower > 40 & ~Island == 0) | ( MilitaryManpower > 40 & Navy > 40 & ~Island )
+					COLOR red
+					FLUX value /25
+				ENDIF
+				}
+				
+				LINK Navy = {
+				IF MilitaryManpower > 40 & Navy > 40 & ~Island
+					COLOR red
+					FLUX value /25
+				ENDIF
+				}
+				
+				LINK BarbarianAtGates = {
+				IF (MilitaryManpower > 40 & ~Island == 0) | ( MilitaryManpower > 40 & Navy > 40 & ~Island )
+					COLOR red
+					FLUX value /50
+				ENDIF
+				}
+				
+				LINK StateSize = {
+				IF (MilitaryManpower > 40 & ~Island == 0) | ( MilitaryManpower > 40 & Navy > 40 & ~Island )
+					COLOR green
+					FLUX value /50
+				ENDIF
+				}
+				
+				LINK Piety = {
+				IF (MilitaryManpower > 40 & ~Island == 0) | ( MilitaryManpower > 40 & Navy > 40 & ~Island )
+					COLOR green
+					FLUX value /50
+				ENDIF
+				}
+				
+
+				LINK NeighborhoodBellicism = {
+				IF (MilitaryManpower > 40 & ~Island == 0) | ( MilitaryManpower > 40 & Navy > 40 & ~Island )
+					COLOR green
+					FLUX value /50
+				ENDIF
+				}
+
+			}	
+			
+			
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
