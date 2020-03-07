@@ -1216,8 +1216,8 @@ Religious = {
 				}
 			}
 			ReligiousLeagueWar = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
 				EVENT_DEF [ 15 60 70 60% ]
 				ARISE = {
 					EVENT_SPEED 1
@@ -1285,8 +1285,8 @@ Religious = {
 			}
 		
 			ReinforcementOfTheClergy = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/ConversionBad.wav"
+				SOUND_WINDOW "Main/SFX/ConversionBad.wav"
 				EVENT_DEF [ 15 20 100 100% ]
 				
 				SLEEP = {
@@ -1314,8 +1314,8 @@ Religious = {
 			}
 			
 			ReinforcementOfTheGouvernement = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/ToomuchPP.wav"
+				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				EVENT_DEF [ 15 20 100 15% ]
 				
 				
@@ -1340,8 +1340,8 @@ Religious = {
 			}
 			
 			WeakReligiousHead = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/WeakMonarch.wav"
+				SOUND_WINDOW "Main/SFX/WeakMonarch.wav"
 				EVENT_DEF [ 10 60 400 25% ]
 				
 				
@@ -1365,8 +1365,8 @@ Religious = {
 			}
 			
 			ReinforcementOfTheReligiousHead = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/Schism.wav"
+				SOUND_WINDOW "Main/SFX/Schism.wav"
 				EVENT_DEF [ 15 20 100 100% ]
 				
 				SLEEP = {
@@ -1394,8 +1394,8 @@ Religious = {
 			}
 			
 			ExclusionFromTheReligion= {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/Schism.wav"
+				SOUND_WINDOW "Main/SFX/Schism.wav"
 				EVENT_DEF [ 30 80 800 100% ]
 				
 				SLEEP = {
@@ -1440,8 +1440,8 @@ Religious = {
 			}
 		
 			NewCompetitingReligiousLeader = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/ConversionBad.wav"
+				SOUND_WINDOW "Main/SFX/ConversionBad.wav"
 				EVENT_DEF [ 15 20 100 100% ]
 				
 				SLEEP = {
@@ -1468,8 +1468,8 @@ Religious = {
 			}
 			
 			EndOfReligiousDisent = {
-				SOUND_EVENT "Main/SFX/Riots.wav"
-				SOUND_WINDOW "Main/SFX/Riots.wav"
+				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
+				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
 				EVENT_DEF [ 15 20 100 15% ]
 				
 				SLEEP = {
