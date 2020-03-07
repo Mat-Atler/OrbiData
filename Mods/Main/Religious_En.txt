@@ -21,11 +21,6 @@ Religious = {
 				DESCRIPTION <b>"Valeur: "@[value] </b> " Whether the religious leader is only a spiritual guide or the master of a large religious administration, his decisions have a great influence on religious policies."
 				SUMMARY "Religious Head Poweer"
 			}
-			CompetitingReligiousLeader = {
-				NAME "Competiting Religious Leader"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " Que le chef religieux soit un seulement un guide spirituel ou le maitre d'une grande administration religieuse, ses décisions a une grande influence sur les politiques religieuses."
-				SUMMARY "Pouvoir du chef religieux"
-			}
 			CompetitingReligiousLeader= {
 				NAME "Competiting Religious Leader"
 				DESCRIPTION <b>"Valeur: "@[value] </b> " Religious power is little different from political power. Like it, it attracts the envious, the embittered and the idealistic reformers... The most charismatic of these suitors manage to get part of the clergy on their side, thus undermining the unity of our faith."
@@ -33,7 +28,7 @@ Religious = {
 			}
 			Devotion = {
 				NAME "Devotion"
-				DESCRIPTION <b>"Valeur: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare.."
+				DESCRIPTION <b>"Valeur: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare."
 				SUMMARY " Improves your various devotions"
 			}
 		}
@@ -58,7 +53,7 @@ Religious = {
 					50 = "Heathens are tolerated as long as they are useful"
 					75 = "Heathens are almost considered as any of our subjects"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate Heathens so that they do not pose any problems, But at the cost of a constant political investments "
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate Heathens so that they do not pose any problems, But at the cost of a constant political investments. "
 				SUMMARY " Our policy about Heathens"
 				}
 				
@@ -129,7 +124,7 @@ Religious = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors "
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors. "
 				SUMMARY "Enslvave the neighbors population with our military forces"
 			}			
 	
@@ -149,11 +144,11 @@ Religious = {
 				LEVEL value = {
 					0 = "Each priest is free of any hierarchy, the religious leader is only a respected guiding figure"
 					25 = "Some priests control small groups of local priests."
-					50 = "Each priest is part of a hierarchy controlled by a small number of High Priests."
+					50 = "Each priest is part of a hierarchy controlled by a small number of High Priests"
 					75 = "The clergy is under the undisputed control of a single person at the head of a well-organized hierarchy."
 					}
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "The more centralized the clergy is, the more effective its actions are, however, it increases its cost of operation as well as its power."
-				SUMMARY "Defines the effectiveness as well as the cost of religious policies."
+				SUMMARY "Defines the effectiveness as well as the cost of religious policies"
 				}
 			EffortAgainstReligiousDissent = {
 				NAME "Effort Against Religious Dissent"
@@ -164,8 +159,8 @@ Religious = {
 					50 = "Major effort"
 					75 = "No dissent will be accepted within our faith! "
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Through costly political schemes we can force the different religious factions to unite and recognize a single legitimate religious leader.."
-				SUMMARY "Increases our chances of reducing the number of competing religious leaders."
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Through costly political schemes we can force the different religious factions to unite and recognize a single legitimate religious leader."
+				SUMMARY "Increases our chances of reducing the number of competing religious leaders"
 				}
 			ClericalState = {
 				NAME "ClericalState"
@@ -229,29 +224,29 @@ D			DevotionToNature = {
 		Events = {
 			Schism = {
 				NAME "Schism"
-				DESCRIPTION " Our most brilliant theologians can not agree on the profound nature of our beliefs. And part of our population is convinced by the ideas of the minority groups"
+				DESCRIPTION " Our most brilliant theologians can not agree on the profound nature of our beliefs. And part of our population is convinced by the ideas of the minority groups."
 				SUMMARY "Increase Heretics "
 			}
 			ConversionForeignFaith = {
 				NAME "Massive Conversion To Foreign Faith"
-				DESCRIPTION "Part of our population has witnessed a so-called miracle perpetrated by a false prophet of a foreign religion "
+				DESCRIPTION "Part of our population has witnessed a so-called miracle perpetrated by a false prophet of a foreign religion. "
 				SUMMARY "Lot of our peoble are converting to Foreign Faith"
 			}
 			
 			ConversionTrueFaith = {
 				NAME "Massive Conversion To True Faith"
-				DESCRIPTION "Some of the heretics and heathens living in our borders have witnessed a miracle proving the superiority of the only true faith "
+				DESCRIPTION "Some of the heretics and heathens living in our borders have witnessed a miracle proving the superiority of the only true faith. "
 				SUMMARY "Lot of our peoble are converting to the true Faith"
 			}
 			
 			ReligiousMinorityRevolt = {
 				NAME "Religious Minority Revolt"
-				DESCRIPTION "The Heretics and Heathens living in our borders are revolting against the way we treat them"
+				DESCRIPTION "The Heretics and Heathens living in our borders are revolting against the way we treat them."
 				SUMMARY "The Heretics and Heathens rebels again our government"
 			}
 			GreatSchism = {
 				NAME "GreatSchism"
-				DESCRIPTION " Our religion has seen and survived debates about the deep nature of our beliefs. But this time if theologians criticize not only our beliefs but the legitimacy of our holy institutions. The reforms asked for are so great that the unity of our religion may not survive them"
+				DESCRIPTION " Our religion has seen and survived debates about the deep nature of our beliefs. But this time if theologians criticize not only our beliefs but the legitimacy of our holy institutions. The reforms asked for are so great that the unity of our religion may not survive them."
 				SUMMARY "Increase Heretics and the chances of religious infighting"
 			}
 			ReligiousLeagueWar = {
@@ -261,7 +256,7 @@ D			DevotionToNature = {
 			}
 			ReinforcementOfTheClergy = {
 				NAME "Reinforcement Of The Clegy"
-				DESCRIPTION " Priests have always insisted on their independence and privileges and it is with fervour that they resist our control. W"
+				DESCRIPTION " Priests have always insisted on their independence and privileges and it is with fervour that they resist our control."
 				SUMMARY "The clergy increases its independence. "
 			}
 			ReinforcementOfTheGouvernement = {
@@ -282,17 +277,17 @@ D			DevotionToNature = {
 			ExclusionFromTheReligion = {
 				NAME "Exclusion From The Religion "
 				DESCRIPTION " The highest religious institutions wanted to expel us from religion for our lack of piety. Public confidence in our government will be greatly reduced as our ability to influence the affairs of the clergy has been greatly reduced. "
-				SUMMARY " Reduces our piety and stability and prevents us from influencing the clergy."
+				SUMMARY " Reduces our piety and stability and prevents us from influencing the clergy"
 			}
 			NewCompetitingReligiousLeader = {
 				NAME "New Competiting Religious Leader "
 				DESCRIPTION " An ambitious and charismatic theologian assures that he is a more pious and capable person than our present religious leader. Such a divided religious power cannot be good news for the stability of our country! "
-				SUMMARY " A new competing religious leader appears ."
+				SUMMARY " A new competing religious leader appears"
 			}
 			EndOfReligiousDisent = {
 				NAME "End Of Religious Disent "
 				DESCRIPTION " Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
-				SUMMARY "End of the division of the clergy, only one religious leader remains."
+				SUMMARY "End of the division of the clergy, only one religious leader remains"
 			}
 
 		}

@@ -24,12 +24,12 @@ Religious = {
 			CompetitingReligiousLeader = {
 				NAME "Chef religieux concurent"
 				DESCRIPTION <b>"Valeur: "@[value] </b> "Le pouvoir religieux est peut différent du pouvoir politique. Comme lui il attire les envieux, les embitieux et les réformateurs idéalistes... Les plus charismatique de ces prétendants arrive à renger de leur côté une partie du clergé minant ainsi l'unité de notre foi."
-				SUMMARY " Nombre de chef religieux concurent"
+				SUMMARY "Nombre de chef religieux concurent"
 			}
 			Devotion = {
 				NAME "Dévotion"
 				DESCRIPTION <b>"Valeur: "@[value] </b> "La religion peut aider les hommes à se dévouer à des aspects importants de la vie et de la société. Est plus notre foi sera puissante et assuré plus la devotion de nos sujets sera sans commune mesure."
-				SUMMARY " Améliore vos différentes dévotions"
+				SUMMARY "Améliore vos différentes dévotions"
 			}
 		}
 		Levers = {
@@ -227,13 +227,13 @@ Religious = {
 			}
 			ConversionForeignFaith = {
 				NAME "Conversions massive à une foi étrangère"
-				DESCRIPTION "Une partie de notre population a été témoin d'un soi-disant miracle perpétré par un faux prophète d'une religion étrangère ".
+				DESCRIPTION "Une partie de notre population a été témoin d'un soi-disant miracle perpétré par un faux prophète d'une religion étrangère. "
 				SUMMARY "Une grande part de notre peuple se convertit à une foi étrangère"
 			}
 			
 			ConversionTrueFaith = {
 				NAME "Conversions massive à la vrais foi"
-				DESCRIPTION "Certains hérétiques et païens vivant dans nos frontières ont été témoins d'un miracle prouvant la supériorité de la seule vraie foi ".
+				DESCRIPTION "Certains hérétiques et païens vivant dans nos frontières ont été témoins d'un miracle prouvant la supériorité de la seule vraie foi. "
 				SUMMARY "Une grande part de notre peuple se convertissent à la vraie foi"
 			}
 			
@@ -255,27 +255,27 @@ Religious = {
 			ReinforcementOfTheClergy = {
 				NAME " Renforcement du clergé "
 				DESCRIPTION " Les prêtres ont toujours tenu à leurs indépendances et privilèges et c'est avec ferveurs qu'ils résistent à notre contrôle. "
-				SUMMARY " le clergé augmente son indépendance. "
+				SUMMARY " le clergé augmente son indépendance "
 			}
 			ReinforcementOfTheGouvernement = {
 				NAME " Renforcement du gouvernement "
 				DESCRIPTION " Le clergé peut avoir une grande influence sur notre peuple, c'est pourquoi il est impératif que nous le contrôlions. "
-				SUMMARY " L'indépendance du clergé diminue."
+				SUMMARY " L'indépendance du clergé diminue"
 			}
 			ReinforcementOfTheReligiousHead = {
 				NAME "Renforcement du chef religieux "
-				DESCRIPTION " Comme tout homme de pouvoir, notre chef spirituel ratera aucune opportunité de l’accroitre davantage. Même si cela veut dire allez à notre encontre.  "
+				DESCRIPTION " Comme tout homme de pouvoir, notre chef spirituel ratera aucune opportunité de l’accroitre davantage. Même si cela veut dire allez à notre encontre. "
 				SUMMARY " Le pouvoir du chef religieux augment"
 			}
 			WeakReligiousHead = {
 				NAME "Chef religieux inapte "
 				DESCRIPTION " Notre guide spirituel actuel se révèle comme étant incompétent et complètement inapte. Cela est surement une bonne occasion pour solidifier notre pouvoir sur le clergé. "
-				SUMMARY " Le pouvoir du chef religieux diminue."
+				SUMMARY " Le pouvoir du chef religieux diminue"
 			}
 			ExclusionFromTheReligion = {
 				NAME "Exclusion de la religion "
-				DESCRIPTION " Les plus hautes institutions religieuses ont désidé de nous expulser de la religion pour notre manque de piété. La confiance de la population dans notre gouvernement va être grandement réduit ainsi que notre capacité a influencé les affaires du clergé "
-				SUMMARY " Réduit notre piété et notre stabilité et nous empèche d'influencer le clergé."
+				DESCRIPTION " Les plus hautes institutions religieuses ont désidé de nous expulser de la religion pour notre manque de piété. La confiance de la population dans notre gouvernement va être grandement réduit ainsi que notre capacité a influencé les affaires du clergé. "
+				SUMMARY " Réduit notre piété et notre stabilité et nous empèche d'influencer le clergé"
 			}
 			NewCompetitingReligiousLeader = {
 				NAME "Nouveau chef religieux concurrent "
@@ -285,7 +285,7 @@ Religious = {
 			EndOfReligiousDisent = {
 				NAME "Fin de la dissidence religieuse "
 				DESCRIPTION " Nos efforts constent pour mettre fin aux divisions internes de notre religion ont enfin porté leurs fruits. Maintenant tout le monde reconnaît qu'un seul guide spirituel. "
-				SUMMARY "Fin de la division du clergé, il ne reste plus qu'un chef religieux."
+				SUMMARY "Fin de la division du clergé, il ne reste plus qu'un chef religieux"
 			}
 
 		}
