@@ -223,7 +223,7 @@ Religious = {
 				}
 				TICK = {
 					IF CompetitingReligiousLeader > 0
-						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ( ReligiousHeadPower / (CompetitingReligiousLeader * CompetitingReligiousLeader / 10 ) )
+						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ((CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 ) * ReligiousHeadPower )
 						PROCESS Piety = Piety - PerSeconds (CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 * ( 0.75 + ClergyCentralization / 200 ) )
 					ENDIF	
 				}
