@@ -5248,7 +5248,7 @@ Main = {
 					PROCESS weath_min = -500 - value * 20
 					RESOURCE_MAX $Wealth = weath_max
 					SET ScripturalMoney.value [ : : Banks.value ]
-					//RESOURCE_MIN $Wealth = weath_min
+					// RESOURCE_MIN $Wealth = weath_min
 				}
 				
 				LINK ScripturalMoney = {
@@ -7219,8 +7219,8 @@ Main = {
 			
 			
 			UrbanExodus = {
-				SOUND_EVENT "Main/SFX/CitiesInRuins.wav"
-				SOUND_WINDOW "Main/SFX/CitiesInRuins.wav"
+				SOUND_EVENT "Main/SFX/BuildingFall.wav"
+				SOUND_WINDOW "Main/SFX/BuildingFall.wav"
 					EVENT_DEF [ 20 60 450 33% ]
 					ARISE = {
 						EVENT_SPEED 1
