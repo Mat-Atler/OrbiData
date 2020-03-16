@@ -21,7 +21,7 @@ Religious = {
 				DESCRIPTION <b>"Valeur: "@[value] </b> " Whether the religious leader is only a spiritual guide or the master of a large religious administration, his decisions have a great influence on religious policies."
 				SUMMARY "Religious Head Poweer"
 			}
-			CompetitingReligiousLeader= {
+			CompetitingReligiousLeader = {
 				NAME "Competiting Religious Leader"
 				DESCRIPTION <b>"Valeur: "@[value] </b> " Religious power is little different from political power. Like it, it attracts the envious, the embittered and the idealistic reformers... The most charismatic of these suitors manage to get part of the clergy on their side, thus undermining the unity of our faith."
 				SUMMARY "Number of competing religious leaders"
