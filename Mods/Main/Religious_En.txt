@@ -184,7 +184,7 @@ Religious = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Many have come to view our leaders not only as great leaders, but also as semi-divine beings. Many have formed a sect to fanatically follow our leader. Let us reform our country so that all our subjects are de facto members of our sect."
 				SUMMARY "government by a deified king "
 			}
-D			DevotionToNature = {
+			DevotionToNature = {
 				NAME "Devotion To Nature"
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Nature provides us with everything we need. This is why we have decided to honour it so that its benefits will never run out."
 				SUMMARY "Minimizes the impact of Gathering and Hunting"
