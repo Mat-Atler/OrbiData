@@ -1419,14 +1419,14 @@ Main = {
 				
 			ArmyQuota = {
 				NAME "Quotas de l'Armée"
-				DESCRIPTION <b> "Valeur : "@[valeur] </b> <br><br> "Dans notre sagesse, nous avons déterminé que notre armée ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
+				DESCRIPTION <b> "Valeur : "@[value] </b> <br><br> "Dans notre sagesse, nous avons déterminé que notre armée ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
 				SUMMARY "Modifier le maximum de nos effectifs militaires"
 				}
 				
 				
 			NavyQuota = {
 				NAME "Quotas de la Flotte"
-				DESCRIPTION <b> "Valeur : "@[valeur] </b> <br><br> "Dans notre sagesse, nous avons déterminé que notre flotte ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
+				DESCRIPTION <b> "Valeur : "@[value] </b> <br><br> "Dans notre sagesse, nous avons déterminé que notre flotte ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
 				SUMMARY "Modifier le maximum de notre flotte"
 				}
 				
@@ -1666,7 +1666,6 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Notre puissance culturelle est forte, tout comme notre foi. Il est temps de mettre l'art au service du divin."
 				SUMMARY "Apporte Culture, Piété et vous permet de renforcer vos Munuments Religieux"
 			}
-			
 		
 			
 				
