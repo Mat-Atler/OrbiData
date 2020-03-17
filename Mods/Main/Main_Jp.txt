@@ -1601,9 +1601,10 @@ Main = {
 			
 			Banks = {
 				NAME "Banks"
-				DESCRIPTION "Value: "@[value,0.###] <br> "Maximum: "@[weath_max,0.#] <br> "Minimum: "@[weath_min,0.#]" <br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
+				DESCRIPTION "Value: "@[value,0.###] "Maximum : "@[Main.Banks.weath_max,0.#] <br> "Minimum : "@[Main.Banks.weath_min,0.#]" <br>As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
 				SUMMARY "Enlarges our maximum and minimum wealth"
 			}	
+			
 			
 			ScripturalMoney = {
 				NAME "Scriptural Money"
@@ -1659,6 +1660,24 @@ Main = {
 				}
 				DESCRIPTION <b> "Value: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "Our faith is the one and only true, the mightiest and purest. We must export it through strength in order to subjugate the unfaithful."
 				SUMMARY "Expand your territory and strengthen your piety with your army"
+			}
+			
+			Medecine = {
+				NAME "Medecine"
+				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our growing knowledge has opened the doors to medical treatments. Making a clear distinction between diseases and curses, between prayers and cures, we will gradually come to fight the plagues of mankind."
+				SUMMARY "Reduces the chance of epidemics"
+			}	
+			
+			ReligiousArt = {
+				NAME "Religious Art"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Some commissions"
+					35 = "Embellishment of Religious Monuments"
+					80 = " Religious and Cultural Center "
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our cultural power is strong, as well as our faith. It's time to put art at the service of the divine."
+				SUMMARY "Brings Culture, Piety and strengthens your Monuments "
 			}
 				
 		}

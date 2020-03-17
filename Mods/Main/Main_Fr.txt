@@ -1597,9 +1597,10 @@ Main = {
 			
 			Banks = {
 				NAME "Banques"
-				DESCRIPTION "Valeur : "@[value,0.###] <br> "Maximum : "@[weath_max,0.#] <br> "Minimum : "@[weath_min,0.#]" <br><br> Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
+				DESCRIPTION "Valeur : "@[value,0.###] <br> "Maximum : "@[Main.Banks.weath_max,0.#] <br> "Minimum : "@[Main.Banks.weath_min,0.#]" <br><br> Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
 				SUMMARY "Agrandit notre maximum et minimum de richesse"
 			}	
+			
 			ScripturalMoney = {
 				NAME "Monnaie Scripturale"
 				LEVEL value = {
@@ -1648,6 +1649,23 @@ Main = {
 				SUMMARY "Étend votre territoire et renforce votre piété à l'aide de votre armée"
 			}
 			
+			Medecine = {
+				NAME "Médecine"
+				DESCRIPTION <b> "Valeur : "@[value,0.###] "<br><br> Nos connaissances croissantes ont ouvert les portes aux traitements médicaux. En faisant une distinction claire entre les maladies et malédictions, entre prières et remèdes, nous en réussirons progressivement à combattre les fléaux de l'humanité".
+				SUMMARY "Réduit les risques d'épidémies"
+			}	
+			
+			ReligiousArt = {
+				NAME "Art Religieux"
+				LEVEL value = {
+					0 = "Néant"
+					0.001 = "Quelques commissions"
+					35 = "Embelissement des lieux de culte"
+					80 = "Centre religio-culturel"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Notre puissance culturelle est forte, tout comme notre foi. Il est temps de mettre l'art au service du divin."
+				SUMMARY "Apporte Culture, Piété et vous permet de renforcer vos Munuments Religieux"
+			}
 			
 		
 			
