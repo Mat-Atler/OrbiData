@@ -1645,7 +1645,7 @@ Main = {
 			
 			HolyWar = {
 				NAME "聖戦"
-				LEVEL 値 = {
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "少ない"
 					40 = "例年"
