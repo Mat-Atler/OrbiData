@@ -17,19 +17,19 @@ Religious = {
 				SUMMARY "異教徒の割合"
 			}
 			ReligiousHeadPower = {
-				NAME "Religious Head Power"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " Whether the religious leader is only a spiritual guide or the master of a large religious administration, his decisions have a great influence on religious policies."
-				SUMMARY "Religious Head Poweer"
+				NAME "宗教指導者の力"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "宗教指導者が単なる精神的な導き手であれ大きな宗教組織のトップであれ彼の決定は宗教政策に大きな影響を及ぼします。"
+				SUMMARY "宗教指導者の影響力"
 			}
 			CompetitingReligiousLeader = {
-				NAME "Competiting Religious Leader"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " Religious power is little different from political power. Like it, it attracts the envious, the embittered and the idealistic reformers... The most charismatic of these suitors manage to get part of the clergy on their side, thus undermining the unity of our faith."
-				SUMMARY "Number of competing religious leaders"
+				NAME "宗教指導者の政治闘争"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "宗教権力は政治権力とほとんど変わりせん。それは嫉妬する者、鬱屈した者、理想主義的な改革者等を惹きつけます。それらの中で最も求心力を持つ者は聖職者の一部に影響を及ぼし信仰の一致を弱めます。"
+				SUMMARY "争っている指導者の人数"
 			}
 			Devotion = {
-				NAME "Devotion"
-				DESCRIPTION <b>"Valeur: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare."
-				SUMMARY " Improves your various devotions"
+				NAME "献身"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "宗教は男性が人生と社会において専念するものについて重要な助けになります。私たちの信仰が強力であるほど献身は比類ないものになります。"
+				SUMMARY " 様々な健診を強化する"
 			}			
 		}
 		Levers = {
@@ -128,95 +128,95 @@ Religious = {
 				SUMMARY "軍事力で近隣の人間を奴隷にする"
 			}
 			ClergyIndependance = {
-				NAME "Clergy Independance"
+				NAME "聖職者の独立"
 				LEVEL value = {
-					0 = "The clergy is totally under our control"
-					25 = "Extended clergy control"
-					50 = "Reduced clergy control"
-					75 = "The clergy enjoys almost total autonomy"
+					0 = "聖職者は完全に管理下にある"
+					25 = "聖職者の管理されている"
+					50 = "聖職者はあまり管理されていない"
+					75 = "聖職者はほぼ完全な自由を得ている"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "The clergy can have a great influence on our people and the functioning of our country. Controlling it would allow us to use it to mirror the effectiveness of our governance."
-				SUMMARY "The level of control we have over the clergy"
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "聖職者は国民と国の機能に大きな影響を与えます。それを制御することで統治の有効性に使用することが出来るようになります。"
+				SUMMARY "聖職者を管理するレベル"
 				}
 			ClergyCentralization = {
-				NAME "Clergy Centralization"
+				NAME "聖職者の集中化"
 				LEVEL value = {
-					0 = "Each priest is free of any hierarchy, the religious leader is only a respected guiding figure"
-					25 = "Some priests control small groups of local priests."
-					50 = "Each priest is part of a hierarchy controlled by a small number of High Priests"
-					75 = "The clergy is under the undisputed control of a single person at the head of a well-organized hierarchy."
+					0 = "聖職者には階層がありません。宗教指導者は尊敬されています。"
+					25 = "一部の聖職者は地方の小さなグループを管理しています。"
+					50 = "各聖職者は少数の大司祭によって管理されています。"
+					75 = "聖職者は組織化されトップによってよく管理されています。"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "The more centralized the clergy is, the more effective its actions are, however, it increases its cost of operation as well as its power."
-				SUMMARY "Defines the effectiveness as well as the cost of religious policies"
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "聖職者中央集権化されればその活動はより効果的になりますが、運営コストと影響力を増大させます。"
+				SUMMARY "宗教政策の有効性とコストを定義します。"
 				}
 			EffortAgainstReligiousDissent = {
-				NAME "Effort Against Religious Dissent"
+				NAME "特定宗教の保護"
 				LEVEL value = {
-					0 = "No effort"
-					0.01 = "insufficient effort"
-					25 = "moderate effort"
-					50 = "Major effort"
-					75 = "No dissent will be accepted within our faith! "
+					0 = "努力しない"
+					0.01 = "不十分な努力"
+					25 = "そこそこの努力"
+					50 = "精力的な努力"
+					75 = "私たちの信仰の中で異議は受け入れられない！ "
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Through costly political schemes we can force the different religious factions to unite and recognize a single legitimate religious leader."
-				SUMMARY "Increases our chances of reducing the number of competing religious leaders"
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "費用のかかる政治計画を通じ、さまざまな宗教派閥に単一の合法的な宗教指導者を認めさせることができます。"
+				SUMMARY "競合する宗教指導者を減らす可能性を高める"
 				}
 			ClericalState = {
-				NAME "ClericalState"
+				NAME "宗教国家"
 				LEVEL value = {
-					0 = "Almost all of our administration is made up of seculars."
-					20 = "Some priests have been placed in key administrative positions."
-					50 = "Priests make up the majority of our state apparatus"
-					80 = "The clergy replaces the state administration"
+					0 = "政権は非世俗主義者で構成されています。"
+					20 = "一部の聖職者は重要な管理職に就任しています。"
+					50 = "聖職者は国の機構の大部分を占めています。"
+					80 = "政府を聖職者にします。"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Religion is the only truly viable way to judge right and wrong. That is why we have relegated all affairs of state to the priests, for only they can rule wisely."
-				SUMMARY "Reforming our Theocracy"
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "宗教は善悪を判断する唯一の真実です。だからこそ全ての国家問題を聖職者に委ねました。なぜなら彼らだけが賢明に統治できるからです。"
+				SUMMARY "神権政治の改革"
 			}
 			CelestialMonarchy = {
-				NAME "Celestial Monarchy"
+				NAME "天皇制"
 				LEVEL value = {
-					0 = "Our kings are only divinized at their death"
-					20 = "Our kings are considered of divine descent"
-					50 = "Our king is regarded as a living god"
-					80 = "Our king is considered to be the principal deity of our religion"
+					0 = "王は死ぬと神にされる"
+					20 = "王は神の系譜と考えられています"
+					50 = "王は現人神とみなされています"
+					80 = "王は私たちの主要な神であると考えられています"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Many have come to view our leaders not only as great leaders, but also as semi-divine beings. Many have formed a sect to fanatically follow our leader. Let us reform our country so that all our subjects are de facto members of our sect."
-				SUMMARY "government by a deified king "
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "多くの人が指導者を偉大なものを超え半神的な存在としてみるようになりました。指導者を熱狂的に支援するために宗派を形成しています。この宗派が国教になるよう国を改革しましょう。"
+				SUMMARY "神格化された王による政府"
 			}
 			DevotionToNature = {
-				NAME "Devotion To Nature"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Nature provides us with everything we need. This is why we have decided to honour it so that its benefits will never run out."
-				SUMMARY "Minimizes the impact of Gathering and Hunting"
+				NAME "自然への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "自然は私たちに必要なすべて物を与えてくれます。だからこそ、その恩恵が尽きないよう尊重することにしました。"
+				SUMMARY "採集と狩猟の影響を最小限に抑える"
 			}	
 			DevotionToSea = {
-				NAME "Devotion To Sea"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "The sea offers us food and protection from the outside world. Securing its favours will allow us to always have the waves on our side."
-				SUMMARY "Increases fishing and navy efficiency"
+				NAME "海への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "海は私たちに食糧と外界からの保護を与えてくれます。波を味方につけることでその恩恵を確保することができます。"
+				SUMMARY "釣りと海軍の効率を向上させる"
 			}
 			DevotionToTheHarvest = {
-				NAME "Devotion To The Harvest"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Harvests are to our society what blood is to a human body. So we must make sure that the divine forces will never fail us in that field."
-				SUMMARY "Increases the efficiency of agriculture and animal husbandry"
+				NAME "収穫への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "収穫は社会にとっての血液です。ですから。私たちは神の力がその分野で私たちを決して失敗させないことを確認しなくてはいけません。"
+				SUMMARY "農業及び畜産の効率を向上させる"
 			}
 			DevotionToTheLaw = {
-				NAME "Devotion To The Law"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "It is only through strict observance of the law that harmony in our society can be maintained. That is why our priests must have the mind of a judge."
-				SUMMARY "Increases the effectiveness of the Urban Militia and religious law"
+				NAME "法への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "私たちの社会が調和を維持できるのは法律を厳守することでのみです。聖職は裁判官の心を持たなければならない理由です。"
+				SUMMARY "都市民兵と宗教法の有効性を高める"
 			}	
 			DevotionToWar = {
-				NAME "Devotion To War"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "The gods accept on their side only the best warriors. So let us ensure that we always win on the battlefield."
-				SUMMARY "Increases the effectiveness of Militarism"
+				NAME "戦争への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "神は最高の戦士だけを受け入れます。常に戦場で勝つことを保証しましょう。"
+				SUMMARY "軍国主義の有効性を高める"
 			}	
 			DevotionToTrade = {
-				NAME "Devotion To Trade"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "The prosperity of our people is a divine blessing. Let us make sure that this favor is always granted to us."
-				SUMMARY "Increases the effectiveness of our Entreprises"
+				NAME "貿易への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "民衆の繁栄は神の祝福です。この恩恵が常に与えられていることを確認しましょう。"
+				SUMMARY "起業家の有効性を高める"
 			}	
 			DevotionToCraftsmanship = {
-				NAME "Devotion To Craftsmanship"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "In the same way that it is through action that salvation is obtained. It is through hard work that men prove their worth. Let us make sure that every man participates in the effort."
-				SUMMARY "Increases our production of trade goods "
+				NAME "職人への献身"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "救いが得られるのは行動を通じてであるように、男が自分の価値を証明するのは一生懸命働くことです。すべての男性が努力に参加することを確認しましょう。"
+				SUMMARY "貿易財の生産を高める"
 			}			
 				
 		}
@@ -244,49 +244,49 @@ Religious = {
 				SUMMARY "異端者と異教徒の反乱者は再び政府へ反抗します"
 			}
 			GreatSchism = {
-				NAME "GreatSchism"
-				DESCRIPTION " Our religion has seen and survived debates about the deep nature of our beliefs. But this time if theologians criticize not only our beliefs but the legitimacy of our holy institutions. The reforms asked for are so great that the unity of our religion may not survive them."
-				SUMMARY "Increase Heretics and the chances of religious infighting"
+				NAME "大分裂"
+				DESCRIPTION "私たちの宗教は本質についての議論を深めてきました。しかし、神学者が信念だけでなく神聖な機関の正統性を批判しています。求められている改革は非常に大きく宗教の団結にひびが入るかもしれません。"
+				SUMMARY "異端者と宗教内紛の可能性が増える"
 			}
 			ReligiousLeagueWar = {
-				NAME "Religious League War"
-				DESCRIPTION " While the great schism is tearing apart countries formerly united in faith. War has become inevitable."
-				SUMMARY "It's War!"
+				NAME "宗教同盟戦争"
+				DESCRIPTION " 大分裂は信仰で団結していた国々を引き裂いています。戦争はもはや避けられません。"
+				SUMMARY "戦争だ！"
 			}
 			ReinforcementOfTheClergy = {
-				NAME "Reinforcement Of The Clegy"
-				DESCRIPTION " Priests have always insisted on their independence and privileges and it is with fervour that they resist our control."
-				SUMMARY "The clergy increases its independence. "
+				NAME "聖職者の強化"
+				DESCRIPTION " 聖職者は常に彼らの独立性と特権を主張しており、彼らは私たちの管理に抵抗することに熱心です。"
+				SUMMARY "聖職者の独立性を高める "
 			}
 			ReinforcementOfTheGouvernement = {
-				NAME " Reinforcement Of The Gouvernement "
-				DESCRIPTION " The clergy can have a great influence on our people, which is why it is imperative that we control it. "
-				SUMMARY " The independence of the clergy is diminishing."
+				NAME "政府の強化"
+				DESCRIPTION " 聖職者は私たちの人々に大きな影響を与える可能性があります。それらを強化することは不可能です。 "
+				SUMMARY " 聖職者の独立性を弱める"
 			}
 			ReinforcementOfTheReligiousHead = {
-				NAME " Reinforcement Of The Religious Head "
-				DESCRIPTION " Like any man with power, our spiritual guide will miss no opportunity to increase it further. Even if it means going against us. "
-				SUMMARY " The power of the religious leader increases."
+				NAME " 宗教指導者の強化"
+				DESCRIPTION " 権力を持つ全ての人と同じで宗教指導者もそれを増やす機会を逃しません。そｒは私たちに反対する場合でも。"
+				SUMMARY " 宗教指導者の力を高める"
 			}
 			WeakReligiousHead = {
-				NAME "Weak Religious Head "
-				DESCRIPTION " Our current spiritual guide is proving to be incompetent and completely unfit. This is surely a good opportunity to solidify our power over the clergy. "
-				SUMMARY " The power of the religious leader decreases."
+				NAME "宗教指導者の弱化 "
+				DESCRIPTION "現在の宗教指導者は無能で不適当なことが完全に証明されています。聖職に対する私たちの力を確立する良い機会です。"
+				SUMMARY " 宗教指導者の力を弱める"
 			}
 			ExclusionFromTheReligion = {
-				NAME "Exclusion From The Religion "
-				DESCRIPTION " The highest religious institutions wanted to expel us from religion for our lack of piety. Public confidence in our government will be greatly reduced as our ability to influence the affairs of the clergy has been greatly reduced. "
-				SUMMARY " Reduces our piety and stability and prevents us from influencing the clergy"
+				NAME "破門"
+				DESCRIPTION "最高の宗教機関は信仰心の欠如から私たちを宗教から追い出したいと思っていました。聖職者の仕事に影響を与える能力が大幅に低下したため、政府に対する国民の信頼も大幅に低下しました。"
+				SUMMARY "信仰心と社会安定性を低下させ聖職者への影響も低下する"
 			}
 			NewCompetitingReligiousLeader = {
-				NAME "New Competiting Religious Leader "
-				DESCRIPTION " An ambitious and charismatic theologian assures that he is a more pious and capable person than our present religious leader. Such a divided religious power cannot be good news for the stability of our country! "
-				SUMMARY " A new competing religious leader appears"
+				NAME "新しい競合する宗教指導者"
+				DESCRIPTION "野心的で求心力のある神学者は彼が現在の宗教指導者よりも信心深く有能な人物であることを保証します。このような分裂は我が国の安定にとって朗報ではありません！"
+				SUMMARY "新しい競合する宗教指導者が登場する"
 			}
 			EndOfReligiousDisent = {
-				NAME "End Of Religious Disent "
-				DESCRIPTION " Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
-				SUMMARY "End of the division of the clergy, only one religious leader remains"
+				NAME "宗教的異議の終わり"
+				DESCRIPTION "私たちの宗教の内部分裂を終わらせるための絶え間ない努力がついに報われました。今では誰もが宗教的指導者が一人しかいないことを認識しています。"
+				SUMMARY "聖職者の分裂が終わり唯一の宗教指導者が残っている"
 			}
 			
 

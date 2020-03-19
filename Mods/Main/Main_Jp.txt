@@ -494,60 +494,60 @@ Main = {
 				
 				
 			TradeRoads = {
-				NAME "Trade Roads"
+				NAME "交易路"
 				LEVEL value = {
-					0 = "No international roads"
-					0.001 = "We are actively negotiating"
-					30 = "We have several opportunities"
-					60 = "Our products are exported to the 4 corners of the world!"
+					0 = "鎖国"
+					0.001 = "積極的に交渉中"
+					30 = "いくつかのチャンスがあります"
+					60 = "我々の製品は世界の隅々まで行き届いている！"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Our internal trade is no longer enough, we have to export our production to distant countries in order to make ever greater profits."
-				SUMMARY "Our level of international trade"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "我々は国内貿易では満足できません。より大きな利益を得るために国外に輸出をしなくていけません。"
+				SUMMARY "国際貿易の段階"
 				}
 				
 				
 			ScienceKnowledge = {
-				NAME "Scientific Knowledge"
-				DESCRIPTION "Knowledge: " @[value,0.###]<br><br>" Our knowledge, at last obtained by a more or less rigorous empiricism, assures us that every step we take goes in a more efficient path."
-				SUMMARY "Our current knowledge"
+				NAME "科学的知識"
+				DESCRIPTION "知識: " @[value,0.###]<br><br>" 経験則で最終的に得られた知識は私たちが効率的な道を進むことを保証します。"
+				SUMMARY "現在の知識"
 			}
 			
 			
 			Alchemy = {
-				NAME "Alchemy"
+				NAME "錬金術"
 				LEVEL value = {
-					0 = "Natural Body Analysis"
-					25 = "Elemental Research"
-					50 = "Beginning of Chemistry"
-					75 = "Theory of transmutation"
+					0 = "自然体分析"
+					25 = "元素研究"
+					50 = "化学の始まり"
+					75 = "変換の理論"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
-				SUMMARY "Improves our scientific knowledge"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "最も優秀な科学者は物事の本質を理解しようとする領域に突入しています。彼らの研究は曖昧に思えますが遠い未来に輝かしい未来をもたらすかもしれません。"
+				SUMMARY "科学的知識を向上させる"
 			}	
 
 		
 			Minorities = {
-				NAME "Minorities"
-				DESCRIPTION "Number: " @[value,0.###]<br><br>" The disparity of peoples linked to our conquests and our religious disparities brings us towards a certain disorder to our national cohesion. On the other hand it multiplies our trading opportunities."
-				SUMMARY "Strengthens our trade but degrades our union"
+				NAME "マイノリティ"
+				DESCRIPTION "人数: " @[value,0.###]<br><br>" 征服と宗教的の違いによる不均衡は国家の結束に一定の混乱をもたらします。一方で取引の機会を増やすことにもなります。"
+				SUMMARY "貿易を強化し結束を悪化させる"
 			}
 			
 			CraftmanshipSkills = {
-				NAME "Craftsmanship Skills"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>"Craftsmanship skills includes all our technical knowledge. Our guilds and specialization allow us to increase our expertise at a rapid pace."
-				SUMMARY "Allows us to increase our technical possibilities"
+				NAME "職人のスキル"
+				DESCRIPTION "値: " @[value,0.###]<br><br>"職人の技にはすべての技術的知識が含まれます。専門的なギルドにより急速に専門知識を増やすことができます。"
+				SUMMARY "技術的可能性を高める"
 			}
 				
 			RoadsSafety = {
-				NAME "Roads Safety"
+				NAME "通行の安全"
 				LEVEL value = {
-					0 = "No bandits"
-					0.001 = "Some bandits"
-					30 = "Our roads are no longer safe"
-					60 = "Highwaymen are everywhere"
+					0 = "安全"
+					0.001 = "少数の略奪者"
+					30 = "安全ではない"
+					60 = "いたる所に追い剥ぎが！"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "It happens that the most unfortunate ones flee into our forests and begin to practice banditry. We must ensure that we put in place a strong police force to avoid any insecurity that would compromise our land trade."
-				SUMMARY "Reduces our trade"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "不幸な人々は森に逃げ盗賊になっています。貿易を安定させるためにも強力な警察を設置しなくてはいけません。"
+				SUMMARY "貿易が減少する"
 				}
 				
 				
@@ -1400,7 +1400,7 @@ Main = {
 			}	
 
 			Banners = {
-				NAME "旗印"
+				NAME "軍事徴収"
 				LEVEL value = {
 					0 = "なし"
 					0.001 = "少数動員"
@@ -1438,238 +1438,228 @@ Main = {
 			
 			
 			University = {
-				NAME "University"
+				NAME "大学"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Formation of a body of students and professors"
-					40 = "Universities"
-					75 = "Great Universities"
-					100 = "House of Wisdom"
+					0 = "なし"
+					0.001 = "教授と学生の形成"
+					40 = "大学"
+					75 = "偉大なる大学"
+					100 = "智慧の館"
 				}
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our education has too often been dispersed. By bringing our most talented minds together in one place, we can hope to create far better teachings."
-				SUMMARY "Improves our intellectual research"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "教育機関が広範囲にわたって並立してしまっています。優秀な才能を一か所に集めることで、はるかに優れた教えを生み出すことができます。"
+				SUMMARY "知的研究を改善します"
 				}
 				
 			
 			FarmersTax = {
-				NAME "Farmers' Tax"
+				NAME "農民税"
 				LEVEL value = {
-					0 = "None"
-					0.01 = "Annual taxes"
-					5 = "Bi-Annual taxes"
-					10 = "Heavy taxes"
-					20 = "Very heavy taxes"
-				}
-				DESCRIPTION <b>"Value: "@[value] </b>  <br><br> "The evolution of our society has led farmers to play an important role in our economy. Fair taxation will enable us to finance our armies to protect them."
-				SUMMARY "Tax our farmers"
+					0 = "なし"
+					0.01 = "年に一回"
+					5 = "半年に一回"
+					10 = "重税"
+					20 = "八公二民"
+					}
+				DESCRIPTION <b>"値: "@[value] </b>  <br><br> "社会の発展により農家は経済において重要な役割を果たすようになりました。公正な課税は軍事力を保護することになるでしょう。"
+				SUMMARY "農民に課税する"
 			}
 			
 			
 			Mill = {
-				NAME "Mill"
+				NAME "製粉所"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Firsts Mills"
-					70 = "Mills"
+					0 = "なし"
+					0.001 = "初期の製粉所"
+					70 = "製粉所"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Over time, our understanding of agrarian mechanisms has improved, we now know how to mill grain much more efficiently. We need to spread this technique throughout our country."
-				SUMMARY "Improve our agriculture"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "時間がたつにつれて農業への理解が深まり、穀物をより効率的に製粉する方法がわかりました。この技術を全国的に広める必要があります。"
+				SUMMARY "農業を改善させる"
 			}	
 			
 			Nobility = {
-				NAME "Nobility"
+				NAME "貴族"
 				LEVEL value = {
-					0 = "Rumors of blue blood"
-					20 = "Etiquette and lifetime pensions"
-					40 = "Royal court"
-					70 = "Sumptuous courtship"
+					0 = "青い血の噂"
+					20 = "不文律と生涯年金"
+					40 = "朝廷"
+					70 = "荘厳なご機嫌取り"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organizing our aristocracy into a class above the others, endowing it with inalienable & hereditary rights and pensions, will appease the great lords of our country."
-				SUMMARY "Strengthen our power by buying the loyalty of the great lords"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "貴族階級を他の階級の上位にし、譲渡不能で世襲の権利と年金を与えることは偉大なる領主たちをなだめるでしょう。"
+				SUMMARY "偉大なる領主の忠誠心を買うことで力を強化する"
 			}	
 			
 			MedievalArmors = {
-				NAME "Medieval Armors"
-				LEVEL value = {					
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = "Search for better models"
-					100 = "Mastery"
+				NAME "中世の鎧"
+				LEVEL value = {
+					0 = "なし"
+					0.001 = "試作段階"
+					15 = "研究を進める"
+					100 = "技術をものにした"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Medieval armors are a vast and complex field, which progresses by trial and error as the craftsmen invent."
-				SUMMARY "Military Technology"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 中世の鎧は広大で複雑な分野であり職人が試行錯誤を繰り返し進歩していきます。"
+				SUMMARY "軍事技術"
 			}	
 			
 			
 			SiegeWeapons = {
-				NAME "Siege Weapons"
+				NAME "攻城兵器"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = " Doubtful ballistics "
-					50 = " Unreliable ballistics "
-					100 = "Trebuchets"
-					150 = "Bomb Cannon"
+					0 = "なし"
+					0.001 = "試作段階"
+					15 = " 経験的な弾道学 "
+					50 = " 初歩的な弾道学 "
+					100 = "トレビュシェット"
+					150 = "カノン砲"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The introduction into warfare of particularly well-protected strongholds makes it mandatory to invent appropriate countermeasures."
-				SUMMARY "Military Technology"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 十分な防御を施された拠点への攻撃は適切な対策を発明することを促しました。"
+				SUMMARY "軍事技術"
 			}	
 			
 			NationState = {
-				NAME "Nation State"
+				NAME "民族国家"
 				LEVEL value = {					
-					0 = "Theoretical concept"
-					10 = "Distant dream"
-					25 = "Legal evidence"
-					50 = "We are a nation"
+					0 = "理論的な概念"
+					10 = "遠い夢"
+					25 = "法的根拠"
+					50 = "我々は同一民族である"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Our jurists are formal, our country has an essence of its own called Nation. With this concept we could unite our people under a common idea."
-				SUMMARY "Strengthens our national cohesion"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "我々の国は同一民族と呼べる独自の要素を持っています。これにより私たちは共通の理念の下に人々を団結させることができました。"
+				SUMMARY "国の団結力を強化する"
 			}	
 			
 			
 			Tribunal = {
-				NAME "Tribunal"
+				NAME "法廷"
 				LEVEL value = {
-					0 = "Arbitrary judgments"
-					25 = "Court of justice"
-					50 = "Corps of judges"
+					0 = "任意の判断"
+					25 = "裁判所"
+					50 = "正義の軍団"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our law is a force of truth, however, we must sometimes specify certain vague outlines. By sanctifying a place, the Tribunal, as a symbol of justice, our power will grow."
-				SUMMARY "Strengthens our political power"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "法律は真実の力ですが時々曖昧な概要を示すことがあります。正義の象徴としての場所として法廷を神聖化することによって私たちの力は成長するでしょう。"
+				SUMMARY "政治力を強化する"
 				}
 				
 			Castles = {
-				NAME "Castles"
+				NAME "城"
 				LEVEL value = {
-					0 = "Primary fortifications"
-					25 = "Wooden castles"
-					50 = "Stone castles"
-					75 = "Fortress"
+					0 = "初歩的な陣地"
+					25 = "木の城"
+					50 = "石の城"
+					75 = "要塞"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our locals noble need a symbolic place as a residence and as a stronghold. Let's build impressive fortifications to better organize our military levies."
-				SUMMARY "Improve the recruitment of Banners"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "地方の貴族には住居として拠点としての象徴的な場所が必要です。軍事徴収を効率よくするために印象的な要塞を建設しましょう。"
+				SUMMARY "軍事徴収を改善する"
 			}	
 			Medicine = {
-				NAME "Medicine"
-				DESCRIPTION <b>"Value: "@[value,0.###] " )<br><br> Our growing knowledge has opened the doors to medical care. Making a clear distinction between diseases and curses, between prayers and drugs, we will gradually come to fight the plagues of men."
-				SUMMARY "Reduces the chance of epidemics"
+				NAME "医学"
+				DESCRIPTION <b>"値: "@[value,0.###] " )<br><br> 私たちの知識は成長し医療への扉を開きました。病気と呪い、薬物と祈りを明確に区別をすることで疫病と戦えるようになるでしょう。"
+				SUMMARY "伝染病の流行の可能性を減らす"
 				}
 			
+
 			Alchemy = {
-				NAME "Alchemy"
+				NAME "錬金術"
 				LEVEL value = {
-					0 = "Natural Body Analysis"
-					25 = "Elemental Research"
-					50 = "Beginning of Chemistry"
-					75 = "Theory of transmutation"
+					0 = "自然体分析"
+					25 = "元素研究"
+					50 = "化学の始まり"
+					75 = "変換の理論"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Our most intelligent scientists are rushing into a discipline trying to understand the very nature of things. Their research seems obscure but it may lead to a glorious future in the distant future."
-				SUMMARY "Improves our scientific knowledge"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "最も優秀な科学者は物事の本質を理解しようとする領域に突入しています。彼らの研究は曖昧に思えますが遠い未来に輝かしい未来をもたらすかもしれません。"
+				SUMMARY "科学的知識を向上させる"
 			}	
 			
 			Gunpowder = {
-				NAME "Gunpowder"
-				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our studies with very strange materials gave us something resembling black powder. Highly explosive, it could have many applications, especially military."
-				SUMMARY "Enhances our military potential."
+				NAME "火薬"
+				DESCRIPTION <b>"値: "@[value,0.###] "<br><br> とても奇妙な材料の研究により黒い粉のようなものが得られました。非常に爆発性が高いため多くの用途、特に軍事的なものが数多くあります。"
+				SUMMARY "軍事的な可能性を高める"
 			}	
 
 
 			TradeFair = {
-				NAME "Trade Fair"
+				NAME "交易会"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Occasional festivities"
-					35 = "Fair organized annually"
-					80 = "Landmark on the continent"
+					0 = "なし"
+					0.001 = "時節の祭り"
+					35 = "毎年開催される"
+					80 = "大陸の中心地"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Fairs are a mix of festivities where merchants of all kinds are invited. They allow us to centralize the production of the region to make it more attractive, and even allow us to earn little money by slightly taxing the event. Of course, it also strengthens the merchants' power."
-				SUMMARY "Improves our trade"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "交易会はあらゆる商人が招かれる祭りです。それにより地域の生産を集中化し魅力的にし、わずかに課税することで収入を得ることもできます。もちろん商人の力を強化します。"
+				SUMMARY "貿易を強化する"
 			}	
 			
 			Guilds = {
-				NAME "Guilds"
+				NAME "ギルド"
 				LEVEL value = {
-					0 = "None"
-					0.001 = " Professionals grouping"
-					35 = "Mighty Guilds"
-					80 = " Uncontrollable Guilds"
+					0 = "なし"
+					0.001 = "プロの集団"
+					35 = "強大なギルド"
+					80 = " 制御不能なギルド"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "A guild is an association or cooperation of persons engaged in a common activity, usually merchants, which adopts specific rules and privileges and seeks the protection of the authorities of a city or state."
-				SUMMARY "Improves our businesses"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "ギルドは特定のルールと特権を採用し、国や都市の保護を求めています。通常は商人である一般的な活動に従事する人々の協会です。"
+				SUMMARY "経済を強化する"
 			}	
 			
 			Banks = {
-				NAME "Banks"
-				DESCRIPTION "Value: "@[value,0.###] "Maximum : "@[Main.Banks.weath_max,0.#] <br> "Minimum : "@[Main.Banks.weath_min,0.#]" <br>As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. Banks are sometimes double-edged however."
-				SUMMARY "Enlarges our maximum and minimum wealth"
+				NAME "銀行"
+				DESCRIPTION "値: "@[value,0.###] <br> "最大: "@[weath_max,0.#] <br> "最小: "@[weath_min,0.#]" <br>経済が発展するにつれてお金の流れをよりよく管理できる機関を作る必要性が高まりました。ただし、銀行は諸刃の剣の場合もあります。"
+				SUMMARY "財産の最小及び最大を拡大する"
 			}	
 			
 			ScripturalMoney = {
 				NAME "Scriptural Money"
+				DESCRIPTION <b>"Value: "@[value,0.###]</b> <br> <b>"Maximum : "@[weath_max,0.#]</b> <br> <b>"Minimum : "@[weath_min,0.#]</b> "<br><br> As our economy grew, there was a growing need to create institutions that would allow us to better manage the flow of money. However, Banks are sometimes double-edged."
+				SUMMARY "Enlarges our maximum and minimum wealth"
+			}
+			
+			
+			ScripturalMoney = {
+				NAME "要求払い預金"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Bills of Exchange"
-					50 = "Checks"
-					80 = "Banknote"
+					0 = "なし"
+					0.001 = "手形"
+					50 = "小切手"
+					80 = "紙幣"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "Money is ultimately a highly theoretical concept that does not necessarily need to be linked to a real physical value such as gold or silver, but to the confidence that money provides. With a little bit of pressure, we could escape certain physical restrictions."
-				SUMMARY "Improves our currency"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "お金は究極的には理論的な概念であり、必ずしも金や銀などの実際の物理的価値ではなく信用に紐づくことが重要です。ほんの少しの圧力で物理的制約から逃れることができました。"
+				SUMMARY "通貨を強化する"
 			}	
 			
 		
 			Monasteries = {
-				NAME "Monasteries"
+				NAME "修道院"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Rare"
-					50 = "Common"
-					80 = "Widespread throughout the country"
+					0 = "なし"
+					0.001 = "珍しい"
+					50 = "一般的"
+					80 = "全国的に広がっている"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Centralizing some of our priests in secluded places will allow them to live by dedicating themselves entirely to their faith. If we have a religious education, it will also be more effective."
-				SUMMARY "Strengthens our priests and our religious education."
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "司祭の何人かを人里離れた場所に集中させることで信仰に専念させることができます。宗教的教育があればさらに効果的です。"
+				SUMMARY "司祭と宗教教育を強化する"
 			}
 			
 			HolyOrders = {
-				NAME "Holy Orders"
+				NAME "十字軍"
 				LEVEL value = {
-					0 = "Disappeared "
-					0.001 = "Low"
-					20 = "Vitals"
-					40 = "Very powerful"
+					0 = "消失 "
+					0.001 = "低い"
+					20 = "重要"
+					40 = "とても強力"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "The concept of the monk-soldier is both a way to get many fanatical soldiers and to ensure the holiness of our people. We must reinforce our castles and monasteries to increase recruitment."
-				SUMMARY "Recruitment for the army"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "僧兵の概念は多くの狂信的な兵士を獲得する方法であり人々の神聖さを保証する方法でもあります。城と修道院を強化して募集を増やす必要があります。"
+				SUMMARY "軍隊の募集"
 			}
 			
 			HolyWar = {
-				NAME "Holy War"
-				LEVEL value = {
-					0 = "None"
-					0.001 = "Low"
-					40 = "Average"
-					70 = "Intensive"
+				NAME "聖戦"
+				LEVEL 値 = {
+					0 = "なし"
+					0.001 = "少ない"
+					40 = "例年"
+					70 = "集中的な"
 				}
-				DESCRIPTION <b> "Value: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "Our faith is the one and only true, the mightiest and purest. We must export it through strength in order to subjugate the unfaithful."
-				SUMMARY "Expand your territory and strengthen your piety with your army"
-			}
-			
-			Medecine = {
-				NAME "Medecine"
-				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our growing knowledge has opened the doors to medical treatments. Making a clear distinction between diseases and curses, between prayers and cures, we will gradually come to fight the plagues of mankind."
-				SUMMARY "Reduces the chance of epidemics"
-			}	
-			
-			ReligiousArt = {
-				NAME "Religious Art"
-				LEVEL value = {
-					0 = "None"
-					0.001 = "Some commissions"
-					35 = "Embellishment of Religious Monuments"
-					80 = " Religious and Cultural Center "
-				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our cultural power is strong, as well as our faith. It's time to put art at the service of the divine."
-				SUMMARY "Brings Culture, Piety and strengthens your Monuments "
+				DESCRIPTION <b> "値: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "我々の信仰は唯一かつ真実であり、もっとも強くて純粋です。不信心な人々を征服するために力をもって行わなければなりません。"
+				SUMMARY "領土を拡大し軍に対する敬意を強める"
 			}
 				
 		}
@@ -1892,41 +1882,40 @@ Main = {
 			}
 			
 			UrbanExodus = {
-				NAME "Urban Exodus"
-				DESCRIPTION "The prevailing insecurity in the cities has led our population to leave the urban areas and settle permanently in the countryside."
-				SUMMARY "Our population flees the cities"
+				NAME "都市脱出"
+				DESCRIPTION "都市が不安を抱えているため、人々は都会を離れ田舎に移り住んでいます。"
+				SUMMARY "人々が都市から逃げ出しています"
 			}
 			
 			PeasantRevolt = {
-				NAME "Peasant Revolt"
-				DESCRIPTION "The peasants, burdened by taxes, have revolted!"
-				SUMMARY "Our peasants are revolting"
+				NAME "農民の反乱"
+				DESCRIPTION "税に耐えかね農民たちは反乱を起こしました！"
+				SUMMARY "農民が反乱を起こしています"
 			}
 			
 			GreatEpidemic = {
-				NAME "Great Epidemic"
-				DESCRIPTION "A particularly lethal disease is spreading across our borders. We must pray for our salvation!"
-				SUMMARY "Will drastically reduce our population"
+				NAME "伝染病の大流行"
+				DESCRIPTION "致命的な病気が国境を越えて広がっています。救いのために祈らなくてはなりません！"
+				SUMMARY "人口が大幅に減少するでしょう"
 			}
 			
 			CulturalRevival = {
-				NAME "Cultural Revival"
-				DESCRIPTION "After an age of decline, our culture takes advantage of our stable situation to flourish again."
-				SUMMARY "Increases our culture levers"
+				NAME "文化の復興"
+				DESCRIPTION "衰退した事態の後、安定した状況の中我々の文化は再び反映します。"
+				SUMMARY "文化レバーが増加する"
 			}
 			
 			WitchHunt = {
-				NAME "Witch Hunt"
-				DESCRIPTION "Our people have provoked a local pogrom against our minorities. If this kind of incident strengthens our religious and national identity, the consequences for trade and stability are disastrous."
-				SUMMARY "Reduces our minorities and our stability"
+				NAME "魔女狩り"
+				DESCRIPTION "人々はマイノリティーに対して局所的な迫害を引き起こしました。もしこのようなことが宗教的・国家的なアイデンティティを強化する場合、貿易や社会安定性は悲惨な結果になります。"
+				SUMMARY "社会安定性とマイノリティーを減少させます"
 			}
 			
 			NomadInvasion = {
-				NAME "Nomadic Invasion"
-				DESCRIPTION "One of our barbarian neighbors has started an invasion. They are looting and killing by the thousands. We must stop them!"
-				SUMMARY "A nomadic horde is attacking you!"
+				NAME "遊牧民の侵略"
+				DESCRIPTION "近隣の野蛮人の一人が侵略を開始しました。略奪し数千人を殺しています。彼らを止めなければなりません！"
+				SUMMARY "遊牧民の大軍が攻撃しています！"
 			}
-
 		}
 	}
 }
