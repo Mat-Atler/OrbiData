@@ -1652,7 +1652,7 @@ Main = {
 					70 = "Intensive"
 				}
 				DESCRIPTION <b> "Value: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "Our faith is the one and only true, the mightiest and purest. We must export it through strength in order to subjugate the unfaithful."
-				SUMMARY "Expand your territory and strengthen your piety with your army"
+				SUMMARY "Expand our territory and strengthen our piety with our army"
 			}
 			
 			Medecine = {
@@ -1670,7 +1670,7 @@ Main = {
 					80 = " Religious and Cultural Center "
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our cultural power is strong, as well as our faith. It's time to put art at the service of the divine."
-				SUMMARY "Brings Culture, Piety and strengthens your Monuments "
+				SUMMARY "Brings culture, piety and strengthen our religious monuments"
 			}
 
 		}
