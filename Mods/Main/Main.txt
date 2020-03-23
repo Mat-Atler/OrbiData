@@ -5248,7 +5248,7 @@ Main = {
 					PROCESS weath_min = -500 - value * 20
 					RESOURCE_MAX $Wealth = weath_max
 					SET ScripturalMoney.value [ : : Banks.value ]
-					// RESOURCE_MIN $Wealth = weath_min
+					RESOURCE_MIN $Wealth = weath_min
 				}
 				
 				LINK ScripturalMoney = {
