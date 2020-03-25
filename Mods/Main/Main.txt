@@ -4568,6 +4568,8 @@ Main = {
 					CONDITION_NODE + Republic
 					OR
 					CONDITION_NODE + Theocracy
+					OR
+					CONDITION_NODE + MilitaryDictatorship
 					ALWAYS
 					CONDITION_VALUE Cavalry > 20
 					CONDITION_NODE + Cataphracts
@@ -4622,6 +4624,10 @@ Main = {
 				ERA FeudalAge
 				REMOVE Bureaucracy
 				REMOVE Satrapy
+				IF (~MilitaryDictatorship)
+						REMOVE MilitaryDictatorship
+						SPAWN Monarchy
+				ENDIF
 				}				
 				
 			}
