@@ -224,7 +224,7 @@ Religious = {
 				TICK = {
 					IF CompetitingReligiousLeader > 0
 						PROCESS ReligiousHeadPower = ReligiousHeadPower - PerSeconds ((CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 ) * ReligiousHeadPower )
-						PROCESS Piety = Piety - PerSeconds (CompetitingReligiousLeader * CompetitingReligiousLeader / 1000 * ( 0.75 + ClergyCentralization / 200 ) )
+						PROCESS Piety = Piety - PerSeconds (CompetitingReligiousLeader * CompetitingReligiousLeader / 1200 * ( 0.75 + ClergyCentralization / 200 ) )
 					ENDIF	
 				}
 				LINK Piety = {
@@ -1004,6 +1004,7 @@ Religious = {
 					CONDITION_NODE - ClericalState
 					CONDITION_VALUE Piety > 50
 					CONDITION_VALUE PriestClass >= 30
+					CONDITION_VALUE ClergyIndependance <= 25
 				}
 				PRICE = {
 					$PoliticalPower = 120
@@ -1014,7 +1015,7 @@ Religious = {
 				TICK = {
 				
 					SET Theocracy.value [ : : 100 + CelestialMonarchy.value ]
-					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value * 0.002)
+					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value * 0.0025)
 				}
 				
 				LINK Theocracy = {
@@ -1025,6 +1026,11 @@ Religious = {
 				
 				TRIGGER_SPAWN CelestialMonarchy = {
 						RESOURCE_MAX $PoliticalPower = 500
+						REMOVE Monarchy
+						SPAWN Theocracy
+						
+						IF Theocracy < DivineRight
+							PROCESS Theocracy = DivineRight
 				}
 				TRIGGER_LEAVE CelestialMonarchy = {
 						SET Theocracy.value [ : : 100 ]
@@ -1045,6 +1051,7 @@ Religious = {
 					CONDITION_NODE - CelestialMonarchy
 					CONDITION_VALUE Piety > 50
 					CONDITION_VALUE PriestClass >= 40
+					CONDITION_VALUE ClergyIndependance <= 25
 				}
 				PRICE = {
 					$PoliticalPower = 190
@@ -1453,11 +1460,15 @@ Religious = {
                     
 				}
 				TICK = {
-					PROCESS CompetitingReligiousLeader = CompetitingReligiousLeader + PerSeconds ( 0.05 )
+					
 				}
 				LINK CompetitingReligiousLeader = {
 					COLOR green
 					FLUX 1
+				}
+				
+				TRIGGER_SPAWN MercenaryUprising = {
+					PROCESS CompetitingReligiousLeader = CompetitingReligiousLeader + 1
 				}
 
 				TRIGGER_EVENT = {
