@@ -4624,7 +4624,7 @@ Main = {
 				ERA FeudalAge
 				REMOVE Bureaucracy
 				REMOVE Satrapy
-				IF (~MilitaryDictatorship)
+				IF ~MilitaryDictatorship
 						REMOVE MilitaryDictatorship
 						SPAWN Monarchy
 				ENDIF
