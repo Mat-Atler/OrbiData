@@ -1015,7 +1015,7 @@ Religious = {
 				TICK = {
 				
 					SET Theocracy.value [ : : 100 + CelestialMonarchy.value ]
-					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value * 0.0025)
+					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value * 0.0025 )
 				}
 				
 				LINK Theocracy = {
@@ -1031,6 +1031,7 @@ Religious = {
 						
 						IF Theocracy < DivineRight
 							PROCESS Theocracy = DivineRight
+						ENDIF	
 				}
 				TRIGGER_LEAVE CelestialMonarchy = {
 						SET Theocracy.value [ : : 100 ]
