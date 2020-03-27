@@ -812,7 +812,7 @@ Main = {
 					80 = "Un seul Dieu"
 					95 = "Monothéisme orthodoxe"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La nature de notre religion officiel, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La nature de notre religion officielle, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
 				SUMMARY "Détermine à quelle point votre clergé peut être organisé"
 			}
 			Theocracy = {
