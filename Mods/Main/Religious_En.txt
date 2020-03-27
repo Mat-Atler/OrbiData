@@ -29,7 +29,7 @@ Religious = {
 			Devotion = {
 				NAME "Devotion"
 				DESCRIPTION <b>"Valeur: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare."
-				SUMMARY " Improves your various devotions"
+				SUMMARY "Improves your various devotions"
 			}
 		}
 		Levers = {
@@ -42,7 +42,7 @@ Religious = {
 					75 = "heretics are almost considered as any of our subjects"
 					}
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate heretics so that they do not pose any problems, But at the cost of a constant political investments."
-				SUMMARY " Our policy about heretics"
+				SUMMARY "Our policy about heretics"
 				}
 				
 			ToleranceOfHeathens = {
@@ -54,7 +54,7 @@ Religious = {
 					75 = "Heathens are almost considered as any of our subjects"
 					}
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate Heathens so that they do not pose any problems, But at the cost of a constant political investments. "
-				SUMMARY " Our policy about Heathens"
+				SUMMARY "Our policy about Heathens"
 				}
 				
 			Syncretism = {
@@ -124,7 +124,7 @@ Religious = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors. "
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors."
 				SUMMARY "Enslvave the neighbors population with our military forces"
 			}			
 	
@@ -182,7 +182,7 @@ Religious = {
 					80 = "Our king is considered to be the principal deity of our religion"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Many have come to view our leaders not only as great leaders, but also as semi-divine beings. Many have formed a sect to fanatically follow our leader. Let us reform our country so that all our subjects are de facto members of our sect."
-				SUMMARY "government by a deified king "
+				SUMMARY "government by a deified king"
 			}
 			DevotionToNature = {
 				NAME "Devotion To Nature"
@@ -192,17 +192,17 @@ Religious = {
 			DevotionToSea = {
 				NAME "Devotion To Sea"
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "The sea offers us food and protection from the outside world. Securing its favours will allow us to always have the waves on our side."
-				SUMMARY "Increases fishing and navy efficiency"
+				SUMMARY "Increases Fishing and Navy efficiency"
 			}
 			DevotionToTheHarvest = {
 				NAME "Devotion To The Harvest"
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Harvests are to our society what blood is to a human body. So we must make sure that the divine forces will never fail us in that field."
-				SUMMARY "Increases the efficiency of agriculture and animal husbandry"
+				SUMMARY "Increases the efficiency of Agriculture and Animal Husbandry"
 			}
 			DevotionToTheLaw = {
 				NAME "Devotion To The Law"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "It is only through strict observance of the law that harmony in our society can be maintained. That is why our priests must have the mind of a judge."
-				SUMMARY "Increases the effectiveness of the Urban Militia and religious law"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "It is only through strict observance of the law that harmony in our society can be maintained. That is why our priests must have the mindset of a judge."
+				SUMMARY "Increases the effectiveness of the Urban Militia and Religious Law"
 			}	
 			DevotionToWar = {
 				NAME "Devotion To War"
@@ -216,15 +216,15 @@ Religious = {
 			}	
 			DevotionToCraftsmanship = {
 				NAME "Devotion To Craftsmanship"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "In the same way that it is through action that salvation is obtained. It is through hard work that men prove their worth. Let us make sure that every man participates in the effort."
-				SUMMARY "Increases our production of trade goods "
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "In the same way that it is through action that salvation is obtained, it is through hard work that men prove their worth. Let us make sure that every man participates in the effort."
+				SUMMARY "Increases our production of Trade goods"
 			}			
 				
 			}
 		Events = {
 			Schism = {
 				NAME "Schism"
-				DESCRIPTION " Our most brilliant theologians can not agree on the profound nature of our beliefs. And part of our population is convinced by the ideas of the minority groups."
+				DESCRIPTION "Our most brilliant theologians can not agree on the profound nature of our beliefs. And part of our population is convinced by the ideas of the minority groups."
 				SUMMARY "Increase Heretics "
 			}
 			ConversionForeignFaith = {
@@ -246,47 +246,47 @@ Religious = {
 			}
 			GreatSchism = {
 				NAME "GreatSchism"
-				DESCRIPTION " Our religion has seen and survived debates about the deep nature of our beliefs. But this time if theologians criticize not only our beliefs but the legitimacy of our holy institutions. The reforms asked for are so great that the unity of our religion may not survive them."
+				DESCRIPTION "Our religion has seen and survived debates about the deep nature of our beliefs. But this time if theologians criticize not only our beliefs but the legitimacy of our holy institutions. The reforms asked for are so great that the unity of our religion may not survive them."
 				SUMMARY "Increase Heretics and the chances of religious infighting"
 			}
 			ReligiousLeagueWar = {
 				NAME "Religious League War"
-				DESCRIPTION " While the great schism is tearing apart countries formerly united in faith. War has become inevitable."
+				DESCRIPTION "While the great schism is tearing apart countries formerly united in faith. War has become inevitable."
 				SUMMARY "It's War!"
 			}
 			ReinforcementOfTheClergy = {
 				NAME "Reinforcement Of The Clegy"
-				DESCRIPTION " Priests have always insisted on their independence and privileges and it is with fervour that they resist our control."
+				DESCRIPTION "Priests have always insisted on their independence and privileges and it is with fervour that they resist our control."
 				SUMMARY "The clergy increases its independence. "
 			}
 			ReinforcementOfTheGouvernement = {
 				NAME " Reinforcement Of The Gouvernement "
-				DESCRIPTION " The clergy can have a great influence on our people, which is why it is imperative that we control it. "
-				SUMMARY " The independence of the clergy is diminishing."
+				DESCRIPTION "The clergy can have a great influence on our people, which is why it is imperative that we control it. "
+				SUMMARY "The independence of the clergy is diminishing."
 			}
 			ReinforcementOfTheReligiousHead = {
 				NAME " Reinforcement Of The Religious Head "
-				DESCRIPTION " Like any man with power, our spiritual guide will miss no opportunity to increase it further. Even if it means going against us. "
-				SUMMARY " The power of the religious leader increases."
+				DESCRIPTION "Like any man with power, our spiritual guide will miss no opportunity to increase it further. Even if it means going against us. "
+				SUMMARY "The power of the religious leader increases."
 			}
 			WeakReligiousHead = {
 				NAME "Weak Religious Head "
-				DESCRIPTION " Our current spiritual guide is proving to be incompetent and completely unfit. This is surely a good opportunity to solidify our power over the clergy. "
-				SUMMARY " The power of the religious leader decreases."
+				DESCRIPTION "Our current spiritual guide is proving to be incompetent and completely unfit. This is surely a good opportunity to solidify our power over the clergy. "
+				SUMMARY "The power of the religious leader decreases."
 			}
 			ExclusionFromTheReligion = {
 				NAME "Exclusion From The Religion "
-				DESCRIPTION " The highest religious institutions wanted to expel us from religion for our lack of piety. Public confidence in our government will be greatly reduced as our ability to influence the affairs of the clergy has been greatly reduced. "
-				SUMMARY " Reduces our piety and stability and prevents us from influencing the clergy"
+				DESCRIPTION "The highest religious institutions wanted to expel us from religion for our lack of piety. Public confidence in our government will be greatly reduced as our ability to influence the affairs of the clergy has been greatly reduced. "
+				SUMMARY "Reduces our piety and stability and prevents us from influencing the clergy"
 			}
 			NewCompetitingReligiousLeader = {
 				NAME "New Competiting Religious Leader "
-				DESCRIPTION " An ambitious and charismatic theologian assures that he is a more pious and capable person than our present religious leader. Such a divided religious power cannot be good news for the stability of our country! "
-				SUMMARY " A new competing religious leader appears"
+				DESCRIPTION "An ambitious and charismatic theologian assures that he is a more pious and capable person than our present religious leader. Such a divided religious power cannot be good news for the stability of our country! "
+				SUMMARY "A new competing religious leader appears"
 			}
 			EndOfReligiousDisent = {
 				NAME "End Of Religious Disent "
-				DESCRIPTION " Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
+				DESCRIPTION "Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
 				SUMMARY "End of the division of the clergy, only one religious leader remains"
 			}
 
