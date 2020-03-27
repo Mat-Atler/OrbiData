@@ -419,8 +419,10 @@ Religious = {
 					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 0.25
 				}
 				TICK = {
-				PROCESS Heretics = ( Heretics - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 )
-				PROCESS Heathens = ( Heathens - PerSeconds( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 )
+				IF Pantheon > 10
+				PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+				PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+				ENDIF
 				
 				IF ( value > 0)
 				PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
@@ -445,11 +447,11 @@ Religious = {
 				}
 				LINK Heretics = {
 					COLOR red
-					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 ) * ( 0.75 + ClergyCentralization / 200 )
+					FLUX (( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000003 ) * ( 0.75 + ClergyCentralization / 200 ))
 				}
 				LINK Heathens = {
 					COLOR red
-					FLUX ( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 ) * ( 0.75 + ClergyCentralization / 200 )
+					FLUX (( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.000002 ) * ( 0.75 + ClergyCentralization / 200 ))
 				}
 			}
 			ReligiousOfferings = {
