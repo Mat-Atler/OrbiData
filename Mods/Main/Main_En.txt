@@ -1084,7 +1084,7 @@ Main = {
 			}			
 			
 			GenieCorps = {
-				NAME "Genie Corps"
+				NAME "Engineering Corps"
 				LEVEL value = {
 					0 = "None"
 					0.001 = "Unfruitful tests"
