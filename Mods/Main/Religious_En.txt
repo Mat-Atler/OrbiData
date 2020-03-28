@@ -260,7 +260,7 @@ Religious = {
 				SUMMARY "The clergy increases its independence. "
 			}
 			ReinforcementOfTheGouvernement = {
-				NAME " Reinforcement Of The Gouvernement "
+				NAME " Reinforcement Of The Government"
 				DESCRIPTION "The clergy can have a great influence on our people, which is why it is imperative that we control it. "
 				SUMMARY "The independence of the clergy is diminishing."
 			}

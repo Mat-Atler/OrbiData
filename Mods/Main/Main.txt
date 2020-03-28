@@ -392,9 +392,9 @@ Main = {
 				}
 				TICK = {
 					IF ~Guilds
-						PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / 2500 )
+						PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / 3000 )
 					ELSE
-						PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / ( 2500 - Guilds * 10 )  )
+						PROCESS Entreprises = Entreprises - PerSeconds ( Entreprises * Entreprises / ( 3000 + Guilds * 10 )  )
 					ENDIF
 					
 					IF ~Money == 0
@@ -674,7 +674,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(AristocracyClass/350)
+					PROCESS value =  value - PerSeconds(AristocracyClass/480)
 					IF VassalPower == 0
 						SET Monarchy.value [ : : Max ( 50 , AristocracyClass ) ]
 					ENDIF
@@ -4877,7 +4877,7 @@ Main = {
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55)
 						PROCESS $Wealth = $Wealth - PerSeconds(value / 35)
-						PROCESS VassalPower =  VassalPower - PerSeconds(value / 2500 )
+						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
 				}
 				
 				LINK VassalPower = {
@@ -6663,7 +6663,7 @@ Main = {
 				EVENT_CHANCE ( StateSize - BarbarianMonarchy ) / 250 
 				}
 				TICK = {
-					PROCESS BarbarianAtGates = BarbarianAtGates + PerSeconds(1.12)
+					PROCESS BarbarianAtGates = BarbarianAtGates + PerSeconds(1.02)
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(3)
 					PROCESS Stability -= PerSeconds(1.5)
 					OVERRIDE_PARAM BorderControls.value = GetParam(BorderControls.value) - PerSeconds(0.6)
@@ -6689,7 +6689,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 25 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 500 ) | ( GameTime() > 8500 ) | ( Stability <= 20 GameTime() > 6500 ) ) & GameTime() < 13000
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 500 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 12000
 							RISE
 						ENDIF
 				}
