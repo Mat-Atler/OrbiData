@@ -5207,7 +5207,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~TradeFair
 					CONDITION_VALUE TradeFair >= 40
-					CONDITION_VALUE Entreprises >= 100
+					CONDITION_VALUE Entreprises >= 60
 					CONDITION_VALUE Urbanization >= 75
 				}
 				PRICE = {
@@ -7162,16 +7162,16 @@ Main = {
 			HarshWinter = {
 				SOUND_EVENT "Main/SFX/Wolf.wav"
 				SOUND_WINDOW "Main/SFX/Wolf.wav"
-				EVENT_DEF [ 15 30 300 50% ]
+				EVENT_DEF [ 15 30 600 50% ]
 				SLEEP = {
-				EVENT_CHANCE = ( 100 - Temperature ) / 100
+				EVENT_CHANCE = ( 100 - Temperature * 1.5 ) / 100
 				}
 				ARISE = {
 					EVENT_SPEED 1
 				}
 				TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.02 * 0.99 ? 1.01 )
-					PROCESS Population = Population - PerSeconds(0.1 + Population * 0.05 * 0.99 ? 1.01)
+					PROCESS Population = Population - PerSeconds(0.1 + Population * 0.03 * 0.99 ? 1.01)
 					PROCESS Food = Food - PerSeconds(0.3 + Food * 0.03 * 0.99 ? 1.01)
 				}
 				LINK Stability = {
