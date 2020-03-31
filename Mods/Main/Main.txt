@@ -4244,6 +4244,8 @@ Main = {
 					CONDITION_NODE + CelesteMandate
 					OR
 					CONDITION_NODE + Empire
+					OR
+					CONDITION_VALUE Tribunal >= 50
 					ALWAYS
 					CONDITION_NODE - Satrapy
 					CONDITION_NODE - Feudality
@@ -5002,7 +5004,6 @@ Main = {
 					OR
 					CONDITION_VALUE Republic >= 150
 					ALWAYS
-					CONDITION_VALUE Legislation >= 50
 					CONDITION_VALUE Culture >= 25
 					CONDITION_VALUE Philosophy >= 100
 					CONDITION_VALUE Urbanization >= 50
