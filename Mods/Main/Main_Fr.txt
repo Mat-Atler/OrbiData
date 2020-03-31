@@ -425,8 +425,8 @@ Main = {
 				SUMMARY "Nécessaire pour toutes formes de commerce"
 			}
 			Entreprises = {
-				NAME "Guilde"
-				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Avec la prolifération du commerce les marchands sont devenus puissants, très puissants. Ils ont organisés le commerce sous la forme de guildes, cherchant à enrichir leurs propriétaires. Bien entendus, ils haïssent tout se qui s'apparante à des taxes gouvernementales."
+				NAME "Entreprises"
+				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Avec la prolifération du commerce les marchands sont devenus puissants, très puissants. Ils ont organisés le commerce sous la forme de petites guildes, cherchant à enrichir leurs propriétaires. Bien entendus, ils haïssent tout se qui s'apparante à des taxes gouvernementales."
 				SUMMARY "Augmente le commerce"
 			}
 			NationalCohesion = {
