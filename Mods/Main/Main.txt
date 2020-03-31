@@ -5243,7 +5243,7 @@ Main = {
 					CONDITION_VALUE Urbanization >= 40
 				}
 				PRICE = {
-					$PoliticalPower = 500
+					$PoliticalPower = 490
 					$Wealth = 800
 				}
 				UPGRADE = {
@@ -5268,12 +5268,12 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~ScienceKnowledge | SiegeWeapons
+					HINT ~ScienceKnowledge | ~Banks
 					CONDITION_VALUE Banks >= 30
 					CONDITION_VALUE Money >= 80
 				}
 				PRICE = {
-					$PoliticalPower = 500
+					$PoliticalPower = 490
 				}
 				UPGRADE = {
 					$PoliticalPower = 10
