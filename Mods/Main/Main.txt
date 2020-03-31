@@ -4837,7 +4837,7 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | ~FarmingTools
-					CONDITION_VALUE FarmingTools > 100
+					CONDITION_VALUE FarmingTools >= 100
 					CONDITION_VALUE Agriculture > 100
 					CONDITION_NODE + Feudality
 				}
