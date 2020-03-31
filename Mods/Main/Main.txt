@@ -1000,6 +1000,14 @@ Main = {
 				PROCESS Infantry_value =  Infantry_value - PerSeconds( value / 3500 )
 				PROCESS Missile_value =  Missile_value - PerSeconds( value / 3500 )
 				PROCESS Mercenaries_value =  Mercenaries_value - PerSeconds( value / 5000 )
+				
+				IF (MilitaryManpower > ArmyQuota & ~ArmyQuota )
+					PROCESS Cavalry_value =  Cavalry_value - PerSeconds( value / 300 )
+					PROCESS Infantry_value =  Infantry_value - PerSeconds( value / 300 )
+					PROCESS Missile_value =  Missile_value - PerSeconds( value / 300 )
+					PROCESS Mercenaries_value =  Mercenaries_value - PerSeconds( value / 300 )
+				ENDIF
+				
 				}
 					
 					
@@ -6690,7 +6698,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 500 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 12000
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5000 ) | (StateSize >= 400 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 11000
 							RISE
 						ENDIF
 				}
@@ -7527,7 +7535,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 12500 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) )
+					IF  ~StateSize & GameTime() > 11000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) )
 						RISE
 					ENDIF
 				}
