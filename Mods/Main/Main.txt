@@ -5148,11 +5148,11 @@ Main = {
 					$PoliticalPower = 3
 				}
 				TICK = {
-				SET SiegeWeapons.value [ : : SiegeWeapons.value + 100 ]
+				SET SiegeWeapons.value [ : : Gunpowder.value * 1.5 + 100 ]
 				}
 				
 				LINK SiegeWeapons = {
-						WEIGHT [ max ] 100 + Gunpowder
+						WEIGHT [ max ] 100 + Gunpowder.value * 1.5
 				}
 				
 			
