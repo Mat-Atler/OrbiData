@@ -360,6 +360,7 @@ Nomads = {
 					}
 				}
 				Migration = {
+				TAG Nomadic
 				TYPE Cultural
 				VALUE value [ 0 51 100 >> 1 middle ]
 				

@@ -2123,6 +2123,7 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					CONDITION_NODE - Writing
+					CONDITION_NODE - University
 					CONDITION_VALUE Population > 10
 				}
 				PRICE = {
@@ -2237,6 +2238,12 @@ Main = {
 					IF ~University == 0
 						WEIGHT [ max ] 30 + Writing.value / 5
 					ENDIF
+				}
+				
+				
+				TRIGGER_LEAVE Writing = {
+						REMOVE University
+						REMOVE Litterature
 				}
 			}	
 			Pantheon = {
@@ -4999,9 +5006,7 @@ Main = {
 				}
 
 			}
-
-
-
+			
 			Tribunal = {
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				TYPE Cultural
