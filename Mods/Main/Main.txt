@@ -7262,7 +7262,7 @@ Main = {
 					}
 
 					TRIGGER_EVENT = {
-						IF ( ~Urbanization & Urbanization > 2 * Settlement & GetCurrentEra() >= GetEra(LateAntiquity) & GetCurrentEra() <= GetEra(DiscoveryAge))
+						IF ( ~Urbanization & ( Urbanization * 2 > Settlement ) & GetCurrentEra() >= GetEra(LateAntiquity) & GetCurrentEra() <= GetEra(DiscoveryAge))
 							RISE
 						ENDIF
 					}
