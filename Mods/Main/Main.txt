@@ -5117,7 +5117,7 @@ Main = {
 					CONDITION_VALUE Philosophy >= 150
 				}
 				PRICE = {
-					$PoliticalPower = 500
+					$PoliticalPower = 495
 				}
 				UPGRADE = {
 					$PoliticalPower = 15
