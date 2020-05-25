@@ -2631,7 +2631,7 @@ Main = {
 					HINT ~Republic & ~MerchantRepublic == 0
 					CONDITION_NODE - Oligarchy
 					CONDITION_NODE - MerchantRepublic
-					CONDITION_VALUE Republic == 100
+					CONDITION_VALUE Republic >= 100
 					CONDITION_VALUE Legislation > 50
 					CONDITION_VALUE Philosophy >= 30
 				}
