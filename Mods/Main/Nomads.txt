@@ -178,7 +178,7 @@ Nomads = {
 				//}
 				UNLOCK_CONDITIONS = {
 					HINT ~SeasonalNomadism
-					CONDITION_VALUE SeasonalNomadism > 100
+					CONDITION_VALUE SeasonalNomadism >= 99
 					CONDITION_NODE - Transhumance
 				}
 				PRICE = {
