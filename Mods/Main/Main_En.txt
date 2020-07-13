@@ -70,7 +70,7 @@ Main = {
 				500 = "Empire"
 				1000 = "Large Empire"
 			}
-			TEXT "<b>Value: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> The size of the land our government controls, though It needs to be settled if we want to take advantage of it. If we lose it all, then our power will be no more."
+			TEXT "<b>Value: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br>The size of the land our government controls, though it needs to be settled if we want to take advantage of it. If we lose it all, then our power will be no more."
 		}
 		WinTravel = {
 			NAME "Travel"
@@ -103,11 +103,11 @@ Main = {
 		}
 		MilitaryCoup = {
 			NAME "Military Coup"
-			DESCRIPTION "We lost any kind of authority to the army and they seizing power."
+			DESCRIPTION "We have lost all authority to the army and they are seizing power."
 		}
 		MassiveNomadInvasion = {
 			NAME "Massive Nomad Invasion"
-			DESCRIPTION "A close nomad tribe who master horse domestication is trying to attack us."
+			DESCRIPTION "A nearby nomadic tribe of master horsemen are trying are beginning their attack on us."
 		}
 		Invaded = {
 			NAME "Invaded"
@@ -129,7 +129,7 @@ Main = {
 			::APPEND "Main/Religious_EN.txt" Religious.Nodes.States
 			Population = {
 				NAME "Population"
-				DESCRIPTION "Current population: " @[value,0.###]<br><br>" Your people are the center of all civilization, without them nothing is created and happened."
+				DESCRIPTION "Current population: " @[value,0.###]<br><br>"Your people are the center of all civilization, without them nothing is created or happens."
 				SUMMARY "The number of people of our state"
 			}
 			Temperature = {
@@ -247,18 +247,18 @@ Main = {
 					60 = "Pluvious"
 					85 = "Very Hot"
 				}
-				DESCRIPTION "Humidity: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br> "There are huge differences between a water-laden land and a desert. The humidity facto represents the amount of water in the land, may it be in lakes, streams or rain."
+				DESCRIPTION "Humidity: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br> "There are huge differences between a water-laden land and a desert. The humidity factor represents the amount of water in the land, be it in lakes, streams or rain."
 				SUMMARY "The climate of our main region"
 
 			}
 			Food = {
 				NAME "Food"
-				DESCRIPTION "Food stocks: "@[value,0.####] <br><br>"Securing food are often the first concern of all early civilization, the securitization of food stocks can increase the life expectancy and so the natality."
+				DESCRIPTION "Food stocks: "@[value,0.####] <br><br>"Securing food is often the first concern of all early civilization, the acquisition of food stocks can increase the life expectancy and so the natality."
 				SUMMARY "The amount of food in our reserves"
 			}
 			Piety = {
 				NAME "Piety"
-				DESCRIPTION "Piety : " @[value,0.####] " )" <br><br> "The faith in our official religion, the more our people is faithful the less likely it is to revolt."
+				DESCRIPTION "Piety : " @[value,0.####] " )" <br><br> "The faith in our official religion, the more our people are faithful the less likely they are to revolt."
 				SUMMARY "Stabilizes our state with religion"
 			}
 			Education = {
@@ -271,7 +271,7 @@ Main = {
 					70 = "Everyone can read"
 					90 = "Everyone can read and write"
 				}
-				DESCRIPTION "Education: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br> "The education is the level of erudition of our people, mostly the upper-class, it brings more stability and more political power."
+				DESCRIPTION "Education: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br> "Education is the level of erudition of our people, mostly the upper-class. It brings more stability and political power."
 				SUMMARY "Helps our stability and our political power"
 			}
 			Livestock = {
@@ -435,7 +435,7 @@ Main = {
 			
 			DraftAnimals = {
 				NAME "Draft Animals"
-				DESCRIPTION "The work in the field can be harsh and not that productive if it's related only on human strength, but you have no more this trouble. Now you use the strength of animals to make the field-work, the production can only be better."
+				DESCRIPTION "Field work can be harsh and unproductive if it's relies only on human strength, but you have no more of this trouble. Now you use the strength of animals to assist field-work, production can only be better.."
 				SUMMARY "Helps our farmers with our livestock"
 			}
 			
@@ -492,7 +492,7 @@ Main = {
 					25 = "Our borders are under pressure"
 					80 = "Our borders no longer exist"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br>"The pressure of barbarians led them to gather in front of our historical borders, ready to attack our glorious state like carrion. This is a major problem to our very existence because they will eventually create multiple problems. We can try to negotiate controlled migration treaties, keep our borders more secure or conduct punitive expeditions."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br>"The onslaught of barbarians has led them to gather in front of our borders, ready to attack our glorious state like carrion feeders. This is a major threat to our very existence because they will eventually create multiple problems. We can try to negotiate controlled migration treaties, keep our borders more secure or conduct punitive expeditions.."
 				SUMMARY "Barbarians are gathering and raising fears of major problems"
 			}
 			NavyTechnology = {
@@ -606,7 +606,7 @@ Main = {
 					30 = "Fishing culture"
 					80 = "Massive fishing"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "For Civilization with great water access, gathering food from it came naturally in their mind and the best mean to achieve it is by a fishing culture from the coast fisherman to the great fishing boat."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "For civilizations with great water access, gathering food from it came naturally in their minds and the best mean to achieve that is by a fishing culture from the coastal fisherman to the great fishing boat.."
 				SUMMARY "Gathering food from our coastal water"
 			}
 			Harbours = {
@@ -630,7 +630,7 @@ Main = {
 					50.001 = "Low Growth"
 					70 = "Massive Investiments"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "With the evergrowing human group, the need for meat has lead to select the least aggressive animals to create a new source of food and supply that can moved and harvested when needed."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "With the evergrowing human population, the need for meat has lead us to select the least aggressive animals to create a new food source that can moved and harvested when needed.."
 				SUMMARY "Our policy on domestication"
 			}
 			
@@ -653,7 +653,7 @@ Main = {
 					30 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "Foraging is the very first mean to get food by human population it consists to get some eatable vegetable in the wild. Intensive foraging can put in danger all the local natural balance. Gathering numerous seeds by foraging would lead to an agricultural process."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "Foraging is the very first method to get food by human populations by gathering wild edible vegetables. Intensive foraging can put in danger all the local natural balance. Gathering numerous seeds by foraging would lead to an agricultural process."
 				SUMMARY "Gathering food by harvesting the wild"
 			}
 			Agriculture = {
@@ -665,7 +665,7 @@ Main = {
 					70 = "Very agricultural society"
 					120 = "Major Producer"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "An evergrowing population need new reliable sources of food, sources that are less dependant on luck and more controllable. The agriculture is one of this step, the food now produced near habitation bring more food security."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "An evergrowing population needs new reliable sources of food, sources that are less dependant on luck and more controllable. Agriculture is one step, the food now produced near habitation brings more food security."
 				SUMMARY "Gathering food by exploiting the soil"
 			}
 			Pottery = {
@@ -716,7 +716,7 @@ Main = {
 					150 = "Cathedrals"
 				}
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( "@[value,0.###] " ) "<br><br>  "The magnificence of our religious monuments affects many areas, for example culture and especially the possibility of organizing larger and more elaborate ceremonies."
-				SUMMARY "Allows a complex religious activity"
+				SUMMARY "Allows complex religious activity"
 			}
 			ReligiousCeremony = {
 				NAME "Religious Ceremony"
@@ -726,7 +726,7 @@ Main = {
 					40 = "Organized Calandar of Ceremonies"
 					70 = "Society is rythmed by religion"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br>  "The frequency and scale of our ceremonies. The more complex and frequent they are, the more priests you need, resulting in their social class becoming more influent."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br>  "The frequency and scale of our ceremonies. The more complex and frequent they are, the more priests you need, resulting in their social class becoming more influential."
 				SUMMARY "Enhances the role of the clergy"
 			}
 			
@@ -738,7 +738,7 @@ Main = {
 					40 = "Sedentary society"
 					110 = "Colonization campaigns for uncultivated land"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "The population began to regroup in a village that soon grow in a city. it's the first step to a sedentarized government."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "The population began to group in a village that soon grow into a city. It's the first step to a sedentarized government."
 				SUMMARY "Determines our degree of sedentarization"
 			}
 			OrganizedNomadism = {
@@ -749,7 +749,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br>  "Thanks to animal husbandry we can move faster and so on great distances. our people began to regroup in a clan."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br>  "Thanks to animal husbandry we can move faster and on great distances. Our people began to organize as a clan."
 				SUMMARY "A state without fixed lands"
 			}
 			PastoralNomadism = {
@@ -782,7 +782,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( "@[value,0.###]" ) " <br><br>   "Village transforms into town and them in cities, and cities have to be organized to avoid hygiene trouble and to have access to public buildings. But be warned if the population isn't following our urbanization the cities will crumble in ruin."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( "@[value,0.###]" ) " <br><br>   "Village transforms into town and then into cities, and cities have to be organized to avoid hygiene trouble and provide access to public buildings. But be warned if the population isn't following our urbanization the cities will crumble into ruin."
 				SUMMARY "Determines our degree of urbanization"
 			}
 			NonSecularEducation = {
@@ -793,7 +793,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br> "To ensure a great moral orthodox education the priest and over members of the clergy give teaching to the youngling. The education will increase but the priest will have a very strong influence."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br> "To ensure a great moral education the priest and other members of the clergy teach the young. Education will increase but priests will have a very strong influence."
 				SUMMARY "Educates our population, paying priests to do it"
 			}
 			SecularEducation = {
@@ -804,7 +804,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "We have to create a corp of teacher and master of their art to give our younglings a more rational education and limit the clergy influence, but that doesn't come without heavy expense."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "We have to create a corp of teachers and masters of their art to give our young a secular education and limit the clergy's influence, but that comes with a heavy expense."
 				SUMMARY "Educates our population paying teachers to do it"
 			}
 			Mathematics = {
@@ -837,7 +837,7 @@ Main = {
 					30 = "Tales of ancestors"
 					50 = "Druidic Society"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "Transmission of knowledge has become an important matter, as a part of our population now will teach our younglings the ways and knowledge of our ancestors."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "Transmission of knowledge is an important matter and now part of our population will teach our young the ways and knowledge of our ancestors."
 				SUMMARY "Determines the complexity of our education"
 			}
 			Pantheon = {
@@ -862,7 +862,7 @@ Main = {
 					40 = "Recognized government"
 					80 = "Uncontested government"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "A form of government where the power is controlled by clerical where the important matter is based on official religion."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "A form of government where the power is controlled by clergy and important matters based on religious doctrine."
 				SUMMARY "A state governed by priests"
 			}
 			Monarchy = {
@@ -906,7 +906,7 @@ Main = {
 					40 = "Recognized government"
 					80 = "Uncontested government"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "A form of government where the power is hold by a public entity."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "A form of government where the power is held by a public entity."
 				SUMMARY "A state governed by a public entity"
 			}
 			Writing = {
@@ -918,7 +918,7 @@ Main = {
 					50 = "Full Syllabary"
 					80 = "Alphabet"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "Education is a great innovation but the oral transmission has several defaults, like the interpretation of the knowledge and so the dispersion the writing is the answer to this trouble."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> <br><br> "Education is a great innovation but oral transmission has several flaws, like the interpretation of knowledge and so dispersion of writing answers this trouble."
 				SUMMARY "Determines the complexity of our education"
 			}
 			UrbanMilitia = {
@@ -929,7 +929,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> "( " @[value,0.###]" ) "<br><br> "Our lack of intern stability is due to little crim, by the fact that the law is not enforced in the cities, the Urban Militia will assure order and even fight disaster like a great fire."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> "( " @[value,0.###]" ) "<br><br> "Lack of internal stability is due to crime and the law going unenforced in the cities. The Urban Militia will assure order and even fight disaster like a great fire."
 				SUMMARY "Stabilize public order with political investments"
 			}
 			BorderControls = {
@@ -953,7 +953,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "With the constant movment of our people we managed to be the center of trade exchange in our region. THis situation bring more stability and wealth to us."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "With the constant movement of our people we managed to be the center of trade exchange in our region. This situation brings more stability and wealth to us."
 				SUMMARY "A state based on long-range overland trade"
 			}			
 			CelesteMandate = {
@@ -964,7 +964,7 @@ Main = {
 					50 = "Small"
 					70 = "Our Mandate is uncontested"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "A philosophical form of monarchy where the power is respect as long is he merite to do, bring a lot of stability whene the situation is good but when the people lose trust in you the backlash can be harsh."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "A philosophical form of monarchy where the power is respected as long as he is meritorious, bringing a lot of stability when the situation is good but when the people lose trust in you the backlash can be harsh."
 				SUMMARY "An advanced form of governement"
 			}
 			CivilEngineering = {
@@ -976,7 +976,7 @@ Main = {
 					75 = "Functional sewers"
 					90 = "Aqueducts"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "A large number of people in the same place is difficult to manage, but our engineer came up with a more organized city map, with sewers and public baths that will definitely slow down the risk of disease."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "A large number of people in the same place is difficult to manage, but our engineers came up with a more organized city plan, with sewers and public baths that will reduce the risk of disease."
 				SUMMARY "Cleanses our cities"
 			}
 			Cavalry = {
@@ -1033,7 +1033,7 @@ Main = {
 					80 = "Exceptional defense"
 					150 = "Great Wall"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Foreign invasions are a very dangerous event, to keep our military power and our geopolitical integrity you can build defence line it will cost you wealth but protect our people is our priority, right?"
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Foreign invasions are a very dangerous event. To keep our military power and geopolitical integrity you must build defences costing you wealth but protecting our people is the priority, right?"
 				SUMMARY "Protect ourself against invasions"
 			}
 			Expensionism = {
@@ -1044,7 +1044,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Our civilization is the most advanced, powerful and the purest we need to bring our model through the barbarian land by using our military forces."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Our civilization is the most advanced, powerful and the purest. We need to bring our model to barbarian lands by military force."
 				SUMMARY "Expend our land with our military forces"
 			}
 			
@@ -1056,7 +1056,7 @@ Main = {
 					40 = "Moderate"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Our neighbours being rich yet not that powerful, we can offer them a priced ‘protection’ or even take the toll of the strong. Beware though, for the resulting rise of insecurity on roads will harm trade."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Our neighbors are rich and weak. We can offer them protection or just take what we want. Beware the resulting insecurity on roads will harm trade."
 				SUMMARY "Fleece neighbours with our military forces"
 			}
 			
@@ -1084,7 +1084,7 @@ Main = {
 					40 = "Important"
 					80 = "Very Important"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "War may or may not be part of our cultural heritage. This makes it easier for our soldiers, who are may trained from childhood, to be more effective. But strengthening our fangs will also make us more threatening for our neighbours who will trust us less."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "War is now part of our cultural heritage. This makes it easier for our soldiers, who are may trained from childhood, to be effective. But strengthening our fangs will make us more threatening to our neighbors who will trust us less."
 				SUMMARY "The cultural factor of our military"
 				}
 				
@@ -1195,7 +1195,7 @@ Main = {
 					15 = "Internal taxes"
 					35 = "Tolls at all bridges"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Our business is becoming more and more successful. With few taxes, we can enjoy many revenues. However, merchants and their companies will not appreciate it."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Our business are becoming more and more successful. With light taxes, we can enjoy large revenues. However, merchants and their companies will not appreciate it."
 				SUMMARY "Tax our trade"
 			}		
 			Legislation = {
@@ -1268,7 +1268,7 @@ Main = {
 				SUMMARY "Reform our republic"
 			}	
 			Litterature = {
-				NAME "Litterature"
+				NAME "Literature"
 				DESCRIPTION <b>"Value: "@[value,0.###] </b>  <br><br> "Our mastery of writing eventually gave birth to some of the groundbreaking texts. We write history, tell our myths, shape timeless texts."
 				SUMMARY "Increase our culture"
 			}	
@@ -1578,15 +1578,9 @@ Main = {
 					50 = "Stone castles"
 					75 = "Fortress"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our locals noble need a symbolic place as a residence and as a stronghold. Let's build impressive fortifications to better organize our military levies."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our local nobles need a symbolic place as a residence and as a stronghold. Let's build impressive fortifications to better organize our military levies."
 				SUMMARY "Improve the recruitment of Banners"
 			}	
-			Medicine = {
-				NAME "Medicine"
-				DESCRIPTION <b>"Value: "@[value,0.###] " )<br><br> Our growing knowledge has opened the doors to medical care. Making a clear distinction between diseases and curses, between prayers and drugs, we will gradually come to fight the plagues of men."
-				SUMMARY "Reduces the chance of epidemics"
-				}
-			
 			Alchemy = {
 				NAME "Alchemy"
 				LEVEL value = {
@@ -1686,7 +1680,7 @@ Main = {
 			}
 			
 			Medecine = {
-				NAME "Medecine"
+				NAME "Medicine"
 				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our growing knowledge has opened the doors to medical treatments. Making a clear distinction between diseases and curses, between prayers and cures, we will gradually come to fight the plagues of mankind."
 				SUMMARY "Reduces the chance of epidemics"
 			}	
@@ -1709,17 +1703,17 @@ Main = {
 			::APPEND "Main/Religious_EN.txt" Religious.Nodes.Events
 			Fire = {
 				NAME "Wild Fire"
-				DESCRIPTION "A fire in the wilderness it began to destroy the near forest and our growing field. We have to invest again in the agricultural sector."
+				DESCRIPTION "A fire in the wilderness began to destroy the nearby forest and our growing fields. We have to reinvest in the agricultural sector."
 				SUMMARY "Will decrease flora & agriculture"
 			}
 			InvasiveSpecies = {
 				NAME "Invasive Species"
-				DESCRIPTION "A swarm of insect began to passe on our land and destroy the fauna and parasites the animals. Brace ourself for a downfall in the ecosystem"
+				DESCRIPTION "A swarm of insect have begun to pass into our land, destroying the fauna and infesting the animals. Brace ourselves for a downfall in the ecosystem."
 				SUMMARY "Will decrease fauna & flora"
 			}
 			Famine = {
 				NAME "Famine"
-				DESCRIPTION "The food is no longer every day good. Rich began to stock food on their own and poor will starve. beware a hungry population is an angry population."
+				DESCRIPTION "The food is no longer available. The rich stockpile food and poor starve. Beware a hungry population is an angry population."
 				SUMMARY "Will decrease our population"
 			}
 			AbundantHarvest = {
@@ -1734,33 +1728,33 @@ Main = {
 			}
 			Epidemic = {
 				NAME "Epidemic"
-				DESCRIPTION "You are overcrowded, the promiscuity of our people had brought a massive disease in our town."
+				DESCRIPTION "You are overcrowded, the promiscuity of our people has brought a massive disease into our towns."
 				SUMMARY "Will decrease our population"
 			}
 			MassiveTroubles = {
 				NAME "Massive Troubles"
-				DESCRIPTION "People don't see our government legitimacy anymore. Restore the situation quick! Or else look at our order falling apart!"
-				SUMMARY "It this the end ?!"
+				DESCRIPTION "People don't see our government as legitimate anymore. Restore the situation quickly or else watch our order fall apart!"
+				SUMMARY "Is this the end ?!"
 			}
 			ClergyRebellion = {
 				NAME "Clergy Rebellion"
-				DESCRIPTION "The priests are unhappy by our ungodly way of ruling, reform to a theocracy or else the servant of heaven will depose you."
-				SUMMARY "Priests hates our actual government system"
+				DESCRIPTION "The priests are unhappy by our ungodly way of ruling, reform to a theocracy or else the servants of heaven will depose you."
+				SUMMARY "Priests hate our current government system"
 			}
 			NoblesRebellion = {
 				NAME "Nobles Rebellion"
-				DESCRIPTION "The nobility want to size the power, they build unrest and will depose you to crown a king of their own, or else you can reform to a monarchy."
-				SUMMARY "Aristocracy hates our actual government system"
+				DESCRIPTION "The nobility want to size power, they incite unrest and will depose you to crown a king of their own choosing unless you reform to a monarchy."
+				SUMMARY "Aristocrats hate our current government system"
 			}
 			ProTradeRiots = {
 				NAME "Pro-Trade Riots"
-				DESCRIPTION "Our enterprises become influent and want free trade."
-				SUMMARY "Our enterprises want less tax!"
+				DESCRIPTION "Our enterprises have become influential and want free trade."
+				SUMMARY "Our enterprises want less taxation!"
 			}
 			Corruption = {
 				NAME "Corruption"
-				DESCRIPTION "The massive unmanaged amount of money that you have creats corruption and little blackmails."
-				SUMMARY "Having too much money can degenerate"
+				DESCRIPTION "The massive amount of unused money you have stockpiled creates corruption."
+				SUMMARY "Having too much money can degenerate society."
 			}
 			EconomicCrisis = {
 				NAME "Economic Crisis"
@@ -1769,27 +1763,27 @@ Main = {
 			}
 			CitiesInRuins = {
 				NAME "Cities In Ruins!"
-				DESCRIPTION "You build our town but you have nobody to live in it, so the city will slowly crumble lowering our population in the incident and our urbanization."
+				DESCRIPTION "You build towns but have nobody to live in them so cities will slowly crumble, lowering our population and urbanization."
 				SUMMARY "Our cities are depopulated"
 			}
 			GreatFire = {
 				NAME "Great Fire"
-				DESCRIPTION "Your capital is overcrowded everywhere a new house, shop open, it only takes one accident to fire it up, now entire quarters are on fire."
-				SUMMARY "A huge fire erupt in our capital!"
+				DESCRIPTION "Your capital is overcrowded- everywhere there are new houses constructed or new shops opened. It only takes one accident for a fire to light it up and now entire quarters are burning."
+				SUMMARY "A huge fire erupts in our capital!"
 			}
 			RegionProsperity = {
 				NAME "Region Prosperity"
-				DESCRIPTION "The trade and the prosperity of our region so know that you become an obligatory step for trade road."
+				DESCRIPTION "Measures the trade and prosperity of our region. Know you have become an obligatory step on the trade route."
 				SUMMARY "Will bring you prosperity too!"
 			}
 			Separatism = {
 				NAME "Separatism"
-				DESCRIPTION "We have a lot of land in name, but the people who lived on it do not consider you a legitimate leader. Your civilization is not up to the task and the military power necessary to ensure coercion in your distant country is not ensured."
+				DESCRIPTION "We have a lot of land in name, but the people who live on it do not consider you a legitimate leader. Your civilization is not up to the task and the military power necessary to ensure coercion in your distant provinces is not available."
 				SUMMARY "We're losing unguarded territory!"
 			}
 			BeingInvaded = {
 				NAME "Being Invaded"
-				DESCRIPTION "A foreign power is in a campaign in your land, if your army and your fortification broke you will lose territory for their advantage."
+				DESCRIPTION "A foreign power is on campaign in your lands. If your army and fortifications break you will lose territory to them."
 				SUMMARY "We need to repel this enemy!"
 			}
 			
@@ -1806,7 +1800,7 @@ Main = {
 
 			WeakMonarch = {
 				NAME "Weak Monarch"
-				DESCRIPTION "Our current leader is proving to be an incompetent and unqualified person. The government's power will suffer severely as long as it is alive."
+				DESCRIPTION "Our current leader is proving to be an incompetent and unqualified person. The government's power will suffer severely as long as they are alive."
 				SUMMARY "Our government will suffer"
 			}
 			Devaluation = {
@@ -1826,17 +1820,17 @@ Main = {
 			}
 			Piracy = {
 				NAME "Piracy"
-				DESCRIPTION "Our rich maritime trade attracts the desires. We must patrol our seas."
+				DESCRIPTION "Our rich maritime trade attracts envy. We must patrol our seas."
 				SUMMARY "Conflicts in our seas!"
 			}
 			CoupDEtat = {
 				NAME "Coup D'État"
-				DESCRIPTION "As our stability becomes catastrophic, our military officers are overthrowing our government and imposing a military dictatorship!"
+				DESCRIPTION "As our stability becomes catastrophic, our military officers overthrow our government and imposing a military dictatorship!"
 				SUMMARY "A military dictatorship is about to begin!"
 			}
 			MoralDegeneracy = {
 				NAME "Moral Degeneracy"
-				DESCRIPTION "Our culture is now impious. Our young generation no longer respect the old one. The omens are bad."
+				DESCRIPTION "Our culture is now impious. Our younger generation no longer respects the older one. The omens are bad."
 				SUMMARY "Our culture is declining"
 			}
 			Devaluation = {
@@ -1846,23 +1840,23 @@ Main = {
 			}
 			NavalInvasion = {
 				NAME "Naval Invasion"
-				DESCRIPTION "A foreign power is in the field in your country, our fleet will intervene but if it fails, our army and your fortification will come into play. If they lose too, you will lose territory."
+				DESCRIPTION "A foreign navy is approaching your country. Our fleet will intercept but if they fail, our army and your fortification will come into play. If they lose too, you will lose territory."
 				SUMMARY "We need to repel this enemy!"
 			}
 			BarbarianThrust = {
 				NAME "Barbarian Thrust"
-				DESCRIPTION "A barbaric people has recently settled on our borders, they are agitated and warmongered."
+				DESCRIPTION "A barbaric people have recently settled on our borders, they are agitated and warmongers."
 				SUMMARY "We need to be cautious"
 			}
 			SlaveRevolt = {
 				NAME "Slave Revolt"
-				DESCRIPTION "A young leader has seized a reserve of weapons and is terrorizing our campaign, killing soldiers and police officers."
+				DESCRIPTION "A young leader has seized a reserve of weapons and is terrorizing our country, killing soldiers and police."
 				SUMMARY "Slaves are revolting against their condition"
 			}
 			EconomicCollapse = {
 				NAME "Economic Collapse"
-				DESCRIPTION "The emptiness of the state finance create massive economical concern. Our economic is maybe doomed."
-				SUMMARY "Our chests are empty and our economy gonna suffer"
+				DESCRIPTION "The emptiness of the state finance creates massive economical concerns. Our economy maybe doomed."
+				SUMMARY "Our chests are empty and our economy will suffer"
 			}
 			ClimateChange = {
 				NAME "Climate Change"
@@ -1871,18 +1865,18 @@ Main = {
 			}
 			RecruitmentShortage = {
 				NAME "Recruitment Shortage"
-				DESCRIPTION "Our professional army has clearly been on the decline for many years, very few citizens are interested in the military career, while foreigners and mercenaries are the only ones work."
+				DESCRIPTION "Our army has been on the decline for many years with very few citizens interested in a military career and foreigners and mercenaries the only ones willing to do the work."
 				SUMMARY "We can no longer recruit new people"
 			}
 			SalicSucession = {
 				NAME "Salic Sucession"
-				DESCRIPTION "The death of our previous king led to a dispute among his heirs, according to the law the youngers will receive a share of our land. But it also allows us to recentralize our kingdom."
+				DESCRIPTION "The death of our previous king led to a dispute among his heirs. According to the law the younger ones will receive a share of land, but we can recentralize our kingdom."
 				SUMMARY "The death of our former king divides the kingdom"
 			}
 
 			Obscurantism = {
 				NAME "Obscurantism"
-				DESCRIPTION "Political unrest is causing budget and focus on education to drop at an alarming rate."
+				DESCRIPTION "Political unrest is causing budget issues and the education system to decline at an alarming rate."
 				SUMMARY "Our education is declining"
 			}
 

@@ -1566,6 +1566,12 @@ Main = {
 				VALUE canMoveHere [ 0 0 1 ]
 				DISPLAY_VALUE
 				
+				SLEEP = {
+					IF ~ScienceKnowledge
+						SPAWN
+					ENDIF
+				}
+				
 				TICK = {
 				}
 				
