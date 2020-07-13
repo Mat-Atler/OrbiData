@@ -25,16 +25,24 @@ Main = {
 			DESCRIPTION "L'Âge du Fer"
 		}
 		LateAntiquity = {
-			NAME "Antiquité tardive"
-			DESCRIPTION "Antiquité tardive"
+			NAME "Antiquité Tardive"
+			DESCRIPTION "Antiquité Tardive"
 		}
 		FeudalAge = {
-			NAME "Moyen-âge"
-			DESCRIPTION "Moyen-âge"
+			NAME "Moyen-Âge"
+			DESCRIPTION "Moyen-Âge"
 		}
 		DiscoveryAge = {
 			NAME "Âge des Découvertes"
 			DESCRIPTION "Âge des Découvertes"
+		}
+		AbsolutismAge = {
+			NAME "Âge de l'Absolutisme"
+			DESCRIPTION "Âge de l'Absolutisme"
+		}
+		IndustrialAge = {
+			NAME "Âge Industriel"
+			DESCRIPTION "Âge Industriel"
 		}
 	}
 	

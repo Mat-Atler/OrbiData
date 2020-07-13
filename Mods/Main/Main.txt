@@ -29,6 +29,18 @@ Main = {
 				
 			}
 		}
+		ColonyMap = {
+			AREA_MASK [ 1 0 ] "Main/DataMaps/ColoniesTarget2.png"
+			SIZE 1024
+			
+			// Call TRIGGER_CUSTOM 4 of Travel node then the globe is clicked
+			CLICK_TRIGGER [ 4 Travel ]
+			
+			// Called then player rotates the globe
+			REMOTE Travel = {
+				
+			}
+		}
 	}
 		
 	Windows = {
@@ -70,8 +82,7 @@ Main = {
 					CONTENT_IMAGE .. [ width = 220 height = 220 alpha = 0 color = 255 255 0 slice = clockwise id = 4 ]
 				}
 			}
-		}
-		
+		}	
 		WinStateSize = {
 			CUSTOM_NODE_WINDOW Main.StateSize
 			POSITION [ 0 0 ]
@@ -86,11 +97,51 @@ Main = {
 			/// NEW ///
 			CONTENT_HORIZONTAL = {
 				CONTENT_TEXT
-				CONTENT_STACK = {
+				CONTENT_STACK [ height = 590 ] = {
 					CONTENT_GLOBE StateMap [ width = 240 height = 240 id = 1 ]
 				}
 			}
 		}
+		WinTravel = {
+			CUSTOM_NODE_WINDOW Main.Travel
+			POSITION [ 0 0 ]
+			
+			// Open window
+			REMOTE Travel = {
+				
+			}
+			
+			CONTENT_VERTICAL = {
+				CONTENT_TEXT [ height = 220 ]
+				// Call TRIGGER_CUSTOM 3 from node Travel
+				CONTENT_BUTTON Travel [ 3 ] [ height = 30 ]
+			}
+		}
+		
+		WinMove = {
+			ABSOLUTE_PRIORITY
+			SIZE [ 620 700 ]
+			POSITION [ 0 0 ]
+			
+			// Open window
+			REMOTE Travel = {
+				// Call TRIGGER_CUSTOM 2
+				ALARM [ once ] [ 2 Travel ] -1
+				GLOBE_SET_AREA ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
+				// GLOBE_SET_ICON ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : 0.02 : "Main/Images/OrganizedNomadism.png" : black ]
+				// Refresh globe
+				GLOBE_SET_POINTER ColonyMap [ : ]
+			}
+			
+			CONTENT_VERTICAL = {
+				CONTENT_STACK [ height = 590 ] = {
+					CONTENT_GLOBE ColonyMap [ width = 560 height = 560 id = 1 ]
+				}
+				// Call TRIGGER_CUSTOM 1 from node Travel
+				CONTENT_BUTTON Travel [ 1 ] [ height = 40 id = 2 ]
+			}
+		}
+
 	}
 	
 	Eras = {
@@ -100,6 +151,8 @@ Main = {
 		LateAntiquity = { AGE 300 }
 		FeudalAge = { AGE 1000 }
 		DiscoveryAge = { AGE 1500 }
+		AbsolutismAge = { AGE 1650 }
+		IndustrialAge = { AGE 1820 }
 	}
 	
 	Alerts = {
@@ -130,6 +183,11 @@ Main = {
 		Invaded = {
 			PRIORITY [ 1 ]
 			MUTE_TIME 100
+		}
+		CannotTravel = {
+			PRIORITY [ 3 ]
+			MUTE_TIME 1
+			PREVIEW
 		}
 	}
 	
@@ -1364,9 +1422,7 @@ Main = {
 				}
 				
 
-			}
-			
-			
+			}		
 			TradeRoads = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -1392,8 +1448,7 @@ Main = {
 				LINK Harbours = {
 					WEIGHT [ to ]
 				}	
-			}
-			
+			}		
 			ScienceKnowledge = {
 				VALUE value [ 0 0 10000 ]
 				DISPLAY_VALUE
@@ -1405,9 +1460,7 @@ Main = {
 				TICK = {
 				
 				}
-				} 
-				
-				
+				} 			
 			Minorities = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -1449,10 +1502,7 @@ Main = {
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
 				}	
-			}
-			
-			
-			
+			}	
 			CraftmanshipSkills = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -1477,9 +1527,7 @@ Main = {
 						WEIGHT [ max ] 100 + value
 				}
 				
-			}		
-			
-			
+			}			
 			RoadsSafety = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -1510,6 +1558,67 @@ Main = {
 				}
 				
 			}		
+
+			
+			Travel = {
+				VALUE value [ 0 10 100 ]
+				VALUE distance [ 0 0 3 ]
+				VALUE canMoveHere [ 0 0 1 ]
+				DISPLAY_VALUE
+				
+				TICK = {
+				}
+				
+				TRIGGER_SPAWN Travel = {
+					GLOBE_SET_AREA ColonyMap [ 0 ] [ GlobeGetClickLongitude(ColonyMap) : GlobeGetClickLatitude(ColonyMap) : value / 500 : green ]
+					GLOBE_SET_ICON ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : 0.03 : "Main/Images/OrganizedNomadism.png" : black ]
+				}
+				
+				// Button
+				TRIGGER_CUSTOM 1 = {
+					// Call TRIGGER_CUSTOM 2
+					ALARM [ once ] [ 2 Travel ] -1
+					IF canMoveHere
+						PROCESS value = 0
+						TRAVEL [ GlobeGetClickLongitude(ColonyMap) : GlobeGetClickLatitude(ColonyMap) ]
+						// Call TRIGGER_CUSTOM 2
+						ALARM [ once ] [ 2 Travel ] -1
+						GLOBE_SET_AREA ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
+						GLOBE_SET_ICON ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : : : ]
+						GLOBE_SET_ICON ColonyMap [ 1 ] [ : : 0 : : ]
+						// Refresh globe
+						GLOBE_SET_POINTER ColonyMap [ : ]
+						PROCESS canMoveHere = 0
+					ELSE
+						ALERT CannotTravel
+					ENDIF
+				}
+				
+				// Check if can travel here
+				TRIGGER_CUSTOM 2 = {
+					// Get distance between pointer and player
+					IF ( DataMapGetR("Main/DataMaps/LandMasses.png", GlobeGetClickLongitude(ColonyMap), GlobeGetClickLatitude(ColonyMap)) < 0.5 ) + ( DataMapGetR("Main/DataMaps/ColoniesTarget.png", GlobeGetClickLongitude(ColonyMap), GlobeGetClickLatitude(ColonyMap)) < 0.3 )
+						WINDOW_INTERCEPT WinMove [ 2 ] [ red = 1 green = 0.2 blue = 0.2 ]
+						PROCESS canMoveHere = 0
+					ELSE
+						WINDOW_INTERCEPT WinMove [ 2 ] [ red = 0.5 green = 1 blue = 0.5 ]
+						PROCESS canMoveHere = 1
+					ENDIF
+				}
+				
+				// Open move window
+				TRIGGER_CUSTOM 3 = {
+					WINDOW_OPEN WinMove
+				}
+				
+				TRIGGER_CUSTOM 4 = {
+					GLOBE_SET_ICON ColonyMap [ 1 ] [ GlobeGetClickLongitude(ColonyMap) : GlobeGetClickLatitude(ColonyMap) : 0.01 : "Main/Images/Circle.png" : red ]
+					// Refresh globe
+					GLOBE_SET_POINTER ColonyMap [ : ]
+					// Call TRIGGER_CUSTOM 2
+					ALARM [ once ] [ 2 Travel ] -1
+				}
+			}
 			
 			}
 		Levers = {
@@ -5006,7 +5115,9 @@ Main = {
 				}
 
 			}
-			
+
+
+
 			Tribunal = {
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				TYPE Cultural
@@ -5828,7 +5939,7 @@ Main = {
 				}
 				TICK = {
 					PROCESS Population = Population - PerSeconds(1 + Population/80)
-					PROCESS Stability = Stability - PerSeconds(0.2 * 0.75 ? 1.25)
+					PROCESS Stability = Stability - PerSeconds(0.1 * 0.75 ? 1.25)
 
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.1 + MilitaryManpower.Infantry_value /50 )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.1 + MilitaryManpower.Cavalry_value /50)

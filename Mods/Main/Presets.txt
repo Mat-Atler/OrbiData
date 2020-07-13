@@ -174,4 +174,20 @@
 	}
 	
 	
+	Iberia = {
+		COORDINATES = 36° 8' N 5° 20' W
+		Main.Humidity.value = 70
+		Main.Temperature.value = 60
+		Main.Flora.value = 50
+		Main.Fauna.value = 50
+		Main.Coastline.value = 80
+		Main.SoilFertility.value = 45
+		Main.Gold.value = 30
+		Main.Spices.value = 0
+		Main.Salt.value = 40
+		Main.NeighborhoodBellicism.value = 60
+		- Main.Island
+	}
+	
+	
 }

@@ -10,7 +10,6 @@ Main = {
 			SUMMARY "Represents the capacity for reform; used to add, remove and improve levers."
 		}
 	}
-	
 	Eras = {
 		StoneAge = {
 			NAME "Stone Age"
@@ -35,6 +34,14 @@ Main = {
 		DiscoveryAge = {
 			NAME "Discovery Age"
 			DESCRIPTION "Discovery Age"
+		}
+		AbsolutismAge = {
+			NAME "Absolutism Age"
+			DESCRIPTION "Absolutism Age"
+		}
+		IndustrialAge = {
+			NAME "Industrial Age"
+			DESCRIPTION "Industrial Age"
 		}
 	}
 	
@@ -64,6 +71,16 @@ Main = {
 				1000 = "Large Empire"
 			}
 			TEXT "<b>Value: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> The size of the land our government controls, though It needs to be settled if we want to take advantage of it. If we lose it all, then our power will be no more."
+		}
+		WinTravel = {
+			NAME "Travel"
+			TEXT "Travel status: " @[TravelMod.Travel.value]
+			TEXT "Choose a place to go"
+		}
+		
+		WinMove = {
+			NAME "Choose a place to go"
+			TEXT "Move here"
 		}
 	}
 	
@@ -95,6 +112,14 @@ Main = {
 		Invaded = {
 			NAME "Invaded"
 			DESCRIPTION "We're under attack!"
+		}
+		CannotTravel = {
+			NAME "Cannot travel here"
+			DESCRIPTION "Cannot travel here"
+		}
+		CannotTravel = {
+			NAME "Cannot travel here"
+			DESCRIPTION "Cannot travel here"
 		}
 	}	
 	
@@ -550,6 +575,11 @@ Main = {
 				SUMMARY "Reduces our trade"
 				}
 
+			Travel = {
+				NAME "Travel"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"Craftsmanship skills includes all our technical knowledge. Our guilds and specialization allow us to increase our expertise at a rapid pace."
+				SUMMARY "Allows us to increase our technical possibilities"
+			}
 				
 		}
 		Levers = {

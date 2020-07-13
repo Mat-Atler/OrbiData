@@ -36,6 +36,14 @@ Main = {
 			NAME "大航海時代"
 			DESCRIPTION "大航海時代"
 		}
+		AbsolutismAge = {
+			NAME "絶対君主制時代"
+			DESCRIPTION "絶対君主制時代"
+		}
+		IndustrialAge = {
+			NAME "産業時代"
+			DESCRIPTION "産業時代"
+		}
 	}
 	
 	Windows = {
