@@ -72,15 +72,26 @@ Main = {
 			}
 			TEXT "<b>Value: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br>The size of the land our government controls, though it needs to be settled if we want to take advantage of it. If we lose it all, then our power will be no more."
 		}
-		WinTravel = {
-			NAME "Travel"
-			TEXT "Travel status: " @[TravelMod.Travel.value]
-			TEXT "Choose a place to go"
+		WinColonialStateSize = {
+			NAME "Colonial State Size"
+			LEVEL Main.ColonialStateSize.value = {
+				0 = "Gone"
+				0.001 = "Small Colony"
+				100 = "Colony"
+				200 = "Large Colony"
+				400 = "Imperial Colony"
+			}
+			TEXT "<b>Value: "@[Main.ColonialStateSize.value,LEVEL] "</b> (" @[Main.ColonialStateSize.value,0.###] ") <br>The size of our main colony."
+		}
+		WinColony = {
+			NAME "Colony"
+			TEXT "Blablabla"
+			TEXT "Start a colony"
 		}
 		
-		WinMove = {
+		WinMoveColony = {
 			NAME "Choose a place to go"
-			TEXT "Move here"
+			TEXT "Start a colony here"
 		}
 	}
 	
@@ -113,13 +124,9 @@ Main = {
 			NAME "Invaded"
 			DESCRIPTION "We're under attack!"
 		}
-		CannotTravel = {
-			NAME "Cannot travel here"
-			DESCRIPTION "Cannot travel here"
-		}
-		CannotTravel = {
-			NAME "Cannot travel here"
-			DESCRIPTION "Cannot travel here"
+		CannotColony = {
+			NAME "Cannot start a colony here"
+			DESCRIPTION "Cannot start a colony here"
 		}
 	}	
 	
@@ -575,11 +582,18 @@ Main = {
 				SUMMARY "Reduces our trade"
 				}
 
-			Travel = {
-				NAME "Travel"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>"Craftsmanship skills includes all our technical knowledge. Our guilds and specialization allow us to increase our expertise at a rapid pace."
-				SUMMARY "Allows us to increase our technical possibilities"
+			Colony = {
+				NAME "Colony"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Our main colony"
 			}
+			
+			ColonialStateSize = {
+				NAME "Colonial State Size"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Our colony size"
+			}
+			
 				
 		}
 		Levers = {

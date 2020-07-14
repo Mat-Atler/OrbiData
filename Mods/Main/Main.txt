@@ -33,11 +33,20 @@ Main = {
 			AREA_MASK [ 1 0 ] "Main/DataMaps/ColoniesTarget2.png"
 			SIZE 1024
 			
-			// Call TRIGGER_CUSTOM 4 of Travel node then the globe is clicked
-			CLICK_TRIGGER [ 4 Travel ]
+			// Call TRIGGER_CUSTOM 4 of Colony node then the globe is clicked
+			CLICK_TRIGGER [ 4 Colony ]
 			
 			// Called then player rotates the globe
-			REMOTE Travel = {
+			REMOTE Colony = {
+				
+			}
+		}
+		
+		ColonyStateMap = {
+			AREA_MASK [ 1 0.5 ] "Main/DataMaps/LandMasses.png"
+			SIZE 512
+			// Called then player rotates the globe
+			REMOTE StateSize = {
 				
 			}
 		}
@@ -101,33 +110,54 @@ Main = {
 					CONTENT_GLOBE StateMap [ width = 240 height = 240 id = 1 ]
 				}
 			}
+		}		
+		WinColonialStateSize = {
+			CUSTOM_NODE_WINDOW Main.ColonialStateSize
+			POSITION [ 0 0 ]
+			
+			/// NEW ///
+			REMOTE ColonialStateSize = {
+				GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
+				// Refresh globe
+				GLOBE_SET_POINTER ColonyStateMap [ : ]
+			}
+			
+			/// NEW ///
+			CONTENT_HORIZONTAL = {
+				CONTENT_TEXT
+				CONTENT_STACK [ height = 590 ] = {
+					CONTENT_GLOBE ColonyStateMap [ width = 240 height = 240 id = 1 ]
+				}
+			}
 		}
-		WinTravel = {
-			CUSTOM_NODE_WINDOW Main.Travel
+		WinColony = {
+			CUSTOM_NODE_WINDOW Main.Colony
 			POSITION [ 0 0 ]
 			
 			// Open window
-			REMOTE Travel = {
-				
+			REMOTE Colony = {
+					IF ( colonySettled == 1 )
+						WINDOW_INTERCEPT WinColony [ 1 ] [ red = 0.2 green = 0.2 blue = 0.2 ]
+					ENDIF
 			}
 			
 			CONTENT_VERTICAL = {
 				CONTENT_TEXT [ height = 220 ]
-				// Call TRIGGER_CUSTOM 3 from node Travel
-				CONTENT_BUTTON Travel [ 3 ] [ height = 30 ]
+				// Call TRIGGER_CUSTOM 3 from node Colony
+				CONTENT_BUTTON Colony [ 3 ] [ height = 30 id = 1 ]
 			}
 		}
-		
-		WinMove = {
+		WinMoveColony = {
 			ABSOLUTE_PRIORITY
+			STOP_TIME
 			SIZE [ 620 700 ]
 			POSITION [ 0 0 ]
 			
 			// Open window
-			REMOTE Travel = {
+			REMOTE Colony = {
 				// Call TRIGGER_CUSTOM 2
-				ALARM [ once ] [ 2 Travel ] -1
-				GLOBE_SET_AREA ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
+				ALARM [ once ] [ 2 Colony ] -1
+				// GLOBE_SET_AREA ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
 				// GLOBE_SET_ICON ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : 0.02 : "Main/Images/OrganizedNomadism.png" : black ]
 				// Refresh globe
 				GLOBE_SET_POINTER ColonyMap [ : ]
@@ -137,8 +167,8 @@ Main = {
 				CONTENT_STACK [ height = 590 ] = {
 					CONTENT_GLOBE ColonyMap [ width = 560 height = 560 id = 1 ]
 				}
-				// Call TRIGGER_CUSTOM 1 from node Travel
-				CONTENT_BUTTON Travel [ 1 ] [ height = 40 id = 2 ]
+				// Call TRIGGER_CUSTOM 1 from node Colony
+				CONTENT_BUTTON Colony [ 1 ] [ height = 40 id = 2 ]
 			}
 		}
 
@@ -184,7 +214,7 @@ Main = {
 			PRIORITY [ 1 ]
 			MUTE_TIME 100
 		}
-		CannotTravel = {
+		CannotColony = {
 			PRIORITY [ 3 ]
 			MUTE_TIME 1
 			PREVIEW
@@ -980,9 +1010,9 @@ Main = {
 					/// NEW ///
 					IF ~WinStateSize
 						ONCE_EVERY 2
-							GLOBE_SET_AREA StateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 4500 : ]
+							GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 4500 : ]
 							// Refresh globe
-							GLOBE_SET_POINTER StateMap [ : ]
+							GLOBE_SET_POINTER ColonyStateMap [ : ]
 						ENDONCE
 					ENDIF
 					
@@ -1557,13 +1587,15 @@ Main = {
 					WEIGHT [ from ]
 				}
 				
-			}		
-
-			
-			Travel = {
-				VALUE value [ 0 10 100 ]
-				VALUE distance [ 0 0 3 ]
+			}				
+			Colony = {
+				VALUE value [ 0 0 0 ]
 				VALUE canMoveHere [ 0 0 1 ]
+				VALUE colonySettled [ 0 0 1 ]
+				VALUE hiddenProsperity [ 0 0 100 ]
+				VALUE ColonyLongitude [ -180 0 180 ]
+				VALUE ColonyLatitude [ -180 0 180 ]
+				VALUE ColonialDistance [ 0 0 500 ]
 				DISPLAY_VALUE
 				
 				SLEEP = {
@@ -1575,46 +1607,50 @@ Main = {
 				TICK = {
 				}
 				
-				TRIGGER_SPAWN Travel = {
-					GLOBE_SET_AREA ColonyMap [ 0 ] [ GlobeGetClickLongitude(ColonyMap) : GlobeGetClickLatitude(ColonyMap) : value / 500 : green ]
-					GLOBE_SET_ICON ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : 0.03 : "Main/Images/OrganizedNomadism.png" : black ]
+				TRIGGER_SPAWN Colony = {
 				}
 				
 				// Button
 				TRIGGER_CUSTOM 1 = {
 					// Call TRIGGER_CUSTOM 2
-					ALARM [ once ] [ 2 Travel ] -1
+					ALARM [ once ] [ 2 Colony ] -1
 					IF canMoveHere
 						PROCESS value = 0
-						TRAVEL [ GlobeGetClickLongitude(ColonyMap) : GlobeGetClickLatitude(ColonyMap) ]
-						// Call TRIGGER_CUSTOM 2
-						ALARM [ once ] [ 2 Travel ] -1
-						GLOBE_SET_AREA ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
-						GLOBE_SET_ICON ColonyMap [ 0 ] [ GetLongitude() : GetLatitude() : : : ]
-						GLOBE_SET_ICON ColonyMap [ 1 ] [ : : 0 : : ]
 						// Refresh globe
 						GLOBE_SET_POINTER ColonyMap [ : ]
 						PROCESS canMoveHere = 0
+						PROCESS colonySettled = 1
+						PROCESS ColonyLongitude = GlobeGetClickLongitude(ColonyMap)
+						PROCESS ColonyLatitude = GlobeGetClickLatitude(ColonyMap)
+						PROCESS hiddenProsperity = DataMapGetR("Main\DataMaps\ColonialProsperity.png",ColonyLongitude,ColonyLatitude) * 100
+						PROCESS ColonialDistance = PathGetLength(GetLongitude(), GetLatitude(), ColonyLongitude, ColonyLatitude) * 100
+						
+						GLOBE_SET_ICON ColonyMap [ 0 ] [ ColonyLongitude : ColonyLatitude : : : ]
+						WINDOW_INTERCEPT WinColony [ 1 ] [ red = 0.2 green = 0.2 blue = 0.2 ]
+						WINDOW_CLOSE WinMoveColony
 					ELSE
-						ALERT CannotTravel
+						ALERT CannotColony
 					ENDIF
 				}
 				
 				// Check if can travel here
 				TRIGGER_CUSTOM 2 = {
 					// Get distance between pointer and player
-					IF ( DataMapGetR("Main/DataMaps/LandMasses.png", GlobeGetClickLongitude(ColonyMap), GlobeGetClickLatitude(ColonyMap)) < 0.5 ) + ( DataMapGetR("Main/DataMaps/ColoniesTarget.png", GlobeGetClickLongitude(ColonyMap), GlobeGetClickLatitude(ColonyMap)) < 0.3 )
-						WINDOW_INTERCEPT WinMove [ 2 ] [ red = 1 green = 0.2 blue = 0.2 ]
+					IF ( DataMapGetR("Main/DataMaps/LandMasses.png", GlobeGetClickLongitude(ColonyMap), GlobeGetClickLatitude(ColonyMap)) < 0.5 ) + ( DataMapGetR("Main/DataMaps/ColoniesTarget.png", GlobeGetClickLongitude(ColonyMap), GlobeGetClickLatitude(ColonyMap)) < 0.3 ) + colonySettled == 1
+						WINDOW_INTERCEPT WinMoveColony [ 2 ] [ red = 1 green = 0.2 blue = 0.2 ]
 						PROCESS canMoveHere = 0
 					ELSE
-						WINDOW_INTERCEPT WinMove [ 2 ] [ red = 0.5 green = 1 blue = 0.5 ]
+						WINDOW_INTERCEPT WinMoveColony [ 2 ] [ red = 0.5 green = 1 blue = 0.5 ]
 						PROCESS canMoveHere = 1
 					ENDIF
 				}
 				
 				// Open move window
 				TRIGGER_CUSTOM 3 = {
-					WINDOW_OPEN WinMove
+				IF (colonySettled == 0)
+					WINDOW_OPEN WinMoveColony
+				ENDIF
+				
 				}
 				
 				TRIGGER_CUSTOM 4 = {
@@ -1622,7 +1658,39 @@ Main = {
 					// Refresh globe
 					GLOBE_SET_POINTER ColonyMap [ : ]
 					// Call TRIGGER_CUSTOM 2
-					ALARM [ once ] [ 2 Travel ] -1
+					ALARM [ once ] [ 2 Colony ] -1
+				}
+			}
+			
+				ColonialStateSize = {
+				VALUE value [ 0 30 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF ( ~Colony & Colony.colonySettled == 1 )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ~WinStateSize
+						ONCE_EVERY 2
+							GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
+							// Refresh globe
+							GLOBE_SET_POINTER ColonyStateMap [ : ]
+						ENDONCE
+					ENDIF
+					
+				}
+
+				LINK Settlement = {
+						WEIGHT [ max ] value
+				}
+				LINK Colony = {
+				}
+				
+				/// NEW ///
+				TRIGGER_SPAWN ColonialStateSize = {
+					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
 				}
 			}
 			
