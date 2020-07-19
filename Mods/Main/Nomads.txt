@@ -6,6 +6,7 @@ Nomads = {
 		Japanese "Main/Nomads_Jp.txt"
 	}
 	
+
 	Nodes = {
 		States = {
 			
@@ -22,7 +23,8 @@ Nomads = {
 				}
 				TICK = {
 					PROCESS Stability.value =  Stability.value + PerSeconds(value/7000)
-
+					SET TranshumanceOrganisation.value [ : : 0 + (Authority.value ) ]
+					PROCESS Travel.value =  Travel.value + PerSeconds(value/700)
 				}
 				LINK Stability = {
 					IF value > 0
@@ -31,12 +33,87 @@ Nomads = {
 						ENDIF
 					}
 			}
+			Clans = {
+				TAG Nomadic
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				VALUE open [ 0 0 1 ]
+				DISPLAY [ red green ] value / 100
+				SLEEP = {
+					IF ~OrganizedNomadism
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value = PerSeconds(Population.value * Population.value / 10 * ( 0.99 ? 1.01 ))
+					
+					IF ~HuntingOrganization
+					PROCESS Fauna.value = Fauna.value - (PerSeconds((value * 0.1 * Fauna / 100) * 5.5))/(HuntingOrganization.value)
+					ELSE
+					PROCESS Fauna.value = Fauna.value - PerSeconds((value * 0.1 * Fauna / 100) * 5.5)
+					ENDIF
+					
+					IF ~TranshumanceOrganisation
+					PROCESS Livestock.value = Livestock.value - (PerSeconds((value * 0.1 * Livestock / 100) * 5.5))/(TranshumanceOrganisation.value)
+					ELSE
+					PROCESS Livestock.value = Livestock.value - PerSeconds((value * 0.1 * Livestock / 100) * 5.5)
+					ENDIF
+					SET Clanicbanners.value [ : : 0 + (Clans.value ) ]					
+				}
+				LINK Population = {
+					WEIGHT [ from ]
+					}
+				LINK Fauna = {
+					WEIGHT [ to ]
+					}
+				LINK Livestock = {
+					WEIGHT [ to ]
+					}
+			}
+			Tributaries = {
+				TAG Nomadic
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				VALUE open [ 0 0 1 ]
+				DISPLAY [ red green ] value / 100
+				SLEEP = {
+					IF ~Nomadicconquest
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS $Wealth = $Wealth + PerSeconds(value/30)
+				}
+
+			}
+			Land = {
+				TAG Nomadic
+				VALUE value [ 0 10 1000 ]
+				DISPLAY_VALUE
+				VALUE open [ 0 0 1 ]
+				DISPLAY [ red green ] value / 100
+				SLEEP = {
+					IF ~OrganizedNomadism
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					SET Clans.value [ : : 0 + (Land.value / 2) ]
+					SET Livestock.value [ : : 30 + (Land.value / 2) ]
+				}
+				LINK Clans = {
+					WEIGHT [ max ] 40 + (Land.value * 0.6)
+					}
+				LINK Livestock = {
+					WEIGHT [ max ] 40 + (Land.value * 0.6)
+					}
+			}
 		}
 		Levers = {
 			OrganizedNomadism = {
 				TAG Nomadic Government
 				TYPE Cultural
-				VALUE value [ 0 5 100 >> 1 ]
+				VALUE value [ 0 0 100 >> 100 ]
 				//SLEEP = {
 					//IF Hunting > 25 * AnimalHusbandry > 25 * ( ~Settlement == 0 ) & ( ~CelesteMandate == 0 ) & ~NodeTuto == 0
 						//SPAWN
@@ -53,7 +130,7 @@ Nomads = {
 					$PoliticalPower = 30
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(OrganizedNomadism) + 1)  * 0.5
+					$PoliticalPower = (LinkCount(OrganizedNomadism) + 1)  * 2
 				}
 				
 				TRIGGER_SPAWN OrganizedNomadism = {
@@ -63,13 +140,12 @@ Nomads = {
 				}
 				
 				TICK = {
-					IF ~Transhumance == 0 * ~Seminomadism == 0
-						SET Agriculture.value [ : : 40 ]
-					ENDIF
 					PROCESS Authority = Authority + PerSeconds(value/100000)
 					IF value > 30
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value * 0.001)
 					ENDIF
+					
+					
 				}
 				LINK AristocracyClass = {
 					IF (value > 0)
@@ -85,389 +161,374 @@ Nomads = {
 				}
 
 				LINK Agriculture = {
-					WEIGHT [ max ] 40
+					WEIGHT [ to ]
+				}
+				LINK Clans = {
+					WEIGHT [ to ]
 				}
 			}		
-			PastoralNomadism = {
-				TYPE Cultural
-				TAG Nomadic				
-				VALUE value [ 0 5 100 >> 1 ]
-				//SLEEP = {
-					//IF Livestock > 25 & AnimalHusbandry > 75 & OrganizedNomadism > 50 & ( ~Settlement == 0 ) & ( ~SeasonalNomadism == 0 )
-						//SPAWN
-					//ENDIF
-				//}
-				UNLOCK_CONDITIONS = {
-					HINT ~OrganizedNomadism
-					CONDITION_VALUE Livestock > 25
-					CONDITION_VALUE OrganizedNomadism > 50
-					CONDITION_VALUE AnimalHusbandry > 75
-					CONDITION_NODE - SeasonalNomadism
-				}
-				PRICE = {
-					$PoliticalPower = 50
-				}
-				UPGRADE = {
-					$PoliticalPower = (LinkCount(PastoralNomadism) + 1)  * 0.5
-				}
-				TICK = {
-					SET Livestock.value [ : : 30 + 0.7 * PastoralNomadism.value ]
-					PROCESS Flora = Flora + PerSeconds(value / 100)
-				}
-				LINK Flora = {
-					IF (value > 0)
-						COLOR green
-						FLUX value * 0.01
-					ENDIF
-				}
-				LINK Livestock = {
-					WEIGHT [ max ] 30 + 0.7 * PastoralNomadism.value
-				}
-				LINK OrganizedNomadism = {
-				}
-			}			
-			SeasonalNomadism = {
+			TranshumanceOrganisation = {
 				TAG Nomadic
 				TYPE Cultural
-				VALUE value [ 0 5 100 >> 1 ]
-				//SLEEP = {
-					//IF Hunting > 50 & OrganizedNomadism > 50 & ( ~Settlement == 0 ) & ( ~PastoralNomadism == 0 )
-						//SPAWN
-					//ENDIF
-				//}
+				VALUE value [ 0 0 10 >> 1 ]
+
 				UNLOCK_CONDITIONS = {
-					HINT ~OrganizedNomadism
+					HINT ~Clanicfederation
 					CONDITION_VALUE Hunting > 50
-					CONDITION_VALUE OrganizedNomadism > 50
-					CONDITION_NODE - PastoralNomadism
+					CONDITION_VALUE Clanicfederation > 50
 				}
 				PRICE = {
 					$PoliticalPower = 50
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(SeasonalNomadism) + 1)  * 0.5
+					$PoliticalPower = (LinkCount(HuntingOrganization) + 1)  * 0.5
 				}
 				TICK = {
 					PROCESS Flora = Flora + PerSeconds(value / 75)
 					PROCESS Fauna = Flora + PerSeconds(value / 50)
 				}
-				LINK Flora = {
-					IF (value > 0)
-						COLOR green
-						FLUX value / 75
-					ENDIF
+				LINK Clans = {
+					WEIGHT [ to ]
 				}
-				LINK Fauna = {
-					IF (value > 0)
-						COLOR green
-						FLUX value / 50
-					ENDIF
+				LINK Authority = {
+					WEIGHT [ from ]
 				}
 
-				LINK OrganizedNomadism = {
-				}
 			}			
-			Caravan = {
+			HuntingOrganization = {
 				TAG Nomadic
 				TYPE Cultural
 				VALUE value [ 0 5 100 >> 1 ]
-				//SLEEP = {
-					//IF OrganizedNomadism == 100 & SeasonalNomadism == 100 & ( ~Settlement == 0 )
-						//SPAWN
-					//ENDIF
-				//}
+
 				UNLOCK_CONDITIONS = {
-					HINT ~SeasonalNomadism
-					CONDITION_VALUE SeasonalNomadism >= 99
-					CONDITION_NODE - Transhumance
+					HINT ~Clanicfederation
+					CONDITION_VALUE Hunting > 50
+					CONDITION_VALUE Clanicfederation > 50
+					CONDITION_VALUE Clans > 5
+				}
+				PRICE = {
+					$PoliticalPower = 50
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(HuntingOrganization) + 1)  * 0.5
+				}
+				TICK = {
+				}
+				
+				LINK Clans = {
+					WEIGHT [ to ]
+				}
+				LINK Fauna = {
+					WEIGHT [ to ]
+				}
+
+				LINK Authority = {
+					WEIGHT [ from ]
+				}
+			}			
+			Interclanicwar = {
+				TAG Nomadic
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~MilitaryManpower
+					CONDITION_NODE + OrganizedNomadism
+					CONDITION_NODE + MilitaryManpower
 				}
 				PRICE = {
 					$PoliticalPower = 100
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(SeasonalNomadism) + 1)  * 1.5
+					$PoliticalPower = (LinkCount(Interclanicwar) + 1)  * 1
 				}
 				TICK = {
-					PROCESS TradeGoods = TradeGoods + PerSeconds(value / 50)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 100 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 75 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 200 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 75 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS Clans = Clans - PerSeconds(value/100)
+					PROCESS Authority = Authority + PerSeconds(value/100)
+					SET Interclanicwar.value [ : : Min(MilitaryManpower.value / 1.5, 100) ]
+					
 				}
-				LINK TradeGoods  = {
+				LINK MilitaryManpower = {
+					WEIGHT [ to ]
+				}
+				LINK Clans = {
+					IF (value > 0)
+						COLOR red
+						FLUX value * 0.01
+					ENDIF
+				}
+				LINK Authority = {
 					IF (value > 0)
 						COLOR green
-						FLUX value / 100
+						FLUX value * 0.01
 					ENDIF
 				}
 
-				LINK SeasonalNomadism = {
-				}
-				LINK OrganizedNomadism = {
-				}
-			}	
-			
-			
-			SacredGuidance = {
+			}
+		Clanicbanners = {
 				TAG Nomadic
 				TYPE Cultural
-				VALUE value [ 0 1 100 >> 1 ]
-				
-				//SLEEP = {
-					//IF ~OrganizedNomadism & Piety.value > 20
-					//SPAWN
-					//ENDIF
-					//}
+				VALUE value [ 0 0 100 >> 1 ]
+
 				UNLOCK_CONDITIONS = {
-					HINT ~SeasonalNomadism
-					CONDITION_VALUE SeasonalNomadism > 70
-					CONDITION_VALUE Piety > 20
-					CONDITION_NODE - Transhumance
-				}	
+					HINT ~MilitaryManpower
+					CONDITION_NODE + Authority
+					CONDITION_NODE + MilitaryManpower
+					CONDITION_NODE + Cavalry
+					CONDITION_NODE + Clanicfederation
+				}
 				PRICE = {
-					$PoliticalPower = 75
-					}
+					$PoliticalPower = 100
+				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(SacredGuidance) + 1) * 1.5
-					}
+					$PoliticalPower = (LinkCount(Interclanicwar) + 1) * 1
+				}
 				TICK = {
-					PROCESS Authority = Authority + PerSeconds((Piety.value/5000)*SacredGuidance.value)
-					RESOURCE_MAX $PoliticalPower = 200
-					}
-				
+				PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value/100)
+				PROCESS Authority.value = Authority.value - PerSeconds(value/100)
+				}
+				LINK MilitaryManpower = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.01
+					ENDIF
+				}
 				LINK Authority = {
-				IF value > 0
-							COLOR green
-							FLUX value * 2.5
-						ENDIF
-					}
-				LINK Piety = {
-						IF value > 0
-							COLOR green
-							FLUX value * -2.5
-						ENDIF
-					}
-					}
-				
-				
-			Horde = {
+					IF (value > 0)
+						COLOR red
+						FLUX value * 0.01
+					ENDIF
+				}
+
+			}
+
+		Clanicfederation = {
 				TAG Nomadic
 				TYPE Cultural
-				VALUE value [ 0 1 100 >> 1 ]
-				
-				//SLEEP = {
-					//IF ~PastoralNomadism & ~Transhumance == 0 & ~Caravan == 0 & ~SacredGuidance == 0
-					//SPAWN
-					//ENDIF
-					//}
-				UNLOCK_CONDITIONS = {
-					HINT ~PastoralNomadism
-					CONDITION_VALUE PastoralNomadism > 70
-					CONDITION_NODE - Transhumance
-					CONDITION_NODE - Caravan
-					CONDITION_NODE - SacredGuidance
-				}
-				PRICE = {
-					$PoliticalPower = 75
-					}
-				UPGRADE = {
-					$PoliticalPower = (LinkCount(Horde) + 1) * 1.5
-					}
-				TICK = {
-					PROCESS Authority = Authority + PerSeconds(LootingCampaigns.value/5000)*Horde.value)
-					RESOURCE_MAX $PoliticalPower = 200
-					}
-				
-				LINK Authority = {
-				IF value > 0
-							COLOR green
-							FLUX value * 2.5
-						ENDIF
-					}
-				LINK LootingCampaigns = {
-					WEIGHT [ from ] 
-				}
-				}
-				
-				Transhumance = {
-				TYPE Cultural
-				VALUE value [ 0 1 100 >> 1 ]
-				
-				//SLEEP = {
-					//IF ~SeasonalNomadism & ~Horde == 0 & ~Caravan == 0
-					//SPAWN
-					//ENDIF
-					//}
-				UNLOCK_CONDITIONS = {
-					HINT ~SeasonalNomadism
-					CONDITION_VALUE SeasonalNomadism > 70
-					CONDITION_VALUE Agriculture > 10
-					CONDITION_NODE - Horde
-					CONDITION_NODE - Caravan
-					CONDITION_NODE - Seminomadism
-				}
-				PRICE = {
-					$PoliticalPower = 75
-					}
-				UPGRADE = {
-					$PoliticalPower = (LinkCount(Transhumance) + 1) * 1.5
-					}
-				TICK = {
-					SET Agriculture.value [ : : 40 + (Transhumance.value * 0.3) ]
-					SET Fishing.value [ : : 40 + (Fishing.value * 0.1) ]
-					}
-				
-				LINK Agriculture = {
+				VALUE value [ 0 0 100 >> 1 ]
 
-					}
-				LINK Fishing = {
-
-					}
-
-				}
-			Seminomadism = {
-				TAG Nomadic
-				TYPE Cultural
-				VALUE value [ 0 1 100 >> 1 ]
-				
-				//SLEEP = {
-					//IF ~Transhumance & ~Horde == 0 & ~Caravan == 0
-						//SPAWN
-					//ENDIF
-					//}
-				UNLOCK_CONDITIONS = {
-					HINT ~Transhumance
-					CONDITION_VALUE Transhumance > 70
-					CONDITION_VALUE Agriculture > 20
-					CONDITION_NODE - Horde
-					CONDITION_NODE - Caravan
-				}
-				PRICE = {
-					$PoliticalPower = 75
-					}
-				UPGRADE = {
-					$PoliticalPower = (LinkCount(Seminomadism) + 1) * 1.5
-					}
-				TRIGGER_SPAWN Seminomadism = {
-					REMOVE Transhumance
-					}
-				TICK = {
-					SET Agriculture.value [ : : 70 + (Seminomadism.value * 0.3) ]
-					SET Fishing.value [ : : 50 + (Seminomadism.value * 0.1) ]
-					}
-				
-				LINK Agriculture = {
-
-					}
-				LINK Fishing = {
-
-					}
-				}
-				Migration = {
-				TAG Nomadic
-				TYPE Cultural
-				VALUE value [ 0 51 100 >> 1 middle ]
-				
-				//SLEEP = {
-					//IF Authority > 20
-					//SPAWN
-					//ENDIF
-				//	}
 				UNLOCK_CONDITIONS = {
 					HINT ~Authority
-					CONDITION_VALUE Authority > 20
-				}
-				PRICE = {
-					$PoliticalPower = 75
-					}
-				UPGRADE = {
-					$PoliticalPower = (LinkCount(Migration) + 1)
-					}
-				TICK = {
-				IF value > 60
-					PROCESS Flora = Flora + PerSeconds(Migration.value/500)
-					PROCESS Fauna = Fauna + PerSeconds(Migration.value/500)
-					PROCESS Humidity = Humidity + PerSeconds(Migration.value/500)
-					PROCESS Temperature = Temperature + PerSeconds(Migration.value/500)
-					PROCESS SoilFertility = SoilFertility + PerSeconds(Migration.value/500)
-					PROCESS Authority = Authority - PerSeconds(Migration.value/100)
-				ENDIF
-				
-				IF value < 40
-					PROCESS Flora = Flora + PerSeconds(Migration.value/500)
-					PROCESS Fauna = Fauna + PerSeconds(Migration.value/500)
-					PROCESS Humidity = Humidity + PerSeconds(Migration.value/500)
-					PROCESS Temperature = Temperature + PerSeconds(Migration.value/500)
-					PROCESS SoilFertility = SoilFertility + PerSeconds(Migration.value/500)
-					PROCESS Authority = Authority - PerSeconds(Migration.value/100)
-				ENDIF
-					}
-				
-				LINK Flora = {
-				IF value > 60
-							COLOR green
-							FLUX value * 2.5
-						ENDIF
-				IF value < 40
-							COLOR red
-							FLUX value - 1 * -2.5
-						ENDIF
-
-				}
-				LINK Fauna = {
-				IF value > 60
-							COLOR green
-							FLUX value - 1 * -2.5
-						ENDIF
-				IF value < 40
-							COLOR red
-							FLUX value - 1 * -2.5
-						ENDIF
-
-				}
-				LINK Humidity = {
-				IF value > 60
-							COLOR green
-							FLUX value - 1 * -2.5
-						ENDIF
-				IF value < 40
-							COLOR red
-							FLUX value - 1 * -2.5
-						ENDIF
-
-				}
-				LINK Temperature = {
-				IF value > 60
-							COLOR green
-							FLUX value * 2.5
-						ENDIF
-				IF value < 40
-							COLOR red
-							FLUX value - 1 * -2.5
-						ENDIF
-
-				}
-				LINK SoilFertility ={
-				IF value > 60
-							COLOR green
-							FLUX value * 2.5
-						ENDIF
-				IF value < 40
-							COLOR red
-							FLUX value - 1 * -2.5
-						ENDIF
-
-				}
-				LINK Authority ={
-				IF value > 0
-							COLOR red
-							FLUX value - 1 * -2.5
-						ENDIF
-
-				}
-				
-			
-			
+					CONDITION_NODE + Livestock
+					CONDITION_VALUE Authority > 50
+					CONDITION_VALUE Clans > 10
 			}
+				PRICE = {
+					$PoliticalPower = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Clanicfederation) + 1) * 1
+				}
+				TICK = {
+					PROCESS Authority = Authority + PerSeconds(value/100000)
+					RESOURCE_MAX $PoliticalPower = 200
+				}
+				
+				LINK Authority = {
+					WEIGHT [ from ]
+				}
+				
+			}
+		Nomadicconquest = {
+				TAG Nomadic
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Authority
+					CONDITION_NODE + Livestock
+					CONDITION_VALUE OrganizedNomadism > 50
+			}
+				PRICE = {
+					$PoliticalPower = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Clanicfederation) + 1) * 1
+				}
+				TICK = {
+					PROCESS Land = Land + PerSeconds(value / 2000)
+					PROCESS Tributaries = Tributaries + PerSeconds(value / 400)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 40 * ( 1.5 - MilitaryEfficiency /100 ) )
+					SET Nomadicconquest.value [ : : Min(MilitaryManpower.value, 100) ]
+				}
+				
+				LINK MilitaryManpower = {
+					IF value > 0
+						COLOR red
+						FLUX ( value) / 10
+					ENDIF
+				}
+				LINK Land = {
+					IF value > 0
+						COLOR green
+						FLUX ( value) / 100
+					ENDIF
+				}
+				LINK Tributaries = {
+					IF value > 0
+						COLOR green
+						FLUX ( value) / 10
+					ENDIF
+				}
+			}
+		Nomadicinvasion = {
+				TAG Nomadic
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Authority
+					CONDITION_NODE + Livestock
+					CONDITION_VALUE Clanicfederation > 50
+			}
+				PRICE = {
+					$PoliticalPower = 150
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Nomadicinvasion) + 1) * 2
+				}
+				TICK = {
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 40 * ( 1.5 - MilitaryEfficiency /100 ) )
+					PROCESS Land = Land + PerSeconds(value / 500)
+					SET Nomadicinvasion.value [ : : Min(MilitaryManpower.value, 100) ]
+				}
+				
+				LINK MilitaryManpower = {
+					IF value > 0
+						COLOR red
+						FLUX ( value) / 10
+					ENDIF
+				}
+				LINK Land = {
+					IF value > 0
+						COLOR green
+						FLUX ( value) / 10
+					ENDIF
+				}
+
+			}
+			EternalSteppe = {
+				TAG Nomadic
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Authority
+					CONDITION_NODE + Livestock
+					CONDITION_VALUE Land > 100
+			}
+				PRICE = {
+					$PoliticalPower = 200
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Clanicfederation) + 1) * 1
+				}
+				TICK = {
+					RESOURCE_MAX $PoliticalPower = 200
+				}
+				
+				LINK Livestock = {
+					IF value > 0
+						COLOR green
+						FLUX ( value) / 10
+					ENDIF
+				}
+			}
+			
 			}
 		Events = {
+			TrickedSucession = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+					EVENT_DEF [ 10 30 500 30% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+					PROCESS Authority = Authority - PerSeconds(0.33)
+					}
+
+					LINK Authority = {
+						COLOR red
+						FLUX 2
+					}
+
+					
+					TRIGGER_EVENT = {
+						IF ( ~Authority + ~OrganizedNomadism)
+							RISE
+						ENDIF
+					}
+						
 			
+				}
+				IndependanceOfTributaries = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+					EVENT_DEF [ 30 15 60 50% ]
+					ARISE = {
+						EVENT_SPEED 1
+						IF Tributaries < MilitaryManpower
+							REMOVE IndependanceOfTributaries
+						ENDIF
+					}
+					TICK = {
+						PROCESS Stability = Stability - PerSeconds(0.25 * 0.75 ? 1.25)
+						PROCESS StateSize = StateSize - PerSeconds(0.5 + StateSize * 0.01 * 0.75 ? 1.25)
+
+					}
+					LINK Stability = {
+						COLOR red
+						FLUX 2.5
+					}
+
+					LINK StateSize = {
+						COLOR red
+						FLUX 5
+					}
+
+					TRIGGER_EVENT = {
+						IF Tributaries > 60 & MilitaryManpower < 30  & GameTime() > 1000 & ~BarbarianMonarchy == 0
+							RISE
+						ENDIF
+					}
+						
+			
+				}
+				Clanseparatisme = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+					EVENT_DEF [ 10 30 500 30% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+					PROCESS Authority = Authority - PerSeconds(0.33)
+					}
+
+					LINK Authority = {
+						COLOR red
+						FLUX 2
+					}
+
+					
+					TRIGGER_EVENT = {
+						IF Clans > 5
+							RISE
+						ENDIF
+					}
+						
+			
+				}
 			}
 	}
+
 }

@@ -46,6 +46,16 @@ Main = {
 	}
 	
 	Windows = {
+	WinTravel = {
+			NAME "Travel"
+			TEXT "Travel status: " @[TravelMod.Travel.value]
+			TEXT "Choose a place to go"
+		}
+		
+		WinMove = {
+			NAME "Choose a place to go"
+			TEXT "Move here"
+		}
 		WinMilitary = {
 			NAME "Military overview"
 			LEVEL Main.MilitaryManpower.value = {
@@ -96,6 +106,10 @@ Main = {
 	}
 	
 	Alerts = {
+			CannotTravel = {
+			NAME "Cannot travel here"
+			DESCRIPTION "Cannot travel here"
+		}
 		LowFood = {
 			NAME "Food stock low"
 			DESCRIPTION "Get more food to prevent famine."
@@ -267,6 +281,11 @@ Main = {
 				NAME "Piety"
 				DESCRIPTION "Piety : " @[value,0.####] " )" <br><br> "The faith in our official religion, the more our people are faithful the less likely they are to revolt."
 				SUMMARY "Stabilizes our state with religion"
+			}
+			Travel = {
+				NAME "Travel"
+				DESCRIPTION "Travel: " @[value,0.###]
+				SUMMARY "Travel."
 			}
 			Education = {
 				NAME "Education"
