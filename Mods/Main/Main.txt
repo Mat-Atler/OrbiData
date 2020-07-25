@@ -555,7 +555,7 @@ Main = {
 					ENDIF
 				}				
 				TICK = {
-					PROCESS value += PerSeconds(2)
+					PROCESS value = value + PerSeconds(Authority.value / 365 )
 				}
 				
 				TRIGGER_SPAWN Travel = {
