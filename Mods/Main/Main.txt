@@ -18,7 +18,36 @@ Main = {
 			VALUE [ 0 20 100 ]
 			}
 		}
-	
+	Dropdowns = {
+  Diplomacy = {
+    States = {
+      Peace = {
+    IMAGE "Main/Images/Wealth.png"
+      }
+      War = {
+    IMAGE "Main/Images/PoliticalPower.png"
+      }
+   }
+   Buttons = {
+      DeclareWar = {
+    // Click
+      REMOTE Population = {
+      DROPDOWN_SET_STATE Diplomacy.War
+      DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+      DROPDOWN_BUTTON_ENABLE Diplomacy.Surender
+    }
+      }
+      Surender = {
+      // Click
+      REMOTE Population = {
+    DROPDOWN_SET_STATE Diplomacy.Peace
+    DROPDOWN_BUTTON_DISABLE Diplomacy.Surender
+    DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+        }
+        }
+    }
+}
+}
 	/// NEW ///
 	Globes = {
 		StateMap = {
@@ -295,7 +324,12 @@ Main = {
 					FLUX 0.5 + value / 500
 					COLOR red
 				}
-				
+				TRIGGER_SPAWN Population = {
+    DROPDOWN_VISIBLE Diplomacy
+    DROPDOWN_BUTTON_VISIBLE Diplomacy.DeclareWar
+    DROPDOWN_BUTTON_VISIBLE Diplomacy.Surender
+    DROPDOWN_BUTTON_DISABLE Diplomacy.Surender
+}
 			}	
 			Food = {
 				VALUE value [ 0 5 100 ]
@@ -555,7 +589,7 @@ Main = {
 					ENDIF
 				}				
 				TICK = {
-					PROCESS value = value + PerSeconds(Authority.value / 365 )
+					PROCESS value = value + Authority.value / 365
 				}
 				
 				TRIGGER_SPAWN Travel = {
@@ -1532,15 +1566,15 @@ Main = {
 				VALUE value [ 0 0 500 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~Longship | ~GreekFire
+					IF ~Longship | ~GreekFire | ~DevotionToSea | ~NavigationTools
 						SPAWN
 					ENDIF
 				}
 				TICK = {
 				IF ~DevotionToSea
-				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) + DevotionToSea / 500 )
+				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  +  ( DevotionToSea / 500 ) )
 				ELSE
-				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) 
+				PROCESS value = 50 * (Longship / 100 ) + 50 * (GreekFire / 100 )  + 50 * (NavigationTools / 100 ) + 50 * ( Caravel / 100 ) 
 				ENDIF
 				
 				}
@@ -1731,7 +1765,39 @@ Main = {
 				}
 				
 			}				
+			ColonialStateSize = {
+				VALUE value [ 0 30 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF ( ~Colony & Colony.colonySettled == 1 )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ~WinStateSize
+						ONCE_EVERY 2
+							GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
+							// Refresh globe
+							GLOBE_SET_POINTER ColonyStateMap [ : ]
+						ENDONCE
+					ENDIF
+					
+				}
+
+				LINK Settlement = {
+						WEIGHT [ max ] value
+				}
+				LINK Colony = {
+				}
+				
+				/// NEW ///
+				TRIGGER_SPAWN ColonialStateSize = {
+					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
+				}
+			}
 			Colony = {
+				TYPE Cultural
 				VALUE value [ 0 0 0 ]
 				VALUE canMoveHere [ 0 0 1 ]
 				VALUE colonySettled [ 0 0 1 ]
@@ -1739,10 +1805,9 @@ Main = {
 				VALUE ColonyLongitude [ -180 0 180 ]
 				VALUE ColonyLatitude [ -180 0 180 ]
 				VALUE ColonialDistance [ 0 0 500 ]
-				DISPLAY_VALUE
 				
 				SLEEP = {
-					IF ~ScienceKnowledge
+					IF ( ~AcrossTheOcean & AcrossTheOcean >= 30 )
 						SPAWN
 					ENDIF
 				}
@@ -1802,38 +1867,6 @@ Main = {
 					GLOBE_SET_POINTER ColonyMap [ : ]
 					// Call TRIGGER_CUSTOM 2
 					ALARM [ once ] [ 2 Colony ] -1
-				}
-			}
-			
-				ColonialStateSize = {
-				VALUE value [ 0 30 2000 ]
-				DISPLAY_VALUE
-
-				SLEEP = {
-					IF ( ~Colony & Colony.colonySettled == 1 )
-						SPAWN
-					ENDIF
-				}
-				TICK = {
-					IF ~WinStateSize
-						ONCE_EVERY 2
-							GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
-							// Refresh globe
-							GLOBE_SET_POINTER ColonyStateMap [ : ]
-						ENDONCE
-					ENDIF
-					
-				}
-
-				LINK Settlement = {
-						WEIGHT [ max ] value
-				}
-				LINK Colony = {
-				}
-				
-				/// NEW ///
-				TRIGGER_SPAWN ColonialStateSize = {
-					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
 				}
 			}
 			
@@ -1915,7 +1948,9 @@ Main = {
 					ELSE
 					PROCESS output =  value * 0.05 * ( Coastline / 100 )
 					ENDIF
-					
+					IF ~NavigationTools
+					PROCESS output =  output * ( 100 + NavigationTools * 1.5 ) / 100
+					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5 )
 					
@@ -2875,8 +2910,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN CelesteMandate = {
-					REMOVE Monarchy				
-					REMOVE MilitaryDictatorship		
+					REMOVE Government		
 					ERA IronAge
 					PROCESS CelesteMandate = 50
 					RESOURCE_MAX $PoliticalPower = 500
@@ -3741,6 +3775,8 @@ Main = {
 					CONDITION_NODE + Urbanization
 					OR
 					CONDITION_VALUE Population > 75
+					OR
+					CONDITION_NODE + Cavalry
 					ALWAYS
 					CONDITION_NODE + AristocracyClass
 				}
@@ -5493,6 +5529,8 @@ Main = {
 			}
 			
 			
+			
+			
 			TradeFair = {
 				TYPE Cultural
 				VALUE value [ 0 5 100 >> 1 ]
@@ -5855,9 +5893,90 @@ Main = {
 				ENDIF
 				}
 
-			}	
+			}
+
+
+			NavigationTools = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ( ~ScienceKnowledge & ~Fishing )
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge >= 120
+				}
+				PRICE = {
+					$PoliticalPower = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = 2
+				}
+				TICK = {
+				}
+				
+				LINK Fishing = {
+						 WEIGHT [ to ] 
+				}
+				
+				LINK NavyTechnology = {
+						 WEIGHT [ to ] 
+				}
+			
+
+			}			
+			
+			Caravel = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~NavigationTools
+					ALWAYS
+					CONDITION_VALUE NavigationTools >= 75
+					CONDITION_VALUE ScienceKnowledge >= 140
+				}
+				PRICE = {
+					$PoliticalPower = 200
+					$Wealth = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = 1
+					$Wealth = 2
+				}
+				TICK = {
+				}
+				
+				LINK NavyTechnology = {
+						 WEIGHT [ to ] 
+				}
+			
+
+			}
 			
 			
+			AcrossTheOcean = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Caravel
+					ALWAYS
+					CONDITION_VALUE NavigationTools >= 100
+					CONDITION_VALUE Caravel >= 70
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 800
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+					$Wealth = 20
+				}
+				TICK = {
+				}
+				
+				
+			
+
+			}
+		
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
@@ -6251,7 +6370,7 @@ Main = {
 					FLUX 2.5
 				}
 				TRIGGER_EVENT = {
-					IF PriestClass > 70 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
+					IF PriestClass > 70 & ( ~Theocracy == 0 & ~CelesteMandate == 0  & ~SacredGuidance  == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
 						RISE
 					ENDIF
 				}
