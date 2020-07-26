@@ -2910,8 +2910,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN CelesteMandate = {
-					REMOVE Monarchy				
-					REMOVE MilitaryDictatorship		
+					REMOVE Government		
 					ERA IronAge
 					PROCESS CelesteMandate = 50
 					RESOURCE_MAX $PoliticalPower = 500
