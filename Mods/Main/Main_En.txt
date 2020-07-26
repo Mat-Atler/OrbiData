@@ -46,6 +46,16 @@ Main = {
 	}
 	
 	Windows = {
+	WinTravel = {
+			NAME "Travel"
+			TEXT "Travel status: " @[TravelMod.Travel.value]
+			TEXT "Choose a place to go"
+		}
+		
+		WinMove = {
+			NAME "Choose a place to go"
+			TEXT "Move here"
+		}
 		WinMilitary = {
 			NAME "Military overview"
 			LEVEL Main.MilitaryManpower.value = {
@@ -96,6 +106,10 @@ Main = {
 	}
 	
 	Alerts = {
+			CannotTravel = {
+			NAME "Cannot travel here"
+			DESCRIPTION "Cannot travel here"
+		}
 		LowFood = {
 			NAME "Food stock low"
 			DESCRIPTION "Get more food to prevent famine."
@@ -267,6 +281,11 @@ Main = {
 				NAME "Piety"
 				DESCRIPTION "Piety : " @[value,0.####] " )" <br><br> "The faith in our official religion, the more our people are faithful the less likely they are to revolt."
 				SUMMARY "Stabilizes our state with religion"
+			}
+			Travel = {
+				NAME "Travel"
+				DESCRIPTION "Travel: " @[value,0.###]
+				SUMMARY "Travel."
 			}
 			Education = {
 				NAME "Education"
@@ -581,12 +600,6 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "It happens that the most unfortunate ones flee into our forests and begin to practice banditry. We must ensure that we put in place a strong police force to avoid any insecurity that would compromise our land trade."
 				SUMMARY "Reduces our trade"
 				}
-
-			Colony = {
-				NAME "Colony"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>""
-				SUMMARY "Our main colony"
-			}
 			
 			ColonialStateSize = {
 				NAME "Colonial State Size"
@@ -594,7 +607,12 @@ Main = {
 				SUMMARY "Our colony size"
 			}
 			
-				
+			
+			Colony = {
+				NAME "Colony"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Our main colony"
+			}	
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -1709,6 +1727,22 @@ Main = {
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "Our cultural power is strong, as well as our faith. It's time to put art at the service of the divine."
 				SUMMARY "Brings culture, piety and strengthen our religious monuments"
+			}
+
+			NavigationTools = {
+				NAME "Navigation Tools"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Ensure a safer sea travel"
+			}
+			Caravel = {
+				NAME "Caravel"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Allow us to across the ocean"
+			}
+			AcrossTheOcean = {
+				NAME "Across the Ocean"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Organized travels across the seas"
 			}
 
 		}

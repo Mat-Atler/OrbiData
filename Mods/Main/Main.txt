@@ -18,7 +18,36 @@ Main = {
 			VALUE [ 0 20 100 ]
 			}
 		}
-	
+	Dropdowns = {
+  Diplomacy = {
+    States = {
+      Peace = {
+    IMAGE "Main/Images/Wealth.png"
+      }
+      War = {
+    IMAGE "Main/Images/PoliticalPower.png"
+      }
+   }
+   Buttons = {
+      DeclareWar = {
+    // Click
+      REMOTE Population = {
+      DROPDOWN_SET_STATE Diplomacy.War
+      DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+      DROPDOWN_BUTTON_ENABLE Diplomacy.Surender
+    }
+      }
+      Surender = {
+      // Click
+      REMOTE Population = {
+    DROPDOWN_SET_STATE Diplomacy.Peace
+    DROPDOWN_BUTTON_DISABLE Diplomacy.Surender
+    DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+        }
+        }
+    }
+}
+}
 	/// NEW ///
 	Globes = {
 		StateMap = {
@@ -26,6 +55,18 @@ Main = {
 			SIZE 512
 			// Called then player rotates the globe
 			REMOTE StateSize = {
+				
+			}
+		}
+		TravelMap = {
+			AREA_MASK [ 1 0.5 ] "Main/DataMaps/LandMasses.png"
+			SIZE 1024
+			
+			// Call TRIGGER_CUSTOM 4 of Travel node then the globe is clicked
+			CLICK_TRIGGER [ 4 Travel ]
+			
+			// Called then player rotates the globe
+			REMOTE Travel = {
 				
 			}
 		}
@@ -109,6 +150,44 @@ Main = {
 				CONTENT_STACK [ height = 590 ] = {
 					CONTENT_GLOBE StateMap [ width = 240 height = 240 id = 1 ]
 				}
+			}
+		}
+		WinTravel = {
+			CUSTOM_NODE_WINDOW Main.Travel
+			POSITION [ 0 0 ]
+			
+			// Open window
+			REMOTE Travel = {
+				
+			}
+			
+			CONTENT_VERTICAL = {
+				CONTENT_TEXT [ height = 220 ]
+				// Call TRIGGER_CUSTOM 3 from node Travel
+				CONTENT_BUTTON Travel [ 3 ] [ height = 30 ]
+			}
+		}
+		WinMove = {
+			ABSOLUTE_PRIORITY
+			SIZE [ 620 700 ]
+			POSITION [ 0 0 ]
+			
+			// Open window
+			REMOTE Travel = {
+				// Call TRIGGER_CUSTOM 2
+				ALARM [ once ] [ 2 Travel ] -1
+				GLOBE_SET_AREA TravelMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
+				GLOBE_SET_ICON TravelMap [ 0 ] [ GetLongitude() : GetLatitude() : 0.02 : "Main/Images/OrganizedNomadism.png" : black ]
+				// Refresh globe
+				GLOBE_SET_POINTER TravelMap [ : ]
+			}
+			
+			CONTENT_VERTICAL = {
+				CONTENT_STACK [ height = 590 ] = {
+					CONTENT_GLOBE TravelMap [ width = 560 height = 560 id = 1 ]
+				}
+				// Call TRIGGER_CUSTOM 1 from node Travel
+				CONTENT_BUTTON Travel [ 1 ] [ height = 40 id = 2 ]
 			}
 		}		
 		WinColonialStateSize = {
@@ -219,6 +298,11 @@ Main = {
 			MUTE_TIME 1
 			PREVIEW
 		}
+		CannotTravel = {
+			PRIORITY [ 3 ]
+			MUTE_TIME 1
+			PREVIEW
+		}
 	}
 	
 	Nodes = {
@@ -240,7 +324,12 @@ Main = {
 					FLUX 0.5 + value / 500
 					COLOR red
 				}
-				
+				TRIGGER_SPAWN Population = {
+    DROPDOWN_VISIBLE Diplomacy
+    DROPDOWN_BUTTON_VISIBLE Diplomacy.DeclareWar
+    DROPDOWN_BUTTON_VISIBLE Diplomacy.Surender
+    DROPDOWN_BUTTON_DISABLE Diplomacy.Surender
+}
 			}	
 			Food = {
 				VALUE value [ 0 5 100 ]
@@ -271,6 +360,12 @@ Main = {
 				
                 TRIGGER_TRAVEL = {
                     PROCESS value = GetPresetValue(value)
+								IF HasValueFromCustomPreset(Main.Temperature.value)
+				PROCESS Main.Temperature.value = GetPresetValue(Main.Temperature.value)
+			ELSE
+				PROCESS Main.Temperature.value = DataMapGetR("Main\DataMaps\Temperature.png",GetLongitude(),GetLatitude()) * 100
+			ENDIF
+			BREAK
                 }
 				LINK Flora = {
 					WEIGHT [ to ]
@@ -364,7 +459,13 @@ Main = {
 				
                 TRIGGER_TRAVEL = {
                     PROCESS value = GetPresetValue(value)
+					IF HasValueFromCustomPreset(Main.Coastline.value)
+				PROCESS Main.Coastline.value = GetPresetValue(Main.Coastline.value)
+			ELSE
+				PROCESS Main.Coastline.value = DataMapGetR("Main\DataMaps\Coastline.png",GetLongitude(),GetLatitude()) * 120
+			ENDIF
                 }
+                
 				
 				TICK = {
 					SET Harbours.value [ : : Coastline.value * 2 ]
@@ -402,6 +503,11 @@ Main = {
 				
                 TRIGGER_TRAVEL = {
                     PROCESS value = GetPresetValue(value)
+					IF HasValueFromCustomPreset(Main.Flora.value)
+				PROCESS Main.Flora.value = GetPresetValue(Main.Flora.value)
+			ELSE
+				PROCESS Main.Flora.value = DataMapGetR("Main\DataMaps\Flora.png",GetLongitude(),GetLatitude()) * 120
+			ENDIF
                 }
 				
 				TICK = {
@@ -434,6 +540,11 @@ Main = {
                 }
 				
 				TICK = {
+				IF HasValueFromCustomPreset(Main.Fauna.value)
+				PROCESS Main.Fauna.value = GetPresetValue(Main.Fauna.value)
+			ELSE
+				PROCESS Main.Fauna.value = DataMapGetR("Main\DataMaps\Flora.png",GetLongitude(),GetLatitude()) * 95
+			ENDIF
 					PROCESS value = Min(value, Flora * 2)
 					PROCESS Flora -= PerSeconds(value / 35 * 0.99 ? 1.01 )
 				}
@@ -465,7 +576,73 @@ Main = {
 					FLUX value / 100
 					COLOR green
 				}
-			}	
+			}
+			Travel = {
+				VALUE value [ 0 10 100 ]
+				VALUE distance [ 0 0 3 ]
+				VALUE canMoveHere [ 0 0 1 ]
+				DISPLAY_VALUE
+				
+				SLEEP = {
+					IF ~OrganizedNomadism
+						SPAWN
+					ENDIF
+				}				
+				TICK = {
+					PROCESS value += PerSeconds(2)
+				}
+				
+				TRIGGER_SPAWN Travel = {
+					GLOBE_SET_AREA TravelMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : green ]
+					GLOBE_SET_ICON TravelMap [ 0 ] [ GetLongitude() : GetLatitude() : 0.03 : "Main/Images/OrganizedNomadism.png" : black ]
+				}
+				
+				// Button
+				TRIGGER_CUSTOM 1 = {
+					// Call TRIGGER_CUSTOM 2
+					ALARM [ once ] [ 2 Travel ] -1
+					IF canMoveHere
+						PROCESS value = 0
+						TRAVEL [ GlobeGetClickLongitude(TravelMap) : GlobeGetClickLatitude(TravelMap) ]
+						// Call TRIGGER_CUSTOM 2
+						ALARM [ once ] [ 2 Travel ] -1
+						GLOBE_SET_AREA TravelMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 500 : ]
+						GLOBE_SET_ICON TravelMap [ 0 ] [ GetLongitude() : GetLatitude() : : : ]
+						GLOBE_SET_ICON TravelMap [ 1 ] [ : : 0 : : ]
+						// Refresh globe
+						GLOBE_SET_POINTER TravelMap [ : ]
+						PROCESS canMoveHere = 0
+					ELSE
+						ALERT CannotTravel
+					ENDIF
+				}
+				
+				// Check if can travel here
+				TRIGGER_CUSTOM 2 = {
+					// Get distance between pointer and player
+					PROCESS distance = PathGetLength(GetLongitude(), GetLatitude(), GlobeGetClickLongitude(TravelMap), GlobeGetClickLatitude(TravelMap))
+					IF ( ( distance / 3 ) > ( value * 0.00209 ) ) + ( DataMapGetR("Main/DataMaps/LandMasses.png", GlobeGetClickLongitude(TravelMap), GlobeGetClickLatitude(TravelMap)) < 0.5 )
+						WINDOW_INTERCEPT WinMove [ 2 ] [ red = 1 green = 0.2 blue = 0.2 ]
+						PROCESS canMoveHere = 0
+					ELSE
+						WINDOW_INTERCEPT WinMove [ 2 ] [ red = 0.5 green = 1 blue = 0.5 ]
+						PROCESS canMoveHere = 1
+					ENDIF
+				}
+				
+				// Open move window
+				TRIGGER_CUSTOM 3 = {
+					WINDOW_OPEN WinMove
+				}
+				
+				TRIGGER_CUSTOM 4 = {
+					GLOBE_SET_ICON TravelMap [ 1 ] [ GlobeGetClickLongitude(TravelMap) : GlobeGetClickLatitude(TravelMap) : 0.01 : "Main/Images/Circle.png" : red ]
+					// Refresh globe
+					GLOBE_SET_POINTER TravelMap [ : ]
+					// Call TRIGGER_CUSTOM 2
+					ALARM [ once ] [ 2 Travel ] -1
+				}
+			}			
 			Entreprises = {
 				VALUE value [ 0 0 500 ]
 				DISPLAY_VALUE
@@ -1389,15 +1566,15 @@ Main = {
 				VALUE value [ 0 0 500 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~Longship | ~GreekFire
+					IF ~Longship | ~GreekFire | ~DevotionToSea | ~NavigationTools
 						SPAWN
 					ENDIF
 				}
 				TICK = {
 				IF ~DevotionToSea
-				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) + DevotionToSea / 500 )
+				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  +  ( DevotionToSea / 500 ) )
 				ELSE
-				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) 
+				PROCESS value = 50 * (Longship / 100 ) + 50 * (GreekFire / 100 )  + 50 * (NavigationTools / 100 ) + 50 * ( Caravel / 100 ) 
 				ENDIF
 				
 				}
@@ -1588,7 +1765,39 @@ Main = {
 				}
 				
 			}				
+			ColonialStateSize = {
+				VALUE value [ 0 30 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF ( ~Colony & Colony.colonySettled == 1 )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					IF ~WinStateSize
+						ONCE_EVERY 2
+							GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
+							// Refresh globe
+							GLOBE_SET_POINTER ColonyStateMap [ : ]
+						ENDONCE
+					ENDIF
+					
+				}
+
+				LINK Settlement = {
+						WEIGHT [ max ] value
+				}
+				LINK Colony = {
+				}
+				
+				/// NEW ///
+				TRIGGER_SPAWN ColonialStateSize = {
+					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
+				}
+			}
 			Colony = {
+				TYPE Cultural
 				VALUE value [ 0 0 0 ]
 				VALUE canMoveHere [ 0 0 1 ]
 				VALUE colonySettled [ 0 0 1 ]
@@ -1596,10 +1805,9 @@ Main = {
 				VALUE ColonyLongitude [ -180 0 180 ]
 				VALUE ColonyLatitude [ -180 0 180 ]
 				VALUE ColonialDistance [ 0 0 500 ]
-				DISPLAY_VALUE
 				
 				SLEEP = {
-					IF ~ScienceKnowledge
+					IF ( ~AcrossTheOcean & AcrossTheOcean >= 30 )
 						SPAWN
 					ENDIF
 				}
@@ -1659,38 +1867,6 @@ Main = {
 					GLOBE_SET_POINTER ColonyMap [ : ]
 					// Call TRIGGER_CUSTOM 2
 					ALARM [ once ] [ 2 Colony ] -1
-				}
-			}
-			
-				ColonialStateSize = {
-				VALUE value [ 0 30 2000 ]
-				DISPLAY_VALUE
-
-				SLEEP = {
-					IF ( ~Colony & Colony.colonySettled == 1 )
-						SPAWN
-					ENDIF
-				}
-				TICK = {
-					IF ~WinStateSize
-						ONCE_EVERY 2
-							GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
-							// Refresh globe
-							GLOBE_SET_POINTER ColonyStateMap [ : ]
-						ENDONCE
-					ENDIF
-					
-				}
-
-				LINK Settlement = {
-						WEIGHT [ max ] value
-				}
-				LINK Colony = {
-				}
-				
-				/// NEW ///
-				TRIGGER_SPAWN ColonialStateSize = {
-					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
 				}
 			}
 			
@@ -1772,7 +1948,9 @@ Main = {
 					ELSE
 					PROCESS output =  value * 0.05 * ( Coastline / 100 )
 					ENDIF
-					
+					IF ~NavigationTools
+					PROCESS output =  output * ( 100 + NavigationTools * 1.5 ) / 100
+					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5 )
 					
@@ -5350,6 +5528,8 @@ Main = {
 			}
 			
 			
+			
+			
 			TradeFair = {
 				TYPE Cultural
 				VALUE value [ 0 5 100 >> 1 ]
@@ -5712,9 +5892,90 @@ Main = {
 				ENDIF
 				}
 
-			}	
+			}
+
+
+			NavigationTools = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ( ~ScienceKnowledge & ~Fishing )
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge >= 120
+				}
+				PRICE = {
+					$PoliticalPower = 100
+				}
+				UPGRADE = {
+					$PoliticalPower = 2
+				}
+				TICK = {
+				}
+				
+				LINK Fishing = {
+						 WEIGHT [ to ] 
+				}
+				
+				LINK NavyTechnology = {
+						 WEIGHT [ to ] 
+				}
+			
+
+			}			
+			
+			Caravel = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~NavigationTools
+					ALWAYS
+					CONDITION_VALUE NavigationTools >= 75
+					CONDITION_VALUE ScienceKnowledge >= 140
+				}
+				PRICE = {
+					$PoliticalPower = 200
+					$Wealth = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = 1
+					$Wealth = 2
+				}
+				TICK = {
+				}
+				
+				LINK NavyTechnology = {
+						 WEIGHT [ to ] 
+				}
+			
+
+			}
 			
 			
+			AcrossTheOcean = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Caravel
+					ALWAYS
+					CONDITION_VALUE NavigationTools >= 100
+					CONDITION_VALUE Caravel >= 70
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 800
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+					$Wealth = 20
+				}
+				TICK = {
+				}
+				
+				
+			
+
+			}
+		
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
