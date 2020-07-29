@@ -1744,6 +1744,31 @@ Main = {
 				DESCRIPTION "Value: " @[value,0.###]<br><br>""
 				SUMMARY "Organized travels across the seas"
 			}
+			
+			Arquebus = {
+				NAME "Arquebus"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The arquebus is the first sufficiently effective firearm that marks the superiority of gunpowder over archery and a radical change in the battlefield."
+				SUMMARY "Military Technology"
+			}	
+			
+			
+			Musket = {
+				NAME "Musket"
+				LEVEL value = {			
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The rifle musket is the 2nd generation of firearm, capable of far greater power and reliability than an arquebus."
+				SUMMARY "Military Technology"
+			}	
 
 		}
 		Events = {

@@ -616,6 +616,8 @@ Religious = {
 					HINT SacrificeNature
 					CONDITION_VALUE SacrificeNature > 80
 					CONDITION_VALUE MilitaryManpower > 50
+					CONDITION_VALUE MilitaryManpower > 50
+					CONDITION_NODE - ModernWarfare
 
 				}
 				PRICE = {
@@ -1228,16 +1230,16 @@ Religious = {
 			ReligiousLeagueWar = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
-				EVENT_DEF [ 15 60 70 60% ]
+				EVENT_DEF [ 15 50 70 60% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
 
 				TICK = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds( 0.1 ? 0.2 )
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(2 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1.5 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(4 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(1.5 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(2 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(0.5)
 					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
@@ -1287,7 +1289,7 @@ Religious = {
 				
 			
 				TRIGGER_EVENT = {
-					IF  ~GreatSchism
+					IF  ( ~GreatSchism & ~ModernWarfare == 0 )
 						RISE
 					ENDIF
 				}

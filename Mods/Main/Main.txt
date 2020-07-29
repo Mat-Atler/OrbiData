@@ -34,14 +34,14 @@ Main = {
       REMOTE Population = {
       DROPDOWN_SET_STATE Diplomacy.War
       DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-      DROPDOWN_BUTTON_ENABLE Diplomacy.Surender
+      DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
     }
       }
-      Surender = {
+      MakePeace = {
       // Click
       REMOTE Population = {
     DROPDOWN_SET_STATE Diplomacy.Peace
-    DROPDOWN_BUTTON_DISABLE Diplomacy.Surender
+    DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
     DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
         }
         }
@@ -325,10 +325,6 @@ Main = {
 					COLOR red
 				}
 				TRIGGER_SPAWN Population = {
-    DROPDOWN_VISIBLE Diplomacy
-    DROPDOWN_BUTTON_VISIBLE Diplomacy.DeclareWar
-    DROPDOWN_BUTTON_VISIBLE Diplomacy.Surender
-    DROPDOWN_BUTTON_DISABLE Diplomacy.Surender
 }
 			}	
 			Food = {
@@ -1785,17 +1781,101 @@ Main = {
 					
 				}
 
-				LINK Settlement = {
-						WEIGHT [ max ] value
-				}
 				LINK Colony = {
 				}
 				
+				LINK ColonialProsperity = {
+					WEIGHT [ to ]
+				}
 				/// NEW ///
 				TRIGGER_SPAWN ColonialStateSize = {
 					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
 				}
 			}
+			
+			
+			ColonialProsperity = {
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF ( ~Colony & Colony.colonySettled == 1 )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value = value + PerSeconds ( ( Colony.hiddenProsperity / 500 * ColonialStateSize / 300 ) * -0.25 ? 1 )
+				}
+
+				LINK Colony = {
+				}
+				
+				LINK ColonialPiracy = {
+					IF (value > 0)
+						FLUX value * 0.005 
+						COLOR green
+					ENDIF
+				}
+				
+			}
+			
+			ModernWarfare = {
+				VALUE value [ 0 0 0 ]
+
+				SLEEP = {
+					IF ( ~Arquebus )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				}
+
+				
+				TRIGGER_SPAWN ModernWarfare = {
+					DROPDOWN_VISIBLE Diplomacy
+					DROPDOWN_BUTTON_VISIBLE Diplomacy.DeclareWar
+					DROPDOWN_BUTTON_VISIBLE Diplomacy.MakePeace
+					DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+					REMOVE LongRangeRaid
+					REMOVE LootingCampaigns
+					REMOVE HolyWar
+					REMOVE Expensionism
+					REMOVE FlowerWar
+				}
+			}
+			
+			
+			
+			
+			ColonialPiracy = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+
+				SLEEP = {
+					IF ( ColonialProsperity > 25 )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value - PerSeconds(value / ( 15 + ColonialProsperity * 10 ) )
+					PROCESS value = value + PerSeconds ( ColonialProsperity * 0.01 )
+					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialProsperity / 100 * ( value / 40 )  * 0.25 ? 1 )
+				}
+
+				LINK Colony = {
+				}
+				
+				LINK ColonialProsperity = {
+					IF (value > 0)
+						FLUX value * 0.013 
+						COLOR red
+					ENDIF
+				}
+				
+			}
+			
+			
 			Colony = {
 				TYPE Cultural
 				VALUE value [ 0 0 0 ]
@@ -1902,6 +1982,7 @@ Main = {
 				//}
 				UNLOCK_CONDITIONS = {
 					CONDITION_VALUE Fauna > 20
+					CONDITION_NODE - Mill
 				}
 				PRICE = {
 					$PoliticalPower = 10
@@ -2118,6 +2199,7 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					CONDITION_VALUE Flora > 20
+					CONDITION_NODE - Mill
 				}
 				PRICE = {
 					$PoliticalPower = 10
@@ -2289,7 +2371,7 @@ Main = {
 				IMAGE "Main/Images/Agriculture.png"
 				TYPE Technological
 				VALUE value [ 0 5 40 >> 1 ]
-				VALUE output [ 0 0 100 ]
+				VALUE output [ 0 0 1000 ]
 				RELATED_INFO = {
 					RELATED_UNLOCK Settlement Spices SoilFertility FarmingTools
 					RELATED_LINK Food SoilFertility FarmingTools Temperature Humidity Settlement Population DraftAnimals Livestock
@@ -2910,7 +2992,8 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN CelesteMandate = {
-					REMOVE Government		
+					REMOVE Monarchy				
+					REMOVE MilitaryDictatorship		
 					ERA IronAge
 					PROCESS CelesteMandate = 50
 					RESOURCE_MAX $PoliticalPower = 500
@@ -3732,7 +3815,8 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~Infantry
 					CONDITION_NODE + Infantry
-					CONDITION_VALUE Hunting > 50
+					CONDITION_NODE - Arquebus
+					CONDITION_VALUE Hunting > 25
 				}
 				PRICE = {
 					$PoliticalPower = 30
@@ -4025,6 +4109,7 @@ Main = {
 					CONDITION_VALUE Navy > 50
 					ALWAYS
 					CONDITION_NODE + StateSize
+					CONDITION_NODE - ModernWarfare
 				}
 				PRICE = {
 					$PoliticalPower = 115
@@ -4472,6 +4557,8 @@ Main = {
 					CONDITION_NODE + MilitaryManpower
 					OR
 					CONDITION_VALUE MilitaryManpower > 30
+					ALWAYS
+					CONDITION_NODE - ModernWarfare
 				}
 				PRICE = {
 					$PoliticalPower = 60
@@ -4553,6 +4640,7 @@ Main = {
 					CONDITION_VALUE MilitaryManpower > 30
 					CONDITION_VALUE Navy > 75
 					CONDITION_VALUE Coastline > 30
+					CONDITION_NODE - ModernWarfare
 				}
 				PRICE = {
 					$PoliticalPower = 150
@@ -5229,6 +5317,11 @@ Main = {
 				TICK = {
 				}
 				
+				TRIGGER_SPAWN Mill = {
+				REMOVE Foraging
+				REMOVE Hunting
+				}
+				
 				LINK Agriculture = {
 				WEIGHT [ to ] 
 				}
@@ -5810,6 +5903,7 @@ Main = {
 					CONDITION_VALUE Pantheon > 75
 					CONDITION_VALUE HolyOrders > 25
 					CONDITION_NODE + Expensionism
+					CONDITION_NODE - ModernWarfare
 				}
 				PRICE = {
 					$PoliticalPower = 300
@@ -5971,9 +6065,74 @@ Main = {
 				}
 				
 				
+				TRIGGER_SPAWN AcrossTheOcean = {
+					ERA DiscoveryAge
+					}
 			
 
 			}
+			
+			
+			Arquebus = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~ScienceKnowledge
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge >= 100
+				}
+				PRICE = {
+					$PoliticalPower = 150
+				}
+				UPGRADE = {
+					$PoliticalPower = 10
+				}
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 33)
+				}
+				
+				
+				TRIGGER_SPAWN Arquebus = {
+					REMOVE Missile
+					ERA DiscoveryAge
+				}
+				
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 10
+					ENDIF
+			}
+			
+			
+			Musket = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Arquebus
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge >= 200
+					CONDITION_VALUE Arquebus >= 100
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 15
+				}
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 33)
+				}
+				
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 10
+					ENDIF
+			}
+			}
+			
+			
 		
 			}
 		Events = {
@@ -6006,7 +6165,7 @@ Main = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF (Temperature > 30 ) & (Humidity < 80 )
+					IF (Temperature > 30 ) & (Humidity < 80 ) & ( ~Mill == 0 ) 
 						RISE
 					ENDIF
 				}
@@ -6217,7 +6376,7 @@ Main = {
                     ENDIF
 				}
 				TRIGGER_EVENT = {
-					IF (OverlandTrade > 30 | ReligiousMonuments > 30 ) & ( ( Fortifications < ( StateSize / 3) & (MilitaryManpower < StateSize / 3) & ~Island == 0 )  + (~Island & Navy < StateSize / 2.5))  & GameTime() > 1500
+					IF (OverlandTrade > 30 | ReligiousMonuments > 30 ) & ( ( Fortifications < ( StateSize / 3) & (MilitaryManpower < StateSize / 3) & ~Island == 0 )  + (~Island & Navy < StateSize / 2.5))  & GameTime() > 1500  & ( ~ModernWarfare == 0 ) 
 						RISE
 					ENDIF
 				}
@@ -6247,7 +6406,7 @@ Main = {
                     ENDIF
 				}
 				TRIGGER_EVENT = {
-					IF (TradeGoods > 100 & Navy * 1.5 < Coastline & Coastline >= 20 ) & GameTime() > 9500
+					IF (TradeGoods > 100 & Navy * 1.5 < Coastline & Coastline >= 20 ) & GameTime() > 9500  & ( ~ModernWarfare == 0 ) 
 						RISE
 					ENDIF
 				}
@@ -6315,6 +6474,10 @@ Main = {
 					PROCESS Population = Population - PerSeconds(Population * 0.025 + 0.25 * 0.75 ? 1.25)
 					PROCESS Food = Food - PerSeconds(3 * 0.75 ? 1.25)
 					PROCESS Education = Education - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.1 + MilitaryManpower.Infantry_value /150 )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.1 + MilitaryManpower.Cavalry_value /150)
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.1 + MilitaryManpower.Missile_value /150)
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.1 + MilitaryManpower.Mercenaries_value /150)
 					PROCESS $Wealth = $Wealth - PerSeconds(3 * 0.75 ? 1.25)
 				}
 				LINK Population = {
@@ -6322,6 +6485,11 @@ Main = {
 					FLUX 5
 				}
 
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 5
+				}
+				
 				LINK Education = {
 					COLOR red
 					FLUX 5
@@ -6368,7 +6536,7 @@ Main = {
 					FLUX 2.5
 				}
 				TRIGGER_EVENT = {
-					IF PriestClass > 70 & ( ~Theocracy == 0 & ~CelesteMandate == 0  & ~SacredGuidance  == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
+					IF PriestClass > 70 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
 						RISE
 					ENDIF
 				}
@@ -6721,7 +6889,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 1850 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) )
+					IF  ~StateSize & GameTime() > 1850 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 ) 
 						RISE
 					ENDIF
 				}
@@ -7099,7 +7267,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 1850 & ( ~Island | ((StateSize + Coastline - 150 > 0) & Coastline > 0 )  )
+					IF  ~StateSize & GameTime() > 1850 & ( ~Island | ((StateSize + Coastline - 150 > 0) & Coastline > 0 )  ) & ( ~ModernWarfare == 0 ) 
 						RISE
 					ENDIF
 				}
@@ -7148,7 +7316,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5000 ) | (StateSize >= 400 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 11000
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5000 ) | (StateSize >= 400 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 11000 & ( ~ModernWarfare == 0 ) 
 							RISE
 						ENDIF
 				}
@@ -7646,7 +7814,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ( Temperature < 65 & GameTime() > 9000 ) 
+					IF ( Temperature < 65 & GameTime() > 8000 ) 
 						RISE
 					ENDIF
 				}
@@ -7985,7 +8153,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 11000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) )
+					IF  ~StateSize & GameTime() > 10000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 ) 
 						RISE
 					ENDIF
 				}

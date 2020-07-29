@@ -412,7 +412,7 @@ Main = {
 					30 = "Flotte"
 					100 = "Armada"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br> "Maintenir une flotte militaire est une nécessité pour les nations côtières ; utilisée pour le commerce maritime ou encore les actions millitaires naval."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br> "Maintenir une flotte militaire est une nécessité pour les nations côtières ; utilisée pour le commerce maritime ou encore les actions militaires naval."
 				SUMMARY "Notre flotte"
 			}
 			HorseDomestication = {
@@ -1270,7 +1270,7 @@ Main = {
 					100 = "Maitrisée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "La hache de bataille est un redoutable outil capable d'asséner de puissants coups et d'agripper le bouclier de l'ennemis, surtout utilisée par les peuples luttants contre une infanterie lourde et disciplinée, elle peut entrer dans notre arsenal pour plus de puissance au combat."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}	
 			
 			Stirrups = {
@@ -1282,7 +1282,7 @@ Main = {
 					100 = "Maitrisée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les étriers sont une grande invention pour les cavaliers. Capable à la fois d'une plus grande conservation de la puissance cinétique et aussi d'un meilleur équilibres. Cela permet à l'utilisateur aussi bien de provoquer des charges dévastatrices, principalement à la lance, ainsi que des archers de cavalerie."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}
 			
 			Cataphracts = {
@@ -1294,7 +1294,7 @@ Main = {
 					100 = "Maîtrisée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les cataphractaires sont les ancêtres de toutes cavaleries lourdes. Les carapaçons protègent le cheval et le cavalier des flèches et permet de créer une cavalerie de choc puissante."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}
 
 			Longship = {
@@ -1500,7 +1500,7 @@ Main = {
 					100 = "Maîtrise"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Les armures médiévales représente un champ vaste et complexe dont la progression avance par petits tâtonnements au gré des inventions des artisans."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}	
 			
 			
@@ -1515,7 +1515,7 @@ Main = {
 					150 = "Canon à bombarde"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}	
 
 			NationState = {
@@ -1675,6 +1675,29 @@ Main = {
 				SUMMARY "Apporte Culture, Piété et vous permet de renforcer vos Munuments Religieux"
 			}
 		
+			Arquebus = {
+				NAME "Arquebuse"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arquebuse est la première arme à feu suffisament efficace qui marque la supériorité de la poudre à canon sur l'archerie et un changement radical du champ de bataille."
+				SUMMARY "Technologie militaire"
+			}	
+			
+			Musket = {
+				NAME "Mousquet"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
+				SUMMARY "Technologie militaire"
+			}	
 			
 				
 		}
