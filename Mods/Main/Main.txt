@@ -2090,9 +2090,6 @@ Main = {
 				
 				
 				LINK NavalTrade = {
-				WEIGHT [ max ] Harbours
-				}
-				LINK NavalTrade = {
 				WEIGHT [ max ] Harbours + TradeRoads
 				}
 				LINK Navy = {
@@ -3813,10 +3810,13 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ~Infantry
+					HINT ~Infantry 
+					CONDITION_VALUE Hunting > 25
+					OR
+					CONDITION_NODE + Mill
+					ALWAYS
 					CONDITION_NODE + Infantry
 					CONDITION_NODE - Arquebus
-					CONDITION_VALUE Hunting > 25
 				}
 				PRICE = {
 					$PoliticalPower = 30
@@ -5647,7 +5647,9 @@ Main = {
 					PROCESS output = value * 100 / 1400
 					PROCESS ArtisanClass = ArtisanClass + PerSeconds(output)
 					PROCESS OverlandTrade = OverlandTrade + PerSeconds(output * 0.5)
-					SET TradeGoods.value [ : : 1000 + TradeFair.value * 5  ]
+					IF ~~StockExchange == 0
+						SET TradeGoods.value [ : : 1000 + TradeFair.value * 5  ]
+					ENDIF
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.3 )
 				}
 				LINK ArtisanClass = {
@@ -5665,7 +5667,9 @@ Main = {
 				
 				
 				LINK TradeGoods = {
+					IF ~StockExchange == 0
 						WEIGHT [ max ] 1000 + TradeFair * 5
+					ENDIF
 				}
 
 			}
@@ -6046,7 +6050,7 @@ Main = {
 			
 			AcrossTheOcean = {
 				TYPE Cultural
-				VALUE value [ 0 0 100 >> 1 ]
+				VALUE value [ 0 0 40 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Caravel
 					ALWAYS
@@ -6062,9 +6066,17 @@ Main = {
 					$Wealth = 20
 				}
 				TICK = {
+				TradeRoads += PerSeconds( value / 500 )
 				}
 				
 				
+				LINK TradeRoads = {
+					IF value > 0
+						COLOR green
+						FLUX value / 10
+					ENDIF
+					}
+					
 				TRIGGER_SPAWN AcrossTheOcean = {
 					ERA DiscoveryAge
 					}
@@ -6130,6 +6142,65 @@ Main = {
 						FLUX value / 10
 					ENDIF
 			}
+			}
+			
+			
+			StockExchange = {
+				TYPE Cultural
+				VALUE value [ 0 0 60 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Banks
+					CONDITION_VALUE TradeFair >= 40
+					CONDITION_VALUE Banks >= 30
+					CONDITION_VALUE AcrossTheOcean >= 20
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 800
+				}
+				UPGRADE = {
+					$Wealth = (LinkCount(StockExchange) + 1) * 10
+				}
+				TICK = {
+						SET TradeGoods.value [ : : 2000 + StockExchange.value * 20 ]
+						SET AcrossTheOcean.value [ : : 40 + StockExchange.value ]
+				}
+
+				LINK TradeGoods = {
+						WEIGHT [ max ] 2000 + StockExchange.value * 20
+				}
+				
+				LINK AcrossTheOcean = {
+						WEIGHT [ max ] 2000 + StockExchange.value * 20
+				}
+			}
+			
+			
+			TradeCompagnies = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~StockExchange
+					CONDITION_VALUE TradeFair >= 40
+					CONDITION_VALUE Banks >= 30
+					CONDITION_VALUE AcrossTheOcean >= 20
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 800
+				}
+				UPGRADE = {
+					$Wealth = (LinkCount(TradeCompagnies) + 1) * 10
+				}
+				TICK = {
+						SET TradeRoads.value [ : : 100 + TradeCompagnies.value * 3 ]
+				}
+
+				LINK TradeRoads = {
+						WEIGHT [ max ] 100 + TradeCompagnies.value * 3
+				}
 			}
 			
 			

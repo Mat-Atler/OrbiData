@@ -1731,17 +1731,24 @@ Main = {
 
 			NavigationTools = {
 				NAME "Navigation Tools"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"The compass and other small technical breakthroughs in the field of navigation give us unparalleled mastery of the seas."
 				SUMMARY "Ensure a safer sea travel"
 			}
 			Caravel = {
 				NAME "Caravel"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"The caravel is the culmination of the improvement of sailing that allows safe navigation across seas and oceans."
 				SUMMARY "Allow us to across the ocean"
 			}
 			AcrossTheOcean = {
 				NAME "Across the Ocean"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				LEVEL value = {
+					0 = "No expeditions"
+					0.001 = " Timid expeditions"
+					30 = "To the New World"
+					50 = "Attempted circumnavigation"
+					80 = "Global expeditions"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Our new mastery of the seas allows us to organize gigantic expeditions across the oceans for a glorious future. "
 				SUMMARY "Organized travels across the seas"
 			}
 			
@@ -1768,6 +1775,13 @@ Main = {
 				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The rifle musket is the 2nd generation of firearm, capable of far greater power and reliability than an arquebus."
 				SUMMARY "Military Technology"
+			}	
+			
+			
+			StockExchange = {
+				NAME "Stock Exchange"
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  New business opportunities are forcing us to completely rethink our trading system. It allows a much greater flow of goods to be traded in our new commercial heart: the markets."
+				SUMMARY "Increases our maximum of Trade Goods."
 			}	
 
 		}

@@ -1675,6 +1675,30 @@ Main = {
 				SUMMARY "Apporte Culture, Piété et vous permet de renforcer vos Munuments Religieux"
 			}
 		
+		
+			NavigationTools = {
+				NAME "Outils de navigation"
+				DESCRIPTION "Valeur: " @[value,0.###]<br><br>"La boussole et d'autres petites percées techniques dans le domaine de la navigation nous permettent une maîtrise des mers sans pareil."
+				SUMMARY "Améliore la sécurité des voyages en mer"
+			}
+			Caravel = {
+				NAME "Caravel"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>"La caravelle est l'aboutissement de l'amélioration de la navigation à voile qui permet une navigation sûres à travers les mers et les océans."
+				SUMMARY "Permet de traverser l'océan"
+			}
+			AcrossTheOcean = {
+				NAME "Au-delà de l'océan"
+				LEVEL value = {
+					0 = "Aucune expédition"
+					0.001 = "Expéditions timides"
+					30 = "Vers le Nouveau Monde"
+					50 = "Tentatives de circumnavigation"
+					80 = "Expéditions globales"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Notre nouvelle maîtrise des mers nous permet d'organiser de gigantesques expéditions au delà des océans pour un avenir glorieux. "
+				SUMMARY "Voyages organisés à travers les mers"
+			}
+		
 			Arquebus = {
 				NAME "Arquebuse"
 				LEVEL value = {					
@@ -1697,6 +1721,12 @@ Main = {
 				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
 				SUMMARY "Technologie militaire"
+			}	
+			
+			StockExchange = {
+				NAME "Bourse commerciale"
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
+				SUMMARY "Augmente notre maximum de bien commerciaux."
 			}	
 			
 				
