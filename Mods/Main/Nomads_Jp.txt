@@ -12,36 +12,110 @@ Nomads = {
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "分散的で暗黙的で口頭的な社会関係の安定は長や支配者の一族にのみが負うものではありません。この値は行動とそれらの一族の心の状態で増やすことができます。"
 				SUMMARY "長の権限"
 			}
+			Clans = {
+				NAME "Clans"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The power structure in nomadic societies is mostly based on clans. A highly populated nomadic civilization will automatically increase the number and power of clans. Clans will also hunt and graze their livestock, lowering your outputs"
+				SUMMARY "The number of clans composing your civilization"
+			}
+			Tributaries = {
+				NAME "Tributaries"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The nomadic's empires don't bother to manage huge territories and relies mostly on tributaries. The empire and its tributaries relations can be summurized by, 'Give me your money and you're staying alive.' But beware if your army become weak some tributaries will simply stop this fair trade"
+				SUMMARY "Semi-independent states buying your 'protection'."
+			}
+			Land = {
+				NAME "Land"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "A measure of steppes you have, allow to have more livestock at the same time. The lands is also a determinant factor in the development of more clans."
+				SUMMARY "Land will increase the total number of livestock and clans"
+			}
 		}
 		Levers = {
-			SacredGuidance = {
-				NAME "神聖な導き"
-				DESCRIPTION <b>"値: "@[value] </b> <br><br> "一族の長は様々な儀式に通じており唯一人々が神の承認を得る窓口になります。長は現人神としてあがめられており、民衆の信心深さが権威の強化につながります。"
-				SUMMARY "神の導きによる明確なビジョンをもった遊牧拠点"
+			TranshumanceOrganisation = {
+				NAME "Transhumance Organisation"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are organized in a federation you can deploy policies to organize the grazing of the livestock of all the clans, in that way the negatives impacts of clans will be lowered"
+				SUMMARY "Reduce the penalties that clans have over livestock"
 			}
-			Horde = {
-				NAME "大群"
-				DESCRIPTION <b>"値: "@[value] </b> <br><br> "長の権威は軍事力と多くの敵を打ち負かした戦争によって示されます。略奪や力を誇示することは長の権威を高めます。"
-				SUMMARY "略奪によってなりたっているタイプの遊牧民"
+			HuntingOrganization = {
+				NAME "Hunting Organization"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are organized in a federation you can deploy policies to organize hunting party, creating strict rule and space to each region will greatly lower the negatives impacts of the clans on the fauna."
+				SUMMARY "Reduce the penalties that clans have over the fauna"
 			}
-			Transhumance = {
-				NAME "移牧"
-				DESCRIPTION <b>"値: "@[value] </b> <br><br> "人々は土を耕し一定の人数が移動します。それらは垂直方向の狭い地域に限定されます。"
-				SUMMARY "牛のためだけに移動する準農業社会"
+			Interclanicwar = {
+				NAME "Interclanic wars"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The clans will not listen you by pure kindness, teach them a lesson with your army to increase your authority, in the process it will lower their power, temporarily."
+				SUMMARY "Using the army to increase your authority"
 			}
-			Seminomadism = {
-				NAME "半遊牧民"
-				DESCRIPTION <b>"値: "@[value] </b> <br><br> "農業の成長の可能性と移動をしない生活の快適さはますます多くの人々を引き付けています。一族のメンバーのほとんどは移動せず、商業地域と農業地域に恒久的な村が形成されています。"
-				SUMMARY "以前より移動している時間が減り作物の成長と半定住のための建物を建てるようになった"
+			Clanicbanners = {
+				NAME "Clanic Banners"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are a federation you can raise the men of our federated clans to significantly increase the total of talented horsmen in the army."
+				SUMMARY "Use the authority to increase quickly the number of horsemen"
 			}
-			Migration = {
-				NAME "移住"
-				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我々の土地は住みにくいですが他の土地に侵入し定住することがおそらく可能です。我々は子供たちのためによりよい未来を与えられます。しかしこの困難で野心的な目標は長の権威を犠牲にします。"
-				SUMMARY "我々の土地は貧しいが他にはもっと良い場所と家が見つかるはずだ"
+			Clanicfederation = {
+				NAME "Clanic federation"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that our civilization is spread in the steppes and that you have enough authority over them you can federalize the clans to better organize them."
+				SUMMARY "First step to organized the clans"
+			}
+			DivineGuidance = {
+				NAME "Divine Guidance"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The divine speak through the mouths of the leaders, and who will dare to express concern about the will of the heaven."
+				SUMMARY "You are blessed by a divine authority"
+			}
+			ClanicConcile = {
+				NAME "Clanic Concile"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Institute formal and codified meetings with the most important clan leaders that are part of your federation. In that way the established order will be more accepted but at the cost of slower changes "
+				SUMMARY "Increase the stability of the federation"
+			}
+			ClanicVisit = {
+				NAME "Clanic Visit"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "By complex rites and frequent visits, often supported by political unions and fabulous gifts. You can place yourself as an unavoidable clan leader in the region."
+				SUMMARY "Increase your authority at the cost of political powers"
+			}
+			Nomadicconquest = {
+				NAME "Nomadic Conquest"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Bring terror to the strangers lands, capture lands an weath and reduce them into servility."
+				SUMMARY "Attack your neighbors for slave and wealth"
+			}
+			Nomadicinvasion = {
+				NAME "Nomadic Invasion"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our army are ready to bring the world to their knees, destroy the world of the weak sedentaries and claim your rightful place."
+				SUMMARY "Start massive invasion over the world"
+			}
+			EternalSteppe = {
+				NAME "Eternal steppes"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "you succeed, your people call you the universal ruler. Your enemies call you, only shivering with fear, a scourge of god."
+				SUMMARY "You are the biggest continuous empire that the world has ever seen"
+			}
+			ParthianShot  = {
+				NAME "Parthian Shot"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Your people's mastery of both bows and horse ridings open new innovative tactics, the parthian shot is one of them, it consist of shooting arrows from horseback at the closest of the enemies and then ride in the rear to avoid direct confrontation."
+				SUMMARY "A new war tactic"
+			}
+			Chariot  = {
+				NAME "Chariot"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The first step of a powerful cavalry was the chariot, it allowed the very first migratory civilization to conquer vast portion of lands and establish them as regional powers."
+				SUMMARY "The first way to use cavalry in warfare"
+			}
+			Warriorsgame  = {
+				NAME "Warrior's game"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The culture of your clan is heavily centered on great game were all can participate, they fight in wrestling contest, compete in horseback race or precision competition, it usually closed by a great ritual hunt."
+				SUMMARY "Increase your authority and your military efficiency"
 			}
 		}
 		Events = {
-			
+			TrickedSucession = {
+				NAME "Tricked Sucession"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "In the succession ceremony the current ruler was revealed to cheat. Even if the result cannot be changed the authority of the clan is challenged."
+				SUMMARY "Lower your authority"
 			}
+			IndependanceOfTributaries = {
+				NAME "Independance Of Tributaries"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The tibutaries are no longer controlled by your army some of them simply stop to pay you."
+				SUMMARY "Make sure to keep an army to enforce your will"
+			}
+			Clanseparatisme = {
+				NAME "Clan Separatisme"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Some clans become more and more autonomous, and the recent lack of authority will make them independent."
+				SUMMARY "Keep an high authority to control your clans"
+			}
+		}
 	}
 }
