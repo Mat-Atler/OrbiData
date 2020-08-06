@@ -14,22 +14,22 @@ Nomads = {
 			
 			Authority = {
 				NAME "Authorité"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Dans une société aussi décentralisée, les rapports de forces sont oral et tacite, l'autorité de votre chef est donc central dans votre capacité à stabiliser."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Dans une société aussi décentralisée, les rapports de forces sont oraux et tacites, l'autorité de votre chef est donc centrale dans votre capacité à stabiliser votre clan."
 				SUMMARY "Augmente la stabilité"
 			}
 			Clans = {
 				NAME "Clans"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "La structure de base de votre société est le clan. Une population élevée va automatiquement se scinder en clan et augmantant leurs puissances. Les clans feront paître leurs bétails et chasseront, diminuant donc le rendemant de ses activitépour vous."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "La structure de base de votre société est le clan. Une population élevée va automatiquement se scinder en clan, augmantant ainsi leurs puissances. Les clans feront paître leurs bétails et chasseront, diminuant donc le rendemant de ses activités pour vous."
 				SUMMARY "Le nombre de clans qui composent votre civilisation"
 			}
-			Tributaries = {
+			Tributaries = { 
 				NAME "Tributaires"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les empires nomades ne s'embête guère à la gestion de tout leurs vastes territoires et laisse une relative autonomie a de nombreuse région. L& relation entre le chef de clan et ces régions peuvent être résumer en : 'Donnez moi des richesses et vous restes en vie.' Mais attention si votre armée n'est plus assez puissante vos tributaires vont surement arrêter cette, pourtant juste, relation."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les empires nomades ne s'embêtent guère à la gestion de leurs vastes territoires et laissent une relative autonomie à de nombreuses régions. L& relation entre le chef de clan et ces régions peuvent être résumée par : 'Donnez-moi vos richesses et vous resterez en vie.' Mais attention si votre armée n'est plus assez puissante vos tributaires vont surement arrêter cette, pourtant juste, relation."
 				SUMMARY "État Semi-independent achètant votre 'protection'."
 			}
 			Land = {
 				NAME "Terre"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les terres nomades sont surtout composées de steppe, utilisé pour faire paître un plus grand nombre de bêtes en sécurité. les terres sont aussi un élément déterminant dans le nombre de clan"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les terres nomades sont surtout composées de steppe, utilisé pour faire paître un plus grand nombre de bêtes en sécurité. les terres sont également un élément déterminant dans le nombre de clan"
 				SUMMARY "Augmente le nombre total de bétail et de clans"
 			}
 		}
@@ -41,87 +41,87 @@ Nomads = {
 			}
 			HuntingOrganization = {
 				NAME "Organisation de la chasse"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que nous sommes organisés en fédération, nous pouvons déployer des politiques pour organiser les chasses des différents clan. La création de règles strictes et d'un espace pour chaque clan permettra de réduire considérablement les impacts négatifs des clans sur la faune."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que nous sommes organisés en fédération, nous pouvons déployer des politiques pour organiser les chasses des différents clans. La création de règles strictes et d'un espace pour chaque clan permettra de réduire considérablement les impacts négatifs des clans sur la faune."
 				SUMMARY "Réduit les pénalités des clans sur la faune"
 			}
 			Interclanicwar = {
 				NAME "Guerre interclanique"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les clans ne vous écouterons pas par pure gentillesse, donnez-leur une leçon avec votre armée pour augmenter votre autorité. En conséquence les clans perdront de leur puissances, du moins temporairement."
-				SUMMARY "Augementer votre autorité en utilisant votre armée"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les clans ne vous écouteront pas par pure gentillesse, donnez-leur une leçon avec votre armée pour augmenter votre autorité. En conséquence les clans perdront de leur puissances, du moins temporairement."
+				SUMMARY "Augemente votre autorité en utilisant votre armée"
 			}
 			Clanicbanners = {
 				NAME "Levée clanique"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que nous sommes une fédération, nous pouvons lever les hommes des clans fédérés pour remplir rapidement vos armées de cavalier talentueux."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que nous sommes une fédération, vous pouvez lever les hommes des clans fédérés pour remplir rapidement vos armées de talentueux cavaliers."
 				SUMMARY "Utiliser de votre autorité pour accroitre rapidement vos troupes."
 			}
 			Clanicfederation = {
 				NAME "Fédération Clanique"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que notre civilisation c'est étendue et que vous avez suffisamment d'autorité sur la totalité des clans vous pouvez officialiser votre règne."
-				SUMMARY "First step to organized the clans"
+				SUMMARY "La première étape pour organiser les clans."
 			}
 			DivineGuidance = {
-				NAME "Divine Guidance"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The divine speak through the mouths of the leaders, and who will dare to express concern about the will of the heaven."
-				SUMMARY "You are blessed by a divine authority"
+				NAME "Direction divine"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Le divin parle a travers la bouche de nos dirigents, et qui exprimera son désacord a propos de la volonté des cieux."
+				SUMMARY "Vous êtes auréolé d'une autorité divine"
 			}
 			ClanicConcile = {
-				NAME "Clanic Concile"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Institute formal and codified meeting if the most important clans leader that are part of our federation. In that way the established order will be more accepted but at the cost of slower changes "
-				SUMMARY "Increase the stability of the federation"
+				NAME "Conseil clanique"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Instituez des rassemblements formels et codifiés avec les plus puissants chefs de clans composants notre fédération. Grâce à cela l'ordre établit sera accepté bien plus facilement,  mais au coût de changements plus long a mettre en place."
+				SUMMARY "Augmente la stabilité de la fédération"
 			}
 			ClanicVisit = {
 				NAME "Clanic Visit"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "By complex rite and current visit, often supported by political union and fabulous gift. You can put yourself as an unavoidable clan leader in the region."
-				SUMMARY "Increase your authority at the cost of political powers"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Grâce à des complexes rites et des visites fréquentes, accompagnées par des unions arrangées et cadeaux sonptueux, vous pouvez vous positionner comme un chef de clan inévitable."
+				SUMMARY "Augmente votre autorité au prix de pouvoirs politiques"
 			}
 			Nomadicconquest = {
-				NAME "Nomadic Conquest"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Bring terror to the stranger capture lands for your livestocks and reduce them into servility."
-				SUMMARY "Attack your neighbors for slave and wealth"
+				NAME "Conquête Nomade"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Apporter la terreur chez les étrangers, capturer leurs terres et réduisez-les en servitudes."
+				SUMMARY "Attaquez vos voisins pour leurs richesses et terres."
 			}
 			Nomadicinvasion = {
-				NAME "Nomadic Invasion"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our army are ready to bring the world to their knees, destroy the world of the weak sedentary and claim your rightful place."
-				SUMMARY "Start massive invasion over the world"
+				NAME "Invasions Nomades"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que les clans sont unifiés vous pouvez enfin mettre le monde à genoux, Détruisez le monde des faibles sédentaires et réclamer la place qui vous reviens de droit."
+				SUMMARY "Lancez des invasions massive sur le monde"
 			}
 			EternalSteppe = {
-				NAME "Eternal steppes"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "you succeed, Your enemies call you a scourge of god and your people call you the universal ruler."
-				SUMMARY "You are the biggest continuous Empire that the world has ever seen"
+				NAME "Steppe eternel"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Vous avez réussi, vos allié vous appellent le dirigeant universel, vos ennemis eux vous évoquent qu'en tremblant de peur et sous le nom de fléau de Dieu."
+				SUMMARY "Vous êtes l'empire continue le plus grand que le monde n'est jamais vu"
 			}
 			ParthianShot  = {
-				NAME "Parthian Shot"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Your people's mastery of both the bow and the horse riding open new innovative tactics, the parthian shot is one of them, it consist of shooting arrow from horseback at the closest of the enemy and them ride in the back to avoid direct confrontation."
-				SUMMARY "A new war tactic"
+				NAME "Tir Parthe"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Le talent inégalé de votre peuple à maîtriser à la fois le tire a l'arc et la monte ouvre la porte à une nouvelle tactique inovante, Le tir parthe. Cela consiste à se raprocher au plus proche de la cible pour un tir assuré puis repartir en arrière pour recharger et éviter la confrontation au corps à corps."
+				SUMMARY "Une nouvelle tactique de guerre"
 			}
 			Chariot  = {
 				NAME "Chariot"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The first step of a powerful cavalry was the chariot, it allow the very first migratory civilization to conquer vast portion of land and establish them as regional power."
-				SUMMARY "The first way to use cavalry in warfare"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les premières étapes d'une puissante cavalerie passent par l'utilisation du chariot. Il a permis aux tribus originellement nomades de se saisir d'immenses parties du monde et se placer en puissances régionales."
+				SUMMARY "La premier utilisation des chevaux sur le champs de bataille"
 			}
 			Warriorsgame  = {
-				NAME "Warrior's game"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The culture of your clan is heavily centered on great game were all can participate, they fight in wrestling contest, compete in horseback race or precision competition, it usually closed by a great ritual hunt."
-				SUMMARY "Increase your authority and your military efficiency"
+				NAME "Compétition guerrière"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "La culture de votre clan est lourdement centré sur de grands jeux auxquels tout le monde peut participer. ils sont basés sur des concours de lutte, des compétitions de courses a cheval ou encore des tournois de précision. Les jeux se terminent souvent par une chasse cérémoniale."
+				SUMMARY "Augmentent votre efficacité militaire, votre authorité et votre culture"
 			}
 			
 			
 		}
 		Events = {
 			TrickedSucession = {
-				NAME "Tricked Sucession"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "In the succession ceremony the current ruler was revealed to cheat even if the result cannot be changed th authority of the clan is challenged."
-				SUMMARY "Lower your authority"
+				NAME "Triche lors de la sucession"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Dans la ceremonie de sucession votre chef actuel est suspecté de triche même si le résultat ne peux pas être changer sa réputation va en être entaché et son autorité va sûrement être défié."
+				SUMMARY "Baisse votre autorité"
 			}
 			IndependanceOfTributaries = {
-				NAME "Independance Of Tributaries"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The tibutaries are no longer controlled by your army some of them simply stop to pay you."
-				SUMMARY "Make sure to keep an army to enforce your will"
+				NAME "Indépendance des Tributaires"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Vos tributaires ne sont plus 'protégés' par votre armée et ont simplement arrêté de vous payer."
+				SUMMARY "Garder une armées puissante pour les garder dans le rang"
 			}
 			Clanseparatisme = {
-				NAME "Clan Separatisme"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Some clans become more and more independent and the recent lack of authority will make them independent."
-				SUMMARY "Keep an high authority to control your clans"
+				NAME "Séparatisme des clans"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Certains clans deviennent de plus en plus autonome et votre récent manque d'autorité les a rendus de facto indépendent."
+				SUMMARY "Garder une autorité haute"
 			}
 		}
 	}
