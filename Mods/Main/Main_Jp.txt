@@ -73,14 +73,14 @@ Main = {
 			TEXT "<b>規模: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> 支配下にある土地の大きさですが利益を得るためにはしっかりと治める必要があります。最後の土地が失われたらゲームオーバーです。"
 		}
 			WinTravel = {
-			NAME "Travel"
-			TEXT "Travel status: " @[TravelMod.Travel.value]
-			TEXT "Choose a place to go"
+			NAME "旅行"
+			TEXT "旅行の状態。" @[TravelMod.Travel.value]
+			TEXT "行きたい場所を選ぶ"
 		}
 		
 		WinMove = {
-			NAME "Choose a place to go"
-			TEXT "Move here"
+			NAME "行く場所を選ぶ"
+			TEXT "ここに移動します"
 		}
 		WinColonialStateSize = {
 			NAME "Colonial State Size"
@@ -135,8 +135,8 @@ Main = {
 			DESCRIPTION "我々は攻撃をうけています!"
 		}
 		CannotTravel = {
-			NAME "Cannot travel here"
-			DESCRIPTION "Cannot travel here"
+			NAME "ここは旅行できません"
+			DESCRIPTION "ここでは旅行はできません"
 		}
 		CannotColony = {
 			NAME "Cannot start a colony here"
