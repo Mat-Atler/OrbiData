@@ -86,7 +86,7 @@ Nomads = {
 			}
 			EternalSteppe = {
 				NAME "Eternal steppes"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "you succeed, your people call you the universal ruler. Your enemies call you, only shivering with fear, a scourge of god."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "You succeed, your people call you the universal ruler. Your enemies call you, only shivering with fear, a scourge of god."
 				SUMMARY "You are the biggest continuous empire that the world has ever seen"
 			}
 			ParthianShot  = {
@@ -109,7 +109,7 @@ Nomads = {
 		}
 		Events = {
 			TrickedSucession = {
-				NAME "Tricked Sucession"
+				NAME "Tricked Succession"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "In the succession ceremony the current ruler was revealed to cheat. Even if the result cannot be changed the authority of the clan is challenged."
 				SUMMARY "Lower your authority"
 			}
@@ -119,7 +119,7 @@ Nomads = {
 				SUMMARY "Make sure to keep an army to enforce your will"
 			}
 			Clanseparatisme = {
-				NAME "Clan Separatisme"
+				NAME "Clan Separatism"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Some clans become more and more autonomous, and the recent lack of authority will make them independent."
 				SUMMARY "Keep an high authority to control your clans"
 			}
