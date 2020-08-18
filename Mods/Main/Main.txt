@@ -2989,8 +2989,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN CelesteMandate = {
-					REMOVE Monarchy				
-					REMOVE MilitaryDictatorship		
+					REMOVE Government		
 					ERA IronAge
 					PROCESS CelesteMandate = 50
 					RESOURCE_MAX $PoliticalPower = 500
@@ -3859,6 +3858,8 @@ Main = {
 					CONDITION_NODE + Urbanization
 					OR
 					CONDITION_VALUE Population > 75
+					OR
+					CONDITION_NODE + Cavalry
 					ALWAYS
 					CONDITION_NODE + AristocracyClass
 				}
