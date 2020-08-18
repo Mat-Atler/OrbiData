@@ -19,12 +19,12 @@ Nomads = {
 			}
 			Clans = {
 				NAME "Clans"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The power structure in nomadic societies is mostly based on clans. A highly populated nomadic civilization will automatically increase the number and power of clans. Clans will also hunt and graze their livestock, lowering your outputs"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The power structure in nomadic societies is mostly based on clans. A highly populated nomadic civilization will automatically increase the number and power of clans. Clans will also hunt and graze their livestock, lowering your outputs."
 				SUMMARY "The number of clans composing your civilization"
 			}
 			Tributaries = {
 				NAME "Tributaries"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The nomadic's empires don't bother to manage huge territories and relies mostly on tributaries. The empire and its tributaries relations can be summurized by, 'Give me your money and you're staying alive.' But beware if your army become weak some tributaries will simply stop this fair trade"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Nomadic's empires don't bother to manage huge territories and relies mostly on tributaries. The empire and its tributaries relations can be summurized by, 'Give me your money and you're staying alive.' But beware if your army become weak some tributaries will simply stop this fair trade."
 				SUMMARY "Semi-independent states buying your 'protection'."
 			}
 			Land = {

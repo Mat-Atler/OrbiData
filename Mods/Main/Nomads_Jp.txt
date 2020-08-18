@@ -8,113 +8,113 @@ Nomads = {
 		States = {
 			
 			Authority = {
-				NAME "æ¨©å¨"
-				DESCRIPTION <b>"å€¤: "@[value] </b> <br><br> "åˆ†æ•£çš„ã§æš—é»™çš„ã§å£é ­çš„ãªç¤¾ä¼šé–¢ä¿‚ã®å®‰å®šã¯é•·ã‚„æ”¯é…è€…ã®ä¸€æ—ã«ã®ã¿ãŒè² ã†ã‚‚ã®ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚ã“ã®å€¤ã¯è¡Œå‹•ã¨ãã‚Œã‚‰ã®ä¸€æ—ã®å¿ƒã®çŠ¶æ…‹ã§å¢—ã‚„ã™ã“ã¨ãŒã§ãã¾ã™ã€‚"
-				SUMMARY "é•·ã®æ¨©é™"
+				NAME "Œ ˆĞ"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "•ªU“I‚ÅˆÃ–Ù“I‚ÅŒû“ª“I‚ÈĞ‰ïŠÖŒW‚ÌˆÀ’è‚Í’·‚âx”zÒ‚Ìˆê‘°‚É‚Ì‚İ‚ª•‰‚¤‚à‚Ì‚Å‚Í‚ ‚è‚Ü‚¹‚ñB‚±‚Ì’l‚Ís“®‚Æ‚»‚ê‚ç‚Ìˆê‘°‚ÌS‚Ìó‘Ô‚Å‘‚â‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B"
+				SUMMARY "’·‚ÌŒ ŒÀ"
 			}
 			Clans = {
-				NAME "æ°æ—"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The power structure in nomadic societies is mostly based on clans. A highly populated nomadic civilization will automatically increase the number and power of clans. Clans will also hunt and graze their livestock, lowering your outputs"
-				SUMMARY "The number of clans composing your civilization"
+				NAME "‘°"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "—V–qĞ‰ï‚ÌŒ —Í\‘¢‚ÍA‚Ù‚Æ‚ñ‚Ç‚ª‘°‚ÉŠî‚Ã‚¢‚Ä‚¢‚Ü‚·BlŒû‚ª‘½‚¢—V–q•¶–¾‚Å‚ÍA©“®“I‚É‘°‚Ì”‚ÆŒ —Í‚ª‘‰Á‚µ‚Ü‚·B‚Ü‚½AƒNƒ‰ƒ“‚Íë‚è‚ğ‚µ‚½‚è‰Æ’{‚ğ•ú–q‚µ‚½‚è‚µ‚ÄA‚ ‚È‚½‚Ì‰Æ’{Yo‚ğ’á‰º‚³‚¹‚Ü‚·"
+				SUMMARY "‚ ‚È‚½‚Ì•¶–¾‚ğ\¬‚·‚é‘°‚Ì”"
 			}
 			Tributaries = {
-				NAME "å†Šå°å›½"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The nomadic's empires don't bother to manage huge territories and relies mostly on tributaries. The empire and its tributaries relations can be summurized by, 'Give me your money and you're staying alive.' But beware if your army become weak some tributaries will simply stop this fair trade"
-				SUMMARY "Semi-independent states buying your 'protection'."
+				NAME "û••‘"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "—V–q–¯‚Ì’é‘‚ÍL‘å‚È—Ì“y‚ğŠÇ—‚·‚é•K—v‚Í‚È‚­A‘å•”•ª‚ğ‘®‘‚É—Š‚Á‚Ä‚¢‚éB’é‘‚Æ‘®‘‚Æ‚ÌŠÖŒW‚ÍAu‹à‚ğ‚­‚ê‚ê‚Î¶‚©‚µ‚Ä‚â‚év‚Æ‚¢‚¤‚±‚Æ‚ÉW–ñ‚³‚ê‚Ü‚·B‚µ‚©‚µA‚à‚µ‚ ‚È‚½‚ÌŒR‘à‚ªã‚­‚È‚Á‚½ê‡A‚¢‚­‚Â‚©‚Ìx—¬‚ª‚±‚ÌuŒö³‚Èæˆøv‚ğ’P‚É’â~‚·‚é‚Ì‚Å’ˆÓ‚µ‚Ä‚­‚¾‚³‚¢B"
+				SUMMARY "”¼“Æ—§‘‰Æ‚Í‚ ‚È‚½‚Ìu•ÛŒìv‚ğ”ƒ‚Á‚Ä‚¢‚Ü‚·"
 			}
 			Land = {
-				NAME "é ˜åœŸ"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "A measure of steppes you have, allow to have more livestock at the same time. The lands is also a determinant factor in the development of more clans."
-				SUMMARY "Land will increase the total number of livestock and clans"
+				NAME "—Ì“y"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‚ ‚È‚½‚ª‚Á‚Ä‚¢‚é‘Œ´‚Ì‘å‚«‚³‚É‚æ‚èA“¯‚É‚æ‚è‘½‚­‚Ì‰Æ’{‚ğ‚Â‚±‚Æ‚ª‚Å‚«‚Ü‚·B“y’n‚Í‚Ü‚½A‚æ‚è‘½‚­‚Ì‘°‚Ì”­“W‚ÌŒˆ’è—vˆö‚Å‚·B"
+				SUMMARY "“y’n‚Í‰Æ’{‚â‘°‚Ì‘”‚ğ‘‚â‚·"
 			}
 		}
 		Levers = {
 			TranshumanceOrganisation = {
-				NAME "ç§»ç‰§åˆ¶åº¦"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are organized in a federation you can deploy policies to organize the grazing of the livestock of all the clans, in that way the negatives impacts of clans will be lowered"
-				SUMMARY "Reduce the penalties that clans have over livestock"
+				NAME "ˆÚ–q§“x"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‰äX‚ª˜A‡‚ğ‘g‚ñ‚¾¡A‚ ‚È‚½‚Í‚·‚×‚Ä‚Ì‘°‚Ì‰Æ’{‚Ì•ú–q‚ğ‘gD‰»‚·‚é‚½‚ß‚Ì­ô‚ğ“WŠJ‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·A‚»‚¤‚µ‚Ä‘°‚Ì•‰‚Ì‰e‹¿‚ğ’áŒ¸‚³‚¹‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B"
+				SUMMARY "‰Æ’{‚É‘Î‚·‚é‘°‚Ìƒyƒiƒ‹ƒeƒB‚ğŒ¸‚ç‚·"
 			}
 			HuntingOrganization = {
-				NAME "ç‹©çŒŸåˆ¶åº¦"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are organized in a federation you can deploy policies to organize hunting party, creating strict rule and space to each region will greatly lower the negatives impacts of the clans on the fauna."
-				SUMMARY "Reduce the penalties that clans have over the fauna"
+				NAME "ë—Â§“x"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‰äX‚ª˜A‡‚ğ‘g‚ñ‚¾¡A‹M•û‚Í‘gD‰»‚³‚ê‚½ë—Â”ÇAŒµŠi‚È|‚Ìì¬AŠe’nˆæ‚Å‚Ì—Ìˆæ‚ÌŠ„‚è“–‚Ä‚È‚Ç‚Ì­ô‚Ì“K—p‚ªo—ˆ‚Ü‚·B“®•¨‘Š‚Ö‚Ì‘°‚Ì•‰‚Ì‰e‹¿‚ğ‘å•‚É’á‰º‚³‚¹‚Ü‚·B"
+				SUMMARY "“®•¨‘Š‚É‘Î‚·‚é‘°‚Ìƒyƒiƒ‹ƒeƒB‚ğŒ¸‚ç‚·"
 			}
 			Interclanicwar = {
-				NAME "æ°æ—ã®æˆ¦äº‰"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The clans will not listen you by pure kindness, teach them a lesson with your army to increase your authority, in the process it will lower their power, temporarily."
-				SUMMARY "Using the army to increase your authority"
+				NAME "‘°‚Ìí‘ˆ"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‘°‚Íƒˆ‚ÈeØS‚Å‚Í‚ ‚È‚½‚Ì˜b‚ğ•·‚©‚È‚¢‚Å‚µ‚å‚¤A‚ ‚È‚½‚ÌŒ ˆĞ‚ğ‚‚ß‚é‚½‚ß‚É‚ ‚È‚½‚ÌŒR‘à‚Å”Ş‚ç‚É‹³ŒP‚ğ—^‚¦‚Ü‚µ‚å‚¤A‚»‚Ì‰ß’ö‚Åˆê“I‚É”Ş‚ç‚Ì—Í‚ğ’á‰º‚³‚¹‚Ü‚·B"
+				SUMMARY "ŒR‘à‚ğg‚Á‚ÄŒ ˆĞ‚ğ‚‚ß‚é"
 			}
 			Clanicbanners = {
-				NAME "æ°æ—ã®è»äº‹å¾´å"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are a federation you can raise the men of our federated clans to significantly increase the total of talented horsmen in the army."
-				SUMMARY "Use the authority to increase quickly the number of horsemen"
+				NAME "‘°‚ÌŒR–’¥û"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‰äX‚ª˜A‡‚ğ‘g‚ñ‚¾¡A˜A‡‘°‚Ì•ºm‚ğˆç‚Ä‚ÄAŒR‚Ì—DG‚È‹R•º‚Ì‘”‚ğ‘å•‚É‘‚â‚·‚±‚Æ‚ª‚Å‚«‚Ü‚·B"
+				SUMMARY "‹Rè‚Ì”‚ğ‹}‘¬‚É‘‰Á‚³‚¹‚é‚½‚ß‚ÉŒ ˆĞ‚ğg—p‚·‚é"
 			}
 			Clanicfederation = {
-				NAME "æ°æ—é€£åˆ"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that our civilization is spread in the steppes and that you have enough authority over them you can federalize the clans to better organize them."
-				SUMMARY "First step to organized the clans"
+				NAME "‘°˜A‡"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‚ ‚È‚½‚Ì•¶–¾‚ª‘Œ´‚ÉL‚ª‚Á‚Ä‚¢‚é¡A‚ ‚È‚½‚Í\•ª‚ÈŒ ŒÀ‚ğ‚Á‚Ä‚¢‚é‚Ì‚ÅA‘°‚ğ‚æ‚è—Ç‚­‘gD‚·‚é‚½‚ß‚É˜A‡‚ğ‘g‚Ş‚±‚Æ‚ª‚Å‚«‚Ü‚·B"
+				SUMMARY "‘°‘gD‰»‚Ì‘æˆê•à"
 			}
 			DivineGuidance = {
-				NAME "ç¥è–ãªå°ã"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The divine speak through the mouths of the leaders, and who will dare to express concern about the will of the heaven."
-				SUMMARY "You are blessed by a divine authority"
+				NAME "_¹‚È“±‚«"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "_‚ªw“±Ò‚ÌŒû‚©‚çŒê‚é‚Æ‚«A’N‚ª“V‚ÌŒäS‚ÉŠ¸‚¦‚ÄŒœ”O‚ğ•\–¾‚Å‚«‚é‚©B"
+				SUMMARY "‚ ‚È‚½‚Í_ˆĞ‚Éj•Ÿ‚³‚ê‚Ä‚¢‚é"
 			}
 			ClanicConcile = {
-				NAME "æ°æ—è©•è­°ä¼š"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Institute formal and codified meetings with the most important clan leaders that are part of your federation. In that way the established order will be more accepted but at the cost of slower changes "
-				SUMMARY "Increase the stability of the federation"
+				NAME "‘°•]‹c‰ï"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‚ ‚È‚½‚Ì˜A‡‚ğ\¬‚·‚éÅ‚àd—v‚È‘°‚Ìw“±Ò’B‚ÆA³®‚Å¬•¶‰»‚³‚ê‚½‰ï‹c‚ğ‘gD‚µ‚Ü‚·B‚»‚¤‚·‚é‚±‚Æ‚ÅŠm—§‚³‚ê‚½’˜‚Í‚æ‚èó‚¯“ü‚ê‚ç‚ê‚é‚æ‚¤‚É‚È‚è‚Ü‚·‚ªA‚»‚Ì‘ã‚Æ‚µ‚ÄA•Ï‰»‚Í‚æ‚è’x‚­‚È‚è‚Ü‚·B"
+				SUMMARY "˜A‡‚ÌˆÀ’è«‚ğ‚‚ß‚é"
 			}
 			ClanicVisit = {
-				NAME "æ°æ—è¨ªå•"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "By complex rites and frequent visits, often supported by political unions and fabulous gifts. You can place yourself as an unavoidable clan leader in the region."
-				SUMMARY "Increase your authority at the cost of political powers"
+				NAME "‘°–K–â"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "•¡G‚È‹V®‚Æ•p”É‚È–K–â‚É‚æ‚Á‚ÄA‚µ‚Î‚µ‚Î­¡‘g‡‚Æ‘f°‚ç‚µ‚¢‘¡‚è•¨‚É‚æ‚Á‚Äx‚¦‚ç‚ê‚Ü‚µ‚½B‚ ‚È‚½‚Í‚»‚Ì’nˆæ‚Ì”ğ‚¯‚ç‚ê‚È‚¢‘°‚Ìw“±Ò‚Æ‚µ‚Ä©•ª©g‚ğ”z’u‚·‚é‚±‚Æ‚ª‚Å‚«‚Ü‚·B"
+				SUMMARY "­¡Œ —Í‚ğ‹]µ‚É‚µ‚ÄŒ ˆĞ‚ğ‚‚ß‚é"
 			}
 			Nomadicconquest = {
-				NAME "éŠç‰§å¾æœ"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Bring terror to the strangers lands, capture lands an weath and reduce them into servility."
-				SUMMARY "Attack your neighbors for slave and wealth"
+				NAME "—V–qª•"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‘¼l‚Ì“y’n‚É‹°•|‚ğ‚à‚½‚ç‚µA“y’n‚Ì•x‚ğ•ßŠl‚µA”Ş‚ç‚ğ]‡‚É‚È‚é‚æ‚¤Œ¸‚ç‚µ‚Ü‚·B"
+				SUMMARY "“z—ê‚Æ•x‚Ì‚½‚ß‚É—×l‚ğUŒ‚"
 			}
 			Nomadicinvasion = {
-				NAME "éŠç‰§ä¾µç•¥"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Our army are ready to bring the world to their knees, destroy the world of the weak sedentaries and claim your rightful place."
-				SUMMARY "Start massive invasion over the world"
+				NAME "—V–qN—ª"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‰ä‚ªŒR‚Í¢ŠE‚ğ‹ü•‚³‚¹Aã‚¢’èZ–¯‚Ì¢ŠE‚ğ”j‰ó‚µA‚ ‚È‚½‚Ì³“–‚È’nˆÊ‚ğå’£‚·‚é€”õ‚ª‚Å‚«‚Ä‚¢‚Ü‚·B"
+				SUMMARY "¢ŠE’†‚Ö‘å‹K–ÍN—ª‚ğŠJn‚·‚é"
 			}
 			EternalSteppe = {
-				NAME "æ°¸é è‰åŸ"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "You succeed, your people call you the universal ruler. Your enemies call you, only shivering with fear, a scourge of god."
-				SUMMARY "You are the biggest continuous empire that the world has ever seen"
+				NAME "‰i‰“‘Œ´"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‚ ‚È‚½‚ª¬Œ÷‚·‚ê‚ÎA–¯‚Í‚ ‚È‚½‚ğ–œ”\‚Ìx”zÒ‚ÆŒÄ‚ÔB“G‚Í‚ ‚È‚½‚ğA‹°•|‚Åk‚¦‚È‚ª‚çA_‚ÌĞ‚¢‚ÆŒÄ‚ÔB"
+				SUMMARY "¢ŠEÅ‘å‚Ì˜A‘±’é‘"
 			}
 			ParthianShot  = {
-				NAME "ãƒ‘ãƒ«ãƒ†ã‚£ã‚¢ãƒ³ã‚·ãƒ§ãƒƒãƒˆ"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Your people's mastery of both bows and horse ridings open new innovative tactics, the parthian shot is one of them, it consist of shooting arrows from horseback at the closest of the enemies and then ride in the rear to avoid direct confrontation."
-				SUMMARY "A new war tactic"
+				NAME "ƒpƒ‹ƒeƒBƒAƒ“ƒVƒ‡ƒbƒg"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‚ ‚È‚½‚ÌlX‚Ì‹|‚Æ”np‚Ì—¼•û‚Ìn—û‚ÍAV‚µ‚¢ŠvV“I‚Èíp‚ğŠJ‚«‚Ü‚µ‚½Bƒpƒ‹ƒVƒA‚ÌƒVƒ‡ƒbƒg‚Í‚»‚Ì‚¤‚¿‚Ìˆê‚Â‚Å‚·AÅŠñ‚è‚Ì“G‚ğ”nã‚©‚ç–î‚ÅË‚¿A’¼Ú‘ÎŒˆ‚ğ”ğ‚¯‚é‚½‚ß‚ÉŒã•û‚É‘–‚é‚±‚Æ‚Å\¬‚³‚ê‚Ä‚¢‚Ü‚·B"
+				SUMMARY "V‚µ‚¢í‘ˆ‚Ìíp"
 			}
 			Chariot  = {
-				NAME "ãƒãƒ£ãƒªã‚ªãƒƒãƒˆ"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The first step of a powerful cavalry was the chariot, it allowed the very first migratory civilization to conquer vast portion of lands and establish them as regional powers."
-				SUMMARY "The first way to use cavalry in warfare"
+				NAME "ƒ`ƒƒƒŠƒIƒbƒg"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‹­—Í‚È‹R•º‚Ì‘æˆê•à‚Íƒ`ƒƒƒŠƒIƒbƒg‚Å‚ ‚èA‚»‚ê‚Í”ñí‚É‰Šú‚ÌˆÚZ•¶–¾‚ªAL‘å‚È“y’n‚Ìˆê•”‚ğª•‚µA’nˆæ‚Ì‘å‘‚Æ‚µ‚ÄŠm—§‚·‚é‚±‚Æ‚ğ‰Â”\‚É‚µ‚Ü‚µ‚½B"
+				SUMMARY "í‘ˆ‚Å‚Ì‹R•º‚ÌÅ‰‚Ìg‚¢•û"
 			}
 			Warriorsgame  = {
-				NAME "æ­¦è€…å‹è² "
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The culture of your clan is heavily centered on great game were all can participate, they fight in wrestling contest, compete in horseback race or precision competition, it usually closed by a great ritual hunt."
-				SUMMARY "Increase your authority and your military efficiency"
+				NAME "•ÒŸ•‰"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‚ ‚È‚½‚Ìˆê‘°‚Ì•¶‰»‚ÍA‚·‚×‚Ä‚ªQ‰Á‚·‚é‚±‚Æ‚ª‚Å‚«‚½ˆÌ‘å‚ÈƒQ[ƒ€‚ğdS‚É‚µ‚Ä‚¢‚Ü‚·A”Ş‚ç‚ÍƒŒƒXƒŠƒ“ƒOƒRƒ“ƒeƒXƒg‚Å“¬‚¢A‹£”n‚â¸–§ËŒ‚‘å‰ï‚Å‹£‚¢‚Ü‚µ‚½B‚»‚ê‚Í’ÊíAˆÌ‘å‚È‹V®‚Ìë‚è‚Å•Â‰ï‚µ‚Ü‚µ‚½B"
+				SUMMARY "Œ ˆĞ‚ğ‚‚ß‚ÄŒR–Œø—¦‚ğã‚°‚é"
 			}
 		}
 		Events = {
 			TrickedSucession = {
-				NAME "é¨™ã•ã‚ŒãŸå¾Œç¶™è€…"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "In the succession ceremony the current ruler was revealed to cheat. Even if the result cannot be changed the authority of the clan is challenged."
-				SUMMARY "Lower your authority"
+				NAME "éx‚³‚ê‚½ŒãŒpÒ"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "Œp³‚Ì®‚ÅŒ»x”zÒ‚Ì•s³‚ª”­ŠoBŒ‹‰Ê‚Í•Ï‚¦‚ç‚ê‚È‚­‚Ä‚àA‘°‚ÌŒ ˆĞ‚Í–â‚í‚ê‚Ü‚·B"
+				SUMMARY "Œ ˆĞ‚ğ‰º‚°‚é"
 			}
 			IndependanceOfTributaries = {
-				NAME "å†Šå°å›½ã®ç‹¬ç«‹æ€§"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The tibutaries are no longer controlled by your army some of them simply stop to pay you."
-				SUMMARY "Make sure to keep an army to enforce your will"
+				NAME "û••‘‚Ì“Æ—§«"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "‘®‘‚Í‚à‚Í‚â‚ ‚È‚½‚ÌŒR‘à‚Éx”z‚³‚ê‚Ä‚¢‚È‚¢B‚¢‚­‚Â‚©‚Ì‘®‘‚Í‚ ‚È‚½‚Ö‚Ìx•¥‚¢‚ğ’P‚É~‚ß‚Ü‚µ‚½B"
+				SUMMARY "‚ ‚È‚½‚ÌˆÓu‚ğ‹­§‚·‚é‚½‚ß‚ÉŒR‘à‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢"
 			}
 			Clanseparatisme = {
-				NAME "æ°æ—ã®åˆ†é›¢ä¸»ç¾©"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Some clans become more and more autonomous, and the recent lack of authority will make them independent."
-				SUMMARY "Keep an high authority to control your clans"
+				NAME "‘°‚Ì•ª—£å‹`"
+				DESCRIPTION <b>"’l: "@[value] </b> <br><br> "ˆê•”‚Ì‘°‚Í‚Ç‚ñ‚Ç‚ñ©å“I‚É‚È‚Á‚Ä‚¢‚Ü‚·BÅ‹ß‚ÌŒ ˆĞ‚Ì‚È‚³‚©‚ç”Ş‚ç‚Í“Æ—§‚µ‚Ä‚¢‚«‚Ü‚·B"
+				SUMMARY "‘°‚ğ§Œä‚·‚é‚½‚ß‚É‚‚¢Œ ˆĞ‚ğˆÛ‚µ‚Ä‚­‚¾‚³‚¢"
 			}
 		}
 	}
