@@ -8,113 +8,113 @@ Nomads = {
 		States = {
 			
 			Authority = {
-				NAME "����"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���U�I�ňÖٓI�Ō����I�ȎЉ�֌W�̈���͒���x�z�҂̈ꑰ�ɂ݂̂��������̂ł͂���܂���B���̒l�͍s���Ƃ����̈ꑰ�̐S�̏�Ԃő��₷���Ƃ��ł��܂��B"
-				SUMMARY "���̌���"
+				NAME "権威"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "分散的で暗黙的で口頭的な社会関係の安定は長や支配者の一族にのみが負うものではありません。この値は行動とそれらの一族の心の状態で増やすことができます。"
+				SUMMARY "長の権限"
 			}
 			Clans = {
-				NAME "����"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�V�q�Љ�̌��͍\���́A�قƂ�ǂ������Ɋ�Â��Ă��܂��B�l���������V�q�����ł́A�����I�Ɏ����̐��ƌ��͂��������܂��B�܂��A�N�����͎���������ƒ{����q�����肵�āA���Ȃ��̉ƒ{�Y�o��ቺ�����܂�"
-				SUMMARY "���Ȃ��̕������\�����鎁���̐�"
+				NAME "氏族"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "遊牧社会の権力構造は、ほとんどが氏族に基づいています。人口が多い遊牧文明では、自動的に氏族の数と権力が増加します。また、クランは狩りをしたり家畜を放牧したりして、あなたの家畜産出を低下させます"
+				SUMMARY "あなたの文明を構成する氏族の数"
 			}
 			Tributaries = {
-				NAME "������"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�V�q���̒鍑�͍L��ȗ̓y���Ǘ�����K�v�͂Ȃ��A�啔���𑮍��ɗ����Ă���B�鍑�Ƒ����Ƃ̊֌W�́A�u���������ΐ������Ă��v�Ƃ������ƂɏW�񂳂�܂��B�������A�������Ȃ��̌R�����キ�Ȃ����ꍇ�A�������̎x�������́u�����Ȏ���v��P�ɒ�~����̂Œ��ӂ��Ă��������B"
-				SUMMARY "���Ɨ����Ƃ͂��Ȃ��́u�ی�v�𔃂��Ă��܂�"
+				NAME "冊封国"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "遊牧民の帝国は広大な領土を管理する必要はなく、大部分を属国に頼っている。帝国と属国との関係は、「金をくれれば生かしてやる」ということに集約されます。しかし、もしあなたの軍隊が弱くなった場合、いくつかの支流がこの「公正な取引」を単に停止するので注意してください。"
+				SUMMARY "半独立国家はあなたの「保護」を買っています"
 			}
 			Land = {
-				NAME "�̓y"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���Ȃ��������Ă��鑐���̑傫���ɂ��A�����ɂ�葽���̉ƒ{�������Ƃ��ł��܂��B�y�n�͂܂��A��葽���̎����̔��W�̌���v���ł��B"
-				SUMMARY "�y�n�͉ƒ{�⎁���̑����𑝂₷"
+				NAME "領土"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "あなたが持っている草原の大きさにより、同時により多くの家畜を持つことができます。土地はまた、より多くの氏族の発展の決定要因です。"
+				SUMMARY "土地は家畜や氏族の総数を増やす"
 			}
 		}
 		Levers = {
 			TranshumanceOrganisation = {
-				NAME "�ږq���x"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "��X���A����g�񂾍��A���Ȃ��͂��ׂĂ̎����̉ƒ{�̕��q��g�D�����邽�߂̐����W�J���邱�Ƃ��ł��܂��A�������Ď����̕��̉e����ጸ�����邱�Ƃ��ł��܂��B"
-				SUMMARY "�ƒ{�ɑ΂��鎁���̃y�i���e�B�����炷"
+				NAME "移牧制度"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我々が連合を組んだ今、あなたはすべての氏族の家畜の放牧を組織化するための政策を展開することができます、そうして氏族の負の影響を低減させることができます。"
+				SUMMARY "家畜に対する氏族のペナルティを減らす"
 			}
 			HuntingOrganization = {
-				NAME "����x"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "��X���A����g�񂾍��A�M���͑g�D�����ꂽ��ǁA���i�ȝ|�̍쐬�A�e�n��ł̗̈�̊��蓖�ĂȂǂ̐���̓K�p���o���܂��B�������ւ̎����̕��̉e����啝�ɒቺ�����܂��B"
-				SUMMARY "�������ɑ΂��鎁���̃y�i���e�B�����炷"
+				NAME "狩猟制度"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我々が連合を組んだ今、貴方は組織化された狩猟班、厳格な掟の作成、各地域での領域の割り当てなどの政策の適用が出来ます。動物相への氏族の負の影響を大幅に低下させます。"
+				SUMMARY "動物相に対する氏族のペナルティを減らす"
 			}
 			Interclanicwar = {
-				NAME "�����̐푈"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�����͏����Ȑe�ؐS�ł͂��Ȃ��̘b�𕷂��Ȃ��ł��傤�A���Ȃ��̌��Ђ����߂邽�߂ɂ��Ȃ��̌R���Ŕނ�ɋ��P��^���܂��傤�A���̉ߒ��ňꎞ�I�ɔނ�̗͂�ቺ�����܂��B"
-				SUMMARY "�R�����g���Č��Ђ����߂�"
+				NAME "氏族の戦争"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "氏族は純粋な親切心ではあなたの話を聞かないでしょう、あなたの権威を高めるためにあなたの軍隊で彼らに教訓を与えましょう、その過程で一時的に彼らの力を低下させます。"
+				SUMMARY "軍隊を使って権威を高める"
 			}
 			Clanicbanners = {
-				NAME "�����̌R������"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "��X���A����g�񂾍��A�A�������̕��m����ĂāA�R�̗D�G�ȋR���̑�����啝�ɑ��₷���Ƃ��ł��܂��B"
-				SUMMARY "�R��̐����}���ɑ��������邽�߂Ɍ��Ђ��g�p����"
+				NAME "氏族の軍事徴収"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我々が連合を組んだ今、連合氏族の兵士を育てて、軍の優秀な騎兵の総数を大幅に増やすことができます。"
+				SUMMARY "騎手の数を急速に増加させるために権威を使用する"
 			}
 			Clanicfederation = {
-				NAME "�����A��"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���Ȃ��̕����������ɍL�����Ă��鍡�A���Ȃ��͏\���Ȍ����������Ă���̂ŁA���������ǂ��g�D���邽�߂ɘA����g�ނ��Ƃ��ł��܂��B"
-				SUMMARY "�����g�D���̑���"
+				NAME "氏族連合"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "あなたの文明が草原に広がっている今、あなたは十分な権限を持っているので、氏族をより良く組織するために連合を組むことができます。"
+				SUMMARY "氏族組織化の第一歩"
 			}
 			DivineGuidance = {
-				NAME "�_���ȓ���"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�_���w���҂̌�������Ƃ��A�N���V�̌�S�Ɋ����Č��O��\���ł��邩�B"
-				SUMMARY "���Ȃ��͐_�Ђɏj������Ă���"
+				NAME "神聖な導き"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "神が指導者の口から語るとき、誰が天の御心に敢えて懸念を表明できるか。"
+				SUMMARY "あなたは神威に祝福されている"
 			}
 			ClanicConcile = {
-				NAME "�����]�c��"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���Ȃ��̘A�����\������ł��d�v�Ȏ����̎w���ҒB�ƁA�����Ő��������ꂽ��c��g�D���܂��B�������邱�ƂŊm�����ꂽ�����͂��󂯓������悤�ɂȂ�܂����A���̑㏞�Ƃ��āA�ω��͂��x���Ȃ�܂��B"
-				SUMMARY "�A���̈��萫�����߂�"
+				NAME "氏族評議会"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "あなたの連合を構成する最も重要な氏族の指導者達と、正式で成文化された会議を組織します。そうすることで確立された秩序はより受け入れられるようになりますが、その代償として、変化はより遅くなります。"
+				SUMMARY "連合の安定性を高める"
 			}
 			ClanicVisit = {
-				NAME "�����K��"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���G�ȋV���ƕp�ɂȖK��ɂ���āA���΂��ΐ����g���Ƒf���炵�����蕨�ɂ���Ďx�����܂����B���Ȃ��͂��̒n��̔������Ȃ������̎w���҂Ƃ��Ď������g��z�u���邱�Ƃ��ł��܂��B"
-				SUMMARY "�������͂��]���ɂ��Č��Ђ����߂�"
+				NAME "氏族訪問"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "複雑な儀式と頻繁な訪問によって、しばしば政治組合と素晴らしい贈り物によって支えられました。あなたはその地域の避けられない氏族の指導者として自分自身を配置することができます。"
+				SUMMARY "政治権力を犠牲にして権威を高める"
 			}
 			Nomadicconquest = {
-				NAME "�V�q����"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���l�̓y�n�ɋ��|�������炵�A�y�n�̕x��ߊl���A�ނ���]���ɂȂ�悤���炵�܂��B"
-				SUMMARY "�z��ƕx�̂��߂ɗאl���U��"
+				NAME "遊牧征服"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "他人の土地に恐怖をもたらし、土地の富を捕獲し、彼らを従順になるよう減らします。"
+				SUMMARY "奴隷と富のために隣人を攻撃"
 			}
 			Nomadicinvasion = {
-				NAME "�V�q�N��"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�䂪�R�͐��E�����������A�ア��Z���̐��E��j�󂵁A���Ȃ��̐����Ȓn�ʂ��咣���鏀�����ł��Ă��܂��B"
-				SUMMARY "���E���֑�K�͐N�����J�n����"
+				NAME "遊牧侵略"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我が軍は世界を屈服させ、弱い定住民の世界を破壊し、あなたの正当な地位を主張する準備ができています。"
+				SUMMARY "世界中へ大規模侵略を開始する"
 			}
 			EternalSteppe = {
-				NAME "�i������"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���Ȃ�����������΁A���͂��Ȃ��𖜔\�̎x�z�҂ƌĂԁB�G�͂��Ȃ����A���|�Ők���Ȃ���A�_�̍Ђ��ƌĂԁB"
-				SUMMARY "���E�ő�̘A���鍑"
+				NAME "永遠草原"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "あなたが成功すれば、民はあなたを万能の支配者と呼ぶ。敵はあなたを、恐怖で震えながら、神の災いと呼ぶ。"
+				SUMMARY "世界最大の連続帝国"
 			}
 			ParthianShot  = {
-				NAME "�p���e�B�A���V���b�g"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���Ȃ��̐l�X�̋|�Ɣn�p�̗����̏n���́A�V�����v�V�I�Ȑ�p���J���܂����B�p���V�A�̃V���b�g�͂��̂����̈�ł��A�Ŋ��̓G��n�ォ���Ŏ˂��A���ڑΌ�������邽�߂Ɍ���ɑ��邱�Ƃō\������Ă��܂��B"
-				SUMMARY "�V�����푈�̐�p"
+				NAME "パルティアンショット"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "あなたの人々の弓と馬術の両方の熟練は、新しい革新的な戦術を開きました。パルシアのショットはそのうちの一つです、最寄りの敵を馬上から矢で射ち、直接対決を避けるために後方に走ることで構成されています。"
+				SUMMARY "新しい戦争の戦術"
 			}
 			Chariot  = {
-				NAME "�`�����I�b�g"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���͂ȋR���̑����̓`�����I�b�g�ł���A����͔��ɏ����̈ڏZ�������A�L��ȓy�n�̈ꕔ�𐪕����A�n��̑卑�Ƃ��Ċm�����邱�Ƃ��\�ɂ��܂����B"
-				SUMMARY "�푈�ł̋R���̍ŏ��̎g����"
+				NAME "チャリオット"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "強力な騎兵の第一歩はチャリオットであり、それは非常に初期の移住文明が、広大な土地の一部を征服し、地域の大国として確立することを可能にしました。"
+				SUMMARY "戦争での騎兵の最初の使い方"
 			}
 			Warriorsgame  = {
-				NAME "���ҏ���"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "���Ȃ��̈ꑰ�̕����́A���ׂĂ��Q�����邱�Ƃ��ł����̑�ȃQ�[�����d�S�ɂ��Ă��܂��A�ނ�̓��X�����O�R���e�X�g�œ����A���n�␸���ˌ����ŋ����܂����B����͒ʏ�A�̑�ȋV���̎��ŕ�܂����B"
-				SUMMARY "���Ђ����߂ČR���������グ��"
+				NAME "武者勝負"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "あなたの一族の文化は、すべてが参加することができた偉大なゲームを重心にしています、彼らはレスリングコンテストで闘い、競馬や精密射撃大会で競いました。それは通常、偉大な儀式の狩りで閉会しました。"
+				SUMMARY "権威を高めて軍事効率を上げる"
 			}
 		}
 		Events = {
 			TrickedSucession = {
-				NAME "�x���ꂽ��p��"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�p���̎��Ō��x�z�҂̕s�������o�B���ʂ͕ς����Ȃ��Ă��A�����̌��Ђ͖���܂��B"
-				SUMMARY "���Ђ�������"
+				NAME "騙された後継者"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "継承の式で現支配者の不正が発覚。結果は変えられなくても、氏族の権威は問われます。"
+				SUMMARY "権威を下げる"
 			}
 			IndependanceOfTributaries = {
-				NAME "�������̓Ɨ���"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�����͂��͂₠�Ȃ��̌R���Ɏx�z����Ă��Ȃ��B�������̑����͂��Ȃ��ւ̎x������P�Ɏ~�߂܂����B"
-				SUMMARY "���Ȃ��̈ӎu���������邽�߂ɌR�����m�F���Ă�������"
+				NAME "冊封国の独立性"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "属国はもはやあなたの軍隊に支配されていない。いくつかの属国はあなたへの支払いを単に止めました。"
+				SUMMARY "あなたの意志を強制するために軍隊を確認してください"
 			}
 			Clanseparatisme = {
-				NAME "�����̕�����`"
-				DESCRIPTION <b>"�l: "@[value] </b> <br><br> "�ꕔ�̎����͂ǂ�ǂ񎩎�I�ɂȂ��Ă��܂��B�ŋ߂̌��Ђ̂Ȃ�����ނ�͓Ɨ����Ă����܂��B"
-				SUMMARY "�����𐧌䂷�邽�߂ɍ������Ђ��ێ����Ă�������"
+				NAME "氏族の分離主義"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "一部の氏族はどんどん自主的になっています。最近の権威のなさから彼らは独立していきます。"
+				SUMMARY "氏族を制御するために高い権威を維持してください"
 			}
 		}
 	}
