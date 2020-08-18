@@ -1823,7 +1823,7 @@ Main = {
 				VALUE value [ 0 0 0 ]
 
 				SLEEP = {
-					IF ( ~Arquebus )
+					IF ~Arquebus
 						SPAWN
 					ENDIF
 				}
@@ -6067,7 +6067,7 @@ Main = {
 					$Wealth = 20
 				}
 				TICK = {
-				TradeRoads += PerSeconds( value / 500 )
+				PROCESS TradeRoads += PerSeconds( value / 500 )
 				}
 				
 				
@@ -6115,6 +6115,7 @@ Main = {
 						COLOR green
 						FLUX value / 10
 					ENDIF
+			}
 			}
 			
 			
