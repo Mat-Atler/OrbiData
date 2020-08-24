@@ -1841,6 +1841,7 @@ Main = {
 					REMOVE HolyWar
 					REMOVE Expensionism
 					REMOVE FlowerWar
+					REMOVE Fortifications
 				}
 			}
 			
@@ -4070,10 +4071,11 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ( ~MilitaryManpower + ~Mathematics + ~StateSize ) > 1
+					HINT ( ( ~MilitaryManpower + ~Mathematics + ~StateSize ) > 1 & ~ModernWarfare == 0 )
 					CONDITION_NODE + StateSize
 					CONDITION_VALUE MilitaryManpower > 10
 					CONDITION_VALUE Mathematics > 30
+					CONDITION_NODE - ModernWarfare
 				}
 				PRICE = {
 					$PoliticalPower = 75
@@ -4102,7 +4104,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ( ~MilitaryManpower | ~Navy ) & ~StateSize
+					HINT ( ~MilitaryManpower | ~Navy ) & ~StateSize & ~ModernWarfare == 0 
 					CONDITION_VALUE MilitaryManpower > 50
 					CONDITION_NODE - Island
 					OR
@@ -4553,7 +4555,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ~MilitaryManpower
+					HINT ~MilitaryManpower & ~ModernWarfare == 0 
 					CONDITION_NODE + OrganizedNomadism
 					CONDITION_NODE + MilitaryManpower
 					OR
@@ -4636,7 +4638,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ~Longship & Coastline > 30
+					HINT ~Longship & Coastline > 30 & ~ModernWarfare == 0 
 					CONDITION_NODE + Longship
 					CONDITION_VALUE MilitaryManpower > 30
 					CONDITION_VALUE Navy > 75
@@ -5902,7 +5904,7 @@ Main = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 3 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~HolyOrders
+					HINT ~HolyOrders & ~ModernWarfare == 0 
 					CONDITION_VALUE MilitaryManpower > 75
 					CONDITION_VALUE Piety > 40
 					CONDITION_VALUE Pantheon > 75
@@ -6203,6 +6205,49 @@ Main = {
 				LINK TradeRoads = {
 						WEIGHT [ max ] 100 + TradeCompagnies.value * 3
 				}
+			}
+			
+			CombatPiracy = {
+				TYPE Cultural
+				VALUE value [ 0 0 50 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~ColonialPiracy
+					CONDITION_VALUE ColonialPiracy > 10
+					CONDITION_VALUE Navy > 50
+					CONDITION_VALUE AcrossTheOcean >= 20
+				}
+				
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(CombatPiracy) + 1) * 3
+					$Wealth = (LinkCount(CombatPiracy) + 1) * 5
+				}
+				
+				TICK = {
+				IF Navy > 50
+					PROCESS ColonialPiracy = ColonialPiracy - PerSeconds(value / 150)
+					PROCESS Navy = Navy - PerSeconds(value / 90)
+				ENDIF
+				}
+				
+
+				LINK ColonialPiracy = {
+					IF ( value > 0 & Navy > 50 )
+						COLOR red
+						FLUX value / 10
+					ENDIF
+			}				
+			
+			LINK Navy = {
+					IF ( value > 0 & Navy > 50 )
+						COLOR red
+						FLUX value / 5
+					ENDIF
+			}
 			}
 			
 			

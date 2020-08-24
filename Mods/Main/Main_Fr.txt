@@ -1725,10 +1725,21 @@ Main = {
 			
 			StockExchange = {
 				NAME "Bourse commerciale"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Petite confrérie de marchand"
+					30 = "Confrérie de marchand"
+					60 = "Bourse commerciale"
+					150 = "Grande Bourse commerciale"
+				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
 				SUMMARY "Augmente notre maximum de bien commerciaux."
 			}	
-			
+			CombatPiracy = {
+				NAME "Combattre la Piraterie"
+				DESCRIPTION "Valeur: " @[value,0.###]<br><br>"La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
+				SUMMARY "Réquisitionne notre flotte pour sécuriser notre commerce outremer"
+			}
 				
 		}
 		Events = {

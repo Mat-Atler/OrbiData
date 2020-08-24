@@ -1779,10 +1779,22 @@ Main = {
 			
 			
 			StockExchange = {
-				NAME "Stock Exchange"
+				NAME "Stock Exchange"				
+				LEVEL value = {					
+					0 = "None
+					0.001 = "Small Merchant Brotherhood".
+					30 = "Merchant Brotherhood
+					60 = "Commercial exchange".
+					150 = "Large Commercial Exchange
+				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  New business opportunities are forcing us to completely rethink our trading system. It allows a much greater flow of goods to be traded in our new commercial heart: the markets."
 				SUMMARY "Increases our maximum of Trade Goods."
 			}	
+			CombatPiracy = {
+				NAME "Combat Piracy"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"Prosperity has attracted pirates of all kinds who attack our trade lines, and our merchants have implored the protection of the national navy. In the long run securing the wealth of our colony seems an effective investment."
+				SUMMARY "Requisition our fleet to secure our overseas trade"
+			}
 
 		}
 		Events = {

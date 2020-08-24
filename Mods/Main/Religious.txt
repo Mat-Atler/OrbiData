@@ -613,9 +613,8 @@ Religious = {
 				}
 				
 				UNLOCK_CONDITIONS = {
-					HINT SacrificeNature
+					HINT SacrificeNature & ~ModernWarfare == 0 
 					CONDITION_VALUE SacrificeNature > 80
-					CONDITION_VALUE MilitaryManpower > 50
 					CONDITION_VALUE MilitaryManpower > 50
 					CONDITION_NODE - ModernWarfare
 
