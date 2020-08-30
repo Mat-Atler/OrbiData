@@ -1781,11 +1781,11 @@ Main = {
 			StockExchange = {
 				NAME "Stock Exchange"				
 				LEVEL value = {					
-					0 = "None
+					0 = "None"
 					0.001 = "Small Merchant Brotherhood".
-					30 = "Merchant Brotherhood
-					60 = "Commercial exchange".
-					150 = "Large Commercial Exchange
+					30 = "Merchant Brotherhood"
+					60 = "Commercial exchange"
+					150 = "Large Commercial Exchange"
 				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  New business opportunities are forcing us to completely rethink our trading system. It allows a much greater flow of goods to be traded in our new commercial heart: the markets."
 				SUMMARY "Increases our maximum of Trade Goods."
@@ -1795,6 +1795,20 @@ Main = {
 				DESCRIPTION "Value: " @[value,0.###]<br><br>"Prosperity has attracted pirates of all kinds who attack our trade lines, and our merchants have implored the protection of the national navy. In the long run securing the wealth of our colony seems an effective investment."
 				SUMMARY "Requisition our fleet to secure our overseas trade"
 			}
+			
+			ColonialTariffs = {
+				NAME "Colonial Tariffs"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Slight tax"
+					5 = "Normal Tax"
+					10 = "Heavy Taxes"
+					15 = "Very heavy taxes"
+					20 = "Our merchants are bankrupt"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Now that our colony is firmly established and has started to generate profit it is time for the metropolis to recoup its investment. Let's tax colonial trade."
+				SUMMARY "Tax our colonial empire."
+			}	
 
 		}
 		Events = {

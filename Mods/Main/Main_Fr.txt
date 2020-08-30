@@ -1740,6 +1740,20 @@ Main = {
 				DESCRIPTION "Valeur: " @[value,0.###]<br><br>"La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
 				SUMMARY "Réquisitionne notre flotte pour sécuriser notre commerce outremer"
 			}
+			ColonialTariffs = {
+				NAME "Douane Coloniale"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Légère taxe"
+					5 = "Taxe Normale"
+					10 = "Lourdes Taxes"
+					15 = "Très lourdes taxes"
+					20 = "Nos marchands sont en faillite"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Maintenant que notre colonie est solidement implanté et commencé à générer du profit il est temps pour la métropole de récupérer son investissement. Taxons le commerce colonial."
+				SUMMARY "Taxe notre empire colonial"
+			}	
+			
 				
 		}
 		Events = {
