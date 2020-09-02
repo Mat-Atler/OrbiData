@@ -95,7 +95,7 @@ Main = {
 		}
 		WinColony = {
 			NAME "Colony"
-			TEXT "Blablabla"
+			TEXT "Our main colony"
 			TEXT "Start a colony"
 		}
 		
@@ -141,6 +141,10 @@ Main = {
 		CannotColony = {
 			NAME "Cannot start a colony here"
 			DESCRIPTION "Cannot start a colony here"
+		}
+		ColonyIndependence = {
+			NAME "Independence of the Colony"
+			DESCRIPTION "We've totally lost control!"
 		}
 	}	
 	
@@ -608,11 +612,25 @@ Main = {
 			}
 			
 			
+			ColonialAutonomyDesire = {
+				NAME "Colonial Autonomy Desire"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" Our excessive taxation infuriated the local settlers. Grumbling rises and it's the gateway to an organised revolt."
+				SUMMARY "Our taxes cause dissatisfaction"
+			}
+			
 			Colony = {
 				NAME "Colony"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				DESCRIPTION ""
 				SUMMARY "Our main colony"
 			}	
+			
+			ColonialProsperity = {
+				NAME "Colonial Prosperity"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" Our colony generates wealth according to several factors. It is important to protect it and tax it efficiently."
+				SUMMARY "The prosperity of our main colony"
+			}	
+			
+			
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -2065,6 +2083,18 @@ Main = {
 				DESCRIPTION "One of our barbarian neighbors has started an invasion. They are looting and killing by the thousands. We must stop them!"
 				SUMMARY "A nomadic horde is attacking you!"
 			}
+			
+			ColonialRebellion = {
+				NAME "Colonial Rebellion"
+				DESCRIPTION "Our excessive taxation has provoked big riots in our colony which has degenerated into open rebellion. If our fleet does not intervene it will be the end of our colony!"
+				SUMMARY "Our colony claims its independence!"
+			}
+			ColonialExpension = {
+				NAME "Colonial Expension"
+				DESCRIPTION "As our colony prospers, it sees its affluence growing in the region."
+				SUMMARY "Our colony expands its influence"
+			}
+			
 
 		}
 	}

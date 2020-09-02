@@ -196,7 +196,7 @@ Main = {
 			
 			/// NEW ///
 			REMOTE ColonialStateSize = {
-				GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 4500 : ]
+				GLOBE_SET_AREA ColonyStateMap [ 0 ] [ Colony.ColonyLongitude : Colony.ColonyLatitude : value / 3000 : ]
 				// Refresh globe
 				GLOBE_SET_POINTER ColonyStateMap [ : ]
 			}
@@ -302,6 +302,10 @@ Main = {
 			PRIORITY [ 3 ]
 			MUTE_TIME 1
 			PREVIEW
+		}
+		ColonyIndependance = {
+			PRIORITY [ 1 ]
+			MUTE_TIME 100
 		}
 	}
 	
@@ -1762,7 +1766,7 @@ Main = {
 				
 			}				
 			ColonialStateSize = {
-				TAG Colony
+				TAG ColonyTag
 				VALUE value [ 0 30 2000 ]
 				DISPLAY_VALUE
 
@@ -1796,7 +1800,7 @@ Main = {
 			
 			
 			ColonialProsperity = {
-				TAG Colony
+				TAG ColonyTag
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
 
@@ -1851,8 +1855,8 @@ Main = {
 			
 			
 			ColonialPiracy = {
-				TAG Colony
-				VALUE value [ 0 0 100 ]
+				TAG ColonyTag
+				VALUE value [ 0 0 200 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 
@@ -1863,7 +1867,7 @@ Main = {
 				}
 				TICK = {
 					PROCESS value =  value - PerSeconds(value / ( 15 + ColonialProsperity * 10 ) )
-					PROCESS value = value + PerSeconds ( ColonialProsperity * 0.01 )
+					PROCESS value = value + PerSeconds ( ColonialProsperity * 0.008 )
 					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialProsperity / 100 * ( value / 40 )  * 0.25 ? 1 )
 				}
 
@@ -1880,8 +1884,32 @@ Main = {
 			}
 			
 			
+			ColonialAutonomyDesire = {
+				TAG ColonyTag
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+
+				SLEEP = {
+					IF ( ColonialTariffs > 5 )
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value - PerSeconds(value / ( 1200 ) )
+				}
+
+				LINK Colony = {
+				}
+				
+				LINK ColonialStateSize = {
+				}
+				
+			}
+			
+			
 			Colony = {
-				TAG Colony
+				TAG ColonyTag
 				TYPE Cultural
 				VALUE value [ 0 0 0 ]
 				VALUE canMoveHere [ 0 0 1 ]
@@ -6213,7 +6241,7 @@ Main = {
 			
 			CombatPiracy = {
 				TYPE Cultural
-				VALUE value [ 0 0 50 >> 1 ]
+				VALUE value [ 0 0 150 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
 					HINT ~ColonialPiracy
@@ -6233,7 +6261,7 @@ Main = {
 				
 				TICK = {
 				IF Navy > 50
-					PROCESS ColonialPiracy = ColonialPiracy - PerSeconds(value / 270)
+					PROCESS ColonialPiracy = ColonialPiracy - PerSeconds(value / 130)
 					PROCESS Navy = Navy - PerSeconds(value / 150)
 				ENDIF
 				}
@@ -6255,9 +6283,9 @@ Main = {
 			}
 			
 		ColonialTariffs = {
-				TAG Colony
+				TAG ColonyTag
 				TYPE Cultural
-				VALUE value [ 0 0 100 >> 1 ]
+				VALUE value [ 0 0 50 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
 					HINT ~ColonialProsperity
@@ -6274,9 +6302,12 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 40  )
+					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 75  )
+					IF ~ColonialAutonomyDesire
+						PROCESS ColonialAutonomyDesire += PerSeconds ( ColonialTariffs / 210 * ColonialStateSize / 150  )
+					ENDIF
 					IF ColonialProsperity > 5
-						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 7 )
+						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 8.5 )
 					ENDIF
 				}
 
@@ -6287,6 +6318,13 @@ Main = {
 					IF (value > 0)
 						FLUX value * 0.013 
 						COLOR red
+					ENDIF
+				}
+				
+				LINK ColonialAutonomyDesire = {
+					IF (value > 0)
+						FLUX value * 0.013 
+						COLOR green
 					ENDIF
 				}
 				
@@ -7089,7 +7127,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF NavalTrade > 10
+					IF NavalTrade > 10 & ~AcrossTheOcean== 0
 						RISE
 					ENDIF
 				}
@@ -8324,6 +8362,66 @@ Main = {
 					ERA FeudalAge
 				}
 						
+				
+		}
+		
+		
+			ColonialRebellion = {
+				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
+				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
+				EVENT_DEF [ 60 120 80 33% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				SLEEP = {
+				EVENT_CHANCE ( ColonialAutonomyDesire - 50 ) * 2 / 100
+				}
+				TICK = {
+					PROCESS Navy = Navy - PerSeconds(2.5 * ColonialStateSize / 100)
+					IF Navy < 50
+						REMOVE ColonyTag
+						IF ~Colony
+							ALERT ColonyIndependance
+						ENDIF
+					ENDIF
+				}
+
+				
+				LINK Navy = {
+					COLOR red
+					FLUX 2 * ColonialStateSize / 100
+				}
+			
+				TRIGGER_EVENT = {
+					IF ColonialAutonomyDesire > 50
+						RISE
+					ENDIF
+				}
+				
+		}
+		
+		ColonialExpension = {
+				SOUND_EVENT "Main/SFX/Jungle.wav"
+				SOUND_WINDOW "Main/SFX/Jungle.wav"
+				EVENT_DEF [ 10 25 170 33% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS ColonialStateSize += PerSeconds(1.2 * 0.25 ? 1.25)
+				}
+
+				
+				LINK ColonialStateSize = {
+					COLOR green
+					FLUX 2
+				}
+			
+				TRIGGER_EVENT = {
+					IF ColonialProsperity > 20
+						RISE
+					ENDIF
+				}
 				
 		}
 

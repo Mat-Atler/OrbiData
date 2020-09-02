@@ -75,6 +75,28 @@ Main = {
 			}
 			TEXT "<b>Valeur: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, votre civiliation est perdue."
 		}
+		
+		WinColonialStateSize = {
+			NAME "Taille de la Colonie"
+			LEVEL Main.ColonialStateSize.value = {
+				0 = "Disparu"
+				0.001 = "Petite Colonie"
+				100 = "Colonie"
+				200 = "Grande Colonie"
+				400 = "Colonie Impériale"
+			}
+			TEXT "<b>Value: "@[Main.ColonialStateSize.value,LEVEL] "</b> (" @[Main.ColonialStateSize.value,0.###] ") <br> La taille de notre colonie principale."
+		}
+		WinColony = {
+			NAME "Colonie"
+			TEXT "Notre principale colonie"
+			TEXT "Fonder une nouvelle colonie"
+		}
+		
+		WinMoveColony = {
+			NAME "Sélectionnez un endroit"
+			TEXT "Fonder une colonie ici"
+		}
 	}
 	
 	Alerts = {
@@ -105,6 +127,10 @@ Main = {
 		Invaded = {
 			NAME "Envahis"
 			DESCRIPTION "Nous sommes attaqués !"
+		}
+		ColonyIndependance = {
+			NAME "Indépendance de la Colonie"
+			DESCRIPTION "Nous avons totalement perdu le contrôle!"
 		}
 	}	
 	
@@ -550,6 +576,31 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Il arrive que les plus infortunés s'enfuient dans nos forêts et commence à pratiquer le banditisme. Nous devons veiller à mettre en place une police forte pour éviter toute insécurité qui compromettrait le commence terrestre."
 				SUMMARY "Réduit notre commerce"
 				}
+	
+			ColonialStateSize = {
+				NAME "Taille de la Colonie"
+				DESCRIPTION "Valeur : " @[valeur,0.###]<br><br>""
+				SUMMARY "La taille de notre colonie"
+			
+			
+			ColonialAutonomyDesire = {
+				NAME "Désir d'autonomie coloniale"
+				DESCRIPTION "Valeur : " @[valeur,0.###]<br><br>"Notre taxation excessive à excédé les colons locaux. La grogne monte et c'est la porte vers une révolte organisée."
+				SUMMARY "Nos taxes provoquent du mécontement"
+			}
+			
+			ColonialProsperity = {
+				NAME "Prospérité Coloniale"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" Notre colonie génère des richesses en fonction de plusieurs facteurs. Il est important de la protéger et de la taxer efficacement."
+				SUMMARY "La prospérité de notre principale colonie"
+			}	
+			
+			Colony = {
+				NAME "Colonie"
+				DESCRIPTION ""
+				SUMMARY "Notre principale colonie"
+			}	
+				
 				
 		}
 		Levers = {
@@ -2005,6 +2056,16 @@ Main = {
 				SUMMARY "Une horde de nomade vous attaque !"
 			}
 
+			ColonialRebellion = {
+				NAME "Rébellion Coloniale"
+				DESCRIPTION "Notre taxation excessive à provoqué de grosse émeutes dans notre colonie qui a dégénéré en rébellion ouvertes, si notre flotte ne s'interpose pas, et en nombre, ce sera la fin de notre colonie !"
+				SUMMARY "Notre colonie réclame son indépendance!"
+			}
+			ColonialExpension = {
+				NAME "Expension Coloniale"
+				DESCRIPTION "Notre colonie prospérant, elle voit son affluence grandir dans la région."
+				SUMMARY "Notre colonie agrandit son influence"
+			}
 
 		}
 
