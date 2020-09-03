@@ -1765,7 +1765,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arquebuse est la première arme à feu suffisament efficace qui marque la supériorité de la poudre à canon sur l'archerie et un changement radical du champ de bataille."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arquebuse est la première arme à feu suffisament efficace qui marque la supériorité de la poudre à canon sur l'archerie et un changement radical du champ de bataille."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -1777,7 +1777,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -1790,12 +1790,25 @@ Main = {
 					60 = "Bourse commerciale"
 					150 = "Grande Bourse commerciale"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
-				SUMMARY "Augmente notre maximum de bien commerciaux."
-			}	
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
+				SUMMARY "Augmente notre maximum de bien commerciaux"
+			}
+			TradingPost = {
+				NAME "Comptoirs Commerciaux"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Accords locaux"
+					15 = "Quelques comptoirs"
+					30 = "Réseau de comptoirs"
+					60 = "Réseau mondial"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Nos expéditions maritimes nous permettent d'avoir toujours plus de partenaires commerciaux. Avec de la diplomatie et de l'or nous pouvons acheter des comptoirs juteux."
+				SUMMARY "Augmente le flux de bien commerciaux"
+			}
+			
 			CombatPiracy = {
 				NAME "Combattre la Piraterie"
-				DESCRIPTION "Valeur: " @[value,0.###]<br><br>"La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
 				SUMMARY "Réquisitionne notre flotte pour sécuriser notre commerce outremer"
 			}
 			ColonialTariffs = {

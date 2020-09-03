@@ -6108,44 +6108,7 @@ Main = {
 			
 
 			}
-			
-			
-			AcrossTheOcean = {
-				TYPE Cultural
-				VALUE value [ 0 0 40 >> 1 ]
-				UNLOCK_CONDITIONS = {
-					HINT ~Caravel
-					ALWAYS
-					CONDITION_VALUE NavigationTools >= 100
-					CONDITION_VALUE Caravel >= 70
-				}
-				PRICE = {
-					$PoliticalPower = 300
-					$Wealth = 800
-				}
-				UPGRADE = {
-					$PoliticalPower = 3
-					$Wealth = 20
-				}
-				TICK = {
-				PROCESS TradeRoads += PerSeconds( value / 500 )
-				}
-				
-				
-				LINK TradeRoads = {
-					IF value > 0
-						COLOR green
-						FLUX value / 10
-					ENDIF
-					}
-					
-				TRIGGER_SPAWN AcrossTheOcean = {
-					ERA DiscoveryAge
-					}
-			
 
-			}
-			
 			
 			Arquebus = {
 				TYPE Technological
@@ -6205,7 +6168,52 @@ Main = {
 						FLUX value / 10
 					ENDIF
 			}
+			}		
+			
+			AcrossTheOcean = {
+				TYPE Cultural
+				VALUE value [ 0 0 40 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Caravel
+					ALWAYS
+					CONDITION_VALUE NavigationTools >= 100
+					CONDITION_VALUE Caravel >= 70
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 800
+				}
+				UPGRADE = {
+					$PoliticalPower = 3
+					$Wealth = 20
+				}
+				TICK = {
+				PROCESS TradeRoads += PerSeconds( value / 500 )
+				SET TradingPost.value [ : : AcrossTheOcean.value ]
+				}
+
+				LINK TradeGoods = {
+						WEIGHT [ max ] 2000 + StockExchange.value * 20
+				}
+				
+				LINK TradingPost = {
+						WEIGHT [ max ] AcrossTheOcean
+				}
+				
+				LINK TradeRoads = {
+					IF value > 0
+						COLOR green
+						FLUX value / 10
+					ENDIF
+					}
+					
+				TRIGGER_SPAWN AcrossTheOcean = {
+					ERA DiscoveryAge
+					}
+			
+
 			}
+			
 			
 			
 			StockExchange = {
@@ -6238,7 +6246,38 @@ Main = {
 						WEIGHT [ max ] 2000 + StockExchange.value * 20
 				}
 			}
+
+
+			TradingPost = {
+				TYPE Cultural
+				VALUE value [ 0 0 40 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~AcrossTheOcean
+					CONDITION_VALUE StockExchange >= 30
+					CONDITION_VALUE AcrossTheOcean >= 40
+				}
+				PRICE = {
+					$PoliticalPower = 100
+					$Wealth = 500
+				}
+				UPGRADE = {
+					$Wealth = (LinkCount(TradingPost) + 1) * 12
+				}
+				TICK = {
+					PROCESS $Wealth -= PerSeconds( value / 3 )
+					PROCESS TradeGoods = TradeGoods + PerSeconds(value / 3.5)
+				
+				}
+
 			
+			LINK TradeGoods = {
+					IF ( value > 0 & Navy > 50 )
+						COLOR green
+						FLUX value / 5
+					ENDIF
+			}
+			}
 			
 			TradeCompagnies = {
 				TYPE Cultural
