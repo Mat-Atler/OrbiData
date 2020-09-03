@@ -1434,7 +1434,7 @@ Main = {
 					IF ~NavyTechnology == 0
 						PROCESS $Wealth = $Wealth - PerSeconds( value * value / 2300 )
 					ELSE
-						PROCESS $Wealth = $Wealth - PerSeconds( value * value / 2000 / (50 + NavyTechnology ) )
+						PROCESS $Wealth = $Wealth - PerSeconds( value * value / 2000 * (NavyTechnology / 200 ) )
 					ENDIF
 					PROCESS value =  value - PerSeconds( value / 3500 )
 
@@ -1572,9 +1572,9 @@ Main = {
 				}
 				TICK = {
 				IF ~DevotionToSea
-				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  +  ( DevotionToSea / 500 ) )
+				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  + 100 * ( LargeSailboats / 100 )   +  ( DevotionToSea / 500 ) )
 				ELSE
-				PROCESS value = 50 * (Longship / 100 ) + 50 * (GreekFire / 100 )  + 50 * (NavigationTools / 100 ) + 50 * ( Caravel / 100 ) 
+				PROCESS value = 50 * (Longship / 100 ) + 50 * (GreekFire / 100 )  + 50 * (NavigationTools / 100 ) + 50 * ( Caravel / 100 ) + 100 * ( LargeSailboats / 100 ) 
 				ENDIF
 				
 				}
@@ -6071,6 +6071,33 @@ Main = {
 				UPGRADE = {
 					$PoliticalPower = 1
 					$Wealth = 2
+				}
+				TICK = {
+				}
+				
+				LINK NavyTechnology = {
+						 WEIGHT [ to ] 
+				}
+			
+
+			}
+			
+			LargeSailboats = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Caravel
+					ALWAYS
+					CONDITION_VALUE AcrossTheOcean >= 30
+					CONDITION_VALUE ScienceKnowledge >= 275
+				}
+				PRICE = {
+					$PoliticalPower = 350
+					$Wealth = 1000
+				}
+				UPGRADE = {
+					$PoliticalPower = 4
+					$Wealth = 8
 				}
 				TICK = {
 				}

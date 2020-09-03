@@ -532,6 +532,7 @@ Main = {
 					25 = "Late Antiquity Level"
 					75 = "Medieval Level"
 					150 = "Renaissance Level"
+					300 = "Imperialism Level"
 				}
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "The control of technological advances has always given a considerable advantage on the battlefield. Asserting our domination over the seas allows us to protect our trade, invade foreign countries and plunder them."
 				SUMMARY "The level of modernity of our fleet"
@@ -1757,6 +1758,13 @@ Main = {
 				DESCRIPTION "Value: " @[value,0.###]<br><br>"The caravel is the culmination of the improvement of sailing that allows safe navigation across seas and oceans."
 				SUMMARY "Allow us to across the ocean"
 			}
+			
+			LargeSailboats = {
+				NAME "Large Sailboats"
+				DESCRIPTION "Value: " @[value,0.###]<br>"Our multiple ventures on the sea have led to the perfection of the sailing ship. Galleons, frigates, corvettes, never before our navy has looked so majestic."
+				SUMMARY "To dominate the ocean"
+			}
+			
 			AcrossTheOcean = {
 				NAME "Across the Ocean"
 				LEVEL value = {

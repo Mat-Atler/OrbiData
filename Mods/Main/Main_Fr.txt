@@ -513,10 +513,11 @@ Main = {
 			NavyTechnology = {
 				NAME "Technologie navale"
 				LEVEL value = {
-					0 = "Niveau de l'Âge de bronze"
-					25 = "Niveau de l'Antiquité tardive"
+					0 = "Niveau de l'Âge de Bronze"
+					25 = "Niveau de l'Antiquité Tardive"
 					75 = "Niveau du Moyen-âge"
 					150 = "Niveau de l'Âge des découvertes"
+					300 = "Niveau de l'Impérialisme"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "L'ascendant technologique a toujours été primordial sur le champ de bataille. S'assurer de notre avance sur les mers va vous permettre de créer de loitaines expéditions, d'envahir les nations étrangères et les piller."
 				SUMMARY "La modernité de votre flotte"
@@ -1737,6 +1738,12 @@ Main = {
 				DESCRIPTION "Valeur : " @[value,0.###]<br><br>"La caravelle est l'aboutissement de l'amélioration de la navigation à voile qui permet une navigation sûres à travers les mers et les océans."
 				SUMMARY "Permet de traverser l'océan"
 			}
+			LargeSailboats = {
+				NAME "Grands Voiliers"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>"Nos multiples entreprises sur la mer ont conduit à la perfection du navire à voile. Galions, frégates, corvettes, jamais notre marine n'a semblée si majestueuse."
+				SUMMARY "Permet de dominer l'océan"
+			}
+			
 			AcrossTheOcean = {
 				NAME "Au-delà de l'océan"
 				LEVEL value = {
