@@ -631,6 +631,19 @@ Main = {
 				SUMMARY "The prosperity of our main colony"
 			}	
 			
+			NavalSupremacy = {
+				NAME "Naval Supremacy".
+				LEVEL value = {
+					0 = "Non-existent"
+					0.001 = "Pathetic"
+					20 = "Weak"
+					40 = "Fair"
+					80 = "Imposing"
+					120 = "Our fleet has conquered  the oceans"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "As our fleet is now an essential component of our state, our maritime domination must be as impressive as possible if we are to secure our distant trade."
+				SUMMARY "Our domination of the seven seas"
+			}	
 			
 		}
 		Levers = {
@@ -1847,7 +1860,12 @@ Main = {
 				}
 				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Now that our colony is firmly established and has started to generate profit it is time for the metropolis to recoup its investment. Let's tax colonial trade."
 				SUMMARY "Tax our colonial empire."
-			}	
+			}
+			SlaveTrade = {
+				NAME "Slave Trade".
+				DESCRIPTION "Value: " @[value,0.###]" <br><br> Our colony needs fresh labour, with a small investment on our part we can expect a huge return on investment".
+				SUMMARY "Improves the wealth of our colonies"
+			}			
 
 		}
 		Events = {

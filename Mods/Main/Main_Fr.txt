@@ -582,6 +582,7 @@ Main = {
 				NAME "Taille de la Colonie"
 				DESCRIPTION "Valeur : " @[valeur,0.###]<br><br>""
 				SUMMARY "La taille de notre colonie"
+				}
 			
 			
 			ColonialAutonomyDesire = {
@@ -592,7 +593,7 @@ Main = {
 			
 			ColonialProsperity = {
 				NAME "Prospérité Coloniale"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>" Notre colonie génère des richesses en fonction de plusieurs facteurs. Il est important de la protéger et de la taxer efficacement."
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>" Notre colonie génère des richesses en fonction de plusieurs facteurs. Il est important de la protéger et de la taxer efficacement."
 				SUMMARY "La prospérité de notre principale colonie"
 			}	
 			
@@ -601,7 +602,20 @@ Main = {
 				DESCRIPTION ""
 				SUMMARY "Notre principale colonie"
 			}	
-				
+			NavalSupremacy = {
+				NAME "Suprématie Navale"
+				LEVEL value = {
+					0 = "Inexistante"
+					0.001 = "Pathétique"
+					20 = "Faible"
+					40 = "Correcte"
+					80 = "Imposante"
+					120 = "Notre flotte a domptée les océans"
+				}
+				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre flotte étant désormais une composante essentielle de notre état, notre domination maritime doit être la plus impressionnante que possible si nous voulons sécuriser nos commerces lointains."
+				SUMMARY "Notre domination des 7 mers"
+			}	
+			
 				
 		}
 		Levers = {
@@ -1824,7 +1838,11 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Maintenant que notre colonie est solidement implanté et commencé à générer du profit il est temps pour la métropole de récupérer son investissement. Taxons le commerce colonial."
 				SUMMARY "Taxe notre empire colonial"
 			}	
-			
+			SlaveTrade = {
+				NAME "Traite Négrière"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Nos colonie ont besoin de main-d'oeuvre fraîche, avec un léger investissement de notre part nous pouvons esperer un immense retour sur investissement.."
+				SUMMARY "Améliore la richesse de nos colonies"
+			}
 				
 		}
 		Events = {

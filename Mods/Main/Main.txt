@@ -19,32 +19,32 @@ Main = {
 			}
 		}
 	Dropdowns = {
-  Diplomacy = {
-    States = {
-      Peace = {
-    IMAGE "Main/Images/Wealth.png"
-      }
-      War = {
-    IMAGE "Main/Images/PoliticalPower.png"
-      }
+	  Diplomacy = {
+		States = {
+		  Peace = {
+		IMAGE "Main/Images/Wealth.png"
+		  }
+		  War = {
+		IMAGE "Main/Images/PoliticalPower.png"
+		  }
    }
-   Buttons = {
-      DeclareWar = {
-    // Click
-      REMOTE Population = {
-      DROPDOWN_SET_STATE Diplomacy.War
-      DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-      DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
-    }
-      }
-      MakePeace = {
-      // Click
-      REMOTE Population = {
-    DROPDOWN_SET_STATE Diplomacy.Peace
-    DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
-    DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
-        }
-        }
+	   Buttons = {
+		  DeclareWar = {
+		// Click
+		  REMOTE Population = {
+		  DROPDOWN_SET_STATE Diplomacy.War
+		  DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+		  DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
+							}
+			}
+		  MakePeace = {
+		  // Click
+		  REMOTE Population = {
+		DROPDOWN_SET_STATE Diplomacy.Peace
+		DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+		DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+			}
+			}
     }
 }
 }
@@ -1437,9 +1437,12 @@ Main = {
 						PROCESS $Wealth = $Wealth - PerSeconds( value * value / 2000 * (NavyTechnology / 200 ) )
 					ENDIF
 					PROCESS value =  value - PerSeconds( value / 3500 )
+					IF ~NavalSupremacy
+						PROCESS NavalSupremacy += PerSeconds( value / ( 600 - AcrossTheOcean * 2)  )
+					ENDIF
 
 					}
-			}		
+			}
 			NationalCohesion = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -1783,7 +1786,9 @@ Main = {
 							GLOBE_SET_POINTER ColonyStateMap [ : ]
 						ENDONCE
 					ENDIF
-					
+					IF value <= 0
+					 REMOVE ColonyTag
+					ENDIF
 				}
 
 				LINK Colony = {
@@ -1825,6 +1830,22 @@ Main = {
 				
 			}
 			
+		NavalSupremacy = {
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+
+				SLEEP = {
+					IF ~AcrossTheOcean
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value - PerSeconds(value * value / 2000 )
+				}
+				
+			}
+			
 			ModernWarfare = {
 				VALUE value [ 0 0 0 ]
 
@@ -1856,7 +1877,7 @@ Main = {
 			
 			ColonialPiracy = {
 				TAG ColonyTag
-				VALUE value [ 0 0 200 ]
+				VALUE value [ 0 0 500 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 
@@ -1980,6 +2001,10 @@ Main = {
 					GLOBE_SET_POINTER ColonyMap [ : ]
 					// Call TRIGGER_CUSTOM 2
 					ALARM [ once ] [ 2 Colony ] -1
+				}
+				
+				TRIGGER_LEAVE Colony = {
+				 PROCESS colonySettled = 0
 				}
 			}
 			
@@ -6396,7 +6421,43 @@ Main = {
 				
 			}
 			
+			SlaveTrade = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~ColonialProsperity
+					CONDITION_VALUE ColonialProsperity > 20
+					CONDITION_VALUE Navy > 50
+					CONDITION_VALUE AcrossTheOcean >= 60
+				}
+				
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(SlaveTrade) + 1) * 3
+					$Wealth = (LinkCount(SlaveTrade) + 1) * 5
+				}
+				
+				TICK = {
+					PROCESS ColonialProsperity = ColonialProsperity + PerSeconds(value / 150)
+					PROCESS $Wealth = $Wealth - PerSeconds( value / 10 )
+					IF SacrificeNature > 80
+						PROCESS Slaves = ColonialProsperity + PerSeconds(value / 75)
+					ENDIF
+				}
+				
+
+				LINK ColonialProsperity = {
+					IF ( value > 0 )
+						COLOR green
+						FLUX value / 10
+					ENDIF
+			}				
 			
+			}
 		
 			}
 		Events = {
