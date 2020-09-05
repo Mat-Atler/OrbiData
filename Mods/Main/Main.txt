@@ -1872,6 +1872,19 @@ Main = {
 				}
 			}
 			
+			Humanism = {
+				VALUE value [ 0 0 0 ]
+
+				SLEEP = {
+					IF ~Renaissance
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				}
+
+			}
+			
 			
 			
 			
@@ -6455,10 +6468,63 @@ Main = {
 						COLOR green
 						FLUX value / 10
 					ENDIF
-			}				
+			}			
 			
 			}
+			
+			
+
+			SchoolOfThought = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Alchemy
+					CONDITION_NODE + Humanism
+					CONDITION_VALUE Philosophy >= 200
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(SchoolOfThought) + 1) * 20
+				}
+				TICK = {
+				
+				}
 		
+			}
+			
+			ScientificMethod = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Alchemy
+					CONDITION_VALUE SchoolOfThought >= 40
+					CONDITION_VALUE Mathematics >= 230
+					CONDITION_VALUE Philosophy >= 230
+				}
+				PRICE = {
+					$PoliticalPower = 495
+				}
+				UPGRADE = {
+					$PoliticalPower = 25
+				}
+				TICK = {
+						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 6000 )
+				}
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 40
+					COLOR green
+				ENDIF
+				}	
+				TRIGGER_SPAWN ScientificMethod = {
+				REMOVE Alchemy
+				SET University.value [ : : 200 ]
+				}
+
+			}
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
@@ -7983,7 +8049,7 @@ Main = {
 					}
 
 					TRIGGER_EVENT = {
-						IF ~Education & GameTime() > 3500 & Stability < 50
+						IF ~Education & GameTime() > 3500 & Stability < 50 & ( ~Humanism == 0 | Stability < 20)
 							RISE
 						ENDIF
 					}
@@ -8164,7 +8230,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF (TradeGoods > 500 & TradeTax < 20 & LootingCampaigns < 20 & StateSize >= 100 & GameTime() > 10000 )
+					IF (TradeGoods > 500 & TradeTax < 20 & LootingCampaigns < 20 & StateSize >= 100 & GameTime() > 10000 & AcrossTheOcean == 0 )
 						RISE
 					ENDIF
 				}
@@ -8352,7 +8418,7 @@ Main = {
 					}
 					
 					TRIGGER_EVENT = {
-						IF ~Culture & Culture < 50 & ( ~University | Stability > 80 ) & GetCurrentEra() >= GetEra(LateAntiquity)
+						IF ~Culture & Culture < 50 & ( ~University | Stability > 80 ) & GetCurrentEra() >= GetEra(LateAntiquity) & ~Humanism == 0
 							RISE
 						ENDIF
 					}
@@ -8369,14 +8435,14 @@ Main = {
 						EVENT_SPEED 1
 					}
 					TICK = {
-					PROCESS Stability = Stability - PerSeconds(0.2)
+					PROCESS Stability = Stability - PerSeconds(0.1)
 					PROCESS Minorities = Minorities - PerSeconds(0.33)
 					PROCESS Piety = Piety + PerSeconds(0.5)
 					}
 
 					LINK Stability = {
 						COLOR red
-						FLUX 2
+						FLUX 1
 					}
 					
 					LINK Minorities = {
@@ -8389,7 +8455,7 @@ Main = {
 					}
 					
 					TRIGGER_EVENT = {
-						IF ( ~Minorities & Minorities>0 & Stability < 60 )
+						IF ( ~Minorities & Minorities>0 & Stability < 40 & ( ~Humanism == 0 | Stability < 15 )  )
 							RISE
 						ENDIF
 					}
@@ -8546,6 +8612,69 @@ Main = {
 			
 				TRIGGER_EVENT = {
 					IF ColonialProsperity > 20
+						RISE
+					ENDIF
+				}
+				
+		}
+		
+		
+		Renaissance = {
+				SOUND_EVENT "Main/SFX/Renaissance.wav"
+				SOUND_WINDOW "Main/SFX/Renaissance.wav"
+				EVENT_DEF [ 200 30 50 9% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				
+					TICK = {
+						OVERRIDE_PARAM Music.value = GetParam(Music.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Music = Max( GetParam(Music.value), Music )
+						OVERRIDE_PARAM Litterature.value = GetParam(Litterature.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Litterature = Max( GetParam(Litterature.value), Litterature )
+						OVERRIDE_PARAM Philosophy.value = GetParam(Philosophy.value) + PerSeconds(8 * 0.9 ? 1.1)
+						PROCESS Philosophy = Max( GetParam(Philosophy.value), Philosophy )
+						OVERRIDE_PARAM Mathematics.value = GetParam(Mathematics.value) + PerSeconds(2 * 0.9 ? 1.1)
+						PROCESS Mathematics = Max( GetParam(Mathematics.value), Mathematics )
+						PROCESS Stability = Stability + PerSeconds(0.5)
+						PROCESS Culture = Culture + PerSeconds(6)
+						SET University.value [ : : 150 ]
+						SET Culture.value [ : : 250 ]
+					}
+
+					LINK Music = {
+						COLOR green
+						FLUX 2
+					}
+					LINK Litterature = {
+						COLOR green
+						FLUX 2
+					}
+					LINK Culture = {
+						COLOR green
+						FLUX 6
+					}
+					LINK Mathematics = {
+						COLOR green
+						FLUX 4
+					}
+					LINK Philosophy = {
+						COLOR green
+						FLUX 8
+					}
+
+					LINK Stability = {
+						COLOR green
+						FLUX 3
+					}
+
+				
+				LINK Humanism = {
+				}
+			
+				TRIGGER_EVENT = {
+					ERA DiscoveryAge
+					IF  ( ~Humanism == 0 ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 ) )
 						RISE
 					ENDIF
 				}

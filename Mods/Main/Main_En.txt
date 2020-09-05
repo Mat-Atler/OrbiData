@@ -645,6 +645,14 @@ Main = {
 				SUMMARY "Our domination of the seven seas"
 			}	
 			
+			Humanism = {
+				NAME "Humanism"
+				DESCRIPTION "A recent artistic-philosophical revival has profoundly changed our very way of seeing the world. It is time to open ourselves up to new ways of thinking."
+				SUMMARY "Allows us to explore our philosophy in greater depth"
+			}	
+			
+			
+			
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -1865,7 +1873,19 @@ Main = {
 				NAME "Slave Trade".
 				DESCRIPTION "Value: " @[value,0.###]" <br><br> Our colony needs fresh labour, with a small investment on our part we can expect a huge return on investment".
 				SUMMARY "Improves the wealth of our colonies"
-			}			
+			}		
+
+			SchoolOfThought = {
+				NAME "School of Thought"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br>Recent philosophical developments have brought about many new schools of thought, it increases our possibilities tenfold."
+				SUMMARY "Enhances our philosophical potential"
+			}
+			ScientificMethod = {
+				NAME "Scientific Method"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br>Based on empiricism, the scientific method promotes understanding of the natural world through experience and replication of older works through precise protocols. This should considerably speed up our research."
+				SUMMARY "Improves our research"
+			}
+
 
 		}
 		Events = {

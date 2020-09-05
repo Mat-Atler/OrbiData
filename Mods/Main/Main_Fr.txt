@@ -602,6 +602,13 @@ Main = {
 				DESCRIPTION ""
 				SUMMARY "Notre principale colonie"
 			}	
+			
+			Humanism = {
+				NAME "Humanisme"
+				DESCRIPTION "Un récent renouveau artistico-philosophique à modifié en profondeur notre façon même de voir le monde. Il est temps de nous ouvrir à de nouveaux modes de pensées."
+				SUMMARY "Nous permet d'explorer plus en profondeur notre philosophie"
+			}	
+			
 			NavalSupremacy = {
 				NAME "Suprématie Navale"
 				LEVEL value = {
@@ -1840,9 +1847,20 @@ Main = {
 			}	
 			SlaveTrade = {
 				NAME "Traite Négrière"
-				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Nos colonie ont besoin de main-d'oeuvre fraîche, avec un léger investissement de notre part nous pouvons esperer un immense retour sur investissement.."
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Nos colonie ont besoin de main-d'oeuvre fraîche, avec un léger investissement de notre part nous pouvons esperer un immense retour sur investissement."
 				SUMMARY "Améliore la richesse de nos colonies"
 			}
+			SchoolOfThought = {
+				NAME "École de Pensée"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Les récentes poussées philosophique ont fait foisonné de multiples nouvelles écoles de pensée, cela décuple nos possibilités."
+				SUMMARY "Améliore notre potentiel philosophique"
+			}
+			ScientificMethod = {
+				NAME "Méthode Scientifique"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Basée sur l'empirisme, la méthode scientifique promeut de la compréhension du monde naturel par l'expérience et la réplication des travaux par des protocoles précis. Cela devrait considérablement accélrer notre recherche."
+				SUMMARY "Améliore notre recherche"
+			}
+		
 				
 		}
 		Events = {
@@ -2103,6 +2121,13 @@ Main = {
 				NAME "Expension Coloniale"
 				DESCRIPTION "Notre colonie prospérant, elle voit son affluence grandir dans la région."
 				SUMMARY "Notre colonie agrandit son influence"
+			}
+			
+			
+			Renaissance = {
+				NAME "Renaissance"
+				DESCRIPTION "Notre culture et notre Philosophie connaissent un âge d'or sans précédent qui marquera l'Histoire à jamais."
+				SUMMARY "Un renouveau culturel sans précédent!"
 			}
 
 		}
