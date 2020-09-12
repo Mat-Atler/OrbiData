@@ -1860,7 +1860,29 @@ Main = {
 				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Basée sur l'empirisme, la méthode scientifique promeut de la compréhension du monde naturel par l'expérience et la réplication des travaux par des protocoles précis. Cela devrait considérablement accélrer notre recherche."
 				SUMMARY "Améliore notre recherche"
 			}
-		
+			MercenariesReform = {
+				NAME "Réforme des mercenaires"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Début des réformes"
+					50 = "Réformes avancées"
+					100 = "Réformes complètes"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'apparition des armes à feu et les changements de dynamique de la guerre nous ont conduit à repenser notre modèle de l'utilisation des mercenaires. En faisant des réformes efficaces nous pouvons amélirer notre recrutement tout en allégant leur solde."
+				SUMMARY "Améliore notre recrutement des mercenaires et diminue leur solde"
+			}
+		OfficialLanguage = {
+				NAME "Language Officiel"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Notre langue est obligatoire dans tous les textes officiels"
+					50 = "Persécution active des patois"
+					100 = "Fondation de l'Académie"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec la bonne législation nous pouvons promouvoir activement et efficacement notre langue officielle."
+				SUMMARY "Permet de renforcer la Lingua Franca"
+			}
+
 				
 		}
 		Events = {

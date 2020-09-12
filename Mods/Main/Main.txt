@@ -1240,13 +1240,21 @@ Main = {
 					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
 					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/2400 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
 					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/2500 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					IF ~MercenariesReform
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/(1300 + MercenariesReform * 800) * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
+					ELSE
 					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/1300 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
+					ENDIF
 				ENDIF
 				IF  ~QualityVsQuantity == 0
 					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - (50 /100 ) ))
 					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/2400 * ( 1.5 - (50 /100 ) ))
 					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/2500 * ( 1.5 - (50 /100 ) ))
+					IF ~MercenariesReform
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value//(1300 + MercenariesReform * 800) * ( 1.5 - (50 /100 ) ))
+					ELSE
 					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/1300 * ( 1.5 - (50 /100 ) ))
+					ENDIF
 				ENDIF
 				
 				
@@ -4095,6 +4103,7 @@ Main = {
 			Mercenaries = {
 				TYPE Technological
 				VALUE value [ 0 0 50 >> 3 ]
+				VALUE outValue [ 0 0 5000 ]
 				RELATED_INFO = { 
 					RELATED_LINK MilitaryManpower
 				}
@@ -4115,6 +4124,10 @@ Main = {
 				}
 				
 				TICK = {
+					PROCESS outValue = value
+					IF ~MercenariesReform
+						PROCESS outValue = value * ( 1 + ( MercenariesReform / 20 ) ) 
+					ENDIF
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(value / 90)
 					ENDIF
@@ -5094,7 +5107,7 @@ Main = {
 				RELATED_INFO = {}
 
 				UNLOCK_CONDITIONS = {
-					HINT ~BattleAxe
+					HINT ~BarbarianAtGates | ~BattleAxe
 					CONDITION_NODE + CelesteMandate
 					OR
 					CONDITION_NODE + Empire
@@ -6386,7 +6399,7 @@ Main = {
 			}
 			}
 			
-		ColonialTariffs = {
+			ColonialTariffs = {
 				TAG ColonyTag
 				TYPE Cultural
 				VALUE value [ 0 0 50 >> 1 ]
@@ -6525,6 +6538,61 @@ Main = {
 				}
 
 			}
+			
+			MercenariesReform = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				
+				RELATED_INFO = {}
+
+				UNLOCK_CONDITIONS = {
+					HINT ~Gunpowder
+					CONDITION_VALUE Arquebus >= 100
+					CONDITION_NODE + Mercenaries
+					CONDITION_NODE + ModernWarfare
+				}
+				PRICE = {
+					$PoliticalPower = 250
+				}
+				UPGRADE = {
+					$PoliticalPower = 8
+				}
+				TICK = {
+				
+				}
+				LINK Mercenaries = {
+						WEIGHT [ to ] 
+				}
+				
+			}
+						
+			
+			OfficialLanguage = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~LinguaFranca
+					CONDITION_VALUE LinguaFranca >= 100
+					CONDITION_VALUE SchoolOfThought >= 20
+				}
+				PRICE = {
+					$PoliticalPower = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(OfficialLanguage) + 1) * 20
+				}
+				TICK = {
+				SET LinguaFranca.value [ : : 100 + OfficialLanguage.value / 2 ]
+				}
+				
+				LINK LinguaFranca = {
+						WEIGHT [ max ] 100 + value / 2
+				}
+				
+			
+
+			}
+			
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
