@@ -1901,7 +1901,7 @@ Main = {
 				LEVEL value = {					
 					0 = "None"
 					0.001 = "Our language is mandatory in all official texts"
-					50 = "Active persecution of dialects".
+					50 = "Active persecution of dialects"
 					100 = "Foundation of the Academy"
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our linguistic unification can go even further, with the right legislation we can actively and effectively promote our official language."
