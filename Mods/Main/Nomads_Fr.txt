@@ -34,7 +34,7 @@ Nomads = {
 			}
 		}
 		Levers = {
-			TranshumanceOrganisation = {
+			TranshumanceOrganization = {
 				NAME "Organisation de la Transhumance"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que nous sommes organisés en fédération, nous pouvons déployer des politiques pour organiser les troupeaux de nos nombreux clans. Ainsi les impacts négatifs seront drasitquement réduits"
 				SUMMARY "Réduit les pénalités des clans sur le bétail"
@@ -49,7 +49,7 @@ Nomads = {
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Les clans ne vous écouteront pas par pure gentillesse, donnez-leur une leçon avec votre armée pour augmenter votre autorité. En conséquence les clans perdront de leur puissances, du moins temporairement."
 				SUMMARY "Augemente votre autorité en utilisant votre armée"
 			}
-			Clanicbanners = {
+			ClanicBanners = {
 				NAME "Levée clanique"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Maintenant que nous sommes une fédération, vous pouvez lever les hommes des clans fédérés pour remplir rapidement vos armées de talentueux cavaliers."
 				SUMMARY "Utiliser de votre autorité pour accroitre rapidement vos troupes."

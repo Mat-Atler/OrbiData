@@ -22,10 +22,7 @@
 		Main.Salt.value = 20
 		Main.SoilFertility.value = 50
 		Main.NeighborhoodBellicism.value = 10
-		? Main.DraftAnimals = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
-		? Main.HorseDomestication = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
-		? Main.GreatNomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
-		? Main.NomadInvasion = DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
+		? Main.NewWorld = 1 - DataMapGetR("Main\DataMaps\Horses.png",GetLongitude(),GetLatitude())
 		? Main.Island = 1 - DataMapGetR("Main\DataMaps\Island.png",GetLongitude(),GetLatitude())
 	}
 	
@@ -43,6 +40,7 @@
 		Main.Salt.value = 40
 		Main.NeighborhoodBellicism.value = 0
 		- Main.Island
+		- Main.NewWorld
 	}
 	
 	Crete = {
@@ -57,6 +55,7 @@
 		Main.Salt.value = 30
 		Main.Spices.value = 0
 		Main.NeighborhoodBellicism.value = 30
+		- Main.NewWorld
 	}
 	
 	Yucatan = {
@@ -71,10 +70,6 @@
 		Main.Salt.value = 60
 		Main.Spices.value = 20
 		Main.NeighborhoodBellicism.value = 30
-		- Main.DraftAnimals
-		- Main.HorseDomestication
-		- Main.GreatNomadInvasion
-		- Main.NomadInvasion
 		- Main.Island
 	}
 	Mesopotamia = {
@@ -90,6 +85,7 @@
 		Main.Salt.value = 25
 		Main.NeighborhoodBellicism.value = 70
 		- Main.Island
+		- Main.NewWorld
 	}
 	
 	Java = {
@@ -104,6 +100,7 @@
 		Main.Spices.value = 100
 		Main.Salt.value = 20
 		Main.NeighborhoodBellicism.value = 50
+		- Main.NewWorld
 	}
 	
 	
@@ -119,6 +116,7 @@
 		Main.Spices.value = 10
 		Main.Salt.value = 30
 		Main.NeighborhoodBellicism.value = 10
+		- Main.NewWorld
 	}
 	
 	
@@ -134,10 +132,6 @@
 		Main.Salt.value = 80
 		Main.Spices.value = 0
 		Main.NeighborhoodBellicism.value = 5
-		- Main.DraftAnimals
-		- Main.HorseDomestication
-		- Main.GreatNomadInvasion
-		- Main.NomadInvasion
 		- Main.Island
 	}
 	
@@ -155,6 +149,7 @@
 		Main.Salt.value = 10
 		Main.NeighborhoodBellicism.value = 20
 		- Main.Island
+		- Main.NewWorld
 	}
 	
 	
@@ -171,6 +166,7 @@
 		Main.Salt.value = 50
 		Main.NeighborhoodBellicism.value = 80
 		- Main.Island
+		- Main.NewWorld
 	}
 	
 	
@@ -187,7 +183,22 @@
 		Main.Salt.value = 40
 		Main.NeighborhoodBellicism.value = 60
 		- Main.Island
+		- Main.NewWorld
 	}
 	
+	MississippiDelta = {
+		COORDINATES = 29° 57' N 90° 05' W
+		Main.Humidity.value = 60
+		Main.Temperature.value = 50
+		Main.Flora.value = 65
+		Main.Fauna.value = 50
+		Main.Coastline.value = 60
+		Main.SoilFertility.value = 65
+		Main.Gold.value = 50
+		Main.Spices.value = 0
+		Main.Salt.value = 50
+		Main.NeighborhoodBellicism.value = 30
+		- Main.Island
+	}
 	
 }

@@ -29,7 +29,7 @@ Nomads = {
 			}
 		}
 		Levers = {
-			TranshumanceOrganisation = {
+			TranshumanceOrganization = {
 				NAME "移牧制度"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我々が連合を組んだ今、あなたはすべての氏族の家畜の放牧を組織化するための政策を展開することができます、そうして氏族の負の影響を低減させることができます。"
 				SUMMARY "家畜に対する氏族のペナルティを減らす"
@@ -44,7 +44,7 @@ Nomads = {
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "氏族は純粋な親切心ではあなたの話を聞かないでしょう、あなたの権威を高めるためにあなたの軍隊で彼らに教訓を与えましょう、その過程で一時的に彼らの力を低下させます。"
 				SUMMARY "軍隊を使って権威を高める"
 			}
-			Clanicbanners = {
+			ClanicBanners = {
 				NAME "氏族の軍事徴収"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "我々が連合を組んだ今、連合氏族の兵士を育てて、軍の優秀な騎兵の総数を大幅に増やすことができます。"
 				SUMMARY "騎手の数を急速に増加させるために権威を使用する"

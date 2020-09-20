@@ -34,7 +34,7 @@ Nomads = {
 			}
 		}
 		Levers = {
-			TranshumanceOrganisation = {
+			TranshumanceOrganization = {
 				NAME "Transhumance Organisation"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are organized in a federation you can deploy policies to organize the grazing of the livestock of all the clans, in that way the negatives impacts of clans will be lowered"
 				SUMMARY "Reduce the penalties that clans have over livestock"

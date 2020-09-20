@@ -72,13 +72,19 @@ Presets = {
 		
 	ParisBasin = {
 		NAME "Paris Basin"
-		DESCRIPTION "<b>Hard</b><br>The Paris Basin is a relatively fertile land, located in a rather mild oceanic climate. Maritime trade, on the other hand, is rather limited, and its neighbors are quite agitated."
+		DESCRIPTION "<b>Difficult</b><br>The Paris Basin is a relatively fertile land, located in a rather mild oceanic climate. Maritime trade, on the other hand, is rather limited, and its neighbors are quite agitated."
 		}
 		
 		
 	Iberia = {
 		NAME "Iberia"
 		DESCRIPTION "<b>Average</b><br>Southern Iberia is a relatively arid and hostile land. But its position with access to both the Mediterranean and the ocean offers great opportunities."
+		}
+		
+
+	MississippiDelta = {
+		NAME "Mississippi Delta
+		DESCRIPTION "<b>Average</b><br> The Mississippi delta is an ideal place to found a sedentary agrarian civilization in America while leaving the door open to naval and river trade."
 		}
 		
 		
