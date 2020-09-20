@@ -651,6 +651,16 @@ Main = {
 				SUMMARY "Allows us to explore our philosophy in greater depth"
 			}	
 			
+			ModernWarfare = {
+				NAME "Modern Warfare"
+				DESCRIPTION "Our philosophy of warfare has evolved quite a bit with the advent of firearms. War is now a much better defined concept that monopolizes the attention of our state. You can now access direct diplomatic options using the buttons at the top left of the interface."
+				SUMMARY "Changes the dynamics of war"
+			}
+			NewWorld = {
+				NAME "New World"
+				DESCRIPTION "We are cut off from the Eurasian-African ecosystem which will lead to a different destiny for some parts of our civilization."
+				SUMMARY "We are somewhat isolated"
+			}	
 			
 			
 		}
@@ -1896,16 +1906,16 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The emergence of firearms and the changing dynamics of warfare have led us to rethink our model of how we use mercenaries. By introducing effective reforms we can improve our recruitment while reducing their pay."
 				SUMMARY "Improve our recruitment of mercenaries and reduce their pay"
 			}
-			OfficialLanguage = {
-				NAME "Official Language"
+		Isolationism = {
+				NAME "Isolationism"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Our language is mandatory in all official texts"
-					50 = "Active persecution of dialects"
-					100 = "Foundation of the Academy"
+					0 = "Not enforced"
+					10 = "Important measures"
+					50 = "Drastic measures"
+					100 = "Sakoku"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our linguistic unification can go even further, with the right legislation we can actively and effectively promote our official language."
-				SUMMARY "Strengthens the Lingua Franca"
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The influence of foreigners is harmful, we already have everything we need within our borders. Let's close the country once and for all and our harmony will only be strengthened."
+				SUMMARY "Sacrifice your military and commercial ambitions to strengthen your grip on interior policies."
 			}
 
 		}

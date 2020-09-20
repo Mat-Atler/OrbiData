@@ -489,7 +489,23 @@ Main = {
 				TICK = {
 				}
 				
-			}			
+			}		
+			
+			NewWorld = {
+				VALUE value [ 0 100 100 ]
+				DISPLAY_VALUE
+				
+                TRIGGER_TRAVEL = {
+                    PROCESS value = GetPresetValue(value)
+                }
+				
+				RELATED_INFO = {
+				}
+				TICK = {
+				}
+				
+			}
+			
 			Flora = {
 				VALUE value [ 0 65 100 ]
 				DISPLAY_VALUE
@@ -1314,7 +1330,7 @@ Main = {
 				
 				
 				TICK = {
-				PROCESS MilitaryEfficiency = ( 30 * (QualityVsQuantity / 100 ) ) + ( 20 * (Officers / 100 ) ) + ( 30 * ~GreatGeneral ) + ( 50 * ( MilitaryTechnology / 100) ) + ( 20 * ( Militarism / 100) )
+				PROCESS MilitaryEfficiency = ( 30 * (QualityVsQuantity / 100 ) ) + ( 20 * (Officers / 100 ) ) + ( 30 * ~GreatGeneral ) + ( 50 * ( MilitaryTechnology / 100) ) + ( 20 * ( Militarism / 100) ) + ( -75 * ( Isolationism / 100) )
 				
 				}
 				LINK MilitaryManpower = {
@@ -1372,7 +1388,7 @@ Main = {
 				VALUE value [ 100 100 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ( ~OrganizedNomadism + ~GreatNomadInvasion ) & GameTime() > 550
+					IF ( ~OrganizedNomadism + ~GreatNomadInvasion ) & GameTime() > 550 & ~NewWorld == 0
 						SPAWN
 					ENDIF
 				}
@@ -1387,7 +1403,7 @@ Main = {
 				VALUE value [ 100 100 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF (Agriculture > 20 ) & (Livestock > 20 ) & ( Settlement > 10 )
+					IF (Agriculture > 20 ) & (Livestock > 20 ) & ( Settlement > 10 )  & ~NewWorld == 0
 						SPAWN
 					ENDIF
 				}
@@ -1464,7 +1480,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 2 ) + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
+					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
 					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
 					ELSE
@@ -4196,6 +4212,7 @@ Main = {
 					ALWAYS
 					CONDITION_NODE + StateSize
 					CONDITION_NODE - ModernWarfare
+					CONDITION_NODE - Isolationism
 				}
 				PRICE = {
 					$PoliticalPower = 115
@@ -6083,6 +6100,9 @@ Main = {
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ( ~ScienceKnowledge & ~Fishing )
+					CONDITION_NODE NewWorld
+					OR
+					CONDITION_VALUE Embassies >= 70
 					ALWAYS
 					CONDITION_VALUE ScienceKnowledge >= 120
 				}
@@ -6229,6 +6249,7 @@ Main = {
 					ALWAYS
 					CONDITION_VALUE NavigationTools >= 100
 					CONDITION_VALUE Caravel >= 70
+					CONDITION_NODE - Isolationism
 				}
 				PRICE = {
 					$PoliticalPower = 300
@@ -6592,6 +6613,96 @@ Main = {
 			
 
 			}
+			
+			Isolationism = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~NationState
+					CONDITION_VALUE BorderControls >= 75
+					CONDITION_VALUE NationState >= 80
+				}
+				PRICE = {
+					$PoliticalPower = 495
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Isolationism) + 1) * 10
+				}
+				TICK = {				
+				PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0015)
+				PROCESS ScienceKnowledge = ScienceKnowledge - PerSeconds(value / 250)
+				PROCESS Stability = Stability + PerSeconds(value * 0.01)
+				PROCESS Culture = Culture + PerSeconds ( value * 0.012 )
+				}
+				
+				LINK NeighborhoodBellicism = {
+				IF value > 0
+					FLUX value / 35
+					COLOR red
+				ENDIF
+				}					
+				LINK ScienceKnowledge = {
+				IF value > 0
+					FLUX value / 35
+					COLOR red
+				ENDIF
+				}			
+				
+				LINK Stability = {
+				IF value > 0
+					FLUX value / 35
+					COLOR green
+				ENDIF
+				}				
+				
+				LINK Culture = {
+				IF value > 0
+					FLUX value / 35
+					COLOR green
+				ENDIF
+				}
+				
+				LINK MilitaryEfficiency = {
+						WEIGHT [ to ] 
+				}
+				LINK NationalCohesion = {
+						WEIGHT [ to ] 
+				}
+				
+								
+				TRIGGER_SPAWN Isolationism = {
+					REMOVE Expensionism
+					REMOVE AcrossTheOcean
+					DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+					}
+				
+				TRIGGER_LEAVE Isolationism = {
+				IF DropdownIsState(Diplomacy.Peace)
+					DROPDOWN_BUTTON_ENABLE  Diplomacy.DeclareWar
+				ENDIF
+					}
+			}
+			
+				Embassies = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT 0
+					CONDITION_NODE + NewWorld
+				}
+				PRICE = {
+					$PoliticalPower = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Embassies) + 1) * 20
+				}
+				TICK = {
+				}
+			
+
+			}
+			
+			
 			
 			}
 		Events = {
@@ -7467,7 +7578,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ((StateSize > 150 & GameTime() > 2500) + (GameTime() > 3800) ) & ~HorseDomestication == 0
+					IF  ((StateSize > 150 & GameTime() > 2500) + (GameTime() > 3800) ) & ~HorseDomestication == 0 & ~NewWorld == 0
 						RISE
 					ENDIF
 				}
@@ -8612,7 +8723,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 10000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 ) 
+					IF  ~StateSize & GameTime() > 10000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 )
 						RISE
 					ENDIF
 				}

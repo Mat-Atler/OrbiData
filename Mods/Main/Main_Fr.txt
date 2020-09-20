@@ -623,6 +623,16 @@ Main = {
 				SUMMARY "Notre domination des 7 mers"
 			}	
 			
+			ModernWarfare = {
+				NAME "Guerre Moderne"
+				DESCRIPTION "Notre philosophie de la guerre à pas mal évoluée avec l'apparition des armes à feux. La guerre est un concept désormais bien mieux définit qui monopoliste l'attention de notre état. Vous pouvez désormais accéder à des options diplomatiques directes à l'aide des boutons en haut à gauche de l'interface."
+				SUMMARY "Change les dynamiques de guerre"
+			}	
+			NewWorld = {
+				NAME "Nouveau Monde"
+				DESCRIPTION "Nous sommes coupées de l'écosystème eurasie-africain ce qui va entraîner un destin différent pour certains parties de notre civilisation."
+				SUMMARY "Nous sommes quelque peu isolés"
+			}	
 				
 		}
 		Levers = {
@@ -1881,6 +1891,17 @@ Main = {
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec la bonne législation nous pouvons promouvoir activement et efficacement notre langue officielle."
 				SUMMARY "Permet de renforcer la Lingua Franca"
+			}
+		Isolationism = {
+				NAME "Isolationisme"
+				LEVEL value = {					
+					0 = "Non enforcé"
+					10 = "Mesures importantes"
+					50 = "Mesures drastiques"
+					100 = "Sakoku Total"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'influence de l'étranger est néfaste, nous avons déjà tout ce qu'il nous faut à l'intérieur de nos frontière. Fermons le pays une bonne fois pour toute et notre harmonie n'en sera que renforcée."
+				SUMMARY "Sacrifie vos ambitions militaires et commerciales pour renforcer votre emprise sur l'intérieur"
 			}
 
 				
