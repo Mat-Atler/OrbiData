@@ -493,6 +493,9 @@ Main = {
 			
 			NewWorld = {
 				VALUE value [ 0 100 100 ]
+				VALUE invaderDiscovered [ 0 0 1 ]
+				VALUE invaderPlagueTrigger [ 0 0 10000 ]
+				VALUE westernized [ 0 0 1 ]
 				DISPLAY_VALUE
 				
                 TRIGGER_TRAVEL = {
@@ -502,6 +505,9 @@ Main = {
 				RELATED_INFO = {
 				}
 				TICK = {
+				IF invaderPlagueTrigger > 0
+					PROCESS invaderPlagueTrigger -= PerSeconds(1 * 0.95 ? 1.05)
+				ENDIF
 				}
 				
 			}
@@ -2043,6 +2049,36 @@ Main = {
 				TRIGGER_LEAVE Colony = {
 				 PROCESS colonySettled = 0
 				}
+			}
+			
+			InvadersForce = {
+				VALUE value [ 0 10 200 ]
+				DISPLAY_VALUE
+				SLEEP = {
+					IF ~Invaders
+						SPAWN
+					ENDIF
+				}
+
+				TICK = {
+					PROCESS NeighborhoodBellicism += PerSeconds(value / 350)
+					PROCESS Stability -= PerSeconds(value / 600)
+					
+					IF InvadersForce == 0 & Embassies >= 50
+						REMOVE InvadersForce
+					ENDIF
+				}
+
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2.5
+				}
+				
+				LINK Stability = {
+					COLOR red
+					FLUX 1
+				}
+				
 			}
 			
 			}
@@ -3792,6 +3828,7 @@ Main = {
 				
 				TICK = {
 				PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
+				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.0025)
 				PROCESS $Wealth = $Wealth - PerSeconds(Diplomacy * 0.02)
 				PROCESS TradeRoads = TradeRoads + PerSeconds(Diplomacy * 0.001)
 				}
@@ -3801,7 +3838,13 @@ Main = {
 					COLOR red
 				ENDIF
 				}
-		
+				
+			LINK InvadersForce = {
+				IF value > 0
+					FLUX value / 25
+					COLOR red
+				ENDIF
+				}
 				
 			}				
 			CivilEngineering = {
@@ -4227,8 +4270,9 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 40 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
-					IF ~BarbarianAtGates
+					IF ~BarbarianAtGates | ~InvadersForce
 						PROCESS BarbarianAtGates -= PerSeconds(value / 175)
+						PROCESS InvadersForce -= PerSeconds(value / 250)
 					ELSE
 						PROCESS StateSize = StateSize + PerSeconds(value / 175)
 					ENDIF
@@ -4241,8 +4285,9 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 100 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 100 * ( 1.5 - MilitaryEfficiency /100 ) )
-					IF ~BarbarianAtGates
+					IF ~BarbarianAtGates | ~InvadersForce
 						PROCESS BarbarianAtGates -= PerSeconds(value / 175)
+						PROCESS InvadersForce -= PerSeconds(value / 250)
 					ELSE
 						PROCESS StateSize = StateSize + PerSeconds(value / 175)
 					ENDIF
@@ -6099,10 +6144,10 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ( ~ScienceKnowledge & ~Fishing )
-					CONDITION_NODE NewWorld
+					HINT ( ~ScienceKnowledge & ~Fishing & ( ~NewWorld == 0 | ~Embassies ) )
+					CONDITION_NODE - NewWorld
 					OR
-					CONDITION_VALUE Embassies >= 70
+					CONDITION_VALUE Embassies >= 100
 					ALWAYS
 					CONDITION_VALUE ScienceKnowledge >= 120
 				}
@@ -6186,6 +6231,9 @@ Main = {
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~ScienceKnowledge
+					CONDITION_NODE - NewWorld
+					OR
+					CONDITION_VALUE Embassies >= 100
 					ALWAYS
 					CONDITION_VALUE ScienceKnowledge >= 100
 				}
@@ -6687,16 +6735,22 @@ Main = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT 0
+					HINT ~InvadersForce
 					CONDITION_NODE + NewWorld
+					CONDITION_NODE + InvadersForce
+					CONDITION_VALUE Diplomacy >= 50
 				}
 				PRICE = {
 					$PoliticalPower = 400
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Embassies) + 1) * 20
+					$PoliticalPower = (LinkCount(Embassies) + 1) * 40
 				}
 				TICK = {
+				IF value >= 100
+				REMOVE Invaders
+				PROCESS NewWorld.westernized = 1
+				ENDIF
 				}
 			
 
@@ -8859,7 +8913,85 @@ Main = {
 				}
 				
 		}
+		
+			Invaders = {
+				SOUND_EVENT "Main/SFX/Invasion.wav"
+				SOUND_WINDOW "Main/SFX/Invasion.wav"
+				EVENT_DEF [ 50 999999 1 100% ]
+				ARISE = {
+						EVENT_SPEED 1
+						ERA DiscoveryAge
+					}
+				TICK = {
+					PROCESS InvadersForce = InvadersForce + PerSeconds(0.25 * 0.75 ? 1.25)
+				}
 
+				LINK InvadersForce = {
+					COLOR red
+					FLUX 0.75
+				}
+			
+				TRIGGER_EVENT = {
+						IF GameTime() > 12000 & ~NewWorld & ~Embassies == 0
+							RISE
+						ENDIF
+				}
+				
+				TRIGGER_SPAWN Invaders = {
+					ERA DiscoveryAge
+					PROCESS NewWorld.invaderPlagueTrigger = 1200
+					PROCESS NewWorld.invaderDiscovered = 1
+					SPAWN DraftAnimals
+					SPAWN HorseDomestication
+			
+				}			
+		
+
+			}
+			
+			InvadersEpidemic = {
+				SOUND_EVENT "Main/SFX/Cough.wav"
+				SOUND_WINDOW "Main/SFX/Cough.wav"
+				EVENT_DEF [ 20 15 120 50% ]
+
+				SLEEP = {
+				IF ~Medecine
+					EVENT_CHANCE 0.5 - Medecine.value / 8
+				ELSE
+					EVENT_CHANCE 0.5
+				ENDIF
+				}
+				
+				ARISE = {
+					EVENT_SPEED Population / 100
+				}
+				TICK = {
+					PROCESS Population = Population - PerSeconds(1.2 + Population/65)
+					PROCESS Stability = Stability - PerSeconds(0.1 * 0.75 ? 1.25)
+
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.2 + MilitaryManpower.Infantry_value /45 )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.2 + MilitaryManpower.Cavalry_value /45)
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.2 + MilitaryManpower.Missile_value /45)
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.2 + MilitaryManpower.Mercenaries_value /45)
+					
+				}
+				LINK Population = {
+					COLOR red
+					FLUX 5
+				}
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 3
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 1
+				}
+				TRIGGER_EVENT = {
+					IF NewWorld.invaderPlagueTrigger > 0
+						RISE
+					ENDIF
+				}
 			}
 }
 }
