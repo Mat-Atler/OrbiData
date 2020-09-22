@@ -662,6 +662,11 @@ Main = {
 				SUMMARY "We are somewhat isolated"
 			}	
 			
+			InvadersForce = {
+				NAME "Invaders Forces"
+				DESCRIPTION "Entire contagions of invaders have landed on OUR land. They are trying to found cities and ally themselves with our historical enemies while trying to divide us. We must stop them whether by force or by diplomacy."
+				SUMMARY "Representing a constant threat"
+			}	
 			
 		}
 		Levers = {
@@ -1917,6 +1922,16 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The influence of foreigners is harmful, we already have everything we need within our borders. Let's close the country once and for all and our harmony will only be strengthened."
 				SUMMARY "Sacrifice your military and commercial ambitions to strengthen your grip on interior policies."
 			}
+			
+		Embassies  = {
+				NAME "Embassies"
+				LEVEL value = {					
+					0 = "Poor attempts"
+					50 = "Open Dialogue"
+					100 = "Peace Treaty"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> A big part of the problem with these foreigners is that they take us for savages who don't even deserve the respect of our borders. Let's start real talks with competent translators and learn from these foreigners, how do they sail across the oceans?"				SUMMARY " Allows us to stop the foreign invasion "
+			}
 
 		}
 		Events = {
@@ -2184,7 +2199,17 @@ Main = {
 				DESCRIPTION "As our colony prospers, it sees its affluence growing in the region."
 				SUMMARY "Our colony expands its influence"
 			}
+			Invaders = {
+				NAME "Invaders"
+				DESCRIPTION "Strange men have landed out of the Ocean and brought strange creatures with them. This does not presage anything good for the destiny of our country."
+				SUMMARY "Men from beyond the ocean have landed!"
+			}
 			
+			InvadersEpidemic = {
+				NAME "Epidemic of Invaders".
+				DESCRIPTION "Since they arrived, strange diseases have been striking our people, but never those men. Why is this disease so deadly?"
+				SUMMARY "A strange and very lethal disease has struck our people!"
+			}
 
 		}
 	}

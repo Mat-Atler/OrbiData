@@ -633,6 +633,12 @@ Main = {
 				DESCRIPTION "Nous sommes coupées de l'écosystème eurasie-africain ce qui va entraîner un destin différent pour certains parties de notre civilisation."
 				SUMMARY "Nous sommes quelque peu isolés"
 			}	
+			InvadersForce = {
+				NAME "Force des envahisseurs"
+				DESCRIPTION "Des contagent entiers d'envahisseurs ont débarqués sur NOS terres. Ils tentent de fonder des villes et de s'allier à nos ennemis historique tout en essayant de nous diviser. Nous devons les arrêter que ça soit par la force ou la plume."
+				SUMMARY "Représentent une menace permanante"
+			}	
+			
 				
 		}
 		Levers = {
@@ -1903,6 +1909,16 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'influence de l'étranger est néfaste, nous avons déjà tout ce qu'il nous faut à l'intérieur de nos frontière. Fermons le pays une bonne fois pour toute et notre harmonie n'en sera que renforcée."
 				SUMMARY "Sacrifie vos ambitions militaires et commerciales pour renforcer votre emprise sur l'intérieur"
 			}
+		Embassies = {
+				NAME "Ambassades"
+				LEVEL value = {					
+					0 = "Maigres tentatives"
+					50 = "Dialogue Ouvert"
+					100 = "Traité de Paix"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Une grande partie du problème de ces étrangers est que ceux-ci nous prennent pour des sauvages qui ne méritent même pas le respect de nos frontières. Entamons des véritables pourparlers avec des traducteurs compétents et apprenons de ces étrangers, comment voguent-ils par delà les océans ?"
+				SUMMARY "Permet l'arrêt de l'invasion étrangère"
+			}
 
 				
 		}
@@ -2136,7 +2152,6 @@ Main = {
 				SUMMARY "Va réduire drastiquement notre population"
 			}
 			
-			
 			CulturalRevival = {
 				NAME "Renaissance culturelle"
 				DESCRIPTION "Après un âge de déclin, notre culture profite de notre situation stable pour refleurir."
@@ -2166,11 +2181,22 @@ Main = {
 				SUMMARY "Notre colonie agrandit son influence"
 			}
 			
-			
 			Renaissance = {
 				NAME "Renaissance"
 				DESCRIPTION "Notre culture et notre Philosophie connaissent un âge d'or sans précédent qui marquera l'Histoire à jamais."
 				SUMMARY "Un renouveau culturel sans précédent!"
+			}
+			
+			Invaders = {
+				NAME "Envahisseurs"
+				DESCRIPTION "Des hommes étranges ont débarqués de l'Océan et avec eux d'étranges créatures. Cela n'augure rien de bon pour le destin de notre pays."
+				SUMMARY "Des hommes venus d'au delà l'océan ont débarqué!"
+			}
+			
+			InvadersEpidemic = {
+				NAME "Épidémie des Envahisseurs"
+				DESCRIPTION "Depuis qu'ils sont arrivés, d'étranges maladies frappent notre population mais jamais ces hommes. Quel est-ce maux si meurtrier?"
+				SUMMARY "Une étrange et très léthale maladie frappe notre peuple!"
 			}
 
 		}

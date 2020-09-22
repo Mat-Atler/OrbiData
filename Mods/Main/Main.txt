@@ -6747,12 +6747,18 @@ Main = {
 					$PoliticalPower = (LinkCount(Embassies) + 1) * 40
 				}
 				TICK = {
+				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.002)
+				
 				IF value >= 100
 				REMOVE Invaders
 				PROCESS NewWorld.westernized = 1
 				ENDIF
 				}
 			
+				LINK InvadersForce = {
+					COLOR red
+					FLUX 2
+				}
 
 			}
 			
