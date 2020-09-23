@@ -6005,7 +6005,7 @@ Main = {
 				VALUE value [ 0 20 50 >> 3 ]
 				VALUE multiplier [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Feudality | Culture
+					HINT ~Feudality | Castles
 					CONDITION_NODE + Feudality
 					CONDITION_VALUE Monasteries >= 40
 					CONDITION_VALUE Castles >= 30
