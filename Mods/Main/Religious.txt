@@ -1101,7 +1101,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF (Piety >= 15 & PriestClass >= 35 & & GameTime() > 3000 )
+					IF (Piety >= 15 & PriestClass >= 35 & GameTime() > 3000 )
 						RISE
 					ENDIF
 				}
