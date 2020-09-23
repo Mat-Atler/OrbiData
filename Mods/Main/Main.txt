@@ -18,6 +18,19 @@ Main = {
 			VALUE [ 0 20 100 ]
 			}
 		}
+
+	Globals = {
+	FUNCTION F_WarDeclaration = {
+	DROPDOWN_SET_STATE Diplomacy.War
+	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+	DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
+	}
+	FUNCTION F_Peace = {
+	DROPDOWN_SET_STATE Diplomacy.War
+	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+	DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
+	}
+	}
 	Dropdowns = {
 	  Diplomacy = {
 		States = {
@@ -32,22 +45,19 @@ Main = {
 		  DeclareWar = {
 		// Click
 		  REMOTE Population = {
-		  DROPDOWN_SET_STATE Diplomacy.War
-		  DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-		  DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
+		  CALL_FUNCTION F_WarDeclaration
 							}
 			}
 		  MakePeace = {
 		  // Click
 		  REMOTE Population = {
-		DROPDOWN_SET_STATE Diplomacy.Peace
-		DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
-		DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+		CALL_FUNCTION F_Peace
 			}
 			}
-    }
-}
-}
+		}
+		}
+	}
+	
 	/// NEW ///
 	Globes = {
 		StateMap = {
@@ -8926,7 +8936,6 @@ Main = {
 				EVENT_DEF [ 50 999999 1 100% ]
 				ARISE = {
 						EVENT_SPEED 1
-						ERA DiscoveryAge
 					}
 				TICK = {
 					PROCESS InvadersForce = InvadersForce + PerSeconds(0.25 * 0.75 ? 1.25)
@@ -8949,7 +8958,6 @@ Main = {
 					PROCESS NewWorld.invaderDiscovered = 1
 					SPAWN DraftAnimals
 					SPAWN HorseDomestication
-			
 				}			
 		
 
@@ -8999,5 +9007,43 @@ Main = {
 					ENDIF
 				}
 			}
+			
+		DeclarationOfWar = {
+				SOUND_EVENT "Main/SFX/Invasion.wav"
+				SOUND_WINDOW "Main/SFX/Invasion.wav"
+				EVENT_DEF [ 10 30 100 25% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				SLEEP = {
+				EVENT_CHANCE NeighborhoodBellicism / 100
+				}
+				TICK = {
+				}
+
+				
+				LINK MilitaryManpower = {
+					IF Fortifications == 0
+					COLOR red
+					FLUX 4
+					ENDIF
+				}
+				
+			
+				TRIGGER_EVENT = {
+					IF  ( ~ModernWarfare == 0 ) 
+						RISE
+					ENDIF
+				}
+				
+				
+				TRIGGER_SPAWN BeingInvaded = {
+					PROCESS NeighborhoodBellicism -= 50
+					CALL_FUNCTION F_WarDeclaration
+				}
+						
+				
+		}
+		}
 }
 }
