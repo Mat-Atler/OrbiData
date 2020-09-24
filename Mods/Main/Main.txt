@@ -23,7 +23,6 @@ Main = {
 	FUNCTION F_WarDeclaration = {
 	DROPDOWN_SET_STATE Diplomacy.War
 	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-	DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 	}
 	FUNCTION F_Peace = {
 	DROPDOWN_SET_STATE Diplomacy.War
@@ -2087,6 +2086,87 @@ Main = {
 				LINK Stability = {
 					COLOR red
 					FLUX 1
+				}
+				
+			}
+			
+			WarStatus = {
+				VALUE value [ 0 50 100 ]
+				VALUE WarTimer [ 0 0 100000 ]
+				VALUE peaceProposal_valueNeeded [ -10000 0 100000 ]
+				VALUE peaceProposal_ColonySize [ -10000 0 100000 ]
+				VALUE peaceProposal_StateSize [ -10000 0 100000 ]
+				VALUE peaceProposal_Wealth [ -10000 0 100000 ]
+				VALUE peaceProposal_ColonialPreference [ 0 0 150 ]
+				DISPLAY_VALUE
+				
+				RELATED_INFO = {
+				}
+				TICK = {
+				PROCESS WarTimer += PerSeconds ( 1 )
+				
+				IF ~ColonialStateSize
+				   peaceProposal_ColonialPreference = ColonialStateSize / 1.8 + TradeCompagnies / 2 + StockExchange / 3 + NavalSupremacy / 1.5
+				ELSE
+					peaceProposal_ColonialPreference = 0
+				ENDIF
+				
+				//White Peace if too close
+				IF value < 53 & value > 47
+					PROCESS peaceProposal_valueNeeded = 0
+				ENDIF
+				//You are loosing the war
+				IF value < 47
+					PROCESS peaceProposal_valueNeeded = 50 - value * 5
+				ENDIF
+				//You are wining the war
+				IF value > 53
+					PROCESS peaceProposal_valueNeeded = value - 50 * 4
+				ENDIF
+				
+				
+				PROCESS peaceProposal_ColonySize = 0
+				PROCESS peaceProposal_StateSize = 0
+				PROCESS peaceProposal_Wealth = 0
+				
+				
+				
+				PROCESS peaceProposal_Wealth = ( value - 50 ) * 4
+				
+				#Colonial Peace Deal
+				IF peaceProposal_ColonialPreference > 0
+					//Winning Colonial
+					IF peaceProposal_valueNeeded > 0
+						IF peaceProposal_valueNeeded < peaceProposal_ColonialPreference
+							PROCESS peaceProposal_ColonySize = peaceProposal_valueNeeded * 1.5
+							PROCESS peaceProposal_valueNeeded = 0
+						ELSE
+							PROCESS peaceProposal_ColonySize = peaceProposal_ColonialPreference * 1.5
+							PROCESS peaceProposal_valueNeeded -= peaceProposal_ColonialPreference
+						ENDIF
+						
+					ENDIF
+					
+					//Loosing Colonial
+					IF peaceProposal_valueNeeded < 0
+						IF Abs( peaceProposal_valueNeeded ) < peaceProposal_ColonialPreference
+							PROCESS peaceProposal_ColonySize = peaceProposal_valueNeeded * 1.5
+							PROCESS peaceProposal_valueNeeded = 0
+						ELSE
+							PROCESS peaceProposal_ColonySize = -peaceProposal_ColonialPreference * 1.5
+							PROCESS peaceProposal_valueNeeded += peaceProposal_ColonialPreference
+						ENDIF
+						
+					ENDIF
+				ENDIF
+				
+				// Will block early peace out if war is not decided
+				IF value < 65 & value > 30 & WarTimer < 150
+				DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+				ELSE
+				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
+				ENDIF
+				
 				}
 				
 			}
