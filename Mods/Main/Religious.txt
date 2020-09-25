@@ -257,6 +257,7 @@ Religious = {
 				TICK = {
 				IF ( value > 0 )
 					PROCESS cost =  ( value * Heretics  * 0.0002 ) * ( 0.75 + ClergyCentralization / 200 )
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( ToleranceOfHeretics' ) / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				ENDIF
 				IF ( value == 0 )
 					PROCESS cost =  0
@@ -278,7 +279,7 @@ Religious = {
 			}
 			ToleranceOfHeathens = {
 				TYPE Cultural
-				VALUE value [ 0 25 100 >> 1 ]
+				VALUE value [ 0 10 25 >> 1 ]
 				VALUE cost [ 0 0 100 ]
 				RELATED_INFO = {
 
@@ -296,6 +297,7 @@ Religious = {
 				TICK = {
 					IF ( value > 0 )
 						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 					IF ( value == 0 )
 						PROCESS cost =  0
@@ -333,7 +335,8 @@ Religious = {
 					$PoliticalPower = (LinkCount(Syncretism) + 1) * 2
 				}
 				
-				TICK = {					
+				TICK = {
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs(Syncretism') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					IF ( Pantheon < 50 )
 						SET ToleranceOfHeathens.value [ : : Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value*1.5 + 25 )/100 )+25 )) ]
 					ENDIF
@@ -385,7 +388,7 @@ Religious = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * (Heretics + Heathens) ) / 25)
+					PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * (Heretics + Heathens) ) / 25)
 				}
 				
 				LINK Heretics = {
@@ -419,16 +422,19 @@ Religious = {
 					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 0.25
 				}
 				TICK = {
+				
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs(Conversion') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+				
 				IF Pantheon > 10
-				PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-				PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+					PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+					PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 				ENDIF
 				
 				IF ( value > 0)
-				PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
+					PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
 				ENDIF
 				IF ( value == 0)
-				PROCESS cost =  0
+					PROCESS cost =  0
 				ENDIF
 					
 				IF ( $Wealth > cost )
@@ -471,6 +477,7 @@ Religious = {
 					$PoliticalPower = (LinkCount(ReligiousOfferings) + 1) * 0.3
 				}
 				TICK = {
+					PROCESS ClergyIndependance = ClergyIndependance - ( ReligiousOfferings' / 4.4 )
 					IF OfferingsNature > 80 & Livestock > ( value * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value * ReligiousCeremony * SacrificeNature / 2000000 )))
 						PROCESS Livestock = Livestock - PerSeconds ( value * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 )
 						IF Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )
@@ -569,7 +576,7 @@ Religious = {
 					$PoliticalPower =  (LinkCount(OfferingsNature) + 1) * 1.2
 				}
 				TICK = {
-
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs(OfferingsNature') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				
 				}
 				LINK ReligiousOfferings = {
@@ -691,7 +698,7 @@ Religious = {
 					$PoliticalPower = 35
 				}
 				UPGRADE = {
-					$PoliticalPower =  (LinkCount(ClergyCentralization) + 1 ) * 1.2
+					$PoliticalPower =  (LinkCount(ClergyCentralization) + 1 ) * ( 1 + ClergyIndependance / 50 )
 				}
 				TICK = {
 				
@@ -749,7 +756,7 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToNature) + 1 ) * 0.5
 				}
 				TICK = {
-				
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToNature' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				LINK Foraging = {
@@ -780,7 +787,7 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToSea) + 1 ) * 0.5
 				}
 				TICK = {
-				
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToSea' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				LINK Fishing = {
@@ -811,6 +818,7 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToTheHarvest) + 1 ) * 0.5
 				}
 				TICK = {
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTheHarvest' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				LINK Agriculture = {
@@ -841,7 +849,8 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToTheLaw) + 1 ) * 0.5
 				}
 				TICK = {
-				PROCESS PriestClass = PriestClass + PerSeconds ( value / 500 )
+					PROCESS PriestClass = PriestClass + PerSeconds ( value / 500 )
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTheLaw' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				LINK UrbanMilitia = {
@@ -878,7 +887,8 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToWar) + 1 ) * 1
 				}
 				TICK = {
-				SET Militarism.value [ : : 50 + DevotionToWar.value / 10  ]
+					SET Militarism.value [ : : 50 + DevotionToWar.value / 10  ]
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToWar' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				LINK Militarism = {
@@ -906,7 +916,8 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToTrade) + 1 ) * 0.5
 				}
 				TICK = {
-				PROCESS Entreprises = Entreprises + PerSeconds ( value / 400 ) 
+					PROCESS Entreprises = Entreprises + PerSeconds ( value / 400 ) 
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTrade' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				
@@ -938,8 +949,9 @@ Religious = {
 				$PoliticalPower = (LinkCount(DevotionToCraftsmanship) + 1 ) * 0.5
 				}
 				TICK = {
-				PROCESS TradeGoods = TradeGoods + PerSeconds ( value / 100 )
-				PROCESS ArtisanClass = ArtisanClass + PerSeconds ( value / 400 )
+					PROCESS TradeGoods = TradeGoods + PerSeconds ( value / 100 )
+					PROCESS ArtisanClass = ArtisanClass + PerSeconds ( value / 400 )
+					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToCraftsmanship' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				LINK TradeGoods = {
@@ -1225,74 +1237,7 @@ Religious = {
 					ENDIF
 				}
 			}
-			ReligiousLeagueWar = {
-				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
-				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
-				EVENT_DEF [ 15 60 70 60% ]
-				ARISE = {
-					EVENT_SPEED 1
-				}
 
-				TICK = {
-					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds( 0.1 ? 0.2 )
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(2 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1.5 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(4 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
-					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(0.5)
-					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
-					PROCESS Stability = Stability - PerSeconds( 1 )
-					
-					IF ( ToleranceOfHeretics < 60 )
-					PROCESS Heretics = Heretics - PerSeconds( 0.1 )
-					PROCESS Population = Population - PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
-					ENDIF
-					IF ( ToleranceOfHeretics >= 60 )
-					PROCESS Heretics = Heretics + PerSeconds( 0.1 )
-					PROCESS Population = Population + PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
-					ENDIF
-				}
-
-				
-				LINK MilitaryManpower = {
-					COLOR red
-					FLUX 4
-				}
-				
-				LINK Heretics = {
-					IF ( ToleranceOfHeretics < 60 )
-					COLOR red
-					FLUX 2
-					ENDIF
-					IF ( ToleranceOfHeretics >= 60 )
-					COLOR green
-					FLUX 2
-					ENDIF
-				}
-				
-				LINK UrbanMilitia = {
-					COLOR red
-					FLUX 2
-				}				
-				
-				LINK Stability = {
-					COLOR red
-					FLUX 2
-				}
-				
-				LINK NeighborhoodBellicism = {
-					COLOR green
-					FLUX 2
-				}
-				
-			
-				TRIGGER_EVENT = {
-					IF  ~GreatSchism
-						RISE
-					ENDIF
-				}
-
-			}
 		
 			ReinforcementOfTheClergy = {
 				SOUND_EVENT "Main/SFX/ConversionBad.wav"
@@ -1512,8 +1457,49 @@ Religious = {
 					ENDIF
 				}
 			}
-		
+			ClergyDiscontent = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 60 90 100 100% ]
+				
+				SLEEP = {
+					EVENT_CHANCE ClergyIndependance / 2000 + Max( ClergyIndependance' / 10 , 0.1 )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Piety = Piety - PerSeconds(0.25)
+					IF $PoliticalPower > 0
+						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds (( 333 + $PoliticalPower ) / 333 ) - 1 )
+					ENDIF
+					
+					IF $Wealth > 0
+						PROCESS $Wealth = $Wealth - PerSeconds (( 333 + $Wealth ) / 333 ) - 1 )
+					ENDIF
+					
+					IF ~DivineRight
+						OVERRIDE_PARAM DivineRight.value = GetParam(DivineRight.value) - PerSeconds( 0.25 * 0.5 ? 1 )
+						PROCESS DivineRight = Max ( GetParam(DivineRight.value), DivineRight )
+					ENDIF
+				}
+				
+				LINK Piety = {
+					COLOR red
+					FLUX 1
+				}
+				LINK DivineRight = {
+					COLOR red
+					FLUX 1
+				}
+				TRIGGER_EVENT = {
+					IF  ~CelesteMandate == 0  
+						RISE
+					ENDIF
+				}
 			}
+			
 	}
 }
 
