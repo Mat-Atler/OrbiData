@@ -25,16 +25,24 @@ Main = {
 			DESCRIPTION "L'Âge du Fer"
 		}
 		LateAntiquity = {
-			NAME "Antiquité tardive"
-			DESCRIPTION "Antiquité tardive"
+			NAME "Antiquité Tardive"
+			DESCRIPTION "Antiquité Tardive"
 		}
 		FeudalAge = {
-			NAME "Moyen-âge"
-			DESCRIPTION "Moyen-âge"
+			NAME "Moyen-Âge"
+			DESCRIPTION "Moyen-Âge"
 		}
 		DiscoveryAge = {
 			NAME "Âge des Découvertes"
 			DESCRIPTION "Âge des Découvertes"
+		}
+		AbsolutismAge = {
+			NAME "Âge de l'Absolutisme"
+			DESCRIPTION "Âge de l'Absolutisme"
+		}
+		IndustrialAge = {
+			NAME "Âge Industriel"
+			DESCRIPTION "Âge Industriel"
 		}
 	}
 	
@@ -48,7 +56,7 @@ Main = {
 				75 = "Grande Armée"
 				150 = "Très Grande Armée"
 			}
-			TEXT "État de l'armée:<br><size=26><b>" @[Main.MilitaryManpower.value,LEVEL] "</b></size><br> (" @[Main.MilitaryManpower.value] ")"
+			TEXT "Puissance de l'armée:<br><size=26><b>" @[Main.MilitaryManpower.value,LEVEL] "</b></size><br> (" @[Main.MilitaryManpower.value] ")"
 			TEXT "Infanterie : " @[Main.MilitaryManpower.Infantry_value] " <size=10>"§[Main.MilitaryManpower.Infantry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Infantry_value',F2] "</color></size>" "<br>" "Cavalerie : " @[Main.MilitaryManpower.Cavalry_value] " <size=10>"§[Main.MilitaryManpower.Cavalry_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Cavalry_value',F2] "</color></size>" "<br>" "Tireurs : " @[Main.MilitaryManpower.Missile_value] " <size=10>"§[Main.MilitaryManpower.Missile_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Missile_value',F2] "</color></size>" "<br>" "Mercenaires : " @[Main.MilitaryManpower.Mercenaries_value] " <size=10>"§[Main.MilitaryManpower.Mercenaries_value' > 0,"<color=green>+","<color=red>"] @[Main.MilitaryManpower.Mercenaries_value',F2] "</color></size>"
 			TEXT "PAS D'ARMÉE"
 		}
@@ -66,6 +74,28 @@ Main = {
 					1000 = "Grand Empire"
 			}
 			TEXT "<b>Valeur: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, votre civiliation est perdue."
+		}
+		
+		WinColonialStateSize = {
+			NAME "Taille de la Colonie"
+			LEVEL Main.ColonialStateSize.value = {
+				0 = "Disparu"
+				0.001 = "Petite Colonie"
+				100 = "Colonie"
+				200 = "Grande Colonie"
+				400 = "Colonie Impériale"
+			}
+			TEXT "<b>Value: "@[Main.ColonialStateSize.value,LEVEL] "</b> (" @[Main.ColonialStateSize.value,0.###] ") <br> La taille de notre colonie principale."
+		}
+		WinColony = {
+			NAME "Colonie"
+			TEXT "Notre principale colonie"
+			TEXT "Fonder une nouvelle colonie"
+		}
+		
+		WinMoveColony = {
+			NAME "Sélectionnez un endroit"
+			TEXT "Fonder une colonie ici"
 		}
 	}
 	
@@ -97,6 +127,10 @@ Main = {
 		Invaded = {
 			NAME "Envahis"
 			DESCRIPTION "Nous sommes attaqués !"
+		}
+		ColonyIndependance = {
+			NAME "Indépendance de la Colonie"
+			DESCRIPTION "Nous avons totalement perdu le contrôle!"
 		}
 	}	
 	
@@ -384,7 +418,7 @@ Main = {
 				
 				
 			MilitaryManpower = {
-				NAME "Personnel militaire"
+				NAME "Puissance militaire"
 				LEVEL value = {
 					0 = "Pas d'armée"
 					0.001 = "Une petite armée"
@@ -404,7 +438,7 @@ Main = {
 					30 = "Flotte"
 					100 = "Armada"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br> "Maintenir une flotte militaire est une nécessité pour les nations côtières ; utilisée pour le commerce maritime ou encore les actions millitaires naval."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br> "Maintenir une flotte militaire est une nécessité pour les nations côtières ; utilisée pour le commerce maritime ou encore les actions militaires naval."
 				SUMMARY "Notre flotte"
 			}
 			HorseDomestication = {
@@ -425,8 +459,8 @@ Main = {
 				SUMMARY "Nécessaire pour toutes formes de commerce"
 			}
 			Entreprises = {
-				NAME "Guilde"
-				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Avec la prolifération du commerce les marchands sont devenus puissants, très puissants. Ils ont organisés le commerce sous la forme de guildes, cherchant à enrichir leurs propriétaires. Bien entendus, ils haïssent tout se qui s'apparante à des taxes gouvernementales."
+				NAME "Entreprises"
+				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Avec la prolifération du commerce les marchands sont devenus puissants, très puissants. Ils ont organisés le commerce sous la forme de petites guildes, cherchant à enrichir leurs propriétaires. Bien entendus, ils haïssent tout se qui s'apparante à des taxes gouvernementales."
 				SUMMARY "Augmente le commerce"
 			}
 			NationalCohesion = {
@@ -479,10 +513,11 @@ Main = {
 			NavyTechnology = {
 				NAME "Technologie navale"
 				LEVEL value = {
-					0 = "Niveau de l'Âge de bronze"
-					25 = "Niveau de l'Antiquité tardive"
+					0 = "Niveau de l'Âge de Bronze"
+					25 = "Niveau de l'Antiquité Tardive"
 					75 = "Niveau du Moyen-âge"
 					150 = "Niveau de l'Âge des découvertes"
+					300 = "Niveau de l'Impérialisme"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "L'ascendant technologique a toujours été primordial sur le champ de bataille. S'assurer de notre avance sur les mers va vous permettre de créer de loitaines expéditions, d'envahir les nations étrangères et les piller."
 				SUMMARY "La modernité de votre flotte"
@@ -542,6 +577,68 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Il arrive que les plus infortunés s'enfuient dans nos forêts et commence à pratiquer le banditisme. Nous devons veiller à mettre en place une police forte pour éviter toute insécurité qui compromettrait le commence terrestre."
 				SUMMARY "Réduit notre commerce"
 				}
+	
+			ColonialStateSize = {
+				NAME "Taille de la Colonie"
+				DESCRIPTION "Valeur : " @[valeur,0.###]<br><br>""
+				SUMMARY "La taille de notre colonie"
+				}
+			
+			
+			ColonialAutonomyDesire = {
+				NAME "Désir d'autonomie coloniale"
+				DESCRIPTION "Valeur : " @[valeur,0.###]<br><br>"Notre taxation excessive à excédé les colons locaux. La grogne monte et c'est la porte vers une révolte organisée."
+				SUMMARY "Nos taxes provoquent du mécontement"
+			}
+			
+			ColonialProsperity = {
+				NAME "Prospérité Coloniale"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>" Notre colonie génère des richesses en fonction de plusieurs facteurs. Il est important de la protéger et de la taxer efficacement."
+				SUMMARY "La prospérité de notre principale colonie"
+			}	
+			
+			Colony = {
+				NAME "Colonie"
+				DESCRIPTION ""
+				SUMMARY "Notre principale colonie"
+			}	
+			
+			Humanism = {
+				NAME "Humanisme"
+				DESCRIPTION "Un récent renouveau artistico-philosophique à modifié en profondeur notre façon même de voir le monde. Il est temps de nous ouvrir à de nouveaux modes de pensées."
+				SUMMARY "Nous permet d'explorer plus en profondeur notre philosophie"
+			}	
+			
+			NavalSupremacy = {
+				NAME "Suprématie Navale"
+				LEVEL value = {
+					0 = "Inexistante"
+					0.001 = "Pathétique"
+					20 = "Faible"
+					40 = "Correcte"
+					80 = "Imposante"
+					120 = "Notre flotte a domptée les océans"
+				}
+				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre flotte étant désormais une composante essentielle de notre état, notre domination maritime doit être la plus impressionnante que possible si nous voulons sécuriser nos commerces lointains."
+				SUMMARY "Notre domination des 7 mers"
+			}	
+			
+			ModernWarfare = {
+				NAME "Guerre Moderne"
+				DESCRIPTION "Notre philosophie de la guerre à pas mal évoluée avec l'apparition des armes à feux. La guerre est un concept désormais bien mieux définit qui monopoliste l'attention de notre état. Vous pouvez désormais accéder à des options diplomatiques directes à l'aide des boutons en haut à gauche de l'interface."
+				SUMMARY "Change les dynamiques de guerre"
+			}	
+			NewWorld = {
+				NAME "Nouveau Monde"
+				DESCRIPTION "Nous sommes coupées de l'écosystème eurasie-africain ce qui va entraîner un destin différent pour certains parties de notre civilisation."
+				SUMMARY "Nous sommes quelque peu isolés"
+			}	
+			InvadersForce = {
+				NAME "Force des envahisseurs"
+				DESCRIPTION "Des contagent entiers d'envahisseurs ont débarqués sur NOS terres. Ils tentent de fonder des villes et de s'allier à nos ennemis historique tout en essayant de nous diviser. Nous devons les arrêter que ça soit par la force ou la plume."
+				SUMMARY "Représentent une menace permanante"
+			}	
+			
 				
 		}
 		Levers = {
@@ -812,7 +909,7 @@ Main = {
 					80 = "Un seul Dieu"
 					95 = "Monothéisme orthodoxe"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La nature de notre religion officiel, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La nature de notre religion officielle, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
 				SUMMARY "Détermine à quelle point votre clergé peut être organisé"
 			}
 			Theocracy = {
@@ -1262,7 +1359,7 @@ Main = {
 					100 = "Maitrisée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "La hache de bataille est un redoutable outil capable d'asséner de puissants coups et d'agripper le bouclier de l'ennemis, surtout utilisée par les peuples luttants contre une infanterie lourde et disciplinée, elle peut entrer dans notre arsenal pour plus de puissance au combat."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}	
 			
 			Stirrups = {
@@ -1274,7 +1371,7 @@ Main = {
 					100 = "Maitrisée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les étriers sont une grande invention pour les cavaliers. Capable à la fois d'une plus grande conservation de la puissance cinétique et aussi d'un meilleur équilibres. Cela permet à l'utilisateur aussi bien de provoquer des charges dévastatrices, principalement à la lance, ainsi que des archers de cavalerie."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}
 			
 			Cataphracts = {
@@ -1286,7 +1383,7 @@ Main = {
 					100 = "Maîtrisée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les cataphractaires sont les ancêtres de toutes cavaleries lourdes. Les carapaçons protègent le cheval et le cavalier des flèches et permet de créer une cavalerie de choc puissante."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}
 
 			Longship = {
@@ -1492,7 +1589,7 @@ Main = {
 					100 = "Maîtrise"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Les armures médiévales représente un champ vaste et complexe dont la progression avance par petits tâtonnements au gré des inventions des artisans."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}	
 			
 			
@@ -1507,7 +1604,7 @@ Main = {
 					150 = "Canon à bombarde"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
-				SUMMARY "Technologie millitaire"
+				SUMMARY "Technologie militaire"
 			}	
 
 			NationState = {
@@ -1667,7 +1764,162 @@ Main = {
 				SUMMARY "Apporte Culture, Piété et vous permet de renforcer vos Munuments Religieux"
 			}
 		
+		
+			NavigationTools = {
+				NAME "Outils de navigation"
+				DESCRIPTION "Valeur: " @[value,0.###]<br><br>"La boussole et d'autres petites percées techniques dans le domaine de la navigation nous permettent une maîtrise des mers sans pareil."
+				SUMMARY "Améliore la sécurité des voyages en mer"
+			}
+			Caravel = {
+				NAME "Caravel"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>"La caravelle est l'aboutissement de l'amélioration de la navigation à voile qui permet une navigation sûres à travers les mers et les océans."
+				SUMMARY "Permet de traverser l'océan"
+			}
+			LargeSailboats = {
+				NAME "Grands Voiliers"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>"Nos multiples entreprises sur la mer ont conduit à la perfection du navire à voile. Galions, frégates, corvettes, jamais notre marine n'a semblée si majestueuse."
+				SUMMARY "Permet de dominer l'océan"
+			}
 			
+			AcrossTheOcean = {
+				NAME "Au-delà de l'océan"
+				LEVEL value = {
+					0 = "Aucune expédition"
+					0.001 = "Expéditions timides"
+					30 = "Vers le Nouveau Monde"
+					50 = "Tentatives de circumnavigation"
+					80 = "Expéditions globales"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Notre nouvelle maîtrise des mers nous permet d'organiser de gigantesques expéditions au delà des océans pour un avenir glorieux. "
+				SUMMARY "Voyages organisés à travers les mers"
+			}
+		
+			Arquebus = {
+				NAME "Arquebuse"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arquebuse est la première arme à feu suffisament efficace qui marque la supériorité de la poudre à canon sur l'archerie et un changement radical du champ de bataille."
+				SUMMARY "Technologie militaire"
+			}	
+			
+			Musket = {
+				NAME "Mousquet"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
+				SUMMARY "Technologie militaire"
+			}	
+			
+			StockExchange = {
+				NAME "Bourse commerciale"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Petite confrérie de marchand"
+					30 = "Confrérie de marchand"
+					60 = "Bourse commerciale"
+					150 = "Grande Bourse commerciale"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
+				SUMMARY "Augmente notre maximum de bien commerciaux"
+			}
+			TradingPost = {
+				NAME "Comptoirs Commerciaux"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Accords locaux"
+					15 = "Quelques comptoirs"
+					30 = "Réseau de comptoirs"
+					60 = "Réseau mondial"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Nos expéditions maritimes nous permettent d'avoir toujours plus de partenaires commerciaux. Avec de la diplomatie et de l'or nous pouvons acheter des comptoirs juteux."
+				SUMMARY "Augmente le flux de bien commerciaux"
+			}
+			
+			CombatPiracy = {
+				NAME "Combattre la Piraterie"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
+				SUMMARY "Réquisitionne notre flotte pour sécuriser notre commerce outremer"
+			}
+			ColonialTariffs = {
+				NAME "Douane Coloniale"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Légère taxe"
+					5 = "Taxe Normale"
+					10 = "Lourdes Taxes"
+					15 = "Très lourdes taxes"
+					20 = "Nos marchands sont en faillite"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Maintenant que notre colonie est solidement implanté et commencé à générer du profit il est temps pour la métropole de récupérer son investissement. Taxons le commerce colonial."
+				SUMMARY "Taxe notre empire colonial"
+			}	
+			SlaveTrade = {
+				NAME "Traite Négrière"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Nos colonie ont besoin de main-d'oeuvre fraîche, avec un léger investissement de notre part nous pouvons esperer un immense retour sur investissement."
+				SUMMARY "Améliore la richesse de nos colonies"
+			}
+			SchoolOfThought = {
+				NAME "École de Pensée"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Les récentes poussées philosophique ont fait foisonné de multiples nouvelles écoles de pensée, cela décuple nos possibilités."
+				SUMMARY "Améliore notre potentiel philosophique"
+			}
+			ScientificMethod = {
+				NAME "Méthode Scientifique"
+				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>Basée sur l'empirisme, la méthode scientifique promeut de la compréhension du monde naturel par l'expérience et la réplication des travaux par des protocoles précis. Cela devrait considérablement accélrer notre recherche."
+				SUMMARY "Améliore notre recherche"
+			}
+			MercenariesReform = {
+				NAME "Réforme des mercenaires"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Début des réformes"
+					50 = "Réformes avancées"
+					100 = "Réformes complètes"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'apparition des armes à feu et les changements de dynamique de la guerre nous ont conduit à repenser notre modèle de l'utilisation des mercenaires. En faisant des réformes efficaces nous pouvons amélirer notre recrutement tout en allégant leur solde."
+				SUMMARY "Améliore notre recrutement des mercenaires et diminue leur solde"
+			}
+		OfficialLanguage = {
+				NAME "Language Officiel"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Notre langue est obligatoire dans tous les textes officiels"
+					50 = "Persécution active des patois"
+					100 = "Fondation de l'Académie"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec la bonne législation nous pouvons promouvoir activement et efficacement notre langue officielle."
+				SUMMARY "Permet de renforcer la Lingua Franca"
+			}
+		Isolationism = {
+				NAME "Isolationisme"
+				LEVEL value = {					
+					0 = "Non enforcé"
+					10 = "Mesures importantes"
+					50 = "Mesures drastiques"
+					100 = "Sakoku Total"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'influence de l'étranger est néfaste, nous avons déjà tout ce qu'il nous faut à l'intérieur de nos frontière. Fermons le pays une bonne fois pour toute et notre harmonie n'en sera que renforcée."
+				SUMMARY "Sacrifie vos ambitions militaires et commerciales pour renforcer votre emprise sur l'intérieur"
+			}
+		Embassies = {
+				NAME "Ambassades"
+				LEVEL value = {					
+					0 = "Maigres tentatives"
+					50 = "Dialogue Ouvert"
+					100 = "Traité de Paix"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Une grande partie du problème de ces étrangers est que ceux-ci nous prennent pour des sauvages qui ne méritent même pas le respect de nos frontières. Entamons des véritables pourparlers avec des traducteurs compétents et apprenons de ces étrangers, comment voguent-ils par delà les océans ?"
+				SUMMARY "Permet l'arrêt de l'invasion étrangère"
+			}
+
 				
 		}
 		Events = {
@@ -1900,7 +2152,6 @@ Main = {
 				SUMMARY "Va réduire drastiquement notre population"
 			}
 			
-			
 			CulturalRevival = {
 				NAME "Renaissance culturelle"
 				DESCRIPTION "Après un âge de déclin, notre culture profite de notre situation stable pour refleurir."
@@ -1919,6 +2170,34 @@ Main = {
 				SUMMARY "Une horde de nomade vous attaque !"
 			}
 
+			ColonialRebellion = {
+				NAME "Rébellion Coloniale"
+				DESCRIPTION "Notre taxation excessive à provoqué de grosse émeutes dans notre colonie qui a dégénéré en rébellion ouvertes, si notre flotte ne s'interpose pas, et en nombre, ce sera la fin de notre colonie !"
+				SUMMARY "Notre colonie réclame son indépendance!"
+			}
+			ColonialExpension = {
+				NAME "Expension Coloniale"
+				DESCRIPTION "Notre colonie prospérant, elle voit son affluence grandir dans la région."
+				SUMMARY "Notre colonie agrandit son influence"
+			}
+			
+			Renaissance = {
+				NAME "Renaissance"
+				DESCRIPTION "Notre culture et notre Philosophie connaissent un âge d'or sans précédent qui marquera l'Histoire à jamais."
+				SUMMARY "Un renouveau culturel sans précédent!"
+			}
+			
+			Invaders = {
+				NAME "Envahisseurs"
+				DESCRIPTION "Des hommes étranges ont débarqués de l'Océan et avec eux d'étranges créatures. Cela n'augure rien de bon pour le destin de notre pays."
+				SUMMARY "Des hommes venus d'au delà l'océan ont débarqué!"
+			}
+			
+			InvadersEpidemic = {
+				NAME "Épidémie des Envahisseurs"
+				DESCRIPTION "Depuis qu'ils sont arrivés, d'étranges maladies frappent notre population mais jamais ces hommes. Quel est-ce maux si meurtrier?"
+				SUMMARY "Une étrange et très léthale maladie frappe notre peuple!"
+			}
 
 		}
 

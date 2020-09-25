@@ -36,6 +36,14 @@ Main = {
 			NAME "大航海時代"
 			DESCRIPTION "大航海時代"
 		}
+		AbsolutismAge = {
+			NAME "絶対君主制時代"
+			DESCRIPTION "絶対君主制時代"
+		}
+		IndustrialAge = {
+			NAME "産業時代"
+			DESCRIPTION "産業時代"
+		}
 	}
 	
 	Windows = {
@@ -63,6 +71,37 @@ Main = {
 				1000 = "大帝国"
 			}
 			TEXT "<b>規模: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> 支配下にある土地の大きさですが利益を得るためにはしっかりと治める必要があります。最後の土地が失われたらゲームオーバーです。"
+		}
+			WinTravel = {
+			NAME "旅行"
+			TEXT "旅行の状態。" @[TravelMod.Travel.value]
+			TEXT "行きたい場所を選ぶ"
+		}
+		
+		WinMove = {
+			NAME "行く場所を選ぶ"
+			TEXT "ここに移動します"
+		}
+		WinColonialStateSize = {
+			NAME "Colonial State Size"
+			LEVEL Main.ColonialStateSize.value = {
+				0 = "Gone"
+				0.001 = "Small Colony"
+				100 = "Colony"
+				200 = "Large Colony"
+				400 = "Imperial Colony"
+			}
+			TEXT "<b>Value: "@[Main.ColonialStateSize.value,LEVEL] "</b> (" @[Main.ColonialStateSize.value,0.###] ") <br>The size of our main colony."
+		}
+		WinColony = {
+			NAME "Colony"
+			TEXT " "
+			TEXT "Start a colony"
+		}
+		
+		WinMoveColony = {
+			NAME "Choose a place to go"
+			TEXT "Start a colony here"
 		}
 	}
 	
@@ -94,6 +133,14 @@ Main = {
 		Invaded = {
 			NAME "侵略開始"
 			DESCRIPTION "我々は攻撃をうけています!"
+		}
+		CannotTravel = {
+			NAME "ここは旅行できません"
+			DESCRIPTION "ここでは旅行はできません"
+		}
+		CannotColony = {
+			NAME "Cannot start a colony here"
+			DESCRIPTION "Cannot start a colony here"
 		}
 	}	
 	

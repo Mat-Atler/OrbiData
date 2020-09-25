@@ -94,7 +94,7 @@ Religious = {
 				RELATED_INFO = {
 				}
 				SLEEP = {
-					IF Piety > 10
+					IF Piety > 15 & PriestClass > 20
 						SPAWN
 					ENDIF
 				}
@@ -194,8 +194,7 @@ Religious = {
 				RELATED_INFO = {
 				}
 				SLEEP = {
-					IF PriestClass > 25 & ~ClergyIndependance
-					
+					IF PriestClass > 30 & ~ClergyIndependance
 						SPAWN
 					ENDIF
 				}
@@ -566,7 +565,7 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ReligiousOfferings
+					HINT ~ReligiousOfferings
 					CONDITION_NODE + ReligiousOfferings
 				}
 				PRICE = {
@@ -592,7 +591,7 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT OfferingsNature
+					HINT ~OfferingsNature
 					CONDITION_VALUE OfferingsNature > 80
 
 				}
@@ -620,9 +619,10 @@ Religious = {
 				}
 				
 				UNLOCK_CONDITIONS = {
-					HINT SacrificeNature
+					HINT ( ~SacrificeNature & ~ModernWarfare == 0 )
 					CONDITION_VALUE SacrificeNature > 80
 					CONDITION_VALUE MilitaryManpower > 50
+					CONDITION_NODE - ModernWarfare
 
 				}
 				PRICE = {
@@ -690,7 +690,7 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~PriestClass & GetCurrentEra() == GetEra(IronAge)
+					HINT ~PriestClass & GetCurrentEra() >= GetEra(IronAge)
 					CONDITION_ERA >= IronAge
 					CONDITION_VALUE PriestClass > 25
 				}
@@ -722,7 +722,7 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~PriestClass & GetCurrentEra() == GetEra(IronAge)
+					HINT ~PriestClass
 					CONDITION_ERA >= IronAge
 					CONDITION_VALUE PriestClass > 25
 				}
@@ -1113,7 +1113,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF (Piety >= 15 & GameTime() > 1500 )
+					IF (Piety >= 15 & PriestClass >= 35 & GameTime() > 3000 )
 						RISE
 					ENDIF
 				}
@@ -1140,7 +1140,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF ( ~Heathens & GameTime() > 1500 )
+					IF ( ~Heathens & ( NeighborhoodBellicism > 50 | OverlandTrade > 30 | NavalTrade > 30 ) & GameTime() > 2300 )
 						RISE
 					ENDIF
 				}
@@ -1208,7 +1208,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF (Heretics + Heathens >= 25 & GameTime() > 1500 )
+					IF (Heretics + Heathens >= 25 & GameTime() > 2300 )
 						RISE
 					ENDIF
 				}
@@ -1237,7 +1237,78 @@ Religious = {
 					ENDIF
 				}
 			}
+<<<<<<< HEAD
 
+=======
+			ReligiousLeagueWar = {
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
+				EVENT_DEF [ 15 50 70 60% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+
+				TICK = {
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds( 0.1 ? 0.2 )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(1.5 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(2 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
+					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(0.5)
+					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
+					PROCESS Stability = Stability - PerSeconds( 1 )
+					
+					IF ( ToleranceOfHeretics < 60 )
+					PROCESS Heretics = Heretics - PerSeconds( 0.1 )
+					PROCESS Population = Population - PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
+					ENDIF
+					IF ( ToleranceOfHeretics >= 60 )
+					PROCESS Heretics = Heretics + PerSeconds( 0.1 )
+					PROCESS Population = Population + PerSeconds( Population * ( Heretics / 100 ) * 0.03 )
+					ENDIF
+				}
+
+				
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK Heretics = {
+					IF ( ToleranceOfHeretics < 60 )
+					COLOR red
+					FLUX 2
+					ENDIF
+					IF ( ToleranceOfHeretics >= 60 )
+					COLOR green
+					FLUX 2
+					ENDIF
+				}
+				
+				LINK UrbanMilitia = {
+					COLOR red
+					FLUX 2
+				}				
+				
+				LINK Stability = {
+					COLOR red
+					FLUX 2
+				}
+				
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2
+				}
+				
+			
+				TRIGGER_EVENT = {
+					IF  ( ~GreatSchism & ~ModernWarfare == 0 )
+						RISE
+					ENDIF
+				}
+
+			}
+>>>>>>> master
 		
 			ReinforcementOfTheClergy = {
 				SOUND_EVENT "Main/SFX/ConversionBad.wav"

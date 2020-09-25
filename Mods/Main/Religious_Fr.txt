@@ -18,17 +18,17 @@ Religious = {
 			}	
 			ReligiousHeadPower = {
 				NAME "Pouvoir du chef religieux"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " Que le chef religieux soit un seulement un guide spirituel ou le maitre d'une grande administration religieuse, ses décisions a une grande influence sur les politiques religieuses."
+				DESCRIPTION <b>"Valeur: "@[value] </b> " Que le chef religieux soit un seulement un guide spirituel ou le maitre d'une grande administration religieuse, ses décisions ont une grande influence sur les politiques religieuses."
 				SUMMARY "Pouvoir du chef religieux"
 			}
 			CompetitingReligiousLeader = {
 				NAME "Chef religieux concurent"
-				DESCRIPTION <b>"Valeur: "@[value] </b> "Le pouvoir religieux est peut différent du pouvoir politique. Comme lui il attire les envieux, les embitieux et les réformateurs idéalistes... Les plus charismatique de ces prétendants arrive à renger de leur côté une partie du clergé minant ainsi l'unité de notre foi."
+				DESCRIPTION <b>"Valeur: "@[value] </b> "Le pouvoir religieux est peu différent du pouvoir politique. Comme lui il attire les envieux, les ambitieux et les réformateurs idéalistes... Les plus charismatiques de ces prétendants arrive à ranger de leur côté une partie du clergé minant ainsi l'unité de notre foi."
 				SUMMARY "Nombre de chef religieux concurent"
 			}
 			Devotion = {
 				NAME "Dévotion"
-				DESCRIPTION <b>"Valeur: "@[value] </b> "La religion peut aider les hommes à se dévouer à des aspects importants de la vie et de la société. Est plus notre foi sera puissante et assuré plus la devotion de nos sujets sera sans commune mesure."
+				DESCRIPTION <b>"Valeur: "@[value] </b> "La religion peut aider les hommes à se dévouer à des aspects importants de la vie et de la société. Et plus notre foi sera puissante et assurée plus la dévotion de nos sujets sera sans commune mesure."
 				SUMMARY "Améliore vos différentes dévotions"
 			}
 		}
@@ -59,7 +59,7 @@ Religious = {
 				
 			Syncretism = {
 				NAME "Syncrétisme"
-				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Avec le temps nous avons compris que la religion de nos voisins n'es pas si différent de la notre. Cette reflexion va nous aider à augmenter la tolérance des païens."
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Avec le temps nous avons compris que la religion de nos voisins n'est pas si différent de la notre. Cette reflexion va nous aider à augmenter la tolérance des païens."
 				SUMMARY "Augmente le maximum de la tolérance des païens"
 				}
 			ReligiousMinorityTax = {
@@ -71,14 +71,14 @@ Religious = {
 					10 = "Taxes lourdes"
 					35 = "Taxes très lourdes"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> " Nos croyance actuelle nous autorise à taxer les minorités religieuses. Bien sûr de trop lourdes taxes peuvent les pousser à la révolte."
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> " Nos croyances actuelles nous autorise à taxer les minorités religieuses. Bien sûr de trop lourdes taxes peuvent les pousser à la révolte."
 				SUMMARY "A quelle point vous taxez les minorités religieuse"
 			}
 			
 			Conversion = {
 				NAME "Conversion"
-				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les minorités religieuses constituent un danger pour notre unité nationale. Nous devons les convertir par tous les moyens. Plus nos rites et nos croyances sont définis et unitaires, plus leur conversions sera efficaces."
-				SUMMARY "Convertir les mécréants à la vrais foi"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les minorités religieuses constituent un danger pour notre unité nationale. Nous devons les convertir par tous les moyens. Plus nos rites et nos croyances sont définis et unitaires, plus la conversion sera efficace."
+				SUMMARY "Convertir les mécréants à la vrai foi"
 				}
 				
 			ReligiousOfferings = { 
@@ -89,7 +89,7 @@ Religious = {
 					25 = "Une offrande à chaque cérémonie"
 					75 = "Plusieurs offrandes à chaque cérémonie"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Le nombre d'offrandes que nous donnons à chaque cérémonie. Plus nous donnons, plus notre foi sera renforcée."
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Le nombre d'offrandes que nous donnons à chaque cérémonie. Plus nous en donnons, plus notre foi sera renforcée."
 				SUMMARY "La fréquence des offrandes religieuses"
 			}
 
@@ -100,7 +100,7 @@ Religious = {
 					40 = "Bien commerciaux et nourritures"
 					80 = "Les Dieux veulent du sang frais"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "La nature des offrandes que nous faisons à chaque cérémonie. Des choses inanimées à une créature vivante."
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "La nature des offrandes que nous faisons à chaque cérémonie. De choses inanimées à une créature vivante."
 				SUMMARY "La nature des offrandes que nous offrons dans les cérémonies"
 			}
 
@@ -124,7 +124,7 @@ Religious = {
 					40 = "Modérées"
 					70 = "Intensives"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Nos cérémonies nécessites du sang humains, nos guerres ont comme objectif de le récupérer chez nos voisins"
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Nos cérémonies nécessitent du sang humain, nos guerres ont comme objectif de le récupérer chez nos voisins."
 				SUMMARY "Utilise la force militaire pour capturer des esclaves"
 			}
 			ClergyIndependance = {
@@ -144,10 +144,10 @@ Religious = {
 					0 = "Le chef religieux est seulement une figure de guide respectée"
 					25 = "Certains prêtres contrôlent de petits groupes de prêtres locaux"
 					50 = "Chaque prêtre fait partie d'une hiérarchie contrôlée par un petit nombre de grands prêtres"
-					75 = "Le clergé est sous le contrôle incontesté d'une seule personne au soment d'une hiérachie bien organisé"
+					75 = "Le clergé est sous le contrôle incontesté d'une seule personne au soment d'une hiérachie bien organisée"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Plus le clergé est centralisé plus ses actions son efficace, cependant cela augmente son coût de fonctionnement aussi que son pouvoir."
-				SUMMARY "Détermine l'efficacité ainsi que le coût des politiques religieuses."
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Plus le clergé est centralisé plus ses actions sont efficace, cependant cela augmente son coût de fonctionnement aussi que son pouvoir."
+				SUMMARY "Détermine l'efficacité ainsi que le coût des politiques religieuses"
 				}
 			EffortAgainstReligiousDissent = {
 				NAME "Effort contre la dissidence religieuse"
@@ -158,8 +158,8 @@ Religious = {
 					50 = "Effort important"
 					75 = "Aucune dissidence ne sera acceptée au sein de notre foi! "
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Par de couteuses manoeuvres politiques nous pouvons forcer les différentes factions religieuses à s'unifié et à reconnaître qu'un seul chef religieux légitime."
-				SUMMARY "Augmente nos chances de réduire le nombre de chef religieux concurent."
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Par de couteuses manoeuvres politiques, nous pouvons forcer les différentes factions religieuses à s'unifier et à reconnaître un seul chef religieux légitime."
+				SUMMARY "Augmente nos chances de réduire le nombre de chef religieux concurrents"
 				}
 			ClericalState = {
 				NAME "État clérical"
@@ -169,7 +169,7 @@ Religious = {
 					50 = "Les prêtres constituent la majorité de notre appareil d'État"
 					80 = "Le clergé remplace l'administration d'État"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "La religion est le seul moyen vraiment viable de juger du bien et du mal. C'est pourquoi nous avons relégué tous les affaires d'État aux mains des prêtres car eux seuls peuvent gouverner avec sagesse."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "La religion est le seul moyen vraiment viable de juger du bien et du mal. C'est pourquoi nous avons relégué tous les affaires d'État aux mains des prêtres, car eux seuls peuvent gouverner avec sagesse."
 				SUMMARY "Réformer notre Théocratie"
 			}
 			CelestialMonarchy = {
@@ -180,12 +180,12 @@ Religious = {
 					50 = "Notre roi est considéré comme étant un dieu vivant"
 					80 = "Notre roi est considéré comme étant la divinité principale de notre religion "
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Beaucoup en sont venus à considérer nos dirigeants non seulement comme de grands leaders, mais aussi comme des êtres semi-divins. De nombreux adeptes ont formé une secte pour suivre fanatiquement notre dirigeant. Réformons notre pays pour que tous nos sujets soient de fait des membres de notre secte."
-				SUMMARY "gouvernement par un roi divinisé "
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Beaucoup en sont venus à considérer nos dirigeants non seulement comme de grands chefs, mais aussi comme des êtres semi-divins. De nombreux adeptes ont formé une secte pour suivre fanatiquement notre dirigeant. Réformons notre pays pour que tous nos sujets soient de fait des membres de cette secte."
+				SUMMARY "Gouvernement par un roi divinisé"
 			}				
 			DevotionToNature = {
 				NAME "Dévotion à la Nature"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "La Nature nous apporte de tout ce dont nous avons besoin. C'est pourquoi nous avons décidé de l'honorer pour que ses bienfaits ne tarit jamais."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "La Nature nous apporte tout ce dont nous avons besoin. C'est pourquoi nous avons décidé de l'honorer pour que ses bienfaits ne tarisse jamais."
 				SUMMARY "Minimise l'impacte de la Cueillette et de la chasse"
 			}
 			DevotionToSea = {
@@ -195,28 +195,28 @@ Religious = {
 			}
 			DevotionToTheHarvest = {
 				NAME "Dévotion à la moisson"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Les récolcle sont à notre société ce que le sang est à un corps humain. Nous devons donc nous assurer que les forces divines ne nous en feront jamais manquer."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Les récoltes sont à notre société ce que le sang est à un corps humain. Nous devons donc nous assurer que les forces divines ne nous en feront jamais manquer."
 				SUMMARY "Augmente l'efficacité de l'agriculture et de l'élevage"
 			}
 			DevotionToTheLaw = {
 				NAME "Dévotion à la loi"
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Ce n'est que par une observance stricte de la loi que l'harmonie dans notre société peut être maintenue. C'est pourquoi nos prêtres doivent avoir l'esprit d'un juge."
-				SUMMARY "Augmente l'efficacité de la Milice urbaine et de la loi religieux"
+				SUMMARY "Augmente l'efficacité de la Milice Urbaine et de la Loi Religieuse"
 			}	
 			DevotionToWar = {
 				NAME "Dévotion à la guerre"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Les dieux acceptent à leur côté que les meilleurs guerriers. Alors assurons-nous de toujours vaincre sur le champ de bataille."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Les dieux n'acceptent à leur côté que les meilleurs guerriers. Alors assurons-nous de toujours vaincre sur le champ de bataille."
 				SUMMARY "Augmente l'efficacité du Militarisme"
 			}	
 			DevotionToTrade = {
 				NAME "Dévotion au commerce"
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "La prospérité de notre peuple est une bénédiction divine. Assurons-nous que cette faveur nous soit en tout temps accordée."
-				SUMMARY "Augmente l'efficacité de nos Guilde"
+				SUMMARY "Augmente l'efficacité de nos Entreprises"
 			}	
 			DevotionToCraftsmanship = {
 				NAME "Dévotion à l'artisanat"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "De la même manière que c'est par l'action que le salut s'obtient. C'est par le travail acharné que les hommes prouvent leur valeur. Assurons-nous que chaque homme participe à l'effort."
-				SUMMARY "Augmente notre production de bien commerciaux "
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "C'est par l'action que le salut s'obtient. C'est donc par le travail acharné que les hommes prouvent leur valeur. Assurons-nous que chaque homme participe à l'effort."
+				SUMMARY "Augmente notre production de biens commerciaux"
 			}
 		}
 		Events = {
@@ -244,43 +244,43 @@ Religious = {
 			}
 			GreatSchism = {
 				NAME "Grand Schisme"
-				DESCRIPTION " Notre religion à déjà vu et survécu à des débats sur la nature profonde de nos croyances. Mais cette fois - si les théologiens ne critiquent pas que nos croyances mais la légitimité de nos saintes institutions. Les réformes demandées sont si grandes qu'il est possible que l'unité de notre religion n'y survive pas. "
+				DESCRIPTION "Notre religion à déjà vu et survécu à des débats sur la nature profonde de nos croyances. Mais cette fois - si les théologiens ne critiquent pas que nos croyances mais la légitimité de nos saintes institutions. Les réformes demandées sont si grandes qu'il est possible que l'unité de notre religion n'y survive pas. "
 				SUMMARY "Augmente le nombre d'hérétiques et les chances de conflits religieux"
 			}
 			ReligiousLeagueWar = {
 				NAME "Guerres de leagues religieuses"
-				DESCRIPTION " Alors que le grand schisme déchire des pays anciennement unis dans la foi. La guerre est devenue inévitable. "
-				SUMMARY "C'est la Guerre ! "
+				DESCRIPTION "Alors que le grand schisme déchire des pays anciennement unis dans la foi, la guerre est devenue inévitable. "
+				SUMMARY "C'est la guerre !"
 			}
 			ReinforcementOfTheClergy = {
 				NAME " Renforcement du clergé "
-				DESCRIPTION " Les prêtres ont toujours tenu à leurs indépendances et privilèges et c'est avec ferveurs qu'ils résistent à notre contrôle. "
-				SUMMARY " le clergé augmente son indépendance "
+				DESCRIPTION "Les prêtres ont toujours tenu à leur indépendance et à leurs privilèges et c'est avec ferveur qu'ils résistent à notre contrôle."
+				SUMMARY " le clergé augmente son indépendance"
 			}
 			ReinforcementOfTheGouvernement = {
 				NAME " Renforcement du gouvernement "
-				DESCRIPTION " Le clergé peut avoir une grande influence sur notre peuple, c'est pourquoi il est impératif que nous le contrôlions. "
-				SUMMARY " L'indépendance du clergé diminue"
+				DESCRIPTION "Le clergé peut avoir une grande influence sur notre peuple, c'est pourquoi il est impératif que nous le contrôlions. "
+				SUMMARY "L'indépendance du clergé diminue"
 			}
 			ReinforcementOfTheReligiousHead = {
 				NAME "Renforcement du chef religieux "
-				DESCRIPTION " Comme tout homme de pouvoir, notre chef spirituel ratera aucune opportunité de l’accroitre davantage. Même si cela veut dire allez à notre encontre. "
-				SUMMARY " Le pouvoir du chef religieux augment"
+				DESCRIPTION "Comme tout homme de pouvoir, notre chef spirituel ne ratera aucune opportunité de l’accroître davantage. Même si cela veut dire aller à notre encontre. "
+				SUMMARY "Le pouvoir du chef religieux augmente"
 			}
 			WeakReligiousHead = {
-				NAME "Chef religieux inapte "
-				DESCRIPTION " Notre guide spirituel actuel se révèle comme étant incompétent et complètement inapte. Cela est surement une bonne occasion pour solidifier notre pouvoir sur le clergé. "
-				SUMMARY " Le pouvoir du chef religieux diminue"
+				NAME "Chef religieux inapte"
+				DESCRIPTION " Notre guide spirituel actuel se révèle comme étant incompétent et complètement inapte. Cela est surement une bonne occasion pour solidifier notre pouvoir sur le clergé."
+				SUMMARY "Le pouvoir du chef religieux diminue"
 			}
 			ExclusionFromTheReligion = {
 				NAME "Exclusion de la religion "
-				DESCRIPTION " Les plus hautes institutions religieuses ont désidé de nous expulser de la religion pour notre manque de piété. La confiance de la population dans notre gouvernement va être grandement réduit ainsi que notre capacité a influencé les affaires du clergé. "
+				DESCRIPTION " Les plus hautes institutions religieuses ont désidé de nous expulser de la religion pour notre manque de piété. La confiance de la population dans notre gouvernement va être grandement réduite ainsi que notre capacité a influencé les affaires du clergé. "
 				SUMMARY " Réduit notre piété et notre stabilité et nous empèche d'influencer le clergé"
 			}
 			NewCompetitingReligiousLeader = {
 				NAME "Nouveau chef religieux concurrent "
-				DESCRIPTION " Un ambitieux et charismatique théologien assure qu'il est une personne plus pieuse et aptes que notre actuel chef religieux. Un pouvoir religieux aussi divisé ne peut pas être une bonne nouvelle pour la stabilité de notre pays! "
-				SUMMARY "Un nouveau chef religieux concurrent apparaît."
+				DESCRIPTION " Un ambitieux et charismatique théologien assure qu'il est une personne plus pieuse et apte que notre actuel chef religieux. Un pouvoir religieux aussi divisé ne peut pas être une bonne nouvelle pour la stabilité de notre pays! "
+				SUMMARY "Un nouveau chef religieux concurrent apparaît"
 			}
 			EndOfReligiousDisent = {
 				NAME "Fin de la dissidence religieuse "

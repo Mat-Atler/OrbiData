@@ -76,5 +76,15 @@ Presets = {
 		NAME "Bassin Parisien"
 		DESCRIPTION "<b>Difficile</b><br>Le bassin parisien est une terre relativement fertile, situé dans un climat océanique plutôt doux. Le commerce maritime est par contre plutôt limité, et ses voisins agités."
 		}
+				
+	Iberia = {
+		NAME "Ibérie"
+		DESCRIPTION "<b>Moyen</b><br>Le Sud de l'ibérie est une terre relativement aride et hostile. Mais sa position ouverte à la fois à la méditerranée et à l'océan lui permet de grandes opportunités."
+		}
 		
+	MississippiDelta = {
+		NAME "Delta du Mississipi"
+		DESCRIPTION "<b>Moyen</b><br>Le delta du Mississipi est un endroit idéal pour fonder une civilisation sédentaire agraire en Amérique tout en se laissant la porte ouverte au commerce naval et fluvial."
+		}
+
 }
