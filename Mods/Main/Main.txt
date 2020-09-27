@@ -6072,8 +6072,8 @@ Main = {
 					$Wealth = 100
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Monasteries) + 1) * 1
-					$Wealth = (LinkCount(Monasteries) + 1) * 10
+					$PoliticalPower = (LinkCount(ReligiousArt) + 1) * 1
+					$Wealth = (LinkCount(ReligiousArt) + 1) * 10
 				}
 				
 				TICK = {
@@ -6111,8 +6111,8 @@ Main = {
 					$Wealth = 500
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Monasteries) + 1) * 5
-					$Wealth = (LinkCount(Monasteries) + 1) * 5
+					$PoliticalPower = (LinkCount(HolyOrders) + 1) * 5
+					$Wealth = (LinkCount(HolyOrders) + 1) * 5
 				}
 				
 				TICK = {
