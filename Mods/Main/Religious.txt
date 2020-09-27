@@ -94,7 +94,7 @@ Religious = {
 				RELATED_INFO = {
 				}
 				SLEEP = {
-					IF Piety > 15 & PriestClass > 20
+					IF Piety > 10
 						SPAWN
 					ENDIF
 				}
@@ -194,7 +194,8 @@ Religious = {
 				RELATED_INFO = {
 				}
 				SLEEP = {
-					IF PriestClass > 30 & ~ClergyIndependance
+					IF PriestClass > 25 & ~ClergyIndependance
+					
 						SPAWN
 					ENDIF
 				}
@@ -683,7 +684,7 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~PriestClass & GetCurrentEra() >= GetEra(IronAge)
+					HINT ~PriestClass & GetCurrentEra() == GetEra(IronAge)
 					CONDITION_ERA >= IronAge
 					CONDITION_VALUE PriestClass > 25
 				}
@@ -715,7 +716,7 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~PriestClass
+					HINT ~PriestClass & GetCurrentEra() == GetEra(IronAge)
 					CONDITION_ERA >= IronAge
 					CONDITION_VALUE PriestClass > 25
 				}
@@ -1101,7 +1102,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF (Piety >= 15 & PriestClass >= 35 & GameTime() > 3000 )
+					IF (Piety >= 15 & GameTime() > 1500 )
 						RISE
 					ENDIF
 				}
@@ -1128,7 +1129,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF ( ~Heathens & ( NeighborhoodBellicism > 50 | OverlandTrade > 30 | NavalTrade > 30 ) & GameTime() > 2300 )
+					IF ( ~Heathens & GameTime() > 1500 )
 						RISE
 					ENDIF
 				}
@@ -1196,7 +1197,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF (Heretics + Heathens >= 25 & GameTime() > 2300 )
+					IF (Heretics + Heathens >= 25 & GameTime() > 1500 )
 						RISE
 					ENDIF
 				}

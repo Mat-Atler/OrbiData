@@ -222,6 +222,7 @@ Nomads = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~Clanicfederation | ~EternalSteppe
+					
 					CONDITION_VALUE Clanicfederation > 50
 					OR
 					CONDITION_VALUE EternalSteppe > 50
@@ -249,7 +250,7 @@ Nomads = {
 				VALUE value [ 0 0 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
-					HINT ~MilitaryManpower & ~OrganizedNomadism
+					HINT ~MilitaryManpower
 					CONDITION_NODE + OrganizedNomadism
 					CONDITION_NODE + MilitaryManpower
 				}
@@ -363,7 +364,6 @@ Nomads = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~Authority
-					CONDITION_NODE + OrganizedNomadism
 					CONDITION_VALUE Piety > 10
 			}
 				PRICE = {
