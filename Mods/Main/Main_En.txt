@@ -679,7 +679,7 @@ Main = {
 					75 = "We are winning the war"
 					90 = "Our victory is striking"
 				}
-				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we sign a peace treaty with our enemy, here are the consequences: <br>"@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
+				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we sign a peace treaty with our enemy, here are the consequences:" <br><br>@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
 				SUMMARY "Describes the state of the war"
 				}
 			

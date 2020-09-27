@@ -650,7 +650,7 @@ Main = {
 					75 = "Nous gagnons la guerre"
 					90 = "Notre victoire est éclatante"
 				}
-				DESCRIPTION <b>"Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences. <br> @[peaceProposal_ColonySize] Taille de la Colonie <br> @[peaceProposal_StateSize] Taille de l'État <br> @[peaceProposal_Wealth] Argent"
+				DESCRIPTION <b> "Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br>"Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences :" <br><br>@[peaceProposal_ColonySize]" Taille de la Colonie <br>"@[peaceProposal_StateSize]" Taille de l'État <br>"@[peaceProposal_Wealth]" Richesse"
 				SUMMARY "Décrit l'état de la guerre"
 				}
 				

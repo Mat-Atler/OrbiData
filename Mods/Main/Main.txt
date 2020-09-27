@@ -2103,30 +2103,32 @@ Main = {
 				RELATED_INFO = {
 				}
 				TICK = {
+				//White Peace if too close
+				IF ( value < 53 & value > 47 )
+					PROCESS peaceProposal_valueNeeded = 0
+				ENDIF
+				//You are loosing the war
+				IF value < 47
+					PROCESS peaceProposal_valueNeeded = ( 50 - value ) * -5
+				ENDIF
+				//You are wining the war
+				IF value > 53
+					PROCESS peaceProposal_valueNeeded = ( value - 50 ) * 4
+				ENDIF
+				
 				PROCESS WarTimer += PerSeconds ( 1 )
 				
 				IF ~ColonialStateSize
 				   PROCESS peaceProposal_ColonialPreference = ColonialStateSize / 1.8 + TradeCompagnies / 2 + StockExchange / 3 + NavalSupremacy / 1.5
 				ELSE
-				PROCESS peaceProposal_ColonialPreference = 0
-				ENDIF
-				
-				//White Peace if too close
-				IF value < 53 & value > 47
-					PROCESS peaceProposal_valueNeeded = 0
-				ENDIF
-				//You are loosing the war
-				IF value < 47
-					PROCESS peaceProposal_valueNeeded = 50 - value * 5
-				ENDIF
-				//You are wining the war
-				IF value > 53
-					PROCESS peaceProposal_valueNeeded = value - 50 * 4
+					PROCESS peaceProposal_ColonialPreference = 0
 				ENDIF
 				
 				
 				
 				PROCESS peaceProposal_Wealth = ( value - 50 ) * 6
+				PROCESS peaceProposal_ColonySize = 0
+				PROCESS peaceProposal_StateSize = 0
 				
 				// Colonial Peace Deal
 				IF peaceProposal_ColonialPreference > 0
@@ -2158,22 +2160,16 @@ Main = {
 				//Territories changes
 				IF peaceProposal_valueNeeded > 0
 							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
-							PROCESS peaceProposal_valueNeeded = 0
-				ENDIF
-					
-				IF peaceProposal_valueNeeded < 0
-							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
-							PROCESS peaceProposal_valueNeeded = 0
 				ENDIF
 				
-				IF Abs( peaceProposal_valueNeeded ) < 80
-							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
-							PROCESS peaceProposal_valueNeeded = 0
-						ELSE
-							PROCESS peaceProposal_StateSize = -80
-							PROCESS peaceProposal_valueNeeded -= 80
-							PROCESS peaceProposal_Wealth = ( peaceProposal_valueNeeded ) * 4
-							PROCESS peaceProposal_valueNeeded = 0
+				IF peaceProposal_valueNeeded < 0
+					IF 	peaceProposal_valueNeeded > -80
+								PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
+							ELSE
+								PROCESS peaceProposal_StateSize = -80
+								PROCESS peaceProposal_valueNeeded -= 80
+								PROCESS peaceProposal_Wealth = ( peaceProposal_valueNeeded ) * 4
+					ENDIF
 				ENDIF
 				
 				// Will block early peace out if war is not decided
@@ -6062,7 +6058,7 @@ Main = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Monasteries | Culture
+					HINT ~Monasteries | ~Culture
 					CONDITION_VALUE Monasteries >= 30
 					CONDITION_VALUE ReligiousMonuments >= 50
 					CONDITION_VALUE Culture >= 40
@@ -6101,7 +6097,7 @@ Main = {
 				VALUE value [ 0 20 50 >> 3 ]
 				VALUE multiplier [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Feudality | Castles
+					HINT ~Feudality | ~Castles
 					CONDITION_NODE + Feudality
 					CONDITION_VALUE Monasteries >= 40
 					CONDITION_VALUE Castles >= 30
