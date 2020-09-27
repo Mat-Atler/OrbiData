@@ -666,7 +666,22 @@ Main = {
 				NAME "Invaders Forces"
 				DESCRIPTION "Entire contagions of invaders have landed on OUR land. They are trying to found cities and ally themselves with our historical enemies while trying to divide us. We must stop them whether by force or by diplomacy."
 				SUMMARY "Representing a constant threat"
-			}	
+			}				
+			
+			WarStatus = {
+				NAME "State of War"
+				LEVEL value = {
+					0 = "The war is lost"
+					25 = "We are losing the war"
+					40 = "We are slightly losing the war"
+					50 = "Undecided status"
+					50.001 = "We are slightly winning the war"
+					75 = "We are winning the war"
+					90 = "Our victory is striking"
+				}
+				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we sign a peace treaty with our enemy, here are the consequences: <br>"@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
+				SUMMARY "Describes the state of the war"
+				}
 			
 		}
 		Levers = {

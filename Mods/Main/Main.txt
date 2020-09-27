@@ -2106,9 +2106,9 @@ Main = {
 				PROCESS WarTimer += PerSeconds ( 1 )
 				
 				IF ~ColonialStateSize
-				   peaceProposal_ColonialPreference = ColonialStateSize / 1.8 + TradeCompagnies / 2 + StockExchange / 3 + NavalSupremacy / 1.5
+				   PROCESS peaceProposal_ColonialPreference = ColonialStateSize / 1.8 + TradeCompagnies / 2 + StockExchange / 3 + NavalSupremacy / 1.5
 				ELSE
-					peaceProposal_ColonialPreference = 0
+				PROCESS peaceProposal_ColonialPreference = 0
 				ENDIF
 				
 				//White Peace if too close
@@ -2125,15 +2125,10 @@ Main = {
 				ENDIF
 				
 				
-				PROCESS peaceProposal_ColonySize = 0
-				PROCESS peaceProposal_StateSize = 0
-				PROCESS peaceProposal_Wealth = 0
 				
+				PROCESS peaceProposal_Wealth = ( value - 50 ) * 6
 				
-				
-				PROCESS peaceProposal_Wealth = ( value - 50 ) * 4
-				
-				#Colonial Peace Deal
+				// Colonial Peace Deal
 				IF peaceProposal_ColonialPreference > 0
 					//Winning Colonial
 					IF peaceProposal_valueNeeded > 0
@@ -2153,11 +2148,32 @@ Main = {
 							PROCESS peaceProposal_ColonySize = peaceProposal_valueNeeded * 1.5
 							PROCESS peaceProposal_valueNeeded = 0
 						ELSE
-							PROCESS peaceProposal_ColonySize = -peaceProposal_ColonialPreference * 1.5
+							PROCESS peaceProposal_ColonySize = -1 * peaceProposal_ColonialPreference * 1.5
 							PROCESS peaceProposal_valueNeeded += peaceProposal_ColonialPreference
 						ENDIF
 						
 					ENDIF
+				ENDIF
+				
+				//Territories changes
+				IF peaceProposal_valueNeeded > 0
+							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
+							PROCESS peaceProposal_valueNeeded = 0
+				ENDIF
+					
+				IF peaceProposal_valueNeeded < 0
+							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
+							PROCESS peaceProposal_valueNeeded = 0
+				ENDIF
+				
+				IF Abs( peaceProposal_valueNeeded ) < 80
+							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
+							PROCESS peaceProposal_valueNeeded = 0
+						ELSE
+							PROCESS peaceProposal_StateSize = -80
+							PROCESS peaceProposal_valueNeeded -= 80
+							PROCESS peaceProposal_Wealth = ( peaceProposal_valueNeeded ) * 4
+							PROCESS peaceProposal_valueNeeded = 0
 				ENDIF
 				
 				// Will block early peace out if war is not decided

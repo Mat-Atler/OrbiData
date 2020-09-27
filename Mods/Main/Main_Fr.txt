@@ -569,7 +569,7 @@ Main = {
 			RoadsSafety = {
 				NAME "Sécurité des Routes"
 				LEVEL value = {
-					0 = "Pas de bandits".
+					0 = "Pas de bandits"
 					0.001 = "Quelques bandits"
 					30 = "Nos routes ne sont plus sûres"
 					60 = "Les bandits de grand chemin sont partout"
@@ -639,6 +639,20 @@ Main = {
 				SUMMARY "Représentent une menace permanante"
 			}	
 			
+			WarStatus = {
+				NAME "État de la Guerre"
+				LEVEL value = {
+					0 = "La guerre est perdue"
+					25 = "Nous perdons la guerre"
+					40 = "Nous perdons légèrement la guerre"
+					50 = "Statut indécis"
+					50.001 = "Nous gagnons légèrement la guerre"
+					75 = "Nous gagnons la guerre"
+					90 = "Notre victoire est éclatante"
+				}
+				DESCRIPTION <b>"Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences. <br> @[peaceProposal_ColonySize] Taille de la Colonie <br> @[peaceProposal_StateSize] Taille de l'État <br> @[peaceProposal_Wealth] Argent"
+				SUMMARY "Décrit l'état de la guerre"
+				}
 				
 		}
 		Levers = {
