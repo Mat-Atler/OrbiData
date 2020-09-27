@@ -20,25 +20,24 @@ Main = {
 		}
 
 	Globals = {
-		FUNCTION F_WarDeclaration = {
-			DROPDOWN_SET_STATE Diplomacy.War
-			DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-		}
-		FUNCTION F_Peace = {
-			REMOVE WarStatus
-			DROPDOWN_SET_STATE Diplomacy.Peace
-			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
-			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
-		}
+	FUNCTION F_WarDeclaration = {
+	DROPDOWN_SET_STATE Diplomacy.War
+	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+	}
+	FUNCTION F_Peace = {
+	DROPDOWN_SET_STATE Diplomacy.War
+	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+	DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
+	}
 	}
 	Dropdowns = {
 	  Diplomacy = {
 		States = {
 		  Peace = {
-		IMAGE "Main/Images/Peace.png"
+		IMAGE "Main/Images/Wealth.png"
 		  }
 		  War = {
-		IMAGE "Main/Images/War.png"
+		IMAGE "Main/Images/PoliticalPower.png"
 		  }
    }
 	   Buttons = {
@@ -314,11 +313,6 @@ Main = {
 			PREVIEW
 		}
 		ColonyIndependance = {
-			PRIORITY [ 1 ]
-			MUTE_TIME 100
-		}
-		
-		EnforcedPeaceAlert = {
 			PRIORITY [ 1 ]
 			MUTE_TIME 100
 		}
@@ -9124,48 +9118,30 @@ Main = {
 				}
 				TICK = {
 				}
+
+				
+				LINK MilitaryManpower = {
+					IF Fortifications == 0
+					COLOR red
+					FLUX 4
+					ENDIF
+				}
 				
 			
 				TRIGGER_EVENT = {
-					IF  ~ModernWarfare
+					IF  ( ~ModernWarfare == 0 ) 
 						RISE
 					ENDIF
 				}
 				
 				
-				TRIGGER_SPAWN DeclarationOfWar = {
+				TRIGGER_SPAWN BeingInvaded = {
 					PROCESS NeighborhoodBellicism -= 50
 					CALL_FUNCTION F_WarDeclaration
-					ALERT Invaded
 				}
+						
 				
 		}
-		
-			EnforcedPeace = {
-				EVENT_DEF [ 50 30 100 75% ]
-				ARISE = {
-					EVENT_SPEED 1
-					IF WarStatus > 10
-							REMOVE EnforcedPeace
-					ENDIF
-				}
-				TICK = {
-				}
-			
-				TRIGGER_EVENT = {
-					IF  WarStatus < 10
-						RISE
-					ENDIF
-				}
-				
-				TRIGGER_SPAWN EnforcedPeace = {
-					PROCESS NeighborhoodBellicism -= 20
-					CALL_FUNCTION F_Peace
-					ALERT EnforcedPeaceAlert
-				}
-				
-		}
-		
 		}
 }
 }

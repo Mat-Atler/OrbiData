@@ -132,10 +132,6 @@ Main = {
 			NAME "Indépendance de la Colonie"
 			DESCRIPTION "Nous avons totalement perdu le contrôle!"
 		}
-		EnforcedPeaceAlert = {
-			NAME "Paix imposée"
-			DESCRIPTION "Nous avons avons perdu la guerre et avons été forcé de faire des concessions."
-		}
 	}	
 	
 	Nodes = {
@@ -2216,17 +2212,7 @@ Main = {
 				DESCRIPTION "Depuis qu'ils sont arrivés, d'étranges maladies frappent notre population mais jamais ces hommes. Quel est-ce maux si meurtrier?"
 				SUMMARY "Une étrange et très léthale maladie frappe notre peuple!"
 			}
-			
-			DeclarationOfWar = {
-				NAME "Déclaration de Guerre"
-				DESCRIPTION "Un de nos puissant voisins continentaux à eu l'audace de nous déclarer la guerre. Nous devons nous défendre!"
-				SUMMARY "Un de nos voisins viens de nous déclarer la guerre!"
-			}
-			EnforcedPeace = {
-				NAME "Paix imposée"
-				DESCRIPTION "La guerre est une catastrophe nous devons nous résoudre à capituler."
-				SUMMARY "Nous sommes forcés de nous rendre"
-			}
+
 		}
 
 	}
