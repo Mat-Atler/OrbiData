@@ -25,6 +25,9 @@ Main = {
 			DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
 		}
 		FUNCTION F_Peace = {
+			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
+			PROCESS StateSize += WarStatus.peaceProposal_StateSize
+			PROCESS $Wealth += WarStatus.peaceProposal_Wealth
 			REMOVE WarStatus
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
@@ -9026,8 +9029,8 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					ERA DiscoveryAge
 					IF  ( ~Humanism == 0 ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 ) )
+						ERA DiscoveryAge
 						RISE
 					ENDIF
 				}
