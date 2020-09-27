@@ -2100,6 +2100,12 @@ Main = {
 				VALUE peaceProposal_ColonialPreference [ 0 0 150 ]
 				DISPLAY_VALUE
 				
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War)
+						SPAWN
+					ENDIF
+				}
+				
 				RELATED_INFO = {
 				}
 				TICK = {
