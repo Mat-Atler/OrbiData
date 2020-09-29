@@ -2198,6 +2198,49 @@ Main = {
 				
 			}
 			
+
+		FoeLandForces = {
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War)
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value + PerSeconds( 0.1 ? 0.3 )
+				}
+				
+				
+				
+				TRIGGER_SPAWN FoeLandForces = {
+					PROCESS value = ( 50 + StateSize / 2.5 ) * 0.7 ? 1.2 
+				}
+				
+			}
+			
+		FoeNavalForces = {
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War) & Coastline > 0
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value + PerSeconds( 0.1 ? 0.3 )
+				}
+				
+				
+				
+				TRIGGER_SPAWN FoeNavalForces = {
+					PROCESS value = ( 50 + ColonialStateSize / 3 + Coastline * 1.5 ) * 0.7 ? 1.2 
+				}
+				
+			}			
+			
 			}
 		Levers = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Levers

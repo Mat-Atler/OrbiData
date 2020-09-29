@@ -658,6 +658,35 @@ Main = {
 				SUMMARY "Décrit l'état de la guerre"
 				}
 				
+			FoeLandForces = {
+				NAME "Forces Terrestres de l'Ennemi"
+				LEVEL value = {
+					0 = "Inexistante"
+					0.001 = "Pathétique"
+					30 = "Faible"
+					60 = "Correcte"
+					100 = "Imposante"
+					250 = "Monstrueuses"
+				}
+				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur la terre. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				SUMMARY "Effectif de l'armée terrestre adverse"
+			}	
+			
+			
+			FoeNavalForces = {
+				NAME "Forces Navales de l'Ennemi"
+				LEVEL value = {
+					0 = "Inexistante"
+					0.001 = "Pathétique"
+					30 = "Faible"
+					60 = "Correcte"
+					100 = "Imposante"
+					250 = "Monstrueuses"
+				}
+				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				SUMMARY "Effectif de l'armée navale adverse"
+			}	
+				
 		}
 		Levers = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Levers

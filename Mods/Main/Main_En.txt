@@ -710,6 +710,35 @@ Main = {
 				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br> @[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
 				SUMMARY "Describes the state of the war"
 				}
+				
+			FoeLandForces = {
+				NAME "Foe Land Forces"
+				LEVEL value = {
+					0 = "Inexistent"
+					0.001 = "Pathetic"
+					30 = "Low"
+					60 = "Correct"
+					100 = "Imposing"
+					250 = "Monstrous"
+				}
+				DESCRIPTION<b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on earth. Let's make sure we slaughter them before they do the same."
+				SUMMARY "Size of the enemy's land army"
+			}	
+			
+			
+			FoeNavalForces = {
+				NAME "Foe Naval Forces"
+				LEVEL value = {
+					0 = "Inexistent"
+					0.001 = "Pathetic"
+					30 = "Low"
+					60 = "Correct"
+					100 = "Imposing"
+					250 = "Monstrous"
+				}
+				DESCRIPTION<b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on the seas. Let's make sure we slaughter them before they do the same."
+				SUMMARY "Size of enemy's navy"
+			}	
 			
 		}
 		Levers = {
