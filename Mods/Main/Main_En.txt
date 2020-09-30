@@ -740,6 +740,31 @@ Main = {
 				SUMMARY "Size of enemy's navy"
 			}	
 			
+			
+			WarExhaustion = {
+				NAME "War Exhaustion"
+				LEVEL value = {
+					0 = "Inexistent"
+					100 = "Low"
+					500 = "Important"
+					1000 = "Our country is bled dry"
+				}
+				DESCRIPTION<b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "A war fought for too long will ruin our credibility and weaken us."
+				SUMMARY "Diminishes your stability"
+			}
+			
+			WarTaxes = {
+				NAME "War Taxes"
+				LEVEL value = {					
+					0 = "None"			
+					0.001 = "Light"
+					15 = " Significant"
+					25 = "Heavy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "If this tax is generally not really appreciated, it generates not much discontent since it is collected only in case of war and therefore by necessity."
+				SUMMARY "Allows a special income in times of war."
+			}
+			
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -2292,6 +2317,11 @@ Main = {
 				NAME "Enforced Peace"
 				DESCRIPTION "This war is a disaster, we must surrender."
 				SUMMARY "We are forced to surrender"
+			}
+			CountryPlundered = {
+				NAME "Country Plundered"
+				DESCRIPTION "The ongoing war is ravaging our countryside and our citizens are gravely suffering."
+				SUMMARY "Our country is being looted by our foe"
 			}
 
 		}

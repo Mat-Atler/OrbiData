@@ -28,7 +28,7 @@ Main = {
 			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
 			PROCESS StateSize += WarStatus.peaceProposal_StateSize
 			PROCESS $Wealth += WarStatus.peaceProposal_Wealth
-			REMOVE WarStatus
+			REMOVE WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
@@ -2100,6 +2100,7 @@ Main = {
 			}
 			
 			WarStatus = {
+				TAG WarSystemTag
 				VALUE value [ 0 50 100 ]
 				VALUE WarTimer [ 0 0 100000 ]
 				VALUE peaceProposal_valueNeeded [ -10000 0 100000 ]
@@ -2111,6 +2112,7 @@ Main = {
 				
 				SLEEP = {
 					IF DropdownIsState(Diplomacy.War)
+						PROCESS value = 50
 						SPAWN
 					ENDIF
 				}
@@ -2193,13 +2195,24 @@ Main = {
 				ELSE
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
+				IF value < 60
+				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 2000
+				ENDIF
+				}
 				
+				
+				LINK WarExhaustion = {
+					IF value < 60
+						COLOR green
+						FLUX 1
+					ENDIF
 				}
 				
 			}
 			
 
 		FoeLandForces = {
+				TAG WarSystemTag
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
 
@@ -2221,6 +2234,7 @@ Main = {
 			}
 			
 		FoeNavalForces = {
+				TAG WarSystemTag
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
 
@@ -2239,7 +2253,31 @@ Main = {
 					PROCESS value = ( 50 + ColonialStateSize / 3 + Coastline * 1.5 ) * 0.7 ? 1.2 
 				}
 				
-			}			
+			}		
+
+
+		WarExhaustion = {
+				TAG WarSystemTag
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War) & WarStatus < 50 & WarStatus.WarTimer > 500
+						PROCESS value = 0
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS Stability -= PerSeconds(value / 500)
+				}
+				
+				
+				LINK Stability = {
+					COLOR red
+					FLUX value / 100
+				}
+				
+			}					
 			
 			}
 		Levers = {
@@ -6922,6 +6960,35 @@ Main = {
 
 			}
 			
+			WarTaxes = {
+				TYPE Cultural
+				VALUE value [ 0 5 20 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Population
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~ModernWarfare
+					CONDITION_VALUE WarStatus < 45
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(WarTaxes) + 1) * 20
+				}
+				
+				TICK = {
+				IF DropdownIsState(Diplomacy.War)
+					PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Population ) / 5)
+				ENDIF
+				}
+				
+				LINK Population = {
+				WEIGHT [ from ] 
+				}
+
+			}
+			
 			
 			
 			}
@@ -9159,6 +9226,7 @@ Main = {
 			}
 			
 		DeclarationOfWar = {
+				TAG WarSystemTag
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
 				EVENT_DEF [ 10 30 100 25% ]
@@ -9173,7 +9241,7 @@ Main = {
 				
 			
 				TRIGGER_EVENT = {
-					IF  ~ModernWarfare
+					IF  ~ModernWarfare & DropdownIsState(Diplomacy.Peace)
 						RISE
 					ENDIF
 				}
@@ -9188,6 +9256,7 @@ Main = {
 		}
 		
 			EnforcedPeace = {
+				TAG WarSystemTag
 				EVENT_DEF [ 50 30 100 75% ]
 				ARISE = {
 					EVENT_SPEED 1
@@ -9209,6 +9278,47 @@ Main = {
 					CALL_FUNCTION F_Peace
 					ALERT EnforcedPeaceAlert
 				}
+				
+		}
+		
+		
+			CountryPlundered = {
+				TAG WarSystemTag
+				EVENT_DEF [ 20 20 200 50% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Population = Population - PerSeconds( (1.2 + Population/100 ) * 0.75 ? 1.25)
+					PROCESS Stability = Stability - PerSeconds(0.3 * 0.75 ? 1.25)
+					PROCESS TradeGoods = TradeGoods - PerSeconds(4 + TradeGoods/100 * 0.75 ? 1.25)
+					OVERRIDE_PARAM Agriculture.value = GetParam(Agriculture.value) - PerSeconds( 0.1 + Agriculture.value * 0.0025)
+					PROCESS Agriculture = Min( GetParam(Agriculture.value), Agriculture )
+				}
+				LINK Agriculture = {
+					COLOR red
+					FLUX 2
+				}
+			
+				LINK Population = {
+					COLOR red
+					FLUX 4
+				}
+				LINK TradeGoods = {
+					COLOR red
+					FLUX 4
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 2
+				}
+				
+				TRIGGER_EVENT = {
+					IF  WarStatus < 35 & WarExhaustion > 500
+						RISE
+					ENDIF
+				}
+			
 				
 		}
 		

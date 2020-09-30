@@ -686,6 +686,18 @@ Main = {
 				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
 				SUMMARY "Effectif de l'armée navale adverse"
 			}	
+			
+			WarExhaustion = {
+				NAME "Fatigue de Guerre"
+				LEVEL value = {
+					0 = "Inexistante"
+					100 = "Faible"
+					500 = "Importante"
+					1000 = "Notre pays est exsangue"
+				}
+				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
+				SUMMARY "Diminue votre stabilité"
+			}	
 				
 		}
 		Levers = {
@@ -1965,6 +1977,17 @@ Main = {
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Une grande partie du problème de ces étrangers est que ceux-ci nous prennent pour des sauvages qui ne méritent même pas le respect de nos frontières. Entamons des véritables pourparlers avec des traducteurs compétents et apprenons de ces étrangers, comment voguent-ils par delà les océans ?"
 				SUMMARY "Permet l'arrêt de l'invasion étrangère"
+			}		
+			WarTaxes = {
+				NAME "Impôts de Guerre"
+				LEVEL value = {					
+					0 = "Aucun"			
+					0.001 = "Légers"
+					15 = "Conséquents"
+					25 = "Lourds"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Si cet impôt n'est généralement pas vraiment apprécié, il n'engendre que peu de mécontement sachant qu'il n'est levé qu'en cas de guerre et donc de nécessité."
+				SUMMARY "Permet une rentrée d'argent spéciale en temps de guerre"
 			}
 
 				
@@ -2252,10 +2275,16 @@ Main = {
 				SUMMARY "Un de nos voisins viens de nous déclarer la guerre!"
 			}
 			EnforcedPeace = {
-				NAME "Paix imposée"
+				NAME "Paix Imposée"
 				DESCRIPTION "La guerre est une catastrophe nous devons nous résoudre à capituler."
 				SUMMARY "Nous sommes forcés de nous rendre"
 			}
+			CountryPlundered = {
+				NAME "Pays Ravagé"
+				DESCRIPTION "La guerre en cours ravage nos campagnes et nos citoyens en souffrent gravement."
+				SUMMARY "Notre pays se fait piller par les troupes adverses"
+			}
+			
 		}
 
 	}
