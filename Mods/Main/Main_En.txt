@@ -2323,6 +2323,18 @@ Main = {
 				DESCRIPTION "The ongoing war is ravaging our countryside and our citizens are gravely suffering."
 				SUMMARY "Our country is being looted by our foe"
 			}
+			
+			Blockade = {
+				NAME "Blockade"
+				DESCRIPTION "Our dominance of the seas has weakened so much that we are no longer able to protect our ports."
+				SUMMARY "Our maritime trade and colonial income are no longer protected"
+			}
+			
+			OccupationResistance = {
+				NAME "Occupation Resistance"
+				DESCRIPTION "We occupy part of the enemy's country, but we meet fierce resistance. Our generals advise us to sign peace as soon as possible."
+				SUMMARY "The war is getting stalled and draining our reserves of men."
+			}
 
 		}
 	}

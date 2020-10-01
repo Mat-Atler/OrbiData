@@ -6686,6 +6686,7 @@ Main = {
 				}
 				
 				TICK = {
+				IF ~Blocade == 0
 					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 75  )
 					IF ~ColonialAutonomyDesire
 						PROCESS ColonialAutonomyDesire += PerSeconds ( ColonialTariffs / 210 * ColonialStateSize / 150  )
@@ -6693,9 +6694,14 @@ Main = {
 					IF ColonialProsperity > 5
 						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 8.5 )
 					ENDIF
+				ENDIF
 				}
 
 				LINK Colony = {
+				}
+				
+				LINK Blocade = {
+				WEIGHT [ from ] 
 				}
 				
 				LINK ColonialProsperity = {
@@ -9227,7 +9233,6 @@ Main = {
 			
 		DeclarationOfWar = {
 				TAG WarSystemTag
-				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
 				EVENT_DEF [ 10 30 100 25% ]
 				ARISE = {
@@ -9268,7 +9273,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  WarStatus < 10
+					IF  WarStatus < 10  & DropdownIsState(Diplomacy.War)
 						RISE
 					ENDIF
 				}
@@ -9283,6 +9288,8 @@ Main = {
 		
 		
 			CountryPlundered = {
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
 				TAG WarSystemTag
 				EVENT_DEF [ 20 20 200 50% ]
 				ARISE = {
@@ -9314,11 +9321,77 @@ Main = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF  WarStatus < 35 & WarExhaustion > 500
+					IF  WarStatus < 35 & WarExhaustion > 500  & DropdownIsState(Diplomacy.War)
 						RISE
 					ENDIF
 				}
 			
+				
+		}
+		
+			Blocade = {
+				TAG WarSystemTag
+				EVENT_DEF [ 10 30 100 35% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS TradeGoods = TradeGoods - PerSeconds(2 + TradeGoods/100 * 0.75 ? 1.25)
+					PROCESS NavalTrade = NavalTrade - PerSeconds(6 + NavalTrade/40 * 0.75 ? 1.25)
+				}
+			
+				LINK TradeGoods = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK NavalTrade = {
+					COLOR red
+					FLUX 10
+				}
+				
+				TRIGGER_EVENT = {
+					IF FoeNavalForces > 50 & Coastline > 0 & FoeNavalForces * 1.5 > Navy  & DropdownIsState(Diplomacy.War)
+						RISE
+					ENDIF
+				}
+				
+		}
+		
+		
+			OccupationResistance = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				TAG WarSystemTag
+				EVENT_DEF [ 10 30 100 35% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.75 + MilitaryManpower.Infantry_value * 0.008 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.5 + MilitaryManpower.Cavalry_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(2 + MilitaryManpower.Missile_value * 0.02 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					
+					PROCESS WarExhaustion = WarExhaustion + PerSeconds(1.2)
+				}
+			
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 1
+				}
+				
+				LINK WarExhaustion = {
+					COLOR green
+					FLUX 1
+				}
+				
+				TRIGGER_EVENT = {
+					IF WarStatus > 70  & DropdownIsState(Diplomacy.War)
+						RISE
+						SPAWN WarExhaustion
+					ENDIF
+				}
 				
 		}
 		

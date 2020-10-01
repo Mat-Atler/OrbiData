@@ -2284,6 +2284,17 @@ Main = {
 				DESCRIPTION "La guerre en cours ravage nos campagnes et nos citoyens en souffrent gravement."
 				SUMMARY "Notre pays se fait piller par les troupes adverses"
 			}
+			Blocade = {
+				NAME "Blocus"
+				DESCRIPTION "Notre domination des mers à tellement faibli que nous sommes plus capable de protéger nos ports."
+				SUMMARY "Notre commerce maritime et nos revenus coloniaux ne sont plus protégés"
+			}
+			OccupationResistance = {
+				NAME "Résistance à l'Occupation"
+				DESCRIPTION "Nous occupons une partie du pays ennemi, mais nous y rencontrons une résistance farouche. Nos généraux nous conseillent de signer la paix dans de brefs délais."
+				SUMMARY "La guerre s'enlise et épuise nos réserves d'hommes"
+			}
+			
 			
 		}
 
