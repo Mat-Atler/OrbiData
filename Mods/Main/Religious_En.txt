@@ -163,7 +163,7 @@ Religious = {
 				SUMMARY "Increases our chances of reducing the number of competing religious leaders"
 				}
 			ClericalState = {
-				NAME "ClericalState"
+				NAME "Clerical State"
 				LEVEL value = {
 					0 = "Almost all of our administration is made up of seculars."
 					20 = "Some priests have been placed in key administrative positions."
