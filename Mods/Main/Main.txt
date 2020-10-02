@@ -5382,12 +5382,10 @@ Main = {
 					OR
 					CONDITION_NODE + MilitaryDictatorship
 					ALWAYS
-					CONDITION_VALUE Cavalry > 20
-					CONDITION_NODE + Cataphracts
 					CONDITION_NODE + BattleAxe
 				}
 				PRICE = {
-					$Wealth = 200
+					$Wealth = 300
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(Feudality) + 1) * 3
@@ -6945,10 +6943,10 @@ Main = {
 					CONDITION_VALUE Diplomacy >= 50
 				}
 				PRICE = {
-					$PoliticalPower = 400
+					$PoliticalPower = 190
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Embassies) + 1) * 40
+					$PoliticalPower = (LinkCount(Embassies) + 1) * 14
 				}
 				TICK = {
 				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.002)
