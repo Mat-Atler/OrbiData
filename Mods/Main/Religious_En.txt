@@ -53,7 +53,7 @@ Religious = {
 					50 = "Heathens are tolerated as long as they are useful"
 					75 = "Heathens are almost considered as any of our subjects"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> ">e can tolerate heathens so that they do not pose any problems, Bbut at the cost of a constant political investments. "
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "We can tolerate heathens so that they do not pose any problems, Bbut at the cost of a constant political investments. "
 				SUMMARY "Our policy about Heathens"
 				}
 				
