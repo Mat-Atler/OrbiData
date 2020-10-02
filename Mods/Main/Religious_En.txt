@@ -18,17 +18,17 @@ Religious = {
 			}
 			ReligiousHeadPower = {
 				NAME "Religious Head Power"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " Whether the religious leader is only a spiritual guide or the master of a large religious administration, his decisions have a great influence on religious policies."
+				DESCRIPTION <b>"Value: "@[value] </b> " Whether the religious leader is only a spiritual guide or the master of a large religious administration, his decisions have a great influence on religious policies."
 				SUMMARY "Religious Head Poweer"
 			}
 			CompetitingReligiousLeader = {
 				NAME "Competiting Religious Leader"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " Religious power is little different from political power. Like it, it attracts the envious, the embittered and the idealistic reformers... The most charismatic of these suitors manage to get part of the clergy on their side, thus undermining the unity of our faith."
+				DESCRIPTION <b>"Value: "@[value] </b> " Religious power is little different from political power. Like it, it attracts the envious, the embittered and the idealistic reformers... The most charismatic of these suitors manage to get part of the clergy on their side, thus undermining the unity of our faith."
 				SUMMARY "Number of competing religious leaders"
 			}
 			Devotion = {
 				NAME "Devotion"
-				DESCRIPTION <b>"Valeur: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare."
+				DESCRIPTION <b>"Value: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare."
 				SUMMARY "Improves your various devotions"
 			}
 		}
@@ -41,7 +41,7 @@ Religious = {
 					50 = "Heretics are tolerated as long as they are useful"
 					75 = "heretics are almost considered as any of our subjects"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate heretics so that they do not pose any problems, But at the cost of a constant political investments."
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "We can tolerate heretics so that they do not pose any problems, but at the cost of a constant political investments."
 				SUMMARY "Our policy about heretics"
 				}
 				
@@ -53,15 +53,16 @@ Religious = {
 					50 = "Heathens are tolerated as long as they are useful"
 					75 = "Heathens are almost considered as any of our subjects"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate Heathens so that they do not pose any problems, But at the cost of a constant political investments. "
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> ">e can tolerate heathens so that they do not pose any problems, Bbut at the cost of a constant political investments. "
 				SUMMARY "Our policy about Heathens"
 				}
 				
 			Syncretism = {
 				NAME "Syncretism"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Time has passed that we understand that the religions of others are not so different from ours. This philosophy can be used to better tolerate pagans."
-				SUMMARY "Increase our maximum tolerance of heathens "
+				SUMMARY "Increase our maximum tolerance of heathens"
 				}
+				
 			ReligiousMinorityTax = {
 				NAME "Religious Minority Tax"
 				LEVEL value = {
@@ -125,7 +126,7 @@ Religious = {
 					70 = "Intensive"
 				}
 				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors."
-				SUMMARY "Enslvave the neighbors population with our military forces"
+				SUMMARY "Enslave the neighbors population with our military forces"
 			}			
 	
 			ClergyIndependance = {
@@ -154,8 +155,8 @@ Religious = {
 				NAME "Effort Against Religious Dissent"
 				LEVEL value = {
 					0 = "No effort"
-					0.01 = "insufficient effort"
-					25 = "moderate effort"
+					0.01 = "Insufficient effort"
+					25 = "Moderate effort"
 					50 = "Major effort"
 					75 = "No dissent will be accepted within our faith! "
 					}

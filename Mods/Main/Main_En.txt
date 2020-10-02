@@ -1982,7 +1982,7 @@ Main = {
 				SUMMARY "Tax our colonial empire."
 			}
 			SlaveTrade = {
-				NAME "Slave Trade".
+				NAME "Slave Trade"
 				DESCRIPTION "Value: " @[value,0.###]" <br><br> Our colony needs fresh labour, with a small investment on our part we can expect a huge return on investment".
 				SUMMARY "Improves the wealth of our colonies"
 			}		
