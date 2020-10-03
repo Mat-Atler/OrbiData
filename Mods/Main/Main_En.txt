@@ -59,10 +59,12 @@ Main = {
             }
             Buttons = {
                 DeclareWar = {
+                    NAME "Declare War"
                     DESCRIPTION "Declare War"
                 }
                 MakePeace = {
-                    DESCRIPTION "Make Peace"
+                    NAME "Make Peace"
+                    DESCRIPTION "End the War"
                 }
             }
         }

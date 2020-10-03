@@ -2845,7 +2845,9 @@ Main = {
 				}
 
 				TRIGGER_SPAWN Urbanization = {
+					IF ~Money == 0 & ~Banks == 0
 					RESOURCE_MAX $Wealth = 250
+					ENDIF
 					}
 				TICK = {
 				
@@ -4734,7 +4736,9 @@ Main = {
 
 
 				TRIGGER_SPAWN Money = {
-					RESOURCE_MAX $Wealth = 1000
+					IF ~Banks == 0
+						RESOURCE_MAX $Wealth = 1000
+					ENDIF
 				}					
 				
 				LINK TradeGoods = {
