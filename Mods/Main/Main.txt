@@ -1504,7 +1504,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
+					PROCESS value = 95 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
 					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
 					ELSE
@@ -2310,6 +2310,7 @@ Main = {
 					//ENDIF
 				//}
 				UNLOCK_CONDITIONS = {
+					HINT 0
 					CONDITION_VALUE Fauna > 20
 					CONDITION_NODE - Mill
 				}
@@ -2524,6 +2525,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
+					HINT 0
 					CONDITION_VALUE Flora > 20
 					CONDITION_NODE - Mill
 				}
@@ -3427,7 +3429,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN Democracy = {
-						RESOURCE_MAX $PoliticalPower = 600
+						RESOURCE_MAX $PoliticalPower = 500
 				}
 				TRIGGER_LEAVE Democracy = {
 						SET Republic.value [ : : 100 ]
@@ -7006,7 +7008,7 @@ Main = {
 			Fire = {
 				SOUND_EVENT "Main/SFX/GreatFire.wav"
 				SOUND_WINDOW "Main/SFX/GreatFire.wav"
-				EVENT_DEF [ 15 20 200 30% ]
+				EVENT_DEF [ 15 20 300 30% ]
 				ARISE = {
 					EVENT_SPEED Flora / 100
 				}
@@ -7095,7 +7097,7 @@ Main = {
 			AbundantHarvest = {
 				SOUND_EVENT "Main/SFX/Prosperity.wav"
 				SOUND_WINDOW "Main/SFX/Prosperity.wav"
-				EVENT_DEF [ 15 15 50 33% ]
+				EVENT_DEF [ 15 15 80 33% ]
 				ARISE = {
 					EVENT_SPEED 1 + Agriculture / 50
 					IF ( Agriculture < 50 )
@@ -7105,7 +7107,7 @@ Main = {
 				TICK = {
 					PROCESS Food = Food + PerSeconds(Food * 0.01 * 0.75 ? 1.25)
 					PROCESS Population = Population + PerSeconds(Population * 0.01 * 0.75 ? 1.25)
-					PROCESS Stability = Stability + PerSeconds(0.2 * 0.75 ? 1.25)
+					PROCESS Stability = Stability + PerSeconds(0.7 * 0.75 ? 1.25)
 				}
 				LINK Stability = {
 					COLOR green
@@ -7166,7 +7168,7 @@ Main = {
 			NeighborhoodTroubles = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
-				EVENT_DEF [ 20 15 200 50% ]
+				EVENT_DEF [ 20 15 220 30% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -7196,7 +7198,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 25% ]
+				EVENT_DEF [ 40 60 450 22% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -7279,7 +7281,7 @@ Main = {
 			Epidemic = {
 				SOUND_EVENT "Main/SFX/Cough.wav"
 				SOUND_WINDOW "Main/SFX/Cough.wav"
-				EVENT_DEF [ 20 15 90 30% ]
+				EVENT_DEF [ 20 15 150 27% ]
 
 				SLEEP = {
 				IF ~Medecine
@@ -7328,7 +7330,7 @@ Main = {
 			MassiveTroubles = {
 				SOUND_EVENT "Main/SFX/MassiveTroubles.wav"
 				SOUND_WINDOW "Main/SFX/MassiveTroubles.wav"
-				EVENT_DEF [ 15 15 120 50% ]
+				EVENT_DEF [ 15 15 135 30% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF Stability >= 10
@@ -7336,7 +7338,7 @@ Main = {
                     ENDIF
 				}
 				TICK = {
-					PROCESS Population = Population - PerSeconds(Population * 0.025 + 0.25 * 0.75 ? 1.25)
+					PROCESS Population = Population - PerSeconds(Population * 0.02 + 0.25 * 0.75 ? 1.25)
 					PROCESS Food = Food - PerSeconds(3 * 0.75 ? 1.25)
 					PROCESS Education = Education - PerSeconds(1 * 0.75 ? 1.25)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.1 + MilitaryManpower.Infantry_value /150 )
@@ -7401,7 +7403,7 @@ Main = {
 					FLUX 2.5
 				}
 				TRIGGER_EVENT = {
-					IF PriestClass > 70 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
+					IF PriestClass > 85 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
 						RISE
 					ENDIF
 				}
@@ -7424,7 +7426,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF AristocracyClass > 70 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
+					IF AristocracyClass > 85 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
 						RISE
 					ENDIF
 				}
@@ -7458,7 +7460,7 @@ Main = {
 			EconomicCrisis = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-				EVENT_DEF [ 30 15 20 100% ]
+				EVENT_DEF [ 30 15 20 75% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF $Wealth > 10
@@ -7469,8 +7471,6 @@ Main = {
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(0.5)
 					PROCESS Stability = Stability - PerSeconds(0.5 * 0.75 ? 1.25)
 					PROCESS Navy = Navy - PerSeconds(0.05 + Navy * 0.04)
-					OVERRIDE_PARAM Mining.value = GetParam(Mining.value) - PerSeconds(0.5)
-					PROCESS Mining = Min( GetParam(Mining.value), Mining )
 					OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
 					PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					OVERRIDE_PARAM Mercenaries.value = GetParam(Mercenaries.value) - PerSeconds(5)
@@ -7495,10 +7495,6 @@ Main = {
 					FLUX 5
 				}
 				
-				LINK Mining = {
-					COLOR red
-					FLUX 2
-				}
 				
 				LINK Navy = {
 					COLOR red
@@ -7518,7 +7514,7 @@ Main = {
 			Corruption = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-				EVENT_DEF [ 10 15 120 25% ]
+				EVENT_DEF [ 10 15 170 15% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF $Wealth < ( 0.8 * GetResourceMaximum( $Wealth ) )
@@ -7591,7 +7587,7 @@ Main = {
 			GreatFire = {
 				SOUND_EVENT "Main/SFX/FireCity.wav"
 				SOUND_WINDOW "Main/SFX/FireCity.wav"
-				EVENT_DEF [ 15 15 130 20% ]
+				EVENT_DEF [ 15 15 180 17% ]
 				ARISE = {
 					EVENT_SPEED 1
                     IF UrbanMilitia >= Urbanization / 1.3
@@ -7641,7 +7637,7 @@ Main = {
 			Separatism = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 30 15 60 50% ]
+					EVENT_DEF [ 30 15 60 35% ]
 					ARISE = {
 						EVENT_SPEED 1
 						IF StateSize < 100
@@ -7769,14 +7765,14 @@ Main = {
 			Piracy = {
 				SOUND_EVENT "Main/SFX/Pillards.wav"
 				SOUND_WINDOW "Main/SFX/Pillards.wav"
-				EVENT_DEF [ 15 15 80 33% ]
+				EVENT_DEF [ 15 15 250 22% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
 				TICK = {
-					PROCESS Navy = Navy - PerSeconds(1.25)
+					PROCESS Navy = Navy - PerSeconds(5)
 					IF Navy < 10
-						PROCESS NavalTrade = NavalTrade - PerSeconds(4)
+						PROCESS NavalTrade = NavalTrade - PerSeconds(8)
 					ENDIF
 				}
 
@@ -7886,7 +7882,7 @@ Main = {
 			WeakMonarch = {
 				SOUND_EVENT "Main/SFX/WeakMonarch.wav"
 				SOUND_WINDOW "Main/SFX/WeakMonarch.wav"
-					EVENT_DEF [ 10 60 400 25% ]
+					EVENT_DEF [ 10 60 450 20% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -7928,7 +7924,7 @@ Main = {
 			Devaluation = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-					EVENT_DEF [ 10 15 250 30% ]
+					EVENT_DEF [ 10 15 300 20% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -7960,7 +7956,7 @@ Main = {
 			MoralDegeneracy = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 10 30 300 25% ]
+					EVENT_DEF [ 10 30 300 20% ]
 					ARISE = {
 						EVENT_SPEED Culture / 100
 					}
@@ -8145,7 +8141,7 @@ Main = {
 			BarbarianThrust = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 50 30 125 40% ]
+				EVENT_DEF [ 50 30 125 33% ]
 				ARISE = {
 						EVENT_SPEED 1
 						ERA LateAntiquity
@@ -8403,7 +8399,7 @@ Main = {
 			SalicSucession = {
 				SOUND_EVENT "Main/SFX/WeakMonarch.wav"
 				SOUND_WINDOW "Main/SFX/WeakMonarch.wav"
-				EVENT_DEF [ 25 15 400 30% ]
+				EVENT_DEF [ 25 15 400 18% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -8437,7 +8433,7 @@ Main = {
 			RecruitmentShortage = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-					EVENT_DEF [ 10 60 350 30% ]
+					EVENT_DEF [ 10 60 350 22% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -8474,7 +8470,7 @@ Main = {
 			Obscurantism = {
 				SOUND_EVENT "Main/SFX/GreatFire.wav"
 				SOUND_WINDOW "Main/SFX/GreatFire.wav"
-					EVENT_DEF [ 25 100 300 35% ]
+					EVENT_DEF [ 25 100 300 18% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -8533,7 +8529,7 @@ Main = {
 			SuccessionCrisis = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 10 30 500 30% ]
+					EVENT_DEF [ 10 30 500 20% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -8688,7 +8684,7 @@ Main = {
 			MerchantExplorer = {
 				SOUND_EVENT "Main/SFX/MerchantExplorer.wav"
 				SOUND_WINDOW "Main/SFX/MerchantExplorer.wav"
-				EVENT_DEF [ 30 30 300 20% ]
+				EVENT_DEF [ 30 30 300 30% ]
 				ARISE = {
 					EVENT_SPEED 1	
 				}
