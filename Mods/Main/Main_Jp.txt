@@ -45,6 +45,31 @@ Main = {
 			DESCRIPTION "産業時代"
 		}
 	}
+		
+	Dropdowns = {
+        Diplomacy = {
+            States = {
+                Peace = {
+                    NAME "Peace"
+                    DESCRIPTION "We are at peace."
+                }
+                War = {
+                    NAME "War"
+                    DESCRIPTION "We are at war."
+                }
+            }
+            Buttons = {
+                DeclareWar = {
+                    NAME "Declare War"
+                    DESCRIPTION "Declare War"
+                }
+                MakePeace = {
+                    NAME "Make Peace"
+                    DESCRIPTION "End the War"
+                }
+            }
+        }
+    }
 	
 	Windows = {
 		WinMilitary = {
@@ -74,7 +99,7 @@ Main = {
 		}
 			WinTravel = {
 			NAME "旅行"
-			TEXT "旅行の状態。" @[TravelMod.Travel.value]
+			TEXT "旅行の状態。" @[Main.Travel.value]
 			TEXT "行きたい場所を選ぶ"
 		}
 		
@@ -95,7 +120,7 @@ Main = {
 		}
 		WinColony = {
 			NAME "Colony"
-			TEXT " "
+			TEXT "Our main colony"
 			TEXT "Start a colony"
 		}
 		
@@ -141,6 +166,14 @@ Main = {
 		CannotColony = {
 			NAME "Cannot start a colony here"
 			DESCRIPTION "Cannot start a colony here"
+		}
+		ColonyIndependence = {
+			NAME "Independence of the Colony"
+			DESCRIPTION "We've totally lost control!"
+		}
+		EnforcedPeaceAlert = {
+			NAME "Enforced Peace"
+			DESCRIPTION "We lost the war and we were forced to make concessions"
 		}
 	}	
 	
@@ -523,6 +556,7 @@ Main = {
 					25 = "暗黒時代レベル"
 					75 = "中世レベル"
 					150 = "ルネッサンスレベル"
+					300 = "Imperialism Level"
 				}
 				DESCRIPTION <b>"技術: "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "技術の進歩は戦場で常にかなりの優位性を獲得してきました。制海権を得ることで貿易を保護し他国に侵入し、それらを略奪することができます。"
 				SUMMARY "艦隊の近代化レベル"
@@ -597,6 +631,125 @@ Main = {
 				SUMMARY "貿易が減少する"
 				}
 				
+			
+			ColonialStateSize = {
+				NAME "Colonial State Size"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>""
+				SUMMARY "Our colony size"
+			}
+			
+			
+			ColonialAutonomyDesire = {
+				NAME "Colonial Autonomy Desire"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" Our excessive taxation infuriated the local settlers. Grumbling rises and it's the gateway to an organised revolt."
+				SUMMARY "Our taxes cause dissatisfaction"
+			}
+			
+			Colony = {
+				NAME "Colony"
+				DESCRIPTION ""
+				SUMMARY "Our main colony"
+			}	
+			
+			ColonialProsperity = {
+				NAME "Colonial Prosperity"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" Our colony generates wealth according to several factors. It is important to protect it and tax it efficiently."
+				SUMMARY "The prosperity of our main colony"
+			}	
+			
+			NavalSupremacy = {
+				NAME "Naval Supremacy".
+				LEVEL value = {
+					0 = "Non-existent"
+					0.001 = "Pathetic"
+					20 = "Weak"
+					40 = "Fair"
+					80 = "Imposing"
+					120 = "Our fleet has conquered the oceans"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "As our fleet is now an essential component of our state, our maritime domination must be as impressive as possible if we are to secure our distant trade."
+				SUMMARY "Our domination of the seven seas"
+			}	
+			
+			Humanism = {
+				NAME "Humanism"
+				DESCRIPTION "A recent artistic-philosophical revival has profoundly changed our very way of seeing the world. It is time to open ourselves up to new ways of thinking."
+				SUMMARY "Allows us to explore our philosophy in greater depth"
+			}	
+			
+			ModernWarfare = {
+				NAME "Modern Warfare"
+				DESCRIPTION "Our philosophy of warfare has evolved quite a bit with the advent of firearms. War is now a much better defined concept that monopolizes the attention of our state. You can now access direct diplomatic options using the buttons at the top left of the interface."
+				SUMMARY "Changes the dynamics of war"
+			}
+			NewWorld = {
+				NAME "New World"
+				DESCRIPTION "We are cut off from the Eurasian-African ecosystem which will lead to a different destiny for some parts of our civilization."
+				SUMMARY "We are somewhat isolated"
+			}	
+			
+			InvadersForce = {
+				NAME "Invaders Forces"
+				DESCRIPTION "Entire contagions of invaders have landed on OUR land. They are trying to found cities and ally themselves with our historical enemies while trying to divide us. We must stop them whether by force or by diplomacy."
+				SUMMARY "Representing a constant threat"
+			}				
+			
+			WarStatus = {
+				NAME "War Status"
+				LEVEL value = {
+					0 = "The war is lost"
+					25 = "We are losing the war"
+					40 = "We are slightly losing the war"
+					50 = "Undecided status"
+					50.001 = "We are slightly winning the war"
+					75 = "We are winning the war"
+					90 = "Our victory is striking"
+				}
+				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br> @[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
+				SUMMARY "Describes the state of the war"
+				}
+				
+			FoeLandForces = {
+				NAME "Foe Land Forces"
+				LEVEL value = {
+					0 = "Inexistent"
+					0.001 = "Pathetic"
+					30 = "Low"
+					60 = "Correct"
+					100 = "Imposing"
+					250 = "Monstrous"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on earth. Let's make sure we slaughter them before they do the same."
+				SUMMARY "Size of the enemy's land army"
+			}	
+			
+			
+			FoeNavalForces = {
+				NAME "Foe Naval Forces"
+				LEVEL value = {
+					0 = "Inexistent"
+					0.001 = "Pathetic"
+					30 = "Low"
+					60 = "Correct"
+					100 = "Imposing"
+					250 = "Monstrous"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on the seas. Let's make sure we slaughter them before they do the same."
+				SUMMARY "Size of enemy's navy"
+			}	
+			
+			
+			WarExhaustion = {
+				NAME "War Exhaustion"
+				LEVEL value = {
+					0 = "Inexistent"
+					100 = "Low"
+					500 = "Important"
+					1000 = "Our country is bled dry"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "A war fought for too long will ruin our credibility and weaken us."
+				SUMMARY "Diminishes your stability"
+			}
 				
 		}
 		Levers = {
@@ -1720,6 +1873,168 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "私たちの文化と信仰は強いものです。アートを神に仕える時です."
 				SUMMARY "文化、信心深さをもたらす、宗教モニュメントを強化する"
 			}
+			
+			
+			NavigationTools = {
+				NAME "Navigation Tools"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"The compass and other small technical breakthroughs in the field of navigation give us unparalleled mastery of the seas."
+				SUMMARY "Ensure a safer sea travel"
+			}
+			Caravel = {
+				NAME "Caravel"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"The caravel is the culmination of the improvement of sailing that allows safe navigation across seas and oceans."
+				SUMMARY "Allow us to across the ocean"
+			}
+			
+			LargeSailboats = {
+				NAME "Large Sailboats"
+				DESCRIPTION "Value: " @[value,0.###]<br>"Our multiple ventures on the sea have led to the perfection of the sailing ship. Galleons, frigates, corvettes, never before our navy has looked so majestic."
+				SUMMARY "To dominate the ocean"
+			}
+			
+			AcrossTheOcean = {
+				NAME "Across the Ocean"
+				LEVEL value = {
+					0 = "No expeditions"
+					0.001 = " Timid expeditions"
+					30 = "To the New World"
+					50 = "Attempted circumnavigation"
+					80 = "Global expeditions"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Our new mastery of the seas allows us to organize gigantic expeditions across the oceans for a glorious future. "
+				SUMMARY "Organized travels across the seas"
+			}
+			
+			Arquebus = {
+				NAME "Arquebus"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The arquebus is the first sufficiently effective firearm that marks the superiority of gunpowder over archery and a radical change in the battlefield."
+				SUMMARY "Military Technology"
+			}	
+			
+			
+			Musket = {
+				NAME "Musket"
+				LEVEL value = {			
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The rifle musket is the 2nd generation of firearm, capable of far greater power and reliability than an arquebus."
+				SUMMARY "Military Technology"
+			}	
+			
+			
+			StockExchange = {
+				NAME "Stock Exchange"				
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Small Merchant Brotherhood".
+					30 = "Merchant Brotherhood"
+					60 = "Commercial exchange"
+					150 = "Large Commercial Exchange"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  New business opportunities are forcing us to completely rethink our trading system. It allows a much greater flow of goods to be traded in our new commercial heart: the markets."
+				SUMMARY "Increases our maximum of Trade Goods."
+			}	
+			
+			TradingPost = {
+				NAME "Trading Posts"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Local agreements"
+					15 = "Few Trading Posts"
+					30 = "Trading Post Network"
+					60 = "Global Network"
+				}
+				DESCRIPTION <b> "Value : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our maritime expeditions allow us to have always more business partners. With diplomacy and gold we can buy juicy Trading Posts."
+				SUMMARY "Increases the flow of commercial goods"
+			}
+			CombatPiracy = {
+				NAME "Combat Piracy"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"Prosperity has attracted pirates of all kinds who attack our trade lines, and our merchants have implored the protection of the national navy. In the long run securing the wealth of our colony seems an effective investment."
+				SUMMARY "Requisition our fleet to secure our overseas trade"
+			}
+			
+			ColonialTariffs = {
+				NAME "Colonial Tariffs"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Slight tax"
+					5 = "Normal Tax"
+					10 = "Heavy Taxes"
+					15 = "Very heavy taxes"
+					20 = "Our merchants are bankrupt"
+				}
+				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Now that our colony is firmly established and has started to generate profit it is time for the metropolis to recoup its investment. Let's tax colonial trade."
+				SUMMARY "Tax our colonial empire."
+			}
+			SlaveTrade = {
+				NAME "Slave Trade"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br> Our colony needs fresh labour, with a small investment on our part we can expect a huge return on investment".
+				SUMMARY "Improves the wealth of our colonies"
+			}		
+
+			SchoolOfThought = {
+				NAME "School of Thought"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br>Recent philosophical developments have brought about many new schools of thought, it increases our possibilities tenfold."
+				SUMMARY "Enhances our philosophical potential"
+			}
+			ScientificMethod = {
+				NAME "Scientific Method"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br>Based on empiricism, the scientific method promotes understanding of the natural world through experience and replication of older works through precise protocols. This should considerably speed up our research."
+				SUMMARY "Improves our research"
+			}
+			MercenariesReform = {
+				NAME "Mercenaries Reform"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "New Reforms"
+					50 = "Advanced Reforms"
+					100 = "Complete Reforms"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The emergence of firearms and the changing dynamics of warfare have led us to rethink our model of how we use mercenaries. By introducing effective reforms we can improve our recruitment while reducing their pay."
+				SUMMARY "Improve our recruitment of mercenaries and reduce their pay"
+			}
+		Isolationism = {
+				NAME "Isolationism"
+				LEVEL value = {					
+					0 = "Not enforced"
+					10 = "Important measures"
+					50 = "Drastic measures"
+					100 = "Sakoku"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The influence of foreigners is harmful, we already have everything we need within our borders. Let's close the country once and for all and our harmony will only be strengthened."
+				SUMMARY "Sacrifice your military and commercial ambitions to strengthen your grip on interior policies."
+			}
+			
+		Embassies  = {
+				NAME "Embassies"
+				LEVEL value = {					
+					0 = "Poor attempts"
+					50 = "Open Dialogue"
+					100 = "Peace Treaty"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> A big part of the problem with these foreigners is that they take us for savages who don't even deserve the respect of our borders. Let's start real talks with competent translators and learn from these foreigners, how do they sail across the oceans?"				SUMMARY " Allows us to stop the foreign invasion "
+			}
+			
+			WarTaxes = {
+				NAME "War Taxes"
+				LEVEL value = {					
+					0 = "None"			
+					0.001 = "Light"
+					15 = " Significant"
+					25 = "Heavy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "If this tax is generally not really appreciated, it generates not much discontent since it is collected only in case of war and therefore by necessity."
+				SUMMARY "Allows a special income in times of war."
+			}
 				
 		}
 		Events = {
@@ -1974,6 +2289,82 @@ Main = {
 				NAME "遊牧民の侵略"
 				DESCRIPTION "近隣の野蛮人の一人が侵略を開始しました。略奪し数千人を殺しています。彼らを止めなければなりません！"
 				SUMMARY "遊牧民の大軍が攻撃しています！"
+			}
+			
+					
+			ColonialRebellion = {
+				NAME "Colonial Rebellion"
+				DESCRIPTION "Our excessive taxation has provoked big riots in our colony which has degenerated into open rebellion. If our fleet does not intervene it will be the end of our colony!"
+				SUMMARY "Our colony claims its independence!"
+			}
+			ColonialExpension = {
+				NAME "Colonial Expension"
+				DESCRIPTION "As our colony prospers, it sees its affluence growing in the region."
+				SUMMARY "Our colony expands its influence"
+			}
+			Invaders = {
+				NAME "Invaders"
+				DESCRIPTION "Strange men have landed out of the Ocean and brought strange creatures with them. This does not presage anything good for the destiny of our country."
+				SUMMARY "Men from beyond the ocean have landed!"
+			}
+			
+			InvadersEpidemic = {
+				NAME "Epidemic of Invaders"
+				DESCRIPTION "Since they arrived, strange diseases have been striking our people, but never those men. Why is this disease so deadly?"
+				SUMMARY "A strange and very lethal disease has struck our people!"
+			}
+			
+			DeclarationOfWar = {
+				NAME "Declaration of War"
+				DESCRIPTION "One of our powerful continental neighbors boldly declared war on us. We must defend ourselves!"
+				SUMMARY "One of our neighbors has just declared war on us!"
+			}			
+			EnforcedPeace = {
+				NAME "Enforced Peace"
+				DESCRIPTION "This war is a disaster, we must surrender."
+				SUMMARY "We are forced to surrender"
+			}
+			CountryPlundered = {
+				NAME "Country Plundered"
+				DESCRIPTION "The ongoing war is ravaging our countryside and our citizens are gravely suffering."
+				SUMMARY "Our country is being looted by our foe"
+			}
+			
+			Blockade = {
+				NAME "Blockade"
+				DESCRIPTION "Our dominance of the seas has weakened so much that we are no longer able to protect our ports."
+				SUMMARY "Our maritime trade and colonial income are no longer protected"
+			}
+			
+			OccupationResistance = {
+				NAME "Occupation Resistance"
+				DESCRIPTION "We occupy part of the enemy's country, but we meet fierce resistance. Our generals advise us to sign peace as soon as possible."
+				SUMMARY "The war is getting stalled and draining our reserves of men."
+			}
+			
+			
+			LandBattle = {
+				NAME "Land Battle"
+				LEVEL Winner = {					
+					0 = "This battle is a bitter defeat."	
+					25 = "This battle is a defeat."	
+					50 = "This battle is a victory."	
+					75 = "This battle is a clear victory."		
+				}
+				 DESCRIPTION "A land battle has begun." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
+				SUMMARY "A fight on land is underway!"
+			}
+			
+			NavalBattle = {
+				NAME "Naval Battle"
+				LEVEL Winner = {					
+					0 = "This battle is a bitter defeat"	
+					25 = "This battle is a defeat."	
+					50 = "This battle is a victory."	
+					75 = "This battle is a clear victory."		
+				}
+				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
+				SUMMARY "A fight on the seas is underway!"
 			}
 		}
 	}
