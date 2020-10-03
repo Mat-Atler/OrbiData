@@ -2303,7 +2303,7 @@ Main = {
 					50 = "Cette bataille est une victoire."	
 					75 = "Cette bataille est une victoire franche."		
 				}
-				DESCRIPTION "Une bataille terrestre s'est engagée. " <br> <b>@[Winner,LEVEL] </b>  " ( " @[Winner,0.###] " )"
+				 DESCRIPTION "Une bataille terrestre s'est engagée." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
 				SUMMARY "Un combat sur la terre ferme est en cours!"
 			}
 			
@@ -2315,7 +2315,7 @@ Main = {
 					50 = "Cette bataille est une victoire."	
 					75 = "Cette bataille est une victoire franche."		
 				}
-				DESCRIPTION "Une bataille navale s'est engagée. " <br> <b>@[Winner,LEVEL] </b>  " ( " @[Winner,0.###] " )"
+				DESCRIPTION "Une bataille navale s'est engagée." <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
 				SUMMARY "Un combat sur les mers est en cours!"
 			}
 			

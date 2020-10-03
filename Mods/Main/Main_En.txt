@@ -2345,7 +2345,7 @@ Main = {
 					50 = "This battle is a victory."	
 					75 = "This battle is a clear victory."		
 				}
-				 DESCRIPTION "A land battle has begun." <br> <b> " " @[[Main.LandBattle.Winner,LEVEL] </b> " (" @ [[Main.LandBattle.Winner,0.###] " )"
+				 DESCRIPTION "A land battle has begun." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
 				SUMMARY "A fight on land is underway!"
 			}
 			
@@ -2357,7 +2357,7 @@ Main = {
 					50 = "This battle is a victory."	
 					75 = "This battle is a clear victory."		
 				}
-				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[NavalBattle.Winner,LEVEL] </b> " (" @ [NavalBattle.Winner,0.###] " )"
+				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
 				SUMMARY "A fight on the seas is underway!"
 			}
 
