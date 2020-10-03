@@ -5854,7 +5854,7 @@ Main = {
 					CONDITION_VALUE Tribunal >= 50
 				}
 				PRICE = {
-					$PoliticalPower = 500
+					$PoliticalPower = 495
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(NationState) + 1) * 10
@@ -6197,8 +6197,8 @@ Main = {
 					CONDITION_VALUE Castles >= 30
 				}
 				PRICE = {
-					$PoliticalPower = 500
-					$Wealth = 500
+					$PoliticalPower = 495
+					$Wealth = 600
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(HolyOrders) + 1) * 5
