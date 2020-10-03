@@ -667,7 +667,7 @@ Main = {
 					20 = "Weak"
 					40 = "Fair"
 					80 = "Imposing"
-					120 = "Our fleet has conquered  the oceans"
+					120 = "Our fleet has conquered the oceans"
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "As our fleet is now an essential component of our state, our maritime domination must be as impressive as possible if we are to secure our distant trade."
 				SUMMARY "Our domination of the seven seas"
@@ -721,7 +721,7 @@ Main = {
 					100 = "Imposing"
 					250 = "Monstrous"
 				}
-				DESCRIPTION<b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on earth. Let's make sure we slaughter them before they do the same."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on earth. Let's make sure we slaughter them before they do the same."
 				SUMMARY "Size of the enemy's land army"
 			}	
 			
@@ -736,7 +736,7 @@ Main = {
 					100 = "Imposing"
 					250 = "Monstrous"
 				}
-				DESCRIPTION<b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on the seas. Let's make sure we slaughter them before they do the same."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on the seas. Let's make sure we slaughter them before they do the same."
 				SUMMARY "Size of enemy's navy"
 			}	
 			
@@ -749,20 +749,8 @@ Main = {
 					500 = "Important"
 					1000 = "Our country is bled dry"
 				}
-				DESCRIPTION<b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "A war fought for too long will ruin our credibility and weaken us."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "A war fought for too long will ruin our credibility and weaken us."
 				SUMMARY "Diminishes your stability"
-			}
-			
-			WarTaxes = {
-				NAME "War Taxes"
-				LEVEL value = {					
-					0 = "None"			
-					0.001 = "Light"
-					15 = " Significant"
-					25 = "Heavy"
-				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "If this tax is generally not really appreciated, it generates not much discontent since it is collected only in case of war and therefore by necessity."
-				SUMMARY "Allows a special income in times of war."
 			}
 			
 		}
@@ -2029,6 +2017,18 @@ Main = {
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> A big part of the problem with these foreigners is that they take us for savages who don't even deserve the respect of our borders. Let's start real talks with competent translators and learn from these foreigners, how do they sail across the oceans?"				SUMMARY " Allows us to stop the foreign invasion "
 			}
+			
+			WarTaxes = {
+				NAME "War Taxes"
+				LEVEL value = {					
+					0 = "None"			
+					0.001 = "Light"
+					15 = " Significant"
+					25 = "Heavy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "If this tax is generally not really appreciated, it generates not much discontent since it is collected only in case of war and therefore by necessity."
+				SUMMARY "Allows a special income in times of war."
+			}
 
 		}
 		Events = {
@@ -2334,6 +2334,31 @@ Main = {
 				NAME "Occupation Resistance"
 				DESCRIPTION "We occupy part of the enemy's country, but we meet fierce resistance. Our generals advise us to sign peace as soon as possible."
 				SUMMARY "The war is getting stalled and draining our reserves of men."
+			}
+			
+			
+			LandBattle = {
+				NAME "Land Battle"
+				LEVEL Winner = {					
+					0 = "This battle is a bitter defeat."	
+					25 = "This battle is a defeat."	
+					50 = "This battle is a victory."	
+					75 = "This battle is a clear victory."		
+				}
+				 DESCRIPTION "A land battle has begun." <br> <b> " " @[[Main.LandBattle.Winner,LEVEL] </b> " (" @ [[Main.LandBattle.Winner,0.###] " )"
+				SUMMARY "A fight on land is underway!"
+			}
+			
+			NavalBattle = {
+				NAME "Naval Battle"
+				LEVEL Winner = {					
+					0 = "This battle is a bitter defeat"	
+					25 = "This battle is a defeat."	
+					50 = "This battle is a victory."	
+					75 = "This battle is a clear victory."		
+				}
+				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[NavalBattle.Winner,LEVEL] </b> " (" @ [NavalBattle.Winner,0.###] " )"
+				SUMMARY "A fight on the seas is underway!"
 			}
 
 		}

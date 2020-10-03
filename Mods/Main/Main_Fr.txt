@@ -621,7 +621,7 @@ Main = {
 					20 = "Faible"
 					40 = "Correcte"
 					80 = "Imposante"
-					120 = "Notre flotte a domptée les océans"
+					120 = "Notre flotte a dompté les océans"
 				}
 				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre flotte étant désormais une composante essentielle de notre état, notre domination maritime doit être la plus impressionnante que possible si nous voulons sécuriser nos commerces lointains."
 				SUMMARY "Notre domination des 7 mers"
@@ -668,7 +668,7 @@ Main = {
 					100 = "Imposante"
 					250 = "Monstrueuses"
 				}
-				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur la terre. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur la terre. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
 				SUMMARY "Effectif de l'armée terrestre adverse"
 			}	
 			
@@ -683,7 +683,7 @@ Main = {
 					100 = "Imposante"
 					250 = "Monstrueuses"
 				}
-				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
 				SUMMARY "Effectif de l'armée navale adverse"
 			}	
 			
@@ -695,7 +695,7 @@ Main = {
 					500 = "Importante"
 					1000 = "Notre pays est exsangue"
 				}
-				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
 				SUMMARY "Diminue votre stabilité"
 			}	
 				
@@ -2295,6 +2295,29 @@ Main = {
 				SUMMARY "La guerre s'enlise et épuise nos réserves d'hommes"
 			}
 			
+			LandBattle = {
+				NAME "Bataille Terrestre"
+				LEVEL Winner = {					
+					0 = "Cette bataille est une défaite cuisante"	
+					25 = "Cette bataille est une défaite."	
+					50 = "Cette bataille est une victoire."	
+					75 = "Cette bataille est une victoire franche."		
+				}
+				DESCRIPTION "Une bataille terrestre s'est engagée. " <br> <b>@[Winner,LEVEL] </b>  " ( " @[Winner,0.###] " )"
+				SUMMARY "Un combat sur la terre ferme est en cours!"
+			}
+			
+			NavalBattle = {
+				NAME "Bataille Navale"
+				LEVEL Winner = {					
+					0 = "Cette bataille est une défaite cuisante"	
+					25 = "Cette bataille est une défaite."	
+					50 = "Cette bataille est une victoire."	
+					75 = "Cette bataille est une victoire franche."		
+				}
+				DESCRIPTION "Une bataille navale s'est engagée. " <br> <b>@[Winner,LEVEL] </b>  " ( " @[Winner,0.###] " )"
+				SUMMARY "Un combat sur les mers est en cours!"
+			}
 			
 		}
 

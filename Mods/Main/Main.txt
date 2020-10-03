@@ -28,7 +28,7 @@ Main = {
 			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
 			PROCESS StateSize += WarStatus.peaceProposal_StateSize
 			PROCESS $Wealth += WarStatus.peaceProposal_Wealth
-			REMOVE WarSystemTag
+			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
@@ -2228,7 +2228,7 @@ Main = {
 				
 				
 				TRIGGER_SPAWN FoeLandForces = {
-					PROCESS value = ( 50 + StateSize / 2.5 ) * 0.7 ? 1.2 
+					PROCESS value = ( 60 + StateSize / 2.5 ) * 0.7 ? 1.2 
 				}
 				
 			}
@@ -8058,7 +8058,7 @@ Main = {
 				}
 				TICK = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1)
-					PROCESS Navy + Navy - PerSeconds(1.9)
+					PROCESS Navy = Navy - PerSeconds(1.9)
 					IF Fortifications > 0 & Navy < 5
 						OVERRIDE_PARAM Fortifications.value = GetParam(Fortifications.value) - PerSeconds(1 + Fortifications.value * 0.005 * 0.75 ? 1.25)
 						PROCESS Fortifications = Min( GetParam(Fortifications.value), Fortifications )
@@ -9299,6 +9299,7 @@ Main = {
 					PROCESS TradeGoods = TradeGoods - PerSeconds(4 + TradeGoods/100 * 0.75 ? 1.25)
 					OVERRIDE_PARAM Agriculture.value = GetParam(Agriculture.value) - PerSeconds( 0.1 + Agriculture.value * 0.0025)
 					PROCESS Agriculture = Min( GetParam(Agriculture.value), Agriculture )
+					PROCESS WarExhaustion = WarExhaustion + PerSeconds(1.2)
 				}
 				LINK Agriculture = {
 					COLOR red
@@ -9316,6 +9317,10 @@ Main = {
 				LINK Stability = {
 					COLOR red
 					FLUX 2
+				}
+				LINK WarExhaustion = {
+					COLOR green
+					FLUX 3
 				}
 				
 				TRIGGER_EVENT = {
@@ -9336,6 +9341,7 @@ Main = {
 				TICK = {
 					PROCESS TradeGoods = TradeGoods - PerSeconds(2 + TradeGoods/100 * 0.75 ? 1.25)
 					PROCESS NavalTrade = NavalTrade - PerSeconds(6 + NavalTrade/40 * 0.75 ? 1.25)
+					PROCESS WarExhaustion = WarExhaustion + PerSeconds(1.2)
 				}
 			
 				LINK TradeGoods = {
@@ -9346,6 +9352,11 @@ Main = {
 				LINK NavalTrade = {
 					COLOR red
 					FLUX 10
+				}
+				
+				LINK WarExhaustion = {
+					COLOR green
+					FLUX 3
 				}
 				
 				TRIGGER_EVENT = {
@@ -9390,6 +9401,127 @@ Main = {
 						SPAWN WarExhaustion
 					ENDIF
 				}
+				
+		}
+		
+		
+			LandBattle = {
+				TAG WarSystemTag
+				EVENT_DEF [ 5 10 50 50% ]
+				VALUE Die_Cast [ -10 0 10 ]
+				VALUE Winner [ 0 0 100 ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+				
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.75 + MilitaryManpower.Infantry_value * 0.008 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.5 + MilitaryManpower.Cavalry_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(2 + MilitaryManpower.Missile_value * 0.02 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					
+					PROCESS FoeLandForces -=  PerSeconds(0.75 + FoeLandForces * 0.008 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
+					
+					IF  Winner > 50
+						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
+					ELSE
+						PROCESS WarStatus -= PerSeconds( ( 50 - Winner ) / 50 )
+					
+					ENDIF
+					
+				}
+			
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK FoeLandForces = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK WarStatus = {
+				IF Winner>50
+					COLOR green
+					FLUX Winner /5
+				ENDIF
+				IF Winner<50
+					COLOR red
+					FLUX 50 - Winner /5
+				ENDIF
+				}s
+				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War)
+						PROCESS Die_Cast = -10 ? 10
+						PROCESS Winner = ( MilitaryManpower * 0.7 ? 1.2 ) / ( FoeLandForces * 0.7 ? 1.2 ) + Die_Cast
+						IF ~GreatGeneral
+							PROCESS Winner += 10
+						ENDIF
+						RISE
+					ENDIF
+				}
+
+				
+		}
+		
+				NavalBattle = {
+				TAG WarSystemTag
+				EVENT_DEF [ 5 10 50 50% ]
+				VALUE Die_Cast [ -10 0 10 ]
+				VALUE Winner [ 0 0 100 ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+				
+					PROCESS Navy -=  PerSeconds(2 + Navy * 0.15 )
+					
+					PROCESS FoeNavalForces -=  PerSeconds(2 + FoeNavalForces * 0.15  * ( (Winner - 50 ) / 200 + 1 ) ) 
+					
+					IF  Winner > 50
+						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
+					ELSE
+						PROCESS WarStatus -= PerSeconds( ( 50 - Winner ) / 50 )
+					
+					ENDIF
+					
+				}
+			
+				LINK Navy = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK FoeNavalForces = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK WarStatus = {
+				IF Winner>50
+					COLOR green
+					FLUX Winner /5
+				ENDIF
+				IF Winner<50
+					COLOR red
+					FLUX 50 - Winner /5
+				ENDIF
+				}s
+				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War) & Coastline > 0
+						PROCESS Die_Cast = -10 ? 10
+						PROCESS Winner = ( Navy * 0.7 ? 1.2 ) / ( FoeNavalForces * 0.7 ? 1.2 ) + Die_Cast
+						IF ~GreatGeneral
+							PROCESS Winner += 5
+						ENDIF
+				
+						RISE
+					ENDIF
+				}
+				
 				
 		}
 		
