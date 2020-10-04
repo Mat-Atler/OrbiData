@@ -4807,7 +4807,7 @@ Main = {
 					CONDITION_VALUE Infantry >= 15
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 3
@@ -4842,7 +4842,7 @@ Main = {
 					CONDITION_VALUE Cavalry >= 30
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 3
@@ -4874,7 +4874,7 @@ Main = {
 					CONDITION_VALUE Forge >= 100
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 3
@@ -5684,7 +5684,7 @@ Main = {
 				VALUE value [ 0 25 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | GetCurrentEra() == GetEra(FeudalAge)
-					CONDITION_VALUE Feudality > 75
+					CONDITION_NODE + Feudality
 					OR
 					CONDITION_ERA >= DiscoveryAge
 					ALWAYS
@@ -5894,7 +5894,7 @@ Main = {
 				VALUE value [ 0 1 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~University | ~CivilEngineering
-					CONDITION_VALUE CivilEngineering >= 50
+					CONDITION_VALUE CivilEngineering >= 20
 					CONDITION_VALUE University >= 50
 					CONDITION_VALUE Philosophy >= 100
 				}
@@ -5990,7 +5990,7 @@ Main = {
 					CONDITION_VALUE Urbanization >= 50
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 					$Wealth = 400
 				}
 				UPGRADE = {
@@ -6388,7 +6388,7 @@ Main = {
 					CONDITION_VALUE ScienceKnowledge >= 140
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 					$Wealth = 400
 				}
 				UPGRADE = {
