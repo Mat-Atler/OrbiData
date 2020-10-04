@@ -5624,8 +5624,8 @@ Main = {
 					RELATED_LINK Population
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Feudality
-					CONDITION_NODE + Feudality
+					HINT ~Feudality | ~Mill
+					CONDITION_NODE + Mill
 					CONDITION_VALUE Agriculture > 70
 				}
 				PRICE = {
@@ -5654,7 +5654,7 @@ Main = {
 					HINT ~Feudality | ~FarmingTools
 					CONDITION_VALUE FarmingTools >= 100
 					CONDITION_VALUE Agriculture > 100
-					CONDITION_NODE + Feudality
+					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {
 					$PoliticalPower = 150
@@ -5685,6 +5685,9 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | GetCurrentEra() == GetEra(FeudalAge)
 					CONDITION_VALUE Feudality > 75
+					OR
+					CONDITION_ERA >= DiscoveryAge
+					ALWAYS
 					CONDITION_VALUE AristocracyClass > 50
 				}
 				PRICE = {
@@ -5715,8 +5718,7 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | ~Fortifications
-					CONDITION_NODE + Feudality
-					CONDITION_NODE + Banners
+					CONDITION_ERA >= FeudalAge
 					CONDITION_VALUE AristocracyClass > 30
 					CONDITION_VALUE Fortifications > 50
 				}
@@ -5746,9 +5748,12 @@ Main = {
 				}
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality
-					CONDITION_NODE + MilitaryTechnology
 					CONDITION_VALUE Castles >= 30
 					CONDITION_VALUE Banners >= 20
+					OR
+					CONDITION_ERA >= DiscoveryAge
+					ALWAYS
+					CONDITION_NODE + MilitaryTechnology
 				}
 				PRICE = {
 					$PoliticalPower = 50
@@ -6125,7 +6130,7 @@ Main = {
 					CONDITION_VALUE Piety > 20
 					CONDITION_VALUE Pantheon > 50
 					CONDITION_NODE - SecularEducation
-					CONDITION_NODE + Feudality
+					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {
 					$PoliticalPower = 150
@@ -6198,7 +6203,7 @@ Main = {
 				VALUE multiplier [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | ~Castles
-					CONDITION_NODE + Feudality
+					CONDITION_ERA >= FeudalAge
 					CONDITION_VALUE Monasteries >= 40
 					CONDITION_VALUE Castles >= 30
 				}
@@ -8177,7 +8182,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5000 ) | (StateSize >= 400 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 11000 & ( ~ModernWarfare == 0 ) 
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 400 ) | ( GameTime() > 8000 ) | ( Stability <= 20 & GameTime() > 7000 ) ) & GameTime() < 9500 & ( ~ModernWarfare == 0 ) 
 							RISE
 						ENDIF
 				}
@@ -9014,7 +9019,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 10000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 )
+					IF  ~StateSize & GameTime() > 9500 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 )
 						RISE
 					ENDIF
 				}
