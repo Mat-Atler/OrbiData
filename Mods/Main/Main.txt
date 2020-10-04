@@ -1731,7 +1731,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(value / 5000 )
+					PROCESS value =  value - PerSeconds(value / 4000 )
 					IF ~Money == 0
 						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
 						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
@@ -1741,7 +1741,7 @@ Main = {
 					ENDIF
 					
                 IF StateSize' > 0
-					PROCESS Minorities = Minorities + StateSize' / 6
+					PROCESS Minorities = Minorities + StateSize' / 8
                 ENDIF
 					
 				}
@@ -3904,12 +3904,12 @@ Main = {
 						PROCESS Stability = Stability + PerSeconds(value/7500)
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 					ENDIF
-				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.0025)
+				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.02)
 				}
 				
 				LINK RoadsSafety = {
 				IF value > 0
-					FLUX value / 25
+					FLUX value / 10
 					COLOR red
 				ENDIF
 				}
@@ -8911,7 +8911,7 @@ Main = {
 					}
 					TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.1)
-					PROCESS Minorities = Minorities - PerSeconds(0.33)
+					PROCESS Minorities = Minorities - PerSeconds(2.5)
 					PROCESS Piety = Piety + PerSeconds(0.5)
 					}
 
@@ -8930,7 +8930,7 @@ Main = {
 					}
 					
 					TRIGGER_EVENT = {
-						IF ( ~Minorities & Minorities>0 & Stability < 40 & ( ~Humanism == 0 | Stability < 15 )  )
+						IF ( ~Minorities & Minorities>0 & Stability < 40 & ( ~Humanism == 0 | Stability < 25 )  )
 							RISE
 						ENDIF
 					}
@@ -9148,7 +9148,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ( ~Humanism == 0 ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 ) )
+					IF  ( ~Humanism == 0 & ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 ) )
 						ERA DiscoveryAge
 						RISE
 					ENDIF

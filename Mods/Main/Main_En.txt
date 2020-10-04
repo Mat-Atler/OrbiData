@@ -2031,6 +2031,19 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "If this tax is generally not really appreciated, it generates not much discontent since it is collected only in case of war and therefore by necessity."
 				SUMMARY "Allows a special income in times of war."
 			}
+			
+		OfficialLanguage = {
+				NAME "Official Language"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Our language is mandatory in all official texts"
+					50 = "Active persecution of dialects"
+					100 = "Foundation of the Academy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our linguistic unification can go even further, with the right legislation we can actively and effectively promote our official language."
+				SUMMARY "Strengthens the Lingua Franca"
+			}
+
 
 		}
 		Events = {
