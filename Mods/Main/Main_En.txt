@@ -184,7 +184,7 @@ Main = {
 			::APPEND "Main/Religious_EN.txt" Religious.Nodes.States
 			Population = {
 				NAME "Population"
-				DESCRIPTION "Current population: " @[value,0.###]<br><br>"Your people are the center of all civilization, without them nothing is created or happens."
+				DESCRIPTION "Current population: " @[value,0.###]<br><br>" Your people are the center of all civilization, without them nothing is created or happens."
 				SUMMARY "The number of people of our state"
 			}
 			Temperature = {
@@ -197,7 +197,7 @@ Main = {
 					70 = "Hot"
 					85 = "Unbearable"
 				}
-				DESCRIPTION "Current temperature: "@[value,LEVEL]"( "@[value,0.####]" ) "<br> <br>"Temperature is a well-known factor of fertility. Warm land are more prosperous than frozen tundra but without rainfall, a warm climate can become a harsh desert."
+				DESCRIPTION "Current temperature: "@[value,LEVEL]"( "@[value,0.####]" ) "<br> <br>" Temperature is a well-known factor of fertility. Warm land are more prosperous than frozen tundra but without rainfall, a warm climate can become a harsh desert."
 				SUMMARY "The climate of our main region"
 			}
 			Natalism = {
@@ -224,7 +224,7 @@ Main = {
 					70 = "Agricultural Basin"
 					90 = "Nile, Nile, Nile!"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br> "All lands are not equal when it comes to fertility, and it ranges from heavenly fertile lands where every plant can take root to deserts where the meagrest weed is rare."
+				DESCRIPTION @[value,LEVEL]" ( "@[value,0.####] " ) " <br><br> "All lands are not equal when it comes to fertility, and it ranges from heavenly fertile lands where every plant can take root to deserts where the meagrest weed is rare."
 				SUMMARY "Affects the efficiency of our agriculture"
 			}
 			
@@ -1954,7 +1954,7 @@ Main = {
 			}
 			CombatPiracy = {
 				NAME "Combat Piracy"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>"Prosperity has attracted pirates of all kinds who attack our trade lines, and our merchants have implored the protection of the national navy. In the long run securing the wealth of our colony seems an effective investment."
+				DESCRIPTION "Value: " @[value,0.###] <br><br> "Prosperity has attracted pirates of all kinds who attack our trade lines, and our merchants have implored the protection of the national navy. In the long run securing the wealth of our colony seems an effective investment."
 				SUMMARY "Requisition our fleet to secure our overseas trade"
 			}
 			
@@ -2357,7 +2357,8 @@ Main = {
 				LEVEL Winner = {					
 					0 = "This battle is a bitter defeat."	
 					25 = "This battle is a defeat."	
-					50 = "This battle is a victory."	
+					50 = "Status Quo."	
+					50.001 = "This battle is a victory."	
 					75 = "This battle is a clear victory."		
 				}
 				 DESCRIPTION "A land battle has begun." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
@@ -2369,7 +2370,8 @@ Main = {
 				LEVEL Winner = {					
 					0 = "This battle is a bitter defeat"	
 					25 = "This battle is a defeat."	
-					50 = "This battle is a victory."	
+					50 = "Status Quo."	
+					50.001  = "This battle is a victory."	
 					75 = "This battle is a clear victory."		
 				}
 				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"

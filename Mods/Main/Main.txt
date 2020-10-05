@@ -2204,6 +2204,11 @@ Main = {
 				ENDIF
 				}
 				
+				LINK FoeLandForces = {
+				}
+				
+				LINK FoeNavalForces = {
+				}
 				
 				LINK WarExhaustion = {
 					IF value < 60
@@ -9464,7 +9469,7 @@ Main = {
 				TAG WarSystemTag
 				EVENT_DEF [ 5 10 50 50% ]
 				VALUE Die_Cast [ -10 0 10 ]
-				VALUE Winner [ 0 0 100 ]
+				VALUE Winner [ 0 50 100 ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -9505,18 +9510,18 @@ Main = {
 					COLOR red
 					FLUX 50 - Winner /5
 				ENDIF
-				}s
+				}
 				
-				TRIGGER_EVENT = {
-					IF DropdownIsState(Diplomacy.War)
-						PRINT "Calcul"
+				TRIGGER_SPAWN LandBattle = {
 						PROCESS Die_Cast = -10 ? 10
-						PRINT Die_Cast
 						PROCESS Winner = ( MilitaryManpower * 0.7 ? 1.2 ) / ( FoeLandForces * 0.7 ? 1.2 ) + Die_Cast
-						PRINT Winner
 						IF ~GreatGeneral
 							PROCESS Winner += 10
 						ENDIF
+				}
+				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War)
 						RISE
 					ENDIF
 				}
@@ -9528,7 +9533,7 @@ Main = {
 				TAG WarSystemTag
 				EVENT_DEF [ 5 10 50 50% ]
 				VALUE Die_Cast [ -10 0 10 ]
-				VALUE Winner [ 0 0 100 ]
+				VALUE Winner [ 0 50 100 ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -9566,16 +9571,18 @@ Main = {
 					COLOR red
 					FLUX 50 - Winner /5
 				ENDIF
-				}s
+				}
 				
-				TRIGGER_EVENT = {
-					IF DropdownIsState(Diplomacy.War) & Coastline > 0
+				TRIGGER_SPAWN NavalBattle = {
 						PROCESS Die_Cast = -10 ? 10
 						PROCESS Winner = ( Navy * 0.7 ? 1.2 ) / ( FoeNavalForces * 0.7 ? 1.2 ) + Die_Cast
 						IF ~GreatGeneral
 							PROCESS Winner += 5
 						ENDIF
+				}
 				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War) & Coastline > 0
 						RISE
 					ENDIF
 				}

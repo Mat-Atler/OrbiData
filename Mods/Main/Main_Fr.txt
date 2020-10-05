@@ -1904,7 +1904,7 @@ Main = {
 			
 			CombatPiracy = {
 				NAME "Combattre la Piraterie"
-				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
+				DESCRIPTION "Valeur : " @[value,0.###] <br><br>"La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
 				SUMMARY "Réquisitionne notre flotte pour sécuriser notre commerce outremer"
 			}
 			ColonialTariffs = {
@@ -2300,7 +2300,8 @@ Main = {
 				LEVEL Winner = {					
 					0 = "Cette bataille est une défaite cuisante"	
 					25 = "Cette bataille est une défaite."	
-					50 = "Cette bataille est une victoire."	
+					50 = "Statu Quo."	
+					50.001 = "Cette bataille est une victoire."	
 					75 = "Cette bataille est une victoire franche."		
 				}
 				 DESCRIPTION "Une bataille terrestre s'est engagée." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
@@ -2312,7 +2313,8 @@ Main = {
 				LEVEL Winner = {					
 					0 = "Cette bataille est une défaite cuisante"	
 					25 = "Cette bataille est une défaite."	
-					50 = "Cette bataille est une victoire."	
+					50 = "Statu Quo."	
+					50.001 = "Cette bataille est une victoire."	
 					75 = "Cette bataille est une victoire franche."		
 				}
 				DESCRIPTION "Une bataille navale s'est engagée." <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
