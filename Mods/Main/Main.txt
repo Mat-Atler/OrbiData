@@ -1489,11 +1489,11 @@ Main = {
 						PROCESS NavalSupremacy += PerSeconds( value / ( 600 - AcrossTheOcean * 2)  )
 					ENDIF
 
+					}
 				LINK NavalSupremacy = {
 					COLOR green
 					FLUX value / 25
 				}
-					}
 			}
 			NationalCohesion = {
 				VALUE value [ 0 0 100 ]
@@ -9509,8 +9509,11 @@ Main = {
 				
 				TRIGGER_EVENT = {
 					IF DropdownIsState(Diplomacy.War)
+						PRINT "Calcul"
 						PROCESS Die_Cast = -10 ? 10
+						PRINT Die_Cast
 						PROCESS Winner = ( MilitaryManpower * 0.7 ? 1.2 ) / ( FoeLandForces * 0.7 ? 1.2 ) + Die_Cast
+						PRINT Winner
 						IF ~GreatGeneral
 							PROCESS Winner += 10
 						ENDIF
