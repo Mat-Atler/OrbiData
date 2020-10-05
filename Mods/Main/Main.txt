@@ -4635,9 +4635,12 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					HINT ( ~MilitaryManpower + ~ArtisanClass + ~Mining + ~MilitaryTechnology ) > 1
-					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE MilitaryManpower > 30
+					CONDITION_VALUE MilitaryManpower > 25
+					OR
+					CONDITION_VALUE OverlandTrade > 30
+					ALWAYS
 					CONDITION_VALUE ArtisanClass > 40
+					CONDITION_NODE + MilitaryTechnology
 					CONDITION_VALUE Mining > 40
 				}
 				PRICE = {
@@ -7653,8 +7656,14 @@ Main = {
 						PROCESS Stability = Stability - PerSeconds(0.25 * 0.75 ? 1.25)
 						PROCESS StateSize = StateSize - PerSeconds(0.5 + StateSize * 0.01 * 0.75 ? 1.25)
 
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 					LINK Stability = {
+						COLOR red
+						FLUX 2.5
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 2.5
 					}
@@ -8213,6 +8222,8 @@ Main = {
 					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
 					PROCESS Slaves = Slaves - PerSeconds(2)
 					PROCESS Stability = Stability - PerSeconds(2)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 				}
 
 				
@@ -8221,6 +8232,10 @@ Main = {
 					FLUX 4
 				}
 				
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 4
+				}
 				LINK Slaves = {
 					COLOR red
 					FLUX 3
@@ -8492,9 +8507,15 @@ Main = {
 						PROCESS Philosophy = Min( GetParam(Philosophy.value), Philosophy )
 						PROCESS Culture -= PerSeconds(0.25)
 						PROCESS Education -= PerSeconds(0.5)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 
 					LINK Litterature = {
+						COLOR red
+						FLUX 5
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 5
 					}
@@ -8577,7 +8598,7 @@ Main = {
 					}
 
 					TRIGGER_EVENT = {
-						IF Officers > 30 & ~BarbarianAtGates & Stability < 50 & MilitaryManpower >= 75 & ~StateSize
+						IF Officers > 25 & ~BarbarianAtGates & Stability < 50 & MilitaryManpower >= 50 & ~StateSize
 							RISE
 						ENDIF
 					}
@@ -8624,9 +8645,15 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1.5 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(4 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.2 * (1.5 - MilitaryEfficiency /100 ) )
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 
 					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 2
 					}
@@ -8769,9 +8796,15 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(3 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(2 + MilitaryManpower.Mercenaries_value * 0.1 * (1.5 - MilitaryEfficiency /100 ) )
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 
 					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 2
 					}
@@ -8818,6 +8851,8 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.15 + MilitaryManpower.Cavalry_value /50)
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.15 + MilitaryManpower.Missile_value /50)
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.15 + MilitaryManpower.Mercenaries_value /50)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(1.2)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					
 				}
 				LINK Population = {
@@ -8827,6 +8862,10 @@ Main = {
 				LINK Piety = {
 					COLOR green
 					FLUX 3
+				}
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 5
 				}
 				LINK MilitaryManpower = {
 					COLOR red
@@ -9213,6 +9252,8 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.2 + MilitaryManpower.Cavalry_value /45)
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.2 + MilitaryManpower.Missile_value /45)
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.2 + MilitaryManpower.Mercenaries_value /45)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.8)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					
 				}
 				LINK Population = {
@@ -9226,6 +9267,10 @@ Main = {
 				LINK Stability = {
 					COLOR red
 					FLUX 1
+				}
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 2
 				}
 				TRIGGER_EVENT = {
 					IF NewWorld.invaderPlagueTrigger > 0
