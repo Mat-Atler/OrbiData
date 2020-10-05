@@ -5639,7 +5639,7 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 12)
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 10)
 				}
 				
 				LINK Agriculture = {
@@ -5660,11 +5660,11 @@ Main = {
 					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {
-					$PoliticalPower = 150
+					$PoliticalPower = 75
 					$Wealth = 300
 				}
 				UPGRADE = {
-					$PoliticalPower = 5
+					$PoliticalPower = 1
 					$Wealth = 12
 				}
 				TICK = {
@@ -5698,7 +5698,7 @@ Main = {
 					$Wealth = 150
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Nobility) + 1) * 8
+					$PoliticalPower = (LinkCount(Nobility) + 1) * 6
 				}
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55)
@@ -5731,7 +5731,7 @@ Main = {
 				}
 				UPGRADE = {
 					$PoliticalPower = 2
-					$Wealth = 20
+					$Wealth = 15
 				}
 				TICK = {
 				}
@@ -5933,7 +5933,7 @@ Main = {
 					$PoliticalPower = 495
 				}
 				UPGRADE = {
-					$PoliticalPower = 15
+					$PoliticalPower = 12
 				}
 				TICK = {
 						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 8000 )
@@ -6005,7 +6005,7 @@ Main = {
 					PROCESS output = value * 100 / 1400
 					PROCESS ArtisanClass = ArtisanClass + PerSeconds(output)
 					PROCESS OverlandTrade = OverlandTrade + PerSeconds(output * 0.5)
-					IF ~~StockExchange == 0
+					IF ~StockExchange == 0
 						SET TradeGoods.value [ : : 1000 + TradeFair.value * 5  ]
 					ENDIF
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.3 )
