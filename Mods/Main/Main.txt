@@ -1489,6 +1489,10 @@ Main = {
 						PROCESS NavalSupremacy += PerSeconds( value / ( 600 - AcrossTheOcean * 2)  )
 					ENDIF
 
+				LINK NavalSupremacy = {
+					COLOR green
+					FLUX value / 25
+				}
 					}
 			}
 			NationalCohesion = {
@@ -5923,11 +5927,12 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~University
+					HINT ~University & ~ScienceKnowledge == 0
 					CONDITION_VALUE Medecine >= 60
 					CONDITION_VALUE University >= 70
 					CONDITION_VALUE Mathematics >= 150
 					CONDITION_VALUE Philosophy >= 150
+					CONDITION_NODE - ScienceKnowledge
 				}
 				PRICE = {
 					$PoliticalPower = 495
@@ -5988,7 +5993,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~OverlandTrade
 					CONDITION_ERA >= FeudalAge
-					CONDITION_VALUE OverlandTrade >= 75
+					CONDITION_VALUE OverlandTrade >= 50
 					CONDITION_VALUE Mathematics >= 120
 					CONDITION_VALUE Urbanization >= 50
 				}
