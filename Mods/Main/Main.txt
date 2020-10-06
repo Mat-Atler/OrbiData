@@ -1298,6 +1298,11 @@ Main = {
 				ENDIF
 				
 				
+				IF ~ModernWarfare
+					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/1400 + Missile_value*Missile_value/1400 + Infantry_value*Infantry_value/3500 + Mercenaries_value*Mercenaries_value/3000)
+				ENDIF
+				
+				
 				IF Cavalry_value + Infantry_value + Missile_value + Mercenaries_value > 0
 					WINDOW_INTERCEPT WinMilitary [ 1 ] [ alpha = 1 ]
 					WINDOW_INTERCEPT WinMilitary [ 2 ] [ alpha = 1 fill = 0 + ( Cavalry_value + Missile_value + Mercenaries_value ) / ( Cavalry_value + Infantry_value + Missile_value + Mercenaries_value ) ]
@@ -2231,13 +2236,13 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value + PerSeconds( 0.1 ? 0.3 )
+					PROCESS value =  value + PerSeconds( 0.9 ? 2.5 )
 				}
 				
 				
 				
 				TRIGGER_SPAWN FoeLandForces = {
-					PROCESS value = ( 60 + StateSize / 1.15 ) * 0.7 ? 1.2 
+					PROCESS value = ( 60 + StateSize / 1.1 ) * 0.7 ? 1.2 
 				}
 				
 			}
@@ -2253,13 +2258,13 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value + PerSeconds( 0.1 ? 0.3 )
+					PROCESS value =  value + PerSeconds( 0.9 ? 2.5 )
 				}
 				
 				
 				
 				TRIGGER_SPAWN FoeNavalForces = {
-					PROCESS value = ( 50 + ColonialStateSize / 2 + Coastline * 2 ) * 0.7 ? 1.2 
+					PROCESS value = ( 50 + NavalSupremacy * 2.5 + Coastline * 2 ) * 0.7 ? 1.2 
 				}
 				
 			}		
