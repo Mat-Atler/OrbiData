@@ -1452,7 +1452,7 @@ Main = {
 				SUMMARY "Improve our culture"
 			}	
 			LinguaFranca = {
-				NAME "Lingua Franca	"
+				NAME "Lingua Franca"
 				LEVEL value = {
 					0 = "None"
 					0.001 = "Start of a vernacular language"

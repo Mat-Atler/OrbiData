@@ -9202,7 +9202,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ( ~Humanism == 0 & ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 ) )
+					IF  ( ~Humanism == 0 & ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 )  & ( ~NewWorld == 0 | ~Embassies ) )
 						ERA DiscoveryAge
 						RISE
 					ENDIF
@@ -9227,7 +9227,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF GameTime() > 12000 & ~NewWorld & ~Embassies == 0
+						IF GameTime() > 11000 | ( ~ScienceKnowledge & GameTime() > 9000 )  & ~NewWorld & ~Embassies == 0
 							RISE
 						ENDIF
 				}
