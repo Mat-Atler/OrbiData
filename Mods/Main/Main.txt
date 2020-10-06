@@ -2237,7 +2237,7 @@ Main = {
 				
 				
 				TRIGGER_SPAWN FoeLandForces = {
-					PROCESS value = ( 60 + StateSize / 2.5 ) * 0.7 ? 1.2 
+					PROCESS value = ( 60 + StateSize / 1.15 ) * 0.7 ? 1.2 
 				}
 				
 			}
@@ -2259,7 +2259,7 @@ Main = {
 				
 				
 				TRIGGER_SPAWN FoeNavalForces = {
-					PROCESS value = ( 50 + ColonialStateSize / 3 + Coastline * 1.5 ) * 0.7 ? 1.2 
+					PROCESS value = ( 50 + ColonialStateSize / 2 + Coastline * 2 ) * 0.7 ? 1.2 
 				}
 				
 			}		
