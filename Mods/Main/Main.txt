@@ -9514,7 +9514,11 @@ Main = {
 				
 				TRIGGER_SPAWN LandBattle = {
 						PROCESS Die_Cast = -10 ? 10
-						PROCESS Winner = ( MilitaryManpower * 0.7 ? 1.2 ) / ( FoeLandForces * 0.7 ? 1.2 ) + Die_Cast
+						IF MilitaryManpower>FoeLandForces
+							PROCESS Winner = 43 + ( ( MilitaryManpower * 0.9 ? 1.1 ) / ( FoeLandForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ELSE
+							PROCESS Winner = 43 + ( ( FoeLandForces * 0.9 ? 1.1 ) / ( MilitaryManpower * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ENDIF
 						IF ~GreatGeneral
 							PROCESS Winner += 10
 						ENDIF
@@ -9575,7 +9579,11 @@ Main = {
 				
 				TRIGGER_SPAWN NavalBattle = {
 						PROCESS Die_Cast = -10 ? 10
-						PROCESS Winner = ( Navy * 0.7 ? 1.2 ) / ( FoeNavalForces * 0.7 ? 1.2 ) + Die_Cast
+						IF Navy>FoeLandForces
+							PROCESS Winner = 43 + ( ( Navy * 0.9 ? 1.1 ) / ( FoeNavalForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ELSE
+							PROCESS Winner = 43 + ( ( FoeNavalForces * 0.9 ? 1.1 ) / ( Navy * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ENDIF
 						IF ~GreatGeneral
 							PROCESS Winner += 5
 						ENDIF
