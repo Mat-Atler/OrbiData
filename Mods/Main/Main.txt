@@ -9467,7 +9467,7 @@ Main = {
 		
 			LandBattle = {
 				TAG WarSystemTag
-				EVENT_DEF [ 5 10 50 50% ]
+				EVENT_DEF [ 0.5 10 40 50% ]
 				VALUE Die_Cast [ -10 0 10 ]
 				VALUE Winner [ 0 50 100 ]
 				ARISE = {
@@ -9535,7 +9535,7 @@ Main = {
 		
 				NavalBattle = {
 				TAG WarSystemTag
-				EVENT_DEF [ 5 10 50 50% ]
+				EVENT_DEF [ 0.5 10 40 50% ]
 				VALUE Die_Cast [ -10 0 10 ]
 				VALUE Winner [ 0 50 100 ]
 				ARISE = {
