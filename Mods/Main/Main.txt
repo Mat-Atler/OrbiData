@@ -1982,7 +1982,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(value / ( 1200 ) )
+					PROCESS value =  value - PerSeconds(value / ( 1000 ) )
 				}
 
 				LINK Colony = {
@@ -9467,7 +9467,7 @@ Main = {
 		
 			LandBattle = {
 				TAG WarSystemTag
-				EVENT_DEF [ 0.5 10 40 50% ]
+				EVENT_DEF [ 0.5 10 40 65% ]
 				VALUE Die_Cast [ -10 0 10 ]
 				VALUE Winner [ 0 50 100 ]
 				ARISE = {
@@ -9475,12 +9475,12 @@ Main = {
 				}
 				TICK = {
 				
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.75 + MilitaryManpower.Infantry_value * 0.008 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.5 + MilitaryManpower.Cavalry_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(2 + MilitaryManpower.Missile_value * 0.02 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(4 + MilitaryManpower.Infantry_value * 0.02 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(2 + MilitaryManpower.Cavalry_value * 0.019 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(6 + MilitaryManpower.Missile_value * 0.04 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(4 + MilitaryManpower.Mercenaries_value * 0.015 * (1.5 - MilitaryEfficiency /100 ) )
 					
-					PROCESS FoeLandForces -=  PerSeconds(0.75 + FoeLandForces * 0.008 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
+					PROCESS FoeLandForces -=  PerSeconds(4 + FoeLandForces * 0.02 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
 					
 					IF  Winner > 50
 						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
@@ -9535,7 +9535,7 @@ Main = {
 		
 				NavalBattle = {
 				TAG WarSystemTag
-				EVENT_DEF [ 0.5 10 40 50% ]
+				EVENT_DEF [ 0.5 10 40 65% ]
 				VALUE Die_Cast [ -10 0 10 ]
 				VALUE Winner [ 0 50 100 ]
 				ARISE = {
@@ -9543,9 +9543,9 @@ Main = {
 				}
 				TICK = {
 				
-					PROCESS Navy -=  PerSeconds(2 + Navy * 0.15 )
+					PROCESS Navy -=  PerSeconds(5 + Navy * 0.22 )
 					
-					PROCESS FoeNavalForces -=  PerSeconds(2 + FoeNavalForces * 0.15  * ( (Winner - 50 ) / 200 + 1 ) ) 
+					PROCESS FoeNavalForces -=  PerSeconds(5 + FoeNavalForces * 0.22  * ( (Winner - 50 ) / 200 + 1 ) ) 
 					
 					IF  Winner > 50
 						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
