@@ -23,6 +23,7 @@ Main = {
 		FUNCTION F_WarDeclaration = {
 			DROPDOWN_SET_STATE Diplomacy.War
 			DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+			PLAY_SOUND "WarDeclaration.wav"
 		}
 		FUNCTION F_Peace = {
 			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
@@ -32,6 +33,7 @@ Main = {
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+			PLAY_SOUND "Peace.wav"
 		}
 	}
 	Dropdowns = {
@@ -9471,6 +9473,8 @@ Main = {
 		
 		
 			LandBattle = {
+				SOUND_EVENT "Main/SFX/LandBattle.wav"
+				SOUND_WINDOW "Main/SFX/LandBattle.wav"
 				TAG WarSystemTag
 				EVENT_DEF [ 0.5 10 40 65% ]
 				VALUE Die_Cast [ -10 0 10 ]
@@ -9539,6 +9543,8 @@ Main = {
 		}
 		
 				NavalBattle = {
+				SOUND_EVENT "Main/SFX/NavalBattle.wav"
+				SOUND_WINDOW "Main/SFX/NavalBattle.wav"
 				TAG WarSystemTag
 				EVENT_DEF [ 0.5 10 40 65% ]
 				VALUE Die_Cast [ -10 0 10 ]
