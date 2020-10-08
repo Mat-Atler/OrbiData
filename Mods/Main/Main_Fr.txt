@@ -1996,6 +1996,31 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Si cet impôt n'est généralement pas vraiment apprécié, il n'engendre que peu de mécontement sachant qu'il n'est levé qu'en cas de guerre et donc de nécessité."
 				SUMMARY "Permet une rentrée d'argent spéciale en temps de guerre"
 			}
+				
+				OfficialLanguage = {
+				NAME "Langue Officielle"
+				LEVEL value = {						
+					0 = "Aucun"
+					00001 = "Notre langue est obligatoire dans tous les textes officiels"
+					50 = "Persécution active des dialectes"
+					100 = "Fondation de l'Académie"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec une législation appropriée nous pouvons promouvoir activement et efficacement notre langue officielle."
+				SUMMARY "Renforce la Lingua Franca"
+			}
+			
+			TradeCompagnies = {
+				NAME "Compagnies Commerciales"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Balbutiements"
+					15 = "Quelques compagnies rivales"
+					30 = "Grandes compagnies"
+					60 = "Monopole gargentuesque"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Certaines entreprises ont concentré leurs efforts dans le commerce international. Avec le soutien des banques et des bourses comemrciales, elle mettent en place des expéditions gigentesques."
+				SUMMARY "Augmente nos routes commerciales"
+			}
 
 				
 		}

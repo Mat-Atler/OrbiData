@@ -2048,6 +2048,18 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our linguistic unification can go even further, with the right legislation we can actively and effectively promote our official language."
 				SUMMARY "Strengthens the Lingua Franca"
 			}
+			TradeCompagnies = {
+				NAME "Trade Compagnies"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Babbling"
+					15 = "A few rival companies"
+					30 = "Large Companies"
+					60 = "Gigantic Monopolies"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Some companies have concentrated their efforts in international trade. With the support of banks and trade exchanges, they are setting up tremendous expeditions."
+				SUMMARY "Increases our trade routes"
+			}
 
 
 		}
@@ -2344,7 +2356,7 @@ Main = {
 				SUMMARY "Our country is being looted by our foe"
 			}
 			
-			Blockade = {
+			Blocade = {
 				NAME "Blockade"
 				DESCRIPTION "Our dominance of the seas has weakened so much that we are no longer able to protect our ports."
 				SUMMARY "Our maritime trade and colonial income are no longer protected"
