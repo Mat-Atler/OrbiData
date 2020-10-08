@@ -9476,7 +9476,7 @@ Main = {
 				SOUND_EVENT "Main/SFX/LandBattle.wav"
 				SOUND_WINDOW "Main/SFX/LandBattle.wav"
 				TAG WarSystemTag
-				EVENT_DEF [ 0.5 10 40 65% ]
+				EVENT_DEF [ 0.5 10 30 70% ]
 				VALUE Die_Cast [ -10 0 10 ]
 				VALUE Winner [ 0 50 100 ]
 				ARISE = {
@@ -9484,12 +9484,12 @@ Main = {
 				}
 				TICK = {
 				
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(5 + MilitaryManpower.Infantry_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(3 + MilitaryManpower.Cavalry_value * 0.022 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(7 + MilitaryManpower.Missile_value * 0.04 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(4.5 + MilitaryManpower.Mercenaries_value * 0.022 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(6.5 + MilitaryManpower.Infantry_value * 0.03 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(4 + MilitaryManpower.Cavalry_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(8 + MilitaryManpower.Missile_value * 0.055 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(5 + MilitaryManpower.Mercenaries_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
 					
-					PROCESS FoeLandForces -=  PerSeconds(4 + FoeLandForces * 0.02 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
+					PROCESS FoeLandForces -=  PerSeconds(6 + FoeLandForces * 0.022 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
 					
 					IF  Winner > 50
 						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
