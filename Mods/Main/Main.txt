@@ -23,7 +23,7 @@ Main = {
 		FUNCTION F_WarDeclaration = {
 			DROPDOWN_SET_STATE Diplomacy.War
 			DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-			PLAY_SOUND "WarDeclaration.wav"
+			PLAY_SOUND "Main/SFX/WarDeclaration.wav"
 		}
 		FUNCTION F_Peace = {
 			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
@@ -33,7 +33,7 @@ Main = {
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
-			PLAY_SOUND "Peace.wav"
+			PLAY_SOUND "Main/SFX/Peace.wav"
 		}
 	}
 	Dropdowns = {
@@ -9484,10 +9484,10 @@ Main = {
 				}
 				TICK = {
 				
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(4 + MilitaryManpower.Infantry_value * 0.02 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(2 + MilitaryManpower.Cavalry_value * 0.019 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(6 + MilitaryManpower.Missile_value * 0.04 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(4 + MilitaryManpower.Mercenaries_value * 0.015 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(5 + MilitaryManpower.Infantry_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(3 + MilitaryManpower.Cavalry_value * 0.022 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(7 + MilitaryManpower.Missile_value * 0.04 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(4.5 + MilitaryManpower.Mercenaries_value * 0.022 * (1.5 - MilitaryEfficiency /100 ) )
 					
 					PROCESS FoeLandForces -=  PerSeconds(4 + FoeLandForces * 0.02 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
 					
@@ -9554,9 +9554,9 @@ Main = {
 				}
 				TICK = {
 				
-					PROCESS Navy -=  PerSeconds(5 + Navy * 0.22 )
+					PROCESS Navy -=  PerSeconds(4 + Navy * 0.185 )
 					
-					PROCESS FoeNavalForces -=  PerSeconds(5 + FoeNavalForces * 0.22  * ( (Winner - 50 ) / 200 + 1 ) ) 
+					PROCESS FoeNavalForces -=  PerSeconds(4 + FoeNavalForces * 0.185  * ( (Winner - 50 ) / 200 + 1 ) ) 
 					
 					IF  Winner > 50
 						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
