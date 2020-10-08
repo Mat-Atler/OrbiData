@@ -753,7 +753,12 @@ Main = {
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "A war fought for too long will ruin our credibility and weaken us."
 				SUMMARY "Diminishes your stability"
-			}
+			}			
+			ColonialPiracy = {
+				NAME "Colonial Piracy"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" The wealth of our colony began to attract vultures. We should defend our merchants."
+				SUMMARY "The level of piracy in our Colony"
+			}	
 			
 		}
 		Levers = {
