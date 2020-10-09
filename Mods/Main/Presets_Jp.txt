@@ -78,13 +78,13 @@ Presets = {
 		
 		
 	Iberia = {
-		NAME "Iberia"
-		DESCRIPTION "<b>Average</b><br>Southern Iberia is a relatively arid and hostile land. But its position with access to both the Mediterranean and the ocean offers great opportunities."
+		NAME "イベリア"
+		DESCRIPTION "<b>Average</b><br>南イベリアは比較的乾燥している戦乱の土地です。しかし、地中海と大西洋の両方にアクセスできるという立地は素晴らしいチャンスを提供します。"
 		}
 		
 
 	MississippiDelta = {
-		NAME "Mississippi Delta"
-		DESCRIPTION "<b>Average</b><br>The Mississippi delta is an ideal place to found a sedentary agrarian civilization in America while leaving the door open to naval and river trade."
+		NAME "ミシシッピデルタ"
+		DESCRIPTION "<b>Average</b><br>ミシシッピデルタはアメリカにおいて河川貿易や海軍への可能性を残しつつ定住し農耕文明を発展させるのに理想的な土地です。"
 		}
 }

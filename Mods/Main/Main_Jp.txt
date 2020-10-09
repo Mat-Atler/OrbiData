@@ -50,22 +50,22 @@ Main = {
         Diplomacy = {
             States = {
                 Peace = {
-                    NAME "Peace"
-                    DESCRIPTION "We are at peace."
+                    NAME "平和"
+                    DESCRIPTION "我々は平和である。"
                 }
                 War = {
-                    NAME "War"
-                    DESCRIPTION "We are at war."
+                    NAME "戦争"
+                    DESCRIPTION "我々は戦争中である。"
                 }
             }
             Buttons = {
                 DeclareWar = {
-                    NAME "Declare War"
-                    DESCRIPTION "Declare War"
+                    NAME "宣戦布告"
+                    DESCRIPTION "宣戦布告"
                 }
                 MakePeace = {
-                    NAME "Make Peace"
-                    DESCRIPTION "End the War"
+                    NAME "和平"
+                    DESCRIPTION "戦争の終わり"
                 }
             }
         }
@@ -108,25 +108,25 @@ Main = {
 			TEXT "ここに移動します"
 		}
 		WinColonialStateSize = {
-			NAME "Colonial State Size"
+			NAME "植民地国の大きさ"
 			LEVEL Main.ColonialStateSize.value = {
-				0 = "Gone"
-				0.001 = "Small Colony"
-				100 = "Colony"
-				200 = "Large Colony"
-				400 = "Imperial Colony"
+				0 = "消失"
+				0.001 = "小さな植民地"
+				100 = "植民地"
+				200 = "大きい植民地"
+				400 = "巨大な植民地"
 			}
-			TEXT "<b>Value: "@[Main.ColonialStateSize.value,LEVEL] "</b> (" @[Main.ColonialStateSize.value,0.###] ") <br>The size of our main colony."
+			TEXT "<b>値: "@[Main.ColonialStateSize.value,LEVEL] "</b> (" @[Main.ColonialStateSize.value,0.###] ") <br>主要な植民地の大きさ."
 		}
 		WinColony = {
-			NAME "Colony"
-			TEXT "Our main colony"
-			TEXT "Start a colony"
+			NAME "植民地"
+			TEXT "主要な植民地"
+			TEXT "植民開始"
 		}
 		
 		WinMoveColony = {
-			NAME "Choose a place to go"
-			TEXT "Start a colony here"
+			NAME "場所の選択"
+			TEXT "ここを植民地とする"
 		}
 	}
 	
@@ -164,16 +164,16 @@ Main = {
 			DESCRIPTION "ここでは旅行はできません"
 		}
 		CannotColony = {
-			NAME "Cannot start a colony here"
-			DESCRIPTION "Cannot start a colony here"
+			NAME "ここを植民地にすることはできません"
+			DESCRIPTION "ここを植民地にすることはできません"
 		}
 		ColonyIndependence = {
-			NAME "Independence of the Colony"
-			DESCRIPTION "We've totally lost control!"
+			NAME "植民地の独立"
+			DESCRIPTION "我々は統制を失いました!"
 		}
 		EnforcedPeaceAlert = {
-			NAME "Enforced Peace"
-			DESCRIPTION "We lost the war and we were forced to make concessions"
+			NAME "平和維持活動"
+			DESCRIPTION "我々は戦争に負け譲歩を余儀なくされました。"
 		}
 	}	
 	
@@ -633,123 +633,129 @@ Main = {
 				
 			
 			ColonialStateSize = {
-				NAME "Colonial State Size"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>""
-				SUMMARY "Our colony size"
+				NAME "植民地国の大きさ"
+				DESCRIPTION "大きさ: " @[value,0.###]<br><br>""
+				SUMMARY "我々の植民地の大きさ"
 			}
 			
 			
 			ColonialAutonomyDesire = {
-				NAME "Colonial Autonomy Desire"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>" Our excessive taxation infuriated the local settlers. Grumbling rises and it's the gateway to an organised revolt."
-				SUMMARY "Our taxes cause dissatisfaction"
+				NAME "植民地の独立機運"
+				DESCRIPTION "値: " @[value,0.###]<br><br>"我々が植民地に課した税は現地民を激怒させました。不平が渦巻いておりそれは組織化された反乱へつながるでしょう。"
+				SUMMARY "我々の税は不満を引き起こします。"
 			}
 			
 			Colony = {
-				NAME "Colony"
+				NAME "植民地"
 				DESCRIPTION ""
-				SUMMARY "Our main colony"
+				SUMMARY "我々の主要な植民地"
 			}	
 			
 			ColonialProsperity = {
-				NAME "Colonial Prosperity"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>" Our colony generates wealth according to several factors. It is important to protect it and tax it efficiently."
-				SUMMARY "The prosperity of our main colony"
+				NAME "植民地の繁栄"
+				DESCRIPTION "値: " @[value,0.###]<br><br>"植民地はいくつかの要因にて富を生み出します。それを保護し効率的に課税することが重要です。"
+				SUMMARY "主要な植民地の繁栄"
 			}	
 			
 			NavalSupremacy = {
-				NAME "Naval Supremacy".
+				NAME "海軍の覇権".
 				LEVEL value = {
-					0 = "Non-existent"
-					0.001 = "Pathetic"
-					20 = "Weak"
-					40 = "Fair"
-					80 = "Imposing"
-					120 = "Our fleet has conquered the oceans"
+					0 = "存在しない"
+					0.001 = "無残"
+					20 = "貧弱"
+					40 = "ほどよい"
+					80 = "立派"
+					120 = "七つの海を制覇した"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "As our fleet is now an essential component of our state, our maritime domination must be as impressive as possible if we are to secure our distant trade."
-				SUMMARY "Our domination of the seven seas"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "艦隊は我々の国にとって不可欠な構成要素です、遠方との貿易を確保するためには可能な限りの整備が必要です。"
+				SUMMARY "七つの海の支配"
 			}	
 			
 			Humanism = {
-				NAME "Humanism"
-				DESCRIPTION "A recent artistic-philosophical revival has profoundly changed our very way of seeing the world. It is time to open ourselves up to new ways of thinking."
-				SUMMARY "Allows us to explore our philosophy in greater depth"
+				NAME "ヒューマニズム"
+				DESCRIPTION "最近の哲学、芸術の復活は我々の世界の見方そのものを大きく変えました。新しい概念の扉を開く時がきました。"
+				SUMMARY "哲学をより深く探求することができる"
 			}	
 			
 			ModernWarfare = {
-				NAME "Modern Warfare"
-				DESCRIPTION "Our philosophy of warfare has evolved quite a bit with the advent of firearms. War is now a much better defined concept that monopolizes the attention of our state. You can now access direct diplomatic options using the buttons at the top left of the interface."
-				SUMMARY "Changes the dynamics of war"
+				NAME "近代的な戦争概念"
+				DESCRIPTION "我々の戦争哲学は銃の出現とともに進化してきました。戦争は今や明確に定義された国家の一大関心事となっています。インターフェイスの左上のあるボタンを使用して、直接外交オプションにアクセスできるようになりました。"
+				SUMMARY "戦争のあり方が変わる"
 			}
 			NewWorld = {
-				NAME "New World"
-				DESCRIPTION "We are cut off from the Eurasian-African ecosystem which will lead to a different destiny for some parts of our civilization."
-				SUMMARY "We are somewhat isolated"
+				NAME "新世界"
+				DESCRIPTION "我々はユーラシア・アフリカの文明圏から切り離されており、それが我々の文明に異なる運命をもたらすでしょう。"
+				SUMMARY "我々はやや孤立している"
 			}	
 			
 			InvadersForce = {
-				NAME "Invaders Forces"
-				DESCRIPTION "Entire contagions of invaders have landed on OUR land. They are trying to found cities and ally themselves with our historical enemies while trying to divide us. We must stop them whether by force or by diplomacy."
-				SUMMARY "Representing a constant threat"
+				NAME "侵略軍"
+				DESCRIPTION "侵略者たちが我々の大地に上陸しました。彼らは我々の永年の敵対勢力の都市をみつけ同盟を組もうとしています。我々は力によってであれ、外交によってであれ止めなければなりません。"
+				SUMMARY "絶え間のない脅威"
 			}				
 			
 			WarStatus = {
-				NAME "War Status"
+				NAME "戦争の状態"
 				LEVEL value = {
-					0 = "The war is lost"
-					25 = "We are losing the war"
-					40 = "We are slightly losing the war"
-					50 = "Undecided status"
-					50.001 = "We are slightly winning the war"
-					75 = "We are winning the war"
-					90 = "Our victory is striking"
+					0 = "敗北"
+					25 = "かなり厳しい"
+					40 = "負けつつある"
+					50 = "拮抗状態"
+					50.001 = "勝ちつつある"
+					75 = "楽観的"
+					90 = "勝利は目前"
 				}
-				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br> @[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
-				SUMMARY "Describes the state of the war"
+				DESCRIPTION <b> "状態: "@[value,LEVEL] </b>" ("@[value] ")" <br>"明日和平を結んだ場合以下のような条件になります:" <br><br> @[peaceProposal_ColonySize]"植民地の大きさ <br>"@[peaceProposal_StateSize]"国の大きさ<br>"@[peaceProposal_Wealth]"冨"
+				SUMMARY "戦争が現在どの様な状態かの説明"
 				}
 				
 			FoeLandForces = {
-				NAME "Foe Land Forces"
+				NAME "敵の陸軍力"
 				LEVEL value = {
-					0 = "Inexistent"
-					0.001 = "Pathetic"
-					30 = "Low"
-					60 = "Correct"
-					100 = "Imposing"
-					250 = "Monstrous"
+					0 = "存在しない"
+					0.001 = "無残"
+					30 = "貧弱"
+					60 = "普通"
+					100 = "堂々とした"
+					250 = "怪物"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on earth. Let's make sure we slaughter them before they do the same."
-				SUMMARY "Size of the enemy's land army"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "敵の陸軍力には当然限界があります。我々が敵を殲滅できるか確認しましょう、敵にその様にされる前に"
+				SUMMARY "敵の陸軍力"
 			}	
 			
 			
 			FoeNavalForces = {
-				NAME "Foe Naval Forces"
+				NAME "敵の海軍力"
 				LEVEL value = {
-					0 = "Inexistent"
-					0.001 = "Pathetic"
-					30 = "Low"
-					60 = "Correct"
-					100 = "Imposing"
-					250 = "Monstrous"
+					0 = "存在しない"
+					0.001 = "無残"
+					30 = "貧弱"
+					60 = "普通"
+					100 = "堂々とした"
+					250 = "怪物"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our enemy has a limited manpower to fight us on the seas. Let's make sure we slaughter them before they do the same."
-				SUMMARY "Size of enemy's navy"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "敵の海軍力には当然限界があります。我々が敵を殲滅できるか確認しましょう、敵にその様にされる前に"
+				SUMMARY "敵の海軍力"
 			}	
 			
 			
 			WarExhaustion = {
-				NAME "War Exhaustion"
+				NAME "厭戦感"
 				LEVEL value = {
-					0 = "Inexistent"
-					100 = "Low"
-					500 = "Important"
-					1000 = "Our country is bled dry"
+					0 = "存在しない"
+					100 = "低い"
+					500 = "無視できない"
+					1000 = "蔓延している"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "A war fought for too long will ruin our credibility and weaken us."
-				SUMMARY "Diminishes your stability"
-			}
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "長い戦争は我々の信頼性を破壊し"
+				SUMMARY "安定性が低下する"
+			}	
+			
+			ColonialPiracy = {
+				NAME "Colonial Piracy"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>" The wealth of our colony began to attract vultures. We should defend our merchants."
+				SUMMARY "The level of piracy in our Colony"
+			}	
 				
 		}
 		Levers = {
@@ -1877,163 +1883,187 @@ Main = {
 			
 			NavigationTools = {
 				NAME "Navigation Tools"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>"The compass and other small technical breakthroughs in the field of navigation give us unparalleled mastery of the seas."
-				SUMMARY "Ensure a safer sea travel"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"コンパスと航法における革新は海への理解を比類ないレベルにしました。"
+				SUMMARY "海の旅がより安全になる"
 			}
 			Caravel = {
-				NAME "Caravel"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>"The caravel is the culmination of the improvement of sailing that allows safe navigation across seas and oceans."
-				SUMMARY "Allow us to across the ocean"
+				NAME "キャラベル船"
+				DESCRIPTION "Value: " @[value,0.###]<br><br>"キャラベル船は海から海への旅を安全にする改善の集大成です。"
+				SUMMARY "大洋へ飛び出そう"
 			}
 			
 			LargeSailboats = {
-				NAME "Large Sailboats"
-				DESCRIPTION "Value: " @[value,0.###]<br>"Our multiple ventures on the sea have led to the perfection of the sailing ship. Galleons, frigates, corvettes, never before our navy has looked so majestic."
-				SUMMARY "To dominate the ocean"
+				NAME "大型帆船"
+				DESCRIPTION "Value: " @[value,0.###]<br>"幾度かの海への冒険は、帆船の完成につながりました。ガレオン船、フリゲート艦、コルベット船、海軍がこれほど雄大に見えたことはありません。"
+				SUMMARY "大洋を支配する"
 			}
 			
 			AcrossTheOcean = {
-				NAME "Across the Ocean"
+				NAME "大洋への進出"
 				LEVEL value = {
-					0 = "No expeditions"
-					0.001 = " Timid expeditions"
-					30 = "To the New World"
-					50 = "Attempted circumnavigation"
-					80 = "Global expeditions"
+					0 = "遠征はしていない"
+					0.001 = " 消極的な遠征"
+					30 = "新世界へ"
+					50 = "集会航海への挑戦"
+					80 = "どこまでも"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Our new mastery of the seas allows us to organize gigantic expeditions across the oceans for a glorious future. "
-				SUMMARY "Organized travels across the seas"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "新しい航法の習得によって海を越えての巨大な遠征を組織できます、輝かしい未来のために。 "
+				SUMMARY "組織的な渡海"
 			}
 			
 			Arquebus = {
-				NAME "Arquebus"
+				NAME "火縄銃"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = "Search for better models"
-					100 = "Mastery"
+					0 = "なし"
+					0.001 = "研究途上"
+					15 = "改良段階"
+					100 = "マスター"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The arquebus is the first sufficiently effective firearm that marks the superiority of gunpowder over archery and a radical change in the battlefield."
-				SUMMARY "Military Technology"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 火縄銃は、弓矢に対して火薬の優位性と戦場の根本的な変化を示す最初の効果的な銃です。"
+				SUMMARY "軍事技術"
 			}	
 			
 			
 			Musket = {
-				NAME "Musket"
+				NAME "マスケット"
 				LEVEL value = {			
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = "Search for better models"
-					100 = "Mastery"
+					0 = "なし"
+					0.001 = "研究途上"
+					15 = "改良段階"
+					100 = "マスター"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> The rifle musket is the 2nd generation of firearm, capable of far greater power and reliability than an arquebus."
-				SUMMARY "Military Technology"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> マスケットライフルは第二世代の銃であり、火縄銃よりもはるかに強力です。"
+				SUMMARY "軍事技術"
 			}	
 			
 			
 			StockExchange = {
-				NAME "Stock Exchange"				
+				NAME "証券取引所"				
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Small Merchant Brotherhood".
-					30 = "Merchant Brotherhood"
-					60 = "Commercial exchange"
-					150 = "Large Commercial Exchange"
+					0 = "なし"
+					0.001 = "小規模商人たちの集まり"
+					30 = "商人たちの集まり"
+					60 = "取引所"
+					150 = "巨大な取引所"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  New business opportunities are forcing us to completely rethink our trading system. It allows a much greater flow of goods to be traded in our new commercial heart: the markets."
-				SUMMARY "Increases our maximum of Trade Goods."
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 新しいビジネスチャンスにより取引システムを刷新する必要があります。これにより商業の根幹たる市場においてはるかに多くの取引ができるようになります。"
+				SUMMARY "貿易品の最大数が増加する"
 			}	
 			
 			TradingPost = {
-				NAME "Trading Posts"
+				NAME "交易所"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Local agreements"
-					15 = "Few Trading Posts"
-					30 = "Trading Post Network"
-					60 = "Global Network"
+					0 = "なし"
+					0.001 = "地域協定"
+					15 = "少数の交易所"
+					30 = "交易網"
+					60 = "世界的な"
 				}
-				DESCRIPTION <b> "Value : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our maritime expeditions allow us to have always more business partners. With diplomacy and gold we can buy juicy Trading Posts."
-				SUMMARY "Increases the flow of commercial goods"
+				DESCRIPTION <b> "値 : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>遠征は常により多くのビジネスパートナーを持つことを可能にします。外交や金でうまみのある交易所を得ることができます。"
+				SUMMARY "商品の流れを増加させる"
 			}
 			CombatPiracy = {
-				NAME "Combat Piracy"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>"Prosperity has attracted pirates of all kinds who attack our trade lines, and our merchants have implored the protection of the national navy. In the long run securing the wealth of our colony seems an effective investment."
-				SUMMARY "Requisition our fleet to secure our overseas trade"
+				NAME "海賊行為への対応"
+				DESCRIPTION "値: " @[value,0.###]<br><br>"我々の貿易の繁栄はあらゆる海賊を惹きつけました。商人たちは海軍の保護を懇願しています。長期的にみると植民地の冨を確保することは効果的な投資になるでしょう。"
+				SUMMARY "R海外貿易を確保するための艦隊を要求する"
 			}
 			
 			ColonialTariffs = {
-				NAME "Colonial Tariffs"
+				NAME "植民地関税"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Slight tax"
-					5 = "Normal Tax"
-					10 = "Heavy Taxes"
-					15 = "Very heavy taxes"
-					20 = "Our merchants are bankrupt"
+					0 = "なし"
+					0.001 = "わずかな税"
+					5 = "標準的な税"
+					10 = "重税"
+					15 = "搾取"
+					20 = "商人たちは破産している"
 				}
-				DESCRIPTION <b>"Value : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Now that our colony is firmly established and has started to generate profit it is time for the metropolis to recoup its investment. Let's tax colonial trade."
-				SUMMARY "Tax our colonial empire."
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 植民地が確立され利益を生み出し始めた今こそ、これまでの投資を回収する時です。植民地貿易に課税しましょう。"
+				SUMMARY "植民地に課税する"
 			}
 			SlaveTrade = {
-				NAME "Slave Trade"
-				DESCRIPTION "Value: " @[value,0.###]" <br><br> Our colony needs fresh labour, with a small investment on our part we can expect a huge return on investment".
-				SUMMARY "Improves the wealth of our colonies"
+				NAME "奴隷貿易"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br> 我々の植民地は労働力を必要としている。わずかな投資をするだけで大きな投資収益率を期待できます。"
+				SUMMARY "植民地の富を向上させる"
 			}		
 
 			SchoolOfThought = {
-				NAME "School of Thought"
-				DESCRIPTION "Value: " @[value,0.###]" <br><br>Recent philosophical developments have brought about many new schools of thought, it increases our possibilities tenfold."
-				SUMMARY "Enhances our philosophical potential"
+				NAME "学派"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br>最近の哲学的発展は多くの新しい学派を生み出しました。それらは我々の可能性を10倍に増やします。"
+				SUMMARY "哲学的な可能性を高める"
 			}
 			ScientificMethod = {
-				NAME "Scientific Method"
-				DESCRIPTION "Value: " @[value,0.###]" <br><br>Based on empiricism, the scientific method promotes understanding of the natural world through experience and replication of older works through precise protocols. This should considerably speed up our research."
-				SUMMARY "Improves our research"
+				NAME "科学的手法"
+				DESCRIPTION "Value: " @[value,0.###]" <br><br>経験論に基づいた科学的手法は、経験とこれまでの作業を正確に再現すること自然界の理解を促進させます。これにより研究は加速するでしょう。"
+				SUMMARY "研究を改善する
 			}
 			MercenariesReform = {
-				NAME "Mercenaries Reform"
+				NAME "傭兵改革"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "New Reforms"
-					50 = "Advanced Reforms"
-					100 = "Complete Reforms"
+					0 = "なし"
+					0.001 = "着手"
+					50 = "改革中"
+					100 = "改革完了"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The emergence of firearms and the changing dynamics of warfare have led us to rethink our model of how we use mercenaries. By introducing effective reforms we can improve our recruitment while reducing their pay."
-				SUMMARY "Improve our recruitment of mercenaries and reduce their pay"
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 銃の出現と戦争理論の変化により我々は傭兵の使い方を再考することができるようになりました。効果的な改革を導入することで支払いを削減しながら採用することができます。"
+				SUMMARY "傭兵の募集を改善し賃金を減らす"
 			}
 		Isolationism = {
-				NAME "Isolationism"
+				NAME "孤立主義"
 				LEVEL value = {					
-					0 = "Not enforced"
-					10 = "Important measures"
-					50 = "Drastic measures"
-					100 = "Sakoku"
+					0 = "強制されない"
+					10 = "重要な政策"
+					50 = "強固な"
+					100 = "鎖国"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The influence of foreigners is harmful, we already have everything we need within our borders. Let's close the country once and for all and our harmony will only be strengthened."
-				SUMMARY "Sacrifice your military and commercial ambitions to strengthen your grip on interior policies."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> 外国人の影響は有害です。我々は国内のみで完結ができます。一度だけ国を閉ざしましょう、そうすれば我々の調和は強化されるだけです。"
+				SUMMARY "軍事的・商業的野心を犠牲にして国内の団結を強化する"
 			}
 			
 		Embassies  = {
-				NAME "Embassies"
+				NAME "大使館"
 				LEVEL value = {					
 					0 = "Poor attempts"
 					50 = "Open Dialogue"
 					100 = "Peace Treaty"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> A big part of the problem with these foreigners is that they take us for savages who don't even deserve the respect of our borders. Let's start real talks with competent translators and learn from these foreigners, how do they sail across the oceans?"				SUMMARY " Allows us to stop the foreign invasion "
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 外国人の問題の大部分は国内で尊敬できない野蛮と思われる行為をすることです。優秀な通訳者を通じ外国人を学びましょう。彼らはどうのように海を渡るのですか？"
+				SUMMARY " 外国の侵略を阻止する "
 			}
 			
 			WarTaxes = {
-				NAME "War Taxes"
+				NAME "戦争税"
 				LEVEL value = {					
-					0 = "None"			
-					0.001 = "Light"
-					15 = " Significant"
-					25 = "Heavy"
+					0 = "なし"			
+					0.001 = "軽い"
+					15 = " 意義のある"
+					25 = "重い"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "If this tax is generally not really appreciated, it generates not much discontent since it is collected only in case of war and therefore by necessity."
-				SUMMARY "Allows a special income in times of war."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "この税があまり高くない場合は、必然的に戦争の場合にのみ徴収されるため不満はあまり生じません。"
+				SUMMARY "戦争時に特別収入を得る"
+			}
+		OfficialLanguage = {
+				NAME "Official Language"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Our language is mandatory in all official texts"
+					50 = "Active persecution of dialects"
+					100 = "Foundation of the Academy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our linguistic unification can go even further, with the right legislation we can actively and effectively promote our official language."
+				SUMMARY "Strengthens the Lingua Franca"
+			}
+			TradeCompagnies = {
+				NAME "Trade Compagnies"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Babbling"
+					15 = "A few rival companies"
+					30 = "Large Companies"
+					60 = "Gigantic Monopolies"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Some companies have concentrated their efforts in international trade. With the support of banks and trade exchanges, they are setting up tremendous expeditions."
+				SUMMARY "Increases our trade routes"
 			}
 				
 		}
@@ -2293,78 +2323,78 @@ Main = {
 			
 					
 			ColonialRebellion = {
-				NAME "Colonial Rebellion"
-				DESCRIPTION "Our excessive taxation has provoked big riots in our colony which has degenerated into open rebellion. If our fleet does not intervene it will be the end of our colony!"
-				SUMMARY "Our colony claims its independence!"
+				NAME "植民地の反乱"
+				DESCRIPTION "我々の過度な課税は植民地での暴動を引き起こし、それは反乱へと発展しました。艦隊が介入しなければ植民地は終わりとなります！"
+				SUMMARY "植民地は独立を主張している"
 			}
 			ColonialExpension = {
-				NAME "Colonial Expension"
-				DESCRIPTION "As our colony prospers, it sees its affluence growing in the region."
-				SUMMARY "Our colony expands its influence"
+				NAME "植民地拡大"
+				DESCRIPTION "植民地が反映するにつれて地域が豊かになっていくのがみえます。"
+				SUMMARY "植民地の影響が拡大する"
 			}
 			Invaders = {
-				NAME "Invaders"
-				DESCRIPTION "Strange men have landed out of the Ocean and brought strange creatures with them. This does not presage anything good for the destiny of our country."
-				SUMMARY "Men from beyond the ocean have landed!"
+				NAME "侵略者"
+				DESCRIPTION "奇妙な男たちが奇妙な生き物を連れ上陸しました。我が国にとって良い運命を予言するものではありません。"
+				SUMMARY "海の向こうから男たちが上陸しました！"
 			}
 			
 			InvadersEpidemic = {
-				NAME "Epidemic of Invaders"
-				DESCRIPTION "Since they arrived, strange diseases have been striking our people, but never those men. Why is this disease so deadly?"
-				SUMMARY "A strange and very lethal disease has struck our people!"
+				NAME "侵略者からの感染症"
+				DESCRIPTION "彼らが到着して以来、奇妙な病気が我々を襲っていますが、彼らにはそうではありません。なぜ我々には致命的なのでしょう？"
+				SUMMARY "奇妙で非常に致命的な病気が我々を襲っている！"
 			}
 			
 			DeclarationOfWar = {
-				NAME "Declaration of War"
-				DESCRIPTION "One of our powerful continental neighbors boldly declared war on us. We must defend ourselves!"
-				SUMMARY "One of our neighbors has just declared war on us!"
+				NAME "宣戦布告"
+				DESCRIPTION "強大な隣国が我々に宣戦を布告しました。我々は自分自身を守らねばなりません！"
+				SUMMARY "隣国から宣戦布告されました！"
 			}			
 			EnforcedPeace = {
-				NAME "Enforced Peace"
-				DESCRIPTION "This war is a disaster, we must surrender."
-				SUMMARY "We are forced to surrender"
+				NAME "降伏"
+				DESCRIPTION "この戦争で惨憺たる有様です。降伏しなくてはいけません。"
+				SUMMARY "降伏を余儀なくされている"
 			}
 			CountryPlundered = {
-				NAME "Country Plundered"
-				DESCRIPTION "The ongoing war is ravaging our countryside and our citizens are gravely suffering."
-				SUMMARY "Our country is being looted by our foe"
+				NAME "国家的略奪"
+				DESCRIPTION "現在の戦争は我々の国を荒廃させており、国民たちは深刻な苦しみを味わっています。"
+				SUMMARY "我々は略奪をうけています"
 			}
 			
-			Blockade = {
-				NAME "Blockade"
-				DESCRIPTION "Our dominance of the seas has weakened so much that we are no longer able to protect our ports."
-				SUMMARY "Our maritime trade and colonial income are no longer protected"
+			Blocade = {
+				NAME "封鎖e"
+				DESCRIPTION "我々の海上支配は非常に弱まり、もはや港を守ることができなくなっています。"
+				SUMMARY "我々の海上貿易と海外植民地を保護できない"
 			}
 			
 			OccupationResistance = {
-				NAME "Occupation Resistance"
-				DESCRIPTION "We occupy part of the enemy's country, but we meet fierce resistance. Our generals advise us to sign peace as soon as possible."
-				SUMMARY "The war is getting stalled and draining our reserves of men."
+				NAME "レジスタンス"
+				DESCRIPTION "我々は敵国の一部を占領していますが激しい抵抗に直面しています。将軍はできるだけ早く和平に署名するよう忠告しています。"
+				SUMMARY "戦争は行き詰っており予備軍もすでにない。"
 			}
 			
 			
 			LandBattle = {
-				NAME "Land Battle"
+				NAME "地上戦"
 				LEVEL Winner = {					
-					0 = "This battle is a bitter defeat."	
-					25 = "This battle is a defeat."	
-					50 = "This battle is a victory."	
-					75 = "This battle is a clear victory."		
+					0 = "惨敗"	
+					25 = "敗北"	
+					50 = "勝利"	
+					75 = "完勝"		
 				}
-				 DESCRIPTION "A land battle has begun." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
-				SUMMARY "A fight on land is underway!"
+				 DESCRIPTION "地上戦が始まった" <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
+				SUMMARY "陸上での戦いが進行中！"
 			}
 			
 			NavalBattle = {
-				NAME "Naval Battle"
+				NAME "海戦"
 				LEVEL Winner = {					
-					0 = "This battle is a bitter defeat"	
-					25 = "This battle is a defeat."	
-					50 = "This battle is a victory."	
-					75 = "This battle is a clear victory."		
+					0 = "惨敗"	
+					25 = "敗北"	
+					50 = "勝利"	
+					75 = "完勝"		
 				}
-				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
-				SUMMARY "A fight on the seas is underway!"
+				DESCRIPTION "海戦が始まった " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
+				SUMMARY "海上での戦いが進行中！"
 			}
 		}
 	}
