@@ -8,12 +8,12 @@ Religious = {
 		States = {
 			Heretics = {
 				NAME "Hérétiques"
-				DESCRIPTION <b>"Valeur: "@[value] </b> "La part de votre population suivant une religion hérétique, Nous devons les convertir ou les tolérer sinon ils vont créer du troubles."
-				SUMMARY "Pourcentage d'hérétique"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "La part de votre population suivant une religion hérétique, Nous devons les convertir ou les tolérer sinon ils vont créer des troubles."
+				SUMMARY "Pourcentage d'hérétiques"
 			}
 			Heathens = {
 				NAME "Païen"
-				DESCRIPTION <b>"Valeur: "@[value] </b> " La part de votre population suivant une croyance païenne, Nous devons les convertir ou les tolérer sinon ils vont créer du troubles."
+				DESCRIPTION <b>"Valeur: "@[value] </b> " La part de votre population suivant une croyance païenne, Nous devons les convertir ou les tolérer sinon ils vont créer des troubles."
 				SUMMARY "Pourcentage de païen"
 			}	
 			ReligiousHeadPower = {
@@ -31,6 +31,35 @@ Religious = {
 				DESCRIPTION <b>"Valeur: "@[value] </b> "La religion peut aider les hommes à se dévouer à des aspects importants de la vie et de la société. Et plus notre foi sera puissante et assurée plus la dévotion de nos sujets sera sans commune mesure."
 				SUMMARY "Améliore vos différentes dévotions"
 			}
+			ColonialConvert = {
+				NAME "Convertis coloniaux"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "La part des habitants dans notre colonie qui pratique la religion majoritaire de la métropole, plus cette part est élevé plus la population participera à l'amélioration de la colonie."
+				SUMMARY "Pourcentage de la population colonial suivant la vrai foi"
+			}
+			ColonialHeretic = {
+				NAME "Hérétiques coloniaux"
+				DESCRIPTION <b>"Valeur: "@[value] </b> "La part de notre population colonial suivant une religion hérétique, Nous devons les convertir sinon ils vont créer des troubles ou pires, ils pourraient demander l'indépendance."
+				SUMMARY "Pourcentage d'hérétiques dans notre colonie"
+			}
+			Religiosity = {
+				NAME "Religiosité"
+				LEVEL value = {
+					0 = "Dieu est mort"
+					10 = "Les affaires religieuses son maintenant, pour la plupart, important qu'au moment de la prière"
+					25 = "La religion a seulement une grande influence morale"
+					60 = "Les autorités religieuses influencent régulièrement les décisions gouvernementale"
+					80 = "La société dans son ensemble est régis par la religion"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>  "À une époque où le spirituel n'a plus réponse à tous les questions humaines, l'influence de la religion dans notre société peut changer pour de nombreuses raisons."
+				SUMMARY "Représente l'importance de la religion dans votre civilisation"
+			}
+			NationalReligion = {
+				NAME "Religion Nationale"
+				DESCRIPTION <b>"Pantheon: "@[PantheonValue] </b> <br> <b>"Syncrétisme: "@[SyncretismValue] </b><br> <b>"Cérémonies Religieuses: "@[ReligiousCeremonyValue] </b><br> <b>"Offrande religieuse: "@[ReligiousOfferingsValue] </b><br> <b>"La nature des offrandes: "@[OfferingsNatureValue] </b><br> <b>"La nature des sacrifices: "@[SacrificeNatureValue] </b><br> <b>"Dévotion à l'artisanat: "@[DevotionToCraftsmanshipValue] </b><br> <b>"Dévotion à la nature: "@[DevotionToNatureValue] </b><br> <b>"Dévotion à la mer: "@[DevotionToSeaValue] </b><br> <b>"Dévotion à la moisson: "@[DevotionToTheHarvestValue] </b><br> <b>"Dévotion à la loi: "@[DevotionToTheLawValue] </b><br> <b>"Dévotion au commerce: "@[DevotionToTradeValue] </b><br> <b>"Dévotion à la guerre: "@[DevotionToWarValue] </b><br><br>"Notre religion a connus de nombreux changement au cours des siècles. Mais ces temps sont révolus. Nos dogmes sont mainetant définie pour les siècles a venir"
+				SUMMARY "Noeud qui centralise les aspects de notre religion qui ne sont plus modifiables"
+			}
+		
+			
 		}
 		Levers = {
 			ToleranceOfHeretics = {
@@ -218,6 +247,13 @@ Religious = {
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "C'est par l'action que le salut s'obtient. C'est donc par le travail acharné que les hommes prouvent leur valeur. Assurons-nous que chaque homme participe à l'effort."
 				SUMMARY "Augmente notre production de biens commerciaux"
 			}
+			
+			ColonialConversion = {
+				NAME "Conversion des colonies"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les minorités religieuses constituent un danger pour l'unité et la prospérité de nos colonies. À cause de la distance nous ne pouvons nous occuper de la conversion nous-même, heureusement, un grand nombre de congrégations sont prêts à le faire pour nous. Si nous les aidons, la conversion ne serra que plus rapide."
+				SUMMARY "Convertir les habitants des colonies à la vrai foi"
+			}
+				
 		}
 		Events = {
 			Schism = {
@@ -286,6 +322,11 @@ Religious = {
 				NAME "Fin de la dissidence religieuse "
 				DESCRIPTION " Nos efforts constent pour mettre fin aux divisions internes de notre religion ont enfin porté leurs fruits. Maintenant tout le monde reconnaît qu'un seul guide spirituel. "
 				SUMMARY "Fin de la division du clergé, il ne reste plus qu'un chef religieux"
+			}
+			PerpetuationOfDogmas = {
+				NAME "pérennisation des Dogmes "
+				DESCRIPTION "Tout chose nouvelle est vouée à devenir habitude. Notre religion n'échappe pas à cette règle. Les dogmes s’installent et restes. Bientôt il serra surement impossible d'influencer les grandes lignes de notre religion."
+				SUMMARY " Après cette événements Il serra plus possible de changer directement de nombreux nœuds religieux"
 			}
 
 		}

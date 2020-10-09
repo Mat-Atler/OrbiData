@@ -2910,15 +2910,17 @@ Main = {
 			Pantheon = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
+				VALUE AsSpawn[ 0 0 1 ]
 				RELATED_INFO = {
 					RELATED_UNLOCK CelesteMandate
 					RELATED_LINK PriestClass
 				}
-				// SLEEP = {
-					// IF ( ~ReligiousMonuments + ~ReligiousCeremony )
-						// SPAWN
-					// ENDIF
-				// }
+				SLEEP = {
+					 IF AsSpawn = 1
+						SET PriestClass.value [ : : Min (100, Pantheon.value + 10 ) ]
+					ENDIF
+				 }
+				 
 				UNLOCK_CONDITIONS = {
 					HINT ~ReligiousMonuments | ~ReligiousCeremony
 					CONDITION_NODE + ReligiousMonuments
@@ -2932,6 +2934,10 @@ Main = {
 				}
 				TICK = {
 					SET PriestClass.value [ : : Min (100, Pantheon.value + 10 ) ]
+				}
+				
+				TRIGGER_SPAWN Pantheon = {
+				PROCESS AsSpawn = 1
 				}
 				
 				LINK PriestClass = {
@@ -3413,17 +3419,21 @@ Main = {
 			ReligiousCeremony = {
 				TYPE Cultural
 				VALUE value [ 0 5 20 >> 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
+				VALUE Savevalue [ 0 5 20 ]
 
 				RELATED_INFO = {
 					RELATED_UNLOCK PriestClass Pantheon NonSecularEducation
 					RELATED_LINK PriestClass ReligiousMonuments
 				}
 				
-				// SLEEP = {
-					// IF (ReligiousMonuments > 5 + ~OrganizedNomadism)
-						// SPAWN
-					// ENDIF
-				// }
+				SLEEP = {
+					IF AsSpawn = 1
+						PROCESS value = Savevalue ( Religiosity / 50 )
+						PROCESS PriestClass =  PriestClass + PerSeconds( value * ( Religiosity / 50 ) / 500)
+					ENDIF
+				}
+				
 				UNLOCK_CONDITIONS = {
 					HINT ~ReligiousMonuments | ~OrganizedNomadism
 					CONDITION_NODE + OrganizedNomadism
@@ -3437,7 +3447,15 @@ Main = {
 					$PoliticalPower = (LinkCount(ReligiousCeremony) + 1) * 0.8
 				}
 				TICK = {
-				PROCESS PriestClass =  PriestClass + PerSeconds( value / 500)
+				PROCESS PriestClass =  PriestClass + PerSeconds( value / 500 )
+				}
+				
+				TRIGGER_SPAWN ReligiousCeremony = {
+				PROCESS AsSpawn = 1
+				}
+				
+				TRIGGER_LEAVE ReligiousCeremony = {
+				PROCESS Savevalue = value 
 				}
 				
 				LINK PriestClass = {
@@ -3917,7 +3935,7 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
+				PROCESS PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
 				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.0025)
 				PROCESS $Wealth = $Wealth - PerSeconds(Diplomacy * 0.02)
 				PROCESS TradeRoads = TradeRoads + PerSeconds(Diplomacy * 0.001)
