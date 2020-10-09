@@ -9311,14 +9311,14 @@ Main = {
 				
 			
 				TRIGGER_EVENT = {
-					IF  ~ModernWarfare & DropdownIsState(Diplomacy.Peace)
+					IF  ~ModernWarfare & DropdownIsState(Diplomacy.Peace) & NeighborhoodBellicism > 60
 						RISE
 					ENDIF
 				}
 				
 				
 				TRIGGER_SPAWN DeclarationOfWar = {
-					PROCESS NeighborhoodBellicism -= 50
+					PROCESS NeighborhoodBellicism -= 80
 					CALL_FUNCTION F_WarDeclaration
 					ALERT Invaded
 				}
