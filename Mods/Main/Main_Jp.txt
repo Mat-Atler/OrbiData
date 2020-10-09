@@ -1995,7 +1995,7 @@ Main = {
 			ScientificMethod = {
 				NAME "科学的手法"
 				DESCRIPTION "Value: " @[value,0.###]" <br><br>経験論に基づいた科学的手法は、経験とこれまでの作業を正確に再現すること自然界の理解を促進させます。これにより研究は加速するでしょう。"
-				SUMMARY "研究を改善する
+				SUMMARY "研究を改善する"
 			}
 			MercenariesReform = {
 				NAME "傭兵改革"
