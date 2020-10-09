@@ -1699,7 +1699,7 @@ Main = {
 					RELATED_LINK Diplomacy LootingCampaigns OverlandTrade NavalTrade Harbours
 				}
 				SLEEP = {
-					IF ~MerchantExplorer
+					IF ~MerchantExplorer | ~TradeCompagnies
 						SPAWN
 					ENDIF
 				}
@@ -8738,7 +8738,7 @@ Main = {
 					EVENT_SPEED 1	
 				}
 				SLEEP = {
-					EVENT_CHANCE = 0.2 +( 0.3 * ~Republic )
+					EVENT_CHANCE = 0.3 +( 0.3 * ~Republic )
 				}
 				
 				TICK = {
