@@ -231,12 +231,19 @@ Religious = {
 					FLUX value / 5
 					COLOR red
 				ENDIF
+				}
+				
+				LINK ReligiousHeadPower = {
+				IF value > 0
+					FLUX value / 5
+					COLOR red
+				ENDIF
 				}				
 			}
 			
 			ColonialConvert = {
 				TAG ColonyTag
-				VALUE value [ 0 0 100 ]
+				VALUE value [ 0 25 100 ]
 				DISPLAY_VALUE
 
 				SLEEP = {
@@ -245,14 +252,17 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = value + PerSeconds ( 1 ? 20  / ( Colony.hiddenProsperity / ( Population / 200 + 1 ) * ColonialStateSize ) * 0.1 )
+					PROCESS value = value + PerSeconds ( 1 ? 20  / ( Colony.hiddenProsperity / ( Population / 200 + 1 ) * ColonialStateSize ) )
 					
 					IF ColonialProsperity' > 0
-						PROCESS ColonialProsperity = ColonialProsperity + PerSeconds ( ColonialProsperity' * value * value * 0.000005 )
+						PROCESS ColonialProsperity = ColonialProsperity + PerSeconds ( ColonialProsperity' * value * value * 0.000005 ) 
 					ENDIF
 				}
 
 				LINK Colony = {
+				}
+				LINK ColonialProsperity = {
+				WEIGHT [ to ]
 				}
 			}
 			
@@ -270,15 +280,15 @@ Religious = {
 				}
 				TICK = {
 					IF ( value < Max ( Heretics + 10 / ( ( ToleranceOfHeretics +1 ) / 10 ) , ( ToleranceOfHeretics +1 ) / 10  ))
-						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + ( Conversion / 400 ) )  / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize ) * 0.1 )
+						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + ( Conversion / 400 ) )  / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize )  )
 					ELSE
-						PROCESS value = value - PerSeconds ( 1 ? 5 / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize  ) * 0.1 )
+						PROCESS value = value - PerSeconds ( 1 ? 5 / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize  ) )
 					ENDIF
 					
 					SET ColonialConvert.value [ : : 100 - ColonialHeretic.value ]
 					
 					IF ColonialProsperity' > 0
-						PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialProsperity' * value * value * 0.000005 )
+						PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialProsperity' * value * value * 0.00001 )
 					ENDIF
 					
 					IF ( value > 0 )
@@ -288,10 +298,20 @@ Religious = {
 
 				LINK Colony = {
 				}
+				LINK ColonialProsperity = {
+				WEIGHT [ to ]
+				}
 				
 				LINK ColonialConvert = {
 					WEIGHT [ max ] 100 - value
 				}
+				
+				LINK ColonialAutonomyDesire = {
+				IF value > 0
+					FLUX value / 50
+					COLOR green
+				ENDIF
+				}	
 			}
 			
 			NationalReligion = {
@@ -310,7 +330,7 @@ Religious = {
 				VALUE DevotionToWarValue [ 0 0 1000 ]
 				
 				SLEEP = {
-					IF GetCurrentEra() > GetEra(DiscoveryAge)
+					IF GetCurrentEra() < GetEra(DiscoveryAge)
 						REMOVE NationalReligion
 					ENDIF
 				}
@@ -341,13 +361,13 @@ Religious = {
 				DISPLAY_VALUE
 				
 				SLEEP = {
-					IF GetCurrentEra() > GetEra(DiscoveryAge)
+					IF GetCurrentEra() < GetEra(DiscoveryAge)
 						REMOVE Religiosity
 					ENDIF
 				}
 
 				TICK = {
-					PROCESS tempvalue = Monasteries + ReligiousMonuments + PriestClass * 2 +  Piety * 5 + Devotion * 5 + DivineRight * 3 + ReligiousArt + Theocracy * 5 + CelesteMandate * 5 + CelestialMonarchy + ClericalState
+					PROCESS tempvalue = Monasteries + ReligiousMonuments + PriestClass * 2 +  Piety * 5 + Devotion * 5 + DivineRight * 2 + ReligiousArt + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy + ClericalState
 					PROCESS value = ( tempvalue / ( tempvalue + 1000 ) ) * 100
 				}
 
@@ -1452,7 +1472,7 @@ Religious = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~ColonialProsperity & ( ColonialHeretic > 40 | ~Monasteries )
-					CONDITION_VALUE ColonialProsperity > 20
+					CONDITION_VALUE ColonialProsperity > 20 | ~Monasteries
 					CONDITION_VALUE Navy > 40
 					CONDITION_VALUE AcrossTheOcean >= 20
 				}
@@ -1461,15 +1481,15 @@ Religious = {
 					$PoliticalPower = 250
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(ColonialConversion) + 2) * 3
+					$PoliticalPower = (LinkCount(ColonialConversion) + 2) * 2
 				}
 				
 				TICK = {
 					IF ColonialHeretic > 0
-						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * Monasteries * Conversion / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 750 )
+						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 700 )
 						PROCESS $Wealth = $Wealth - PerSeconds ( ColonialHeretic * ColonialProsperity * ColonialStateSize * value / 255555 )
 						IF ColonialConvert < 100 - ColonialHeretic
-							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * Monasteries * Conversion / (( ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 750 )
+							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 1000 )
 						ENDIF
 					ENDIF	
 					
@@ -1738,7 +1758,7 @@ Religious = {
 				}
 
 				TRIGGER_EVENT = {
-					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0
+					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~ReinforcementOfTheGouvernement == 0
 						RISE
 					ENDIF
 				}
@@ -1764,7 +1784,7 @@ Religious = {
 				}
 
 				TRIGGER_EVENT = {
-					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0
+					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~ReinforcementOfTheClergy == 0
 						RISE
 					ENDIF
 				}
@@ -1948,11 +1968,11 @@ Religious = {
 				TICK = {
 					PROCESS Piety = Piety - PerSeconds(0.25)
 					IF $PoliticalPower > 0
-						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds (( 333 + $PoliticalPower ) / 333 ) - 1 )
+						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ((( 333 + $PoliticalPower ) / 333 ) - 1 )
 					ENDIF
 					
 					IF $Wealth > 0
-						PROCESS $Wealth = $Wealth - PerSeconds (( 333 + $Wealth ) / 333 ) - 1 )
+						PROCESS $Wealth = $Wealth - PerSeconds ((( 333 + $Wealth ) / 333 ) - 1 )
 					ENDIF
 					
 					IF ~DivineRight
@@ -1970,7 +1990,7 @@ Religious = {
 					FLUX 1
 				}
 				TRIGGER_EVENT = {
-					IF  ~CelesteMandate == 0  
+					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~CelesteMandate == 0
 						RISE
 					ENDIF
 				}
@@ -1979,7 +1999,7 @@ Religious = {
 			PerpetuationOfDogmas = {
 				SOUND_EVENT "Main/SFX/ConversionBad.wav"
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
-				EVENT_DEF [ 10 150 10 1% ]
+				EVENT_DEF [ 10 150 10 2% ]
 				
 				
 				ARISE = {

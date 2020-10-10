@@ -323,6 +323,11 @@ Religious = {
 				DESCRIPTION " Nos efforts constent pour mettre fin aux divisions internes de notre religion ont enfin porté leurs fruits. Maintenant tout le monde reconnaît qu'un seul guide spirituel. "
 				SUMMARY "Fin de la division du clergé, il ne reste plus qu'un chef religieux"
 			}
+			ClergyDiscontent = {
+				NAME "Mécontentement du clergé "
+				DESCRIPTION "Le clergé n'aime pas que l'on s'immisce dans c'est affaire et a décidé contre-attaqué et utilise tout son influence pour aller à l'encontre de tous nos plans. "
+				SUMMARY "Le clergé travail contre les intérets de notre gouvernement"
+			}
 			PerpetuationOfDogmas = {
 				NAME "pérennisation des Dogmes "
 				DESCRIPTION "Tout chose nouvelle est vouée à devenir habitude. Notre religion n'échappe pas à cette règle. Les dogmes s’installent et restes. Bientôt il serra surement impossible d'influencer les grandes lignes de notre religion."

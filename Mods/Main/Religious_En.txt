@@ -322,6 +322,11 @@ Religious = {
 				DESCRIPTION "Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
 				SUMMARY "End of the division of the clergy, only one religious leader remains"
 			}
+			ClergyDiscontent = {
+				NAME "ClergyDiscontent "
+				DESCRIPTION "The clergy does not like to be interfered with and has decided to counterattack and use all its influence to go against all our plans. "
+				SUMMARY "The clergy works against the interests of our government."
+			}
 			PerpetuationOfDogmas = {
 				NAME "Perpetuation of dogmas "
 				DESCRIPTION "Anything new is bound to become custom. Our religion is no exception to this rule. Dogmas settle down and stay. Soon it will surely be impossible to influence the main lines of our religion."
