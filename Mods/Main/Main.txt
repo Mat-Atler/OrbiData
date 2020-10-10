@@ -20,24 +20,30 @@ Main = {
 		}
 
 	Globals = {
-	FUNCTION F_WarDeclaration = {
-	DROPDOWN_SET_STATE Diplomacy.War
-	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-	}
-	FUNCTION F_Peace = {
-	DROPDOWN_SET_STATE Diplomacy.War
-	DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
-	DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
-	}
+		FUNCTION F_WarDeclaration = {
+			DROPDOWN_SET_STATE Diplomacy.War
+			DROPDOWN_BUTTON_DISABLE Diplomacy.DeclareWar
+			PLAY_SOUND "Main/SFX/WarDeclaration.wav"
+		}
+		FUNCTION F_Peace = {
+			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
+			PROCESS StateSize += WarStatus.peaceProposal_StateSize
+			PROCESS $Wealth += WarStatus.peaceProposal_Wealth
+			REMOVE_WITHOUT_ALERT WarSystemTag
+			DROPDOWN_SET_STATE Diplomacy.Peace
+			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+			PLAY_SOUND "Main/SFX/Peace.wav"
+		}
 	}
 	Dropdowns = {
 	  Diplomacy = {
 		States = {
 		  Peace = {
-		IMAGE "Main/Images/Wealth.png"
+		IMAGE "Main/Images/Peace.png"
 		  }
 		  War = {
-		IMAGE "Main/Images/PoliticalPower.png"
+		IMAGE "Main/Images/War.png"
 		  }
    }
 	   Buttons = {
@@ -313,6 +319,11 @@ Main = {
 			PREVIEW
 		}
 		ColonyIndependance = {
+			PRIORITY [ 1 ]
+			MUTE_TIME 100
+		}
+		
+		EnforcedPeaceAlert = {
 			PRIORITY [ 1 ]
 			MUTE_TIME 100
 		}
@@ -1289,6 +1300,11 @@ Main = {
 				ENDIF
 				
 				
+				IF ~ModernWarfare
+					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/1800 + Missile_value*Missile_value/1800 + Infantry_value*Infantry_value/4000 + Mercenaries_value*Mercenaries_value/4000)
+				ENDIF
+				
+				
 				IF Cavalry_value + Infantry_value + Missile_value + Mercenaries_value > 0
 					WINDOW_INTERCEPT WinMilitary [ 1 ] [ alpha = 1 ]
 					WINDOW_INTERCEPT WinMilitary [ 2 ] [ alpha = 1 fill = 0 + ( Cavalry_value + Missile_value + Mercenaries_value ) / ( Cavalry_value + Infantry_value + Missile_value + Mercenaries_value ) ]
@@ -1481,6 +1497,10 @@ Main = {
 					ENDIF
 
 					}
+				LINK NavalSupremacy = {
+					COLOR green
+					FLUX value / 25
+				}
 			}
 			NationalCohesion = {
 				VALUE value [ 0 0 100 ]
@@ -1495,7 +1515,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = 50 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
+					PROCESS value = 95 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
 					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
 					ELSE
@@ -1679,7 +1699,7 @@ Main = {
 					RELATED_LINK Diplomacy LootingCampaigns OverlandTrade NavalTrade Harbours
 				}
 				SLEEP = {
-					IF ~MerchantExplorer
+					IF ~MerchantExplorer | ~TradeCompagnies
 						SPAWN
 					ENDIF
 				}
@@ -1722,7 +1742,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(value / 5000 )
+					PROCESS value =  value - PerSeconds(value / 4000 )
 					IF ~Money == 0
 						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
 						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * 0.9 ? 1.1)
@@ -1732,7 +1752,7 @@ Main = {
 					ENDIF
 					
                 IF StateSize' > 0
-					PROCESS Minorities = Minorities + StateSize' / 6
+					PROCESS Minorities = Minorities + StateSize' / 8
                 ENDIF
 					
 				}
@@ -1969,7 +1989,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value - PerSeconds(value / ( 1200 ) )
+					PROCESS value =  value - PerSeconds(value / ( 1000 ) )
 				}
 
 				LINK Colony = {
@@ -2091,6 +2111,7 @@ Main = {
 			}
 			
 			WarStatus = {
+				TAG WarSystemTag
 				VALUE value [ 0 50 100 ]
 				VALUE WarTimer [ 0 0 100000 ]
 				VALUE peaceProposal_valueNeeded [ -10000 0 100000 ]
@@ -2100,40 +2121,44 @@ Main = {
 				VALUE peaceProposal_ColonialPreference [ 0 0 150 ]
 				DISPLAY_VALUE
 				
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War)
+						PROCESS value = 50
+						SPAWN
+					ENDIF
+				}
+				
 				RELATED_INFO = {
 				}
 				TICK = {
-				PROCESS WarTimer += PerSeconds ( 1 )
-				
-				IF ~ColonialStateSize
-				   peaceProposal_ColonialPreference = ColonialStateSize / 1.8 + TradeCompagnies / 2 + StockExchange / 3 + NavalSupremacy / 1.5
-				ELSE
-					peaceProposal_ColonialPreference = 0
-				ENDIF
-				
 				//White Peace if too close
-				IF value < 53 & value > 47
+				IF ( value < 53 & value > 47 )
 					PROCESS peaceProposal_valueNeeded = 0
 				ENDIF
 				//You are loosing the war
 				IF value < 47
-					PROCESS peaceProposal_valueNeeded = 50 - value * 5
+					PROCESS peaceProposal_valueNeeded = ( 50 - value ) * -5
 				ENDIF
 				//You are wining the war
 				IF value > 53
-					PROCESS peaceProposal_valueNeeded = value - 50 * 4
+					PROCESS peaceProposal_valueNeeded = ( value - 50 ) * 4
+				ENDIF
+				
+				PROCESS WarTimer += PerSeconds ( 1 )
+				
+				IF ~ColonialStateSize
+				   PROCESS peaceProposal_ColonialPreference = ColonialStateSize / 1.8 + TradeCompagnies / 2 + StockExchange / 3 + NavalSupremacy / 1.5
+				ELSE
+					PROCESS peaceProposal_ColonialPreference = 0
 				ENDIF
 				
 				
+				
+				PROCESS peaceProposal_Wealth = ( value - 50 ) * 6
 				PROCESS peaceProposal_ColonySize = 0
 				PROCESS peaceProposal_StateSize = 0
-				PROCESS peaceProposal_Wealth = 0
 				
-				
-				
-				PROCESS peaceProposal_Wealth = ( value - 50 ) * 4
-				
-				#Colonial Peace Deal
+				// Colonial Peace Deal
 				IF peaceProposal_ColonialPreference > 0
 					//Winning Colonial
 					IF peaceProposal_valueNeeded > 0
@@ -2153,10 +2178,25 @@ Main = {
 							PROCESS peaceProposal_ColonySize = peaceProposal_valueNeeded * 1.5
 							PROCESS peaceProposal_valueNeeded = 0
 						ELSE
-							PROCESS peaceProposal_ColonySize = -peaceProposal_ColonialPreference * 1.5
+							PROCESS peaceProposal_ColonySize = -1 * peaceProposal_ColonialPreference * 1.5
 							PROCESS peaceProposal_valueNeeded += peaceProposal_ColonialPreference
 						ENDIF
 						
+					ENDIF
+				ENDIF
+				
+				//Territories changes
+				IF peaceProposal_valueNeeded > 0
+							PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
+				ENDIF
+				
+				IF peaceProposal_valueNeeded < 0
+					IF 	peaceProposal_valueNeeded > -80
+								PROCESS peaceProposal_StateSize = peaceProposal_valueNeeded
+							ELSE
+								PROCESS peaceProposal_StateSize = -80
+								PROCESS peaceProposal_valueNeeded -= 80
+								PROCESS peaceProposal_Wealth = ( peaceProposal_valueNeeded ) * 4
 					ENDIF
 				ENDIF
 				
@@ -2166,10 +2206,94 @@ Main = {
 				ELSE
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
+				IF value < 60
+				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 2000
+				ENDIF
+				}
 				
+				LINK FoeLandForces = {
+				}
+				
+				LINK FoeNavalForces = {
+				}
+				
+				LINK WarExhaustion = {
+					IF value < 60
+						COLOR green
+						FLUX 1
+					ENDIF
 				}
 				
 			}
+			
+
+		FoeLandForces = {
+				TAG WarSystemTag
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War)
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value + PerSeconds( 0.9 ? 1.8 )
+				}
+				
+				
+				
+				TRIGGER_SPAWN FoeLandForces = {
+					PROCESS value = ( 60 + StateSize / 1.1 ) * 0.7 ? 1.2 
+				}
+				
+			}
+			
+		FoeNavalForces = {
+				TAG WarSystemTag
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War) & Coastline > 0
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS value =  value + PerSeconds( 0.9 ? 1.8 )
+				}
+				
+				
+				
+				TRIGGER_SPAWN FoeNavalForces = {
+					PROCESS value = ( 50 + NavalSupremacy * 2.5 + Coastline * 2 ) * 0.7 ? 1.2 
+				}
+				
+			}		
+
+
+		WarExhaustion = {
+				TAG WarSystemTag
+				VALUE value [ 0 0 2000 ]
+				DISPLAY_VALUE
+
+				SLEEP = {
+					IF DropdownIsState(Diplomacy.War) & WarStatus < 50 & WarStatus.WarTimer > 500
+						PROCESS value = 0
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS Stability -= PerSeconds(value / 500)
+				}
+				
+				
+				LINK Stability = {
+					COLOR red
+					FLUX value / 100
+				}
+				
+			}					
 			
 			}
 		Levers = {
@@ -2202,6 +2326,7 @@ Main = {
 					//ENDIF
 				//}
 				UNLOCK_CONDITIONS = {
+					HINT 0
 					CONDITION_VALUE Fauna > 20
 					CONDITION_NODE - Mill
 				}
@@ -2416,6 +2541,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
+					HINT 0
 					CONDITION_VALUE Flora > 20
 					CONDITION_NODE - Mill
 				}
@@ -2737,7 +2863,9 @@ Main = {
 				}
 
 				TRIGGER_SPAWN Urbanization = {
+					IF ~Money == 0 & ~Banks == 0
 					RESOURCE_MAX $Wealth = 250
+					ENDIF
 					}
 				TICK = {
 				
@@ -2910,16 +3038,16 @@ Main = {
 			Pantheon = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
-				VALUE AsSpawn[ 0 0 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 					RELATED_UNLOCK CelesteMandate
 					RELATED_LINK PriestClass
 				}
 				SLEEP = {
-					 IF AsSpawn = 1
-						SET PriestClass.value [ : : Min (100, Pantheon.value + 10 ) ]
+					 IF AsSpawn == 1
+						SET PriestClass.value [ : : Min ( 100 , Pantheon.value + 10 ) ]
 					ENDIF
-				 }
+				}
 				 
 				UNLOCK_CONDITIONS = {
 					HINT ~ReligiousMonuments | ~ReligiousCeremony
@@ -2930,10 +3058,10 @@ Main = {
 					$PoliticalPower = 0
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Pantheon) + 1) * 3
+					$PoliticalPower = (LinkCount(Pantheon) + 1 ) * 3
 				}
 				TICK = {
-					SET PriestClass.value [ : : Min (100, Pantheon.value + 10 ) ]
+					SET PriestClass.value [ : : Min ( 100 , Pantheon.value + 10 ) ]
 				}
 				
 				TRIGGER_SPAWN Pantheon = {
@@ -2941,7 +3069,7 @@ Main = {
 				}
 				
 				LINK PriestClass = {
-						WEIGHT [ max ] Min (100, Pantheon.value + 10 )
+						WEIGHT [ max ] Min ( 100 , Pantheon.value + 10 )
 				}
 
 			}
@@ -3323,7 +3451,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN Democracy = {
-						RESOURCE_MAX $PoliticalPower = 600
+						RESOURCE_MAX $PoliticalPower = 500
 				}
 				TRIGGER_LEAVE Democracy = {
 						SET Republic.value [ : : 100 ]
@@ -3428,8 +3556,8 @@ Main = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
 						PROCESS PriestClass =  PriestClass + PerSeconds( value * ( Religiosity / 50 ) / 500)
 					ENDIF
 				}
@@ -3810,12 +3938,12 @@ Main = {
 						PROCESS Stability = Stability + PerSeconds(value/7500)
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 					ENDIF
-				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.0025)
+				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.02)
 				}
 				
 				LINK RoadsSafety = {
 				IF value > 0
-					FLUX value / 25
+					FLUX value / 10
 					COLOR red
 				ENDIF
 				}
@@ -3935,7 +4063,7 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
+				PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
 				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.0025)
 				PROCESS $Wealth = $Wealth - PerSeconds(Diplomacy * 0.02)
 				PROCESS TradeRoads = TradeRoads + PerSeconds(Diplomacy * 0.001)
@@ -4541,9 +4669,12 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					HINT ( ~MilitaryManpower + ~ArtisanClass + ~Mining + ~MilitaryTechnology ) > 1
-					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE MilitaryManpower > 30
+					CONDITION_VALUE MilitaryManpower > 25
+					OR
+					CONDITION_VALUE OverlandTrade > 30
+					ALWAYS
 					CONDITION_VALUE ArtisanClass > 40
+					CONDITION_NODE + MilitaryTechnology
 					CONDITION_VALUE Mining > 40
 				}
 				PRICE = {
@@ -4644,7 +4775,9 @@ Main = {
 
 
 				TRIGGER_SPAWN Money = {
-					RESOURCE_MAX $Wealth = 1000
+					IF ~Banks == 0
+						RESOURCE_MAX $Wealth = 1000
+					ENDIF
 				}					
 				
 				LINK TradeGoods = {
@@ -4711,7 +4844,7 @@ Main = {
 					CONDITION_VALUE Infantry >= 15
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 3
@@ -4746,7 +4879,7 @@ Main = {
 					CONDITION_VALUE Cavalry >= 30
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 3
@@ -4778,7 +4911,7 @@ Main = {
 					CONDITION_VALUE Forge >= 100
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 3
@@ -5292,12 +5425,10 @@ Main = {
 					OR
 					CONDITION_NODE + MilitaryDictatorship
 					ALWAYS
-					CONDITION_VALUE Cavalry > 20
-					CONDITION_NODE + Cataphracts
 					CONDITION_NODE + BattleAxe
 				}
 				PRICE = {
-					$Wealth = 200
+					$Wealth = 300
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(Feudality) + 1) * 3
@@ -5530,8 +5661,8 @@ Main = {
 					RELATED_LINK Population
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Feudality
-					CONDITION_NODE + Feudality
+					HINT ~Feudality | ~Mill
+					CONDITION_NODE + Mill
 					CONDITION_VALUE Agriculture > 70
 				}
 				PRICE = {
@@ -5542,7 +5673,7 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 12)
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 10)
 				}
 				
 				LINK Agriculture = {
@@ -5560,14 +5691,14 @@ Main = {
 					HINT ~Feudality | ~FarmingTools
 					CONDITION_VALUE FarmingTools >= 100
 					CONDITION_VALUE Agriculture > 100
-					CONDITION_NODE + Feudality
+					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {
-					$PoliticalPower = 150
+					$PoliticalPower = 75
 					$Wealth = 300
 				}
 				UPGRADE = {
-					$PoliticalPower = 5
+					$PoliticalPower = 1
 					$Wealth = 12
 				}
 				TICK = {
@@ -5590,7 +5721,10 @@ Main = {
 				VALUE value [ 0 25 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | GetCurrentEra() == GetEra(FeudalAge)
-					CONDITION_VALUE Feudality > 75
+					CONDITION_NODE + Feudality
+					OR
+					CONDITION_ERA >= DiscoveryAge
+					ALWAYS
 					CONDITION_VALUE AristocracyClass > 50
 				}
 				PRICE = {
@@ -5598,7 +5732,7 @@ Main = {
 					$Wealth = 150
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Nobility) + 1) * 8
+					$PoliticalPower = (LinkCount(Nobility) + 1) * 6
 				}
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55)
@@ -5621,8 +5755,7 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | ~Fortifications
-					CONDITION_NODE + Feudality
-					CONDITION_NODE + Banners
+					CONDITION_ERA >= FeudalAge
 					CONDITION_VALUE AristocracyClass > 30
 					CONDITION_VALUE Fortifications > 50
 				}
@@ -5632,7 +5765,7 @@ Main = {
 				}
 				UPGRADE = {
 					$PoliticalPower = 2
-					$Wealth = 20
+					$Wealth = 15
 				}
 				TICK = {
 				}
@@ -5652,9 +5785,12 @@ Main = {
 				}
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality
-					CONDITION_NODE + MilitaryTechnology
 					CONDITION_VALUE Castles >= 30
 					CONDITION_VALUE Banners >= 20
+					OR
+					CONDITION_ERA >= DiscoveryAge
+					ALWAYS
+					CONDITION_NODE + MilitaryTechnology
 				}
 				PRICE = {
 					$PoliticalPower = 50
@@ -5766,7 +5902,7 @@ Main = {
 					CONDITION_VALUE Tribunal >= 50
 				}
 				PRICE = {
-					$PoliticalPower = 500
+					$PoliticalPower = 495
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(NationState) + 1) * 10
@@ -5795,7 +5931,7 @@ Main = {
 				VALUE value [ 0 1 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~University | ~CivilEngineering
-					CONDITION_VALUE CivilEngineering >= 50
+					CONDITION_VALUE CivilEngineering >= 20
 					CONDITION_VALUE University >= 50
 					CONDITION_VALUE Philosophy >= 100
 				}
@@ -5821,17 +5957,18 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~University
+					HINT ~University & ~ScienceKnowledge == 0
 					CONDITION_VALUE Medecine >= 60
 					CONDITION_VALUE University >= 70
 					CONDITION_VALUE Mathematics >= 150
 					CONDITION_VALUE Philosophy >= 150
+					CONDITION_NODE - ScienceKnowledge
 				}
 				PRICE = {
 					$PoliticalPower = 495
 				}
 				UPGRADE = {
-					$PoliticalPower = 15
+					$PoliticalPower = 12
 				}
 				TICK = {
 						PROCESS ScienceKnowledge =  ScienceKnowledge + PerSeconds(value / 8000 )
@@ -5886,12 +6023,12 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~OverlandTrade
 					CONDITION_ERA >= FeudalAge
-					CONDITION_VALUE OverlandTrade >= 75
+					CONDITION_VALUE OverlandTrade >= 50
 					CONDITION_VALUE Mathematics >= 120
 					CONDITION_VALUE Urbanization >= 50
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 					$Wealth = 400
 				}
 				UPGRADE = {
@@ -5903,7 +6040,7 @@ Main = {
 					PROCESS output = value * 100 / 1400
 					PROCESS ArtisanClass = ArtisanClass + PerSeconds(output)
 					PROCESS OverlandTrade = OverlandTrade + PerSeconds(output * 0.5)
-					IF ~~StockExchange == 0
+					IF ~StockExchange == 0
 						SET TradeGoods.value [ : : 1000 + TradeFair.value * 5  ]
 					ENDIF
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.3 )
@@ -6031,7 +6168,7 @@ Main = {
 					CONDITION_VALUE Piety > 20
 					CONDITION_VALUE Pantheon > 50
 					CONDITION_NODE - SecularEducation
-					CONDITION_NODE + Feudality
+					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {
 					$PoliticalPower = 150
@@ -6064,7 +6201,7 @@ Main = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Monasteries | Culture
+					HINT ~Monasteries | ~Culture
 					CONDITION_VALUE Monasteries >= 30
 					CONDITION_VALUE ReligiousMonuments >= 50
 					CONDITION_VALUE Culture >= 40
@@ -6074,8 +6211,8 @@ Main = {
 					$Wealth = 100
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Monasteries) + 1) * 1
-					$Wealth = (LinkCount(Monasteries) + 1) * 10
+					$PoliticalPower = (LinkCount(ReligiousArt) + 1) * 1
+					$Wealth = (LinkCount(ReligiousArt) + 1) * 10
 				}
 				
 				TICK = {
@@ -6103,18 +6240,18 @@ Main = {
 				VALUE value [ 0 20 50 >> 3 ]
 				VALUE multiplier [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Feudality | Castles
-					CONDITION_NODE + Feudality
+					HINT ~Feudality | ~Castles
+					CONDITION_ERA >= FeudalAge
 					CONDITION_VALUE Monasteries >= 40
 					CONDITION_VALUE Castles >= 30
 				}
 				PRICE = {
-					$PoliticalPower = 500
-					$Wealth = 500
+					$PoliticalPower = 495
+					$Wealth = 600
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Monasteries) + 1) * 5
-					$Wealth = (LinkCount(Monasteries) + 1) * 5
+					$PoliticalPower = (LinkCount(HolyOrders) + 1) * 5
+					$Wealth = (LinkCount(HolyOrders) + 1) * 5
 				}
 				
 				TICK = {
@@ -6289,7 +6426,7 @@ Main = {
 					CONDITION_VALUE ScienceKnowledge >= 140
 				}
 				PRICE = {
-					$PoliticalPower = 200
+					$PoliticalPower = 195
 					$Wealth = 400
 				}
 				UPGRADE = {
@@ -6596,6 +6733,7 @@ Main = {
 				}
 				
 				TICK = {
+				IF ~Blocade == 0
 					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 75  )
 					IF ~ColonialAutonomyDesire
 						PROCESS ColonialAutonomyDesire += PerSeconds ( ColonialTariffs / 210 * ColonialStateSize / 150  )
@@ -6603,9 +6741,14 @@ Main = {
 					IF ColonialProsperity > 5
 						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 8.5 )
 					ENDIF
+				ENDIF
 				}
 
 				LINK Colony = {
+				}
+				
+				LINK Blocade = {
+				WEIGHT [ from ] 
 				}
 				
 				LINK ColonialProsperity = {
@@ -6849,10 +6992,10 @@ Main = {
 					CONDITION_VALUE Diplomacy >= 50
 				}
 				PRICE = {
-					$PoliticalPower = 400
+					$PoliticalPower = 190
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Embassies) + 1) * 40
+					$PoliticalPower = (LinkCount(Embassies) + 1) * 14
 				}
 				TICK = {
 				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.002)
@@ -6870,6 +7013,35 @@ Main = {
 
 			}
 			
+			WarTaxes = {
+				TYPE Cultural
+				VALUE value [ 0 5 20 >> 1 ]
+				RELATED_INFO = {
+					RELATED_LINK Population
+				}
+				UNLOCK_CONDITIONS = {
+					HINT ~ModernWarfare
+					CONDITION_VALUE WarStatus < 45
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(WarTaxes) + 1) * 20
+				}
+				
+				TICK = {
+				IF DropdownIsState(Diplomacy.War)
+					PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Population ) / 5)
+				ENDIF
+				}
+				
+				LINK Population = {
+				WEIGHT [ from ] 
+				}
+
+			}
+			
 			
 			
 			}
@@ -6879,7 +7051,7 @@ Main = {
 			Fire = {
 				SOUND_EVENT "Main/SFX/GreatFire.wav"
 				SOUND_WINDOW "Main/SFX/GreatFire.wav"
-				EVENT_DEF [ 15 20 200 30% ]
+				EVENT_DEF [ 15 20 300 30% ]
 				ARISE = {
 					EVENT_SPEED Flora / 100
 				}
@@ -6968,7 +7140,7 @@ Main = {
 			AbundantHarvest = {
 				SOUND_EVENT "Main/SFX/Prosperity.wav"
 				SOUND_WINDOW "Main/SFX/Prosperity.wav"
-				EVENT_DEF [ 15 15 50 33% ]
+				EVENT_DEF [ 15 15 80 33% ]
 				ARISE = {
 					EVENT_SPEED 1 + Agriculture / 50
 					IF ( Agriculture < 50 )
@@ -6978,7 +7150,7 @@ Main = {
 				TICK = {
 					PROCESS Food = Food + PerSeconds(Food * 0.01 * 0.75 ? 1.25)
 					PROCESS Population = Population + PerSeconds(Population * 0.01 * 0.75 ? 1.25)
-					PROCESS Stability = Stability + PerSeconds(0.2 * 0.75 ? 1.25)
+					PROCESS Stability = Stability + PerSeconds(0.7 * 0.75 ? 1.25)
 				}
 				LINK Stability = {
 					COLOR green
@@ -7039,7 +7211,7 @@ Main = {
 			NeighborhoodTroubles = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
-				EVENT_DEF [ 20 15 200 50% ]
+				EVENT_DEF [ 20 15 220 30% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -7069,7 +7241,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 25% ]
+				EVENT_DEF [ 40 60 450 22% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -7152,7 +7324,7 @@ Main = {
 			Epidemic = {
 				SOUND_EVENT "Main/SFX/Cough.wav"
 				SOUND_WINDOW "Main/SFX/Cough.wav"
-				EVENT_DEF [ 20 15 90 30% ]
+				EVENT_DEF [ 20 15 150 27% ]
 
 				SLEEP = {
 				IF ~Medecine
@@ -7201,7 +7373,7 @@ Main = {
 			MassiveTroubles = {
 				SOUND_EVENT "Main/SFX/MassiveTroubles.wav"
 				SOUND_WINDOW "Main/SFX/MassiveTroubles.wav"
-				EVENT_DEF [ 15 15 120 50% ]
+				EVENT_DEF [ 15 15 135 30% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF Stability >= 10
@@ -7209,7 +7381,7 @@ Main = {
                     ENDIF
 				}
 				TICK = {
-					PROCESS Population = Population - PerSeconds(Population * 0.025 + 0.25 * 0.75 ? 1.25)
+					PROCESS Population = Population - PerSeconds(Population * 0.02 + 0.25 * 0.75 ? 1.25)
 					PROCESS Food = Food - PerSeconds(3 * 0.75 ? 1.25)
 					PROCESS Education = Education - PerSeconds(1 * 0.75 ? 1.25)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.1 + MilitaryManpower.Infantry_value /150 )
@@ -7274,7 +7446,7 @@ Main = {
 					FLUX 2.5
 				}
 				TRIGGER_EVENT = {
-					IF PriestClass > 70 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
+					IF PriestClass > 85 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
 						RISE
 					ENDIF
 				}
@@ -7297,7 +7469,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF AristocracyClass > 70 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
+					IF AristocracyClass > 85 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
 						RISE
 					ENDIF
 				}
@@ -7331,7 +7503,7 @@ Main = {
 			EconomicCrisis = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-				EVENT_DEF [ 30 15 20 100% ]
+				EVENT_DEF [ 30 15 20 75% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF $Wealth > 10
@@ -7342,8 +7514,6 @@ Main = {
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(0.5)
 					PROCESS Stability = Stability - PerSeconds(0.5 * 0.75 ? 1.25)
 					PROCESS Navy = Navy - PerSeconds(0.05 + Navy * 0.04)
-					OVERRIDE_PARAM Mining.value = GetParam(Mining.value) - PerSeconds(0.5)
-					PROCESS Mining = Min( GetParam(Mining.value), Mining )
 					OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
 					PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					OVERRIDE_PARAM Mercenaries.value = GetParam(Mercenaries.value) - PerSeconds(5)
@@ -7368,10 +7538,6 @@ Main = {
 					FLUX 5
 				}
 				
-				LINK Mining = {
-					COLOR red
-					FLUX 2
-				}
 				
 				LINK Navy = {
 					COLOR red
@@ -7391,7 +7557,7 @@ Main = {
 			Corruption = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-				EVENT_DEF [ 10 15 120 25% ]
+				EVENT_DEF [ 10 15 170 15% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF $Wealth < ( 0.8 * GetResourceMaximum( $Wealth ) )
@@ -7464,7 +7630,7 @@ Main = {
 			GreatFire = {
 				SOUND_EVENT "Main/SFX/FireCity.wav"
 				SOUND_WINDOW "Main/SFX/FireCity.wav"
-				EVENT_DEF [ 15 15 130 20% ]
+				EVENT_DEF [ 15 15 180 17% ]
 				ARISE = {
 					EVENT_SPEED 1
                     IF UrbanMilitia >= Urbanization / 1.3
@@ -7514,7 +7680,7 @@ Main = {
 			Separatism = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 30 15 60 50% ]
+					EVENT_DEF [ 30 15 60 35% ]
 					ARISE = {
 						EVENT_SPEED 1
 						IF StateSize < 100
@@ -7525,8 +7691,14 @@ Main = {
 						PROCESS Stability = Stability - PerSeconds(0.25 * 0.75 ? 1.25)
 						PROCESS StateSize = StateSize - PerSeconds(0.5 + StateSize * 0.01 * 0.75 ? 1.25)
 
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 					LINK Stability = {
+						COLOR red
+						FLUX 2.5
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 2.5
 					}
@@ -7642,14 +7814,14 @@ Main = {
 			Piracy = {
 				SOUND_EVENT "Main/SFX/Pillards.wav"
 				SOUND_WINDOW "Main/SFX/Pillards.wav"
-				EVENT_DEF [ 15 15 80 33% ]
+				EVENT_DEF [ 15 15 250 22% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
 				TICK = {
-					PROCESS Navy = Navy - PerSeconds(1.25)
+					PROCESS Navy = Navy - PerSeconds(5)
 					IF Navy < 10
-						PROCESS NavalTrade = NavalTrade - PerSeconds(4)
+						PROCESS NavalTrade = NavalTrade - PerSeconds(8)
 					ENDIF
 				}
 
@@ -7759,7 +7931,7 @@ Main = {
 			WeakMonarch = {
 				SOUND_EVENT "Main/SFX/WeakMonarch.wav"
 				SOUND_WINDOW "Main/SFX/WeakMonarch.wav"
-					EVENT_DEF [ 10 60 400 25% ]
+					EVENT_DEF [ 10 60 450 20% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -7801,7 +7973,7 @@ Main = {
 			Devaluation = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-					EVENT_DEF [ 10 15 250 30% ]
+					EVENT_DEF [ 10 15 300 20% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -7833,7 +8005,7 @@ Main = {
 			MoralDegeneracy = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 10 30 300 25% ]
+					EVENT_DEF [ 10 30 300 20% ]
 					ARISE = {
 						EVENT_SPEED Culture / 100
 					}
@@ -7935,7 +8107,7 @@ Main = {
 				}
 				TICK = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1)
-					PROCESS Navy + Navy - PerSeconds(1.9)
+					PROCESS Navy = Navy - PerSeconds(1.9)
 					IF Fortifications > 0 & Navy < 5
 						OVERRIDE_PARAM Fortifications.value = GetParam(Fortifications.value) - PerSeconds(1 + Fortifications.value * 0.005 * 0.75 ? 1.25)
 						PROCESS Fortifications = Min( GetParam(Fortifications.value), Fortifications )
@@ -8018,7 +8190,7 @@ Main = {
 			BarbarianThrust = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 50 30 125 40% ]
+				EVENT_DEF [ 50 30 125 33% ]
 				ARISE = {
 						EVENT_SPEED 1
 						ERA LateAntiquity
@@ -8054,7 +8226,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5000 ) | (StateSize >= 400 ) | ( GameTime() > 8500 ) | ( Stability <= 20 & GameTime() > 6500 ) ) & GameTime() < 11000 & ( ~ModernWarfare == 0 ) 
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 400 ) | ( GameTime() > 8000 ) | ( Stability <= 20 & GameTime() > 7000 ) ) & GameTime() < 9500 & ( ~ModernWarfare == 0 ) 
 							RISE
 						ENDIF
 				}
@@ -8085,6 +8257,8 @@ Main = {
 					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
 					PROCESS Slaves = Slaves - PerSeconds(2)
 					PROCESS Stability = Stability - PerSeconds(2)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 				}
 
 				
@@ -8093,6 +8267,10 @@ Main = {
 					FLUX 4
 				}
 				
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 4
+				}
 				LINK Slaves = {
 					COLOR red
 					FLUX 3
@@ -8276,7 +8454,7 @@ Main = {
 			SalicSucession = {
 				SOUND_EVENT "Main/SFX/WeakMonarch.wav"
 				SOUND_WINDOW "Main/SFX/WeakMonarch.wav"
-				EVENT_DEF [ 25 15 400 30% ]
+				EVENT_DEF [ 25 15 400 18% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -8310,7 +8488,7 @@ Main = {
 			RecruitmentShortage = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-					EVENT_DEF [ 10 60 350 30% ]
+					EVENT_DEF [ 10 60 350 22% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -8347,7 +8525,7 @@ Main = {
 			Obscurantism = {
 				SOUND_EVENT "Main/SFX/GreatFire.wav"
 				SOUND_WINDOW "Main/SFX/GreatFire.wav"
-					EVENT_DEF [ 25 100 300 35% ]
+					EVENT_DEF [ 25 100 300 18% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -8364,9 +8542,15 @@ Main = {
 						PROCESS Philosophy = Min( GetParam(Philosophy.value), Philosophy )
 						PROCESS Culture -= PerSeconds(0.25)
 						PROCESS Education -= PerSeconds(0.5)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 
 					LINK Litterature = {
+						COLOR red
+						FLUX 5
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 5
 					}
@@ -8406,7 +8590,7 @@ Main = {
 			SuccessionCrisis = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 10 30 500 30% ]
+					EVENT_DEF [ 10 30 500 20% ]
 					ARISE = {
 						EVENT_SPEED 1
 					}
@@ -8449,7 +8633,7 @@ Main = {
 					}
 
 					TRIGGER_EVENT = {
-						IF Officers > 30 & ~BarbarianAtGates & Stability < 50 & MilitaryManpower >= 75 & ~StateSize
+						IF Officers > 25 & ~BarbarianAtGates & Stability < 50 & MilitaryManpower >= 50 & ~StateSize
 							RISE
 						ENDIF
 					}
@@ -8496,9 +8680,15 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1.5 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(4 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.2 * (1.5 - MilitaryEfficiency /100 ) )
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 
 					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 2
 					}
@@ -8561,12 +8751,12 @@ Main = {
 			MerchantExplorer = {
 				SOUND_EVENT "Main/SFX/MerchantExplorer.wav"
 				SOUND_WINDOW "Main/SFX/MerchantExplorer.wav"
-				EVENT_DEF [ 30 30 300 20% ]
+				EVENT_DEF [ 30 30 300 30% ]
 				ARISE = {
 					EVENT_SPEED 1	
 				}
 				SLEEP = {
-					EVENT_CHANCE = 0.2 +( 0.3 * ~Republic )
+					EVENT_CHANCE = 0.3 +( 0.3 * ~Republic )
 				}
 				
 				TICK = {
@@ -8641,9 +8831,15 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(3 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(2 + MilitaryManpower.Mercenaries_value * 0.1 * (1.5 - MilitaryEfficiency /100 ) )
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					}
 
 					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK CelesteMandate = {
 						COLOR red
 						FLUX 2
 					}
@@ -8690,6 +8886,8 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.15 + MilitaryManpower.Cavalry_value /50)
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.15 + MilitaryManpower.Missile_value /50)
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.15 + MilitaryManpower.Mercenaries_value /50)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(1.2)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					
 				}
 				LINK Population = {
@@ -8699,6 +8897,10 @@ Main = {
 				LINK Piety = {
 					COLOR green
 					FLUX 3
+				}
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 5
 				}
 				LINK MilitaryManpower = {
 					COLOR red
@@ -8783,7 +8985,7 @@ Main = {
 					}
 					TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.1)
-					PROCESS Minorities = Minorities - PerSeconds(0.33)
+					PROCESS Minorities = Minorities - PerSeconds(2.5)
 					PROCESS Piety = Piety + PerSeconds(0.5)
 					}
 
@@ -8802,7 +9004,7 @@ Main = {
 					}
 					
 					TRIGGER_EVENT = {
-						IF ( ~Minorities & Minorities>0 & Stability < 40 & ( ~Humanism == 0 | Stability < 15 )  )
+						IF ( ~Minorities & Minorities>0 & Stability < 40 & ( ~Humanism == 0 | Stability < 25 )  )
 							RISE
 						ENDIF
 					}
@@ -8891,7 +9093,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ~StateSize & GameTime() > 10000 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 )
+					IF  ~StateSize & GameTime() > 9500 & ( ~Island == 0 | ( ( Max ( StateSize - 150 , 0 ) > Navy ) ) ) & ( ~ModernWarfare == 0 )
 						RISE
 					ENDIF
 				}
@@ -9020,8 +9222,8 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					ERA DiscoveryAge
-					IF  ( ~Humanism == 0 ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 ) )
+					IF  ( ~Humanism == 0 & ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 )  & ( ~NewWorld == 0 | ~Embassies ) )
+						ERA DiscoveryAge
 						RISE
 					ENDIF
 				}
@@ -9036,7 +9238,7 @@ Main = {
 						EVENT_SPEED 1
 					}
 				TICK = {
-					PROCESS InvadersForce = InvadersForce + PerSeconds(0.25 * 0.75 ? 1.25)
+					PROCESS InvadersForce = InvadersForce + PerSeconds(0.15 * 0.75 ? 1.25)
 				}
 
 				LINK InvadersForce = {
@@ -9045,7 +9247,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF GameTime() > 12000 & ~NewWorld & ~Embassies == 0
+						IF GameTime() > 11000 | ( ~ScienceKnowledge & GameTime() > 9000 )  & ~NewWorld & ~Embassies == 0
 							RISE
 						ENDIF
 				}
@@ -9085,6 +9287,8 @@ Main = {
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.2 + MilitaryManpower.Cavalry_value /45)
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.2 + MilitaryManpower.Missile_value /45)
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.2 + MilitaryManpower.Mercenaries_value /45)
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.8)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					
 				}
 				LINK Population = {
@@ -9099,6 +9303,10 @@ Main = {
 					COLOR red
 					FLUX 1
 				}
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 2
+				}
 				TRIGGER_EVENT = {
 					IF NewWorld.invaderPlagueTrigger > 0
 						RISE
@@ -9107,7 +9315,7 @@ Main = {
 			}
 			
 		DeclarationOfWar = {
-				SOUND_EVENT "Main/SFX/Invasion.wav"
+				TAG WarSystemTag
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
 				EVENT_DEF [ 10 30 100 25% ]
 				ARISE = {
@@ -9118,30 +9326,307 @@ Main = {
 				}
 				TICK = {
 				}
-
-				
-				LINK MilitaryManpower = {
-					IF Fortifications == 0
-					COLOR red
-					FLUX 4
-					ENDIF
-				}
 				
 			
 				TRIGGER_EVENT = {
-					IF  ( ~ModernWarfare == 0 ) 
+					IF  ~ModernWarfare & DropdownIsState(Diplomacy.Peace) & NeighborhoodBellicism > 60
 						RISE
 					ENDIF
 				}
 				
 				
-				TRIGGER_SPAWN BeingInvaded = {
-					PROCESS NeighborhoodBellicism -= 50
+				TRIGGER_SPAWN DeclarationOfWar = {
+					PROCESS NeighborhoodBellicism -= 80
 					CALL_FUNCTION F_WarDeclaration
+					ALERT Invaded
 				}
-						
 				
 		}
+		
+			EnforcedPeace = {
+				TAG WarSystemTag
+				EVENT_DEF [ 50 30 100 75% ]
+				ARISE = {
+					EVENT_SPEED 1
+					IF WarStatus > 10
+							REMOVE EnforcedPeace
+					ENDIF
+				}
+				TICK = {
+				}
+			
+				TRIGGER_EVENT = {
+					IF  WarStatus < 10  & DropdownIsState(Diplomacy.War)
+						RISE
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN EnforcedPeace = {
+					PROCESS NeighborhoodBellicism -= 20
+					CALL_FUNCTION F_Peace
+					ALERT EnforcedPeaceAlert
+				}
+				
+		}
+		
+		
+			CountryPlundered = {
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
+				TAG WarSystemTag
+				EVENT_DEF [ 20 20 200 50% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Population = Population - PerSeconds( (1.2 + Population/100 ) * 0.75 ? 1.25)
+					PROCESS Stability = Stability - PerSeconds(0.3 * 0.75 ? 1.25)
+					PROCESS TradeGoods = TradeGoods - PerSeconds(4 + TradeGoods/100 * 0.75 ? 1.25)
+					OVERRIDE_PARAM Agriculture.value = GetParam(Agriculture.value) - PerSeconds( 0.1 + Agriculture.value * 0.0025)
+					PROCESS Agriculture = Min( GetParam(Agriculture.value), Agriculture )
+					PROCESS WarExhaustion = WarExhaustion + PerSeconds(1.2)
+				}
+				LINK Agriculture = {
+					COLOR red
+					FLUX 2
+				}
+			
+				LINK Population = {
+					COLOR red
+					FLUX 4
+				}
+				LINK TradeGoods = {
+					COLOR red
+					FLUX 4
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 2
+				}
+				LINK WarExhaustion = {
+					COLOR green
+					FLUX 3
+				}
+				
+				TRIGGER_EVENT = {
+					IF  WarStatus < 35 & WarExhaustion > 500  & DropdownIsState(Diplomacy.War)
+						RISE
+					ENDIF
+				}
+			
+				
+		}
+		
+			Blocade = {
+				TAG WarSystemTag
+				EVENT_DEF [ 10 30 100 35% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS TradeGoods = TradeGoods - PerSeconds(2 + TradeGoods/100 * 0.75 ? 1.25)
+					PROCESS NavalTrade = NavalTrade - PerSeconds(6 + NavalTrade/40 * 0.75 ? 1.25)
+					PROCESS WarExhaustion = WarExhaustion + PerSeconds(1.2)
+				}
+			
+				LINK TradeGoods = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK NavalTrade = {
+					COLOR red
+					FLUX 10
+				}
+				
+				LINK WarExhaustion = {
+					COLOR green
+					FLUX 3
+				}
+				
+				TRIGGER_EVENT = {
+					IF FoeNavalForces > 50 & Coastline > 0 & FoeNavalForces * 1.5 > Navy  & DropdownIsState(Diplomacy.War)
+						RISE
+					ENDIF
+				}
+				
+		}
+		
+		
+			OccupationResistance = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				TAG WarSystemTag
+				EVENT_DEF [ 10 30 100 35% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.75 + MilitaryManpower.Infantry_value * 0.008 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.5 + MilitaryManpower.Cavalry_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(2 + MilitaryManpower.Missile_value * 0.02 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.5 + MilitaryManpower.Mercenaries_value * 0.005 * (1.5 - MilitaryEfficiency /100 ) )
+					
+					PROCESS WarExhaustion = WarExhaustion + PerSeconds(1.2)
+				}
+			
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 1
+				}
+				
+				LINK WarExhaustion = {
+					COLOR green
+					FLUX 1
+				}
+				
+				TRIGGER_EVENT = {
+					IF WarStatus > 70  & DropdownIsState(Diplomacy.War)
+						RISE
+						SPAWN WarExhaustion
+					ENDIF
+				}
+				
+		}
+		
+		
+			LandBattle = {
+				SOUND_EVENT "Main/SFX/LandBattle.wav"
+				SOUND_WINDOW "Main/SFX/LandBattle.wav"
+				TAG WarSystemTag
+				EVENT_DEF [ 0.5 10 30 70% ]
+				VALUE Die_Cast [ -10 0 10 ]
+				VALUE Winner [ 0 50 100 ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+				
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(6.5 + MilitaryManpower.Infantry_value * 0.03 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(4 + MilitaryManpower.Cavalry_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(8 + MilitaryManpower.Missile_value * 0.055 * (1.5 - MilitaryEfficiency /100 ) )
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(5 + MilitaryManpower.Mercenaries_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
+					
+					PROCESS FoeLandForces -=  PerSeconds(6 + FoeLandForces * 0.022 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
+					
+					IF  Winner > 50
+						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
+					ELSE
+						PROCESS WarStatus -= PerSeconds( ( 50 - Winner ) / 50 )
+					
+					ENDIF
+					
+				}
+			
+				LINK MilitaryManpower = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK FoeLandForces = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK WarStatus = {
+				IF Winner>50
+					COLOR green
+					FLUX Winner /5
+				ENDIF
+				IF Winner<50
+					COLOR red
+					FLUX 50 - Winner /5
+				ENDIF
+				}
+				
+				TRIGGER_SPAWN LandBattle = {
+						PROCESS Die_Cast = -15 ? 10
+						IF MilitaryManpower > FoeLandForces
+							PROCESS Winner = 43 + ( ( MilitaryManpower * 0.9 ? 1.1 ) / ( FoeLandForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ELSE
+							PROCESS Winner = 43 + ( ( FoeLandForces * 0.9 ? 1.1 ) / ( MilitaryManpower * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ENDIF
+						IF ~GreatGeneral
+							PROCESS Winner += 10
+						ENDIF
+				}
+				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War)
+						RISE
+					ENDIF
+				}
+
+				
+		}
+		
+				NavalBattle = {
+				SOUND_EVENT "Main/SFX/NavalBattle.wav"
+				SOUND_WINDOW "Main/SFX/NavalBattle.wav"
+				TAG WarSystemTag
+				EVENT_DEF [ 0.5 10 40 65% ]
+				VALUE Die_Cast [ -10 0 10 ]
+				VALUE Winner [ 0 50 100 ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+				
+					PROCESS Navy -=  PerSeconds(4 + Navy * 0.185 )
+					
+					PROCESS FoeNavalForces -=  PerSeconds(4 + FoeNavalForces * 0.185  * ( (Winner - 50 ) / 200 + 1 ) ) 
+					
+					IF  Winner > 50
+						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
+					ELSE
+						PROCESS WarStatus -= PerSeconds( ( 50 - Winner ) / 50 )
+					
+					ENDIF
+					
+				}
+			
+				LINK Navy = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK FoeNavalForces = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK WarStatus = {
+				IF Winner>50
+					COLOR green
+					FLUX Winner /5
+				ENDIF
+				IF Winner<50
+					COLOR red
+					FLUX 50 - Winner /5
+				ENDIF
+				}
+				
+				TRIGGER_SPAWN NavalBattle = {
+						PROCESS Die_Cast = -15 ? 10
+						IF Navy > FoeNavalForces
+							PROCESS Winner = 43 + ( ( Navy * 0.9 ? 1.1 ) / ( FoeNavalForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ELSE
+							PROCESS Winner = 43 + ( ( FoeNavalForces * 0.9 ? 1.1 ) / ( Navy * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+						ENDIF
+						IF ~GreatGeneral
+							PROCESS Winner += 5
+						ENDIF
+				}
+				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War) & Coastline > 0
+						RISE
+					ENDIF
+				}
+				
+				
+		}
+		
 		}
 }
 }

@@ -254,6 +254,8 @@ Religious = {
 
 				LINK Colony = {
 				}
+			}
+			
 			
 			
 			ColonialHeretic = {
@@ -267,7 +269,7 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					IF	 value < max ( Heretics + 10 / ( ( ToleranceOfHeretics +1 ) / 10 ) , ( ToleranceOfHeretics +1 ) / 10  )
+					IF ( value < Max ( Heretics + 10 / ( ( ToleranceOfHeretics +1 ) / 10 ) , ( ToleranceOfHeretics +1 ) / 10  ))
 						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + ( Conversion / 400 ) )  / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize ) * 0.1 )
 					ELSE
 						PROCESS value = value - PerSeconds ( 1 ? 5 / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize  ) * 0.1 )
@@ -279,7 +281,7 @@ Religious = {
 						PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialProsperity' * value * value * 0.000005 )
 					ENDIF
 					
-					IF	value > 0
+					IF ( value > 0 )
 						PROCESS ColonialAutonomyDesire =  ColonialAutonomyDesire + PerSeconds( value / 1000 )
 					ENDIF
 				}
@@ -306,7 +308,12 @@ Religious = {
 				VALUE DevotionToTheLawValue [ 0 0 1000 ]
 				VALUE DevotionToTradeValue [ 0 0 1000 ]
 				VALUE DevotionToWarValue [ 0 0 1000 ]
-
+				
+				SLEEP = {
+					IF GetCurrentEra() > GetEra(DiscoveryAge)
+						REMOVE NationalReligion
+					ENDIF
+				}
 				
 				TRIGGER_SPAWN NationalReligion = {
 				PROCESS PantheonValue = Pantheon
@@ -330,8 +337,14 @@ Religious = {
 			
 			Religiosity = {
 				VALUE value [ 0 0 100 ]
-				VALUE tempvalue
+				VALUE tempvalue [ 0 0 100 ]
 				DISPLAY_VALUE
+				
+				SLEEP = {
+					IF GetCurrentEra() > GetEra(DiscoveryAge)
+						REMOVE Religiosity
+					ENDIF
+				}
 
 				TICK = {
 					PROCESS tempvalue = Monasteries + ReligiousMonuments + PriestClass * 2 +  Piety * 5 + Devotion * 5 + DivineRight * 3 + ReligiousArt + Theocracy * 5 + CelesteMandate * 5 + CelestialMonarchy + ClericalState
@@ -366,7 +379,7 @@ Religious = {
 				TICK = {
 				IF ( value > 0 )
 					PROCESS cost =  ( value * Heretics  * 0.0002 ) * ( 0.75 + ClergyCentralization / 200 )
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( ToleranceOfHeretics' ) / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( ToleranceOfHeretics' ) / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				ENDIF
 				IF ( value == 0 )
 					PROCESS cost =  0
@@ -406,7 +419,7 @@ Religious = {
 				TICK = {
 					IF ( value > 0 )
 						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 					IF ( value == 0 )
 						PROCESS cost =  0
@@ -441,12 +454,12 @@ Religious = {
 					$PoliticalPower = 80
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Syncretism) + 1) * 2
+					$PoliticalPower = ( LinkCount(Syncretism) + 1 ) * 2
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs(Syncretism') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					IF AsSpawn == 1 
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(Syncretism') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 							IF ( Pantheon < 50 )
 								SET ToleranceOfHeathens.value [ : : Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 )/100 )+25 )) ]
 							ENDIF
@@ -456,7 +469,7 @@ Religious = {
 							IF ( value > 0 )
 								PROCESS cost =  value * value  * 0.0001
 							ENDIF
-							IF ( value == 0)
+							IF ( value == 0 )
 								PROCESS cost =  0
 							ENDIF
 					
@@ -464,12 +477,10 @@ Religious = {
 								PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 							ENDIF
 					ENDIF
-					
-				
 				}
 				
 				TICK = {
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs(Syncretism') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs(Syncretism') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					IF ( Pantheon < 50 )
 						SET ToleranceOfHeathens.value [ : : Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 )/100 )+25 )) ]
 					ENDIF
@@ -479,7 +490,7 @@ Religious = {
 					IF ( value > 0 )
 					PROCESS cost =  value * value  * 0.0001
 					ENDIF
-					IF ( value == 0)
+					IF ( value == 0 )
 					PROCESS cost =  0
 					ENDIF
 					
@@ -497,6 +508,7 @@ Religious = {
 				}
 
 			}
+			
 			ReligiousMinorityTax = {
 				TYPE Cultural
 				VALUE value [ 0 5 100 >> 1 ]
@@ -561,7 +573,7 @@ Religious = {
 				
 				TICK = {
 				
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs(Conversion') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs(Conversion') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				
 				IF Pantheon > 10
 					PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
@@ -606,7 +618,7 @@ Religious = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				VALUE Savevalue [ 0 0 100 ]
-				VALUE AsSpawn [ 0 0 1]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 				}
 				
@@ -618,15 +630,15 @@ Religious = {
 					$PoliticalPower = 20
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(ReligiousOfferings) + 1) * 0.3
+					$PoliticalPower = (LinkCount(ReligiousOfferings) + 1 ) * 0.3
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
 						PROCESS ClergyIndependance = ClergyIndependance - ( ReligiousOfferings' / 4.4 )
-						IF OfferingsNature > 80 & Livestock > ( value  * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )))
-							PROCESS Livestock = Livestock - PerSeconds ( value  * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 )
+						IF OfferingsNature > 80 & Livestock > ( value  * ReligiousCeremony * ( 100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )))
+							PROCESS Livestock = Livestock - PerSeconds ( value  * ReligiousCeremony * ( 100 - SacrificeNature ) / 1500000 )
 							IF Slaves > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )
 								PROCESS Slaves = Slaves - PerSeconds ( value  * ReligiousCeremony * SacrificeNature / 2000000 )
 							ENDIF
@@ -636,7 +648,7 @@ Religious = {
 							PROCESS Piety = Piety + PerSeconds (  ( value  + SacrificeNature ) * ReligiousCeremony * 0.00004 )
 						ENDIF
 						IF OfferingsNature <= 80 & OfferingsNature >= 40 & Food > ( value  * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & TradeGoods > ( value  * ReligiousCeremony * Pantheon / 2000000 )
-							PROCESS Food = Food - PerSeconds ( value  * ReligiousCeremony * (100 - Pantheon ) / 2000000 )
+							PROCESS Food = Food - PerSeconds ( value  * ReligiousCeremony * ( 100 - Pantheon ) / 2000000 )
 							PROCESS TradeGoods = TradeGoods - PerSeconds ( value  * ReligiousCeremony * Pantheon / 2000000 )
 							PROCESS Piety = Piety + PerSeconds ( value  * ReligiousCeremony * 0.00004 )
 						ENDIF
@@ -650,8 +662,8 @@ Religious = {
 				
 				TICK = {
 					PROCESS ClergyIndependance = ClergyIndependance - ( ReligiousOfferings' / 4.4 )
-					IF OfferingsNature > 80 & Livestock > ( value * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value * ReligiousCeremony * SacrificeNature / 2000000 )))
-						PROCESS Livestock = Livestock - PerSeconds ( value * ReligiousCeremony * (100 - SacrificeNature ) / 1500000 )
+					IF OfferingsNature > 80 & Livestock > ( value * ReligiousCeremony * ( 100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value * ReligiousCeremony * SacrificeNature / 2000000 )))
+						PROCESS Livestock = Livestock - PerSeconds ( value * ReligiousCeremony * ( 100 - SacrificeNature ) / 1500000 )
 						IF Slaves > ( value * ReligiousCeremony * SacrificeNature / 2000000 )
 							PROCESS Slaves = Slaves - PerSeconds ( value * ReligiousCeremony * SacrificeNature / 2000000 )
 						ENDIF
@@ -661,12 +673,12 @@ Religious = {
 						PROCESS Piety = Piety + PerSeconds (  ( value + SacrificeNature ) * ReligiousCeremony * 0.00004 )
 					ENDIF
 					IF OfferingsNature <= 80 & OfferingsNature >= 40 & Food > ( value * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & TradeGoods > ( value * ReligiousCeremony * Pantheon / 2000000 )
-						PROCESS Food = Food - PerSeconds ( value * ReligiousCeremony * (100 - Pantheon ) / 2000000 )
+						PROCESS Food = Food - PerSeconds ( value * ReligiousCeremony * ( 100 - Pantheon ) / 2000000 )
 						PROCESS TradeGoods = TradeGoods - PerSeconds ( value * ReligiousCeremony * Pantheon / 2000000 )
 						PROCESS Piety = Piety + PerSeconds ( value * ReligiousCeremony * 0.00004 )
 					ENDIF
 					IF OfferingsNature < 40 & TradeGoods > (value * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & $Wealth > ( value * ReligiousCeremony * Pantheon / 2000000 )
-						PROCESS TradeGoods = TradeGoods - PerSeconds ( value * ReligiousCeremony * (100 - Pantheon ) / 2000000 )
+						PROCESS TradeGoods = TradeGoods - PerSeconds ( value * ReligiousCeremony * ( 100 - Pantheon ) / 2000000 )
 						PROCESS $Wealth = $Wealth - PerSeconds ( value * ReligiousCeremony * Pantheon / 2000000 )
 						PROCESS Piety = Piety + PerSeconds ( value * ReligiousCeremony * 0.00004 )
 					ENDIF
@@ -760,13 +772,13 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs(OfferingsNature') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					IF AsSpawn == 1
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(OfferingsNature') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs(OfferingsNature') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs(OfferingsNature') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				
 				}
 				
@@ -784,7 +796,7 @@ Religious = {
 			SacrificeNature = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
-				VALUE AsSpawn [ 0 0 1]
+				VALUE AsSpawn [ 0 0 1 ]
 				
 				RELATED_INFO = {
 
@@ -962,14 +974,14 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToNature' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToNature' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToNature' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToNature' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToNature = {
@@ -1012,14 +1024,14 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToSea' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToSea' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToSea' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToSea' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToSea = {
@@ -1044,7 +1056,7 @@ Religious = {
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				VALUE Savevalue [ 0 5 200 ]
-				VALUE AsSpawn[ 0 0 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 
 				}
@@ -1062,14 +1074,14 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTheHarvest' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTheHarvest' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTheHarvest' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTheHarvest' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToTheHarvest = {
@@ -1093,7 +1105,7 @@ Religious = {
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				VALUE Savevalue [ 0 5 200 ]
-				VALUE AsSpawn[ 0 0 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 
 				}
@@ -1111,16 +1123,16 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
 						PROCESS PriestClass = PriestClass + PerSeconds ( value / 500 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTheLaw' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTheLaw' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
 					PROCESS PriestClass = PriestClass + PerSeconds ( value / 500 )
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTheLaw' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTheLaw' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToTheLaw = {
@@ -1152,7 +1164,7 @@ Religious = {
 				TYPE Cultural
 				VALUE value [ 0 0 200 >> 0.5 ]
 				VALUE Savevalue [ 0 5 200 ]
-				VALUE AsSpawn[ 0 0 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 
 				}
@@ -1169,16 +1181,16 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
 						SET Militarism.value [ : : 50 + DevotionToWar.value / 10 ]
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToWar' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToWar' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
 					SET Militarism.value [ : : 50 + DevotionToWar.value / 10  ]
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToWar' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToWar' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToWar = {
@@ -1200,7 +1212,7 @@ Religious = {
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				VALUE Savevalue [ 0 5 200 ]
-				VALUE AsSpawn[ 0 0 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 
 				}
@@ -1218,16 +1230,16 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
 						PROCESS Entreprises = Entreprises + PerSeconds ( value / 400 ) 
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTrade' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTrade' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
 					PROCESS Entreprises = Entreprises + PerSeconds ( value / 400 ) 
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToTrade' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTrade' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToTrade = {
@@ -1252,7 +1264,7 @@ Religious = {
 				TYPE Cultural
 				VALUE value [ 0 10 200 >> 0.5 ]
 				VALUE Savevalue [ 0 5 200 ]
-				VALUE AsSpawn[ 0 0 1 ]
+				VALUE AsSpawn [ 0 0 1 ]
 				RELATED_INFO = {
 
 				}
@@ -1270,18 +1282,18 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn = 1
-						PROCESS value = Savevalue ( Religiosity / 50 )
+					IF AsSpawn == 1
+						PROCESS value = Savevalue * ( Religiosity / 50 )
 						PROCESS TradeGoods = TradeGoods + PerSeconds ( value / 100 )
 						PROCESS ArtisanClass = ArtisanClass + PerSeconds ( value / 400 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToCraftsmanship' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToCraftsmanship' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
 				TICK = {
 					PROCESS TradeGoods = TradeGoods + PerSeconds ( value / 100 )
 					PROCESS ArtisanClass = ArtisanClass + PerSeconds ( value / 400 )
-					PROCESS ClergyIndependance = ClergyIndependance + ( abs( DevotionToCraftsmanship' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToCraftsmanship' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				}
 				
 				TRIGGER_SPAWN DevotionToCraftsmanship = {
@@ -1436,7 +1448,7 @@ Religious = {
 			ColonialConversion = {
 				TAG ColonyTag
 				TYPE Cultural
-				VALUE value [ 0 0 100 ]
+				VALUE value [ 0 0 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
 					HINT ~ColonialProsperity & ( ColonialHeretic > 40 | ~Monasteries )
@@ -1456,9 +1468,9 @@ Religious = {
 					IF ColonialHeretic > 0
 						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * Monasteries * Conversion / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 750 )
 						PROCESS $Wealth = $Wealth - PerSeconds ( ColonialHeretic * ColonialProsperity * ColonialStateSize * value / 255555 )
-								IF ColonialConvert < 100 - ColonialHeretic
-									PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * Monasteries * Conversion / (( ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 750 )
-								ENDIF
+						IF ColonialConvert < 100 - ColonialHeretic
+							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * Monasteries * Conversion / (( ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 750 )
+						ENDIF
 					ENDIF	
 					
 				}
@@ -1468,14 +1480,14 @@ Religious = {
 				}
 				
 				LINK ColonialHeretic = {
-					IF (value > 0)
+					IF (value > 0 )
 						FLUX value * 0.1 
 						COLOR red
 					ENDIF
 				}
 				
 				LINK ColonialConvert = {
-					IF (value > 0)
+					IF (value > 0 )
 						FLUX value * 0.1 
 						COLOR green
 					ENDIF
@@ -1632,9 +1644,7 @@ Religious = {
 					ENDIF
 				}
 			}
-<<<<<<< HEAD
 
-=======
 			ReligiousLeagueWar = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
@@ -1703,7 +1713,7 @@ Religious = {
 				}
 
 			}
->>>>>>> master
+
 		
 			ReinforcementOfTheClergy = {
 				SOUND_EVENT "Main/SFX/ConversionBad.wav"
@@ -2006,5 +2016,6 @@ Religious = {
 			}
 			
 	}
+}
 }
 
