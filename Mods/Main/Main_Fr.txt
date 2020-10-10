@@ -132,6 +132,10 @@ Main = {
 			NAME "Indépendance de la Colonie"
 			DESCRIPTION "Nous avons totalement perdu le contrôle!"
 		}
+		EnforcedPeaceAlert = {
+			NAME "Paix imposée"
+			DESCRIPTION "Nous avons avons perdu la guerre et avons été forcé de faire des concessions."
+		}
 	}	
 	
 	Nodes = {
@@ -569,7 +573,7 @@ Main = {
 			RoadsSafety = {
 				NAME "Sécurité des Routes"
 				LEVEL value = {
-					0 = "Pas de bandits".
+					0 = "Pas de bandits"
 					0.001 = "Quelques bandits"
 					30 = "Nos routes ne sont plus sûres"
 					60 = "Les bandits de grand chemin sont partout"
@@ -617,7 +621,7 @@ Main = {
 					20 = "Faible"
 					40 = "Correcte"
 					80 = "Imposante"
-					120 = "Notre flotte a domptée les océans"
+					120 = "Notre flotte a dompté les océans"
 				}
 				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre flotte étant désormais une composante essentielle de notre état, notre domination maritime doit être la plus impressionnante que possible si nous voulons sécuriser nos commerces lointains."
 				SUMMARY "Notre domination des 7 mers"
@@ -639,6 +643,68 @@ Main = {
 				SUMMARY "Représentent une menace permanante"
 			}	
 			
+			WarStatus = {
+				NAME "État de la Guerre"
+				LEVEL value = {
+					0 = "La guerre est perdue"
+					25 = "Nous perdons la guerre"
+					40 = "Nous perdons légèrement la guerre"
+					50 = "Statut indécis"
+					50.001 = "Nous gagnons légèrement la guerre"
+					75 = "Nous gagnons la guerre"
+					90 = "Notre victoire est éclatante"
+				}
+				DESCRIPTION <b> "Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br>"Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences :" <br><br>@[peaceProposal_ColonySize]" Taille de la Colonie <br>"@[peaceProposal_StateSize]" Taille de l'État <br>"@[peaceProposal_Wealth]" Richesse"
+				SUMMARY "Décrit l'état de la guerre"
+				}
+				
+			FoeLandForces = {
+				NAME "Forces Terrestres de l'Ennemi"
+				LEVEL value = {
+					0 = "Inexistante"
+					0.001 = "Pathétique"
+					30 = "Faible"
+					60 = "Correcte"
+					100 = "Imposante"
+					250 = "Monstrueuses"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur la terre. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				SUMMARY "Effectif de l'armée terrestre adverse"
+			}	
+			
+			
+			FoeNavalForces = {
+				NAME "Forces Navales de l'Ennemi"
+				LEVEL value = {
+					0 = "Inexistante"
+					0.001 = "Pathétique"
+					30 = "Faible"
+					60 = "Correcte"
+					100 = "Imposante"
+					250 = "Monstrueuses"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				SUMMARY "Effectif de l'armée navale adverse"
+			}	
+			
+			WarExhaustion = {
+				NAME "Fatigue de Guerre"
+				LEVEL value = {
+					0 = "Inexistante"
+					100 = "Faible"
+					500 = "Importante"
+					1000 = "Notre pays est exsangue"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
+				SUMMARY "Diminue votre stabilité"
+			}	
+			
+			
+			ColonialPiracy = {
+				NAME "Piraterie Coloniale"
+				DESCRIPTION "Valeur : " @[value,0.###]<br><br>" La richesse de notre colonie à commencer à attirer les vautours. Nous devrions défendre nos marchands."
+				SUMMARY "Le taux de piraterie dans notre Colonie"
+			}	
 				
 		}
 		Levers = {
@@ -1845,7 +1911,7 @@ Main = {
 			
 			CombatPiracy = {
 				NAME "Combattre la Piraterie"
-				DESCRIPTION "Valeur : " @[value,0.###]" <br><br>La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
+				DESCRIPTION "Valeur : " @[value,0.###] <br><br>"La prospérité a attiré des pirates en tout genres qui attaquent nos lignes commerciales, et nos marchands ont imploré la protection de la marine nationale. À long terme, sécuriser la richesse de notre colonie semble un investissement efficace."
 				SUMMARY "Réquisitionne notre flotte pour sécuriser notre commerce outremer"
 			}
 			ColonialTariffs = {
@@ -1918,6 +1984,42 @@ Main = {
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Une grande partie du problème de ces étrangers est que ceux-ci nous prennent pour des sauvages qui ne méritent même pas le respect de nos frontières. Entamons des véritables pourparlers avec des traducteurs compétents et apprenons de ces étrangers, comment voguent-ils par delà les océans ?"
 				SUMMARY "Permet l'arrêt de l'invasion étrangère"
+			}		
+			WarTaxes = {
+				NAME "Impôts de Guerre"
+				LEVEL value = {					
+					0 = "Aucun"			
+					0.001 = "Légers"
+					15 = "Conséquents"
+					25 = "Lourds"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Si cet impôt n'est généralement pas vraiment apprécié, il n'engendre que peu de mécontement sachant qu'il n'est levé qu'en cas de guerre et donc de nécessité."
+				SUMMARY "Permet une rentrée d'argent spéciale en temps de guerre"
+			}
+				
+				OfficialLanguage = {
+				NAME "Langue Officielle"
+				LEVEL value = {						
+					0 = "Aucun"
+					00001 = "Notre langue est obligatoire dans tous les textes officiels"
+					50 = "Persécution active des dialectes"
+					100 = "Fondation de l'Académie"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec une législation appropriée nous pouvons promouvoir activement et efficacement notre langue officielle."
+				SUMMARY "Renforce la Lingua Franca"
+			}
+			
+			TradeCompagnies = {
+				NAME "Compagnies Commerciales"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Balbutiements"
+					15 = "Quelques compagnies rivales"
+					30 = "Grandes compagnies"
+					60 = "Monopole gargentuesque"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Certaines entreprises ont concentré leurs efforts dans le commerce international. Avec le soutien des banques et des bourses comemrciales, elle mettent en place des expéditions gigentesques."
+				SUMMARY "Augmente nos routes commerciales"
 			}
 
 				
@@ -2198,7 +2300,59 @@ Main = {
 				DESCRIPTION "Depuis qu'ils sont arrivés, d'étranges maladies frappent notre population mais jamais ces hommes. Quel est-ce maux si meurtrier?"
 				SUMMARY "Une étrange et très léthale maladie frappe notre peuple!"
 			}
-
+			
+			DeclarationOfWar = {
+				NAME "Déclaration de Guerre"
+				DESCRIPTION "Un de nos puissant voisins continentaux à eu l'audace de nous déclarer la guerre. Nous devons nous défendre!"
+				SUMMARY "Un de nos voisins viens de nous déclarer la guerre!"
+			}
+			EnforcedPeace = {
+				NAME "Paix Imposée"
+				DESCRIPTION "La guerre est une catastrophe nous devons nous résoudre à capituler."
+				SUMMARY "Nous sommes forcés de nous rendre"
+			}
+			CountryPlundered = {
+				NAME "Pays Ravagé"
+				DESCRIPTION "La guerre en cours ravage nos campagnes et nos citoyens en souffrent gravement."
+				SUMMARY "Notre pays se fait piller par les troupes adverses"
+			}
+			Blocade = {
+				NAME "Blocus"
+				DESCRIPTION "Notre domination des mers à tellement faibli que nous sommes plus capable de protéger nos ports."
+				SUMMARY "Notre commerce maritime et nos revenus coloniaux ne sont plus protégés"
+			}
+			OccupationResistance = {
+				NAME "Résistance à l'Occupation"
+				DESCRIPTION "Nous occupons une partie du pays ennemi, mais nous y rencontrons une résistance farouche. Nos généraux nous conseillent de signer la paix dans de brefs délais."
+				SUMMARY "La guerre s'enlise et épuise nos réserves d'hommes"
+			}
+			
+			LandBattle = {
+				NAME "Bataille Terrestre"
+				LEVEL Winner = {					
+					0 = "Cette bataille est une défaite cuisante"	
+					25 = "Cette bataille est une défaite."	
+					50 = "Statu Quo."	
+					50.001 = "Cette bataille est une victoire."	
+					75 = "Cette bataille est une victoire franche."		
+				}
+				 DESCRIPTION "Une bataille terrestre s'est engagée." <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
+				SUMMARY "Un combat sur la terre ferme est en cours!"
+			}
+			
+			NavalBattle = {
+				NAME "Bataille Navale"
+				LEVEL Winner = {					
+					0 = "Cette bataille est une défaite cuisante"	
+					25 = "Cette bataille est une défaite."	
+					50 = "Statu Quo."	
+					50.001 = "Cette bataille est une victoire."	
+					75 = "Cette bataille est une victoire franche."		
+				}
+				DESCRIPTION "Une bataille navale s'est engagée." <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
+				SUMMARY "Un combat sur les mers est en cours!"
+			}
+			
 		}
 
 	}

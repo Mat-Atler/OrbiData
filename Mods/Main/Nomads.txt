@@ -295,17 +295,17 @@ Nomads = {
 				VALUE value [ 0 0 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
-					HINT ~MilitaryManpower
+					HINT ~MilitaryManpower & ~Authority
 					CONDITION_NODE + Authority
 					CONDITION_NODE + MilitaryManpower
 					CONDITION_NODE + Cavalry
-					CONDITION_NODE + Clanicfederation + EternalSteppe
+					CONDITION_NODE + Clanicfederation
 				}
 				PRICE = {
 					$PoliticalPower = 90
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(Interclanicwar) + 1) * 1
+					$PoliticalPower = (LinkCount(ClanicBanners) + 1) * 1
 				}
 				TICK = {
 				PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value)

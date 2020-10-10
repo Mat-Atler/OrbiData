@@ -118,7 +118,7 @@ Religious = {
 					25 = "Une offrande à chaque cérémonie"
 					75 = "Plusieurs offrandes à chaque cérémonie"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Le nombre d'offrandes que nous donnons à chaque cérémonie. Plus nous en donnons, plus notre foi sera renforcée."
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Le nombre d'offrande que nous donnons à chaque cérémonie. Plus nous en donnons, plus notre foi sera renforcée."
 				SUMMARY "La fréquence des offrandes religieuses"
 			}
 
@@ -129,7 +129,7 @@ Religious = {
 					40 = "Bien commerciaux et nourritures"
 					80 = "Les Dieux veulent du sang frais"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "La nature des offrandes que nous faisons à chaque cérémonie. De choses inanimées à une créature vivante."
+				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "La nature des offrandes que nous faisons à chaque cérémonies. De choses inanimées à une créature vivante."
 				SUMMARY "La nature des offrandes que nous offrons dans les cérémonies"
 			}
 
@@ -173,7 +173,7 @@ Religious = {
 					0 = "Le chef religieux est seulement une figure de guide respectée"
 					25 = "Certains prêtres contrôlent de petits groupes de prêtres locaux"
 					50 = "Chaque prêtre fait partie d'une hiérarchie contrôlée par un petit nombre de grands prêtres"
-					75 = "Le clergé est sous le contrôle incontesté d'une seule personne au soment d'une hiérachie bien organisée"
+					75 = "Le clergé est sous le contrôle incontesté d'une seule personne au sommet d'une hiérachie bien organisée"
 					}
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "Plus le clergé est centralisé plus ses actions sont efficace, cependant cela augmente son coût de fonctionnement aussi que son pouvoir."
 				SUMMARY "Détermine l'efficacité ainsi que le coût des politiques religieuses"

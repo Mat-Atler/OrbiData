@@ -84,7 +84,7 @@ Presets = {
 
 	MississippiDelta = {
 		NAME "Mississippi Delta"
-		DESCRIPTION "<b>Average</b><br> The Mississippi delta is an ideal place to found a sedentary agrarian civilization in America while leaving the door open to naval and river trade."
+		DESCRIPTION "<b>Average</b><br>The Mississippi delta is an ideal place to found a sedentary agrarian civilization in America while leaving the door open to naval and river trade."
 		}
 		
 		

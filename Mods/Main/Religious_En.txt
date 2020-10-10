@@ -68,7 +68,7 @@ Religious = {
 					50 = "Heretics are tolerated as long as they are useful"
 					75 = "heretics are almost considered as any of our subjects"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate heretics so that they do not pose any problems, But at the cost of a constant political investments."
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "We can tolerate heretics so that they do not pose any problems, but at the cost of a constant political investments."
 				SUMMARY "Our policy about heretics"
 				}
 				
@@ -80,15 +80,16 @@ Religious = {
 					50 = "Heathens are tolerated as long as they are useful"
 					75 = "Heathens are almost considered as any of our subjects"
 					}
-				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "we can tolerate Heathens so that they do not pose any problems, But at the cost of a constant political investments. "
+				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "We can tolerate heathens so that they do not pose any problems, Bbut at the cost of a constant political investments. "
 				SUMMARY "Our policy about Heathens"
 				}
 				
 			Syncretism = {
 				NAME "Syncretism"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Time has passed that we understand that the religions of others are not so different from ours. This philosophy can be used to better tolerate pagans."
-				SUMMARY "Increase our maximum tolerance of heathens "
+				SUMMARY "Increase our maximum tolerance of heathens"
 				}
+				
 			ReligiousMinorityTax = {
 				NAME "Religious Minority Tax"
 				LEVEL value = {
@@ -152,7 +153,7 @@ Religious = {
 					70 = "Intensive"
 				}
 				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> "Our Gods need human blood and we're going to look for it among our neighbors."
-				SUMMARY "Enslvave the neighbors population with our military forces"
+				SUMMARY "Enslave the neighbors population with our military forces"
 			}			
 	
 			ClergyIndependance = {
@@ -181,8 +182,8 @@ Religious = {
 				NAME "Effort Against Religious Dissent"
 				LEVEL value = {
 					0 = "No effort"
-					0.01 = "insufficient effort"
-					25 = "moderate effort"
+					0.01 = "Insufficient effort"
+					25 = "Moderate effort"
 					50 = "Major effort"
 					75 = "No dissent will be accepted within our faith! "
 					}
@@ -190,7 +191,7 @@ Religious = {
 				SUMMARY "Increases our chances of reducing the number of competing religious leaders"
 				}
 			ClericalState = {
-				NAME "ClericalState"
+				NAME "Clerical State"
 				LEVEL value = {
 					0 = "Almost all of our administration is made up of seculars."
 					20 = "Some priests have been placed in key administrative positions."

@@ -1438,7 +1438,7 @@ Religious = {
 				}
 				
 				TRIGGER_SPAWN ClericalState = {
-						RESOURCE_MAX $PoliticalPower = 600
+						RESOURCE_MAX $PoliticalPower = 500
 				}
 				TRIGGER_LEAVE ClericalState = {
 						SET Theocracy.value [ : : 100 ]
