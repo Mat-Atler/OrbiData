@@ -1860,7 +1860,7 @@ Main = {
 			
 			Medecine = {
 				NAME "Medicine"
-				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> Our growing knowledge has opened the doors to medical treatments. Making a clear distinction between diseases and curses, between prayers and cures, we will gradually come to fight the plagues of mankind."
+				DESCRIPTION <b> "Value: "@[value,0.###] "<br><br> Our growing knowledge has opened the doors to medical treatments. Making a clear distinction between diseases and curses, between prayers and cures, we will gradually come to fight the plagues of mankind."
 				SUMMARY "Reduces the chance of epidemics"
 			}	
 			

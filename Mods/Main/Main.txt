@@ -2326,7 +2326,7 @@ Main = {
 					//ENDIF
 				//}
 				UNLOCK_CONDITIONS = {
-					HINT 0
+					HINT ~Mill == 0
 					CONDITION_VALUE Fauna > 20
 					CONDITION_NODE - Mill
 				}
@@ -2541,7 +2541,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT 0
+					HINT ~Mill == 0
 					CONDITION_VALUE Flora > 20
 					CONDITION_NODE - Mill
 				}
@@ -5411,20 +5411,7 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~BarbarianAtGates | ~BattleAxe
-					CONDITION_NODE + CelesteMandate
-					OR
-					CONDITION_NODE + Empire
-					OR
-					CONDITION_NODE + BarbarianMonarchy
-					OR
-					CONDITION_NODE + Monarchy
-					OR
-					CONDITION_NODE + Republic
-					OR
-					CONDITION_NODE + Theocracy
-					OR
-					CONDITION_NODE + MilitaryDictatorship
-					ALWAYS
+					CONDITION_NODE + Government
 					CONDITION_NODE + BattleAxe
 				}
 				PRICE = {
