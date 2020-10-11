@@ -2394,6 +2394,12 @@ Main = {
 				DESCRIPTION "A naval battle has begun. " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
 				SUMMARY "A fight on the seas is underway!"
 			}
+			
+			Renaissance = {
+				NAME "Renaissance"
+				DESCRIPTION "Our culture and our Philosophy are experiencing an unprecedented golden age that will mark history forever."
+				SUMMARY "An unprecedented cultural revival!"
+			}
 
 		}
 	}
