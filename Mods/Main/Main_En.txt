@@ -2052,7 +2052,7 @@ Main = {
 				NAME "Trade Companies"
 				LEVEL value = {					
 					0 = "None"
-					0.001 = "Babbling"
+					0.001 = "Early Beginning"
 					15 = "A few rival companies"
 					30 = "Large Companies"
 					60 = "Gigantic Monopolies"

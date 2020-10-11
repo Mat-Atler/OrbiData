@@ -1,5 +1,5 @@
 Main = {
-	
+
 	Resources = {
 		Wealth = {
 			NAME "財産"
@@ -10,7 +10,7 @@ Main = {
 			SUMMARY "変革するための力を表します。レバーを追加、削除、調整するために使用します。"
 		}
 	}
-	
+
 	Eras = {
 		StoneAge = {
 			NAME "石器時代"
@@ -45,7 +45,7 @@ Main = {
 			DESCRIPTION "産業時代"
 		}
 	}
-		
+
 	Dropdowns = {
         Diplomacy = {
             States = {
@@ -70,7 +70,7 @@ Main = {
             }
         }
     }
-	
+
 	Windows = {
 		WinMilitary = {
 			NAME "軍事概要"
@@ -102,7 +102,7 @@ Main = {
 			TEXT "旅行の状態。" @[Main.Travel.value]
 			TEXT "行きたい場所を選ぶ"
 		}
-		
+
 		WinMove = {
 			NAME "行く場所を選ぶ"
 			TEXT "ここに移動します"
@@ -123,13 +123,13 @@ Main = {
 			TEXT "主要な植民地"
 			TEXT "植民開始"
 		}
-		
+
 		WinMoveColony = {
 			NAME "場所の選択"
 			TEXT "ここを植民地とする"
 		}
 	}
-	
+
 	Alerts = {
 		LowFood = {
 			NAME "食料不足"
@@ -175,8 +175,8 @@ Main = {
 			NAME "平和維持活動"
 			DESCRIPTION "我々は戦争に負け譲歩を余儀なくされました。"
 		}
-	}	
-	
+	}
+
 	Nodes = {
 		States = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.States
@@ -212,7 +212,7 @@ Main = {
 				DESCRIPTION @[value,LEVEL] "( "@[value,0.####]" ) " <br><br> "人口は様々な条件で増減します。主要な要因としては食料供給、戦争、病気が挙げられます。"
 				SUMMARY "人口増減の傾向"
 			}
-			
+
 			SoilFertility = {
 				NAME "土壌の肥沃さ"
 				LEVEL value = {
@@ -226,7 +226,7 @@ Main = {
 				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br> "全ての土地が豊穣神の加護の元で平等なわけではなく、この世界は楽園のような肥沃な土地や雑草すら珍しい砂漠に分かれています。"
 				SUMMARY "農業の効率に影響を与える"
 			}
-			
+
 			Stability = {
 				NAME "社会安定性"
 				LEVEL value = {
@@ -260,8 +260,8 @@ Main = {
 				NAME "島"
 				DESCRIPTION "領土を強力な海軍で海を守ることでの防衛が可能になります。"
 				SUMMARY "海に囲まれています"
-			}			
-			
+			}
+
 			Fauna = {
 				NAME "動物相"
 				LEVEL value = {
@@ -360,12 +360,12 @@ Main = {
 				NAME "陸上貿易"
 				DESCRIPTION "陸上貿易 "<br><b>"規模: "@[value] </b> <br><br> "職人と商人の出現は物々交換を始めました。まず少数の勇敢なものたちが道を切り拓き、その後より遠くの場所との取引の準備がされます。"
 				SUMMARY "貿易は儲けをもたらしますが副作用もあります"
-			}	
+			}
 			NavalTrade = {
 				NAME "海上貿易"
 				DESCRIPTION "海上貿易 "<br><b>"規模: "@[value] </b> <br><br> "陸上貿易の発展と船の技術の改善により人々は河や海で貿易をはじめました。"
 				SUMMARY "海上貿易は効率的ですが、海へのアクセスが必要となります"
-			}	
+			}
 			Gold = {
 				NAME "金"
 				LEVEL value = {
@@ -449,15 +449,15 @@ Main = {
 				DESCRIPTION <b>"技術力: "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "技術ツ゚的優位の制御は常に戦場での優位性に直結しています。インド・ヨーロッパ人が肥沃な三日月地帯に到達した時、戦車、複合弓、鉄の剣は文字通り現地の敵を虐殺しました。"
 				SUMMARY ""
 				}
-				
-				
+
+
 			TechnologicDecay = {
 				NAME "技術減衰"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "時間が経つにつれて多くの発明が時代遅れになり文明は定期的に軍事的優位の為に競争をします。技術の進歩は止まりません！"
 				SUMMARY "技術の後進性は発達できる余地です"
 				}
-				
-				
+
+
 			MilitaryManpower = {
 				NAME "陸軍の規模"
 				LEVEL value = {
@@ -468,8 +468,8 @@ Main = {
 				}
 				DESCRIPTION <b>"規模: @[value,LEVEL] </b> ( @[value] ) <br> ( Infantry @[Infantry_value] ) <br> ( Cavalry @[Cavalry_value] ) <br> ( Missile @[Missile_value] ) <br> ( Mercenaries @[Mercenaries_value] )"
 				SUMMARY "陸軍"
-			}				
-				
+			}
+
 			Navy = {
 				NAME "海軍"
 				LEVEL value = {
@@ -486,13 +486,13 @@ Main = {
 				DESCRIPTION "馬の家畜化に成功しました。開けた場所での速く強い仲間を得る機会です。"
 				SUMMARY "騎兵を得る第一歩"
 			}
-			
+
 			DraftAnimals = {
 				NAME "農耕用動物"
 				DESCRIPTION "農場での作業は人間だけの力では過酷で生産的ではありません、しかし、もはやその心配はいりません。今あなたは動物の力を利用できるようになり生産性を高めることができました。"
 				SUMMARY "農家は家畜の力を使うことができる"
 			}
-			
+
 			TradeGoods = {
 				NAME "交易品"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "最も基本的な交易は物を交換することです。"
@@ -529,7 +529,7 @@ Main = {
 				SUMMARY "国家への帰属意識を高める"
 			}
 			NeighborhoodBellicism = {
-				NAME "近隣国の好戦性"		
+				NAME "近隣国の好戦性"
 				LEVEL value = {
 					0 = "ほぼ安全"
 					25 = "平静"
@@ -540,7 +540,7 @@ Main = {
 				SUMMARY "近隣国からの侵入の危険性"
 			}
 			BarbarianAtGates = {
-				NAME "国境の蛮族"		
+				NAME "国境の蛮族"
 				LEVEL value = {
 					0 = "国境は強固だ"
 					25 = "国境は圧力をうけている"
@@ -572,8 +572,8 @@ Main = {
 				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "豪族は重要な役割を獲得しました。地方の貴族たちが平凡で国の役人が脆弱だった時代は終わりました。彼らは私たちの絶対的な力を弱体化させますが、代わりに彼らは自分の土地を治めるでしょう。"
 				SUMMARY "地方豪族への分権化レベル"
 				}
-				
-				
+
+
 			TradeRoads = {
 				NAME "交易路"
 				LEVEL value = {
@@ -585,15 +585,15 @@ Main = {
 				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "我々は国内貿易では満足できません。より大きな利益を得るために国外に輸出をしなくていけません。"
 				SUMMARY "国際貿易の段階"
 				}
-				
-				
+
+
 			ScienceKnowledge = {
 				NAME "科学的知識"
 				DESCRIPTION "知識: " @[value,0.###]<br><br>" 経験則で最終的に得られた知識は私たちが効率的な道を進むことを保証します。"
 				SUMMARY "現在の知識"
 			}
-			
-			
+
+
 			Alchemy = {
 				NAME "錬金術"
 				LEVEL value = {
@@ -604,21 +604,21 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "最も優秀な科学者は物事の本質を理解しようとする領域に突入しています。彼らの研究は曖昧に思えますが遠い未来に輝かしい未来をもたらすかもしれません。"
 				SUMMARY "科学的知識を向上させる"
-			}	
+			}
 
-		
+
 			Minorities = {
 				NAME "マイノリティ"
 				DESCRIPTION "人数: " @[value,0.###]<br><br>" 征服と宗教的の違いによる不均衡は国家の結束に一定の混乱をもたらします。一方で取引の機会を増やすことにもなります。"
 				SUMMARY "貿易を強化し結束を悪化させる"
 			}
-			
+
 			CraftmanshipSkills = {
 				NAME "職人のスキル"
 				DESCRIPTION "値: " @[value,0.###]<br><br>"職人の技にはすべての技術的知識が含まれます。専門的なギルドにより急速に専門知識を増やすことができます。"
 				SUMMARY "技術的可能性を高める"
 			}
-				
+
 			RoadsSafety = {
 				NAME "通行の安全"
 				LEVEL value = {
@@ -630,33 +630,33 @@ Main = {
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "不幸な人々は森に逃げ盗賊になっています。貿易を安定させるためにも強力な警察を設置しなくてはいけません。"
 				SUMMARY "貿易が減少する"
 				}
-				
-			
+
+
 			ColonialStateSize = {
 				NAME "植民地国の大きさ"
 				DESCRIPTION "大きさ: " @[value,0.###]<br><br>""
 				SUMMARY "我々の植民地の大きさ"
 			}
-			
-			
+
+
 			ColonialAutonomyDesire = {
 				NAME "植民地の独立機運"
 				DESCRIPTION "値: " @[value,0.###]<br><br>"我々が植民地に課した税は現地民を激怒させました。不平が渦巻いておりそれは組織化された反乱へつながるでしょう。"
 				SUMMARY "我々の税は不満を引き起こします。"
 			}
-			
+
 			Colony = {
 				NAME "植民地"
 				DESCRIPTION ""
 				SUMMARY "我々の主要な植民地"
-			}	
-			
+			}
+
 			ColonialProsperity = {
 				NAME "植民地の繁栄"
 				DESCRIPTION "値: " @[value,0.###]<br><br>"植民地はいくつかの要因にて富を生み出します。それを保護し効率的に課税することが重要です。"
 				SUMMARY "主要な植民地の繁栄"
-			}	
-			
+			}
+
 			NavalSupremacy = {
 				NAME "海軍の覇権".
 				LEVEL value = {
@@ -669,14 +669,14 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "艦隊は我々の国にとって不可欠な構成要素です、遠方との貿易を確保するためには可能な限りの整備が必要です。"
 				SUMMARY "七つの海の支配"
-			}	
-			
+			}
+
 			Humanism = {
 				NAME "ヒューマニズム"
 				DESCRIPTION "最近の哲学、芸術の復活は我々の世界の見方そのものを大きく変えました。新しい概念の扉を開く時がきました。"
 				SUMMARY "哲学をより深く探求することができる"
-			}	
-			
+			}
+
 			ModernWarfare = {
 				NAME "近代的な戦争概念"
 				DESCRIPTION "我々の戦争哲学は銃の出現とともに進化してきました。戦争は今や明確に定義された国家の一大関心事となっています。インターフェイスの左上のあるボタンを使用して、直接外交オプションにアクセスできるようになりました。"
@@ -686,14 +686,14 @@ Main = {
 				NAME "新世界"
 				DESCRIPTION "我々はユーラシア・アフリカの文明圏から切り離されており、それが我々の文明に異なる運命をもたらすでしょう。"
 				SUMMARY "我々はやや孤立している"
-			}	
-			
+			}
+
 			InvadersForce = {
 				NAME "侵略軍"
 				DESCRIPTION "侵略者たちが我々の大地に上陸しました。彼らは我々の永年の敵対勢力の都市をみつけ同盟を組もうとしています。我々は力によってであれ、外交によってであれ止めなければなりません。"
 				SUMMARY "絶え間のない脅威"
-			}				
-			
+			}
+
 			WarStatus = {
 				NAME "戦争の状態"
 				LEVEL value = {
@@ -708,7 +708,7 @@ Main = {
 				DESCRIPTION <b> "状態: "@[value,LEVEL] </b>" ("@[value] ")" <br>"明日和平を結んだ場合以下のような条件になります:" <br><br> @[peaceProposal_ColonySize]"植民地の大きさ <br>"@[peaceProposal_StateSize]"国の大きさ<br>"@[peaceProposal_Wealth]"冨"
 				SUMMARY "戦争が現在どの様な状態かの説明"
 				}
-				
+
 			FoeLandForces = {
 				NAME "敵の陸軍力"
 				LEVEL value = {
@@ -721,9 +721,9 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "敵の陸軍力には当然限界があります。我々が敵を殲滅できるか確認しましょう、敵にその様にされる前に"
 				SUMMARY "敵の陸軍力"
-			}	
-			
-			
+			}
+
+
 			FoeNavalForces = {
 				NAME "敵の海軍力"
 				LEVEL value = {
@@ -736,9 +736,9 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "敵の海軍力には当然限界があります。我々が敵を殲滅できるか確認しましょう、敵にその様にされる前に"
 				SUMMARY "敵の海軍力"
-			}	
-			
-			
+			}
+
+
 			WarExhaustion = {
 				NAME "厭戦感"
 				LEVEL value = {
@@ -749,14 +749,14 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "長い戦争は我々の信頼性を破壊し"
 				SUMMARY "安定性が低下する"
-			}	
-			
+			}
+
 			ColonialPiracy = {
-				NAME "Colonial Piracy"
-				DESCRIPTION "Value: " @[value,0.###]<br><br>" The wealth of our colony began to attract vultures. We should defend our merchants."
-				SUMMARY "The level of piracy in our Colony"
-			}	
-				
+				NAME "植民地の海賊行為"
+				DESCRIPTION "値: " @[value,0.###] <br> <br> "私たちの植民地の富はハゲタカを引き付け始めました。私たちは商人を守るべきです。"
+				SUMMARY "植民地の海賊行為のレベル"
+			}
+
 		}
 		Levers = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Levers
@@ -809,7 +809,7 @@ Main = {
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> <br><br> "拡大を続ける人類は肉を得るために攻撃性の低い動物を選択して、必要に応じて移動したり収穫したりできる新しい食料源としました。"
 				SUMMARY "家畜に関する考え方"
 			}
-			
+
 			FoodExchange = {
 				NAME "食料取引"
 				LEVEL value = {
@@ -819,8 +819,8 @@ Main = {
 				}
 				DESCRIPTION <b>"状態: "@[value,LEVEL] </b> <br><br> "貿易の成長に伴い政府は外国市場で売買キャンペーンを展開できます。これらは問題解決のバックアップになりえます。"
 				SUMMARY "食料を売買する"
-			}			
-			
+			}
+
 			Foraging = {
 				NAME "採集"
 				LEVEL value = {
@@ -904,7 +904,7 @@ Main = {
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br>  "儀式の頻度と重要さです。より頻繁により複雑になれば司祭階級が必要になり、彼らの影響力が増すでしょう。"
 				SUMMARY "聖職者の役割を強化する"
 			}
-			
+
 			Settlement = {
 				NAME "定住"
 				LEVEL value = {
@@ -1119,7 +1119,7 @@ Main = {
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b> " ( "@[value,0.###] " ) " <br><br> "国教をある程度管理することで隣国の攻撃性を制限できますが貿易に悪影響を及ぼす可能性があります。"
 				SUMMARY	"隣国の好戦性を減らす"
 			}
-			
+
 			Caravan = {
 				NAME "キャラバン"
 				LEVEL value = {
@@ -1130,7 +1130,7 @@ Main = {
 				}
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "人々の絶え間ない動きより我らはこの地域の貿易の中心になりました。この状態はより多くの安定と富をもたらします。"
 				SUMMARY "長距離の陸上貿易に基づく国家"
-			}			
+			}
 			CelesteMandate = {
 				NAME "天命"
 				LEVEL value = {
@@ -1222,7 +1222,7 @@ Main = {
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "私たちの文明は最も先進的です。軍事力は蛮族の土地に我々の形態を持ち込むために必要な最も強力で純粋なものです。"
 				SUMMARY "軍事力で領土を拡張する"
 			}
-			
+
 			LootingCampaigns = {
 				NAME "遠征しての略奪"
 				LEVEL value = {
@@ -1234,7 +1234,7 @@ Main = {
 				DESCRIPTION <b>"頻度: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "私たちの隣人は裕福ですがさほど強力ではありません。私たちは彼らに「保護」を売ることも、財産を力で奪うこともできます。しかし、道路上の危険が増えると貿易が減少することを注意してください。"
 				SUMMARY "軍事力で周辺国から金を巻き上げる"
 			}
-			
+
 
 			QualityVsQuantity = {
 				NAME "質VS量"
@@ -1248,8 +1248,8 @@ Main = {
 				DESCRIPTION <b>"採用: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "  <br><br> "軍隊は2つの視点で分けられます。一つは装備が貧弱で士気が低い驚くほど多い兵隊、もう一つは精鋭を基本にし迅速かつ効果的な介入が可能な兵隊です。"
 				SUMMARY "烏合の衆かエリートか"
 			}
-			
-			
+
+
 			Militarism = {
 				NAME "軍国主義"
 				LEVEL value = {
@@ -1262,8 +1262,8 @@ Main = {
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "戦争は我々の文化である場合とそうでない場合があります。これによって子供のころから訓練を受けている兵士がより効果的になります。しかし牙を研ぐことは我々を警戒している隣国をより警戒させることになります。"
 				SUMMARY "軍隊の文化的な位置づけ"
 				}
-				
-			
+
+
 			Officers = {
 				NAME "指揮官"
 				LEVEL value = {
@@ -1286,8 +1286,8 @@ Main = {
 				}
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "我々は銅と青銅の力を極めるのに何世紀も費やしました。しかしこの技術には材料と効率に限界があります。その努力は現在、強力で柔軟で耐久性のある素材である鉄に注がれています。"
 				SUMMARY "軍事技術"
-			}			
-			
+			}
+
 			GenieCorps = {
 				NAME "工兵隊"
 				LEVEL value = {
@@ -1298,9 +1298,9 @@ Main = {
 				}
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "戦争は変化しています。敵の壁はどんどんおおきくなり軍事作戦は長期化しています。このことにより工兵隊による洗練された攻城兵器が必要とされています。"
 				SUMMARY "軍事技術"
-			}	
-			
-			
+			}
+
+
 			Crossbow = {
 				NAME "弩"
 				LEVEL value = {
@@ -1311,9 +1311,9 @@ Main = {
 				}
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "弓への知見と技術の向上により独特な武器を生み出しました。弓よりも手軽で扱いやすく重装甲の馬を貫通できるほど強力です。"
 				SUMMARY "軍事技術"
-			}	
-			
-			
+			}
+
+
 			Money = {
 				NAME "通貨"
 				LEVEL value = {
@@ -1336,19 +1336,19 @@ Main = {
 				}
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "鉄の道具の登場により農業生産性は大幅に向上しました。この技術移行を完了させなければなりません。"
 				SUMMARY "農業を改善する"
-			}	
-			
+			}
+
 			Bureaucracy = {
 				NAME "官僚"
 				DESCRIPTION <b>"レベル: "@[value] </b>  <br><br> "我々の帝国は広すぎます。すべての領土を効果的に管理するには、直接かつ効率的な官僚機構を組織する必要があります。"
 				SUMMARY "領土の広さによる影響を最小限に抑える"
-			}	
-			
+			}
+
 			Satrapy = {
 				NAME "総督"
 				DESCRIPTION <b>"レベル: "@[value] </b>  <br><br> "我々の帝国は広すぎます。最も遠い領土のためにより自治的な地域を組織しなくてはなりません。"
 				SUMMARY "領土の広さによる影響を最小限に抑える"
-			}	
+			}
 			PopulationTax = {
 				NAME "人頭税"
 				LEVEL value = {
@@ -1360,7 +1360,7 @@ Main = {
 				}
 				DESCRIPTION <b>"重さ: "@[value] </b>  <br><br> " 現在の官僚制度により人口に効果的に課税することができます。もちろん彼らは重い税金に苦しむ可能性があります。"
 				SUMMARY "人口に課税する"
-			}	
+			}
 			TradeTax = {
 				NAME "貿易税"
 				LEVEL value = {
@@ -1372,7 +1372,7 @@ Main = {
 				}
 				DESCRIPTION <b>"重さ: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "我々の経済は絶好調です。わずかな税率で多くの収入を得ることができます。しかし商人や企業はそれを歓迎しません。"
 				SUMMARY "貿易に課税する"
-			}		
+			}
 			Legislation = {
 				NAME "立法"
 				LEVEL value = {
@@ -1394,7 +1394,7 @@ Main = {
 				}
 				DESCRIPTION <b>"値: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "波間に漂う冨は多くの貪欲な人々、特に海賊を引き寄せます。これらを撃退するために強力な艦隊を構築しなくてはいけません。 "
 				SUMMARY "海軍の募集 "
-			}	
+			}
 			DivineRight = {
 				NAME "神の威光"
 				LEVEL value = {
@@ -1418,7 +1418,7 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "隣国と緊張感を持つことがあるかもしれませんが、我々はそれを和らげようとすることができます。巧妙な約束と政治的譲歩と豪華な贈り物の組み合わせによって薄氷の上の平和が続きます。"
 				SUMMARY "隣国をなだめる"
-			}	
+			}
 			Oligarchy = {
 				NAME "寡頭政治"
 				LEVEL value = {
@@ -1429,7 +1429,7 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "共和制に関する最初の試行は成功しました。我々は政府を効果的に管理できる能力主義と貴族を混合した複雑な国家を設計しました。"
 				SUMMARY "共和制の改革"
-			}	
+			}
 			Democracy = {
 				NAME "民主主義"
 				LEVEL value = {
@@ -1441,17 +1441,17 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "共和制に関する最初の試行は成功しました。著名な法学者によると政府の力は民衆よりのものであり、民衆がその力を持つことは合法です。"
 				SUMMARY "共和制の改革"
-			}	
+			}
 			Litterature = {
 				NAME "文学"
 				DESCRIPTION <b>"値: "@[value,0.###] </b>  <br><br> "筆記の達人は最終的に画期的な文章を生み出しました。我々は歴史を書き、神話を語り、時代を超える文章を作り出します。"
 				SUMMARY "文化を増強する"
-			}	
+			}
 			Music = {
 				NAME "音楽"
 				DESCRIPTION <b>"値: "@[value,0.###] </b> <br><br> "音楽は最も古い芸術の一つでありほぼ全ての文明で実践されています。高貴な芸術であり間違いなく千年続く伝統文化の始まりです。"
 				SUMMARY "文化を増強する"
-			}	
+			}
 			LinguaFranca = {
 				NAME "共通語"
 				LEVEL value = {
@@ -1463,7 +1463,7 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "我々の領土内に多くの言語が存在することで問題が起こるかもしれません。多かれ少なかれ単一の言語を強制しようとすることができます。"
 				SUMMARY "国民の結束を増強する"
-			}	
+			}
 
 			BattleAxe = {
 				NAME "戦斧"
@@ -1475,8 +1475,8 @@ Main = {
 				}
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "戦斧は蛮族が使用していました。歩兵にこれを配備するかどうかは私たち次第です。"
 				SUMMARY "軍事技術"
-			}	
-			
+			}
+
 			Stirrups = {
 				NAME "鐙"
 				LEVEL value = {
@@ -1488,7 +1488,7 @@ Main = {
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "鐙は馬に乗るものにとって非常に重要な発明です。馬上でバランスをとることが容易になり運動エネルギーの伝達が可能になります。特に槍を持った圧倒的な突撃、精密な馬上射撃を可能にします。"
 				SUMMARY "軍事技術"
 			}
-			
+
 			Cataphracts = {
 				NAME "カタフラクト"
 				LEVEL value = {
@@ -1512,7 +1512,7 @@ Main = {
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "ロングシップは柔軟性と軽さが特徴です。川を航行し内海で戦いそして海洋で猛烈に立ち向かいました。"
 				SUMMARY "海軍技術"
 			}
-			
+
 			GreekFire = {
 				NAME "ギリシャの火"
 				LEVEL value = {
@@ -1524,7 +1524,7 @@ Main = {
 				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "ギリシャの火は複雑な化学物質であり海軍の戦闘で優位に立つことができます。恐るべき焼夷船が水面までも燃やすことができるからです。"
 				SUMMARY "海軍技術"
 			}
-			
+
 			MerchantRepublic = {
 				NAME "商人共和国"
 				LEVEL value = {
@@ -1535,7 +1535,7 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "我々の共和制は常に進化しています。近頃、貿易は我々の社会の重要な部分になりました、われわれはそちらの方向に進化しなければいけません。"
 				SUMMARY "共和制の改革"
-			}	
+			}
 			BarbarianMonarchy = {
 				NAME "蛮族の君主"
 				LEVEL value = {
@@ -1546,7 +1546,7 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "蛮族との接近は彼らを複雑な法律と伝統に時間とともに取り込みました。この君主制は蛮族の危機の中期的な対処法になりえますが、いつかは改革しなくてはいけません。"
 				SUMMARY "君主制が統治する"
-			}	
+			}
 			EconomicCharters = {
 				NAME "経済憲章"
 				LEVEL value = {
@@ -1557,7 +1557,7 @@ Main = {
 				}
 				DESCRIPTION <b>"レベル: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>  "貿易に対する課税は常に大きな議論になっていました。商人たちは盗難だと声をあげています。彼らを正式な議論に参加させることで苦情を防ぐことができます。"
 				SUMMARY "商人との交渉"
-			}	
+			}
 			LongRangeRaid = {
 				NAME "長距離襲撃"
 				LEVEL value = {
@@ -1603,7 +1603,7 @@ Main = {
 				}
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>  "我々の領土は広く管理が困難です。国境外の蛮族は定住する場所を探しています。我々は彼らを領土内に定住地を提供すれば直接的な対立を防ぐことができます。ただし、よく守られた小さいエリアであれば・・・"
 				SUMMARY "土地を売り平和を買う"
-			}	
+			}
 
 			Banners = {
 				NAME "軍事徴収"
@@ -1616,8 +1616,8 @@ Main = {
 				}
 				DESCRIPTION <b>"規模: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "封建制は中央の権力と軍隊を弱めましたが、その代わり家臣たちが強力な軍隊をもつことになりました。"
 				SUMMARY "家臣の軍を集める"
-			}			
-			
+			}
+
 
 			Feudality = {
 				NAME "封建制"
@@ -1635,14 +1635,14 @@ Main = {
 				DESCRIPTION <b>"定員: "@[value] </b> <br><br> "陸軍は特定の数を超えてはならないと学びました。この数値は行政で管理されており変更するには手順を踏まなければなりません。"
 				SUMMARY "陸軍の定員を変更する"
 				}
-				
+
 			NavyQuota = {
 				NAME "海軍の定員"
 				DESCRIPTION <b>"定員: "@[value] </b> <br><br> "海軍は特定の数を超えてはならないと学びました。この数値は行政で管理されており変更するには手順を踏まなければなりません。"
 				SUMMARY "海軍の定員を変更する"
 				}
-			
-			
+
+
 			University = {
 				NAME "大学"
 				LEVEL value = {
@@ -1655,8 +1655,8 @@ Main = {
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "教育機関が広範囲にわたって並立してしまっています。優秀な才能を一か所に集めることで、はるかに優れた教えを生み出すことができます。"
 				SUMMARY "知的研究を改善します"
 				}
-				
-			
+
+
 			FarmersTax = {
 				NAME "農民税"
 				LEVEL value = {
@@ -1669,8 +1669,8 @@ Main = {
 				DESCRIPTION <b>"値: "@[value] </b>  <br><br> "社会の発展により農家は経済において重要な役割を果たすようになりました。公正な課税は軍事力を保護することになるでしょう。"
 				SUMMARY "農民に課税する"
 			}
-			
-			
+
+
 			Mill = {
 				NAME "製粉所"
 				LEVEL value = {
@@ -1680,8 +1680,8 @@ Main = {
 				}
 				DESCRIPTION <b>"値: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "時間がたつにつれて農業への理解が深まり、穀物をより効率的に製粉する方法がわかりました。この技術を全国的に広める必要があります。"
 				SUMMARY "農業を改善させる"
-			}	
-			
+			}
+
 			Nobility = {
 				NAME "貴族"
 				LEVEL value = {
@@ -1692,8 +1692,8 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "貴族階級を他の階級の上位にし、譲渡不能で世襲の権利と年金を与えることは偉大なる領主たちをなだめるでしょう。"
 				SUMMARY "偉大なる領主の忠誠心を買うことで力を強化する"
-			}	
-			
+			}
+
 			MedievalArmors = {
 				NAME "中世の鎧"
 				LEVEL value = {
@@ -1704,9 +1704,9 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 中世の鎧は広大で複雑な分野であり職人が試行錯誤を繰り返し進歩していきます。"
 				SUMMARY "軍事技術"
-			}	
-			
-			
+			}
+
+
 			SiegeWeapons = {
 				NAME "攻城兵器"
 				LEVEL value = {
@@ -1719,11 +1719,11 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 十分な防御を施された拠点への攻撃は適切な対策を発明することを促しました。"
 				SUMMARY "軍事技術"
-			}	
-			
+			}
+
 			NationState = {
 				NAME "民族国家"
-				LEVEL value = {					
+				LEVEL value = {
 					0 = "理論的な概念"
 					10 = "遠い夢"
 					25 = "法的根拠"
@@ -1731,9 +1731,9 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "我々の国は同一民族と呼べる独自の要素を持っています。これにより私たちは共通の理念の下に人々を団結させることができました。"
 				SUMMARY "国の団結力を強化する"
-			}	
-			
-			
+			}
+
+
 			Tribunal = {
 				NAME "法廷"
 				LEVEL value = {
@@ -1744,7 +1744,7 @@ Main = {
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "法律は真実の力ですが時々曖昧な概要を示すことがあります。正義の象徴としての場所として法廷を神聖化することによって私たちの力は成長するでしょう。"
 				SUMMARY "政治力を強化する"
 				}
-				
+
 			Castles = {
 				NAME "城"
 				LEVEL value = {
@@ -1755,13 +1755,13 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "地方の貴族には住居として拠点としての象徴的な場所が必要です。軍事徴収を効率よくするために印象的な要塞を建設しましょう。"
 				SUMMARY "軍事徴収を改善する"
-			}	
+			}
 			Medicine = {
 				NAME "医学"
 				DESCRIPTION <b>"値: "@[value,0.###] " )<br><br> 私たちの知識は成長し医療への扉を開きました。病気と呪い、薬物と祈りを明確に区別をすることで疫病と戦えるようになるでしょう。"
 				SUMMARY "伝染病の流行の可能性を減らす"
 				}
-			
+
 
 			Alchemy = {
 				NAME "錬金術"
@@ -1773,13 +1773,13 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "最も優秀な科学者は物事の本質を理解しようとする領域に突入しています。彼らの研究は曖昧に思えますが遠い未来に輝かしい未来をもたらすかもしれません。"
 				SUMMARY "科学的知識を向上させる"
-			}	
-			
+			}
+
 			Gunpowder = {
 				NAME "火薬"
 				DESCRIPTION <b>"値: "@[value,0.###] "<br><br> とても奇妙な材料の研究により黒い粉のようなものが得られました。非常に爆発性が高いため多くの用途、特に軍事的なものが数多くあります。"
 				SUMMARY "軍事的な可能性を高める"
-			}	
+			}
 
 
 			TradeFair = {
@@ -1792,8 +1792,8 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "交易会はあらゆる商人が招かれる祭りです。それにより地域の生産を集中化し魅力的にし、わずかに課税することで収入を得ることもできます。もちろん商人の力を強化します。"
 				SUMMARY "貿易を強化する"
-			}	
-			
+			}
+
 			Guilds = {
 				NAME "ギルド"
 				LEVEL value = {
@@ -1804,14 +1804,14 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "ギルドは特定のルールと特権を採用し、国や都市の保護を求めています。通常は商人である一般的な活動に従事する人々の協会です。"
 				SUMMARY "経済を強化する"
-			}	
-			
+			}
+
 			Banks = {
 				NAME "銀行"
 				DESCRIPTION "値: "@[value,0.###] <br> "最大: "@[weath_max,0.#] <br> "最小: "@[weath_min,0.#]" <br>経済が発展するにつれてお金の流れをよりよく管理できる機関を作る必要性が高まりました。ただし、銀行は諸刃の剣の場合もあります。"
 				SUMMARY "財産の最小及び最大を拡大する"
-			}	
-			
+			}
+
 			ScripturalMoney = {
 				NAME "要求払い預金"
 				LEVEL value = {
@@ -1822,9 +1822,9 @@ Main = {
 				}
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br><br> "お金は究極的には理論的な概念であり、必ずしも金や銀などの実際の物理的価値ではなく信用に紐づくことが重要です。ほんの少しの圧力で物理的制約から逃れることができました。"
 				SUMMARY "通貨を強化する"
-			}	
-			
-		
+			}
+
+
 			Monasteries = {
 				NAME "修道院"
 				LEVEL value = {
@@ -1836,7 +1836,7 @@ Main = {
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "司祭の何人かを人里離れた場所に集中させることで信仰に専念させることができます。宗教的教育があればさらに効果的です。"
 				SUMMARY "司祭と宗教教育を強化する"
 			}
-			
+
 			HolyOrders = {
 				NAME "十字軍"
 				LEVEL value = {
@@ -1848,7 +1848,7 @@ Main = {
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "僧兵の概念は多くの狂信的な兵士を獲得する方法であり人々の神聖さを保証する方法でもあります。城と修道院を強化して募集を増やす必要があります。"
 				SUMMARY "軍隊の募集"
 			}
-			
+
 			HolyWar = {
 				NAME "聖戦"
 				LEVEL value = {
@@ -1860,14 +1860,14 @@ Main = {
 				DESCRIPTION <b> "値: "@[PARAM,LEVEL] </b> " ("@[value,0.###] " ) " <br> "我々の信仰は唯一かつ真実であり、もっとも強くて純粋です。不信心な人々を征服するために力をもって行わなければなりません。"
 				SUMMARY "領土を拡大し軍に対する敬意を強める"
 			}
-			
-			
+
+
 			Medecine = {
 				NAME "医学"
 				DESCRIPTION <b>"Value: "@[value,0.###] "<br><br> 病気と呪い、祈りと治療を明確に区別することで、人類のペストと戦うようになります。"
 				SUMMARY "流行の可能性を減らす"
-			}	
-			
+			}
+
 			ReligiousArt = {
 				NAME "宗教芸術"
 				LEVEL value = {
@@ -1879,8 +1879,8 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )"<br> "私たちの文化と信仰は強いものです。アートを神に仕える時です."
 				SUMMARY "文化、信心深さをもたらす、宗教モニュメントを強化する"
 			}
-			
-			
+
+
 			NavigationTools = {
 				NAME "Navigation Tools"
 				DESCRIPTION "Value: " @[value,0.###]<br><br>"コンパスと航法における革新は海への理解を比類ないレベルにしました。"
@@ -1891,13 +1891,13 @@ Main = {
 				DESCRIPTION "Value: " @[value,0.###]<br><br>"キャラベル船は海から海への旅を安全にする改善の集大成です。"
 				SUMMARY "大洋へ飛び出そう"
 			}
-			
+
 			LargeSailboats = {
 				NAME "大型帆船"
 				DESCRIPTION "Value: " @[value,0.###]<br>"幾度かの海への冒険は、帆船の完成につながりました。ガレオン船、フリゲート艦、コルベット船、海軍がこれほど雄大に見えたことはありません。"
 				SUMMARY "大洋を支配する"
 			}
-			
+
 			AcrossTheOcean = {
 				NAME "大洋への進出"
 				LEVEL value = {
@@ -1910,10 +1910,10 @@ Main = {
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "新しい航法の習得によって海を越えての巨大な遠征を組織できます、輝かしい未来のために。 "
 				SUMMARY "組織的な渡海"
 			}
-			
+
 			Arquebus = {
 				NAME "火縄銃"
-				LEVEL value = {					
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "研究途上"
 					15 = "改良段階"
@@ -1921,12 +1921,12 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 火縄銃は、弓矢に対して火薬の優位性と戦場の根本的な変化を示す最初の効果的な銃です。"
 				SUMMARY "軍事技術"
-			}	
-			
-			
+			}
+
+
 			Musket = {
 				NAME "マスケット"
-				LEVEL value = {			
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "研究途上"
 					15 = "改良段階"
@@ -1934,12 +1934,12 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> マスケットライフルは第二世代の銃であり、火縄銃よりもはるかに強力です。"
 				SUMMARY "軍事技術"
-			}	
-			
-			
+			}
+
+
 			StockExchange = {
-				NAME "証券取引所"				
-				LEVEL value = {					
+				NAME "証券取引所"
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "小規模商人たちの集まり"
 					30 = "商人たちの集まり"
@@ -1948,11 +1948,11 @@ Main = {
 				}
 				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> 新しいビジネスチャンスにより取引システムを刷新する必要があります。これにより商業の根幹たる市場においてはるかに多くの取引ができるようになります。"
 				SUMMARY "貿易品の最大数が増加する"
-			}	
-			
+			}
+
 			TradingPost = {
 				NAME "交易所"
-				LEVEL value = {					
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "地域協定"
 					15 = "少数の交易所"
@@ -1967,10 +1967,10 @@ Main = {
 				DESCRIPTION "値: " @[value,0.###]<br><br>"我々の貿易の繁栄はあらゆる海賊を惹きつけました。商人たちは海軍の保護を懇願しています。長期的にみると植民地の冨を確保することは効果的な投資になるでしょう。"
 				SUMMARY "R海外貿易を確保するための艦隊を要求する"
 			}
-			
+
 			ColonialTariffs = {
 				NAME "植民地関税"
-				LEVEL value = {					
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "わずかな税"
 					5 = "標準的な税"
@@ -1985,7 +1985,7 @@ Main = {
 				NAME "奴隷貿易"
 				DESCRIPTION "Value: " @[value,0.###]" <br><br> 我々の植民地は労働力を必要としている。わずかな投資をするだけで大きな投資収益率を期待できます。"
 				SUMMARY "植民地の富を向上させる"
-			}		
+			}
 
 			SchoolOfThought = {
 				NAME "学派"
@@ -1999,7 +1999,7 @@ Main = {
 			}
 			MercenariesReform = {
 				NAME "傭兵改革"
-				LEVEL value = {					
+				LEVEL value = {
 					0 = "なし"
 					0.001 = "着手"
 					50 = "改革中"
@@ -2010,7 +2010,7 @@ Main = {
 			}
 		Isolationism = {
 				NAME "孤立主義"
-				LEVEL value = {					
+				LEVEL value = {
 					0 = "強制されない"
 					10 = "重要な政策"
 					50 = "強固な"
@@ -2019,53 +2019,53 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> 外国人の影響は有害です。我々は国内のみで完結ができます。一度だけ国を閉ざしましょう、そうすれば我々の調和は強化されるだけです。"
 				SUMMARY "軍事的・商業的野心を犠牲にして国内の団結を強化する"
 			}
-			
+
 		Embassies  = {
 				NAME "大使館"
-				LEVEL value = {					
-					0 = "Poor attempts"
-					50 = "Open Dialogue"
-					100 = "Peace Treaty"
+				LEVEL value = {
+					0 = "劣悪な試み"
+					50 = "遠慮のない話し合い"
+					100 = "和平条約"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 外国人の問題の大部分は国内で尊敬できない野蛮と思われる行為をすることです。優秀な通訳者を通じ外国人を学びましょう。彼らはどうのように海を渡るのですか？"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 外国人の問題の大部分は国内で尊敬できない野蛮と思われる行為をすることです。優秀な通訳者を通じ外国人を学びましょう。彼らはどうのように海を渡るのですか？"
 				SUMMARY " 外国の侵略を阻止する "
 			}
-			
+
 			WarTaxes = {
 				NAME "戦争税"
-				LEVEL value = {					
-					0 = "なし"			
+				LEVEL value = {
+					0 = "なし"
 					0.001 = "軽い"
 					15 = " 意義のある"
 					25 = "重い"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "この税があまり高くない場合は、必然的に戦争の場合にのみ徴収されるため不満はあまり生じません。"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "<br> "この税があまり高くない場合は、必然的に戦争の場合にのみ徴収されるため不満はあまり生じません。"
 				SUMMARY "戦争時に特別収入を得る"
 			}
 		OfficialLanguage = {
-				NAME "Official Language"
-				LEVEL value = {					
-					0 = "None"
-					0.001 = "Our language is mandatory in all official texts"
-					50 = "Active persecution of dialects"
-					100 = "Foundation of the Academy"
+				NAME "公用語"
+				LEVEL value = {
+					0 = "なし"
+					0.001 = "私たちの言語が全ての公式文書で必須です"
+					50 = "方言の積極的な迫害"
+					100 = "アカデミーの設立"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our linguistic unification can go even further, with the right legislation we can actively and effectively promote our official language."
-				SUMMARY "Strengthens the Lingua Franca"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) ” <br> ”私たちの言語的統一は、適切な法律があれば、公用語を積極的かつ効果的に推進することができます。"
+				SUMMARY "共通語の強化"
 			}
-			TradeCompagnies = {
-				NAME "Trade Compagnies"
-				LEVEL value = {					
-					0 = "None"
-					0.001 = "Babbling"
-					15 = "A few rival companies"
-					30 = "Large Companies"
-					60 = "Gigantic Monopolies"
+			TradeCompanies = {
+				NAME "貿易会社"
+				LEVEL value = {
+					0 = "なし"
+					0.001 = "揺籃期"
+					15 = "いくつかのライバル企業"
+					30 = "大企業"
+					60 = "巨大な独占"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Some companies have concentrated their efforts in international trade. With the support of banks and trade exchanges, they are setting up tremendous expeditions."
-				SUMMARY "Increases our trade routes"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br> "一部の企業は国際貿易に力を注いでいます。銀行や貿易取引所の支援を受けて、彼らは途方もない遠征を掲げています。"
+				SUMMARY "貿易ルートを増やします"
 			}
-				
+
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events
@@ -2155,7 +2155,7 @@ Main = {
 				DESCRIPTION "外国があなたの土地を侵攻しています。もしあなたの軍隊と要塞が破壊されたら、彼らの利益のために領土を失うでしょう。"
 				SUMMARY "この敵を撃退する必要があります!"
 			}
-			
+
 			NeighborhoodTroubles = {
 				NAME "隣国の不安定"
 				DESCRIPTION "いくつかの隣国はひどい内部不安になっています。それは我々が攻撃をする可能性に影響しますが、貿易を減らすことにもなります。"
@@ -2254,7 +2254,7 @@ Main = {
 				DESCRIPTION "前代の王の死は王子の間で論争をもたらしました。自然な混乱の後、最終的に状況は改善します。"
 				SUMMARY "王の死が王国を弱らせる"
 			}
-			
+
 			BeingRaided = {
 				NAME "襲撃されている"
 				DESCRIPTION "豊かな貿易ルートや宗教的建造物は長年略奪者を引き付けているようです。彼らは河にも海にも出られる奇妙な船から襲撃してきます。軍艦を強化しなくてはいけません。"
@@ -2266,62 +2266,62 @@ Main = {
 				DESCRIPTION "社会不安が高まると軍の将校は権力を掌握し反発する蛮族を排除します。"
 				SUMMARY "軍事独裁が始まろうとしている!"
 			}
-			
+
 			MercenaryUprising = {
 				NAME "傭兵の反乱"
 				DESCRIPTION "我々は傭兵に報酬を支払うことができません。彼らは不満を募らせており深刻な報復を覚悟しなくてはなりません。"
 				SUMMARY "傭兵に支払いができない!"
 			}
-			
+
 			HarshWinter = {
 				NAME "厳しい冬"
 				DESCRIPTION "何世代も経験したことがないような厳しい冬になっています。人々は大いに苦しむでしょう。"
 				SUMMARY "特に厳しい冬は食糧備蓄に非常に大きな痛手を加えます。"
 			}
-			
+
 			MerchantExplorer = {
 				NAME "商人冒険者"
 				DESCRIPTION "若い商人が世界の果てへの歴史的な旅を始めました。貿易の好機が到来しています。"
 				SUMMARY "私たちの貿易は新たな地平に達するでしょう。"
 			}
-			
+
 			UrbanExodus = {
 				NAME "都市脱出"
 				DESCRIPTION "都市が不安を抱えているため、人々は都会を離れ田舎に移り住んでいます。"
 				SUMMARY "人々が都市から逃げ出しています"
 			}
-			
+
 			PeasantRevolt = {
 				NAME "農民の反乱"
 				DESCRIPTION "税に耐えかね農民たちは反乱を起こしました！"
 				SUMMARY "農民が反乱を起こしています"
 			}
-			
+
 			GreatEpidemic = {
 				NAME "伝染病の大流行"
 				DESCRIPTION "致命的な病気が国境を越えて広がっています。救いのために祈らなくてはなりません！"
 				SUMMARY "人口が大幅に減少するでしょう"
 			}
-			
+
 			CulturalRevival = {
 				NAME "文化の復興"
 				DESCRIPTION "衰退した事態の後、安定した状況の中我々の文化は再び反映します。"
 				SUMMARY "文化レバーが増加する"
 			}
-			
+
 			WitchHunt = {
 				NAME "魔女狩り"
 				DESCRIPTION "人々はマイノリティーに対して局所的な迫害を引き起こしました。もしこのようなことが宗教的・国家的なアイデンティティを強化する場合、貿易や社会安定性は悲惨な結果になります。"
 				SUMMARY "社会安定性とマイノリティーを減少させます"
 			}
-			
+
 			NomadInvasion = {
 				NAME "遊牧民の侵略"
 				DESCRIPTION "近隣の野蛮人の一人が侵略を開始しました。略奪し数千人を殺しています。彼らを止めなければなりません！"
 				SUMMARY "遊牧民の大軍が攻撃しています！"
 			}
-			
-					
+
+
 			ColonialRebellion = {
 				NAME "植民地の反乱"
 				DESCRIPTION "我々の過度な課税は植民地での暴動を引き起こし、それは反乱へと発展しました。艦隊が介入しなければ植民地は終わりとなります！"
@@ -2337,18 +2337,18 @@ Main = {
 				DESCRIPTION "奇妙な男たちが奇妙な生き物を連れ上陸しました。我が国にとって良い運命を予言するものではありません。"
 				SUMMARY "海の向こうから男たちが上陸しました！"
 			}
-			
+
 			InvadersEpidemic = {
 				NAME "侵略者からの感染症"
 				DESCRIPTION "彼らが到着して以来、奇妙な病気が我々を襲っていますが、彼らにはそうではありません。なぜ我々には致命的なのでしょう？"
 				SUMMARY "奇妙で非常に致命的な病気が我々を襲っている！"
 			}
-			
+
 			DeclarationOfWar = {
 				NAME "宣戦布告"
 				DESCRIPTION "強大な隣国が我々に宣戦を布告しました。我々は自分自身を守らねばなりません！"
 				SUMMARY "隣国から宣戦布告されました！"
-			}			
+			}
 			EnforcedPeace = {
 				NAME "降伏"
 				DESCRIPTION "この戦争で惨憺たる有様です。降伏しなくてはいけません。"
@@ -2359,39 +2359,39 @@ Main = {
 				DESCRIPTION "現在の戦争は我々の国を荒廃させており、国民たちは深刻な苦しみを味わっています。"
 				SUMMARY "我々は略奪をうけています"
 			}
-			
+
 			Blocade = {
 				NAME "封鎖e"
 				DESCRIPTION "我々の海上支配は非常に弱まり、もはや港を守ることができなくなっています。"
 				SUMMARY "我々の海上貿易と海外植民地を保護できない"
 			}
-			
+
 			OccupationResistance = {
 				NAME "レジスタンス"
 				DESCRIPTION "我々は敵国の一部を占領していますが激しい抵抗に直面しています。将軍はできるだけ早く和平に署名するよう忠告しています。"
 				SUMMARY "戦争は行き詰っており予備軍もすでにない。"
 			}
-			
-			
+
+
 			LandBattle = {
 				NAME "地上戦"
-				LEVEL Winner = {					
-					0 = "惨敗"	
-					25 = "敗北"	
-					50 = "勝利"	
-					75 = "完勝"		
+				LEVEL Winner = {
+					0 = "惨敗"
+					25 = "敗北"
+					50 = "勝利"
+					75 = "完勝"
 				}
 				 DESCRIPTION "地上戦が始まった" <br> <b> " " @[Main.LandBattle.Winner,LEVEL] </b> " ( " @[Main.LandBattle.Winner,0.###] " )"
 				SUMMARY "陸上での戦いが進行中！"
 			}
-			
+
 			NavalBattle = {
 				NAME "海戦"
-				LEVEL Winner = {					
-					0 = "惨敗"	
-					25 = "敗北"	
-					50 = "勝利"	
-					75 = "完勝"		
+				LEVEL Winner = {
+					0 = "惨敗"
+					25 = "敗北"
+					50 = "勝利"
+					75 = "完勝"
 				}
 				DESCRIPTION "海戦が始まった " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
 				SUMMARY "海上での戦いが進行中！"

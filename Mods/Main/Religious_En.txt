@@ -33,7 +33,7 @@ Religious = {
 			}
 			ColonialConvert = {
 				NAME "Colonial Converts"
-				DESCRIPTION <b>"Value: "@[value] </b> "The share of the inhabitants in our colony who practice the majority religion of the metropolis, the higher this share is, the more the population will participate in the improvement of the colony."
+				DESCRIPTION <b>"Value: "@[value] </b> "The share of the inhabitants in our colony who practice the majority religion of the metropole, the higher this share is, the more the population will participate in the improvement of the colony."
 				SUMMARY "Percentage of the colonial population following the true faith"
 			}
 			ColonialHeretic = {
@@ -249,7 +249,7 @@ Religious = {
 			}
 			ColonialConversion = {
 				NAME "Conversion of colonies"
-				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Religious minorities are a danger to the unity and prosperity of our colonies. Because of the distance we cannot take care of the conversion ourselves, fortunately, a large number of congregations are ready to do it for us. If we help them, the conversion will be all the quicker."
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Religious minorities are a danger to the unity and prosperity of our colonies. Because of the distance we cannot take care of the conversion ourselves, fortunately, a large number of congregations are ready to do it for us. If we help them, the conversion will be all the quicker."
 				SUMMARY "Converting the inhabitants of the colonies to the true faith"
 			}			
 				
