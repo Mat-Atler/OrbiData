@@ -5411,7 +5411,6 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~BarbarianAtGates | ~BattleAxe
-					CONDITION_NODE + Government
 					CONDITION_NODE + BattleAxe
 				}
 				PRICE = {
