@@ -30,7 +30,34 @@ Religious = {
 				NAME "献身"
 				DESCRIPTION <b>"Valeur: "@[value] </b> "宗教は男性が人生と社会において専念するものについて重要な助けになります。私たちの信仰が強力であるほど献身は比類ないものになります。"
 				SUMMARY " 様々な健診を強化する"
-			}			
+			}	
+			ColonialConvert = {
+				NAME "Colonial Converts"
+				DESCRIPTION <b>"Value: "@[value] </b> "The share of the inhabitants in our colony who practice the majority religion of the metropolis, the higher this share is, the more the population will participate in the improvement of the colony."
+				SUMMARY "Percentage of the colonial population following the true faith"
+			}
+			ColonialHeretic = {
+				NAME "Colonial Heretics"
+				DESCRIPTION <b>"Value: "@[value] </b> "The part of our colonial population following a heretical religion, we must convert them otherwise they will create unrest or worse, they could ask for independence."
+				SUMMARY "Percentage of heretics in our colony"
+			}
+			Religiosity = {
+				NAME "Religiosity"
+				LEVEL value = {
+					0 = "God is dead"
+					10 = "Religious affairs are now, for the most part, important only at the time of prayer."
+					25 = "Religion only has a great moral influence"
+					60 = "Religious leaders regularly influence government decisions"
+					80 = "Society as a whole is governed by religion."
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>  "At a time when the spiritual no longer has answers to all human questions, the influence of religion in our society can change for many reasons."
+				SUMMARY "Represents the importance of religion in your civilization"
+			}
+			NationalReligion = {
+				NAME "National Religion"
+				DESCRIPTION <b>"Pantheon: "@[PantheonValue] </b> <br> <b>"Syncretism: "@[SyncretismValue] </b> <br> <b>"Religious Ceremony: "@[ReligiousCeremonyValue] </b> <br> <b>"Religious Offerings: "@[ReligiousOfferingsValue] </b> <br> <b>"Offerings Nature: "@[OfferingsNatureValue] </b> <br> <b>"Sacrifice Nature: "@[SacrificeNatureValue] </b> <br> <b>"Devotion To Craftsmanship: "@[DevotionToCraftsmanshipValue] </b> <br> <b>"Devotion To Nature: "@[DevotionToNatureValue] </b> <br> <b>"Devotion To Sea: "@[DevotionToSeaValue] </b> <br> <b>"Devotion To TheHarvest: "@[DevotionToTheHarvestValue] </b> <br> <b>"Devotion To The Law: "@[DevotionToTheLawValue] </b> <br> <b>"Devotion To Trade: "@[DevotionToTradeValue] </b> <br> <b>"Devotion To War: "@[DevotionToWarValue] </b> <br> <br> "Our religion has undergone many changes over the centuries. But those times are over. Our dogmas are now defined for the centuries to come."
+				SUMMARY "Node that centralizes the aspects of our religion that are no longer modifiable."
+			}		
 		}
 		Levers = {
 			ToleranceOfHeretics = {
@@ -217,6 +244,11 @@ Religious = {
 				NAME "職人への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "救いが得られるのは行動を通じてであるように、男が自分の価値を証明するのは一生懸命働くことです。すべての男性が努力に参加することを確認しましょう。"
 				SUMMARY "貿易財の生産を高める"
+			}	
+			ColonialConversion = {
+				NAME "Conversion of colonies"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Religious minorities are a danger to the unity and prosperity of our colonies. Because of the distance we cannot take care of the conversion ourselves, fortunately, a large number of congregations are ready to do it for us. If we help them, the conversion will be all the quicker."
+				SUMMARY "Converting the inhabitants of the colonies to the true faith"
 			}			
 				
 		}
@@ -287,6 +319,16 @@ Religious = {
 				NAME "宗教的異議の終わり"
 				DESCRIPTION "私たちの宗教の内部分裂を終わらせるための絶え間ない努力がついに報われました。今では誰もが宗教的指導者が一人しかいないことを認識しています。"
 				SUMMARY "聖職者の分裂が終わり唯一の宗教指導者が残っている"
+			}
+			ClergyDiscontent = {
+				NAME "ClergyDiscontent "
+				DESCRIPTION "The clergy does not like to be interfered with and has decided to counterattack and use all its influence to go against all our plans. "
+				SUMMARY "The clergy works against the interests of our government."
+			}
+			PerpetuationOfDogmas = {
+				NAME "Perpetuation of dogmas "
+				DESCRIPTION "Anything new is bound to become custom. Our religion is no exception to this rule. Dogmas settle down and stay. Soon it will surely be impossible to influence the main lines of our religion."
+				SUMMARY " After this event it will no longer be possible to directly change many religious nodes."
 			}
 			
 
