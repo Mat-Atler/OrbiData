@@ -357,7 +357,7 @@ Religious = {
 			
 			Religiosity = {
 				VALUE value [ 0 0 100 ]
-				VALUE tempvalue [ 0 0 100 ]
+				VALUE tempvalue [ 0 0 10000 ]
 				DISPLAY_VALUE
 				
 				SLEEP = {
@@ -367,7 +367,7 @@ Religious = {
 				}
 
 				TICK = {
-					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 2 + NonSecularEducation * 3 +  Piety * 2 + Devotion * 2 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
+					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2 + Devotion * 2 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
 					PROCESS value = ( tempvalue / ( tempvalue + 1000 ) ) * 100
 				}
 
@@ -466,9 +466,10 @@ Religious = {
 				VALUE AsSpawn [ 0 0 1 ]
 				
 				UNLOCK_CONDITIONS = {
-					HINT ~ToleranceOfHeathens
+					HINT ~ToleranceOfHeathens & ~Religiosity == 0
 					CONDITION_VALUE Philosophy > 40
 					CONDITION_NODE + ToleranceOfHeathens
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 80
@@ -643,8 +644,10 @@ Religious = {
 				}
 				
 				UNLOCK_CONDITIONS = {
-					HINT ~ReligiousCeremony
+					HINT ~ReligiousCeremony & ~Religiosity == 0
 					CONDITION_VALUE ReligiousCeremony > 35
+					CONDITION_NODE - Religiosity
+					
 				}
 				PRICE = {
 					$PoliticalPower = 20
@@ -781,8 +784,9 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~ReligiousOfferings
+					HINT ~ReligiousOfferings & ~Religiosity == 0
 					CONDITION_NODE + ReligiousOfferings
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 0
@@ -822,8 +826,9 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~OfferingsNature
+					HINT ~OfferingsNature & ~Religiosity == 0
 					CONDITION_VALUE OfferingsNature > 80
+					CONDITION_NODE - Religiosity
 
 				}
 				PRICE = {
@@ -983,8 +988,9 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT 0
+					HINT ~Religiosity == 0
 					CONDITION_NODE + Devotion
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 10
@@ -1031,10 +1037,11 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Devotion & Coastline > 30
+					HINT ~Devotion & Coastline > 30 & ~Religiosity == 0
 					CONDITION_NODE + Devotion
 					CONDITION_NODE + Fishing
 					CONDITION_VALUE Coastline > 30
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 20
@@ -1081,10 +1088,11 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Devotion & Agriculture > 30
+					HINT ~Devotion & Agriculture > 30 & ~Religiosity == 0
 					CONDITION_NODE + Devotion
 					CONDITION_NODE + Agriculture
 					CONDITION_VALUE Agriculture > 50
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 20
@@ -1130,10 +1138,11 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Devotion & ~ReligiousLaw
+					HINT ~Devotion & ~ReligiousLaw & ~Religiosity == 0
 					CONDITION_NODE + Devotion
 					CONDITION_NODE + ReligiousLaw
 					CONDITION_VALUE ReligiousLaw > 50
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 30
@@ -1189,9 +1198,10 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Devotion & ~MilitaryManpower
+					HINT ~Devotion & ~MilitaryManpower & ~Religiosity == 0
 					CONDITION_NODE + Devotion
 					CONDITION_NODE + Militarism
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 30
@@ -1237,10 +1247,11 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Devotion & ~Entreprises
+					HINT ~Devotion & ~Entreprises & ~Religiosity == 0
 					CONDITION_NODE + Devotion
 					CONDITION_NODE + Entreprises
 					CONDITION_VALUE Entreprises > 40
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 20
@@ -1289,13 +1300,14 @@ Religious = {
 
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~Devotion & ~ArtisanClass
+					HINT ~Devotion & ~ArtisanClass & ~Religiosity == 0
 					CONDITION_NODE + Devotion
 					CONDITION_NODE + ArtisanClass
 					CONDITION_VALUE ArtisanClass > 30
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
-					$PoliticalPower = 20
+				$PoliticalPower = 20
 				}
 				UPGRADE = {
 				$PoliticalPower = (LinkCount(DevotionToCraftsmanship) + 1 ) * 0.5
@@ -1487,7 +1499,7 @@ Religious = {
 				TICK = {
 					IF ColonialHeretic > 0
 						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 700 )
-						PROCESS $Wealth = $Wealth - PerSeconds ( ColonialHeretic * ColonialProsperity * ColonialStateSize * value / 255555 )
+						PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 ) * ( 1 +  ColonialStateSize / 100 ) * ( 1 +  ColonialHeretic / 25 )  )
 						IF ColonialConvert < 100 - ColonialHeretic
 							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 1000 )
 						ENDIF
@@ -1956,7 +1968,7 @@ Religious = {
 			ClergyDiscontent = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-				EVENT_DEF [ 60 90 100 100% ]
+				EVENT_DEF [ 60 90 200 100% ]
 				
 				SLEEP = {
 					EVENT_CHANCE ClergyIndependance / 2000 + Max( ClergyIndependance' / 10 , 0.1 )
@@ -1999,7 +2011,7 @@ Religious = {
 			PerpetuationOfDogmas = {
 				SOUND_EVENT "Main/SFX/ConversionBad.wav"
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
-				EVENT_DEF [ 10 150 10 2% ]
+				EVENT_DEF [ 10 150 10 1% ]
 				
 				
 				ARISE = {
