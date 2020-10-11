@@ -2049,7 +2049,7 @@ Main = {
 				SUMMARY "Strengthens the Lingua Franca"
 			}
 			TradeCompagnies = {
-				NAME "Trade Compagnies"
+				NAME "Trade Companies"
 				LEVEL value = {					
 					0 = "None"
 					0.001 = "Babbling"
