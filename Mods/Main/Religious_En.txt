@@ -31,6 +31,33 @@ Religious = {
 				DESCRIPTION <b>"Value: "@[value] </b> "Religion can help men to devote themselves to important aspects of life and society. The more powerful and confident our faith is, the more the devotion of our subjects will be beyond compare."
 				SUMMARY "Improves your various devotions"
 			}
+			ColonialConvert = {
+				NAME "Colonial Converts"
+				DESCRIPTION <b>"Value: "@[value] </b> "The share of the inhabitants in our colony who practice the majority religion of the metropolis, the higher this share is, the more the population will participate in the improvement of the colony."
+				SUMMARY "Percentage of the colonial population following the true faith"
+			}
+			ColonialHeretic = {
+				NAME "Colonial Heretics"
+				DESCRIPTION <b>"Value: "@[value] </b> "The part of our colonial population following a heretical religion, we must convert them otherwise they will create unrest or worse, they could ask for independence."
+				SUMMARY "Percentage of heretics in our colony"
+			}
+			Religiosity = {
+				NAME "Religiosity"
+				LEVEL value = {
+					0 = "God is dead"
+					10 = "Religious affairs are now, for the most part, important only at the time of prayer."
+					25 = "Religion only has a great moral influence"
+					60 = "Religious leaders regularly influence government decisions"
+					80 = "Society as a whole is governed by religion."
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>  "At a time when the spiritual no longer has answers to all human questions, the influence of religion in our society can change for many reasons."
+				SUMMARY "Represents the importance of religion in your civilization"
+			}
+			NationalReligion = {
+				NAME "National Religion"
+				DESCRIPTION <b>"Pantheon: "@[PantheonValue] </b> <br> <b>"Syncretism: "@[SyncretismValue] </b> <br> <b>"Religious Ceremony: "@[ReligiousCeremonyValue] </b> <br> <b>"Religious Offerings: "@[ReligiousOfferingsValue] </b> <br> <b>"Offerings Nature: "@[OfferingsNatureValue] </b> <br> <b>"Sacrifice Nature: "@[SacrificeNatureValue] </b> <br> <b>"Devotion To Craftsmanship: "@[DevotionToCraftsmanshipValue] </b> <br> <b>"Devotion To Nature: "@[DevotionToNatureValue] </b> <br> <b>"Devotion To Sea: "@[DevotionToSeaValue] </b> <br> <b>"Devotion To TheHarvest: "@[DevotionToTheHarvestValue] </b> <br> <b>"Devotion To The Law: "@[DevotionToTheLawValue] </b> <br> <b>"Devotion To Trade: "@[DevotionToTradeValue] </b> <br> <b>"Devotion To War: "@[DevotionToWarValue] </b> <br> <br> "Our religion has undergone many changes over the centuries. But those times are over. Our dogmas are now defined for the centuries to come."
+				SUMMARY "Node that centralizes the aspects of our religion that are no longer modifiable."
+			}
 		}
 		Levers = {
 			ToleranceOfHeretics = {
@@ -219,6 +246,11 @@ Religious = {
 				NAME "Devotion To Craftsmanship"
 				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "In the same way that it is through action that salvation is obtained, it is through hard work that men prove their worth. Let us make sure that every man participates in the effort."
 				SUMMARY "Increases our production of Trade goods"
+			}
+			ColonialConversion = {
+				NAME "Conversion of colonies"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Religious minorities are a danger to the unity and prosperity of our colonies. Because of the distance we cannot take care of the conversion ourselves, fortunately, a large number of congregations are ready to do it for us. If we help them, the conversion will be all the quicker."
+				SUMMARY "Converting the inhabitants of the colonies to the true faith"
 			}			
 				
 			}
@@ -289,6 +321,16 @@ Religious = {
 				NAME "End Of Religious Disent "
 				DESCRIPTION "Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
 				SUMMARY "End of the division of the clergy, only one religious leader remains"
+			}
+			ClergyDiscontent = {
+				NAME "ClergyDiscontent "
+				DESCRIPTION "The clergy does not like to be interfered with and has decided to counterattack and use all its influence to go against all our plans. "
+				SUMMARY "The clergy works against the interests of our government."
+			}
+			PerpetuationOfDogmas = {
+				NAME "Perpetuation of dogmas "
+				DESCRIPTION "Anything new is bound to become custom. Our religion is no exception to this rule. Dogmas settle down and stay. Soon it will surely be impossible to influence the main lines of our religion."
+				SUMMARY " After this event it will no longer be possible to directly change many religious nodes."
 			}
 
 		}
