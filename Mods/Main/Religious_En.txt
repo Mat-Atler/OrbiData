@@ -278,7 +278,7 @@ Religious = {
 				SUMMARY "The Heretics and Heathens rebels again our government"
 			}
 			GreatSchism = {
-				NAME "GreatSchism"
+				NAME "Great Schism"
 				DESCRIPTION "Our religion has seen and survived debates about the deep nature of our beliefs. But this time if theologians criticize not only our beliefs but the legitimacy of our holy institutions. The reforms asked for are so great that the unity of our religion may not survive them."
 				SUMMARY "Increase Heretics and the chances of religious infighting"
 			}
@@ -293,42 +293,42 @@ Religious = {
 				SUMMARY "The clergy increases its independence. "
 			}
 			ReinforcementOfTheGouvernement = {
-				NAME " Reinforcement Of The Government"
+				NAME "Reinforcement Of The Government"
 				DESCRIPTION "The clergy can have a great influence on our people, which is why it is imperative that we control it. "
 				SUMMARY "The independence of the clergy is diminishing."
 			}
 			ReinforcementOfTheReligiousHead = {
-				NAME " Reinforcement Of The Religious Head "
+				NAME "Reinforcement Of The Religious Head"
 				DESCRIPTION "Like any man with power, our spiritual guide will miss no opportunity to increase it further. Even if it means going against us. "
 				SUMMARY "The power of the religious leader increases."
 			}
 			WeakReligiousHead = {
-				NAME "Weak Religious Head "
+				NAME "Weak Religious Head"
 				DESCRIPTION "Our current spiritual guide is proving to be incompetent and completely unfit. This is surely a good opportunity to solidify our power over the clergy. "
 				SUMMARY "The power of the religious leader decreases."
 			}
 			ExclusionFromTheReligion = {
-				NAME "Exclusion From The Religion "
+				NAME "Exclusion From The Religion"
 				DESCRIPTION "The highest religious institutions wanted to expel us from religion for our lack of piety. Public confidence in our government will be greatly reduced as our ability to influence the affairs of the clergy has been greatly reduced. "
 				SUMMARY "Reduces our piety and stability and prevents us from influencing the clergy"
 			}
 			NewCompetitingReligiousLeader = {
-				NAME "New Competiting Religious Leader "
+				NAME "New Competiting Religious Leader"
 				DESCRIPTION "An ambitious and charismatic theologian assures that he is a more pious and capable person than our present religious leader. Such a divided religious power cannot be good news for the stability of our country! "
 				SUMMARY "A new competing religious leader appears"
 			}
 			EndOfReligiousDisent = {
-				NAME "End Of Religious Disent "
+				NAME "End Of Religious Disent"
 				DESCRIPTION "Our ceaseless efforts to end the internal divisions of our religion have finally paid off. Now everyone recognizes that there is only one spiritual leader. "
 				SUMMARY "End of the division of the clergy, only one religious leader remains"
 			}
 			ClergyDiscontent = {
-				NAME "ClergyDiscontent "
+				NAME "ClergyDiscontent"
 				DESCRIPTION "The clergy does not like to be interfered with and has decided to counterattack and use all its influence to go against all our plans. "
 				SUMMARY "The clergy works against the interests of our government."
 			}
 			PerpetuationOfDogmas = {
-				NAME "Perpetuation of dogmas "
+				NAME "Perpetuation of dogmas"
 				DESCRIPTION "Anything new is bound to become custom. Our religion is no exception to this rule. Dogmas settle down and stay. Soon it will surely be impossible to influence the main lines of our religion."
 				SUMMARY " After this event it will no longer be possible to directly change many religious nodes."
 			}

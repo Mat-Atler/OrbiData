@@ -1704,11 +1704,11 @@ Main = {
 					ENDIF
 				}
 				TICK = { 
-					SET OverlandTrade.value [ : : Min(100, 100 + value ) ]
+					SET OverlandTrade.value [ : : Max(100, 100 + value ) ]
 				}
 
 				LINK OverlandTrade = {
-						WEIGHT [ max ] Min(100, 100 + value )
+						WEIGHT [ max ] Max(100, 100 + value )
 				}
 				
 				LINK NavalTrade = {
@@ -5104,7 +5104,6 @@ Main = {
 					CONDITION_VALUE Tribunal >= 50
 					ALWAYS
 					CONDITION_NODE - Satrapy
-					CONDITION_NODE - Feudality
 				}
 				PRICE = {
 					$PoliticalPower = 175
@@ -6065,7 +6064,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~TradeFair
 					CONDITION_VALUE TradeFair >= 40
-					CONDITION_VALUE Entreprises >= 60
+					CONDITION_VALUE Entreprises >= 45
 					CONDITION_VALUE Urbanization >= 75
 				}
 				PRICE = {
@@ -6655,6 +6654,10 @@ Main = {
 						SET TradeRoads.value [ : : 100 + TradeCompagnies.value * 3 ]
 				}
 
+				TRIGGER_SPAWN TradeCompagnies = {
+					SPAWN TradeRoads
+				}
+				
 				LINK TradeRoads = {
 						WEIGHT [ max ] 100 + TradeCompagnies.value * 3
 				}
