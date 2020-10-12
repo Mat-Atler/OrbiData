@@ -3050,9 +3050,11 @@ Main = {
 				}
 				 
 				UNLOCK_CONDITIONS = {
-					HINT ~ReligiousMonuments | ~ReligiousCeremony
+					HINT ~ReligiousMonuments | ~ReligiousCeremony & ~Religiosity == 0
+					CONDITION_NODE - Religiosity
 					CONDITION_NODE + ReligiousMonuments
 					CONDITION_NODE + ReligiousCeremony
+					
 				}
 				PRICE = {
 					$PoliticalPower = 0
@@ -3563,10 +3565,12 @@ Main = {
 				}
 				
 				UNLOCK_CONDITIONS = {
-					HINT ~ReligiousMonuments | ~OrganizedNomadism
+					HINT ~ReligiousMonuments | ~OrganizedNomadism & ~Religiosity == 0
 					CONDITION_NODE + OrganizedNomadism
 					OR
 					CONDITION_VALUE ReligiousMonuments > 5
+					ALWAYS
+					CONDITION_NODE - Religiosity
 				}
 				PRICE = {
 					$PoliticalPower = 10
