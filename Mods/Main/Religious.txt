@@ -1499,7 +1499,7 @@ Religious = {
 				TICK = {
 					IF ColonialHeretic > 0
 						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 700 )
-						PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 ) * ( 1 +  ColonialStateSize / 100 ) * ( 1 +  ColonialHeretic / 25 )  )
+						PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 100 +  ColonialHeretic / 25 )  )
 						IF ColonialConvert < 100 - ColonialHeretic
 							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 1000 )
 						ENDIF
