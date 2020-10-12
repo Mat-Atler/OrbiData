@@ -2396,6 +2396,11 @@ Main = {
 				DESCRIPTION "海戦が始まった " <br> <b> " " @[Main.NavalBattle.Winner,LEVEL] </b> " ( " @[Main.NavalBattle.Winner,0.###] " )"
 				SUMMARY "海上での戦いが進行中！"
 			}
+			Renaissance = {
+                NAME "ルネッサンス"
+                DESCRIPTION "私たちの文化と哲学は、永遠に歴史へ刻まれる前例のない黄金時代を経験しています。"
+                SUMMARY "前例のない文化的復興！"
+            }
 		}
 	}
 }
