@@ -3984,14 +3984,14 @@ Main = {
 				}
 				
 				TICK = {
-					SET Diplomacy.value [ : : 100 - Militarism.value * 2 ]
+					SET Diplomacy.value [ : :  Max (0, 100 - Militarism.value * 2 ) ]
 				}
 				
 				LINK MilitaryEfficiency = {
 						 WEIGHT [ to ] 
 				}
 				LINK Diplomacy = {
-						 WEIGHT [ max ] 100 - Militarism.value * 2
+						 WEIGHT [ max ] Max (0, 100 - Militarism.value * 2 )
 				}
 
 				TRIGGER_SPAWN Militarism = {
