@@ -1321,7 +1321,7 @@ Main = {
 				PROCESS Missile_value =  Missile_value - PerSeconds( value / 3500 )
 				PROCESS Mercenaries_value =  Mercenaries_value - PerSeconds( value / 5000 )
 				
-				IF (MilitaryManpower > ArmyQuota & ~ArmyQuota )
+				IF ( ( MilitaryManpower.Cavalry_value + MilitaryManpower.Infantry_value + MilitaryManpower.Missile_value + MilitaryManpower.Mercenaries_value ) * MilitaryEfficiency / 100 ) > ArmyQuota & ~ArmyQuota )
 					PROCESS Cavalry_value =  Cavalry_value - PerSeconds( value / 300 )
 					PROCESS Infantry_value =  Infantry_value - PerSeconds( value / 300 )
 					PROCESS Missile_value =  Missile_value - PerSeconds( value / 300 )
