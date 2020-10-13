@@ -2757,7 +2757,7 @@ Main = {
 					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					IF output > 20
-						PROCESS $Wealth = $Wealth + PerSeconds(10 + (output - 20) * 0.15 )
+						PROCESS $Wealth = $Wealth + PerSeconds(10 + (output - 20) * 0.22 )
 					ELSE
 						PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
 					ENDIF
