@@ -380,12 +380,12 @@ Main = {
 				
                 TRIGGER_TRAVEL = {
                     PROCESS value = GetPresetValue(value)
-								IF HasValueFromCustomPreset(Main.Temperature.value)
-				PROCESS Main.Temperature.value = GetPresetValue(Main.Temperature.value)
-			ELSE
-				PROCESS Main.Temperature.value = DataMapGetR("Main\DataMaps\Temperature.png",GetLongitude(),GetLatitude()) * 100
-			ENDIF
-			BREAK
+					IF HasValueFromCustomPreset(Main.Temperature.value)
+						PROCESS Main.Temperature.value = GetPresetValue(Main.Temperature.value)
+					ELSE
+						PROCESS Main.Temperature.value = DataMapGetR("Main\DataMaps\Temperature.png",GetLongitude(),GetLatitude()) * 100
+					ENDIF
+				BREAK
                 }
 				LINK Flora = {
 					WEIGHT [ to ]
