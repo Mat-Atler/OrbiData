@@ -2756,7 +2756,12 @@ Main = {
 						PROCESS output = output * ( 1 + ( DevotionToTheHarvest / 400 ) )
 					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
-					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
+					IF output > 20
+						PROCESS $Wealth = $Wealth + PerSeconds(10 + (output - 20) * 0.15 )
+					ELSE
+						PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
+					ENDIF
+					
 				}
 				
 				LINK Food = {
