@@ -99,27 +99,30 @@ Religious = {
 					ENDIF
 				}
                 TICK = {
-				IF Pantheon <= 49
-					PROCESS Devotion = ( 3 + Pantheon / 50 ) * Piety * ( 0.75 + ClergyCentralization / 200 )
-					SET DevotionToNature.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-					SET DevotionToSea.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-					SET DevotionToTheHarvest.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-					SET DevotionToTheLaw.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-					SET DevotionToWar.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-					SET DevotionToTrade.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-					SET DevotionToCraftsmanship.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
-				ENDIF
 				
-				IF  Pantheon > 49 
-					PROCESS Devotion = ( 4 - (Pantheon / 25 - 2 ) ) * Piety * ( 0.75 + ClergyCentralization / 200 )
-					SET DevotionToNature.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-					SET DevotionToSea.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-					SET DevotionToTheHarvest.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-					SET DevotionToTheLaw.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-					SET DevotionToWar.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-					SET DevotionToTrade.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-					SET DevotionToCraftsmanship.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
-				ENDIF
+					IF Pantheon <= 49
+						PROCESS Devotion = ( 3 + Pantheon / 50 ) * Piety * ( 0.75 + ClergyCentralization / 200 )
+						SET DevotionToNature.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+						SET DevotionToSea.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+						SET DevotionToTheHarvest.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+						SET DevotionToTheLaw.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+						SET DevotionToWar.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+						SET DevotionToTrade.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+						SET DevotionToCraftsmanship.value [ : : Min ( Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 3 + Pantheon / 50 ) )  ]
+					ENDIF
+				
+					IF  Pantheon > 49 
+						PROCESS Devotion = ( 4 - (Pantheon / 25 - 2 ) ) * Piety * ( 0.75 + ClergyCentralization / 200 )
+						SET DevotionToNature.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+						SET DevotionToSea.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+						SET DevotionToTheHarvest.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+						SET DevotionToTheLaw.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+						SET DevotionToWar.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+						SET DevotionToTrade.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+						SET DevotionToCraftsmanship.value [ : : Min (Devotion.value / CountNodes(DevotionType) , Devotion.value / ( 4 - (Pantheon / 25 - 2 ) ))  ]
+					ENDIF
+				
+					
 				
 				}
 				
@@ -211,7 +214,7 @@ Religious = {
 			}
 			
 			CompetitingReligiousLeader = {
-				VALUE value [ 0 0 10 ]
+				VALUE value [ 0 1 10 ]
 				DISPLAY_VALUE
 				RELATED_INFO = {
 				}
@@ -280,9 +283,9 @@ Religious = {
 				}
 				TICK = {
 					IF ( value < Max ( Heretics + 10 / ( ( ToleranceOfHeretics +1 ) / 10 ) , ( ToleranceOfHeretics +1 ) / 10  ))
-						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + ( Conversion / 400 ) )  / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize )  )
+						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + ( Conversion / 400 ) )  / ( Colony.hiddenProsperity / ( Population / 200 + 1 ) * ColonialStateSize )  )
 					ELSE
-						PROCESS value = value - PerSeconds ( 1 ? 5 / ( Colony.hiddenProsperity / ( Population / 200 ) * ColonialStateSize  ) )
+						PROCESS value = value - PerSeconds ( 1 ? 5 / ( Colony.hiddenProsperity / ( Population / 200 + 1 ) * ColonialStateSize  ) )
 					ENDIF
 					
 					SET ColonialConvert.value [ : : 100 - ColonialHeretic.value ]
@@ -328,11 +331,32 @@ Religious = {
 				VALUE DevotionToTheLawValue [ 0 0 1000 ]
 				VALUE DevotionToTradeValue [ 0 0 1000 ]
 				VALUE DevotionToWarValue [ 0 0 1000 ]
+				VALUE ReligiousCeremonyUsedValue [ 0 0 100 ]
+				VALUE ReligiousOfferingsUsedValue [ 0 0 100 ]
+				VALUE DevotionToCraftsmanshipUsedValue [ 0 0 200 ]
+				VALUE DevotionToNatureUsedValue [ 0 0 200 ]
+				VALUE DevotionToSeaUsedValue [ 0 0 200 ]
+				VALUE DevotionToTheHarvestUsedValue [ 0 0 200 ]
+				VALUE DevotionToTheLawUsedValue [ 0 0 200 ]
+				VALUE DevotionToTradeUsedValue [ 0 0 200 ]
+				VALUE DevotionToWarUsedValue [ 0 0 200 ]
 				
 				SLEEP = {
 					IF GetCurrentEra() < GetEra(DiscoveryAge)
 						REMOVE NationalReligion
 					ENDIF
+				}
+				
+				TICK = {
+				PROCESS ReligiousCeremonyUsedValue = ReligiousCeremonyValue * ( Religiosity / 50 )
+				PROCESS ReligiousOfferingsUsedValue = ReligiousOfferingsValue * ( Religiosity / 50 )
+				PROCESS DevotionToCraftsmanshipUsedValue = DevotionToCraftsmanshipValue * ( Religiosity / 50 )
+				PROCESS DevotionToNatureUsedValue = DevotionToNatureValue * ( Religiosity / 50 )
+				PROCESS DevotionToSeaUsedValue = DevotionToSeaValue * ( Religiosity / 50 )
+				PROCESS DevotionToTheHarvestUsedValue = DevotionToTheHarvestValue * ( Religiosity / 50 )
+				PROCESS DevotionToTheLawUsedValue = DevotionToTheLawValue * ( Religiosity / 50 )
+				PROCESS DevotionToTradeUsedValue = DevotionToTradeValue * ( Religiosity / 50 )
+				PROCESS DevotionToWarUsedValue = DevotionToWarValue * ( Religiosity / 50 )
 				}
 				
 				TRIGGER_SPAWN NationalReligion = {
@@ -367,7 +391,7 @@ Religious = {
 				}
 
 				TICK = {
-					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2 + Devotion * 2 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
+					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
 					PROCESS value = ( tempvalue / ( tempvalue + 1000 ) ) * 100
 				}
 
@@ -437,10 +461,17 @@ Religious = {
 					$PoliticalPower =  (LinkCount(ToleranceOfHeathens) + 1 ) * 1.1
 				}
 				TICK = {
-					IF ( value > 0 )
+					
+					IF ( value > 0 ) & ~NationalReligion
+						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( NationalReligion.SyncretismValue * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					ENDIF
+					IF ( value > 0 ) & ~NationalReligion == 0
 						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
 						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
+					
+					
 					IF ( value == 0 )
 						PROCESS cost =  0
 					ENDIF
@@ -479,18 +510,18 @@ Religious = {
 				}
 				
 				SLEEP = {
-					IF AsSpawn == 1 
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(Syncretism') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
-							IF ( Pantheon < 50 )
-								SET ToleranceOfHeathens.value [ : : Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 )/100 )+25 )) ]
+					IF AsSpawn == 1
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(NationalReligion.SyncretismValue') / 4 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+							IF ( NationalReligion.PantheonValue < 50 )
+								SET ToleranceOfHeathens.value [ : : Min ( 100 , ((NationalReligion.SyncretismValue / 2 * (NationalReligion.PantheonValue * 1.5 + 25 )/100 )+25 )) ]
 							ENDIF
-							IF (Pantheon >= 50 )
-								SET ToleranceOfHeathens.value [ : : Min ( 100 ,((Syncretism.value / 2 * ((100 - Pantheon.value)*0.02 ))+25 )) ]
+							IF (NationalReligion.PantheonValue >= 50 )
+								SET ToleranceOfHeathens.value [ : : Min ( 100 ,((NationalReligion.SyncretismValue / 2 * ((100 - NationalReligion.PantheonValue)*0.02 ))+25 )) ]
 							ENDIF
-							IF ( value > 0 )
-								PROCESS cost =  value * value  * 0.0001
+							IF ( NationalReligion.SyncretismValue > 0 )
+								PROCESS cost =  NationalReligion.SyncretismValue * NationalReligion.SyncretismValue  * 0.0001
 							ENDIF
-							IF ( value == 0 )
+							IF ( NationalReligion.SyncretismValue == 0 )
 								PROCESS cost =  0
 							ENDIF
 					
@@ -596,10 +627,17 @@ Religious = {
 				
 					PROCESS ClergyIndependance = ClergyIndependance + ( Abs(Conversion') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				
-				IF Pantheon > 10
-					PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-					PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-				ENDIF
+				
+					IF NationalReligion.PantheonValue > 10 & ~NationalReligion
+						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+					ENDIF
+				
+					IF Pantheon > 10
+						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+					ENDIF
+
 				
 				IF ( value > 0)
 					IF ~GreatSchism
@@ -658,27 +696,26 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance - ( ReligiousOfferings' / 4.4 )
-						IF OfferingsNature > 80 & Livestock > ( value  * ReligiousCeremony * ( 100 - SacrificeNature ) / 1500000 ) & ((Slaves > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )) | (Population > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )))
-							PROCESS Livestock = Livestock - PerSeconds ( value  * ReligiousCeremony * ( 100 - SacrificeNature ) / 1500000 )
-							IF Slaves > ( value  * ReligiousCeremony * SacrificeNature / 2000000 )
-								PROCESS Slaves = Slaves - PerSeconds ( value  * ReligiousCeremony * SacrificeNature / 2000000 )
+						PROCESS ClergyIndependance = ClergyIndependance - ( NationalReligion.ReligiousOfferingsUsedValue' / 4.4 )
+						IF NationalReligion.OfferingsNatureValue > 80 & Livestock > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * ( 100 - NationalReligion.SacrificeNatureValue ) / 1500000 ) & ((Slaves > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.SacrificeNatureValue / 2000000 )) | (Population > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.SacrificeNatureValue / 2000000 )))
+							PROCESS Livestock = Livestock - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * ( 100 - NationalReligion.SacrificeNatureValue ) / 1500000 )
+							IF Slaves > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.SacrificeNatureValue / 2000000 )
+								PROCESS Slaves = Slaves - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.SacrificeNatureValue / 2000000 )
 							ENDIF
-							IF Slaves <= ( value  * ReligiousCeremony * SacrificeNature / 2000000 )
-								PROCESS Population = Population - PerSeconds ( value  * ReligiousCeremony * SacrificeNature / 2000000 )
+							IF Slaves <= ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.SacrificeNatureValue / 2000000 )
+								PROCESS Population = Population - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.SacrificeNatureValue / 2000000 )
 							ENDIF
-							PROCESS Piety = Piety + PerSeconds (  ( value  + SacrificeNature ) * ReligiousCeremony * 0.00004 )
+							PROCESS Piety = Piety + PerSeconds (  ( NationalReligion.ReligiousOfferingsUsedValue  + NationalReligion.SacrificeNatureValue ) * NationalReligion.ReligiousCeremonyUsedValue * 0.00004 )
 						ENDIF
-						IF OfferingsNature <= 80 & OfferingsNature >= 40 & Food > ( value  * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & TradeGoods > ( value  * ReligiousCeremony * Pantheon / 2000000 )
-							PROCESS Food = Food - PerSeconds ( value  * ReligiousCeremony * ( 100 - Pantheon ) / 2000000 )
-							PROCESS TradeGoods = TradeGoods - PerSeconds ( value  * ReligiousCeremony * Pantheon / 2000000 )
-							PROCESS Piety = Piety + PerSeconds ( value  * ReligiousCeremony * 0.00004 )
+						IF NationalReligion.OfferingsNatureValue <= 80 & NationalReligion.OfferingsNatureValue >= 40 & Food > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * (100 - NationalReligion.PantheonValue ) / 2000000 ) & TradeGoods > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.PantheonValue / 2000000 )
+							PROCESS Food = Food - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * ( 100 - NationalReligion.PantheonValue ) / 2000000 )
+							PROCESS TradeGoods = TradeGoods - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.PantheonValue / 2000000 )
+							PROCESS Piety = Piety + PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * 0.00004 )
 						ENDIF
-						IF OfferingsNature < 40 & TradeGoods > (value  * ReligiousCeremony * (100 - Pantheon ) / 2000000 ) & $Wealth > ( value  * ReligiousCeremony * Pantheon / 2000000 )
-							PROCESS TradeGoods = TradeGoods - PerSeconds ( value  * ReligiousCeremony * (100 - Pantheon ) / 2000000 )
-							PROCESS $Wealth = $Wealth - PerSeconds ( value  * ReligiousCeremony * Pantheon / 2000000 )
-							PROCESS Piety = Piety + PerSeconds ( value  * ReligiousCeremony * 0.00004 )
+						IF NationalReligion.OfferingsNatureValue < 40 & TradeGoods > (NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * (100 - NationalReligion.PantheonValue ) / 2000000 ) & $Wealth > ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.PantheonValue / 2000000 )
+							PROCESS TradeGoods = TradeGoods - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * (100 - NationalReligion.PantheonValue ) / 2000000 )
+							PROCESS $Wealth = $Wealth - PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * NationalReligion.PantheonValue / 2000000 )
+							PROCESS Piety = Piety + PerSeconds ( NationalReligion.ReligiousOfferingsUsedValue  * NationalReligion.ReligiousCeremonyUsedValue * 0.00004 )
 						ENDIF
 					ENDIF
 				}
@@ -797,7 +834,7 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(OfferingsNature') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(NationalReligion.OfferingsNatureValue') / 8 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -873,17 +910,31 @@ Religious = {
 				}
 				TICK = {
 				
-				IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 100 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 75 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 200 * (1.5 - MilitaryEfficiency /100 ) )
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 75 * ( 1.5 - MilitaryEfficiency /100 ) )
-					PROCESS OverlandTrade = OverlandTrade - PerSeconds(value / 25)
-					PROCESS NavalTrade = NavalTrade - PerSeconds(value / 25)
-					PROCESS Piety = Piety + PerSeconds ( value * SacrificeNature * 0.00001 )
-					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds ( ( 3000 + value * SacrificeNature ) * 0.00002 )
-					PROCESS Slaves = Slaves + PerSeconds ( ( 2500 + value * SacrificeNature ) * 0.00002 )
-				ENDIF
+				IF ~NationalReligion 
+					IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 100 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 75 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 200 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 75 * ( 1.5 - MilitaryEfficiency /100 ) )
+						PROCESS OverlandTrade = OverlandTrade - PerSeconds(value / 25)
+						PROCESS NavalTrade = NavalTrade - PerSeconds(value / 25)
+						PROCESS Piety = Piety + PerSeconds ( value * NationalReligion.SacrificeNatureValue * 0.00001 )
+						PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds ( ( 3000 + value * NationalReligion.SacrificeNatureValue ) * 0.00002 )
+						PROCESS Slaves = Slaves + PerSeconds ( ( 2500 + value * NationalReligion.SacrificeNatureValue ) * 0.00002 )
+					ENDIF
+				ELSE
+					IF ( MilitaryManpower * MilitaryEfficiency / 100 ) > 20
+						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 100 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 75 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 200 * (1.5 - MilitaryEfficiency /100 ) )
+						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(value / 75 * ( 1.5 - MilitaryEfficiency /100 ) )
+						PROCESS OverlandTrade = OverlandTrade - PerSeconds(value / 25)
+						PROCESS NavalTrade = NavalTrade - PerSeconds(value / 25)
+						PROCESS Piety = Piety + PerSeconds ( value * SacrificeNature * 0.00001 )
+						PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds ( ( 3000 + value * SacrificeNature ) * 0.00002 )
+						PROCESS Slaves = Slaves + PerSeconds ( ( 2500 + value * SacrificeNature ) * 0.00002 )
+					ENDIF
+				ENDIF	
 
 				}
 				
@@ -1001,8 +1052,7 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToNature' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToNatureUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1052,8 +1102,7 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToSea' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToSeaUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1103,8 +1152,7 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTheHarvest' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToTheHarvestUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1153,9 +1201,8 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS PriestClass = PriestClass + PerSeconds ( value / 500 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTheLaw' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS PriestClass = PriestClass + PerSeconds ( NationalReligion.DevotionToTheLawUsedValue / 500 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToTheLawUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1212,9 +1259,8 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						SET Militarism.value [ : : 50 + DevotionToWar.value / 10 ]
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToWar' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						SET Militarism.value [ : : 50 + NationalReligion.DevotionToWarUsedValue / 10 ]
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToWarUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1262,9 +1308,8 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS Entreprises = Entreprises + PerSeconds ( value / 400 ) 
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToTrade' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS Entreprises = Entreprises + PerSeconds ( NationalReligion.DevotionToTradeUsedValue / 400 ) 
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToTradeUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1315,10 +1360,9 @@ Religious = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS TradeGoods = TradeGoods + PerSeconds ( value / 100 )
-						PROCESS ArtisanClass = ArtisanClass + PerSeconds ( value / 400 )
-						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( DevotionToCraftsmanship' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+						PROCESS TradeGoods = TradeGoods + PerSeconds ( NationalReligion.DevotionToCraftsmanshipUsedValue / 100 )
+						PROCESS ArtisanClass = ArtisanClass + PerSeconds ( NationalReligion.DevotionToCraftsmanshipUsedValue / 400 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs( NationalReligion.DevotionToCraftsmanshipUsedValue' ) / 5 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
 				}
 				
@@ -1497,13 +1541,14 @@ Religious = {
 				}
 				
 				TICK = {
+					PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 25 +  ColonialHeretic / 45 )  )
 					IF ColonialHeretic > 0
-						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 700 )
-						PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 100 +  ColonialHeretic / 25 )  )
-						IF ColonialConvert < 100 - ColonialHeretic
-							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 1000 )
-						ENDIF
-					ENDIF	
+						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 350 )
+					ENDIF
+					IF ColonialConvert < 100 - ColonialHeretic
+						PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 500 )
+					ENDIF
+						
 					
 				}
 
@@ -1908,7 +1953,7 @@ Religious = {
 				EVENT_DEF [ 15 20 100 100% ]
 				
 				SLEEP = {
-					EVENT_CHANCE Max( 0.1 , 0.2 - ReligiousHeadPower / 200 )
+					EVENT_CHANCE Max( 0.1 , 0.2 - ReligiousHeadPower * 0.002 )
 				}
 				
 				ARISE = {
@@ -1924,7 +1969,7 @@ Religious = {
 				}
 				
 				TRIGGER_SPAWN NewCompetitingReligiousLeader = {
-					PROCESS CompetitingReligiousLeader = CompetitingReligiousLeader + 1
+						PROCESS CompetitingReligiousLeader = CompetitingReligiousLeader + 1
 				}
 
 				TRIGGER_EVENT = {
@@ -1957,6 +2002,11 @@ Religious = {
 				
 				TRIGGER_SPAWN EndOfReligiousDisent = {
 					PROCESS CompetitingReligiousLeader = 0
+					
+				}
+				
+				TRIGGER_LEAVE EndOfReligiousDisent ={
+					REMOVE CompetitingReligiousLeader
 				}
 
 				TRIGGER_EVENT = {
@@ -2038,6 +2088,46 @@ Religious = {
 					REMOVE DevotionToTheLaw
 					REMOVE DevotionToTrade
 					REMOVE DevotionToWar
+				}
+				
+				LINK Pantheon = {
+				
+				}
+				LINK Syncretism = {
+				
+				}
+				LINK ReligiousCeremony = {
+				
+				}
+				LINK ReligiousOfferings = {
+				
+				}
+				LINK OfferingsNature = {
+				
+				}
+				LINK SacrificeNature = {
+				
+				}
+				LINK DevotionToCraftsmanship = {
+				
+				}
+				LINK DevotionToNature = {
+				
+				}
+				LINK DevotionToSea = {
+				
+				}
+				LINK DevotionToTheHarvest = {
+				
+				}
+				LINK DevotionToTheLaw = {
+				
+				}
+				LINK DevotionToTrade = {
+				
+				}
+				LINK DevotionToWar = {
+				
 				}
 
 				TRIGGER_EVENT = {
