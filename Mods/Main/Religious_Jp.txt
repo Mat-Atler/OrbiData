@@ -1,9 +1,9 @@
 Religious = {
 
-	
+
 	Ressources = {
 		}
-	
+
 	Nodes = {
 		States = {
 			Heretics = {
@@ -30,7 +30,34 @@ Religious = {
 				NAME "献身"
 				DESCRIPTION <b>"Valeur: "@[value] </b> "宗教は男性が人生と社会において専念するものについて重要な助けになります。私たちの信仰が強力であるほど献身は比類ないものになります。"
 				SUMMARY " 様々な健診を強化する"
-			}			
+			}
+			ColonialConvert = {
+				NAME "植民地の改宗者"
+				DESCRIPTION <b>　"値: "@[value] </b> "祖国の主要な宗教を信仰している植民地の住民の割合。割合が高いほど、より人々は植民地の改善に参加するでしょう。"
+				SUMMARY "真の信仰に従った植民地人口の割合"
+			}
+			ColonialHeretic = {
+				NAME "植民地の異端者"
+				DESCRIPTION <b> "値: " @[value] </b> "異端の宗教に従う植民地人口の割合、私たちは彼らを改宗させなければなりません。さもなければ不安を引き起こしたり、最悪彼らは独立を求めるかもしれません。"
+				SUMMARY "私たちの植民地における異端者の割合"
+			}
+			Religiosity = {
+				NAME "宗教性"
+				LEVEL value = {
+					0 = "神は死んだ"
+					10 = "現在宗教問題はほとんどの場合、祈りの時にのみ重要です"
+					25 = "宗教は大きな道徳的影響力を持っているだけです"
+					60 = "宗教指導者は定期的に政府の決定に影響を与えます"
+					80 = "社会全体は宗教によって支配されています。"
+				}
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>  "聖職が全ての人間の質問に答えることができなくなったとき、私たちの社会における宗教の影響は多くの理由で変わる可能性があります。"
+				SUMMARY "あなたの文明における宗教の重要性を表しています"
+			}
+			NationalReligion = {
+				NAME "国教"
+				DESCRIPTION <b>　"パルテノン: " @[PantheonValue] </b> <br> <b> "習合: "@[SyncretismValue] </b> <br> <b> "宗教儀式: " @[ReligiousCeremonyValue] </b> <br> <b> "供物: " @[ReligiousOfferingsValue] </b> <br> <b> "供物の内容: "@[OfferingsNatureValue] </b> <br> <b> "生贄の内容: "@[SacrificeNatureValue] </b> <br> <b> "職人への献身: " @[DevotionToCraftsmanshipValue] </b> <br> <b> "自然への献身 : "@[DevotionToNatureValue] </b> <br> <b> "海への献身: "@[DevotionToSeaValue] </b> <br> <b> "収穫への献身: "@[DevotionToTheHarvestValue] </b> <br> <b>"法への献身: "@[DevotionToTheLawValue] </b> <br> <b>"貿易への献身: " @[DevotionToTradeValue] </b> <br> <b> "戦争への献身: "@[DevotionToWarValue] </b> <br> <br> "私たちの宗教は何世紀にもわたって多くの変化を遂げてきました。しかしそれらの時代は終わりました。私たちの教義はこれから何世紀にもわたって定義されています。"
+				SUMMARY "もう変更できない私たちの宗教の側面を一元化するノード"
+			}
 		}
 		Levers = {
 			ToleranceOfHeretics = {
@@ -44,7 +71,7 @@ Religious = {
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "異端者が問題を起こさないようにすることはできますが一定の政治力を犠牲にします。"
 				SUMMARY " 異端者に関する方針"
 				}
-				
+
 			ToleranceOfHeathens = {
 				NAME "異教への寛容"
 				LEVEL value = {
@@ -56,7 +83,7 @@ Religious = {
 				DESCRIPTION  @[value,LEVEL]"( "@[value] " )" <br><br> "異教徒が問題を起こさないようにすることはできますが一定の政治力を犠牲にします。"
 				SUMMARY " 異教徒に関する方針"
 				}
-			
+
 			Syncretism = {
 				NAME "習合"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> "他の宗教も我々の宗教とさほど変わらないことが理解できる時間が過ぎました。この哲学は異教徒をよりよく許容することができます。"
@@ -74,14 +101,14 @@ Religious = {
 				DESCRIPTION @[value,LEVEL]"( "@[value] " )" <br><br> " 我々の信条は不信心者に課税することを許容します。 もちろん彼らは思い税金のために反抗することが出来ました。"
 				SUMMARY "宗教的少数派の課税額"
 			}
-			
+
 			Conversion = {
 				NAME "改宗"
 				DESCRIPTION <b>"値: "@[value] </b> <br><br> " 宗教的少数派は我々の団結にとって危険です。我々は彼らを全員改修する必要があります。我々の儀式と信仰が定義され統一されれば彼らの回心はより効果的になります。"
 				SUMMARY "不信心者を真の信仰に変える "
 				}
-				
-			ReligiousOfferings = { 
+
+			ReligiousOfferings = {
 				NAME "供物"
 				LEVEL value = {
 					0 = "なし"
@@ -187,7 +214,7 @@ Religious = {
 				NAME "自然への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "自然は私たちに必要なすべて物を与えてくれます。だからこそ、その恩恵が尽きないよう尊重することにしました。"
 				SUMMARY "採集と狩猟の影響を最小限に抑える"
-			}	
+			}
 			DevotionToSea = {
 				NAME "海への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "海は私たちに食糧と外界からの保護を与えてくれます。波を味方につけることでその恩恵を確保することができます。"
@@ -202,23 +229,28 @@ Religious = {
 				NAME "法への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "私たちの社会が調和を維持できるのは法律を厳守することでのみです。聖職は裁判官の心を持たなければならない理由です。"
 				SUMMARY "都市民兵と宗教法の有効性を高める"
-			}	
+			}
 			DevotionToWar = {
 				NAME "戦争への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "神は最高の戦士だけを受け入れます。常に戦場で勝つことを保証しましょう。"
 				SUMMARY "軍国主義の有効性を高める"
-			}	
+			}
 			DevotionToTrade = {
 				NAME "貿易への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "民衆の繁栄は神の祝福です。この恩恵が常に与えられていることを確認しましょう。"
 				SUMMARY "起業家の有効性を高める"
-			}	
+			}
 			DevotionToCraftsmanship = {
 				NAME "職人への献身"
 				DESCRIPTION <b>"値:"@[value] </b>  <br><br> "救いが得られるのは行動を通じてであるように、男が自分の価値を証明するのは一生懸命働くことです。すべての男性が努力に参加することを確認しましょう。"
 				SUMMARY "貿易財の生産を高める"
-			}			
-				
+			}
+			ColonialConversion = {
+				NAME "植民地の改宗"
+				DESCRIPTION <b> "値: "@[value] </b> <br><br> "宗教的少数派は、私たちの植民地の統一と繁栄にとって危険です。遠距離のため私達自身で改宗の世話をする事はできません。幸いな事に多くの修道会が私たちのために改宗を手伝う準備が出来ています。私たちが彼らを手助けすれば改宗を早めることができます。"
+				SUMMARY "植民地の住民を真の信仰に変える"
+			}
+
 		}
 		Events = {
 			Schism = {
@@ -231,13 +263,13 @@ Religious = {
 				DESCRIPTION "民衆の一部は異国の宗教の偽預言者によってしでかされるいわゆるキセキを目の当たりにしました。"
 				SUMMARY "多くの人々が異国の宗教に改宗している"
 			}
-			
+
 			ConversionTrueFaith = {
 				NAME "真の信仰への大転換"
 				DESCRIPTION "国境に住む異端者や異教徒の一部は唯一の真の信仰を優位性を証明する奇跡を目撃しました。"
 				SUMMARY "多くの人々が真の信仰に改宗している"
 			}
-			
+
 			ReligiousMinorityRevolt = {
 				NAME "宗教的少数派の反乱"
 				DESCRIPTION "国境に住む異端者や異教徒が扱いに不満を持ち反抗しています。"
@@ -288,7 +320,17 @@ Religious = {
 				DESCRIPTION "私たちの宗教の内部分裂を終わらせるための絶え間ない努力がついに報われました。今では誰もが宗教的指導者が一人しかいないことを認識しています。"
 				SUMMARY "聖職者の分裂が終わり唯一の宗教指導者が残っている"
 			}
-			
+			ClergyDiscontent = {
+				NAME "聖職者の不満"
+				DESCRIPTION "聖職者は邪魔されることを好まず、反撃を決定しました。その影響力の全て使って私たちの計画に反対します。"
+				SUMMARY "聖職者は私たちの政府の利益に反して働きます。"
+			}
+			PerpetuationOfDogmas = {
+				NAME "教義の永続化"
+				DESCRIPTION "新しいものは全て慣習になる運命です。私たちの宗教も例外ではありません。教義は定着していきます。すぐに私たちの宗教の大綱に影響を与えることは確かに不可能になるでしょう。"
+				SUMMARY "このイベントの後、多くの宗教ノードを直接変更することはできなくなります。"
+			}
+
 
 		}
 	}

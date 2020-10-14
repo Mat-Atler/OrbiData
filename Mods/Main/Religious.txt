@@ -461,17 +461,16 @@ Religious = {
 					$PoliticalPower =  (LinkCount(ToleranceOfHeathens) + 1 ) * 1.1
 				}
 				TICK = {
-					IF ~NationalReligion
-						IF ( value > 0 )
-							PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( NationalReligion.SyncretismValue * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
-							PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
-						ENDIF
-					ELSE
-						IF ( value > 0 )
-							PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
-							PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
-						ENDIF
+					
+					IF ( value > 0 ) & ~NationalReligion
+						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( NationalReligion.SyncretismValue * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 					ENDIF
+					IF ( value > 0 ) & ~NationalReligion == 0
+						PROCESS cost =  ( ( value * Heathens *  0.0005 ) / (( Syncretism * 20 + 100 ) / 100 ) ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS ClergyIndependance = ClergyIndependance + ( Abs(ToleranceOfHeathens') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
+					ENDIF
+					
 					
 					IF ( value == 0 )
 						PROCESS cost =  0
@@ -628,17 +627,17 @@ Religious = {
 				
 					PROCESS ClergyIndependance = ClergyIndependance + ( Abs(Conversion') / 2 * 100 / ( 300 + ClergyCentralization + Theocracy ))
 				
-				IF ~NationalReligion
-					IF NationalReligion.PantheonValue > 10
+				
+					IF NationalReligion.PantheonValue > 10 & ~NationalReligion
 						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 					ENDIF
-				ELSE
+				
 					IF Pantheon > 10
 						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 					ENDIF
-				ENDIF
+
 				
 				IF ( value > 0)
 					IF ~GreatSchism
@@ -1542,13 +1541,14 @@ Religious = {
 				}
 				
 				TICK = {
+					PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 25 +  ColonialHeretic / 45 )  )
 					IF ColonialHeretic > 0
-						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 700 )
-						PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 25 +  ColonialHeretic / 45 )  )
-						IF ColonialConvert < 100 - ColonialHeretic
-							PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 1000 )
-						ENDIF
-					ENDIF	
+						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 )  / (( ColonialHeretic * ColonialProsperity / 10 ) * ( ColonialStateSize / 2 )) / 350 )
+					ENDIF
+					IF ColonialConvert < 100 - ColonialHeretic
+						PROCESS ColonialConvert = ColonialConvert + PerSeconds ( value * ( Monasteries +1 ) * (Conversion + 1 ) / ( ColonialProsperity  * ( ColonialStateSize / 2 )) / 500 )
+					ENDIF
+						
 					
 				}
 
