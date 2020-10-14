@@ -925,10 +925,14 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					IF ~DevotionToTheHarvest
-					PROCESS output =  value * 0.0035 * ( 1 + DevotionToTheHarvest / 400 )
+					IF ~NationalReligion
+						PROCESS output =  value * 0.0035 * ( 1 + NationalReligion.DevotionToTheHarvestUsedValue / 400 )
 					ELSE
-					PROCESS output =  value * 0.0035 
+						IF ~DevotionToTheHarvest
+						PROCESS output =  value * 0.0035 * ( 1 + DevotionToTheHarvest / 400 )
+						ELSE
+						PROCESS output =  value * 0.0035 
+						ENDIF
 					ENDIF
 				
 					PROCESS Flora = Flora - PerSeconds( output * 2.3 )
@@ -1018,11 +1022,15 @@ Main = {
 					PROCESS value =  value - PerSeconds(0.001)
 					PROCESS Piety = Piety + PerSeconds( value / 200 )
 					
-					IF ~DevotionToTheLaw
-					SET ReligiousLaw.value [ : : PriestClass * ( 1 + ( DevotionToTheLaw / 400 ) ) ]
+					IF ~NationalReligion
+						SET ReligiousLaw.value [ : : PriestClass * ( 1 + ( NationalReligion.DevotionToTheLawUsedValue / 400 ) ) ]
 					ELSE
-					SET ReligiousLaw.value [ : : PriestClass ]
-					ENDIF
+						IF ~DevotionToTheLaw
+						SET ReligiousLaw.value [ : : PriestClass * ( 1 + ( DevotionToTheLaw / 400 ) ) ]
+						ELSE
+						SET ReligiousLaw.value [ : : PriestClass ]
+						ENDIF
+					ENDIF	
 					
 					SET PriestClass.value [ : : PriestClass ]
 				}
@@ -1633,11 +1641,16 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-				IF ~DevotionToSea
-				PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  + 100 * ( LargeSailboats / 100 )   +  ( DevotionToSea / 500 ) )
+				
+				IF ~NationalReligion
+					PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  + 100 * ( LargeSailboats / 100 )   +  ( NationalReligion.DevotionToSeaUsedValue / 500 ) )
 				ELSE
-				PROCESS value = 50 * (Longship / 100 ) + 50 * (GreekFire / 100 )  + 50 * (NavigationTools / 100 ) + 50 * ( Caravel / 100 ) + 100 * ( LargeSailboats / 100 ) 
-				ENDIF
+					IF ~DevotionToSea
+					PROCESS value = ( 50 * (Longship / 100 ) ) + ( 50 * (GreekFire / 100 ) ) + ( 50 * (NavigationTools / 100 ) + ( 50 * ( Caravel / 100 ) )  + 100 * ( LargeSailboats / 100 )   +  ( DevotionToSea / 500 ) )
+					ELSE
+					PROCESS value = 50 * (Longship / 100 ) + 50 * (GreekFire / 100 )  + 50 * (NavigationTools / 100 ) + 50 * ( Caravel / 100 ) + 100 * ( LargeSailboats / 100 ) 
+					ENDIF
+				ENDIF	
 				
 				}
 				LINK Navy = {
@@ -2314,11 +2327,15 @@ Main = {
 					PROCESS Fauna = Fauna - PerSeconds(output * 5.5)
 					PROCESS $Wealth += PerSeconds(output * 0.5)
 					
-					IF ~DevotionToNature
-					PROCESS Fauna = Fauna - PerSeconds(output * ( 5.5 - DevotionToNature / 100 ) )
+					IF ~NationalReligion
+						PROCESS Fauna = Fauna - PerSeconds(output * ( 5.5 - NationalReligion.DevotionToNatureUsedValue / 100 ) )
 					ELSE
-					PROCESS Fauna = Fauna - PerSeconds(output * 5.5 )
-					ENDIF
+						IF ~DevotionToNature
+						PROCESS Fauna = Fauna - PerSeconds(output * ( 5.5 - DevotionToNature / 100 ) )
+						ELSE
+						PROCESS Fauna = Fauna - PerSeconds(output * 5.5 )
+						ENDIF
+					ENDIF	
 				}
 				//SLEEP = {
 					//IF Fauna > 20
@@ -2370,11 +2387,16 @@ Main = {
 				
 				TICK = {
 				
-					IF ~DevotionToSea
-					PROCESS output =  value * 0.05 * ( Coastline / 100 ) * ( 1 + DevotionToSea / 400 )
+					IF ~NationalReligion
+						PROCESS output =  value * 0.05 * ( Coastline / 100 ) * ( 1 + NationalReligion.DevotionToSeaUsedValue / 400 )
 					ELSE
-					PROCESS output =  value * 0.05 * ( Coastline / 100 )
-					ENDIF
+						IF ~DevotionToSea
+						PROCESS output =  value * 0.05 * ( Coastline / 100 ) * ( 1 + DevotionToSea / 400 )
+						ELSE
+						PROCESS output =  value * 0.05 * ( Coastline / 100 )
+						ENDIF
+					ENDIF	
+						
 					IF ~NavigationTools
 					PROCESS output =  output * ( 100 + NavigationTools * 1.5 ) / 100
 					ENDIF
@@ -2556,11 +2578,15 @@ Main = {
 					PROCESS Food = Food + PerSeconds(output *0.15)
 					PROCESS $Wealth = $Wealth + PerSeconds(output*0.5)
 					
-					IF ~DevotionToNature
-					PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - DevotionToNature / 300 ) )
+					IF ~NationalReligion
+					PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - NationalReligion.DevotionToNatureUsedValue / 300 ) )
 					ELSE
-					PROCESS Flora = Flora - PerSeconds(output * 2.5 )
-					ENDIF
+						IF ~DevotionToNature
+						PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - DevotionToNature / 300 ) )
+						ELSE
+						PROCESS Flora = Flora - PerSeconds(output * 2.5 )
+						ENDIF
+					ENDIF	
 				}
 				LINK Flora = {
 					IF output > 0
@@ -2755,6 +2781,9 @@ Main = {
 					IF ~DevotionToTheHarvest
 						PROCESS output = output * ( 1 + ( DevotionToTheHarvest / 400 ) )
 					ENDIF
+					IF ~NationalReligion
+						PROCESS output = output * ( 1 + ( NationalReligion.DevotionToTheHarvestUsedValue / 400 ) )
+					ENDIF
 					PROCESS Food = Food + PerSeconds(output)
 					PROCESS $Wealth = $Wealth + PerSeconds(output * 0.5)
 				}
@@ -2872,11 +2901,16 @@ Main = {
 					IF ~ReligiousArt == 0
 						SET ReligiousMonuments.value [ : : Min (100 , Urbanization.value * 0.7 + 30 ) ]
 					ENDIF 
-					IF ~DevotionToTheLaw
-						SET UrbanMilitia.value [ : : Urbanization.value + 10 * ( 1 + ( DevotionToTheLaw / 500 ) )  ]
+					
+					IF ~NationalReligion
+						SET UrbanMilitia.value [ : : Urbanization.value + 10 * ( 1 + ( NationalReligion.DevotionToTheLawUsedValue / 500 ) )  ]
 					ELSE
-						SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
-					ENDIF
+						IF ~DevotionToTheLaw
+							SET UrbanMilitia.value [ : : Urbanization.value + 10 * ( 1 + ( DevotionToTheLaw / 500 ) )  ]
+						ELSE
+							SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
+						ENDIF
+					ENDIF	
 					
 					IF GetCurrentEra() < 300
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 500)
@@ -3045,7 +3079,7 @@ Main = {
 				}
 				SLEEP = {
 					 IF AsSpawn == 1
-						SET PriestClass.value [ : : Min ( 100 , Pantheon.value + 10 ) ]
+						SET PriestClass.value [ : : Min ( 100 , NationalReligion.PantheonValue + 10 ) ]
 					ENDIF
 				}
 				 
@@ -3559,8 +3593,7 @@ Main = {
 				
 				SLEEP = {
 					IF AsSpawn == 1
-						PROCESS value = Savevalue * ( Religiosity / 50 )
-						PROCESS PriestClass =  PriestClass + PerSeconds( value * ( Religiosity / 50 ) / 500)
+						PROCESS PriestClass =  PriestClass + PerSeconds( NationalReligion.ReligiousCeremonyUsedValue ) / 500 )
 					ENDIF
 				}
 				
@@ -6794,9 +6827,16 @@ Main = {
 				TICK = {
 					PROCESS ColonialProsperity = ColonialProsperity + PerSeconds(value / 150)
 					PROCESS $Wealth = $Wealth - PerSeconds( value / 10 )
-					IF SacrificeNature > 80
-						PROCESS Slaves = ColonialProsperity + PerSeconds(value / 75)
-					ENDIF
+					
+					IF ~NationalReligion
+						IF NationalReligion.SacrificeNatureValue > 80
+							PROCESS Slaves = ColonialProsperity + PerSeconds(value / 75)
+						ENDIF
+					ELSE
+						IF SacrificeNature > 80
+							PROCESS Slaves = ColonialProsperity + PerSeconds(value / 75)
+						ENDIF
+					ENDIF	
 				}
 				
 
