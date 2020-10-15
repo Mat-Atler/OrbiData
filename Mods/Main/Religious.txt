@@ -1813,6 +1813,11 @@ Religious = {
 					COLOR green
 					FLUX 5
 				}
+				
+				LINK Stability = {
+					COLOR red
+					FLUX 3.5
+				}
 
 				TRIGGER_EVENT = {
 					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~ReinforcementOfTheGouvernement == 0
@@ -1833,10 +1838,15 @@ Religious = {
 				}
 				TICK = {
 					OVERRIDE_PARAM ClergyIndependance.value = GetParam(ClergyIndependance.value) - PerSeconds( 0.5 ? 1 )
-					PROCESS Stability = Stability - PerSeconds ( 0.25 ? 1 )
+					PROCESS Stability = Stability + PerSeconds ( 0.25 ? 1 )
 				}
 				LINK ClergyIndependance = {
 					COLOR red
+					FLUX 3.5
+				}
+				
+				LINK Stability = {
+					COLOR green
 					FLUX 3.5
 				}
 
@@ -1866,7 +1876,7 @@ Religious = {
 				}
 
 				TRIGGER_EVENT = {
-					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~ReinforcementOfTheReligiousHead == 0
 						RISE
 					ENDIF
 				}
@@ -1887,7 +1897,6 @@ Religious = {
 				}
 				TICK = {
 					PROCESS ReligiousHeadPower = ReligiousHeadPower + PerSeconds ( 0.75 ? 1.25 )
-					PROCESS Stability = Stability - PerSeconds ( 0.25 ? 1 )
 				}
 				LINK ReligiousHeadPower = {
 					COLOR green
@@ -1895,7 +1904,7 @@ Religious = {
 				}
 
 				TRIGGER_EVENT = {
-					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0
+					IF ~ReligiousHeadPower & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~WeakReligiousHead == 0
 						RISE
 					ENDIF
 				}
