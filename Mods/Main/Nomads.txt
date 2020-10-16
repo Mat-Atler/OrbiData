@@ -308,8 +308,10 @@ Nomads = {
 					$PoliticalPower = (LinkCount(ClanicBanners) + 1) * 1
 				}
 				TICK = {
-				PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value)
-				PROCESS Authority.value = Authority.value - PerSeconds(value/10)
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value)
+						PROCESS Authority.value = Authority.value - PerSeconds(value/10)
+					ENDIF
 				}
 				LINK MilitaryManpower = {
 					IF (value > 0)
