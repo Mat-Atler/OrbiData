@@ -210,7 +210,7 @@ Religious = {
 					80 = "Our king is considered to be the principal deity of our religion"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Many have come to view our leaders not only as great leaders, but also as semi-divine beings. Many have formed a sect to fanatically follow our leader. Let us reform our country so that all our subjects are de facto members of our sect."
-				SUMMARY "government by a deified king"
+				SUMMARY "Government by a deified king"
 			}
 			DevotionToNature = {
 				NAME "Devotion To Nature"
