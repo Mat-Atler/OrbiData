@@ -28,6 +28,7 @@ MENU_OPTIONS_PATH_TOOLTIP データを保存する場所を選択します。\n�
 MENU_OPTIONS_LANGUAGE 言語: 
 MENU_OPTIONS_MUSIC 音量設定: 
 MENU_OPTIONS_SFX 効果音設定: 
+MENU_OPTIONS_EVENT_SOUND Event Sound: 
 MENU_OPTIONS_SCREEN 画面: 
 MENU_OPTIONS_SCREEN_FULL フルスクリーン
 MENU_OPTIONS_SCREEN_WINDOW ウィンドウ
@@ -75,6 +76,7 @@ GAME_SUMMARY_NODES ステータスとレバー
 GAME_SUMMARY_EVENTS イベント
 GAME_SUMMARY_TOGGLE トグルパネル
 GAME_SUMMARY_MAIN_MENU メインメニューに戻る
+GAME_SUMMARY_LOAD Load last save
 GAME_SUMMARY_NODE 検索・・・
 GAME_SUMMARY_EVENT イベント
 GAME_SUMMARY_CULTURAL 文化
@@ -115,6 +117,10 @@ GAME_INVEST_CURRENT 現在いくつかのレバーによって予約されてい
 GAME_INVEST_STOP クリックすると予約をすべてキャンセルします。
 GAME_INVEST_STOP_WINDOW 予約取消
 GAME_INVEST_STOP_WINDOW_TEXT 全ての予約を停止してよろしいですか?
+GAME_INVEST_AUTO_CURRENT Some levers are currently auto-investing
+GAME_INVEST_AUTO_STOP Click to stop all automatic investments.
+GAME_INVEST_AUTO_STOP_WINDOW Stop automatic investments
+GAME_INVEST_AUTO_STOP_WINDOW_TEXT Stop all current automatic investments?
 GAME_MOD_MISMATCH_WINDOW 検出された変更
 GAME_MOD_MISMATCH_WINDOW_TEXT_1 最後に保存されてからMODに変更が行われました:
 GAME_MOD_MISMATCH_WINDOW_TEXT_2 ゲームが不安定になる可能性があります。
@@ -125,6 +131,9 @@ GAME_INVEST_COST コスト:
 GAME_INVEST_REFOUND 再投資:
 GAME_INVEST 十分なリソースがありません。\n収入: 
 GAME_INVEST_SET [0]を<b>[1]</b>に設定します。　　
+GAME_INVEST_AUTO Investment will be automatically made.\nMove the slider to disable it.
+GAME_INVEST_AUTO_MIN Automatically invest to minimum.
+GAME_INVEST_AUTO_MAX Automatically invest to maximum.
 GAME_REMOVE_ALERT_ONE_LABEL [0] は削除されました。
 GAME_REMOVE_ALERT_ONE_DESCRIPTION ノード[0]は[1]によって削除されました。
 GAME_REMOVE_ALERT_SELF_LABEL [0]はあなたの文明を去りました。
@@ -137,6 +146,9 @@ GAME_NODE_LOCK ノードが自動移動を禁止
 GAME_NODE_WATCH 監視リストに追加
 GAME_NODE_APPLY 適用
 GAME_NODE_REMOVE 削除する
+GAME_NODE_STATS Stats
+GAME_NODE_INCOMING_CALL Incoming Calls
+GAME_NODE_OUTGOING_CALL Outgoing Calls
 PRIVACY_TOOLTIP データプライバシー
 PRIVACY_HEADER データプライバシーについて
 PRIVACY_INFO このゲームの開発者はこのプログラムを通じて<b>個人情報を収集しません</b>。ただしUnityが蒐集する可能性のある情報については引き続き通知する必要があります。
@@ -144,6 +156,7 @@ PRIVACY_BUTTON Unityのプライバシーポリシーページを開く
 GAME_UNLOCK_IGNORE 無視する
 GAME_UNLOCK_IGNORE_CANCEL クリックすると無視された全てのレバーを再表示されます。
 MENU_OPTIONS_UI_CONTROLS インターフェイスコントロール: 
+GAME_UNLOCK_IGNORE_INFO Right click on a node in the list to ignore it.
 MENU_OPTIONS_UI_CONTROLS_TOOLTIP マウススクロールホイールを使用する代わりに、ズームを変更し、グループを作成するためのゲームインターフェイス上のコントロールを表示します。
 MENU_OPTIONS_AUDIO オーディオ設定
 GAME_NODE_RELATIONSHIP_AFFECT 影響を受けるノード

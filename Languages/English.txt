@@ -28,6 +28,7 @@ MENU_OPTIONS_PATH_TOOLTIP The directory used to save and load data.\nCurrent pat
 MENU_OPTIONS_LANGUAGE Language: 
 MENU_OPTIONS_MUSIC Music Volume: 
 MENU_OPTIONS_SFX SFX Volume: 
+MENU_OPTIONS_EVENT_SOUND Event Sound: 
 MENU_OPTIONS_SCREEN Mode: 
 MENU_OPTIONS_SCREEN_FULL Fullscreen
 MENU_OPTIONS_SCREEN_WINDOW Windowed
@@ -75,6 +76,7 @@ GAME_SUMMARY_NODES States and Levers
 GAME_SUMMARY_EVENTS Events
 GAME_SUMMARY_TOGGLE Toggle panel
 GAME_SUMMARY_MAIN_MENU Return to main menu
+GAME_SUMMARY_LOAD Load last save
 GAME_SUMMARY_NODE Node...
 GAME_SUMMARY_EVENT Event...
 GAME_SUMMARY_CULTURAL Cultural
@@ -115,6 +117,10 @@ GAME_INVEST_CURRENT Some levers are currently investing
 GAME_INVEST_STOP Click to stop all investments.
 GAME_INVEST_STOP_WINDOW Stop investments
 GAME_INVEST_STOP_WINDOW_TEXT Stop all current investments?
+GAME_INVEST_AUTO_CURRENT Some levers are currently auto-investing
+GAME_INVEST_AUTO_STOP Click to stop all automatic investments.
+GAME_INVEST_AUTO_STOP_WINDOW Stop automatic investments
+GAME_INVEST_AUTO_STOP_WINDOW_TEXT Stop all current automatic investments?
 GAME_MOD_MISMATCH_WINDOW Changes detected
 GAME_MOD_MISMATCH_WINDOW_TEXT_1 The following mods have been modified since the last save:
 GAME_MOD_MISMATCH_WINDOW_TEXT_2 The game might be unstable.
@@ -125,6 +131,9 @@ GAME_INVEST_COST Cost:
 GAME_INVEST_REFOUND Refound investment:
 GAME_INVEST Not enough resources.\nInvest: 
 GAME_INVEST_SET Sets [0] to <b>[1]</b>
+GAME_INVEST_AUTO Investment will be automatically made.\nMove the slider to disable it.
+GAME_INVEST_AUTO_MIN Automatically invest to minimum.
+GAME_INVEST_AUTO_MAX Automatically invest to maximum.
 GAME_REMOVE_ALERT_ONE_LABEL [0] has been removed.
 GAME_REMOVE_ALERT_ONE_DESCRIPTION The node [0] has been removed by the node [1].
 GAME_REMOVE_ALERT_SELF_LABEL [0] has left your civilization.
@@ -137,12 +146,16 @@ GAME_NODE_LOCK Prevents the node from moving.
 GAME_NODE_WATCH Add to watch list.
 GAME_NODE_APPLY APPLY
 GAME_NODE_REMOVE Remove
+GAME_NODE_STATS Stats
+GAME_NODE_INCOMING_CALL Incoming Calls
+GAME_NODE_OUTGOING_CALL Outgoing Calls
 PRIVACY_TOOLTIP Data Privacy
 PRIVACY_HEADER ABOUT DATA PRIVACY
 PRIVACY_INFO The developpers of this game <b>does not collect any private information </b>through this program. However, you may still want to be informed about the information Unity might collect. 
 PRIVACY_BUTTON Open Privacy Policy Page of Unity
 GAME_UNLOCK_IGNORE Ignore
 GAME_UNLOCK_IGNORE_CANCEL Click to display all ignored levers again.
+GAME_UNLOCK_IGNORE_INFO Right click on a node in the list to ignore it.
 MENU_OPTIONS_UI_CONTROLS Interface controls: 
 MENU_OPTIONS_UI_CONTROLS_TOOLTIP Shows controls on the game interface for changing zoom and creating groups instead of using the mouse scrollwheel.
 MENU_OPTIONS_AUDIO AUDIO SETTINGS

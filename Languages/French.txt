@@ -28,6 +28,7 @@ MENU_OPTIONS_PATH_TOOLTIP Le répertoire utilisé pour sauvegarder et charger le
 MENU_OPTIONS_LANGUAGE Langue: 
 MENU_OPTIONS_MUSIC Volume Musique : 
 MENU_OPTIONS_SFX SFX Volume: 
+MENU_OPTIONS_EVENT_SOUND Son Évènements : 
 MENU_OPTIONS_SCREEN Mode: 
 MENU_OPTIONS_SCREEN_FULL Plein écran
 MENU_OPTIONS_SCREEN_WINDOW Fenêtré
@@ -75,6 +76,7 @@ GAME_SUMMARY_NODES États et Leviers
 GAME_SUMMARY_EVENTS Événements
 GAME_SUMMARY_TOGGLE Activer/Cacher le panneau
 GAME_SUMMARY_MAIN_MENU Retour au menu principal
+GAME_SUMMARY_LOAD Recharger la dernière sauvegarde
 GAME_SUMMARY_NODE Node...
 GAME_SUMMARY_EVENT Événements...
 GAME_SUMMARY_CULTURAL Culturel
@@ -115,6 +117,10 @@ GAME_INVEST_CURRENT Certains levier sont en cours d'investissement
 GAME_INVEST_STOP Cliquer pour stoper tous les investissements
 GAME_INVEST_STOP_WINDOW Arrêter les investissement
 GAME_INVEST_STOP_WINDOW_TEXT Arrêter tous les investissement
+GAME_INVEST_AUTO_CURRENT Des leviers sont en auto-investissement
+GAME_INVEST_AUTO_STOP Cliquer pour stopper tous les auto-investissements
+GAME_INVEST_AUTO_STOP_WINDOW Stopper tous les auto-investissements
+GAME_INVEST_AUTO_STOP_WINDOW_TEXT Stopper tous les actuels auto-investissements ?
 GAME_MOD_MISMATCH_WINDOW Changements détectés
 GAME_MOD_MISMATCH_WINDOW_TEXT_1 Les mods suivant ont été modifiés depuis la sauvegarde :
 GAME_MOD_MISMATCH_WINDOW_TEXT_2 Le jeu pourrait devenir instable !
@@ -125,6 +131,9 @@ GAME_INVEST_COST Coût :
 GAME_INVEST_REFOUND Investissement remboursé :
 GAME_INVEST Pas assez de ressource.\nInvestissement  : 
 GAME_INVEST_SET Fixe [0] à <b>[1]</b>
+GAME_INVEST_AUTO Investment will be automatically made.\nMove the slider to disable it.
+GAME_INVEST_AUTO_MIN Investi automatiquement au minimum.
+GAME_INVEST_AUTO_MAX nvesti automatiquement au maximum.
 GAME_REMOVE_ALERT_ONE_LABEL [0] a été retiré.
 GAME_REMOVE_ALERT_ONE_DESCRIPTION Le node [0] a été retiré par le node [1].
 GAME_REMOVE_ALERT_SELF_LABEL [0] a quitté votre civilisation.
@@ -137,12 +146,16 @@ GAME_NODE_LOCK Empêche le node de bouger.
 GAME_NODE_WATCH Ajouter le node au veuilleur.
 GAME_NODE_APPLY FIXER
 GAME_NODE_REMOVE Enlever
+GAME_NODE_STATS Stats
+GAME_NODE_INCOMING_CALL Appels entrants
+GAME_NODE_OUTGOING_CALL Appels sortants
 PRIVACY_TOOLTIP Données personelles
 PRIVACY_HEADER À PROPOS DES DONNÉES PERSONELLES
 PRIVACY_INFO Les développeurs de ce jeu <b>ne collectent aucune information privée</b> à travers ce programme. Cependant, vous pouvez toujours vouloir être informé des informations que Unity pourrait collecter. 
 PRIVACY_BUTTON Ouvrir la page Politique de confidentialité de Unity
 GAME_UNLOCK_IGNORE Ignorer
 GAME_UNLOCK_IGNORE_CANCEL Cliquez ici pour re-afficher tous les nodes ignorés.
+GAME_UNLOCK_IGNORE_INFO Clique droit sur un node dans la liste pour l'ignorer.
 MENU_OPTIONS_UI_CONTROLS Contôles d'interface : 
 MENU_OPTIONS_UI_CONTROLS_TOOLTIP Affiche des commandes sur l'interface du jeu pour modifier le zoom et créer des groupes au lieu d'utiliser la molette de la souris.
 MENU_OPTIONS_AUDIO PARAMETRES AUDIO
