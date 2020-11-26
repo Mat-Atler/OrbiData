@@ -2401,6 +2401,11 @@ Main = {
                 DESCRIPTION "私たちの文化と哲学は、永遠に歴史へ刻まれる前例のない黄金時代を経験しています。"
                 SUMMARY "前例のない文化的復興！"
             }
+			ForeignInterference = {
+				NAME "Foreign Interference" 
+				DESCRIPTION "A foreign power financed separatists in our colony."
+				SUMMARY "A foreign power is provoking riots in our colony!"
+			}
 		}
 	}
 }

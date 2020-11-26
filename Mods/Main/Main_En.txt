@@ -2400,6 +2400,12 @@ Main = {
 				DESCRIPTION "Our culture and our Philosophy are experiencing an unprecedented golden age that will mark history forever."
 				SUMMARY "An unprecedented cultural revival!"
 			}
+						
+			ForeignInterference = {
+				NAME "Foreign Interference" 
+				DESCRIPTION "A foreign power financed separatists in our colony."
+				SUMMARY "A foreign power is provoking riots in our colony!"
+			}
 
 		}
 	}

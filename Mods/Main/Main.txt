@@ -9149,7 +9149,7 @@ Main = {
 			ColonialRebellion = {
 				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
 				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
-				EVENT_DEF [ 60 120 80 33% ]
+				EVENT_DEF [ 60 100 80 33% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -9157,7 +9157,8 @@ Main = {
 				EVENT_CHANCE ( ColonialAutonomyDesire - 50 ) * 2 / 100
 				}
 				TICK = {
-					PROCESS Navy = Navy - PerSeconds(2.5 * ColonialStateSize / 100)
+					PROCESS Navy = Navy - PerSeconds(3 * ColonialStateSize / 100)
+					PROCESS ColonialAutonomyDesire = ColonialAutonomyDesire - PerSeconds(0.25)
 					IF Navy < 50
 						REMOVE ColonyTag
 						IF ~Colony
@@ -9170,6 +9171,11 @@ Main = {
 				LINK Navy = {
 					COLOR red
 					FLUX 2 * ColonialStateSize / 100
+				}
+				
+				LINK ColonialAutonomyDesire = {
+					COLOR red
+					FLUX 0.5
 				}
 			
 				TRIGGER_EVENT = {
@@ -9662,6 +9668,39 @@ Main = {
 					ENDIF
 				}
 				
+				
+		}
+		
+				
+			ForeignInterferance = {
+				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
+				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
+				TAG WarSystemTag
+				EVENT_DEF [ 15 30 100 35% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(0.6)
+					PROCESS ColonialAutonomyDesire = NeighborhoodBellicism + PerSeconds(0.3)
+				}
+			
+				LINK NeighborhoodBellicism = {
+					COLOR red
+					FLUX 1
+				}
+				LINK ColonialAutonomyDesire = {
+					COLOR green
+					FLUX 0.5
+				}
+				
+				
+				TRIGGER_EVENT = {
+					IF NeighborhoodBellicism > 50 & ~ColonialAutonomyDesire
+						RISE
+					ENDIF
+				}
 				
 		}
 		

@@ -2353,6 +2353,12 @@ Main = {
 				SUMMARY "Un combat sur les mers est en cours!"
 			}
 			
+			ForeignInterferance = {
+				NAME "Interférence Étrangère"
+				DESCRIPTION "Une puissance étrangère a financé des séparatistes dans notre colonie."
+				SUMMARY "Une puissance étrangère attise la colère dans notre colonie!"
+			}
+			
 		}
 
 	}
