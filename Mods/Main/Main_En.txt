@@ -2060,8 +2060,33 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Some companies have concentrated their efforts in international trade. With the support of banks and trade exchanges, they are setting up tremendous expeditions."
 				SUMMARY "Increases our trade routes"
 			}
+		
+			ColonialHelp = {
+				NAME "Colonial Help"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Some subsidies"
+					30 = "Significant funding"
+					60 = "Massive subsidies programs"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> An empire must give with the left hand to take with the right hand, an aid program will calm minds in our colonies and give them financial stability."
+				SUMMARY " Appease and makes our colonies prosper"
+			}
+			
+			ColonialIronFist = {
+				NAME "Colonial Iron Fist"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Military threats"
+					30 = "Ruthless retaliation"
+					60 = "Permanent Martial Law"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our colonies undoubtedly enjoy too much independence and separatism is gaining ground, it is time to remind our colonists who owns the cannons of our fleet."
+				SUMMARY "Forcibly pacifies our colonies"
+			}
 
-
+			
+			
 		}
 		Events = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Events
@@ -2405,6 +2430,11 @@ Main = {
 				NAME "Foreign Interference" 
 				DESCRIPTION "A foreign power financed separatists in our colony."
 				SUMMARY "A foreign power is provoking riots in our colony!"
+			}			
+			SlaveRiots = {
+				NAME "Slave Riots"
+				DESCRIPTION "Our colonies have recently suffered a massive revocation of their slaves, so their prosperity will probably suffer a severe blow."
+				SUMMARY "Our colonies have recently suffered a massive revolt!"
 			}
 
 		}

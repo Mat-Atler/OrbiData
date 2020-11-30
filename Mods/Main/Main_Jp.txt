@@ -2066,6 +2066,17 @@ Main = {
 				SUMMARY "貿易ルートを増やします"
 			}
 
+			ColonialHelp = {
+				NAME "Colonial Help"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Some subsidies"
+					30 = "Significant funding"
+					60 = "Massive subsidies programs"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> An empire must give with the left hand to take with the right hand, an aid program will calm minds in our colonies and give them financial stability."
+				SUMMARY " Appease and makes our colonies prosper"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events
@@ -2405,7 +2416,13 @@ Main = {
 				NAME "Foreign Interference" 
 				DESCRIPTION "A foreign power financed separatists in our colony."
 				SUMMARY "A foreign power is provoking riots in our colony!"
+			}	
+			SlaveRiots = {
+				NAME "Slave Riots"
+				DESCRIPTION "Our colonies have recently suffered a massive revocation of their slaves, so their prosperity will probably suffer a severe blow."
+				SUMMARY "Our colonies have recently suffered a massive revolt!"
 			}
+
 		}
 	}
 }

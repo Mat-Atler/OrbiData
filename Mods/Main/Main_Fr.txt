@@ -2018,8 +2018,30 @@ Main = {
 					30 = "Grandes compagnies"
 					60 = "Monopole gargentuesque"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Certaines entreprises ont concentré leurs efforts dans le commerce international. Avec le soutien des banques et des bourses comemrciales, elle mettent en place des expéditions gigentesques."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Certaines entreprises ont concentré leurs efforts dans le commerce international. Avec le soutien des banques et des bourses commercialles, elle mettent en place des expéditions gigentesques."
 				SUMMARY "Augmente nos routes commerciales"
+			}			
+			ColonialHelp = {
+				NAME "Aide Coloniale"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Quelques subventions"
+					30 = "Financement important"
+					60 = "Programmes d'aides massifs"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Un empire se doit de donner de la main gauche pour prendre dans la main droite, un programme d'aide permettra de calmer les esprits dans nos colonies et leur procurera une stabilité financière."
+				SUMMARY "Apaise et fait prospérer nos colonies"
+			}	
+			ColonialIronFist = {
+				NAME "Politique coloniale implacable"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Menaces militaires"
+					30 = "Représailles impitoyales"
+					60 = "Loi martiale permanente"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Nos colonies jouissent sans doute d'une trop grande indépendance et le sépratisme gagne du terrain, il est temps de rappeler à nos colons à qui appartient les cannons de notre flotte."
+				SUMMARY "Apaise par la force nos colonies"
 			}
 
 				
@@ -2359,6 +2381,11 @@ Main = {
 				SUMMARY "Une puissance étrangère attise la colère dans notre colonie!"
 			}
 			
+			SlaveRiots = {
+				NAME "Émeutes des Esclaves"
+				DESCRIPTION "Nos colonies ont récemment souffert d'une révole massive de leurs esclaves, leur prosperité va probablement prendre un sérieux coup."
+				SUMMARY "Nos colonies ont récemment souffert d'une révole massive"
+			}
 		}
 
 	}
