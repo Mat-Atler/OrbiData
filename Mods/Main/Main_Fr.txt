@@ -705,6 +705,14 @@ Main = {
 				DESCRIPTION "Valeur : " @[value,0.###]<br><br>" La richesse de notre colonie à commencer à attirer les vautours. Nous devrions défendre nos marchands."
 				SUMMARY "Le taux de piraterie dans notre Colonie"
 			}	
+			
+
+			PeasantryClass = {
+				NAME "Classe Paysanne"
+				DESCRIPTION "Classe Paysanne "<b>"Valeur: "@[value] </b> <br><br> "Les travailleurs de la terre forment une classe sociale importante, une grande partie de la population en vérité et constitue la ligne de base de toute civilisation sédentaire."
+				SUMMARY "Nombre de paysans dans votre état"
+			}
+			
 				
 		}
 		Levers = {

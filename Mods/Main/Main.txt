@@ -2291,7 +2291,7 @@ Main = {
 				DISPLAY_VALUE
 
 				SLEEP = {
-					IF DropdownIsState(Diplomacy.War) & WarStatus < 50 & WarStatus.WarTimer > 500
+					IF DropdownIsState(Diplomacy.War) & ( WarStatus < 40 | WarStatus.WarTimer > 500 )
 						PROCESS value = 0
 						SPAWN
 					ENDIF
@@ -2306,7 +2306,34 @@ Main = {
 					FLUX value / 100
 				}
 				
-			}					
+			}
+
+			PeasantryClass = {
+				VALUE value [ 0 0 10000 ]
+				DISPLAY_VALUE
+				
+				DISPLAY_DECAY
+				SLEEP = {
+					IF ~Agriculture & ( ~Mill  | GetCurrentEra() >= GetEra(DiscoveryAge) )
+						SPAWN
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN PeasantryClass = {
+					PROCESS value = (  Population * 0.9)
+				}
+				
+				TICK = {
+					IF PeasantryClass > Population * ( 0.88 ? 0.91 )
+						PROCESS PeasantryClass =  PeasantryClass - PerSeconds(PeasantryClass / 300)
+					ENDIF
+					
+				}
+				LINK Agriculture = {
+					WEIGHT [ to ]
+				}	
+				
+			}			
 			
 			}
 		Levers = {
@@ -2783,8 +2810,16 @@ Main = {
 					ENDIF
 					IF ~NationalReligion
 						PROCESS output = output * ( 1 + ( NationalReligion.DevotionToTheHarvestUsedValue / 400 ) )
+					ENDIFs
+					
+					IF ~PeasantryClass
+						PROCESS Food = Food + PerSeconds( ( PeasantryClass / Population) * output * 1.2 )
+					ELSE
+						PROCESS Food = Food + PerSeconds(output)
 					ENDIF
-					PROCESS Food = Food + PerSeconds(output)
+					
+					
+					PROCESS PeasantryClass = PeasantryClass + PerSeconds(value / 100)
 					IF output > 20
 						PROCESS $Wealth = $Wealth + PerSeconds(10 + (output - 20) * 0.22 )
 					ELSE
@@ -5700,10 +5735,10 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Agriculture ) / 10)
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 450 * PeasantryClass ) / 10)
 				}
 				
-				LINK Agriculture = {
+				LINK PeasantryClass = {
 				WEIGHT [ from ] 
 				}
 
@@ -8955,6 +8990,7 @@ Main = {
 				}
 					TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.33)
+					PROCESS PeasantryClass = PeasantryClass - PerSeconds(PeasantryClass / 200)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(3 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(3 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
@@ -8964,6 +9000,10 @@ Main = {
 					}
 
 					LINK Stability = {
+						COLOR red
+						FLUX 2
+					}
+					LINK PeasantryClass = {
 						COLOR red
 						FLUX 2
 					}

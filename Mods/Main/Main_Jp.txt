@@ -756,6 +756,11 @@ Main = {
 				DESCRIPTION "値: " @[value,0.###] <br> <br> "私たちの植民地の富はハゲタカを引き付け始めました。私たちは商人を守るべきです。"
 				SUMMARY "植民地の海賊行為のレベル"
 			}
+			PeasantryClass = {
+				NAME "Peasant Class"
+				DESCRIPTION "Peasant Class "<b>"Value: "@[value] </b> <br><br> "The workers of the soil form an important social class, in fact, a large part of the population and constitutes the basic line of any sedentary civilization."
+				SUMMARY "Number of peasants in your state"
+			}
 
 		}
 		Levers = {

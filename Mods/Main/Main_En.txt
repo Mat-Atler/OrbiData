@@ -759,6 +759,13 @@ Main = {
 				DESCRIPTION "Value: " @[value,0.###]<br><br>" The wealth of our colony began to attract vultures. We should defend our merchants."
 				SUMMARY "The level of piracy in our Colony"
 			}	
+						
+						
+			PeasantryClass = {
+				NAME "Peasant Class"
+				DESCRIPTION "Peasant Class "<b>"Value: "@[value] </b> <br><br> "The workers of the soil form an important social class, in fact, a large part of the population and constitutes the basic line of any sedentary civilization."
+				SUMMARY "Number of peasants in your state"
+			}
 			
 		}
 		Levers = {
