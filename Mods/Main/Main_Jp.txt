@@ -761,6 +761,11 @@ Main = {
 				DESCRIPTION "Peasant Class "<b>"Value: "@[value] </b> <br><br> "The workers of the soil form an important social class, in fact, a large part of the population and constitutes the basic line of any sedentary civilization."
 				SUMMARY "Number of peasants in your state"
 			}
+			BourgoisieClass = {
+				NAME "Bourgoisie Class"
+				DESCRIPTION "Bourgeois Class "<b>"Value: "@[value] </b> <br><br> "Our cities are filled with rather wealthy subjects who favor a flourishing trade, hoping that they never claim any kind of priviliged status."
+				SUMMARY "Number of burghers in your state"
+			}
 
 		}
 		Levers = {

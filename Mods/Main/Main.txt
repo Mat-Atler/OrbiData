@@ -2333,7 +2333,39 @@ Main = {
 					WEIGHT [ to ]
 				}	
 				
-			}			
+			}		
+			
+
+			BourgoisieClass = {
+				VALUE value [ 0 0 10000 ]
+				DISPLAY_VALUE
+				
+				DISPLAY_DECAY
+				SLEEP = {
+					IF ~Urbanization & ( ~Guilds |   | GetCurrentEra() >= GetEra(DiscoveryAge) )
+						SPAWN
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN BourgoisieClass = {
+					PROCESS value = ( Urbanization * 0.6 )
+				}
+				
+				TICK = {
+						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( PeasantryClass / 1500 )					
+						PROCESS OverlandTrade = OverlandTrade + PerSeconds(value / 100)
+						PROCESS NavalTrade = NavalTrade + PerSeconds(value / 100)
+				}
+				
+				LINK NavalTrade = {
+					COLOR green
+					FLUX value / 100
+				}
+				LINK OverlandTrade = {
+					COLOR green
+					FLUX value / 100
+				}
+			}		
 			
 			}
 		Levers = {
@@ -2951,6 +2983,7 @@ Main = {
 						SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
 					ENDIF
 						
+					PROCESS BourgoisieClass = BourgoisieClass + PerSeconds ( value * 0.005 )
 					
 					IF GetCurrentEra() < 300
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 500)
@@ -2964,6 +2997,10 @@ Main = {
 				LINK UrbanMilitia = {
 						WEIGHT [ max ] Min (100 , Urbanization.value + 10 )
 				}
+				LINK BourgoisieClass = {
+						COLOR green
+						FLUX value / 35
+				}	
 				LINK AristocracyClass = {
 					IF (value > 0 & GetCurrentEra() < 300)
 						COLOR green

@@ -767,6 +767,12 @@ Main = {
 				SUMMARY "Number of peasants in your state"
 			}
 			
+			BourgoisieClass = {
+				NAME "Bourgoisie Class"
+				DESCRIPTION "Bourgeois Class "<b>"Value: "@[value] </b> <br><br> "Our cities are filled with rather wealthy subjects who favor a flourishing trade, hoping that they never claim any kind of priviliged status."
+				SUMMARY "Number of burghers in your state"
+			}
+			
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers

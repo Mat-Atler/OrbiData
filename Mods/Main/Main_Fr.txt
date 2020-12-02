@@ -713,6 +713,11 @@ Main = {
 				SUMMARY "Nombre de paysans dans votre état"
 			}
 			
+			BourgoisieClass = {
+				NAME "Classe Bourgoise"
+				DESCRIPTION "Classe Bourgoise "<b>"Valeur: "@[value] </b> <br><br> "Nos villes se remplissent de sujets plutôt fortunés qui favorisent un commerce florrisant, en espérant qu'ils ne réclament jamais de droits de noblesse."
+				SUMMARY "Nombre de bourgois dans votre état"
+			}
 				
 		}
 		Levers = {
