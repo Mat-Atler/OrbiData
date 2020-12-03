@@ -6937,7 +6937,7 @@ Main = {
 				
 				TICK = {
 					IF Navy > 50
-						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialAutonomyDesire / 300  )
+						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialAutonomyDesire /  ( 600 - ( ColonialIronFist * 3) )  )
 						PROCESS Navy = Navy - PerSeconds(value / 130)
 						PROCESS $Wealth = $Wealth - PerSeconds( value / 25 )
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( value / 30 )
