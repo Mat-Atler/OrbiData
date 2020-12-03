@@ -6938,20 +6938,14 @@ Main = {
 				TICK = {
 					IF Navy > 50
 						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialAutonomyDesire /  ( 600 - ( ColonialIronFist * 3) )  )
-						PROCESS Navy = Navy - PerSeconds(value / 130)
-						PROCESS $Wealth = $Wealth - PerSeconds( value / 25 )
-						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( value / 30 )
+						PROCESS Navy = Navy - PerSeconds( 2 + value / 130)
+						PROCESS $Wealth = $Wealth - PerSeconds( 0.25 + value / 25 )
+						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( 0.25 + value / 30 )
 					ENDIF
 					
 				ENDIF
 				}
-				
-				LINK ColonialProsperity = {
-					IF (value > 0)
-						FLUX value * 0.013 
-						COLOR green
-					ENDIF
-				}
+			
 				
 				LINK ColonialAutonomyDesire = {
 					IF (value > 0)
@@ -6961,7 +6955,7 @@ Main = {
 				}
 				
 			LINK Navy = {
-					IF ( value > 0 & Navy > 50 )
+					IF ( Navy > 50 )
 						COLOR red
 						FLUX value / 5
 					ENDIF
