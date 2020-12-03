@@ -2087,6 +2087,18 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> An empire must give with the left hand to take with the right hand, an aid program will calm minds in our colonies and give them financial stability."
 				SUMMARY " Appease and makes our colonies prosper"
 			}
+			
+			
+			ColonialIronFist = {
+				NAME "Colonial Iron Fist"
+				LEVEL value = {					
+					0 = "Military threats"
+					30 = "Ruthless retaliation"
+					60 = "Permanent Martial Law"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our colonies undoubtedly enjoy too much independence and separatism is gaining ground, it is time to remind our colonists who owns the cannons of our fleet."
+				SUMMARY "Forcibly pacifies our colonies"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events

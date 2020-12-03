@@ -2047,9 +2047,8 @@ Main = {
 			}	
 			ColonialIronFist = {
 				NAME "Politique coloniale implacable"
-				LEVEL value = {					
-					0 = "Aucune"
-					0.001 = "Menaces militaires"
+				LEVEL value = {	
+					0 = "Menaces militaires"
 					30 = "Représailles impitoyales"
 					60 = "Loi martiale permanente"
 				}

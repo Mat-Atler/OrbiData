@@ -986,11 +986,14 @@ Main = {
 				}
 				TICK = {
 					PROCESS value =  value - PerSeconds(AristocracyClass/480)
+					IF value > 100
+						PROCESS value =  value - PerSeconds(AristocracyClass*AristocracyClass/2500)
+					ENDIF
 					IF VassalPower == 0
-						SET Monarchy.value [ : : Max ( 50 , AristocracyClass ) ]
+						SET Monarchy.value [ : :  Min ( Max ( 50 , AristocracyClass ) , 100 ) ]
 					ENDIF
 					IF GetCurrentEra() < 300 
-						SET Officers.value [ : : AristocracyClass ]
+						SET Officers.value [ : :  Min ( AristocracyClass , 100 ) ]
 					ENDIF
 				}
 				LINK Monarchy = {
@@ -5834,9 +5837,10 @@ Main = {
 					$PoliticalPower = (LinkCount(Nobility) + 1) * 6
 				}
 				TICK = {
-						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55)
-						PROCESS $Wealth = $Wealth - PerSeconds(value / 35)
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55 * AristocracyClass / 100 )
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 35 * AristocracyClass / 100 )
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
+						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 800)
 				}
 				
 				LINK VassalPower = {
@@ -5844,7 +5848,14 @@ Main = {
 					FLUX value / 25
 					COLOR red
 				ENDIF
-				}		
+				}
+
+				LINK AristocracyClass = {
+					IF value > 0
+						COLOR green
+						FLUX value / 20
+					ENDIF
+				}				
 			}
 			
 			
@@ -5867,6 +5878,14 @@ Main = {
 					$Wealth = 15
 				}
 				TICK = {
+						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 700)
+				}
+				
+				LINK AristocracyClass = {
+					IF value > 0
+						COLOR green
+						FLUX value / 20
+					ENDIF
 				}
 				
 				LINK Banners = {
@@ -7617,7 +7636,7 @@ Main = {
 				EVENT_DEF [ 15 15 15 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 95
-                    IF ~Theocracy + ~CelesteMandate + PriestClass < 70 + ( DivineRight >= Empire & DivineRight >= Monarchy )
+                    IF ~Theocracy + ~CelesteMandate + ~ReligiousLaw + PriestClass < 80
                         REMOVE ClergyRebellion
                     ENDIF
 				}

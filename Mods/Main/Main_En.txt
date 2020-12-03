@@ -2089,8 +2089,7 @@ Main = {
 			ColonialIronFist = {
 				NAME "Colonial Iron Fist"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Military threats"
+					0 = "Military threats"
 					30 = "Ruthless retaliation"
 					60 = "Permanent Martial Law"
 				}
