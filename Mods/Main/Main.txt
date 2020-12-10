@@ -1290,29 +1290,29 @@ Main = {
 				
 				
 				IF ~QualityVsQuantity
-					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
-					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/2400 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
-					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/2500 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/4000 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/4500 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/5000 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100 ) ) )
 					IF ~MercenariesReform
-					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/(1300 + MercenariesReform * 800) * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/(2500 + MercenariesReform * 800) * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
 					ELSE
-					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/1300 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/2500 * ( 1.5 - ( ( 100 - QualityVsQuantity ) /100  ) ) )
 					ENDIF
 				ENDIF
 				IF  ~QualityVsQuantity == 0
-					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2000 * ( 1.5 - (50 /100 ) ))
-					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/2400 * ( 1.5 - (50 /100 ) ))
-					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/2500 * ( 1.5 - (50 /100 ) ))
+					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/4000 * ( 1.5 - (50 /100 ) ))
+					PROCESS $Wealth = $Wealth - PerSeconds(Infantry_value*Infantry_value/4500 * ( 1.5 - (50 /100 ) ))
+					PROCESS $Wealth = $Wealth - PerSeconds(Missile_value*Missile_value/5000 * ( 1.5 - (50 /100 ) ))
 					IF ~MercenariesReform
-					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/(1300 + MercenariesReform * 800) * ( 1.5 - (50 /100 ) ))
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/(2500 + MercenariesReform * 800) * ( 1.5 - (50 /100 ) ))
 					ELSE
-					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/1300 * ( 1.5 - (50 /100 ) ))
+					PROCESS $Wealth = $Wealth - PerSeconds(Mercenaries_value*Mercenaries_value/2500 * ( 1.5 - (50 /100 ) ))
 					ENDIF
 				ENDIF
 				
 				
 				IF ~ModernWarfare
-					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/1800 + Missile_value*Missile_value/1800 + Infantry_value*Infantry_value/4000 + Mercenaries_value*Mercenaries_value/4000)
+					PROCESS $Wealth = $Wealth - PerSeconds(Cavalry_value*Cavalry_value/2500 + Missile_value*Missile_value/2500 + Infantry_value*Infantry_value/6000 + Mercenaries_value*Mercenaries_value/6000)
 				ENDIF
 				
 				
@@ -2345,7 +2345,7 @@ Main = {
 				
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ~Urbanization & ( ~Guilds |   | GetCurrentEra() >= GetEra(DiscoveryAge) )
+					IF ~Urbanization & ( ~Guilds  | GetCurrentEra() >= GetEra(DiscoveryAge) )
 						SPAWN
 					ENDIF
 				}
@@ -2355,7 +2355,7 @@ Main = {
 				}
 				
 				TICK = {
-						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( PeasantryClass / 1500 )					
+						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( BourgoisieClass / 1500 )					
 						PROCESS OverlandTrade = OverlandTrade + PerSeconds(value / 100)
 						PROCESS NavalTrade = NavalTrade + PerSeconds(value / 100)
 				}
@@ -2845,7 +2845,7 @@ Main = {
 					ENDIF
 					IF ~NationalReligion
 						PROCESS output = output * ( 1 + ( NationalReligion.DevotionToTheHarvestUsedValue / 400 ) )
-					ENDIFs
+					ENDIF
 					
 					IF ~PeasantryClass
 						PROCESS Food = Food + PerSeconds( ( PeasantryClass / Population) * output * 1.2 )
@@ -3781,7 +3781,7 @@ Main = {
 					$PoliticalPower = (LinkCount(NonSecularEducation) + 1) * 1.2
 				}
 				TICK = {
-					PROCESS cost =  value * value * 0.0003
+					PROCESS cost =  value * value * 0.0002
 					PROCESS PriestClass =  PriestClass + PerSeconds( value / 500)
 					IF ( $Wealth > 5 & PriestClass > 10)
 						IF ~Monasteries
@@ -3858,12 +3858,16 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ~Bureaucracy | ~Satrapy | ~Republic
+					HINT ~Bureaucracy | ~Satrapy | ~Republic | ~Philosophy
 					CONDITION_NODE + Bureaucracy
 					OR
 					CONDITION_NODE + Satrapy
 					OR
 					CONDITION_NODE + Republic
+					OR
+					CONDITION_VALUE Philosophy > 95
+					CONDITION_VALUE Mathematics > 95
+					CONDITION_VALUE Stability > 60
 					ALWAYS
 					CONDITION_NODE - ReligiousLaw
 					CONDITION_VALUE Mathematics > 75
@@ -3897,6 +3901,8 @@ Main = {
 					CONDITION_VALUE BarbarianMonarchy >= 75
 					OR
 					CONDITION_VALUE Republic >= 150
+					OR
+					CONDITION_VALUE Theocracy >= 75
 					ALWAYS
 					CONDITION_NODE - Legislation
 					CONDITION_VALUE Piety >= 10
@@ -4264,6 +4270,7 @@ Main = {
 				
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
+						 PROCESS $Wealth = $Wealth - PerSeconds(value * 0.28)
 						IF ~OrganizedNomadism
 							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 7000)
 						ELSE
@@ -4318,6 +4325,7 @@ Main = {
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value + PerSeconds(value * Population / 8000 )
+					PROCESS $Wealth = $Wealth - PerSeconds(value * 0.01)
 					ENDIF
 				}
 			
@@ -4364,6 +4372,7 @@ Main = {
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value + PerSeconds(value * Population / 10000)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ENDIF
 				}
 				
@@ -4396,6 +4405,7 @@ Main = {
 				
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.2)
 						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * BarbarianAtGates / 12000)
 						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * BarbarianAtGates / 10000)
 						IF ~HorseDomestication
@@ -4437,8 +4447,10 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.5)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.5)
 					ENDIF
 					
 				}
@@ -4541,7 +4553,8 @@ Main = {
 						PROCESS outValue = value * ( 1 + ( MercenariesReform / 20 ) ) 
 					ENDIF
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
-						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(value / 90)
+						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(outValue / 90)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.25)
 					ENDIF
 				}
 			
@@ -4581,6 +4594,7 @@ Main = {
 				}
 				
 				TICK = {
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.015)
 				}
 				
 			
@@ -5317,8 +5331,11 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ~Bureaucracy
+					HINT ~Bureaucracy | ~Legislation
 					CONDITION_NODE + Bureaucracy
+					OR
+					CONDITION_NODE + Legislation
+					ALWAYS
 					CONDITION_VALUE Population > 50
 				}
 				PRICE = {
@@ -5391,8 +5408,8 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS $Wealth = $Wealth + PerSeconds( NavalTrade * 0.4 * TradeTax / 50 )
-					PROCESS $Wealth = $Wealth + PerSeconds( OverlandTrade.output * 0.23  * TradeTax / 50 )
+					PROCESS $Wealth = $Wealth + PerSeconds( NavalTrade * 0.4 * TradeTax / 35 )
+					PROCESS $Wealth = $Wealth + PerSeconds( OverlandTrade.output * 0.23  * TradeTax / 35 )
 					PROCESS NavalTrade = NavalTrade - PerSeconds( NavalTrade * NavalTrade / 800  * value / 40 * 0.9 ? 1.1 )
 					PROCESS OverlandTrade = OverlandTrade - PerSeconds( OverlandTrade * OverlandTrade / 800  * value / 40 * 0.9 ? 1.1 )
 				}
@@ -6915,7 +6932,6 @@ Main = {
 					ENDIF
 					PROCESS $Wealth = $Wealth - PerSeconds( value / 5 )
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( value / 20 )
-				ENDIF
 				}
 				
 				LINK ColonialProsperity = {
@@ -6961,8 +6977,6 @@ Main = {
 						PROCESS $Wealth = $Wealth - PerSeconds( 0.25 + value / 25 )
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( 0.25 + value / 30 )
 					ENDIF
-					
-				ENDIF
 				}
 			
 				
@@ -7264,7 +7278,7 @@ Main = {
 			Fire = {
 				SOUND_EVENT "Main/SFX/GreatFire.wav"
 				SOUND_WINDOW "Main/SFX/GreatFire.wav"
-				EVENT_DEF [ 15 20 300 30% ]
+				EVENT_DEF [ 15 20 400 30% ]
 				ARISE = {
 					EVENT_SPEED Flora / 100
 				}
@@ -7322,7 +7336,7 @@ Main = {
 			Famine = {
 				SOUND_EVENT "Main/SFX/Insects.wav"
 				SOUND_WINDOW "Main/SFX/Insects.wav"
-				EVENT_DEF [ 15 15 60 60% ]
+				EVENT_DEF [ 15 15 120 60% ]
 				SLEEP = {
 				EVENT_CHANCE 1
 				}
@@ -7353,7 +7367,7 @@ Main = {
 			AbundantHarvest = {
 				SOUND_EVENT "Main/SFX/Prosperity.wav"
 				SOUND_WINDOW "Main/SFX/Prosperity.wav"
-				EVENT_DEF [ 15 15 80 33% ]
+				EVENT_DEF [ 15 15 150 33% ]
 				ARISE = {
 					EVENT_SPEED 1 + Agriculture / 50
 					IF ( Agriculture < 50 )
@@ -7361,24 +7375,24 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS Food = Food + PerSeconds(Food * 0.01 * 0.75 ? 1.25)
+					PROCESS Food = Food + PerSeconds(Food * 0.03 * 0.75 ? 1.25)
 					PROCESS Population = Population + PerSeconds(Population * 0.01 * 0.75 ? 1.25)
-					PROCESS Stability = Stability + PerSeconds(0.7 * 0.75 ? 1.25)
+					PROCESS Stability = Stability + PerSeconds(2 * 0.75 ? 1.25)
 				}
 				LINK Stability = {
 					COLOR green
-					FLUX 1
+					FLUX 2
 				}
 				LINK Food = {
 					COLOR green
-					FLUX 1
+					FLUX 2
 				}
 				LINK Population = {
 					COLOR green
 					FLUX 0.5
 				}
 				TRIGGER_EVENT = {
-					IF ( Agriculture > 50 ) & ( Agriculture.output > 2 ) &  ( Temperature > 40 ) & ( Humidity > 40 )
+					IF ( Agriculture > 50 ) & ( Agriculture.output > 5 )
 						RISE
 					ENDIF
 				}
@@ -7454,7 +7468,7 @@ Main = {
 			NeighborhoodRise = {
 				SOUND_EVENT "Main/SFX/NeigborhoodRise.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodRise.wav"
-				EVENT_DEF [ 40 60 450 22% ]
+				EVENT_DEF [ 40 50 500 20% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -7633,7 +7647,7 @@ Main = {
 			ClergyRebellion = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-				EVENT_DEF [ 15 15 15 100% ]
+				EVENT_DEF [ 15 15 100 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 95
                     IF ~Theocracy + ~CelesteMandate + ~ReligiousLaw + PriestClass < 80
@@ -7667,7 +7681,7 @@ Main = {
 			NoblesRebellion = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-				EVENT_DEF [ 15 15 15 100% ]
+				EVENT_DEF [ 15 15 100 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 70
                     IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) 
@@ -7690,7 +7704,7 @@ Main = {
 			ProTradeRiots = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-				EVENT_DEF [ 30 15 75 100% ]
+				EVENT_DEF [ 30 15 200 100% ]
 				ARISE = {
 					EVENT_SPEED Entreprises / 200 + TradeTax / 200
                     IF ~Republic
@@ -7893,7 +7907,7 @@ Main = {
 			Separatism = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-					EVENT_DEF [ 30 15 60 35% ]
+					EVENT_DEF [ 30 15 200 30% ]
 					ARISE = {
 						EVENT_SPEED 1
 						IF StateSize < 100
@@ -7932,15 +7946,15 @@ Main = {
 			BeingInvaded = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 15 30 80 25% ]
+				EVENT_DEF [ 15 30 120 25% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
 				SLEEP = {
-				EVENT_CHANCE NeighborhoodBellicism / 100
+				EVENT_CHANCE NeighborhoodBellicism / 125
 				}
 				TICK = {
-					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1.5)
 					IF Fortifications > 0
 						OVERRIDE_PARAM Fortifications.value = GetParam(Fortifications.value) - PerSeconds(1 + Fortifications.value * 0.005 * 0.75 ? 1.25)
 						PROCESS Fortifications = Min( GetParam(Fortifications.value), Fortifications )
@@ -8063,7 +8077,7 @@ Main = {
 			GreatNomadInvasion = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 150 60 60 50% ]
+				EVENT_DEF [ 150 50 60 50% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -8311,15 +8325,15 @@ Main = {
 			NavalInvasion = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 15 30 80 25% ]
+				EVENT_DEF [ 15 30 130 25% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
 				SLEEP = {
-				EVENT_CHANCE NeighborhoodBellicism / 150
+				EVENT_CHANCE NeighborhoodBellicism / 200
 				}
 				TICK = {
-					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(1.25)
 					PROCESS Navy = Navy - PerSeconds(1.9)
 					IF Fortifications > 0 & Navy < 5
 						OVERRIDE_PARAM Fortifications.value = GetParam(Fortifications.value) - PerSeconds(1 + Fortifications.value * 0.005 * 0.75 ? 1.25)
@@ -8413,9 +8427,9 @@ Main = {
 				EVENT_CHANCE ( StateSize - BarbarianMonarchy ) / 250 
 				}
 				TICK = {
-					PROCESS BarbarianAtGates = BarbarianAtGates + PerSeconds(1.02)
-					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(3)
-					PROCESS Stability -= PerSeconds(1.5)
+					PROCESS BarbarianAtGates = BarbarianAtGates + PerSeconds(0.85)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(2)
+					PROCESS Stability -= PerSeconds(1)
 					OVERRIDE_PARAM BorderControls.value = GetParam(BorderControls.value) - PerSeconds(0.6)
 					PROCESS BorderControls = Min( GetParam(BorderControls.value), BorderControls )
 				}
@@ -8930,7 +8944,7 @@ Main = {
 			HarshWinter = {
 				SOUND_EVENT "Main/SFX/Wolf.wav"
 				SOUND_WINDOW "Main/SFX/Wolf.wav"
-				EVENT_DEF [ 15 30 600 50% ]
+				EVENT_DEF [ 15 30 800 50% ]
 				SLEEP = {
 				EVENT_CHANCE = ( 100 - Temperature * 1.5 ) / 100
 				}
@@ -8964,12 +8978,12 @@ Main = {
 			MerchantExplorer = {
 				SOUND_EVENT "Main/SFX/MerchantExplorer.wav"
 				SOUND_WINDOW "Main/SFX/MerchantExplorer.wav"
-				EVENT_DEF [ 30 30 300 30% ]
+				EVENT_DEF [ 30 30 250 30% ]
 				ARISE = {
 					EVENT_SPEED 1	
 				}
 				SLEEP = {
-					EVENT_CHANCE = 0.3 +( 0.3 * ~Republic )
+					EVENT_CHANCE = 0.45 +( 0.3 * ~Republic )
 				}
 				
 				TICK = {
@@ -8980,7 +8994,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF (TradeGoods > 500 & TradeTax < 20 & LootingCampaigns < 20 & StateSize >= 100 & GameTime() > 10000 & AcrossTheOcean == 0 )
+					IF (TradeGoods > 500 & TradeTax < 32 & LootingCampaigns < 20 & StateSize >= 100 & GameTime() > 8000 & AcrossTheOcean == 0 )
 						RISE
 					ENDIF
 				}
