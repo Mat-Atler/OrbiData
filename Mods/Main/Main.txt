@@ -6673,7 +6673,7 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Arquebus
+					HINT ~Musket
 					ALWAYS
 					CONDITION_VALUE ScienceKnowledge >= 350
 					CONDITION_VALUE Musket >= 100
