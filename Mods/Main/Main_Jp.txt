@@ -2099,6 +2099,17 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our colonies undoubtedly enjoy too much independence and separatism is gaining ground, it is time to remind our colonists who owns the cannons of our fleet."
 				SUMMARY "Forcibly pacifies our colonies"
 			}
+			LateMusket = {
+				NAME "Late Musket"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The late musket sees the appearance of the flintlock."
+				SUMMARY "Military technology"
+			}		
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events

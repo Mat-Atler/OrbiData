@@ -2097,7 +2097,17 @@ Main = {
 				SUMMARY "Forcibly pacifies our colonies"
 			}
 
-			
+			LateMusket = {
+				NAME "Late Musket"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The late musket sees the appearance of the flintlock."
+				SUMMARY "Military technology"
+			}				
 			
 		}
 		Events = {

@@ -2055,6 +2055,18 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Nos colonies jouissent sans doute d'une trop grande indépendance et le sépratisme gagne du terrain, il est temps de rappeler à nos colons à qui appartient les cannons de notre flotte."
 				SUMMARY "Apaise par la force nos colonies"
 			}
+			
+			LateMusket = {
+				NAME "Mousquet Tardif"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet tardif voit l'apparition de la platine à silex, avec une batterie et un couvre-bassinet séparés."
+				SUMMARY "Technologie militaire"
+			}	
 
 				
 		}

@@ -6669,6 +6669,33 @@ Main = {
 			}
 			}		
 			
+			LateMusket = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Arquebus
+					ALWAYS
+					CONDITION_VALUE ScienceKnowledge >= 350
+					CONDITION_VALUE Musket >= 100
+				}
+				PRICE = {
+					$PoliticalPower = 350
+				}
+				UPGRADE = {
+					$PoliticalPower = 20
+				}
+				TICK = {
+				PROCESS MilitaryTechnology = MilitaryTechnology + PerSeconds(value / 33)
+				}
+				
+				LINK MilitaryTechnology = {
+					IF value > 0
+						COLOR green
+						FLUX value / 10
+					ENDIF
+			}
+			}	
+			
 			AcrossTheOcean = {
 				TYPE Cultural
 				VALUE value [ 0 0 40 >> 1 ]
