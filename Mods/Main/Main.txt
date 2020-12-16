@@ -1372,7 +1372,7 @@ Main = {
 				
 				
 				TICK = {
-				PROCESS MilitaryEfficiency = ( 30 * (QualityVsQuantity / 100 ) ) + ( 20 * (Officers / 100 ) ) + ( 30 * ~GreatGeneral ) + ( 50 * ( MilitaryTechnology / 100) ) + ( 20 * ( Militarism / 100) ) + ( -75 * ( Isolationism / 100) )
+				PROCESS MilitaryEfficiency = ( 30 * (QualityVsQuantity / 100 ) ) + ( 20 * (Officers / 100 ) ) + ( 30 * ~GreatGeneral ) + ( 50 * ( MilitaryTechnology / 100) ) + ( 20 * ( Militarism / 100) ) + ( -75 * ( Isolationism / 100) ) + ( -50 * ( Conscription / 100) )
 				
 				}
 				LINK MilitaryManpower = {
@@ -2260,7 +2260,7 @@ Main = {
 				
 				
 				TRIGGER_SPAWN FoeLandForces = {
-					PROCESS value = ( 60 + StateSize / 1.1 ) * 0.7 ? 1.2 
+					PROCESS FoeLandForces = ( 60 + StateSize / 1.1 ) * 0.7 ? 1.2 
 				}
 				
 			}
@@ -2282,7 +2282,7 @@ Main = {
 				
 				
 				TRIGGER_SPAWN FoeNavalForces = {
-					PROCESS value = ( 50 + NavalSupremacy * 2.5 + Coastline * 2 ) * 0.7 ? 1.2 
+					PROCESS FoeNavalForces = ( 50 + NavalSupremacy * 2.5 + Coastline * 2 ) * 0.7 ? 1.2 
 				}
 				
 			}		
@@ -2323,7 +2323,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN PeasantryClass = {
-					PROCESS value = (  Population * 0.9)
+					PROCESS PeasantryClass = ( Population * 0.9)
 				}
 				
 				TICK = {
@@ -2351,7 +2351,7 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN BourgoisieClass = {
-					PROCESS value = ( Urbanization * 0.6 )
+					PROCESS BourgoisieClass = ( Urbanization * 0.6 )
 				}
 				
 				TICK = {
@@ -2369,6 +2369,44 @@ Main = {
 					FLUX value / 100
 				}
 			}		
+			
+			
+			Nationalism = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+
+				SLEEP = {
+					IF ~SchoolOfThought > 50 & ~NationalCohesion > 50
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+					PROCESS Stability += PerSeconds( (value - 20 ) / 500)
+					PROCESS Nationalism =  Nationalism - PerSeconds( ( Nationalism + StateSize / 1.8 ) / 2000 )		
+				}
+
+				LINK Stability = {
+					IF value >= 20
+						COLOR green
+						FLUX value - 20 / 100
+					ELSE
+						COLOR red
+						FLUX ( 100 - value * 2 ) / 100
+					ENDIF
+				}
+				
+				
+				TRIGGER_SPAWN Nationalism = {
+					PROCESS Nationalism = NationalCohesion / 2.5
+					REMOVE NationalCohesion
+				}
+				
+				
+				LINK StateSize = {
+					WEIGHT [ from ]
+				}	
+			}
 			
 			}
 		Levers = {
@@ -4347,11 +4385,6 @@ Main = {
 					RELATED_UNLOCK MilitaryManpower Missile
 					RELATED_LINK MilitaryManpower Population
 				}
-				// SLEEP = {
-					// IF AristocracyClass > 15 + ( Population > 100 & ~Urbanization)
-						// SPAWN
-					// ENDIF
-				// }
 				UNLOCK_CONDITIONS = {
 					HINT ~AristocracyClass
 					CONDITION_NODE + Urbanization
@@ -5516,6 +5549,7 @@ Main = {
 				}
 				
 				TICK = {
+						PROCESS Nationalism = Nationalism + PerSeconds(value / 1000)
 				}
 				PRICE = {
 					$PoliticalPower = 150
@@ -5523,6 +5557,12 @@ Main = {
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(LinguaFranca) + 1) * 3
 				}
+				
+				LINK Nationalism = {
+						COLOR green
+						FLUX value / 25
+				}
+				
 				LINK NationalCohesion = {
 						WEIGHT [ to ] 
 				}
@@ -6045,6 +6085,7 @@ Main = {
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 80)
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 3000 )
+						PROCESS Nationalism +=  PerSeconds(value / 800 )
 						SET NationalCohesion.value [ : : 100 + NationState.value ]
 				}
 				
@@ -6056,6 +6097,13 @@ Main = {
 				IF value > 0
 					FLUX value / 40
 					COLOR red
+				ENDIF
+				}	
+				
+				LINK Nationalism = {
+				IF value > 0
+					FLUX value / 40
+					COLOR green
 				ENDIF
 				}	
 			}
@@ -7293,6 +7341,63 @@ Main = {
 				WEIGHT [ from ] 
 				}
 
+			}
+			
+			Conscription = {
+				TYPE Technological
+				VALUE value [ 0 5 50 >> 3 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~ModernWarfare
+					CONDITION_VALUE NationalCohesion > 70
+					OR
+					CONDITION_VALUE Nationalism > 25
+					ALWAYS
+					CONDITION_NODE + Infantry
+					CONDITION_NODE + ModernWarfare
+					CONDITION_VALUE Population > 120
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 35
+				}
+				
+				TICK = {
+					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) & DropdownIsState(Diplomacy.War)
+						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value + PerSeconds(value * Population / 5000)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.5)
+						PROCESS Population = Population - PerSeconds(value * Population / 5000 / 3)
+					ENDIF
+					PROCESS Nationalism = Nationalism + PerSeconds(value / 1000 )
+				}
+				
+				LINK MilitaryManpower = {
+				IF value > 0 & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) & DropdownIsState(Diplomacy.War)
+					FLUX value / 12
+					COLOR green
+				ENDIF
+				}	
+				
+				LINK Population = {
+				IF value > 0 & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) & DropdownIsState(Diplomacy.War)
+					FLUX value / 12
+					COLOR red
+				ENDIF
+				}	
+				
+				LINK Nationalism = {
+				IF value > 0
+					FLUX value / 12
+					COLOR green
+				ENDIF
+				}	
+				LINK Population = {
+				WEIGHT [ from ]
+				}	
+				LINK MilitaryEfficiency = {
+						 WEIGHT [ to ] 
+				}
 			}
 			
 			

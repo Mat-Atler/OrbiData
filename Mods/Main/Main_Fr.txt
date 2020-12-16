@@ -718,6 +718,20 @@ Main = {
 				DESCRIPTION "Classe Bourgoise "<b>"Valeur: "@[value] </b> <br><br> "Nos villes se remplissent de sujets plutôt fortunés qui favorisent un commerce florrisant, en espérant qu'ils ne réclament jamais de droits de noblesse."
 				SUMMARY "Nombre de bourgois dans votre état"
 			}
+			
+			
+			Nationalism = {
+				NAME "Nationalisme"
+				LEVEL value = {
+					0 = "Inexistant"
+					10 = "Faible"
+					20 = "Correct"
+					40 = "Bon"
+					60 = "Extatique"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Le nationalisme représentante le sentiment d'appartenance de notre population envers notre nation. Une nation unie sous un drapeau renforce votre assise, mais cela peut aussi permettre de germer des idées dangereuses."
+				SUMMARY "Impacte votre stabilité"
+			}	
 				
 		}
 		Levers = {
@@ -2067,6 +2081,19 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet tardif voit l'apparition de la platine à silex, avec une batterie et un couvre-bassinet séparés."
 				SUMMARY "Technologie militaire"
 			}	
+			
+			
+			Conscription = {
+				NAME "Conscription"
+				LEVEL value = {
+					0 = "Aucune"
+					0.001 = "Basse"
+					10 = "Modérée"
+					23 = "Intensive"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> "Notre population nombreuse est un terreau de futur soldats. Avec des lois de conscriptions, nous pourrons lever rapidemment des troupes frâiches même si elles manqueront d'entrainement."
+				SUMMARY "Recrute notre population en temps de guerre"
+			}
 			ManOfWar = {
 				NAME "Man'o'war"
 				LEVEL value = {					
