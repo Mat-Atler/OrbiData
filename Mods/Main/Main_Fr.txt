@@ -2067,6 +2067,17 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet tardif voit l'apparition de la platine à silex, avec une batterie et un couvre-bassinet séparés."
 				SUMMARY "Technologie militaire"
 			}	
+			ManOfWar = {
+				NAME "Man'o'war"
+				LEVEL value = {					
+					0 = "Aucun"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le Man'o'war est l'évolution logique des grands voiliers de guerre mettant à profits toutes les petites évolutions techniques et les optimisations trouvées à force de combat sur les mers."
+				SUMMARY "Technologie militaire"
+			}	
 
 				
 		}
