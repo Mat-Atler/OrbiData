@@ -766,6 +766,19 @@ Main = {
 				DESCRIPTION "Bourgeois Class "<b>"Value: "@[value] </b> <br><br> "Our cities are filled with rather wealthy subjects who favor a flourishing trade, hoping that they never claim any kind of priviliged status."
 				SUMMARY "Number of burghers in your state"
 			}
+			
+			Nationalism = {
+				NAME "Nationalism"
+				LEVEL value = {
+					0 = "Inexistent"
+					10 = "Low"
+					20 = "Fair"
+					40 = "Good"
+					60 = "Fanatical"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Nationalism represents our people's sense of belonging to our nation. A nation united under a flag strengthens our foundations, but it can also allow dangerous ideas to grow"
+				SUMMARY "Impacts our stability"
+			}	
 
 		}
 		Levers = {
@@ -2109,6 +2122,18 @@ Main = {
 				}
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The late musket sees the appearance of the flintlock."
 				SUMMARY "Military technology"
+			}		
+			
+			Conscription = {
+				NAME "Conscription"
+				LEVEL value = {
+					0 = "None"
+					0.001 = "Light"
+					10 = "Moderate"
+					23 = "Intesive"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> "Our large population is a source of future soldiers. With conscription laws, we will be able to quickly raise fresh troops even if they lack training."
+				SUMMARY "Recruits our population in times of war"
 			}		
 		}
 		Events = {
