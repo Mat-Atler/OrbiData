@@ -2091,7 +2091,7 @@ Main = {
 					10 = "Modérée"
 					23 = "Intensive"
 				}
-				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> "Notre population nombreuse est un terreau de futur soldats. Avec des lois de conscriptions, nous pourrons lever rapidemment des troupes frâiches même si elles manqueront d'entrainement."
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre population nombreuse est un terreau de futur soldats. Avec des lois de conscriptions, nous pourrons lever rapidemment des troupes frâiches même si elles manqueront d'entrainement."
 				SUMMARY "Recrute notre population en temps de guerre"
 			}
 			ManOfWar = {

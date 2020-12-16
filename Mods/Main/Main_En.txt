@@ -2130,7 +2130,7 @@ Main = {
 					10 = "Moderate"
 					23 = "Intesive"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> "Our large population is a source of future soldiers. With conscription laws, we will be able to quickly raise fresh troops even if they lack training."
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our large population is a source of future soldiers. With conscription laws, we will be able to quickly raise fresh troops even if they lack training."
 				SUMMARY "Recruits our population in times of war"
 			}			
 			
