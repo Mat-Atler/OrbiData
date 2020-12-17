@@ -4314,7 +4314,7 @@ Main = {
 				
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
-						 PROCESS $Wealth = $Wealth - PerSeconds(value * 0.28)
+						 PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 						IF ~OrganizedNomadism
 							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 7000)
 						ELSE
@@ -4369,7 +4369,7 @@ Main = {
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value + PerSeconds(value * Population / 8000 )
-					PROCESS $Wealth = $Wealth - PerSeconds(value * 0.01)
+					PROCESS $Wealth = $Wealth - PerSeconds(value * 0.04)
 					ENDIF
 				}
 			
@@ -4411,7 +4411,7 @@ Main = {
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value + PerSeconds(value * Population / 10000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.09)
 					ENDIF
 				}
 				
@@ -4486,10 +4486,10 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.5)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.1)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.5)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.1)
 					ENDIF
 					
 				}
@@ -4593,7 +4593,7 @@ Main = {
 					ENDIF
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
 						PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value + PerSeconds(outValue / 90)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.25)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.2)
 					ENDIF
 				}
 			

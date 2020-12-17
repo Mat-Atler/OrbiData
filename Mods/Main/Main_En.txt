@@ -895,7 +895,7 @@ Main = {
 					70 = "Intensive"
 					100.001 = "Very Intensive"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( "Output @[output,0.###]" ) " <br><br> "Our soil is full of resources, it's time to extract the wealth from the earth!"
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###]" ) " <br><br> "Our soil is full of resources, it's time to extract the wealth from the earth!"
 				SUMMARY "Allows us to discover the wealth of our underground"
 			}
 			Granary = {
