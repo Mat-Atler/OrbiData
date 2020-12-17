@@ -2147,6 +2147,17 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The Man'o'war is the logical evolution of the big warships exploiting all the small technical evolutions and optimizations found through warfare across the seas."
 				SUMMARY "Military technology"
 			}	
+			SteamEngine = {
+				NAME "Steam Engine"
+				LEVEL value = {					
+					0 = "None"
+					0.001 = "Unsuccessful searches"
+					15 = "Search for better models"
+					100 = "Mastery"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> First source of mechanical energy mastered by man, it allows the progressive appearance of industrialization."
+				SUMMARY "Important Technology"
+			}	
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events

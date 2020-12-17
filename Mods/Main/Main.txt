@@ -7407,6 +7407,37 @@ Main = {
 			}
 			
 			
+			SteamEngine = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~ScienceKnowledge
+					CONDITION_VALUE ScienceKnowledge >= 350
+				}
+				PRICE = {
+					$PoliticalPower = 300
+					$Wealth = 700
+				}
+				UPGRADE = {
+					$PoliticalPower = 5
+					$Wealth = 15
+				}
+				
+				TICK = {
+				SET Mining.value [ : : 200 + SteamEngine * 2 ]
+				SET Mill.value [ : : 100 + SteamEngine ]
+				}
+				
+				LINK Mining = {
+						WEIGHT [ max ] 200 + SteamEngine * 2
+				}
+				LINK Mill = {
+						WEIGHT [ max ] 100 + SteamEngine
+				}
+
+			}
+			
+			
 			
 			
 			}

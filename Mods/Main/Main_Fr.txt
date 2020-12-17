@@ -2106,6 +2106,17 @@ Main = {
 				SUMMARY "Technologie militaire"
 			}	
 
+			SteamEngine = {
+				NAME "Machine à Vapeur"
+				LEVEL value = {					
+					0 = "Aucune"
+					0.001 = "Recherches infructueuses"
+					15 = "Recherche de meilleurs modèles"
+					100 = "Maîtrise"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Première source d'énergie mécanique maîtrisée par l'homme, elle permet l'apparition progressive de l'industrialisation."
+				SUMMARY "Technologie importante"
+			}	
 				
 		}
 		Events = {
