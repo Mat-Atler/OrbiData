@@ -2383,7 +2383,7 @@ Main = {
 				}
 				TICK = {
 					PROCESS Stability += PerSeconds( (value - 20 ) / 500)
-					PROCESS Nationalism =  Nationalism - PerSeconds( ( Nationalism + StateSize / 1.8 ) / 2000 )		
+					PROCESS Nationalism =  Nationalism - PerSeconds( ( Nationalism + StateSize / 1.8 + Minorities / 3 ) / 2000 )		
 				}
 
 				LINK Stability = {
@@ -2406,6 +2406,9 @@ Main = {
 				LINK StateSize = {
 					WEIGHT [ from ]
 				}	
+				LINK Minorities = {
+					WEIGHT [ from ]
+				}	
 			}
 			
 			}
@@ -2423,8 +2426,6 @@ Main = {
 				}
 				TICK = {
 					PROCESS output = value * 0.01 * Fauna / 100
-					PROCESS Food = Food + PerSeconds(output * 0.15)
-					PROCESS Fauna = Fauna - PerSeconds(output * 5.5)
 					PROCESS $Wealth += PerSeconds(output * 0.5)
 					
 					IF ~NationalReligion
@@ -2432,7 +2433,8 @@ Main = {
 					ENDIF
 					IF ~DevotionToNature
 						PROCESS Fauna = Fauna - PerSeconds(output * ( 5.5 - DevotionToNature / 100 ) )
-					ELSE
+					ENDIF
+					IF ~DevotionToNature == 0 & ~NationalReligion == 0
 						PROCESS Fauna = Fauna - PerSeconds(output * 5.5 )
 					ENDIF
 						
@@ -2492,7 +2494,8 @@ Main = {
 					ENDIF
 					IF ~DevotionToSea
 						PROCESS output =  value * 0.05 * ( Coastline / 100 ) * ( 1 + DevotionToSea / 400 )
-					ELSE
+					ENDIF
+					IF ~DevotionToSea == 0 & ~NationalReligion == 0
 						PROCESS output =  value * 0.05 * ( Coastline / 100 )
 					ENDIF
 					
@@ -2679,11 +2682,12 @@ Main = {
 					PROCESS $Wealth = $Wealth + PerSeconds(output*0.5)
 					
 					IF ~NationalReligion
-					PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - NationalReligion.DevotionToNatureUsedValue / 300 ) )
+						PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - NationalReligion.DevotionToNatureUsedValue / 300 ) )
 					ENDIF
 					IF ~DevotionToNature
 						PROCESS Flora = Flora - PerSeconds(output * ( 2.5 - DevotionToNature / 300 ) )
-					ELSE
+					ENDIF
+					IF ~DevotionToNature == 0 & ~NationalReligion == 0
 						PROCESS Flora = Flora - PerSeconds(output * 2.5 )
 					ENDIF
 						
@@ -2703,6 +2707,7 @@ Main = {
 				
 				
 			}	
+			
 			Pottery = {
 				TYPE Technological
 				VALUE value [ 0 5 100 >> 1 ]
@@ -3020,7 +3025,8 @@ Main = {
 					ENDIF
 					IF ~DevotionToTheLaw
 						SET UrbanMilitia.value [ : : Urbanization.value + 10 * ( 1 + ( DevotionToTheLaw / 500 ) )  ]
-					ELSE
+					ENDIF
+					IF  ~DevotionToTheLaw == 0 & ~NationalReligion == 0
 						SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
 					ENDIF
 						
