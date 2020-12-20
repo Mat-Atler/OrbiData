@@ -1035,7 +1035,7 @@ Main = {
 					ENDIF
 					
 					
-					SET PriestClass.value [ : : PriestClass ]
+					SET Theocracy.value [ : : PriestClass ]
 				}
 				LINK Piety = {
 					IF (value > 0)
@@ -1223,6 +1223,7 @@ Main = {
 			}		
 			StateSize = {
 				VALUE value [ 0 100 2000 ]
+				TAG Sedentary
 				DISPLAY_VALUE
 
 				RELATED_INFO = {
@@ -4314,11 +4315,12 @@ Main = {
 				
 				TICK = {
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
-						 PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 						IF ~OrganizedNomadism
 							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 7000)
+							PROCESS $Wealth = $Wealth - PerSeconds(value * 0.005)
 						ELSE
 							PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * Population / 12000)
+							PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 						ENDIF
 					ENDIF
 					
@@ -5009,6 +5011,8 @@ Main = {
 					CONDITION_NODE + BarbarianAtGates
 					OR
 					CONDITION_NODE + BarbarianMonarchy
+					OR
+					CONDITION_ERA >= FeudalAge
 					ALWAYS
 					CONDITION_NODE + MilitaryTechnology
 					CONDITION_VALUE Infantry >= 15
@@ -5044,6 +5048,8 @@ Main = {
 					CONDITION_NODE + BarbarianAtGates
 					OR
 					CONDITION_NODE + OrganizedNomadism
+					OR
+					CONDITION_ERA >= FeudalAge
 					ALWAYS
 					CONDITION_NODE + MilitaryTechnology
 					CONDITION_VALUE Cavalry >= 30
@@ -5855,7 +5861,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~Feudality | ~FarmingTools
 					CONDITION_VALUE FarmingTools >= 100
-					CONDITION_VALUE Agriculture > 100
+					CONDITION_VALUE Agriculture >= 100
 					CONDITION_ERA >= FeudalAge
 				}
 				PRICE = {
@@ -6264,7 +6270,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~TradeFair
 					CONDITION_VALUE TradeFair >= 40
-					CONDITION_VALUE Entreprises >= 45
+					CONDITION_VALUE Entreprises >= 40
 					CONDITION_VALUE Urbanization >= 75
 				}
 				PRICE = {
