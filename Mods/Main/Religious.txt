@@ -1455,13 +1455,13 @@ Religious = {
 				}
 				TICK = {
 				
-					SET Theocracy.value [ : : 100 + CelestialMonarchy.value ]
+					SET Theocracy.value [ : : PriestClass + CelestialMonarchy.value ]
 					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value * 0.0025 )
 				}
 				
 				LINK Theocracy = {
 				  
-					WEIGHT [ max ] 100 + CelestialMonarchy.value
+					WEIGHT [ max ] PriestClass + CelestialMonarchy.value
 				
 				}
 				
@@ -1475,7 +1475,7 @@ Religious = {
 	
 				}
 				TRIGGER_LEAVE CelestialMonarchy = {
-						SET Theocracy.value [ : : 100 ]
+						SET Theocracy.value [ : : PriestClass ]
 				}
 			}
 			
@@ -1503,13 +1503,13 @@ Religious = {
 				}
 				TICK = {
 				
-					SET Theocracy.value [ : : 100 + ClericalState.value ]
+					SET Theocracy.value [ : : PriestClass + ClericalState.value ]
 					PROCESS $Wealth = $Wealth + PerSeconds(value * 0.002)
 				}
 				
 				LINK Theocracy = {
 				  
-					WEIGHT [ max ] 100 + ClericalState.value
+					WEIGHT [ max ] PriestClass + ClericalState.value
 				
 				}
 				
@@ -1517,7 +1517,7 @@ Religious = {
 						RESOURCE_MAX $PoliticalPower = 500
 				}
 				TRIGGER_LEAVE ClericalState = {
-						SET Theocracy.value [ : : 100 ]
+						SET Theocracy.value [ : : PriestClass ]
 				}
 			}
 			

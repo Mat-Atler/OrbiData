@@ -1034,8 +1034,8 @@ Main = {
 						SET ReligiousLaw.value [ : : PriestClass ]
 					ENDIF
 					
-					
-					SET Theocracy.value [ : : PriestClass ]
+					IF ( ~CelestialMonarchy == 0 & ~ClericalState == 0 )
+						SET Theocracy.value [ : : PriestClass ]
 				}
 				LINK Piety = {
 					IF (value > 0)
