@@ -1489,7 +1489,7 @@ Religious = {
 				
 				UNLOCK_CONDITIONS = {
 					HINT ~Theocracy
-					CONDITION_VALUE Theocracy >= 80
+					CONDITION_VALUE Theocracy >= 40
 					CONDITION_NODE - CelestialMonarchy
 					CONDITION_VALUE Piety > 50
 					CONDITION_VALUE PriestClass >= 40
