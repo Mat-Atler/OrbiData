@@ -6,7 +6,7 @@ Tutorial = {
 			Chapters = {
 				1 = {
 					NAME "Tutorial 1 : Basics"
-					DESCRIPTION "In Orbi Universo, you need to make survive your civilization and lead it to a bright future."<br>"Your civilization is presented in the game by parameters with values contained in what we call nodes. Theirs differents types of nodes, "<b>"'States'"</b>" who are shaped blue diamonds, "<b>"'Levers'"</b>" are round and "<b>"'Events'"</b>" are hexagonal and orange. You can interact directly only with the levers."<br>"The game is in real time with an active pause and an accelerator feature. (The space bar allows you to pause/de-pause too)."<br>"The right click allows you to move around."
+					DESCRIPTION "In Orbi Universo, you need to make your civilization survive and lead it to a bright future."<br>"Your civilization is presented in the game by parameters with values contained in what we call nodes. There are different types of nodes, "<b>"'States'"</b>" which are shaped blue diamonds, "<b>"'Levers'"</b>" are round and "<b>"'Events'"</b>" are hexagonal and orange. You can interact directly only with the levers."<br>"The game is in real time with an active pause and an accelerator feature. (The space bar allows you to pause/de-pause too)."<br>"The right click allows you to move around."
 					OBJECTIVE = { BUTTON "Next" }
 				}
 				2 = {
