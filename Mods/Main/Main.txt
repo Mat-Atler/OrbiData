@@ -7232,7 +7232,7 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~NationState
 					CONDITION_VALUE BorderControls >= 75
-					CONDITION_VALUE NationState >= 80
+					CONDITION_VALUE NationState >= 50
 				}
 				PRICE = {
 					$PoliticalPower = 495
