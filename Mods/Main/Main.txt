@@ -7452,6 +7452,7 @@ Main = {
 					CONDITION_NODE + Banks
 					CONDITION_NODE + StockExchange
 					CONDITION_NODE - Mercantilism
+					CONDITION_VALUE SchoolOfThought >= 20
 					CONDITION_VALUE TradeTax >= 20
 				}
 				PRICE = {
@@ -7495,6 +7496,7 @@ Main = {
 					CONDITION_NODE + Banks
 					CONDITION_NODE + StockExchange
 					CONDITION_NODE - Mercantilism
+					CONDITION_VALUE SchoolOfThought >= 20
 					CONDITION_VALUE TradeTax <= 40
 				}
 				PRICE = {
