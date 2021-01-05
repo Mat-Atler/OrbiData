@@ -170,7 +170,7 @@ Main = {
 					65 = "Croissance sérieuse"
 					90 = "Baby boom"
 				}
-				DESCRIPTION @[value,LEVEL] "( "@[value,0.####]" ) " <br><br> "Une population peut grandir ou baisser à cause de nombreux facteurs. Les paramètres les plus courants sont l'accès à la nourriture, les maladies ou encore la guerre."
+				DESCRIPTION @[value,LEVEL] "( "@[value,0.####]" ) " <br><br>"Une population peut grandir ou baisser à cause de nombreux facteurs. Les paramètres les plus courants sont l'accès à la nourriture, les maladies ou encore la guerre."
 				SUMMARY "La tendance de l'évolution démographique"
 			}
 			
@@ -184,7 +184,7 @@ Main = {
 					70 = "Grenier à blé"
 					90 = "Nil, Nil, Nil !"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br> "Toutes les terres ne sont pas égales face à l'esprit de la fertilité et le monde est divisé entre les paradis fertiles où toutes plantes prennent racines et les deserts où même les mauvaises herbes ne poussent pas."
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"Toutes les terres ne sont pas égales face à l'esprit de la fertilité et le monde est divisé entre les paradis fertiles où toutes plantes prennent racines et les deserts où même les mauvaises herbes ne poussent pas."
 				SUMMARY "Touche à l'efficacité de notre agriculture"
 			}
 			
@@ -198,7 +198,7 @@ Main = {
 					70 = "Trés stable"
 					90 = "Une stabilité hors du commun"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br> "Une nation instable est une nation qui s'effondre rapidement, pour éviter cela il vous faut légitimiser votre pouvoir. Plusieurs moyens existent, la religion, une forme gouvernementale plus avancée ou encore une milice."
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"Une nation instable est une nation qui s'effondre rapidement, pour éviter cela il vous faut légitimiser votre pouvoir. Plusieurs moyens existent, la religion, une forme gouvernementale plus avancée ou encore une milice."
 				SUMMARY "La crédibilité actuelle de notre État"
 			}
 
@@ -212,7 +212,7 @@ Main = {
 					70 = "Acces multiple"
 					99 = "Atlantide"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br> "La mer est un bon moyen de récolter de la nourriture. Cette valeur représente la largeur de nos côtes et leurs accessibilité."
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"La mer est un bon moyen de récolter de la nourriture. Cette valeur représente la largeur de nos côtes et leurs accessibilité."
 				SUMMARY "Détermine votre accès à la mer"
 			}
 
@@ -249,7 +249,7 @@ Main = {
 					85 = "Forêt équatoriale"
 					95 = "Littéralement l'Amazonie"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br> "La densité de la végétation. Elle peut être fourragée pour récolter de la nourriture. La faune et le bétail puisent aussi dans cette réserve."
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"La densité de la végétation. Elle peut être fourragée pour récolter de la nourriture. La faune et le bétail puisent aussi dans cette réserve."
 				SUMMARY "La reserve végétale sur nos terres"
 			}
 			Humidity = {
@@ -262,7 +262,7 @@ Main = {
 					60 = "Pluvieux"
 					85 = "Engloutis"
 				}
-				DESCRIPTION "Humidité: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br> "Il y a d'immenses différences entre une terre gorgée d'eau et les déserts arides, le facteur d'humidité represente la quantité d'eau arrosant vos terres, cela peux être sous forme de pluie, de lacs ou encore de fleuves."
+				DESCRIPTION "Humidité: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br>"Il y a d'immenses différences entre une terre gorgée d'eau et les déserts arides, le facteur d'humidité represente la quantité d'eau arrosant vos terres, cela peux être sous forme de pluie, de lacs ou encore de fleuves."
 				SUMMARY "Le climat de notre région principale"
 
 			}
@@ -273,7 +273,7 @@ Main = {
 			}
 			Piety = {
 				NAME "Piété"
-				DESCRIPTION "Piété : " @[value,0.####] " )" <br><br> "La foi en notre religion officielle, plus elle est haute, plus l'état sera stable."
+				DESCRIPTION "Piété : " @[value,0.####] " )" <br><br>"La foi en notre religion officielle, plus elle est haute, plus l'état sera stable."
 				SUMMARY "Stabiliser notre état avec la foi"
 			}
 			Education = {
@@ -286,7 +286,7 @@ Main = {
 					70 = "Éducation avancée"
 					90 = "Éducation supérieure"
 				}
-				DESCRIPTION "Éducation: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br> "L'éducation représente le niveau d'érudition de votre population, surtout de la haute classe, cela vous apporte plus de stabilité et de pouvoir politique."
+				DESCRIPTION "Éducation: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br>"L'éducation représente le niveau d'érudition de votre population, surtout de la haute classe, cela vous apporte plus de stabilité et de pouvoir politique."
 				SUMMARY "Augmente notre stabilité et notre pouvoir politique"
 			}
 			Livestock = {
@@ -304,27 +304,27 @@ Main = {
 			}
 			AristocracyClass = {
 				NAME "Classe Aristocratique"
-				DESCRIPTION "Classe Aristocratique "<b>"Valeur: "@[value] </b> <br><br> "Les propriétaires terriens ont formés une classe sociale à part, ils sont utiles pour gérer un grand empire mais si ils deviennent trop puissants, ils risquent de demander une monarchie."
+				DESCRIPTION "Classe Aristocratique "<b>"Valeur: "@[value] </b> <br><br>"Les propriétaires terriens ont formés une classe sociale à part, ils sont utiles pour gérer un grand empire mais si ils deviennent trop puissants, ils risquent de demander une monarchie."
 				SUMMARY "L'importance de la noblesse dans votre état"
 			}
 			ArtisanClass = {
 				NAME "Classe Bourgeoise"
-				DESCRIPTION "Classe Bourgeoise "<br><b>"Valeur: "@[value] </b> <br><br> "Avec l'intensification des échanges commerciaux et de la production artisanale, une classe de riches marchands est apparue. Cette classe, de par leurs actions, augmentera l'intensification des échanges commerciaux mais si ils deviennent trop puissants, ils demanderont une république."
+				DESCRIPTION "Classe Bourgeoise "<br><b>"Valeur: "@[value] </b> <br><br>"Avec l'intensification des échanges commerciaux et de la production artisanale, une classe de riches marchands est apparue. Cette classe, de par leurs actions, augmentera l'intensification des échanges commerciaux mais si ils deviennent trop puissants, ils demanderont une république."
 				SUMMARY "L'importance des bourgeois dans votre état"
 			}
 			PriestClass = {
 				NAME "Clergé"
-				DESCRIPTION "Classe Religieuse "<br><b>"Valeur: "@[value] </b> <br><br> "Plus le culte est organisé, plus les prêtres seront puissant et influant. Ils sont importants pour augmenter la stabilité de par une augmentation de la foi de votre peuple mais si ils deviennent trop puissant, ils réclameront une théocratie."
+				DESCRIPTION "Classe Religieuse "<br><b>"Valeur: "@[value] </b> <br><br>"Plus le culte est organisé, plus les prêtres seront puissant et influant. Ils sont importants pour augmenter la stabilité de par une augmentation de la foi de votre peuple mais si ils deviennent trop puissant, ils réclameront une théocratie."
 				SUMMARY "L'importance du clergé dans votre état"
 			}
 			OverlandTrade = {
 				NAME "Commerce terrestre"
-				DESCRIPTION "Commerce terrestre "<br><b>"Valeur : "@[value] </b> <br><br> "L'émergence d'artisans et de marchands a intensifié les échanges. D'abords quelques courageux marchands, puis de véritables convois commerciaux prendront la route."
+				DESCRIPTION "Commerce terrestre "<br><b>"Valeur : "@[value] </b> <br><br>"L'émergence d'artisans et de marchands a intensifié les échanges. D'abords quelques courageux marchands, puis de véritables convois commerciaux prendront la route."
 				SUMMARY "Le commerce dynamise l'économie d'un pays mais les échanges constants risque de dévier votre population du droit chemin"
 			}	
 			NavalTrade = {
 				NAME "Commerce maritime"
-				DESCRIPTION "Commerce maritime "<br><b>"Valeur : "@[value] </b> <br><br> "Avec l'intensification des échanges et l'évolution des technologies navales, les fleuves et mers sont devenus des lieux d'échanges commerciaux importants."
+				DESCRIPTION "Commerce maritime "<br><b>"Valeur : "@[value] </b> <br><br>"Avec l'intensification des échanges et l'évolution des technologies navales, les fleuves et mers sont devenus des lieux d'échanges commerciaux importants."
 				SUMMARY "Le commerce naval est plus efficace que le commerce terrestre mais ils vous faut des côtes pour le pratiquer"
 			}	
 			Gold = {
@@ -335,7 +335,7 @@ Main = {
 					30 = "Riche en or"
 					70 = "Croulant sous l'or"
 				}
-				DESCRIPTION <b> "Valeur :" @[value,LEVEL] </b> "( "@[value,0.###]" Sortie " @[output,0.###] " )" <br><br> "L'or est un minéral brillant, rare, malléable, inoxydable et précieux. Ce n'est pas une surprise qu'il ait joué et qu'il continue à jouer un si grand rôle dans l'histoire de l'humanité."
+				DESCRIPTION <b> "Valeur :" @[value,LEVEL] </b> "( "@[value,0.###]" Sortie " @[output,0.###] " )" <br><br>"L'or est un minéral brillant, rare, malléable, inoxydable et précieux. Ce n'est pas une surprise qu'il ait joué et qu'il continue à jouer un si grand rôle dans l'histoire de l'humanité."
 				SUMMARY "Augmente vos biens commerciaux à travers les mines"
 			}
 			Spices = {
@@ -346,7 +346,7 @@ Main = {
 					30 = "De nombreuses épices"
 					70 = "Plaque tournante du commerce d'épices"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value,0.###] " Sortie "@[output,0.###] " ) " <br><br> "Les épices sont une variété de condiments et de plantes aromatiques, elles sont généralement utilisées pour assaisonner les plats. Considérées commes un produit de luxe, elles ne sont disponible qu'uniquement en petite quantité et dans des endroits bien précis, leurs négoces peut apporter une incommensurable richesse."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value,0.###] " Sortie "@[output,0.###] " ) " <br><br>"Les épices sont une variété de condiments et de plantes aromatiques, elles sont généralement utilisées pour assaisonner les plats. Considérées commes un produit de luxe, elles ne sont disponible qu'uniquement en petite quantité et dans des endroits bien précis, leurs négoces peut apporter une incommensurable richesse."
 				SUMMARY "Augmente vos bien commerciaux à travers l'agriculture"
 			}
 			Slaves = {
@@ -357,7 +357,7 @@ Main = {
 					30 = "De nombreux esclaves"
 					70 = "L'esclavagisme est une véritable institution"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value,0.###] " Sortie " @[output,0.###]" )" <br><br>  "Le commerce d'esclave a joué un rôle important dans les économies précoces. Souvent capturés dans les guerres ou autre razzias, de nombreux empires esclavagistes se sont effondrés à cause de la chute du nombre d'esclaves."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value,0.###] " Sortie " @[output,0.###]" )" <br><br> "Le commerce d'esclave a joué un rôle important dans les économies précoces. Souvent capturés dans les guerres ou autre razzias, de nombreux empires esclavagistes se sont effondrés à cause de la chute du nombre d'esclaves."
 				SUMMARY "Augmente le nombre de biens commerciaux avec la conquête"
 			}
 
@@ -369,7 +369,7 @@ Main = {
 					30 = "Énormément de sel"
 					70 = "Reserve de sel mondiale"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value,0.###] " Output " @[output,0.###]" )" <br><br> "La production de sel se fait de deux façons, par la mine de sel dure et les marais salants. Capital dans la conservation des aliments et l'utilisation d'un condiment basique, il est aussi très utilisé dans la métallurgie."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value,0.###] " Output " @[output,0.###]" )" <br><br>"La production de sel se fait de deux façons, par la mine de sel dure et les marais salants. Capital dans la conservation des aliments et l'utilisation d'un condiment basique, il est aussi très utilisé dans la métallurgie."
 				SUMMARY "Augmente le nombre de biens commerciaux à travers les mines"
 			}
 					
@@ -385,7 +385,7 @@ Main = {
 					500 = "Empire"
 					1000 = "Grand Empire"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> ( @[value,0.###] ) <br><br> "La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, votre civiliation est perdue."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> ( @[value,0.###] ) <br><br>"La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, votre civiliation est perdue."
 				SUMMARY "La taille de l'État"
 			}
 			MilitaryEfficiency = {
@@ -397,7 +397,7 @@ Main = {
 					60 = "Bonne"
 					80 = "Immense"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value] " )" <br><br> "De nombreux paramètres séparent une armée efficace d'un ramassis de soldats inefficaces. Entre les technologies militaires, la qualité de la chaine de commandement, la culture martiale ou simplement les standards de recrutement."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value] " )" <br><br>"De nombreux paramètres séparent une armée efficace d'un ramassis de soldats inefficaces. Entre les technologies militaires, la qualité de la chaine de commandement, la culture martiale ou simplement les standards de recrutement."
 				SUMMARY "Le modificateur d'efficacité de notre système militaire"
 				}
 			MilitaryTechnology = {
@@ -409,14 +409,14 @@ Main = {
 					60 = "Bonne"
 					80 = "Une avance incroyable"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "Les avancées technologiques militaires sont toujours un incroyable avantage sur le champ de bataille. Quand les Indo-Européens sont arrivés dans le croissant fertile, leurs chariots, arcs composites et épées de fer ont écrasés les armées locales."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br>"Les avancées technologiques militaires sont toujours un incroyable avantage sur le champ de bataille. Quand les Indo-Européens sont arrivés dans le croissant fertile, leurs chariots, arcs composites et épées de fer ont écrasés les armées locales."
 				SUMMARY "La technologie est l'un des plus grand facteur de l'efficacité militaire"
 				}
 				
 				
 			TechnologicDecay = {
 				NAME "Déclin technologique"
-				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Avec le temps même la plus grande des évolutions devient obsolète, toutes les civilisations essayent sans cesse de surpasser ses voisins en terme de technologies militaires. La marche du progrès ne s'arrêtra jamais !"
+				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br>"Avec le temps même la plus grande des évolutions devient obsolète, toutes les civilisations essayent sans cesse de surpasser ses voisins en terme de technologies militaires. La marche du progrès ne s'arrêtra jamais !"
 				SUMMARY "Notre arrièration technologique ne peux que grandir"
 				}
 				
@@ -442,7 +442,7 @@ Main = {
 					30 = "Flotte"
 					100 = "Armada"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br> "Maintenir une flotte militaire est une nécessité pour les nations côtières ; utilisée pour le commerce maritime ou encore les actions militaires naval."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )" <br><br>"Maintenir une flotte militaire est une nécessité pour les nations côtières ; utilisée pour le commerce maritime ou encore les actions militaires naval."
 				SUMMARY "Notre flotte"
 			}
 			HorseDomestication = {
@@ -459,12 +459,12 @@ Main = {
 			
 			TradeGoods = {
 				NAME "Bien commerciaux"
-				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Même le plus basique des échanges nécessite des ressources à échanger."
+				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br>"Même le plus basique des échanges nécessite des ressources à échanger."
 				SUMMARY "Nécessaire pour toutes formes de commerce"
 			}
 			Entreprises = {
 				NAME "Entreprises"
-				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br> "Avec la prolifération du commerce les marchands sont devenus puissants, très puissants. Ils ont organisés le commerce sous la forme de petites guildes, cherchant à enrichir leurs propriétaires. Bien entendus, ils haïssent tout se qui s'apparante à des taxes gouvernementales."
+				DESCRIPTION <b>"Valeur : "@[value] </b> <br><br>"Avec la prolifération du commerce les marchands sont devenus puissants, très puissants. Ils ont organisés le commerce sous la forme de petites guildes, cherchant à enrichir leurs propriétaires. Bien entendus, ils haïssent tout se qui s'apparante à des taxes gouvernementales."
 				SUMMARY "Augmente le commerce"
 			}
 			NationalCohesion = {
@@ -476,7 +476,7 @@ Main = {
 					80 = "Bonne cohésion"
 					100 = "Nation unie"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br> "La nation est un concept complexe exprimant un sentiment d'appartenance à un groupe plus large qu'une cité. Les immenses empires vont souvent avec un sentiment séparatiste fort qui minera la stabilité si aucun effort n'est effectué pour intégrer la nouvelle population conquise."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br>"La nation est un concept complexe exprimant un sentiment d'appartenance à un groupe plus large qu'une cité. Les immenses empires vont souvent avec un sentiment séparatiste fort qui minera la stabilité si aucun effort n'est effectué pour intégrer la nouvelle population conquise."
 				SUMMARY "Impacte votre stabilité"
 			}
 			Culture = {
@@ -489,7 +489,7 @@ Main = {
 					80 = "Haut-lieu culturel"
 					100 = "Capitale culturelle"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br> "En philosophie, la culture est ce qui diffère de la nature. C'est la somme de nos différences avec les civilisations voisines, lié mais non exclusif aux arts."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br>"En philosophie, la culture est ce qui diffère de la nature. C'est la somme de nos différences avec les civilisations voisines, lié mais non exclusif aux arts."
 				SUMMARY "Augmentent notre cohésion culturele"
 			}
 			NeighborhoodBellicism = {
@@ -523,7 +523,7 @@ Main = {
 					150 = "Niveau de l'Âge des découvertes"
 					300 = "Niveau de l'Impérialisme"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "L'ascendant technologique a toujours été primordial sur le champ de bataille. S'assurer de notre avance sur les mers va vous permettre de créer de loitaines expéditions, d'envahir les nations étrangères et les piller."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br>"L'ascendant technologique a toujours été primordial sur le champ de bataille. S'assurer de notre avance sur les mers va vous permettre de créer de loitaines expéditions, d'envahir les nations étrangères et les piller."
 				SUMMARY "La modernité de votre flotte"
 				}
 			VassalPower = {
@@ -534,7 +534,7 @@ Main = {
 					75 = "Les vassaux ont peu de chaînes"
 					100 = "Nos vassaux sont presque indépendants"
 				}
-				DESCRIPTION <b>"Valeur: "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "Les propriétaires fonciers ont acquis un rôle clé. L'époque où les nobles provinciaux étaient médiocres et des fonctionnaires d'État vulnérables est révolue. Ils sapent notre pouvoir absolu mais en échange, ils pacifieront eux-mêmes leurs terres."
+				DESCRIPTION <b>"Valeur: "@[value,LEVEL] </b>" ( "@[value] " )" <br><br>"Les propriétaires fonciers ont acquis un rôle clé. L'époque où les nobles provinciaux étaient médiocres et des fonctionnaires d'État vulnérables est révolue. Ils sapent notre pouvoir absolu mais en échange, ils pacifieront eux-mêmes leurs terres."
 				SUMMARY "Le niveau de décentralisation vers les nobles locaux"
 				}
 		
@@ -546,7 +546,7 @@ Main = {
 					30 = "Nous avons plusieurs opportunités"
 					60 = "Nos produits sont exportés aux 4 coins du monde!"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre commerce interne ne se suffit plus, nous devons exporter notre production dans des pays lointains pour faire des bénéfices toujours plus faramineux."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Notre commerce interne ne se suffit plus, nous devons exporter notre production dans des pays lointains pour faire des bénéfices toujours plus faramineux."
 				SUMMARY "Notre niveau de commerce international"
 				}
 				
@@ -578,7 +578,7 @@ Main = {
 					30 = "Nos routes ne sont plus sûres"
 					60 = "Les bandits de grand chemin sont partout"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Il arrive que les plus infortunés s'enfuient dans nos forêts et commence à pratiquer le banditisme. Nous devons veiller à mettre en place une police forte pour éviter toute insécurité qui compromettrait le commence terrestre."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Il arrive que les plus infortunés s'enfuient dans nos forêts et commence à pratiquer le banditisme. Nous devons veiller à mettre en place une police forte pour éviter toute insécurité qui compromettrait le commence terrestre."
 				SUMMARY "Réduit notre commerce"
 				}
 	
@@ -623,7 +623,7 @@ Main = {
 					80 = "Imposante"
 					120 = "Notre flotte a dompté les océans"
 				}
-				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre flotte étant désormais une composante essentielle de notre état, notre domination maritime doit être la plus impressionnante que possible si nous voulons sécuriser nos commerces lointains."
+				DESCRIPTION<b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Notre flotte étant désormais une composante essentielle de notre état, notre domination maritime doit être la plus impressionnante que possible si nous voulons sécuriser nos commerces lointains."
 				SUMMARY "Notre domination des 7 mers"
 			}	
 			
@@ -668,7 +668,7 @@ Main = {
 					100 = "Imposante"
 					250 = "Monstrueuses"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur la terre. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Notre ennemi possède un effectif limité pour nous combattre sur la terre. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
 				SUMMARY "Effectif de l'armée terrestre adverse"
 			}	
 			
@@ -683,7 +683,7 @@ Main = {
 					100 = "Imposante"
 					250 = "Monstrueuses"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Notre ennemi possède un effectif limité pour nous combattre sur les mers. Assurons nous de les massacrer avant qu'il ne réservent le même sort."
 				SUMMARY "Effectif de l'armée navale adverse"
 			}	
 			
@@ -695,7 +695,7 @@ Main = {
 					500 = "Importante"
 					1000 = "Notre pays est exsangue"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
 				SUMMARY "Diminue votre stabilité"
 			}	
 			
@@ -709,13 +709,13 @@ Main = {
 
 			PeasantryClass = {
 				NAME "Classe Paysanne"
-				DESCRIPTION "Classe Paysanne "<b>"Valeur: "@[value] </b> <br><br> "Les travailleurs de la terre forment une classe sociale importante, une grande partie de la population en vérité et constitue la ligne de base de toute civilisation sédentaire."
+				DESCRIPTION "Classe Paysanne "<b>"Valeur: "@[value] </b> <br><br>"Les travailleurs de la terre forment une classe sociale importante, une grande partie de la population en vérité et constitue la ligne de base de toute civilisation sédentaire."
 				SUMMARY "Nombre de paysans dans votre état"
 			}
 			
 			BourgoisieClass = {
 				NAME "Classe Bourgoise"
-				DESCRIPTION "Classe Bourgoise "<b>"Valeur: "@[value] </b> <br><br> "Nos villes se remplissent de sujets plutôt fortunés qui favorisent un commerce florrisant, en espérant qu'ils ne réclament jamais de droits de noblesse."
+				DESCRIPTION "Classe Bourgoise "<b>"Valeur: "@[value] </b> <br><br>"Nos villes se remplissent de sujets plutôt fortunés qui favorisent un commerce florrisant, en espérant qu'ils ne réclament jamais de droits de noblesse."
 				SUMMARY "Nombre de bourgois dans votre état"
 			}
 			
@@ -729,7 +729,7 @@ Main = {
 					40 = "Bon"
 					60 = "Extatique"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br> "Le nationalisme représentante le sentiment d'appartenance de notre population envers notre nation. Une nation unie sous un drapeau renforce votre assise, mais cela peut aussi permettre de germer des idées dangereuses."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Le nationalisme représentante le sentiment d'appartenance de notre population envers notre nation. Une nation unie sous un drapeau renforce votre assise, mais cela peut aussi permettre de germer des idées dangereuses."
 				SUMMARY "Impacte votre stabilité"
 			}	
 				
@@ -745,7 +745,7 @@ Main = {
 					40 = "Modéré"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br> "La chasse est, avec la cueillette, est la première façon de nourrir un groupe d'humain. Mais attention une chasse trop intensive peut détruire la faune."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"La chasse est, avec la cueillette, est la première façon de nourrir un groupe d'humain. Mais attention une chasse trop intensive peut détruire la faune."
 				SUMMARY "Récolter de la nourriture en tuant des animaux"
 			}
 
@@ -758,7 +758,7 @@ Main = {
 					30 = "Culture de la pêche"
 					80 = "Pêche massive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br> "Pour les civilisations avec un accès à la mer, récolter de la nourriture de cette source est une évidence. Une culture de pêche va donc se créer : du pêcheur côtier occasionnel au navire de pêche en haute mer."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"Pour les civilisations avec un accès à la mer, récolter de la nourriture de cette source est une évidence. Une culture de pêche va donc se créer : du pêcheur côtier occasionnel au navire de pêche en haute mer."
 				SUMMARY "Récolter de la nourriture depuis nos côtes"
 			}
 			Harbours = {
@@ -770,7 +770,7 @@ Main = {
 					30 = "Port commercial"
 					100 = "Centre Maritime"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br> "Votre civilisation a acquis une certaine connaissance de la mer grâce à la pêche. Vous pouvez acroître votre emprise sur ce millieu par la construction de ports."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"Votre civilisation a acquis une certaine connaissance de la mer grâce à la pêche. Vous pouvez acroître votre emprise sur ce millieu par la construction de ports."
 				SUMMARY "Base du commerce naval et d'une flotte militaire"
 			}
 			AnimalHusbandry = {
@@ -782,7 +782,7 @@ Main = {
 					50.001 = "Croissance lente"
 					70 = "Investissement massif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Avec l'expansion démographique humaine, le besoin de viande se fait grandissant, une selection des animaux les moins agressifs a créer une source de nourriture et de matière première qui peut être déplacé et récolté au besoin."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Avec l'expansion démographique humaine, le besoin de viande se fait grandissant, une selection des animaux les moins agressifs a créer une source de nourriture et de matière première qui peut être déplacé et récolté au besoin."
 				SUMMARY "Notre politique sur la domestication"
 			}
 			
@@ -793,7 +793,7 @@ Main = {
 					45 = "Rien"
 					55 = "Acheter de la nourriture"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Avec l'intensification du commerce, votre gouvernement peut acheter ou vendre de la nourriture sur des marchés étrangers."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Avec l'intensification du commerce, votre gouvernement peut acheter ou vendre de la nourriture sur des marchés étrangers."
 				SUMMARY "Vendre ou acheter de la nourriture"
 			}			
 			
@@ -805,7 +805,7 @@ Main = {
 					30 = "Normale"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "La cueillette est le premier moyen de récolter de la nourriture, cela consiste à cueillir le plus de plantes comestibles dans la nature. La cueillette intensive peut mettre en danger l'écosysteme. La récolte de plusieurs plantes fera germer l'idée de dompter la nature par un processus agricole."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br>"La cueillette est le premier moyen de récolter de la nourriture, cela consiste à cueillir le plus de plantes comestibles dans la nature. La cueillette intensive peut mettre en danger l'écosysteme. La récolte de plusieurs plantes fera germer l'idée de dompter la nature par un processus agricole."
 				SUMMARY "Récolter de la nourriture en cueillant la flore"
 			}
 			Agriculture = {
@@ -817,7 +817,7 @@ Main = {
 					70 = "Intensification de l'agriculture"
 					120 = "Producteur majeur"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "Une population toujours plus nombreuse demande des sources de nourriture plus fiable et plus contrôlable. L'agriculture réponds à toutes ces demandes, la nourriture désormait produite à des endroits définis apporte une sécurité alimentaire accrue."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br>"Une population toujours plus nombreuse demande des sources de nourriture plus fiable et plus contrôlable. L'agriculture réponds à toutes ces demandes, la nourriture désormait produite à des endroits définis apporte une sécurité alimentaire accrue."
 				SUMMARY "Récolter de la nourriture en cultivant des champs"
 			}
 			Pottery = {
@@ -830,7 +830,7 @@ Main = {
 					50 = "Bonne Amphore"
 					90 = "Tonneau"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br> "La poterie est en premier lieu une réponse à une demande d'entreposage de production alimentaire de plus importante ainsi que d'un besoin de leurs transports. La conservation et l'augmentation de la facilité de transport vont créer une idée d'échange de plus en plus lointain."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br>"La poterie est en premier lieu une réponse à une demande d'entreposage de production alimentaire de plus importante ainsi que d'un besoin de leurs transports. La conservation et l'augmentation de la facilité de transport vont créer une idée d'échange de plus en plus lointain."
 				SUMMARY "Produit la forme la plus élémentaire de l'artisanat"
 			}
 			Mining = {
@@ -841,7 +841,7 @@ Main = {
 					30 = "Modéré"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "Output @[output,0.###]" ) " <br><br> "Nos sol sont riches en ressources, nous devons creuser la terre et la roche pour en extraire nos richesses !"
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "Output @[output,0.###]" ) " <br><br>"Nos sol sont riches en ressources, nous devons creuser la terre et la roche pour en extraire nos richesses !"
 				SUMMARY "Découvre et extrait les richesses du sol"
 			}
 			Granary = {
@@ -852,7 +852,7 @@ Main = {
 					30 = "Local"
 					70 = "Bâtiments dédiés"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La nourriture est convervées mais la croissance des centres urbains ne permet plus à tout les habitants de se fournir en province. Vous devez créer des entrepôts afin de conserver de la nourriture près des centres urbains et donc continuer une croissance de la population toujours plus forte."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"La nourriture est convervées mais la croissance des centres urbains ne permet plus à tout les habitants de se fournir en province. Vous devez créer des entrepôts afin de conserver de la nourriture près des centres urbains et donc continuer une croissance de la population toujours plus forte."
 				SUMMARY "Permet d'entreposer plus efficacement la nourriture"
 			}
 			ReligiousMonuments = {
@@ -866,7 +866,7 @@ Main = {
 					90 = "Pyramides"
 					150 = "Cathédrales"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) "<br><br>  "La grandeur des monuments religieux touche de nombreux secteur, par exemple la culture et surtout la possibilité d'exécuter des cérémonies plus grandes et fastes."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) "<br><br> "La grandeur des monuments religieux touche de nombreux secteur, par exemple la culture et surtout la possibilité d'exécuter des cérémonies plus grandes et fastes."
 				SUMMARY "Permet une activitée religieuse plus complexe"
 			}
 			ReligiousCeremony = {
@@ -877,7 +877,7 @@ Main = {
 					40 = "Calendrier des cérémonies"
 					70 = "Sociétée rythmé par la religion"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br>  "La fréquence et la grandeur de nos cérémonies religieuses, plus elles sont nombreuses et plus vous aurez besoin de prêtres, les rendant de plus en plus nécessaires."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br> "La fréquence et la grandeur de nos cérémonies religieuses, plus elles sont nombreuses et plus vous aurez besoin de prêtres, les rendant de plus en plus nécessaires."
 				SUMMARY "Accroit le rôle des prêtres"
 			}
 			
@@ -889,7 +889,7 @@ Main = {
 					40 = "Établit"
 					110 = "Campagne de colonisation des terres extérieurs"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Les groupes humains ont commencé à se regrouper en hameaux se transformant rapidemant en bourgade. C'est la première étape d'une société sédentaire."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Les groupes humains ont commencé à se regrouper en hameaux se transformant rapidemant en bourgade. C'est la première étape d'une société sédentaire."
 				SUMMARY "Détermine notre sédentarisation"
 			}
 			OrganizedNomadism = {
@@ -900,7 +900,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>  "Grâce à l'élevage vous pouvez vous mouvoir plus loin et apporter facilement votre nourritures avec vous. Votre peuple se regroupe en clan familiaux."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Grâce à l'élevage vous pouvez vous mouvoir plus loin et apporter facilement votre nourritures avec vous. Votre peuple se regroupe en clan familiaux."
 				SUMMARY "Un peuple sans terre fixe"
 			}
 			PastoralNomadism = {
@@ -911,7 +911,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Votre clan est basé sur votre bétail, bouger est constamment nécessaire pour trouver de nouveaux paturages."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Votre clan est basé sur votre bétail, bouger est constamment nécessaire pour trouver de nouveaux paturages."
 				SUMMARY "Une société basé sur l'élevage."
 			}
 			SeasonalNomadism = {
@@ -922,7 +922,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Notre mode de vie est basé principalement sur la chasse et la cueillette et donc pour éviter de détruir tout l'écosystème nous devons souvent nous mouvoir. De cette façon nous pourrons récolter plus de nourriture tout en ne détruisant pas le fragile équilibre naturel."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Notre mode de vie est basé principalement sur la chasse et la cueillette et donc pour éviter de détruir tout l'écosystème nous devons souvent nous mouvoir. De cette façon nous pourrons récolter plus de nourriture tout en ne détruisant pas le fragile équilibre naturel."
 				SUMMARY "Une société basé sur un cycle migratoire"
 			}
 			Urbanization = {
@@ -933,7 +933,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###]" ) " <br><br>   "Les villages se transforment en ville puis en cité, et les cités ont besoin d'être organisées pour éviter les problèmes d'hygienes ou encore mener de grand travaux public. Mais attention si la population ne suit pas l'essor urbian, la ville va petit à petit s'effondrer par manque d'entretien."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###]" ) " <br><br>  "Les villages se transforment en ville puis en cité, et les cités ont besoin d'être organisées pour éviter les problèmes d'hygienes ou encore mener de grand travaux public. Mais attention si la population ne suit pas l'essor urbian, la ville va petit à petit s'effondrer par manque d'entretien."
 				SUMMARY "Determine à quelle point nous sommes urbanisé"
 			}
 			NonSecularEducation = {
@@ -944,7 +944,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br> "Pour s'assurer d'une bonne éducation moralement orthodoxe, les prêtres et autres membres du clergé peuvent se voir octroyé le devoir d'enseigner à la jeunesse. L'éducation s'en verra améliorée, mais le clergé en sortira fortement renforcé."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) "<br><br>"Pour s'assurer d'une bonne éducation moralement orthodoxe, les prêtres et autres membres du clergé peuvent se voir octroyé le devoir d'enseigner à la jeunesse. L'éducation s'en verra améliorée, mais le clergé en sortira fortement renforcé."
 				SUMMARY "Éduquer notre population à l'aide des prêtres"
 			}
 			SecularEducation = {
@@ -955,7 +955,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Vous dever créez un corps de professeurs et de maîtres dans leurs domaine afin de donner une éducation plus rationelle à la jeunesse et de limiter l'influence cléricale. Mais tout cela ne se fait pas sans dépenses."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Vous dever créez un corps de professeurs et de maîtres dans leurs domaine afin de donner une éducation plus rationelle à la jeunesse et de limiter l'influence cléricale. Mais tout cela ne se fait pas sans dépenses."
 				SUMMARY "Eduquer notre population en payant des professeurs pour le faire"
 			}
 			Mathematics = {
@@ -966,7 +966,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) " <br><br> "Comprendre le monde physique n'est pas aisé, mais certain membres de notre civilisation réfléchissent, théorisent et rationalisent les méchanismes de se monde grâce aux nombres et à des formules."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) " <br><br>"Comprendre le monde physique n'est pas aisé, mais certain membres de notre civilisation réfléchissent, théorisent et rationalisent les méchanismes de se monde grâce aux nombres et à des formules."
 				SUMMARY "Les bases d'une culture scientifique"
 			}
 			Philosophy = {
@@ -977,7 +977,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] ) <br><br> "Les questionements ne sont pas cantonnées au monde physique, et certaine personnes se posent des questions sur l'essence propre des idées, de l'homme, de la politique ou encore du sens de la vie."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] ) <br><br>"Les questionements ne sont pas cantonnées au monde physique, et certaine personnes se posent des questions sur l'essence propre des idées, de l'homme, de la politique ou encore du sens de la vie."
 				SUMMARY "Les bases d'une approche métaphysique"
 			}
 			OralTradition = {
@@ -988,7 +988,7 @@ Main = {
 					30 = "Saga sur les choses passées"
 					50 = "Sociétée druidique"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La transmition du savoir est une chose essentiele. Une part de notre population se dévouent à apprendre à la jeunesse les traditions et histoire de nos ancêtres."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"La transmition du savoir est une chose essentiele. Une part de notre population se dévouent à apprendre à la jeunesse les traditions et histoire de nos ancêtres."
 				SUMMARY "Determine la complexité de l'éducation et améliore notre culture"
 			}
 			Pantheon = {
@@ -1002,7 +1002,7 @@ Main = {
 					80 = "Un seul Dieu"
 					95 = "Monothéisme orthodoxe"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "La nature de notre religion officielle, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"La nature de notre religion officielle, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
 				SUMMARY "Détermine à quelle point votre clergé peut être organisé"
 			}
 			Theocracy = {
@@ -1013,7 +1013,7 @@ Main = {
 					40 = "Gouvernement reconnu"
 					80 = "Gouvernement incontesté"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Une forme de gouvernement où le pouvoir est entre les mains du clergé et où les questions sont résolues par la religion officielle."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Une forme de gouvernement où le pouvoir est entre les mains du clergé et où les questions sont résolues par la religion officielle."
 				SUMMARY "Un État dirigée par des prêtres"
 			}
 			Monarchy = {
@@ -1024,7 +1024,7 @@ Main = {
 					40 = "Gouvernement reconnu"
 					80 = "Gouvernement incontesté"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Une forme de gouvernement où une personne, le monarque, représente l'état."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Une forme de gouvernement où une personne, le monarque, représente l'état."
 				SUMMARY "Un État dirigé par un monarque"
 			}
 			Empire = {
@@ -1035,7 +1035,7 @@ Main = {
 					40 = "Gouvernement reconnu"
 					80 = "Gouvernement incontesté"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Un Empire est une monarchie regroupant une multititude de terres, de pays et de peuples."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Un Empire est une monarchie regroupant une multititude de terres, de pays et de peuples."
 				SUMMARY "Un État dirigé par un empereur"
 			}
 			MilitaryDictatorship = {
@@ -1046,7 +1046,7 @@ Main = {
 					40 = "Gouvernement reconnu"
 					80 = "Gouvernement incontesté"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Un gouvernement où l'appareil public est aux mains des cadres militaires."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Un gouvernement où l'appareil public est aux mains des cadres militaires."
 				SUMMARY "Un État dirigé par des officiers"
 			}
 			Republic = {
@@ -1057,7 +1057,7 @@ Main = {
 					40 = "Gouvernement reconnu"
 					80 = "Gouvernement incontesté"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Une forme de gouvernement où le pouvoir est tenu par une entitée publique."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Une forme de gouvernement où le pouvoir est tenu par une entitée publique."
 				SUMMARY "un État dirigée par une entitée publique"
 			}
 			Writing = {
@@ -1069,7 +1069,7 @@ Main = {
 					50 = "Syllabaire"
 					80 = "Alphabet"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "L'Éducation est une merveilleuse chose et la transmition orale a bien des défauts, comme l'interprétation et donc la dispersion du savoir. L'écriture est la réponse à ces problèmes."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"L'Éducation est une merveilleuse chose et la transmition orale a bien des défauts, comme l'interprétation et donc la dispersion du savoir. L'écriture est la réponse à ces problèmes."
 				SUMMARY "Détermine la complexitée de notre éducation"
 			}
 			UrbanMilitia = {
@@ -1080,7 +1080,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> "( " @[value,0.###]" ) "<br><br> "Le manque de stabilité a toujours pour cause les petits crime, car il n'y a personne pour faire respecter la loi. La milice urbaine va s'assurer du respect de la loi et même combattre les catastrophes comme les grands feux."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> "( " @[value,0.###]" ) "<br><br>"Le manque de stabilité a toujours pour cause les petits crime, car il n'y a personne pour faire respecter la loi. La milice urbaine va s'assurer du respect de la loi et même combattre les catastrophes comme les grands feux."
 				SUMMARY "Stabiliser l'ordre publique avec un investissement public"
 			}
 			BorderControls = {
@@ -1092,7 +1092,7 @@ Main = {
 					75 = "Isolationisme"
 					100 = "Perfection interne"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) " <br><br> "Avoir une forte protection aux frontière nous pouvons diminuer les impacts du voisinage mais cela va réduire les possibilitées commerciales."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( "@[value,0.###] " ) " <br><br>"Avoir une forte protection aux frontière nous pouvons diminuer les impacts du voisinage mais cela va réduire les possibilitées commerciales."
 				SUMMARY	"Baisse le bellicisme des voisins au détrimant du commerce"
 			}
 			
@@ -1104,7 +1104,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Avec les mouvements constants de notre peuple nous avons réussis à devenir la plaque tournante du commerce régional. Cette situation apporte plus de stabilité et de richesse à notre clan."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Avec les mouvements constants de notre peuple nous avons réussis à devenir la plaque tournante du commerce régional. Cette situation apporte plus de stabilité et de richesse à notre clan."
 				SUMMARY "Un nomadisme basée sur le commerce"
 			}			
 			CelesteMandate = {
@@ -1115,7 +1115,7 @@ Main = {
 					50 = "Mandat moyen"
 					70 = "Mandat incontesté"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Une forme philosophique de la monarchie où le pouvoir est conservé tant qu'il est mérité. Apporte une grande stabilité tant que la situation est bonne, mais dès qu'elle se dégrade, le retour de flamme est implacable."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Une forme philosophique de la monarchie où le pouvoir est conservé tant qu'il est mérité. Apporte une grande stabilité tant que la situation est bonne, mais dès qu'elle se dégrade, le retour de flamme est implacable."
 				SUMMARY "Une monarchie philosophique"
 			}
 			CivilEngineering = {
@@ -1127,7 +1127,7 @@ Main = {
 					75 = "Égouts sous-terrains"
 					90 = "Aqueducs"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Gérer un grand nombre de personnes aux mêmes endroits est une tâche difficile, mais nos ingénieurs sont venu avec une nouvelle organisation urbaine, des égouts et des bains publiques vont faire baisser le risque d'épidemie."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Gérer un grand nombre de personnes aux mêmes endroits est une tâche difficile, mais nos ingénieurs sont venu avec une nouvelle organisation urbaine, des égouts et des bains publiques vont faire baisser le risque d'épidemie."
 				SUMMARY "Assanie nos villes"
 			}
 			Cavalry = {
@@ -1138,7 +1138,7 @@ Main = {
 					20 = "Recrutements réguliers"
 					40 = "Recrutements massifs"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Avec la domestication du cheval, l'utilisation d'une force montée est une évidence. Cette nouvelle formation nous apportera un grand avantage contre les pays qui n'en utilise pas."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Avec la domestication du cheval, l'utilisation d'une force montée est une évidence. Cette nouvelle formation nous apportera un grand avantage contre les pays qui n'en utilise pas."
 				SUMMARY "Recrutements pour votre armée"
 			}
 			Infantry = {
@@ -1149,7 +1149,7 @@ Main = {
 					20 = "Recrutement régulier"
 					40 = "Recrutement massif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "L'infanterie est la base de l'armée de tout pays sédentaire. "
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"L'infanterie est la base de l'armée de tout pays sédentaire. "
 				SUMMARY "Recrutements pour votre armée"
 			}
 			Missile = {
@@ -1160,7 +1160,7 @@ Main = {
 					20 = "Recrutement régulier"
 					40 = "Recrutement massif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Archers et tirailleurs forme des corps de soldats parfaits pour compléter une armée déja efficace."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Archers et tirailleurs forme des corps de soldats parfaits pour compléter une armée déja efficace."
 				SUMMARY "Recrutements pour votre armée"
 			}
 			Mercenaries = {
@@ -1171,7 +1171,7 @@ Main = {
 					20 = "Recrutement régulier"
 					40 = "Recrutement massif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Le recrutement de mercenaires est basé sur le recrutement d'une population étrangère et est historiquement lié à des petits pays mais très riches."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Le recrutement de mercenaires est basé sur le recrutement d'une population étrangère et est historiquement lié à des petits pays mais très riches."
 				SUMMARY "Recrutements pour votre armée"
 			}
 			Fortifications = {
@@ -1184,7 +1184,7 @@ Main = {
 					80 = "Défense exeptionelle"
 					150 = "Grand mur"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Les invasions étrangères sont de très dangereux événements, les fortifications sont faites pour converser notre puissance militaire et garder notre intégrité territoriale. Cela va ponctionner une grande partie de nos richesses mais notre priorité est de garder votre peuple en sécurité."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Les invasions étrangères sont de très dangereux événements, les fortifications sont faites pour converser notre puissance militaire et garder notre intégrité territoriale. Cela va ponctionner une grande partie de nos richesses mais notre priorité est de garder votre peuple en sécurité."
 				SUMMARY "Se protéger des invasions"
 			}
 			Expensionism = {
@@ -1195,7 +1195,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Notre civilisation est la plus avancée, la plus puissante et la plus pure. Nous devons apporter notre modèle à travers les territoires barbares à l'aide de nos forces militaires."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Notre civilisation est la plus avancée, la plus puissante et la plus pure. Nous devons apporter notre modèle à travers les territoires barbares à l'aide de nos forces militaires."
 				SUMMARY "Étend votre territoire à l'aide de votre armée"
 			}
 			
@@ -1207,7 +1207,7 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Nos voisins sont riches mais pas si puissants, nous pouvons vendre notre protection ou même directement prendre la richesse qui doit appartenir aux puissants. Mais attention la dégradation de la suretée des routes va sûrement affaiblir le commerce."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Nos voisins sont riches mais pas si puissants, nous pouvons vendre notre protection ou même directement prendre la richesse qui doit appartenir aux puissants. Mais attention la dégradation de la suretée des routes va sûrement affaiblir le commerce."
 				SUMMARY "Piller les voisins avec votre armée"
 			}
 			
@@ -1221,7 +1221,7 @@ Main = {
 					60 = "Focalisation sur la qualité"
 					80 = "Seul les plus fins bretteurs"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "  <br><br> "Deux doctrines militaires se crées. L'une préconise d'avoir le plus de soldat possible même si par conséquence ils seront moins bien entraînés, équipés, enthousiastes. L'autre demande des troupes solide, capable de manoeuvres fulgurantes, et d'une discipline à toute épreuve, mais les moyens mis dans un seul corps ne permet pas d'avoir une armée bien nombreuse."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) "  <br><br>"Deux doctrines militaires se crées. L'une préconise d'avoir le plus de soldat possible même si par conséquence ils seront moins bien entraînés, équipés, enthousiastes. L'autre demande des troupes solide, capable de manoeuvres fulgurantes, et d'une discipline à toute épreuve, mais les moyens mis dans un seul corps ne permet pas d'avoir une armée bien nombreuse."
 				SUMMARY "Masse de soldat économique ou petits corps d'élite"
 			}
 			
@@ -1235,7 +1235,7 @@ Main = {
 					40 = "Important"
 					80 = "Impressionant"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "La place de la guerre dans votre culture est une grande question. Plus de militarisme augmentera l'efficacité de nos soldats, désormais entraînés depuis l'enfance. Mais augmenter votre puissance militaire crée une peur chez nos voisins qui nous verrons comme une potentiel menace."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"La place de la guerre dans votre culture est une grande question. Plus de militarisme augmentera l'efficacité de nos soldats, désormais entraînés depuis l'enfance. Mais augmenter votre puissance militaire crée une peur chez nos voisins qui nous verrons comme une potentiel menace."
 				SUMMARY "Le facteur culturel de notre armée"
 				}
 				
@@ -1248,7 +1248,7 @@ Main = {
 					40 = "Une chaîne de commandement"
 					70 = "Une chaîne de commandement bien huilé"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "Vos aristocrates vont vous produire des cadres pour votre armée. Une armée bien encadrée est une armée victorieuse."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"Vos aristocrates vont vous produire des cadres pour votre armée. Une armée bien encadrée est une armée victorieuse."
 				SUMMARY "Optimise votre efficacité militaire"
 			}
 
@@ -1260,7 +1260,7 @@ Main = {
 					15 = "La recherche du meilleurs alliage"
 					100 = "Maîtrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Nous avons passé des années à maîtriser la puissace du cuivre et du bronze, mais ces techniques ou des limitations technologiques et d'efficacité. Vous devriez désormais essayer de maîtriser le fer, un métal puissant, flexible et résistant."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Nous avons passé des années à maîtriser la puissace du cuivre et du bronze, mais ces techniques ou des limitations technologiques et d'efficacité. Vous devriez désormais essayer de maîtriser le fer, un métal puissant, flexible et résistant."
 				SUMMARY "Les meilleurs armes font de plus grandes victoires"
 			}			
 			
@@ -1272,7 +1272,7 @@ Main = {
 					15 = "Rodage des plans"
 					100 = "Maîtrisé"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "La guerre à changée. Les murs de nos ennemis sont devenue grands et épais, nos campagne militaires s'allongent, Nous avons un besoin de savoir faire en matière de siège et créer un corps de génie militaire est une nécessité."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La guerre à changée. Les murs de nos ennemis sont devenue grands et épais, nos campagne militaires s'allongent, Nous avons un besoin de savoir faire en matière de siège et créer un corps de génie militaire est une nécessité."
 				SUMMARY "Une technologie militaire"
 			}	
 			
@@ -1285,7 +1285,7 @@ Main = {
 					15 = "Calcule de la meilleure torsion"
 					100 = "Maîtrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Nos capacités en archerie et en ingénieurie militaire nous permet d'entrevoir une nouvelle arme l'arbalète. Demande moins d'effort et de savoir faire que le maniment d'un arc et est suffisament puissant pour transpercer un cheval en armure."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Nos capacités en archerie et en ingénieurie militaire nous permet d'entrevoir une nouvelle arme l'arbalète. Demande moins d'effort et de savoir faire que le maniment d'un arc et est suffisament puissant pour transpercer un cheval en armure."
 				SUMMARY "Une technologie militaire"
 			}	
 			
@@ -1298,7 +1298,7 @@ Main = {
 					80 = "Stable"
 					100 = "Imperturbable"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Le commerce s'acroît mais reste très dépendant des moyens de payements. Avec une monnaie stable, le commerceainsi que les richesses vont s'accumuler !"
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Le commerce s'acroît mais reste très dépendant des moyens de payements. Avec une monnaie stable, le commerceainsi que les richesses vont s'accumuler !"
 				SUMMARY "Améliore votre commerce"
 			}
 			FarmingTools = {
@@ -1309,19 +1309,19 @@ Main = {
 					50 = "Transition en bonne voie"
 					100 = "Transition faites"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "L'arrivée du fer à également permis une inovation de l'outillage agricole augmentant la productivité des sols. Nous devons compléter cette transition."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "L'arrivée du fer à également permis une inovation de l'outillage agricole augmentant la productivité des sols. Nous devons compléter cette transition."
 				SUMMARY "Améliore votre agriculture"
 			}	
 			
 			Bureaucracy = {
 				NAME "Bureaucracie"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Votre empire est trop vaste. Vous devez organiser une efficace bureaucracie afin d'administrer correctement toutes ces possetions."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>"Votre empire est trop vaste. Vous devez organiser une efficace bureaucracie afin d'administrer correctement toutes ces possetions."
 				SUMMARY "Minimise l'impacte de la taille de votre empire"
 			}	
 			
 			Satrapy = {
 				NAME "Satrapie"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "Votre Empire est trop vaste. Vous devriez créer des régions plus autonomes dans vos régions les plus contrôllées."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>"Votre Empire est trop vaste. Vous devriez créer des régions plus autonomes dans vos régions les plus contrôllées."
 				SUMMARY "Minimise l'impacte de la taille de votre empire"
 			}	
 			PopulationTax = {
@@ -1333,7 +1333,7 @@ Main = {
 					10 = "Lourdes taxes"
 					35 = "Très lourdes taxes"
 				}
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> " Notre bureaucracie nous permet de taxer notre population. Bien entendue, ils souffriront des taxes trop étouffantes."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>" Notre bureaucracie nous permet de taxer notre population. Bien entendue, ils souffriront des taxes trop étouffantes."
 				SUMMARY "Taxer notre population"
 			}	
 			TradeTax = {
@@ -1418,17 +1418,17 @@ Main = {
 				SUMMARY "Reform our republic"
 			}				Litterature = {
 				NAME "Littérature"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] </b>  <br><br> "Notre maîtrise de l'écriture a mener à la création de chef d'oeuvre littéraire. nous écrivons l'Histoire et les légendes de notre peuples, nous façonnons des textes intemporelles."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] </b>  <br><br>"Notre maîtrise de l'écriture a mener à la création de chef d'oeuvre littéraire. nous écrivons l'Histoire et les légendes de notre peuples, nous façonnons des textes intemporelles."
 				SUMMARY "Augmente la culture"
 			}	
 			Music = {
 				NAME "Musique"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] </b> <br><br> "La musique est l'une des plus anciennes forme d'arts, pratiquée par la quasi-totalité des civilisations. Un art noble, anciens et sans Aucun doute la création d'une culture millénaires."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] </b> <br><br>"La musique est l'une des plus anciennes forme d'arts, pratiquée par la quasi-totalité des civilisations. Un art noble, anciens et sans Aucun doute la création d'une culture millénaires."
 				SUMMARY "Augmente la culture"
 			}	
 			Litterature = {
 				NAME "Littérature"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] </b>  <br><br> "Notre maîtrise de l'écriture a mener à la création de chef d'oeuvre littéraire. nous écrivons l'Histoire et les légendes de notre peuples, nous façonnons des textes intemporelles."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] </b>  <br><br>"Notre maîtrise de l'écriture a mener à la création de chef d'oeuvre littéraire. nous écrivons l'Histoire et les légendes de notre peuples, nous façonnons des textes intemporelles."
 				SUMMARY "Augmente la culture"
 			}	
 			LinguaFranca = {
@@ -1440,7 +1440,7 @@ Main = {
 					50 = "Affaiblissement des dialectes"
 					100 = "Unification lingustique"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "La présence de nombreux dialectes sur votre territoires peut être complexe à gérer, avec une politique plus ou moins coercitive vous pouvez créer une langue pour tout votre territoires."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La présence de nombreux dialectes sur votre territoires peut être complexe à gérer, avec une politique plus ou moins coercitive vous pouvez créer une langue pour tout votre territoires."
 				SUMMARY "Augmente la cohésions nationale"
 			}
 			BattleAxe = {
@@ -1451,7 +1451,7 @@ Main = {
 					15 = "Recherche du meilleurs lestage"
 					100 = "Maitrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "La hache de bataille est un redoutable outil capable d'asséner de puissants coups et d'agripper le bouclier de l'ennemis, surtout utilisée par les peuples luttants contre une infanterie lourde et disciplinée, elle peut entrer dans notre arsenal pour plus de puissance au combat."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La hache de bataille est un redoutable outil capable d'asséner de puissants coups et d'agripper le bouclier de l'ennemis, surtout utilisée par les peuples luttants contre une infanterie lourde et disciplinée, elle peut entrer dans notre arsenal pour plus de puissance au combat."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -1463,7 +1463,7 @@ Main = {
 					15 = "Recherche de la hauteur parfaite"
 					100 = "Maitrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les étriers sont une grande invention pour les cavaliers. Capable à la fois d'une plus grande conservation de la puissance cinétique et aussi d'un meilleur équilibres. Cela permet à l'utilisateur aussi bien de provoquer des charges dévastatrices, principalement à la lance, ainsi que des archers de cavalerie."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Les étriers sont une grande invention pour les cavaliers. Capable à la fois d'une plus grande conservation de la puissance cinétique et aussi d'un meilleur équilibres. Cela permet à l'utilisateur aussi bien de provoquer des charges dévastatrices, principalement à la lance, ainsi que des archers de cavalerie."
 				SUMMARY "Technologie militaire"
 			}
 			
@@ -1475,7 +1475,7 @@ Main = {
 					15 = "Composition du meilleurs carapaçon"
 					100 = "Maîtrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les cataphractaires sont les ancêtres de toutes cavaleries lourdes. Les carapaçons protègent le cheval et le cavalier des flèches et permet de créer une cavalerie de choc puissante."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Les cataphractaires sont les ancêtres de toutes cavaleries lourdes. Les carapaçons protègent le cheval et le cavalier des flèches et permet de créer une cavalerie de choc puissante."
 				SUMMARY "Technologie militaire"
 			}
 
@@ -1487,7 +1487,7 @@ Main = {
 					15 = "Recherche de la meilleure hauteur de coque"
 					100 = "Maîrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Les drakkars, ou "longships", sont créés sous un principe simple : La combinaison entre la flexibilité et la légèreté. Leurs construction permet de naviguer sur les fleuves, de se battre dans les mers intérieurs et même de voyager à travers les océans. "
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Les drakkars, ou "longships", sont créés sous un principe simple : La combinaison entre la flexibilité et la légèreté. Leurs construction permet de naviguer sur les fleuves, de se battre dans les mers intérieurs et même de voyager à travers les océans. "
 				SUMMARY "Technologie navale"
 			}
 			
@@ -1499,7 +1499,7 @@ Main = {
 					15 = "Recherche du meilleur mélange"
 					100 = "Maîtrisé"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Le feu grégeois est un mélange d'agents chimiques apportant une suprémacie navale de par la possibilité de créer de puissant navires incendiaires, capable de brûler même la surface de l'eau."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Le feu grégeois est un mélange d'agents chimiques apportant une suprémacie navale de par la possibilité de créer de puissant navires incendiaires, capable de brûler même la surface de l'eau."
 				SUMMARY "Technologie navale"
 			}
 			
@@ -1511,7 +1511,7 @@ Main = {
 					120 = "Élection d'un Doge"
 					175 = "République sérénissime"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br> "Notre model républicain est en évolution constante. Récemment le commerce à prit une importance sans précédent dans notre civilisation. "
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Notre model républicain est en évolution constante. Récemment le commerce à prit une importance sans précédent dans notre civilisation. "
 				SUMMARY "Reformer la république"
 			}	
 			BarbarianMonarchy = {
@@ -1522,7 +1522,7 @@ Main = {
 					120 = "Plusieurs rois, un royaume"
 					175 = "Loi salique sanctifiée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "La proximité avec les barbares nous ont obligés à changer nos lois monarchiques pour les incorporés. Ce systeme est une solution de replis pour enrayer la crise, mais devra, un jour, être réformé."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"La proximité avec les barbares nous ont obligés à changer nos lois monarchiques pour les incorporés. Ce systeme est une solution de replis pour enrayer la crise, mais devra, un jour, être réformé."
 				SUMMARY "Un état dirigé par plusieurs petit monarque"
 			}	
 			EconomicCharters = {
@@ -1533,7 +1533,7 @@ Main = {
 					50 = "Marchands dans des conseils restreints"
 					100 = "Droits étendus garantit aux guildes"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>  "La taxations du commerce est un débat acharné dans votre état. Les marchands et bourgeois clament que c'est du vol, en les engageants dans les discussions officielles, nous pouvons calmer ces incidents à la source."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "La taxations du commerce est un débat acharné dans votre état. Les marchands et bourgeois clament que c'est du vol, en les engageants dans les discussions officielles, nous pouvons calmer ces incidents à la source."
 				SUMMARY "Négocier avec les marchands"
 			}	
 			LongRangeRaid = {
@@ -1544,7 +1544,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Il y a des terres loitaines riches mais aux frontières peu défendues. En utilisant nos puissants navires, nous pouvons faire de très lucratives expéditions sans qu'ils ne puissent pas vraiment y répondre."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Il y a des terres loitaines riches mais aux frontières peu défendues. En utilisant nos puissants navires, nous pouvons faire de très lucratives expéditions sans qu'ils ne puissent pas vraiment y répondre."
 				SUMMARY "Rançonner vos voisins avec votre flotte et armée"
 			}
 			ReligiousLaw = {
@@ -1567,7 +1567,7 @@ Main = {
 					20 = "Recruitements"
 					40 = "Recruitements intensifs "
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Les auxiliaires sont un mélange de citoyens incorporés et d'étranger fraichement assimilés. Ils ne nous sont pas aussi fidèles qu'une armée réguilière ou même de mercenaires. "
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Les auxiliaires sont un mélange de citoyens incorporés et d'étranger fraichement assimilés. Ils ne nous sont pas aussi fidèles qu'une armée réguilière ou même de mercenaires. "
 				SUMMARY "Recrutement militaire"
 			}
 
@@ -1591,7 +1591,7 @@ Main = {
 					30 = "Ban et arrière-ban"
 					40 = "Levée Massive"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "La féodalité a certes affaibli notre pouvoir central et nos armées régulières, mais en retour, elle nous permet de lever des armées puissantes de nos vassaux."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"La féodalité a certes affaibli notre pouvoir central et nos armées régulières, mais en retour, elle nous permet de lever des armées puissantes de nos vassaux."
 				SUMMARY "Recrutement militaire"
 			}			
 			
@@ -1603,20 +1603,20 @@ Main = {
 					0.001 = "Cérémonie d'hommage"
 					60 = "Les nobles sont la main droite du monarque"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br> "Les anciens modèles de pouvoir semblent être dépassés par les événements, nous devons nous entourer d'hommes fidèles et conclure un pacte vertueux."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br>"Les anciens modèles de pouvoir semblent être dépassés par les événements, nous devons nous entourer d'hommes fidèles et conclure un pacte vertueux."
 				SUMMARY "Notre niveau de feudalité"
 				}		
 				
 			ArmyQuota = {
 				NAME "Quotas de l'Armée"
-				DESCRIPTION <b> "Valeur : "@[value] </b> <br><br> "Dans notre sagesse, nous avons déterminé que notre armée ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
+				DESCRIPTION <b> "Valeur : "@[value] </b> <br><br>"Dans notre sagesse, nous avons déterminé que notre armée ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
 				SUMMARY "Modifier le maximum de nos effectifs militaires"
 				}
 				
 				
 			NavyQuota = {
 				NAME "Quotas de la Flotte"
-				DESCRIPTION <b> "Valeur : "@[value] </b> <br><br> "Dans notre sagesse, nous avons déterminé que notre flotte ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
+				DESCRIPTION <b> "Valeur : "@[value] </b> <br><br>"Dans notre sagesse, nous avons déterminé que notre flotte ne devrait pas dépasser un certain stade. Ce nombre est fixé administrativement et sa modification nécessite de longues procédures."
 				SUMMARY "Modifier le maximum de notre flotte"
 				}
 				
@@ -1630,7 +1630,7 @@ Main = {
 					75 = "Grande Universités"
 					100 = "Maison de la Sagesse"
 				}
-				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Notre éducation a trop souvent été trop dispersée. En regroupant nos plus talentueux esprit au même endroit, nous pouvons espérer créer de bien meilleurs enseignements."
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br>"Notre éducation a trop souvent été trop dispersée. En regroupant nos plus talentueux esprit au même endroit, nous pouvons espérer créer de bien meilleurs enseignements."
 				SUMMARY "Améliore notre recherche intellectuelle"
 				}
 				
@@ -1644,7 +1644,7 @@ Main = {
 					10 = "Lourdes taxes"
 					20 = "Très lourdes taxes"
 				}
-				DESCRIPTION <b>"Valeur: "@[value] </b>  <br><br> "L'évolution de notre société a conduit les paysans a joué un rôle important dans notre économie. Une taxation juste nous permettra de financer nos armées pour les les protéger."
+				DESCRIPTION <b>"Valeur: "@[value] </b>  <br><br>"L'évolution de notre société a conduit les paysans a joué un rôle important dans notre économie. Une taxation juste nous permettra de financer nos armées pour les les protéger."
 				SUMMARY "Taxer nos paysans"
 			}
 			
@@ -1656,7 +1656,7 @@ Main = {
 					0.001 = "Premiers moulins"
 					70 = "Moulins"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Avec le temps, notre compréhension des mécanismes agraire s'est amélioré, nous savons désormais moudre le grain bien plus efficacement. Nous devons répandre cette technique dans tout notre pays."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Avec le temps, notre compréhension des mécanismes agraire s'est amélioré, nous savons désormais moudre le grain bien plus efficacement. Nous devons répandre cette technique dans tout notre pays."
 				SUMMARY "Améliore votre agriculture"
 			}	
 			
@@ -1669,7 +1669,7 @@ Main = {
 					40 = "Cour royale"
 					70 = "Cour fastueuse"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Organiser notre aristocratie en une classe au dessus des autres, la doter de droits et de pensions inaliénables et héréditaires, permettra de calmer les grands seigneurs de notre pays."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Organiser notre aristocratie en une classe au dessus des autres, la doter de droits et de pensions inaliénables et héréditaires, permettra de calmer les grands seigneurs de notre pays."
 				SUMMARY "Renforce notre pouvoir en achetant la loyauté des grands seigneurs"
 			}	
 			
@@ -1681,7 +1681,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Les armures médiévales représente un champ vaste et complexe dont la progression avance par petits tâtonnements au gré des inventions des artisans."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Les armures médiévales représente un champ vaste et complexe dont la progression avance par petits tâtonnements au gré des inventions des artisans."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -1696,7 +1696,7 @@ Main = {
 					100 = "Trébuchets"
 					150 = "Canon à bombarde"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'arrivée dans les batailles de place fortes particulièrement bien protégé rend obligatoire l’invention de contre mesure appropriées."
 				SUMMARY "Technologie militaire"
 			}	
 
@@ -1708,7 +1708,7 @@ Main = {
 					25 = "Preuves légales"
 					50 = "Nous sommes une nation"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos légistes sont formels, notre pays a une essence propre appelée Nation. On s'appuyant sur ce concept nous pourrions unir notre peuple sous une idée commune."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Nos légistes sont formels, notre pays a une essence propre appelée Nation. On s'appuyant sur ce concept nous pourrions unir notre peuple sous une idée commune."
 				SUMMARY "Renforce notre cohésion nationale"
 			}			
 
@@ -1719,7 +1719,7 @@ Main = {
 					25 = "Cour de justice"
 					50 = "Corps de juges"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Notre loi est force de vérité, cependant nous devons parfois en préciser certains contours flous. En sanctuarisant un lieu, le tribunal, comme symbole de justice notre pouvoir s'aggrandira."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Notre loi est force de vérité, cependant nous devons parfois en préciser certains contours flous. En sanctuarisant un lieu, le tribunal, comme symbole de justice notre pouvoir s'aggrandira."
 				SUMMARY "Renforce notre pouvoir politique"
 			}		
 			
@@ -1731,14 +1731,14 @@ Main = {
 					50 = "Châteaux de pierre"
 					75 = "Forteresse"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos nobles locaux ont besoin d'un lieu symbolique comme résidence et comme place forte. Construisons des fortifications impresionnantes qui permettront de mieux organiser nos levées militaires."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Nos nobles locaux ont besoin d'un lieu symbolique comme résidence et comme place forte. Construisons des fortifications impresionnantes qui permettront de mieux organiser nos levées militaires."
 				SUMMARY "Améliore le recrutement des levées"
 			}	
 			
 			
 			Medecine = {
 				NAME "Médecine"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br>Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
 				SUMMARY "Atténue les chances d'épidémies"
 			}	
 			
@@ -1750,13 +1750,13 @@ Main = {
 					50 = "Début de la chimie"
 					75 = "Théorie de la transmutation"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Nos plus intelligents savants s'engouffrent dans une discipline essayant de comprendre la nature même des choses. Leurs recherches paraissent obscures mais elle conduiront peut être-dans un avenir lointain à un avenir glorieux."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Nos plus intelligents savants s'engouffrent dans une discipline essayant de comprendre la nature même des choses. Leurs recherches paraissent obscures mais elle conduiront peut être-dans un avenir lointain à un avenir glorieux."
 				SUMMARY "Améliore notre connaissance scientifique"
 			}	
 			
 			Gunpowder = {
 				NAME "Poudre à Canon"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br> Nos études avec des matériaux très étrange nous a donné une chose ressemblant à de la poudre noire. Hautement explosive, elle pourrait avoir beaucoup d'application notamment militaire."
+				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br>Nos études avec des matériaux très étrange nous a donné une chose ressemblant à de la poudre noire. Hautement explosive, elle pourrait avoir beaucoup d'application notamment militaire."
 				SUMMARY "Améliore notre potentiel militaire"
 			}	
 			
@@ -1768,7 +1768,7 @@ Main = {
 					35 = "Foire organisée annuellement"
 					80 = "Point incournable du continent"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Les foires sont un ensemble de festivités où sont conviés les marchands de tout bords. Ils permettent de centraliser la production de la région pour la mettre davantage en valeur et nous permettant même de gagner en peu d'argent en taxant légèrement l'évènement. Naturellement ça renforce également le poids des marchands."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Les foires sont un ensemble de festivités où sont conviés les marchands de tout bords. Ils permettent de centraliser la production de la région pour la mettre davantage en valeur et nous permettant même de gagner en peu d'argent en taxant légèrement l'évènement. Naturellement ça renforce également le poids des marchands."
 				SUMMARY "Améliore notre commerce"
 			}	
 			
@@ -1781,13 +1781,13 @@ Main = {
 					35 = "Guildes puissantes"
 					80 = "Guildes incournables"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Une guilde est une association ou une coopération de personnes engagées dans une activité commune, généralement des commerçants, qui adopte des règles et des privilèges spécifiques et demandent la protection des autorités d'une ville ou d'un État."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Une guilde est une association ou une coopération de personnes engagées dans une activité commune, généralement des commerçants, qui adopte des règles et des privilèges spécifiques et demandent la protection des autorités d'une ville ou d'un État."
 				SUMMARY "Améliore nos entreprises"
 			}	
 			
 			Banks = {
 				NAME "Banques"
-				DESCRIPTION "Valeur : "@[value,0.###] <br> "Maximum : "@[Main.Banks.weath_max,0.#] <br> "Minimum : "@[Main.Banks.weath_min,0.#]" <br><br> Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
+				DESCRIPTION "Valeur : "@[value,0.###] <br> "Maximum : "@[Main.Banks.weath_max,0.#] <br> "Minimum : "@[Main.Banks.weath_min,0.#]" <br><br>Notre économie grandissante, il s'est ressenti le besoin grandissant de créer des institutions nous permettant de mieux gérer le flux monétaire. Les banques sont parfois à double tranchant cependant."
 				SUMMARY "Agrandit notre maximum et minimum de richesse"
 			}	
 			
@@ -1799,7 +1799,7 @@ Main = {
 					50 = "Chèques"
 					80 = "Billets"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "La monnaie est un concept au final hautement théorique qui n'a forcément besoin d'être lié à une réelle valeur physique comme l'or ou l'argent, mais bien à la confiance que la monnaie procure. En forçant un peu la main nous pourrions nous éloigner de certaines contraintes matérielles."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "La monnaie est un concept au final hautement théorique qui n'a forcément besoin d'être lié à une réelle valeur physique comme l'or ou l'argent, mais bien à la confiance que la monnaie procure. En forçant un peu la main nous pourrions nous éloigner de certaines contraintes matérielles."
 				SUMMARY "Améliore notre monnaie"
 			}	
 			Monasteries = {
@@ -1810,7 +1810,7 @@ Main = {
 					50 = "Communs"
 					80 = "Très répandus à travers tout le pays"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Centraliser certains de nos prêtres dans des lieux reclus leur permettra de vivre en se consacrant entièrement à leur foi. Si nous avons une éducation religieuse, elle sera égalemment plus efficace."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Centraliser certains de nos prêtres dans des lieux reclus leur permettra de vivre en se consacrant entièrement à leur foi. Si nous avons une éducation religieuse, elle sera égalemment plus efficace."
 				SUMMARY "Renforce nos prêtres et notre éducation religieuse"
 			}
 			
@@ -1822,7 +1822,7 @@ Main = {
 					20 = "Essentiels"
 					40 = "Très puissants"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Le concept de moine-soldat permet à la fois d'obtenir de nombreux soldats fanatiques et d'assurer la sainteté de notre peuple. Nous devons renfocer nos châteaux et nos monstères pour augmenter les recrutements."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Le concept de moine-soldat permet à la fois d'obtenir de nombreux soldats fanatiques et d'assurer la sainteté de notre peuple. Nous devons renfocer nos châteaux et nos monstères pour augmenter les recrutements."
 				SUMMARY "Recrutements pour l'armée"
 			}
 			
@@ -1835,13 +1835,13 @@ Main = {
 					40 = "Moyenne"
 					70 = "Intensive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br> "Notre foi est l'unique vraie, la plus puissante et la plus pure. Nous devons l'exporter par la force des armes afin de soumettre les infidèles."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Notre foi est l'unique vraie, la plus puissante et la plus pure. Nous devons l'exporter par la force des armes afin de soumettre les infidèles."
 				SUMMARY "Étend votre territoire et renforce votre piété à l'aide de votre armée"
 			}
 			
 			Medecine = {
 				NAME "Médecine"
-				DESCRIPTION <b> "Valeur : "@[value,0.###] "<br><br> Nos connaissances croissantes ont ouvert les portes aux traitements médicaux. En faisant une distinction claire entre les maladies et malédictions, entre prières et remèdes, nous en réussirons progressivement à combattre les fléaux de l'humanité".
+				DESCRIPTION <b> "Valeur : "@[value,0.###] "<br><br>Nos connaissances croissantes ont ouvert les portes aux traitements médicaux. En faisant une distinction claire entre les maladies et malédictions, entre prières et remèdes, nous en réussirons progressivement à combattre les fléaux de l'humanité".
 				SUMMARY "Réduit les risques d'épidémies"
 			}	
 			
@@ -1853,7 +1853,7 @@ Main = {
 					35 = "Embelissement des lieux de culte"
 					80 = "Centre religio-culturel"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>  "Notre puissance culturelle est forte, tout comme notre foi. Il est temps de mettre l'art au service du divin."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Notre puissance culturelle est forte, tout comme notre foi. Il est temps de mettre l'art au service du divin."
 				SUMMARY "Apporte Culture, Piété et vous permet de renforcer vos Munuments Religieux"
 			}
 		
@@ -1883,7 +1883,7 @@ Main = {
 					50 = "Tentatives de circumnavigation"
 					80 = "Expéditions globales"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Notre nouvelle maîtrise des mers nous permet d'organiser de gigantesques expéditions au delà des océans pour un avenir glorieux. "
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br>"Notre nouvelle maîtrise des mers nous permet d'organiser de gigantesques expéditions au delà des océans pour un avenir glorieux. "
 				SUMMARY "Voyages organisés à travers les mers"
 			}
 		
@@ -1895,7 +1895,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'arquebuse est la première arme à feu suffisament efficace qui marque la supériorité de la poudre à canon sur l'archerie et un changement radical du champ de bataille."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'arquebuse est la première arme à feu suffisament efficace qui marque la supériorité de la poudre à canon sur l'archerie et un changement radical du champ de bataille."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -1907,7 +1907,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le mousquet à méche est la 2eme génération d'arme à feu, capable d'une puissance et d'une fiabilité bien supérieure à une arquebuse."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -1920,7 +1920,7 @@ Main = {
 					60 = "Bourse commerciale"
 					150 = "Grande Bourse commerciale"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Les nouvelles possibilités commerciales nous obligent de repenser intégralement notre système commercial. Il nous permet un flux de marchandise bien plus important d'être échanger dans notre nouveau cœur commercial: les marchés."
 				SUMMARY "Augmente notre maximum de bien commerciaux"
 			}
 			TradingPost = {
@@ -1932,7 +1932,7 @@ Main = {
 					30 = "Réseau de comptoirs"
 					60 = "Réseau mondial"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Nos expéditions maritimes nous permettent d'avoir toujours plus de partenaires commerciaux. Avec de la diplomatie et de l'or nous pouvons acheter des comptoirs juteux."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Nos expéditions maritimes nous permettent d'avoir toujours plus de partenaires commerciaux. Avec de la diplomatie et de l'or nous pouvons acheter des comptoirs juteux."
 				SUMMARY "Augmente le flux de bien commerciaux"
 			}
 			
@@ -1951,7 +1951,7 @@ Main = {
 					15 = "Très lourdes taxes"
 					20 = "Nos marchands sont en faillite"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>  Maintenant que notre colonie est solidement implanté et commencé à générer du profit il est temps pour la métropole de récupérer son investissement. Taxons le commerce colonial."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Maintenant que notre colonie est solidement implanté et commencé à générer du profit il est temps pour la métropole de récupérer son investissement. Taxons le commerce colonial."
 				SUMMARY "Taxe notre empire colonial"
 			}	
 			SlaveTrade = {
@@ -1977,7 +1977,7 @@ Main = {
 					50 = "Réformes avancées"
 					100 = "Réformes complètes"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'apparition des armes à feu et les changements de dynamique de la guerre nous ont conduit à repenser notre modèle de l'utilisation des mercenaires. En faisant des réformes efficaces nous pouvons amélirer notre recrutement tout en allégant leur solde."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'apparition des armes à feu et les changements de dynamique de la guerre nous ont conduit à repenser notre modèle de l'utilisation des mercenaires. En faisant des réformes efficaces nous pouvons amélirer notre recrutement tout en allégant leur solde."
 				SUMMARY "Améliore notre recrutement des mercenaires et diminue leur solde"
 			}
 		OfficialLanguage = {
@@ -1988,7 +1988,7 @@ Main = {
 					50 = "Persécution active des patois"
 					100 = "Fondation de l'Académie"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec la bonne législation nous pouvons promouvoir activement et efficacement notre langue officielle."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Notre unification linguistique peut aller encore plus loin, avec la bonne législation nous pouvons promouvoir activement et efficacement notre langue officielle."
 				SUMMARY "Permet de renforcer la Lingua Franca"
 			}
 		Isolationism = {
@@ -1999,7 +1999,7 @@ Main = {
 					50 = "Mesures drastiques"
 					100 = "Sakoku Total"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> L'influence de l'étranger est néfaste, nous avons déjà tout ce qu'il nous faut à l'intérieur de nos frontière. Fermons le pays une bonne fois pour toute et notre harmonie n'en sera que renforcée."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'influence de l'étranger est néfaste, nous avons déjà tout ce qu'il nous faut à l'intérieur de nos frontière. Fermons le pays une bonne fois pour toute et notre harmonie n'en sera que renforcée."
 				SUMMARY "Sacrifie vos ambitions militaires et commerciales pour renforcer votre emprise sur l'intérieur"
 			}
 		Embassies = {
@@ -2009,7 +2009,7 @@ Main = {
 					50 = "Dialogue Ouvert"
 					100 = "Traité de Paix"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Une grande partie du problème de ces étrangers est que ceux-ci nous prennent pour des sauvages qui ne méritent même pas le respect de nos frontières. Entamons des véritables pourparlers avec des traducteurs compétents et apprenons de ces étrangers, comment voguent-ils par delà les océans ?"
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Une grande partie du problème de ces étrangers est que ceux-ci nous prennent pour des sauvages qui ne méritent même pas le respect de nos frontières. Entamons des véritables pourparlers avec des traducteurs compétents et apprenons de ces étrangers, comment voguent-ils par delà les océans ?"
 				SUMMARY "Permet l'arrêt de l'invasion étrangère"
 			}		
 			WarTaxes = {
@@ -2020,7 +2020,7 @@ Main = {
 					15 = "Conséquents"
 					25 = "Lourds"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Si cet impôt n'est généralement pas vraiment apprécié, il n'engendre que peu de mécontement sachant qu'il n'est levé qu'en cas de guerre et donc de nécessité."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Si cet impôt n'est généralement pas vraiment apprécié, il n'engendre que peu de mécontement sachant qu'il n'est levé qu'en cas de guerre et donc de nécessité."
 				SUMMARY "Permet une rentrée d'argent spéciale en temps de guerre"
 			}
 				
@@ -2032,7 +2032,7 @@ Main = {
 					50 = "Persécution active des dialectes"
 					100 = "Fondation de l'Académie"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre unification linguistique peut aller encore plus loin, avec une législation appropriée nous pouvons promouvoir activement et efficacement notre langue officielle."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Notre unification linguistique peut aller encore plus loin, avec une législation appropriée nous pouvons promouvoir activement et efficacement notre langue officielle."
 				SUMMARY "Renforce la Lingua Franca"
 			}
 			
@@ -2045,7 +2045,7 @@ Main = {
 					30 = "Grandes compagnies"
 					60 = "Monopole gargentuesque"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Certaines entreprises ont concentré leurs efforts dans le commerce international. Avec le soutien des banques et des bourses commercialles, elle mettent en place des expéditions gigentesques."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Certaines entreprises ont concentré leurs efforts dans le commerce international. Avec le soutien des banques et des bourses commerciales, elle mettent en place des expéditions gigentesques."
 				SUMMARY "Augmente nos routes commerciales"
 			}			
 			ColonialHelp = {
@@ -2056,7 +2056,7 @@ Main = {
 					30 = "Financement important"
 					60 = "Programmes d'aides massifs"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Un empire se doit de donner de la main gauche pour prendre dans la main droite, un programme d'aide permettra de calmer les esprits dans nos colonies et leur procurera une stabilité financière."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Un empire se doit de donner de la main gauche pour prendre dans la main droite, un programme d'aide permettra de calmer les esprits dans nos colonies et leur procurera une stabilité financière."
 				SUMMARY "Apaise et fait prospérer nos colonies"
 			}	
 			ColonialIronFist = {
@@ -2066,7 +2066,7 @@ Main = {
 					30 = "Représailles impitoyales"
 					60 = "Loi martiale permanente"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Nos colonies jouissent sans doute d'une trop grande indépendance et le sépratisme gagne du terrain, il est temps de rappeler à nos colons à qui appartient les cannons de notre flotte."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Nos colonies jouissent sans doute d'une trop grande indépendance et le sépratisme gagne du terrain, il est temps de rappeler à nos colons à qui appartient les cannons de notre flotte."
 				SUMMARY "Apaise par la force nos colonies"
 			}
 			
@@ -2078,7 +2078,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le mousquet tardif voit l'apparition de la platine à silex, avec une batterie et un couvre-bassinet séparés."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le mousquet tardif voit l'apparition de la platine à silex, avec une batterie et un couvre-bassinet séparés."
 				SUMMARY "Technologie militaire"
 			}	
 			
@@ -2091,7 +2091,7 @@ Main = {
 					10 = "Modérée"
 					23 = "Intensive"
 				}
-				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Notre population nombreuse est un terreau de futur soldats. Avec des lois de conscriptions, nous pourrons lever rapidemment des troupes frâiches même si elles manqueront d'entrainement."
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Notre population nombreuse est un terreau de futur soldats. Avec des lois de conscriptions, nous pourrons lever rapidemment des troupes frâiches même si elles manqueront d'entrainement."
 				SUMMARY "Recrute notre population en temps de guerre"
 			}
 			ManOfWar = {
@@ -2102,7 +2102,7 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Le Man'o'war est l'évolution logique des grands voiliers de guerre mettant à profits toutes les petites évolutions techniques et les optimisations trouvées à force de combat sur les mers."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le Man'o'war est l'évolution logique des grands voiliers de guerre mettant à profits toutes les petites évolutions techniques et les optimisations trouvées à force de combat sur les mers."
 				SUMMARY "Technologie militaire"
 			}	
 
@@ -2114,9 +2114,32 @@ Main = {
 					15 = "Recherche de meilleurs modèles"
 					100 = "Maîtrise"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br> Première source d'énergie mécanique maîtrisée par l'homme, elle permet l'apparition progressive de l'industrialisation."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Première source d'énergie mécanique maîtrisée par l'homme, elle permet l'apparition progressive de l'industrialisation."
 				SUMMARY "Technologie importante"
 			}	
+			Mercantilism = {
+				NAME "Mercantilisme"
+				LEVEL value = {
+					0 = "Très Bas"
+					15 = "Bas"
+					30 = "Modéré"
+					70 = "Intensif"
+					100 = "Pas une once d'or ou d'argent ne sort du pays"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Si nos richesses coulent à flot, il serait mieux de s'assurer qu'elle ne quitte jamais le pays. Cela ralentira notre commerce mais nous assura prospérité intérieure."
+				SUMMARY "Étrangle notre commerce extérieur pour prospérer à l'intérieur"
+			}
+			LaissezFaire = {
+				NAME "Laissez Faire"
+				LEVEL value = {
+					0 = "Assouplissement des règles commerciales"
+					15 = "Légères dérégulations"
+					50 = "Marché libre"
+					100 = "Marché complétement dérégulé"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Nos marchands sont freinés par de nombreuses règles et taxes. Si nous laissons le marché agir, il se régulera de lui-même et nous apportera sur long terme une meilleure prosperité."
+				SUMMARY "Assouplit les règles et les taxes pour faire prospérer le commerce"
+			}
 				
 		}
 		Events = {

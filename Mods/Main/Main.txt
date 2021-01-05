@@ -7444,6 +7444,98 @@ Main = {
 			}
 			
 			
+			Mercantilism = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]	
+				UNLOCK_CONDITIONS = {
+					HINT ~Banks
+					CONDITION_NODE + Banks
+					CONDITION_NODE + StockExchange
+					CONDITION_NODE - Mercantilism
+					CONDITION_VALUE TradeTax >= 20
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Mercantilism) + 1) * 10
+				}
+				
+				TICK = {
+						PROCESS Entreprises = Entreprises - PerSeconds ( value / 100 * 0.9 ? 1.1 )
+						PROCESS OverlandTrade =  OverlandTrade - PerSeconds(value / 200 * 0.9 ? 1.1)
+						PROCESS NavalTrade =  NavalTrade - PerSeconds(value / 200 * 0.9 ? 1.1)
+						PROCESS $Wealth = $Wealth + PerSeconds( ( value * NavalTrade / 1000 + value * OverlandTrade / 1000  ) * 0.9 ? 1.1 )
+				}
+				LINK NavalTrade = {
+					IF (value > 0)
+						FLUX value * 0.013 * 2
+						COLOR red
+					ENDIF
+				}
+				LINK Entreprises = {
+					IF (value > 0)
+						FLUX value / 20
+						COLOR red
+					ENDIF
+				}
+				LINK OverlandTrade = {
+					IF (value > 0)
+						FLUX value * 0.013 * 2
+						COLOR red
+					ENDIF
+				}
+			}	
+			
+				LaissezFaire = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Banks
+					CONDITION_NODE + Banks
+					CONDITION_NODE + StockExchange
+					CONDITION_NODE - Mercantilism
+					CONDITION_VALUE TradeTax <= 40
+				}
+				PRICE = {
+					$PoliticalPower = 1
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(LaissezFaire) + 1) * 10
+				}
+				
+				TICK = {
+						SET TradeTax.value [ : : 30 - LaissezFaire / 3.333333333 ]
+						PROCESS OverlandTrade =  OverlandTrade + PerSeconds(value / 100)
+						PROCESS NavalTrade =  NavalTrade + PerSeconds(value / 100)
+						PROCESS Entreprises =  NavalTrade + PerSeconds(value / 100)
+				}
+				LINK NavalTrade = {
+					IF (value > 0)
+						FLUX value / 25
+						COLOR green
+					ENDIF
+				}
+				LINK OverlandTrade = {
+					IF (value > 0)
+						FLUX value / 25
+						COLOR green
+					ENDIF
+				}
+				LINK Entreprises = {
+					IF (value > 0)
+						FLUX value / 25
+						COLOR green
+					ENDIF
+				}
+				LINK TradeTax = {
+						WEIGHT [ max ] 30 - LaissezFaire / 5
+				}
+				TRIGGER_SPAWN Isolationism = {
+						REMOVE EconomicCharters
+					}
+
+			}
 			
 			
 			}
