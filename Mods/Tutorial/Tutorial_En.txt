@@ -6,7 +6,7 @@ Tutorial = {
 			Chapters = {
 				1 = {
 					NAME "Tutorial 1 : Basics"
-					DESCRIPTION "In Orbi Universo, you need to make your civilization survive and lead it to a bright future."<br>"Your civilization is presented in the game by parameters with values contained in what we call nodes. There are different types of nodes, "<b>"'States'"</b>" which are shaped blue diamonds, "<b>"'Levers'"</b>" are round and "<b>"'Events'"</b>" are hexagonal and orange. You can interact directly only with the levers."<br>"The game is in real time with an active pause and an accelerator feature. (The space bar allows you to pause/de-pause too)."<br>"The right click allows you to move around."
+					DESCRIPTION "In Orbi Universo, you need to make your civilization survive and lead it to a bright future."<br>"Your civilization is presented in the game by parameters with values contained in what we call nodes. There are different types of nodes, "<b>"'States'"</b>" which are blue diamonds, "<b>"'Levers'"</b>" are round and "<b>"'Events'"</b>" are orange hexagonals. You can only interact directly with the levers."<br>"The game is in real-time with an active pause and an accelerator feature. (The space bar allows you to pause/de-pause too)."<br>"The right-click allows you to move around."
 					OBJECTIVE = { BUTTON "Next" }
 				}
 				2 = {
@@ -15,8 +15,8 @@ Tutorial = {
 					OBJECTIVE = { DESCRIPTION "Add the lever <b>'Foraging'</b> from the <b>Shop</b>." }
 				}
 				3 = {
-					NAME "Tutorial 3 : Ressources"
-					DESCRIPTION "You may have noticed the loss of resources when you released the lever. You have two types of resources at your disposal, "<b>"'Wealth'"</b>" and "<b>"'Political Power'"</b>", the first represents the physical mean and the second the influence you spend to initiate reform or technological progress. You can see the amount and balance of income for each resource in the upper left corner of the screen. If you mouse over a resource you can see directly the income"
+					NAME "Tutorial 3 : Resources"
+					DESCRIPTION "You may have noticed the loss of resources when you released the lever. You have two types of resources at your disposal, "<b>"'Wealth'"</b>" and "<b>"'Political Power'"</b>", the first represents the physical mean and the second the influence you spend to start a reform or a technological progress. You can see the amount and balance of income for each resource in the upper left corner of the screen. If you mouse over a resource you can see directly the income"
 					OBJECTIVE = { BUTTON "Next" }
 				}
 				4 = {
@@ -26,12 +26,12 @@ Tutorial = {
 				}
 				5 = {
 					NAME "Tutorial 5 : Invest in a lever"
-					DESCRIPTION "Once lever is placed in the game you can interact with it. Each lever have a grip that you can move to change the value of the lever, positivly or negativly. You can even invest in them if you roll the wheel of the mouse on the lever."
+					DESCRIPTION "Once lever is placed in the game you can interact with it. Each lever have a grip that you can move to change the value of the lever, positively or negatively. You can even invest in them if you roll the wheel of the mouse on the lever."
 					OBJECTIVE = { DESCRIPTION "Invest in the lever <b>'Foraging'</b>." }
 				}
 				6 = {
 					NAME "Tutorial 6 : Discover New Nodes"
-					DESCRIPTION "Your foragers have begun to understand the fundamentals of agriculture. States and Levers are unlocked as you perform your actions, with a certain logic."
+					DESCRIPTION "Your foragers have begun to understand the fundamentals of agriculture. States and Levers are unlocked as you do your actions, with a certain logic."
 					OBJECTIVE = { DESCRIPTION "Add the lever <b>'Agriculture'</b> from the Shop." }
 				}
 				7 = {
@@ -51,7 +51,7 @@ Tutorial = {
 				}
 				10 = {
 					NAME "Tutorial 10 : Nodes Lock"
-					DESCRIPTION "Sometimes, some nodes will block others, prevent them from spawning or be available at the shop. For example, "<b>"'Settlement'"</b>" prevent "<b>"'Organized Nomadism'"</b>" to happening. If you want to become nomadic you need to remove "<b>"'Settlement'"</b>" first. You can see which node blocking which node in the 'Relations' menu of the node."<br>"Aside from that if you right click on a node, the associated nodes will be highlighted."
+					DESCRIPTION "Sometimes, some nodes will block others, prevent them from spawning or be available at the shop. For example, "<b>"'Settlement'"</b>" prevent "<b>"'Organized Nomadism'"</b>" to happening. If you want to become nomadic you need to remove "<b>"'Settlement'"</b>" first. You can see which node blocking which node in the 'Relations' menu of the node."<br>"Aside from that if you right-click on a node, the associated nodes will be highlighted."
 					OBJECTIVE = { BUTTON "Next" }
 				}
 				11 = {
