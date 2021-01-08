@@ -66,6 +66,10 @@ Main = {
                     NAME "Make Peace"
                     DESCRIPTION "End the War"
                 }
+                WhitePeace = {
+                    NAME "White Peace"
+                    DESCRIPTION "End the War without any conquest"
+                }
             }
         }
     }
@@ -2528,6 +2532,16 @@ Main = {
 				NAME "Slave Riots"
 				DESCRIPTION "Our colonies have recently suffered a massive revocation of their slaves, so their prosperity will probably suffer a severe blow."
 				SUMMARY "Our colonies have recently suffered a massive revolt!"
+			}
+			FoeGreatAdmiral = {
+				NAME "Foe Great Admiral"
+				DESCRIPTION "A very skilled man has recently taken command of our historic enemy's fleet. This will certainly impact future naval battles."
+				SUMMARY "A great amiral leads our enemy's navy"
+			}
+			FoeGreatGeneral = {
+				NAME "Foe Great General"
+				DESCRIPTION "A very skilled man as recently taken command of our historic enemy's army. This will certainly impact future land battles."
+				SUMMARY "A great amiral leads our enemy's army"
 			}
 
 		}

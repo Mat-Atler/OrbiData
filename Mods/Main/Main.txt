@@ -33,7 +33,14 @@ Main = {
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+			DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
 			PLAY_SOUND "Main/SFX/Peace.wav"
+		}
+		FUNCTION F_WhitePeace = {
+			PLAY_SOUND "Main/SFX/Peace.wav"
+			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+			DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
 		}
 	}
 	Dropdowns = {
@@ -57,6 +64,12 @@ Main = {
 		  // Click
 		  REMOTE Population = {
 		CALL_FUNCTION F_Peace
+			}
+			}
+		  WhitePeace = {
+		  // Click
+		  REMOTE Population = {
+		CALL_FUNCTION F_WhitePeace
 			}
 			}
 		}
@@ -1938,7 +1951,9 @@ Main = {
 					DROPDOWN_VISIBLE Diplomacy
 					DROPDOWN_BUTTON_VISIBLE Diplomacy.DeclareWar
 					DROPDOWN_BUTTON_VISIBLE Diplomacy.MakePeace
+					DROPDOWN_BUTTON_VISIBLE Diplomacy.WhitePeace
 					DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+					DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
 					REMOVE LongRangeRaid
 					REMOVE LootingCampaigns
 					REMOVE HolyWar
@@ -2224,7 +2239,14 @@ Main = {
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
 				IF value < 60
-				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 2000
+				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 1000
+				ENDIF
+				
+				
+				IF value > 50 & WarTimer > 200
+				DROPDOWN_BUTTON_ENABLE Diplomacy.WhitePeace
+				ELSE
+				DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
 				ENDIF
 				}
 				
@@ -2255,7 +2277,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value + PerSeconds( 0.9 ? 1.8 )
+					PROCESS value =  value + PerSeconds( 0.4 + 0.5 ? 1.8 * ( StateSize / 150 ) )
 				}
 				
 				
@@ -2277,7 +2299,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value =  value + PerSeconds( 0.9 ? 1.8 )
+					PROCESS value =  value + PerSeconds( 0.4 + 0.5 ? 1.8 * ( ( Coastline + NavalSupremacy  ) / 125 ) )
 				}
 				
 				
@@ -2295,7 +2317,7 @@ Main = {
 				DISPLAY_VALUE
 
 				SLEEP = {
-					IF DropdownIsState(Diplomacy.War) & ( WarStatus < 40 | WarStatus.WarTimer > 500 )
+					IF DropdownIsState(Diplomacy.War) & ( WarStatus < 40 | WarStatus.WarTimer > 400 )
 						PROCESS value = 0
 						SPAWN
 					ENDIF
@@ -10020,7 +10042,6 @@ Main = {
 						PROCESS WarStatus += PerSeconds( ( Winner - 50 ) / 50 )
 					ELSE
 						PROCESS WarStatus -= PerSeconds( ( 50 - Winner ) / 50 )
-					
 					ENDIF
 					
 				}
@@ -10033,6 +10054,10 @@ Main = {
 				LINK FoeLandForces = {
 					COLOR red
 					FLUX 4
+				}
+				
+				LINK GreatGeneral = {
+				WEIGHT [ from ]
 				}
 				
 				LINK WarStatus = {
@@ -10051,10 +10076,13 @@ Main = {
 						IF MilitaryManpower > FoeLandForces
 							PROCESS Winner = 43 + ( ( MilitaryManpower * 0.9 ? 1.1 ) / ( FoeLandForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
 						ELSE
-							PROCESS Winner = 43 + ( ( FoeLandForces * 0.9 ? 1.1 ) / ( MilitaryManpower * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+							PROCESS Winner = 43 - ( ( FoeLandForces * 0.9 ? 1.1 ) / ( MilitaryManpower * 0.9 ? 1.1 ) * 7 ) + Die_Cast
 						ENDIF
 						IF ~GreatGeneral
 							PROCESS Winner += 10
+						ENDIF
+						IF ~FoeGreatGeneral
+							PROCESS Winner -= 10
 						ENDIF
 				}
 				
@@ -10101,6 +10129,10 @@ Main = {
 					FLUX 4
 				}
 				
+				LINK GreatGeneral = {
+				WEIGHT [ from ]
+				}
+				
 				LINK WarStatus = {
 				IF Winner>50
 					COLOR green
@@ -10117,10 +10149,13 @@ Main = {
 						IF Navy > FoeNavalForces
 							PROCESS Winner = 43 + ( ( Navy * 0.9 ? 1.1 ) / ( FoeNavalForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
 						ELSE
-							PROCESS Winner = 43 + ( ( FoeNavalForces * 0.9 ? 1.1 ) / ( Navy * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+							PROCESS Winner = 43 - ( ( FoeNavalForces * 0.9 ? 1.1 ) / ( Navy * 0.9 ? 1.1 ) * 7 ) + Die_Cast
 						ENDIF
 						IF ~GreatGeneral
 							PROCESS Winner += 5
+						ENDIF
+						IF ~FoeGreatGeneral
+							PROCESS Winner -= 20
 						ENDIF
 				}
 				
@@ -10194,6 +10229,58 @@ Main = {
 				}
 				
 		}
+		
+		
+			FoeGreatGeneral = {
+				SOUND_EVENT "Main/SFX/GreatGeneral.wav"
+				SOUND_WINDOW "Main/SFX/GreatGeneral.wav"
+					EVENT_DEF [ 30 180 400 15% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+					}
+
+					LINK NeighborhoodBellicism = {
+					}
+					LINK FoeLandForces = {
+					}
+					LINK LandBattle = {
+						WEIGHT [ to ]
+					}
+					TRIGGER_EVENT = {
+						IF (~ModernWarfare & NeighborhoodBellicism > 35 )
+							RISE
+						ENDIF
+					}
+						
+			
+				}	
+			FoeGreatAdmiral = {
+				SOUND_EVENT "Main/SFX/GreatGeneral.wav"
+				SOUND_WINDOW "Main/SFX/GreatGeneral.wav"
+					EVENT_DEF [ 30 180 500 15% ]
+					ARISE = {
+						EVENT_SPEED 1
+					}
+					TICK = {
+					}
+
+					LINK NeighborhoodBellicism = {
+					}
+					LINK FoeNavalForces = {
+					}
+					LINK NavalBattle = {
+					WEIGHT [ to ]
+					}
+					TRIGGER_EVENT = {
+						IF (~ModernWarfare & Coastline > 0 )
+							RISE
+						ENDIF
+					}
+						
+			
+				}	
 		
 		}
 }

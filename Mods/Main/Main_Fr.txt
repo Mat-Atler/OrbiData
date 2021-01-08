@@ -46,6 +46,35 @@ Main = {
 		}
 	}
 	
+	Dropdowns = {
+        Diplomacy = {
+            States = {
+                Peace = {
+                    NAME "Paix"
+                    DESCRIPTION "Nous sommes en paix."
+                }
+                War = {
+                    NAME "Guerre"
+                    DESCRIPTION "Nous sommes en guerre."
+                }
+            }
+            Buttons = {
+                DeclareWar = {
+                    NAME "Déclarer la Guerre"
+                    DESCRIPTION "Déclarer la Guerre"
+                }
+                MakePeace = {
+                    NAME "Faire la Paix"
+                    DESCRIPTION "Faire la Paix"
+                }
+                WhitePeace = {
+                    NAME "Faire une Paix Blanche"
+                    DESCRIPTION "Faire une Paix Blanche (sans conquête)"
+                }
+            }
+        }
+    }
+	
 	Windows = {
 		WinMilitary = {
 			NAME "Aperçu militaire"
@@ -2482,6 +2511,17 @@ Main = {
 				DESCRIPTION "Nos colonies ont récemment souffert d'une révole massive de leurs esclaves, leur prosperité va probablement prendre un sérieux coup."
 				SUMMARY "Nos colonies ont récemment souffert d'une révole massive"
 			}
+			 FoeGreatAdmiral = {
+				NAME "Grand Amiral Étranger"
+				DESCRIPTION "Un homme très compétent a récemment pris les rênes de la flotte de notre ennemi historique. Cela va certainement impacter les batailles navales à venir."
+				SUMMARY "Un grand amiral dirige les flottes ennemies"				
+			}
+			FoeGreatGeneral = {
+				NAME "Grand Général Étranger"
+				DESCRIPTION "Un homme très compétent a récemment pris les rênes de l'armée de notre ennemi historique. Cela va certainement impacter les batailles terrestres à venir."
+				SUMMARY "Un grand général dirige les armées ennemies"
+			}
+		
 		}
 
 	}

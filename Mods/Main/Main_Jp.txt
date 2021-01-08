@@ -67,6 +67,10 @@ Main = {
                     NAME "和平"
                     DESCRIPTION "戦争の終わり"
                 }
+                WhitePeace = {
+                    NAME "White Peace"
+                    DESCRIPTION "End the War without any conquest"
+                }
             }
         }
     }
