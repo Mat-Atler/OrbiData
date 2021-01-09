@@ -71,6 +71,10 @@ Main = {
                     NAME "Faire une Paix Blanche"
                     DESCRIPTION "Faire une Paix Blanche (sans conquête)"
                 }
+                SeparatePeace = {
+                    NOM Paix Séparée"
+                    DESCRIPTION "Réduira les forces ennemies mais nous perdrons du score de guerre"
+                }
             }
         }
     }

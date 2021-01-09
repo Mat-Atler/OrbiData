@@ -34,6 +34,7 @@ Main = {
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
 			DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
+			DROPDOWN_BUTTON_DISABLE Diplomacy.SeparatePeace
 			PLAY_SOUND "Main/SFX/Peace.wav"
 		}
 		FUNCTION F_WhitePeace = {
@@ -41,6 +42,17 @@ Main = {
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
 			DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
+			DROPDOWN_BUTTON_DISABLE Diplomacy.SeparatePeace
+		}
+		FUNCTION F_SeparatePeace = {
+			PLAY_SOUND "Main/SFX/Peace.wav"
+			PROCESS FoeLandForces = FoeLandForces - FoeLandForces / 3
+			PROCESS FoeNavalForces = FoeNavalForces - FoeNavalForces / 3
+			PROCESS WarStatus = WarStatus - 10
+			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
+			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
+			DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
+			DROPDOWN_BUTTON_DISABLE Diplomacy.SeparatePeace
 		}
 	}
 	Dropdowns = {
@@ -70,6 +82,12 @@ Main = {
 		  // Click
 		  REMOTE Population = {
 		CALL_FUNCTION F_WhitePeace
+			}
+			}
+		  SeparatePeace = {
+		  // Click
+		  REMOTE Population = {
+		CALL_FUNCTION F_SeparatePeace
 			}
 			}
 		}
@@ -1952,8 +1970,10 @@ Main = {
 					DROPDOWN_BUTTON_VISIBLE Diplomacy.DeclareWar
 					DROPDOWN_BUTTON_VISIBLE Diplomacy.MakePeace
 					DROPDOWN_BUTTON_VISIBLE Diplomacy.WhitePeace
+					DROPDOWN_BUTTON_VISIBLE Diplomacy.SeparatePeace
 					DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
 					DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
+					DROPDOWN_BUTTON_DISABLE Diplomacy.SeparatePeace
 					REMOVE LongRangeRaid
 					REMOVE LootingCampaigns
 					REMOVE HolyWar
@@ -2244,9 +2264,15 @@ Main = {
 				
 				
 				IF value > 50 & WarTimer > 200
-				DROPDOWN_BUTTON_ENABLE Diplomacy.WhitePeace
+					DROPDOWN_BUTTON_ENABLE Diplomacy.WhitePeace
 				ELSE
-				DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
+					DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
+				ENDIF
+				
+				IF value > 60
+					DROPDOWN_BUTTON_ENABLE Diplomacy.SeparatePeace
+				ELSE
+					DROPDOWN_BUTTON_DISABLE Diplomacy.SeparatePeace
 				ENDIF
 				}
 				
@@ -10274,7 +10300,7 @@ Main = {
 					WEIGHT [ to ]
 					}
 					TRIGGER_EVENT = {
-						IF (~ModernWarfare & Coastline > 0 )
+						IF (~ModernWarfare & NeighborhoodBellicism > 35 & Coastline > 0 )
 							RISE
 						ENDIF
 					}

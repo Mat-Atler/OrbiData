@@ -71,6 +71,10 @@ Main = {
                     NAME "White Peace"
                     DESCRIPTION "End the War without any conquest"
                 }
+                SeparatePeace = {
+                    NAME "Separate Peace"
+                    DESCRIPTION "Will reduce ennemy forces but we will loose warscore"
+                }
             }
         }
     }
