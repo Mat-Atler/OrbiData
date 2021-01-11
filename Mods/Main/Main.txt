@@ -6897,17 +6897,18 @@ Main = {
 					$Wealth = 500
 				}
 				UPGRADE = {
-					$Wealth = (LinkCount(TradingPost) + 1) * 12
+					$Wealth = (LinkCount(TradingPost) + 1) * 10
 				}
 				TICK = {
-					PROCESS $Wealth -= PerSeconds( value / 3 )
-					PROCESS TradeGoods = TradeGoods + PerSeconds(value / 3.5)
-				
+					IF	$Wealth > 50 
+						PROCESS $Wealth -= PerSeconds( value / 7 )
+						PROCESS TradeGoods = TradeGoods + PerSeconds(value / 3.5)
+					ENDIF
 				}
 
 			
 			LINK TradeGoods = {
-					IF ( value > 0 & Navy > 50 )
+					IF ( value > 0 & $Wealth > 50 )
 						COLOR green
 						FLUX value / 5
 					ENDIF
