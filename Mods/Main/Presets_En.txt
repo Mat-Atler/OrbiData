@@ -53,13 +53,11 @@ Presets = {
 	Java = {
 		NAME "Java"
 		DESCRIPTION "<b>Easy</b><br>Indonesia is a very rich archipelago, from which emerged some powerful empires like the Majapahit. Use this preset if you want to sell more spice than ever. "
-		}
-		
+		}		
 	Yamatai = {
 		NAME "Yamatai"
 		DESCRIPTION "<b>Average</b><br>The Japanese archipelago is a remote area, relatively protected from any external aggression, propitious for the creation of a singular and prosperous society. "
-		}
-		
+		}		
 	Andes = {
 		NAME "Andes"
 		DESCRIPTION "<b>Very Difficult</b><br>The Andes have a fearsome climate and is a formidable challenge to any civilization trying to settle here permanently. Mining resources, on the other hand, are very abundant. "
@@ -74,18 +72,20 @@ Presets = {
 		NAME "Paris Basin"
 		DESCRIPTION "<b>Difficult</b><br>The Paris Basin is a relatively fertile land, located in a rather mild oceanic climate. Maritime trade, on the other hand, is rather limited, and its neighbors are quite agitated."
 		}
-		
-		
 	Iberia = {
 		NAME "Iberia"
 		DESCRIPTION "<b>Average</b><br>Southern Iberia is a relatively arid and hostile land. But its position with access to both the Mediterranean and the ocean offers great opportunities."
 		}
-		
-
 	MississippiDelta = {
 		NAME "Mississippi Delta"
 		DESCRIPTION "<b>Average</b><br>The Mississippi delta is an ideal place to found a sedentary agrarian civilization in America while leaving the door open to naval and river trade."
 		}
-		
-		
+	Latium = {
+		NAME "Latium"
+		DESCRIPTION "<b>Average</b><br>The Latium is a key position of the Italian peninsula, which gave birth to one of the greatest empire of all times. Rich and prosperous thanks to the mild Mediterranean climate, a generous land which is open to maritime trade, it's also a land envied by its neighbors."
+		}
+	YellowRiver = {
+		NAME "Yellow River"
+		DESCRIPTION "<b>Average</b><br>The Yellow River is the backbone of the Chinese history, abundantly fertilizing its shores. A peaceful region but with a huge potential to create a country with a world-class reputation."
+		}	
 }

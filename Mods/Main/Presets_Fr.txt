@@ -45,21 +45,21 @@ Presets = {
 	}
 	Yucatan = {
 		NAME "Yucatan"
-		DESCRIPTION "<b>Difficile</b><br>Les jungles de l'Amérique centrale sont luxuriantes, l'abondance de faune et flore est un immense avantage mais l'impraticabilitée des côtes et le cruel manque d'animaux de trait peuvent rendre une civilisation avancée difficile à maîtriser. Il est recommandé de creuser vos sols riche en or pour un immense gain de richesse."
+		DESCRIPTION "<b>Difficile</b><br>Les jungles de l'Amérique centrale sont luxuriantes, l'abondance de faune et flore est un immense avantage mais l'impraticabilitée des côtes et le cruel manque d'animaux de trait peuvent rendre une civilisation avancée difficile à maîtriser. Il est recommandé de miner vos sols riches en or."
 	}
 	Mesopotamia = {
 		NAME "Mésopotamie"
-		DESCRIPTION "<b>Facile</b><br>Le croissant fertile est le lieu de naissance de bien des civilisations et de grand empire. La grande polyvalence de cette région permet de donner littéralement toutes les directions que vous souhaitez à votre civilisation."
+		DESCRIPTION "<b>Facile</b><br>Le Croissant Fertile est le lieu de naissance de bien des civilisations et de grand empires. La grande polyvalence de cette région permet de prendre littéralement toutes les directions que vous souhaitez à votre civilisation."
 		}
 
 	Java = {
 		NAME "Java"
-		DESCRIPTION "<b>Facile</b><br>L'archipel indonésien est le berceau de nombreuse civilisation comme l'Empire Majapahit. Il est recommandé de capitaliser sur les grandes réserves d'épices qui se trouvent dans les îles. "
+		DESCRIPTION "<b>Facile</b><br>L'Archipel Indonésien est le berceau de nombreuses civilisations comme l'Empire Majapahit. Il est recommandé de capitaliser sur les grandes réserves d'épices qui se trouvent dans les îles. "
 		}
 		
 	Yamatai = {
 		NAME "Yamatai"
-		DESCRIPTION "<b>Moyen</b><br>L'archipel japonais est une zone reculée, relativement protégée de toute agression extérieure, propice à créer une société prospère et unique. "
+		DESCRIPTION "<b>Moyen</b><br>L'Archipel Japonais est une zone reculée, relativement protégé de toute agression extérieure, propice à créer une société prospère et unique. "
 		}
 		
 	Andes = {
@@ -74,17 +74,26 @@ Presets = {
 		
 	ParisBasin = {
 		NAME "Bassin Parisien"
-		DESCRIPTION "<b>Difficile</b><br>Le bassin parisien est une terre relativement fertile, situé dans un climat océanique plutôt doux. Le commerce maritime est par contre plutôt limité, et ses voisins agités."
+		DESCRIPTION "<b>Difficile</b><br>Le Bassin Parisien est une terre relativement fertile, situé dans un climat océanique plutôt doux. Le commerce maritime est par contre plutôt limité, et ses voisins agités."
 		}
 				
 	Iberia = {
 		NAME "Ibérie"
-		DESCRIPTION "<b>Moyen</b><br>Le Sud de l'ibérie est une terre relativement aride et hostile. Mais sa position ouverte à la fois à la méditerranée et à l'océan lui permet de grandes opportunités."
+		DESCRIPTION "<b>Moyen</b><br>Le Sud de l'Ibérie est une terre relativement aride et hostile. Mais sa position ouverte à la fois à la méditerranée et à l'océan lui permet de grandes opportunités."
 		}
 		
 	MississippiDelta = {
 		NAME "Delta du Mississipi"
 		DESCRIPTION "<b>Moyen</b><br>Le delta du Mississipi est un endroit idéal pour fonder une civilisation sédentaire agraire en Amérique tout en se laissant la porte ouverte au commerce naval et fluvial."
+		}
+		
+	Latium = {
+		NAME "Latium"
+		DESCRIPTION "<b>Moyen</b><br>Le Latium est une position pivot de la péninsule italienne, qui a donné naissance à l'un des plus grand empire de tous les temps. Riche et prospère grâce au doux climat méditerranéen, une terre généreuse et ouverte au commerce maritime, c'est aussi une position convoitée par ses voisins."
+		}
+	YellowRiver = {
+		NAME "Yellow River"
+		DESCRIPTION "<b>Moyen</b><br>Le Fleuve Jaune est le terreau de l'histoire chinoise, fertilisant copieusement ses rivages. Une région tranquille mais avec un immense potentiel propre à faire naître un pays à carure mondiale."
 		}
 
 }

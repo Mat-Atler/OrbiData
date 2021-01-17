@@ -201,4 +201,36 @@
 		- Main.Island
 	}
 	
+	Latium = {
+		COORDINATES = 41° 53' N 12° 29' E
+		Main.Humidity.value = 60
+		Main.Temperature.value = 60
+		Main.Flora.value = 60
+		Main.Fauna.value = 60
+		Main.Coastline.value = 60
+		Main.SoilFertility.value = 65
+		Main.Gold.value = 20
+		Main.Spices.value = 5
+		Main.Salt.value = 60
+		Main.NeighborhoodBellicism.value = 70
+		- Main.Island
+		- Main.NewWorld
+	}
+	
+	YellowRiver = {
+		COORDINATES = 34° 39' N 112° 26' E
+		Main.Humidity.value = 50
+		Main.Temperature.value = 50
+		Main.Flora.value = 50
+		Main.Fauna.value = 50
+		Main.Coastline.value = 30
+		Main.SoilFertility.value = 80
+		Main.Gold.value = 30
+		Main.Spices.value = 20
+		Main.Salt.value = 20
+		Main.NeighborhoodBellicism.value = 30
+		- Main.Island
+		- Main.NewWorld
+	}
+	
 }
