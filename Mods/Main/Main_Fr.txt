@@ -765,6 +765,17 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Le nationalisme représentante le sentiment d'appartenance de notre population envers notre nation. Une nation unie sous un drapeau renforce votre assise, mais cela peut aussi permettre de germer des idées dangereuses."
 				SUMMARY "Impacte votre stabilité"
 			}	
+			Allies = {
+				NAME "Alliés"
+				LEVEL value = {
+					0 = "Aucun allié"
+					0.01 = "Quelques alliés"
+					50 = "Réseau de défense"
+					100 = "Diplomatie d'alliance intensive"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Nos alliés, sécurisés par notre diplomatie active nous assurent un soutien en temps de guerre. Tant que la situation est prospère pour nous deux en tout cas..."
+				SUMMARY "Fournit un soutien pendant nos guerres"
+			}	
 				
 		}
 		Levers = {
@@ -2525,6 +2536,13 @@ Main = {
 				DESCRIPTION "Un homme très compétent a récemment pris les rênes de l'armée de notre ennemi historique. Cela va certainement impacter les batailles terrestres à venir."
 				SUMMARY "Un grand général dirige les armées ennemies"
 			}
+			AlliesDefection = {
+				NAME "Défection Alliée"
+				DESCRIPTION "Un de nos alliés vient de faire une paix séparée avec l'ennemi qui ne peut que se renforcer."
+				SUMMARY "Un de nos sois-disant allié vient de faire une paix séparée!"
+			}
+			
+			
 		
 		}
 

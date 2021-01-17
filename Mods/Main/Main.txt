@@ -2460,6 +2460,41 @@ Main = {
 				}	
 			}
 			
+			
+			Allies = {
+				VALUE value [ 0 0 10000 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+				SLEEP = {
+					IF Diplomacy > 30 & ~ModernWarfare & GetCurrentEra() >= GetEra(DiscoveryAge) )
+						SPAWN
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN Allies = {
+					PROCESS Allies = ( Diplomacy * 0.6 )
+				}
+				
+				TICK = {
+						PROCESS Allies =  Allies - PerSeconds( ( Allies + StateSize ) / 4000 )		
+						IF ~WarStatus
+							PROCESS Allies =  Allies - PerSeconds( ( Allies + StateSize ) / 3000 )
+							PROCESS WarStatus = WarStatus + PerSeconds(value / 800 )
+						ENDIF
+				}
+				
+				LINK WarStatus = {
+					COLOR green
+					FLUX value / 100
+				}
+
+				LINK StateSize = {
+					WEIGHT [ from ]
+				}	
+
+			}		
+			
+			
 			}
 		Levers = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Levers
@@ -4262,11 +4297,7 @@ Main = {
 				RELATED_INFO = {
 					RELATED_LINK NeighborhoodBellicism Militarism
 				}
-				// SLEEP = {
-					// IF ~NeighborhoodBellicism
-						// SPAWN
-					// ENDIF
-				// }
+
 				UNLOCK_CONDITIONS = {
 					HINT 0
 					CONDITION_NODE + NeighborhoodBellicism
@@ -4283,6 +4314,7 @@ Main = {
 				PROCESS InvadersForce = InvadersForce - PerSeconds(value * 0.0025)
 				PROCESS $Wealth = $Wealth - PerSeconds(Diplomacy * 0.02)
 				PROCESS TradeRoads = TradeRoads + PerSeconds(Diplomacy * 0.001)
+				PROCESS Allies = Allies + PerSeconds(Diplomacy * 0.002)
 				}
 				LINK NeighborhoodBellicism = {
 				IF value > 0
@@ -4298,6 +4330,18 @@ Main = {
 				ENDIF
 				}
 				
+			LINK TradeRoads = {
+				IF value > 0
+					FLUX value / 25
+					COLOR green
+				ENDIF
+				}
+			LINK Allies = {
+				IF value > 0
+					FLUX value / 30
+					COLOR green
+				ENDIF
+				}
 			}				
 			CivilEngineering = {
 				TAG Sedentary
@@ -6845,8 +6889,6 @@ Main = {
 				TRIGGER_SPAWN AcrossTheOcean = {
 					ERA DiscoveryAge
 					}
-			
-
 			}
 			
 			
@@ -6900,7 +6942,7 @@ Main = {
 					$Wealth = (LinkCount(TradingPost) + 1) * 10
 				}
 				TICK = {
-					IF	$Wealth > 50 
+					IF ( $Wealth > 50 )
 						PROCESS $Wealth -= PerSeconds( value / 7 )
 						PROCESS TradeGoods = TradeGoods + PerSeconds(value / 3.5)
 					ENDIF
@@ -10228,8 +10270,8 @@ Main = {
 
 		
 			ForeignInterferance = {
-				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
-				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
+				SOUND_EVENT "Main/SFX/DiplomacyBadEvent.wav"
+				SOUND_WINDOW "Main/SFX/DiplomacyBadEvent.wav"
 				EVENT_DEF [ 15 30 100 35% ]
 				ARISE = {
 					EVENT_SPEED 1
@@ -10307,7 +10349,37 @@ Main = {
 					}
 						
 			
-				}	
+				}
+
+		
+			AlliesDefection = {
+				SOUND_EVENT "Main/SFX/DiplomacyBadEvent.wav"
+				SOUND_WINDOW "Main/SFX/DiplomacyBadEvent.wav"
+				EVENT_DEF [ 20 50 250 50% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				SLEEP = {
+					EVENT_CHANCE 100 - WarStatus
+				}
+				
+				TICK = {
+					PROCESS Allies = Allies - PerSeconds(1)
+				}
+			
+				LINK Allies = {
+					COLOR red
+					FLUX 1
+				}
+				
+				
+				TRIGGER_EVENT = {
+					IF WarStatus < 55 & WarStatus.WarTimer > 250
+						RISE
+					ENDIF
+				}
+				
+		}				
 		
 		}
 }

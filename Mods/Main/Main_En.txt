@@ -794,6 +794,20 @@ Main = {
 				SUMMARY "Impacts our stability"
 			}	
 			
+			Allies = {
+				NAME "Allies"
+				LEVEL value = {
+					0 = "No ally"
+					0.01 = "A few allies"
+					50 = "Defense network"
+					100 = "Intensive alliance diplomacy"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our allies, secured by our active diplomacy, provide us support in times of war. So long as the situation is successful for both of us at least..."
+				SUMMARY "Provides assistance during wartime"
+			}	
+
+
+			
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -2511,7 +2525,7 @@ Main = {
 			NavalBattle = {
 				NAME "Naval Battle"
 				LEVEL Winner = {					
-					0 = "This battle is a bitter defeat"	
+					0 = "This battle is a bitter defeat."	
 					25 = "This battle is a defeat."	
 					50 = "Status Quo."	
 					50.001  = "This battle is a victory."	
@@ -2546,6 +2560,11 @@ Main = {
 				NAME "Foe Great General"
 				DESCRIPTION "A very skilled man as recently taken command of our historic enemy's army. This will certainly impact future land battles."
 				SUMMARY "A great amiral leads our enemy's army"
+			}			
+			AlliesDefection = {
+				NAME "Allied Defection"
+				DESCRIPTION "One of our allies has just made a separate peace with the enemy which can only get stronger."
+				SUMMARY "One of our so-called allies has just made a separate peace!"
 			}
 
 		}
