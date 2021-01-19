@@ -2541,6 +2541,11 @@ Main = {
 				DESCRIPTION "Un de nos alliés vient de faire une paix séparée avec l'ennemi qui ne peut que se renforcer."
 				SUMMARY "Un de nos sois-disant allié vient de faire une paix séparée!"
 			}
+			AmphibiousAssault = {
+				NAME "Assaut Amphibie"
+				DESCRIPTION "Nos flottes ont le contrôle total des mers et grâce à cela, elles attaquent l'arrière-garde ennemie."
+				SUMMARY "Nos flottes harcèlent les forces terrestres ennemies"
+			}
 			
 			
 		

@@ -10379,7 +10379,44 @@ Main = {
 					ENDIF
 				}
 				
-		}				
+		}
+
+
+			AmphibiousAssault = {
+				SOUND_EVENT "Main/SFX/NavalBattle.wav"
+				SOUND_WINDOW "Main/SFX/NavalBattle.wav"
+				EVENT_DEF [ 15 50 150 35% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				TICK = {
+					PROCESS Navy -=  PerSeconds(2 + Navy * 0.09 )
+					PROCESS FoeLandForces -=  PerSeconds(2 + FoeLandForces * 0.1  * ( 50 / 200 + 1 ) ) 
+					PROCESS WarStatus += PerSeconds( 15 / 50 )
+				}
+				
+				LINK Navy = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK FoeLandForces = {
+					COLOR red
+					FLUX 4
+				}
+				
+				LINK WarStatus = {
+					COLOR green
+					FLUX 1
+				}
+				
+				TRIGGER_EVENT = {
+					IF DropdownIsState(Diplomacy.War) & Coastline > 0 & Navy > FoeNavalForces * 2.5 & Navy > 100
+						RISE
+					ENDIF
+				}
+				
+		}		
 		
 		}
 }

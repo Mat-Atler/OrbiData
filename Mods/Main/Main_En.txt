@@ -2565,6 +2565,11 @@ Main = {
 				NAME "Allied Defection"
 				DESCRIPTION "One of our allies has just made a separate peace with the enemy which can only get stronger."
 				SUMMARY "One of our so-called allies has just made a separate peace!"
+			}			
+			AmphibiousAssault = {
+				NAME "Amphibious Assault"
+				DESCRIPTION "Our fleets have complete control of the seas and thanks to that, they attack the enemy rearguard."
+				SUMMARY "Our fleets harass the enemy land forces"
 			}
 
 		}
