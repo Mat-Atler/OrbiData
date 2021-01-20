@@ -2521,7 +2521,8 @@ Main = {
 					IF ~DevotionToNature == 0 & ~NationalReligion == 0
 						PROCESS Fauna = Fauna - PerSeconds(output * 5.5 )
 					ENDIF
-						
+					
+					PROCESS Food = Food + PerSeconds(output *0.15)
 				}
 				//SLEEP = {
 					//IF Fauna > 20
