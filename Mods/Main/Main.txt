@@ -7969,7 +7969,7 @@ Main = {
                     ENDIF
 				}
 				TICK = {
-					PROCESS Population = Population - PerSeconds(Population * 0.02 + 0.25 * 0.75 ? 1.25)
+					PROCESS Population = Population - PerSeconds(Population * 0.022 + 0.25 * 0.75 ? 1.25)
 					PROCESS Food = Food - PerSeconds(3 * 0.75 ? 1.25)
 					PROCESS Education = Education - PerSeconds(1 * 0.75 ? 1.25)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.1 + MilitaryManpower.Infantry_value /150 )
@@ -8045,7 +8045,7 @@ Main = {
 				EVENT_DEF [ 15 15 100 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 70
-                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) 
+                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~CelestialMonarchy + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) 
                         REMOVE NoblesRebellion
                     ENDIF
 				}
@@ -8057,7 +8057,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF AristocracyClass > 85 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
+					IF AristocracyClass > 85 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~CelestialMonarchy == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
 						RISE
 					ENDIF
 				}
