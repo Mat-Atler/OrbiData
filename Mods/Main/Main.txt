@@ -29,6 +29,12 @@ Main = {
 			PROCESS ColonialStateSize += WarStatus.peaceProposal_ColonySize
 			PROCESS StateSize += WarStatus.peaceProposal_StateSize
 			PROCESS $Wealth += WarStatus.peaceProposal_Wealth
+			IF ~HostileCoalition
+				PROCESS HostileCoalition -= WarStatus * 5
+			ENDIF
+			IF ~Coalition
+				PROCESS Coalition -= WarStatus * 5
+			ENDIF
 			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
@@ -308,6 +314,7 @@ Main = {
 		DiscoveryAge = { AGE 1500 }
 		AbsolutismAge = { AGE 1650 }
 		IndustrialAge = { AGE 1820 }
+		AtomicAge = { AGE 1940 }
 	}
 	
 	Alerts = {
@@ -1079,7 +1086,9 @@ Main = {
 						WEIGHT [ max ] value
 				}
 				LINK Theocracy = {
+				IF ( ~CelestialMonarchy == 0 & ~ClericalState == 0 )
 						WEIGHT [ max ] value
+				ENDIF
 				}			
 			}
 			Piety = {
@@ -1500,6 +1509,7 @@ Main = {
 				}
 				
 				VALUE value [ 0 30 100 ]
+				VALUE coalitionTrigger [ 0 0 1 ]
 				
                 TRIGGER_TRAVEL = {
                     PROCESS value = GetPresetValue(value)
@@ -2310,7 +2320,10 @@ Main = {
 				
 				
 				TRIGGER_SPAWN FoeLandForces = {
-					PROCESS FoeLandForces = ( 60 + StateSize / 1.1 ) * 0.7 ? 1.2 
+					PROCESS FoeLandForces = ( 60 + StateSize / 1.1 ) * 0.7 ? 1.2
+					IF ~HostileCoalition | ~Coalition
+						PROCESS FoeLandForces = FoeLandForces * 1 ? 2
+					ENDIF
 				}
 				
 			}
@@ -2333,6 +2346,9 @@ Main = {
 				
 				TRIGGER_SPAWN FoeNavalForces = {
 					PROCESS FoeNavalForces = ( 50 + NavalSupremacy * 2.5 + Coastline * 2 ) * 0.7 ? 1.2 
+					IF ~HostileCoalition | ~Coalition
+						PROCESS FoeNavalForces = FoeNavalForces * 1 ? 2
+					ENDIF
 				}
 				
 			}		
@@ -2481,11 +2497,20 @@ Main = {
 						IF ~WarStatus
 							PROCESS Allies =  Allies - PerSeconds( ( Allies + StateSize ) / 3000 )
 							PROCESS WarStatus = WarStatus + PerSeconds(value / 800 )
+							IF ~Coalition
+								PROCESS WarStatus = WarStatus + PerSeconds( value / 1200 )
+								PROCESS Coalition = Coalition - PerSeconds(value / 500 )
+							ENDIF
 						ENDIF
 				}
 				
 				LINK WarStatus = {
 					COLOR green
+					FLUX value / 100
+				}
+				
+				LINK Coalition = {
+					COLOR red
 					FLUX value / 100
 				}
 
@@ -2495,6 +2520,83 @@ Main = {
 
 			}		
 			
+			Coalition = {
+				VALUE value [ 0 1500 10000 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+				SLEEP = {
+					IF ( StateSize <= 150 ) & ~NeighborhoodRise & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+						SPAWN
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN Coalition = {
+					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
+					PROCESS NeighborhoodBellicism = 100
+					ERA AbsolutismAge
+					SPAWN FoeGreatAdmiral
+					SPAWN FoeGreatGeneral
+					
+				}
+				
+				TICK = {
+						PROCESS NeighborhoodBellicism =  NeighborhoodBellicism + PerSeconds( 1.5 )	
+						IF ~WarStatus == 0
+							PROCESS Allies =  Allies + PerSeconds( 2.5 )	
+						ENDIF
+						IF Coalition <= 0
+							PROCESS NeighborhoodBellicism = 0
+							REMOVE Coalition
+						ENDIF
+				}
+				
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2
+				}
+				LINK Allies = {
+						IF ~WarStatus == 0
+							COLOR green
+							FLUX 2.5
+						ENDIF
+				}
+
+			}					
+			
+			HostileCoalition = {
+				VALUE value [ 0 1300 10000 ]
+				DISPLAY_VALUE
+				DISPLAY_DECAY
+				SLEEP = {
+					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+						SPAWN
+					ENDIF
+				}
+				
+				TRIGGER_SPAWN HostileCoalition = {
+					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
+					PROCESS NeighborhoodBellicism = 100
+					ERA AbsolutismAge
+					SPAWN FoeGreatAdmiral
+					SPAWN FoeGreatGeneral
+				}
+				
+				TICK = {
+						PROCESS HostileCoalition =  HostileCoalition - PerSeconds( 0.75 )		
+						PROCESS NeighborhoodBellicism =  NeighborhoodBellicism + PerSeconds( 1.5 )		
+						IF HostileCoalition <= 0
+							PROCESS NeighborhoodBellicism = 0
+							REMOVE HostileCoalition
+						ENDIF
+				}
+				
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 1
+				}
+				
+
+			}		
 			
 			}
 		Levers = {
@@ -3345,7 +3447,9 @@ Main = {
 					$PoliticalPower = (LinkCount(Theocracy) + 1) * 1
 				}
 				TICK = {
-					RESOURCE_MAX $PoliticalPower = 200
+					IF ~CelestialMonarchy == 0 & ~ClericalState == 0
+						RESOURCE_MAX $PoliticalPower = 200
+					ENDIF
 					SET Piety.value [ : : 70 + Theocracy.value / 1.5 ]
 					PROCESS $Wealth = $Wealth - PerSeconds(value * 0.02)
 				}
@@ -7834,6 +7938,13 @@ Main = {
 				ARISE = {
 					EVENT_SPEED 1
 				}
+				SLEEP = {
+				IF StateSize <= 150 & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					EVENT_CHANCE 0.75
+				ELSE
+					EVENT_CHANCE 0.20
+				ENDIF
+				}
 				TICK = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(8)
 				}
@@ -7842,7 +7953,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ~NeighborhoodBellicism  & GameTime() > 2300
+					IF ~NeighborhoodBellicism & GameTime() > 2300 & ~Coalition == 0 & ~HostileCoalition == 0 
 						RISE
 					ENDIF
 				}

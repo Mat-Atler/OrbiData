@@ -799,6 +799,30 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our allies, secured by our active diplomacy, provide us support in times of war. So long as the situation is successful for both of us at least..."
 				SUMMARY "Provides assistance during wartime"
 			}	
+			
+			Coalition = {
+				NAME "Coalition"
+				LEVEL value = {
+					0 = "Weak Enemy"
+					200 = "Weakened Enemy"
+					500 = "Threatening Enemy"
+					1000 = "Very Threatening Enemy"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "One of our neighbors has reached such supremacy that it is becoming a threat to the entire continent. All the small nations, including our own, have united against this destructive invader. A long struggle for our survival has just begun."
+				SUMMARY "An opposing empire threatens the balance of the entire continent."
+			}
+			HostileCoalition = {
+				NAME "Hostile Coalition"
+				LEVEL value = {
+					0 = "Weak Coalition"
+					200 = "Weakened Coalition"
+					500 = "Coalition Threatening"
+					1000 = "Very Threatening Coalition"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our unchallenged supremacy has led many enemies to band against us. A long struggle for the defense of our empire has just begun."
+				SUMMARY "A vast coalition has risen up against us!"
+			}
+
 		}
 		Levers = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Levers
