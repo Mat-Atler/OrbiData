@@ -1467,9 +1467,12 @@ Religious = {
 				
 				TRIGGER_SPAWN CelestialMonarchy = {
 						RESOURCE_MAX $PoliticalPower = 500
-						REMOVE Government
-						SPAWN Theocracy
 						
+						IF ~Theocracy == 0
+							REMOVE Government
+							SPAWN Theocracy
+						ENDIF
+
 
 						PROCESS Theocracy = 90
 	
