@@ -2577,8 +2577,6 @@ Main = {
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
 					PROCESS NeighborhoodBellicism = 100
 					ERA AbsolutismAge
-					SPAWN FoeGreatAdmiral
-					SPAWN FoeGreatGeneral
 				}
 				
 				TICK = {
