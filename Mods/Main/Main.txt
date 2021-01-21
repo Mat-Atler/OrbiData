@@ -1065,8 +1065,9 @@ Main = {
 						SET ReligiousLaw.value [ : : PriestClass ]
 					ENDIF
 					
-					
-					SET Theocracy.value [ : : PriestClass ]
+					IF ( ~CelestialMonarchy == 0 & ~ClericalState == 0 )
+						SET Theocracy.value [ : : PriestClass ]
+					ENDIF	
 				}
 				LINK Piety = {
 					IF (value > 0)
@@ -3345,7 +3346,7 @@ Main = {
 				}
 				TICK = {
 					RESOURCE_MAX $PoliticalPower = 200
-					SET Piety.value [ : : 70 + Theocracy.value / 2 ]
+					SET Piety.value [ : : 70 + Theocracy.value / 1.5 ]
 					PROCESS $Wealth = $Wealth - PerSeconds(value * 0.02)
 				}
 				
@@ -4031,7 +4032,7 @@ Main = {
 					OR
 					CONDITION_VALUE Republic >= 150
 					OR
-					CONDITION_VALUE Theocracy >= 75
+					CONDITION_VALUE Theocracy >= 50
 					ALWAYS
 					CONDITION_NODE - Legislation
 					CONDITION_VALUE Piety >= 10
