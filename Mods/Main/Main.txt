@@ -1718,6 +1718,10 @@ Main = {
 				}
 				TICK = {
 					PROCESS VassalPower =  VassalPower - PerSeconds(value / 1500 )
+					PROCESS BarbarianAtGates =  BarbarianAtGates - PerSeconds(value / 100 )
+					IF VassalPower > 35
+						REMOVE BarbarianThreat
+					ENDIF
 					SET Empire.value [ : : 100 - VassalPower.value ]
 					SET BarbarianMonarchy.value [ : : 200 - VassalPower.value * 2 ]
 					SET Monarchy.value [ : : 100 - VassalPower.value ]
@@ -1727,6 +1731,10 @@ Main = {
 				LINK Stability = {
 					COLOR green
 					FLUX 1
+				}
+				LINK BarbarianAtGates = {
+					COLOR red
+					FLUX value / 25
 				}
 
 				LINK NationalCohesion = {
@@ -2594,7 +2602,37 @@ Main = {
 				}
 				
 
-			}		
+			}
+
+
+			BarbarianThreat = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				SLEEP = {
+					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+						PROCESS BarbarianThreat +=  PerSeconds( 0.025 )	
+						IF  ( StateSize > 120 | Stability < 20 )
+							PROCESS BarbarianThreat +=  PerSeconds( 0.025 + StateSize / 150 )	
+						ENDIF
+						IF GameTime() > 9500
+							REMOVE BarbarianThreat
+						ENDIF
+				}
+				
+				LINK StateSize = {
+					WEIGHT [ from ]
+				}	
+				LINK Stability = {
+					WEIGHT [ from ]
+				}	
+				LINK BarbarianThrust = {
+				}	
+				
+			}					
 			
 			}
 		Levers = {
@@ -3641,6 +3679,7 @@ Main = {
 					PROCESS AristocracyClass -= 25
 					PROCESS BarbarianAtGates -= 20
 					REMOVE Empire
+					REMOVE BarbarianThreat
 					RESOURCE_MAX $PoliticalPower = 500
 					}
 				}	
@@ -5203,15 +5242,17 @@ Main = {
 					RELATED_LINK MilitaryTechnology
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~BarbarianAtGates
+					HINT ~BarbarianThreat
 					CONDITION_NODE + BarbarianAtGates
 					OR
 					CONDITION_NODE + BarbarianMonarchy
 					OR
+					CONDITION_VALUE VassalPower > 10
+					OR
 					CONDITION_ERA >= FeudalAge
 					ALWAYS
 					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE Infantry >= 15
+					CONDITION_VALUE Infantry >= 10
 				}
 				PRICE = {
 					$PoliticalPower = 195
@@ -8924,7 +8965,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & ((StateSize >= 250 & GameTime() > 5500 ) | (StateSize >= 400 ) | ( GameTime() > 8000 ) | ( Stability <= 20 & GameTime() > 7000 ) ) & GameTime() < 9500 & ( ~ModernWarfare == 0 ) 
+						IF ~StateSize & ( ~Feudality == 0 | Feudality < 10 ) & ~BarbarianMonarchy == 0 & BarbarianThreat >= 100 & ( ~ModernWarfare == 0 ) 
 							RISE
 						ENDIF
 				}

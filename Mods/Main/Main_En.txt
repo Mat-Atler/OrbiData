@@ -828,7 +828,18 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our unchallenged supremacy has led many enemies to band against us. A long struggle for the defense of our empire has just begun."
 				SUMMARY "A vast coalition has risen up against us!"
 			}
-
+			BarbarianThreat = {
+				NAME "Barbarian Threat"
+				LEVEL value = {
+					0 = "Very Far Away "
+					25 = "Far away"
+					50 = "A few echoes"
+					75 = "Disturbing news"
+					1000 = "They're at our door!"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The stability and wealth of our region attracts scavengers. Distant barbarians seem to inevitably come closer to our borders and can cause many problems."
+				SUMMARY "The migration of distant barbarians can be a problem in the long run"
+			}
 			
 		}
 		Levers = {
