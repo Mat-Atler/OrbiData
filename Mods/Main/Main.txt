@@ -2614,9 +2614,9 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS BarbarianThreat +=  PerSeconds( 0.025 )	
-						IF  ( StateSize > 120 | Stability < 20 )
-							PROCESS BarbarianThreat +=  PerSeconds( 0.025 + StateSize / 150 )	
+						PROCESS BarbarianThreat +=  PerSeconds( 0.018 )	
+						IF  ( StateSize > 150 | Stability < 20 )
+							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 850 )	
 						ENDIF
 						IF GameTime() > 9500
 							REMOVE BarbarianThreat
@@ -5243,16 +5243,15 @@ Main = {
 				}
 				UNLOCK_CONDITIONS = {
 					HINT ~BarbarianThreat
+					CONDITION_VALUE BarbarianThreat > 100
+					OR
 					CONDITION_NODE + BarbarianAtGates
 					OR
 					CONDITION_NODE + BarbarianMonarchy
 					OR
-					CONDITION_VALUE VassalPower > 10
-					OR
 					CONDITION_ERA >= FeudalAge
 					ALWAYS
 					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE Infantry >= 10
 				}
 				PRICE = {
 					$PoliticalPower = 195
