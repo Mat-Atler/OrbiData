@@ -5195,7 +5195,7 @@ Main = {
 				}
 
 			}
-			BattleAxe = {
+			BarbariansAdvancement = {
 				TAG BarbarianTech
 				TYPE Technological
 				VALUE value [ 0 5 100 >> 1 ]
@@ -5791,8 +5791,8 @@ Main = {
 				RELATED_INFO = {}
 
 				UNLOCK_CONDITIONS = {
-					HINT ~BarbarianAtGates | ~BattleAxe
-					CONDITION_NODE + BattleAxe
+					HINT ~BarbarianAtGates | ~BarbariansAdvancement
+					CONDITION_NODE + BarbariansAdvancement
 				}
 				PRICE = {
 					$Wealth = 300
@@ -9350,7 +9350,7 @@ Main = {
 					ALERT MilitaryCoup
 					REMOVE Government
 					SPAWN GreatGeneral
-					SPAWN BattleAxe
+					SPAWN BarbariansAdvancement
 					IF ~HorseDomestication
 						SPAWN Cataphracts
 					ENDIF

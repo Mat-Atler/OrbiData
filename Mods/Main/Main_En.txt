@@ -1539,15 +1539,15 @@ Main = {
 				SUMMARY "Increase our national cohesion"
 			}	
 
-			BattleAxe = {
-				NAME "Battle Axe"
+			BarbariansAdvancement = {
+				NAME "Barbarians' Advancement"
 				LEVEL value = {
 					0 = "None"
 					0.001 = "Unfruitful tests"
 					15 = "Search advances"
 					100 = "Technology completed"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"The battle axe is skillfully used by our barbarian enemies, it is up to us to equip our infantry with this new weapon."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"The barbarians threatening our borders are not a threat for no reason. They have made their own technological and doctrinal breakthroughs and we must adapt."
 				SUMMARY "Military Tech"
 			}	
 			

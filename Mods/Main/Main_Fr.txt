@@ -1510,15 +1510,15 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La présence de nombreux dialectes sur votre territoires peut être complexe à gérer, avec une politique plus ou moins coercitive vous pouvez créer une langue pour tout votre territoires."
 				SUMMARY "Augmente la cohésions nationale"
 			}
-			BattleAxe = {
-				NAME "Hache de bataille"
+			BarbariansAdvancement = {
+				NAME "Progrès des Barbares"
 				LEVEL value = {
 					0 = "Aucune"
 					0.001 = "Recherches infructueuses"
-					15 = "Recherche du meilleurs lestage"
+					15 = "Recherches multiples"
 					100 = "Maitrisée"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La hache de bataille est un redoutable outil capable d'asséner de puissants coups et d'agripper le bouclier de l'ennemis, surtout utilisée par les peuples luttants contre une infanterie lourde et disciplinée, elle peut entrer dans notre arsenal pour plus de puissance au combat."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Les barbares menaçants nos frontières ne sont pas menaçants pour rien. Ils ont fait leur propres avancées technologiques et doctrinales et nous devons nous adapter."
 				SUMMARY "Technologie militaire"
 			}	
 			

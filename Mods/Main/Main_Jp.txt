@@ -764,6 +764,8 @@ Main = {
 				DESCRIPTION "値: " @[value,0.###] <br> <br> "私たちの植民地の富はハゲタカを引き付け始めました。私たちは商人を守るべきです。"
 				SUMMARY "植民地の海賊行為のレベル"
 			}
+			
+				
 			PeasantryClass = {
 				NAME "Peasant Class"
 				DESCRIPTION "Peasant Class "<b>"Value: "@[value] </b> <br><br>"The workers of the soil form an important social class, in fact, a large part of the population and constitutes the basic line of any sedentary civilization."
@@ -1531,18 +1533,6 @@ Main = {
 				SUMMARY "国民の結束を増強する"
 			}
 
-			BattleAxe = {
-				NAME "戦斧"
-				LEVEL value = {
-					0 = "なし"
-					0.001 = "試作段階"
-					15 = "研究を進める"
-					100 = "技術をものにした"
-				}
-				DESCRIPTION <b>"振興: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"戦斧は蛮族が使用していました。歩兵にこれを配備するかどうかは私たち次第です。"
-				SUMMARY "軍事技術"
-			}
-
 			Stirrups = {
 				NAME "鐙"
 				LEVEL value = {
@@ -2131,7 +2121,19 @@ Main = {
 				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br> "一部の企業は国際貿易に力を注いでいます。銀行や貿易取引所の支援を受けて、彼らは途方もない遠征を掲げています。"
 				SUMMARY "貿易ルートを増やします"
 			}
-
+			
+			BarbariansAdvancement = {
+				NAME "Barbarians' Advancement"
+				LEVEL value = {
+					0 = "なし"
+					0.001 = "試作段階"
+					15 = "研究を進める"
+					100 = "技術をものにした"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"The barbarians threatening our borders are not a threat for no reason. They have made their own technological and doctrinal breakthroughs and we must adapt."
+				SUMMARY "軍事技術"
+			}	
+			
 			ColonialHelp = {
 				NAME "Colonial Help"
 				LEVEL value = {					
