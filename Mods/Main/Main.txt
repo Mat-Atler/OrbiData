@@ -5243,7 +5243,7 @@ Main = {
 				}
 				UNLOCK_CONDITIONS = {
 					HINT ~BarbarianThreat
-					CONDITION_VALUE BarbarianThreat > 100
+					CONDITION_VALUE BarbarianThreat >= 100
 					OR
 					CONDITION_NODE + BarbarianAtGates
 					OR

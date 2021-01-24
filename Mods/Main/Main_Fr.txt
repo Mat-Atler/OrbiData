@@ -805,7 +805,7 @@ Main = {
 				LEVEL value = {
 					0 = "Très Lointaine" 
 					25 = "Lointaine"
-					50 = "Quelques echos"
+					50 = "Quelques échos"
 					75 = "Nouvelles inquiétantes"
 					1000 = "Ils sont à notre porte!"
 				}
