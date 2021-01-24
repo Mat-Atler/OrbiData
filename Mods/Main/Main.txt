@@ -10294,9 +10294,9 @@ Main = {
 				TRIGGER_SPAWN LandBattle = {
 						PROCESS Die_Cast = -15 ? 10
 						IF MilitaryManpower > FoeLandForces
-							PROCESS Winner = 43 + ( ( MilitaryManpower * 0.9 ? 1.1 ) / ( FoeLandForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+							PROCESS Winner = 43 + ( ( MilitaryManpower * ( MilitaryEfficiency / 100 ) * 0.9 ? 1.1 ) / ( FoeLandForces * 0.9 ? 1.1 ) * 7 ) + Die_Cast
 						ELSE
-							PROCESS Winner = 43 - ( ( FoeLandForces * 0.9 ? 1.1 ) / ( MilitaryManpower * 0.9 ? 1.1 ) * 7 ) + Die_Cast
+							PROCESS Winner = 43 - ( ( FoeLandForces * 0.9 ? 1.1 ) / ( MilitaryManpower * ( MilitaryEfficiency / 100 ) * 0.9 ? 1.1 ) * 7 ) + Die_Cast
 						ENDIF
 						IF ~GreatGeneral
 							PROCESS Winner += 10
