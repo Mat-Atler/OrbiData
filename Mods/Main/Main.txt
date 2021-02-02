@@ -939,7 +939,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Education * 0.01)
+					PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Education * 0.015)
 					PROCESS Education = Education - PerSeconds( value * value / 5000)
 					PROCESS Stability = Stability + PerSeconds(value/50000)
 				}
@@ -6286,10 +6286,10 @@ Main = {
 					CONDITION_ERA >= FeudalAge
 					OR
 					CONDITION_VALUE Republic >= 150
+					CONDITION_VALUE Urbanization >= 50
 					ALWAYS
 					CONDITION_VALUE Culture >= 25
 					CONDITION_VALUE Philosophy >= 100
-					CONDITION_VALUE Urbanization >= 50
 					
 				}
 				PRICE = {
@@ -7372,6 +7372,36 @@ Main = {
 				}
 				TICK = {
 				
+				}
+		
+			}
+			
+			
+			Constitution = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~SchoolOfThought | ~Tribunal
+					CONDITION_NODE + Writing
+					CONDITION_VALUE Philosophy >= 200
+					CONDITION_VALUE Tribunal >= 35
+					CONDITION_VALUE Legislation >= 100
+					CONDITION_VALUE SchoolOfThought >= 100
+				}
+				PRICE = {
+					$PoliticalPower = 300
+				}
+				UPGRADE = {
+					$PoliticalPower = 30
+				}
+				TICK = {
+						RESOURCE_MAX $PoliticalPower = 750 + Constitution * 4.5
+						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(Constitution * 0.03)
+				
+				}
+				TRIGGER_SPAWN Constitution = {
+						RESOURCE_MAX $PoliticalPower = 750
 				}
 		
 			}

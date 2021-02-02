@@ -2220,6 +2220,17 @@ Main = {
 				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Nos marchands sont freinés par de nombreuses règles et taxes. Si nous laissons le marché agir, il se régulera de lui-même et nous apportera sur long terme une meilleure prosperité."
 				SUMMARY "Assouplit les règles et les taxes pour faire prospérer le commerce"
 			}
+			Constitution = {
+				NAME "Constitution"
+				LEVEL value = {
+					0 = "Brouillon de constitution"
+					20 = "Texte fondateur"
+					50 = "Texte corrigé et adapté"
+					75 = "Modèle adaptatif et évolutif"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>La question de l'organisation du pouvoir a parfois été très arbitraitres dans le passé. Des textes constitutifs clairs rédigés par nos meilleurs juristes permettent une organisation souple et solide."
+				SUMMARY "Améliore notre pouvoir politique"
+			}
 				
 		}
 		Events = {

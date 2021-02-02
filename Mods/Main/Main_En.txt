@@ -2234,6 +2234,18 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " )<br><br>Our merchants are slowed down by many regulations and taxes. If we let the market operate, it will regulate itself and bring us greater prosperity in the long run.."
 				SUMMARY "Eases regulations and taxes to make trade flourish"
 			}
+			
+			Constitution = {
+				NAME "Constitution"
+				LEVEL value = {
+					0 = "Draft of constitution"
+					20 = "Founding text"
+					50 = "Corrected and adapted text"
+					75 = "Adaptive and evolutionary model"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The question of power organization has sometimes been very arbitrary. Clear constitutive texts written by our best jurists allow a flexible and solid organization".
+				SUMMARY "Improves our political power"
+			}
 
 		}
 		Events = {
