@@ -2616,7 +2616,11 @@ Main = {
 				DESCRIPTION "Our fleets have complete control of the seas and thanks to that, they attack the enemy rearguard."
 				SUMMARY "Our fleets harass the enemy land forces"
 			}
-
+			RevolutionAttempt = {
+				NAME "Revolution Attempt"
+				DESCRIPTION "A local peasant revolt degenerates into open rebellion. Our regime is challenged in violence. Our police intervenes, but can they maintain order?"
+				SUMMARY "Our peasants storm our headquarters"
+			}
 		}
 	}
 }

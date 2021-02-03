@@ -2593,9 +2593,12 @@ Main = {
 				DESCRIPTION "Nos flottes ont le contrôle total des mers et grâce à cela, elles attaquent l'arrière-garde ennemie."
 				SUMMARY "Nos flottes harcèlent les forces terrestres ennemies"
 			}
+			RevolutionAttempt = {
+				NAME "Tentative Révolutionnaire"
+				DESCRIPTION "Une révolte locale de la paysanerie à dégénérer en rébellion ouverte. Notre régime est contesté dans la violence. Notre police intervient mais parvient elle à contenir l'ordre ?"
+				SUMMARY "Nos paysans assaillent nos quartier-généraux et la situation menace de dégénérer"
+			}
 			
-			
-		
 		}
 
 	}

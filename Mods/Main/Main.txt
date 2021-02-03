@@ -35,6 +35,12 @@ Main = {
 			IF ~Coalition
 				PROCESS Coalition -= WarStatus * 5
 			ENDIF
+			IF WarStatus < 45
+				PROCESS Stability -= 5
+			ENDIF
+			IF WarStatus > 55
+				PROCESS Stability += 5
+			ENDIF
 			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
@@ -1509,7 +1515,7 @@ Main = {
 				}
 				
 				VALUE value [ 0 30 100 ]
-				VALUE coalitionTrigger [ 0 0 1 ]
+				VALUE coalitionTrigger [ 0 0 2 ]
 				
                 TRIGGER_TRAVEL = {
                     PROCESS value = GetPresetValue(value)
@@ -2554,6 +2560,7 @@ Main = {
 						ENDIF
 						IF Coalition <= 0
 							PROCESS NeighborhoodBellicism = 0
+							PROCESS NeighborhoodBellicism.coalitionTrigger = 2
 							REMOVE Coalition
 						ENDIF
 				}
@@ -2592,6 +2599,7 @@ Main = {
 						PROCESS NeighborhoodBellicism =  NeighborhoodBellicism + PerSeconds( 1.5 )		
 						IF HostileCoalition <= 0
 							PROCESS NeighborhoodBellicism = 0
+							PROCESS NeighborhoodBellicism.coalitionTrigger = 2
 							REMOVE HostileCoalition
 						ENDIF
 				}
@@ -8007,7 +8015,7 @@ Main = {
 					EVENT_SPEED 1
 				}
 				SLEEP = {
-				IF StateSize <= 150 & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+				IF StateSize <= 150 & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & ( NeighborhoodBellicism.coalitionTrigger == 0 | NeighborhoodBellicism.coalitionTrigger == 2 )
 					EVENT_CHANCE 0.75
 				ELSE
 					EVENT_CHANCE 0.20
@@ -9585,7 +9593,7 @@ Main = {
 				SOUND_WINDOW "Main/SFX/Riots.wav"
 				EVENT_DEF [ 50 30 150 20% ]
 				SLEEP = {
-				EVENT_CHANCE = 10 + FarmersTax.value
+				EVENT_CHANCE = 10 + FarmersTax.value + PeasantryClass / 10
 				}
 				ARISE = {
 					EVENT_SPEED 1
@@ -9623,7 +9631,7 @@ Main = {
 					}
 					
 					TRIGGER_EVENT = {
-					IF ( FarmersTax > 10)
+					IF ( FarmersTax > 10 | ( PeasantryClass > 50 & Stability < 30 ) )
 							RISE
 					ENDIF
 					}
@@ -10593,6 +10601,89 @@ Main = {
 				
 				TRIGGER_EVENT = {
 					IF DropdownIsState(Diplomacy.War) & Coastline > 0 & Navy > FoeNavalForces * 2.5 & Navy > 100
+						RISE
+					ENDIF
+				}
+				
+		}
+		
+
+			RevolutionAttempt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 20 45 100 50% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				
+				TICK = {
+					PROCESS Stability = Stability - PerSeconds(0.5 * 0.75 ? 1.25)
+					PROCESS Population = Population - PerSeconds(1.5 + Population * 0.01 * 0.75 ? 1.25)
+					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(4)
+					PROCESS UrbanMilitia = Min( GetParam(UrbanMilitia.value), UrbanMilitia )
+					IF UrbanMilitia < 30
+						OVERRIDE_PARAM Monarchy.value = GetParam(Monarchy.value) - PerSeconds(1)
+						PROCESS Monarchy = Min( GetParam(Monarchy.value), Monarchy )
+						OVERRIDE_PARAM Empire.value = GetParam(Empire.value) - PerSeconds(1)
+						PROCESS Empire = Min( GetParam(Empire.value), Empire )
+						OVERRIDE_PARAM Theocracy.value = GetParam(Theocracy.value) - PerSeconds(1)
+						PROCESS Theocracy = Min( GetParam(Theocracy.value), Theocracy )
+						OVERRIDE_PARAM Republic.value = GetParam(Republic.value) - PerSeconds(2)
+						PROCESS Republic = Min( GetParam(Republic.value), Republic )
+						OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(2)
+						PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
+						OVERRIDE_PARAM BarbarianMonarchy.value = GetParam(BarbarianMonarchy.value) - PerSeconds(1)
+						PROCESS BarbarianMonarchy = Min( GetParam(BarbarianMonarchy.value), BarbarianMonarchy )
+						OVERRIDE_PARAM MilitaryDictatorship.value = GetParam(MilitaryDictatorship.value) - PerSeconds(1)
+						PROCESS MilitaryDictatorship = Min( GetParam(MilitaryDictatorship.value), MilitaryDictatorship )
+					ENDIF
+					IF Monarchy < 5 | Empire < 5 | BarbarianMonarchy < 5 | MilitaryDictatorship < 5 | Theocracy < 5  | ~Republic | CelesteMandate < 5
+						REMOVE Government
+					ENDIF
+				}
+				LINK Population = {
+					COLOR red
+					FLUX 3
+				}
+				LINK Stability = {
+					COLOR red
+					FLUX 1
+				}
+				LINK Monarchy = {
+					COLOR red
+					FLUX 1
+				}
+				LINK Empire = {
+					COLOR red
+					FLUX 1
+				}
+				LINK UrbanMilitia = {
+					COLOR red
+					FLUX 2
+				}
+				LINK BarbarianMonarchy = {
+					COLOR red
+					FLUX 1
+				}
+				LINK MilitaryDictatorship = {
+					COLOR red
+					FLUX 1
+				}
+				LINK CelesteMandate = {
+					COLOR red
+					FLUX 1
+				}
+				LINK Theocracy = {
+					COLOR red
+					FLUX 1
+				}
+				LINK Republic = {
+					COLOR red
+					FLUX 1
+				}
+				
+				TRIGGER_EVENT = {
+					IF ( ~PeasantRevolt | ( Stability < 10 & ~Democracy == 0 ) & NeighborhoodBellicism.coalitionTrigger == 2
 						RISE
 					ENDIF
 				}
