@@ -1865,7 +1865,7 @@ Main = {
 					WEIGHT [ from ]
 				}
 				
-				LINK Money = {
+				LINK Pottery = {
 						WEIGHT [ max ] 100 + value
 				}
 				
