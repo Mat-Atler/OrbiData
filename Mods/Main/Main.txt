@@ -2497,7 +2497,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF Diplomacy > 30 & ~ModernWarfare & GetCurrentEra() >= GetEra(DiscoveryAge) )
+					IF Diplomacy > 30 & ~ModernWarfare & GetCurrentEra() >= GetEra(DiscoveryAge)
 						SPAWN
 					ENDIF
 				}
@@ -2539,7 +2539,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize <= 150 ) & ~NeighborhoodRise & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize <= 150 ) & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2583,7 +2583,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ~Musket & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
