@@ -3585,7 +3585,7 @@ Main = {
 				}
 				TRIGGER_SPAWN MilitaryDictatorship = {
 						RESOURCE_MAX $PoliticalPower = 275
-						PROCESS $PoliticalPower = 50
+						PROCESS $PoliticalPower = 100
 						PROCESS Stability = Stability + 30
 						REMOVE Government
 						OVERRIDE_PARAM MilitaryDictatorship.value = 100
@@ -7812,6 +7812,50 @@ Main = {
 
 			}
 			
+			RevolutionaryRepublic = {
+				TYPE Cultural
+				TAG Government
+				VALUE value [ 0 25 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT GetCurrentEra() >= GetEra(AbsolutismAge)
+					CONDITION_NODE + Constitution
+					OR
+					CONDITION_VALUE SchoolOfThought >= 65
+					ALWAYS
+					CONDITION_EXCLUDE Government
+					CONDITION_ERA >= AbsolutismAge
+					CONDITION_NODE + Nationalism
+					CONDITION_VALUE PeasantryClass >= 50
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(RevolutionaryRepublic) + 1) * 4
+				}
+				TICK = {
+					PROCESS Stability = Stability + PerSeconds(value/6000)
+					PROCESS Nationalism = Nationalism + PerSeconds(value / 700)
+				}
+				LINK Stability = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.02
+					ENDIF
+				}
+				LINK Nationalism = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.04
+					ENDIF
+				}
+				TRIGGER_SPAWN RevolutionaryRepublic = {
+					REMOVE FarmersTax
+					PROCESS TradeTax -= 5
+					}
+				}		
+			
 			
 			}
 		Events = {
@@ -10639,6 +10683,8 @@ Main = {
 					ENDIF
 					IF Monarchy < 5 | Empire < 5 | BarbarianMonarchy < 5 | MilitaryDictatorship < 5 | Theocracy < 5  | ~Republic | CelesteMandate < 5
 						REMOVE Government
+						SPAWN Nationalism
+						SPAWN RevolutionaryRepublic
 					ENDIF
 				}
 				LINK Population = {

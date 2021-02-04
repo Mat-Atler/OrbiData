@@ -2231,6 +2231,17 @@ Main = {
 				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>La question de l'organisation du pouvoir a parfois été très arbitraitres dans le passé. Des textes constitutifs clairs rédigés par nos meilleurs juristes permettent une organisation souple et solide."
 				SUMMARY "Améliore notre pouvoir politique"
 			}
+			RevolutionaryRepublic = {
+				NAME "République Révolutionnaire"
+				LEVEL value = {
+					0 = "République en ruine"
+					20 = "Élan républicain populaire"
+					50 = "Stabilisation du pouvoir"
+					75 = "République mature"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le peuple est souverain. C'est sur ces mots que s'est bâti notre gouvernement populaire, qui lie ensemble les citoyens de notre Nation."
+				SUMMARY "Un gouvernement où le peuple est souverain"
+			}
 				
 		}
 		Events = {

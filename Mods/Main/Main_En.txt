@@ -2243,8 +2243,19 @@ Main = {
 					50 = "Corrected and adapted text"
 					75 = "Adaptive and evolutionary model"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The question of power organization has sometimes been very arbitrary. Clear constitutive texts written by our best jurists allow a flexible and solid organization".
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The question of power organization has sometimes been very arbitrary. Clear constitutive texts written by our best jurists allow a flexible and solid organization".
 				SUMMARY "Improves our political power"
+			}
+			RevolutionaryRepublic = {
+				NAME "Revolutionary Republic"
+				LEVEL value = {
+					0 = "Republic in ruins"
+					20 = "Revolutionary Momentum" 
+					50 = "Power Stabilization"
+					75 = "Mature Republic"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The people is sovereign. It is on these words that we have built our government, which binds together the citizens of our Nation."
+				SUMMARY "A government in which the people are sovereign"
 			}
 
 		}
