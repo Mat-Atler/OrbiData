@@ -2257,7 +2257,18 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The people is sovereign. It is on these words that we have built our government, which binds together the citizens of our Nation."
 				SUMMARY "A government in which the people are sovereign"
 			}
-
+			RevolutionIdeals = {
+				NAME "Revolution Ideals"
+				LEVEL value = {
+					0 = "Very weak ideals" 
+					25 = "Weak ideals"
+					50 = "Commonly accepted ideals"
+					75 = "Strong ideals"
+					90 = "Very strong ideals"
+				}
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The pro-revolutionary movement has become part of the mentality of our people. They reject the old order, the arbitrary of the nobility and the political power of the church."
+				SUMMARY "The level of popularity of pro-revolutionary ideals"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Events

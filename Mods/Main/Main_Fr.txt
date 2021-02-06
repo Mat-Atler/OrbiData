@@ -812,6 +812,20 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"La stabilité et richesse de notre région attire les charognards. Des barbares lointains semblent se rapprocher inéluctablement de nos frontières et peuvent causer de sacrés problèmes."
 				SUMMARY "Les migrations de barbares peuvent nous poser un problème sur le long terme"
 			}
+			RevolutionIdeals = {
+				NAME "Idéaux Révolutionnaire"
+				LEVEL value = { 
+					0 = "Idéaux très faibles" 
+					25 = "Idéaux faibles"
+					50 = "Idéaux très répendus"
+					75 = "Idéaux forts"
+					90 = "Idéaux très fort"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Les mouvement pro-révolutionnaires sont entrées dans la mentalité de notre peuple. Ils rejettent l'ordre ancien, l'abritrarité de la noblesse et la puissance politique de l'église."
+				SUMMARY "Le niveau de popularité des idéaux pro-révolutions"
+			}
+			
+			
 				
 		}
 		Levers = {

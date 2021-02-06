@@ -2640,7 +2640,24 @@ Main = {
 				LINK BarbarianThrust = {
 				}	
 				
-			}					
+			}
+			
+			
+			RevolutionIdeals = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				DISPLAY_VALUE
+				SLEEP = {
+					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+						PROCESS RevolutionIdeals -= PerSeconds( 0.021 * 0.75 ? 1.25 )
+				}
+				
+				
+			}
 			
 			}
 		Levers = {
@@ -3834,6 +3851,7 @@ Main = {
 				  IF ~VassalPower == 0
 					SET Republic.value [ : : 100 + Democracy.value ]
 				ENDIF
+						PROCESS RevolutionIdeals += PerSeconds( 0.011 * 0.75 ? 1.25 )
 				}
 				
 				LINK Republic = {
@@ -3843,6 +3861,10 @@ Main = {
 				}
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
+				}
+				LINK RevolutionIdeals = {
+					FLUX value / 25
+					COLOR green
 				}
 				
 				TRIGGER_SPAWN Democracy = {
@@ -7837,6 +7859,7 @@ Main = {
 				TICK = {
 					PROCESS Stability = Stability + PerSeconds(value/6000)
 					PROCESS Nationalism = Nationalism + PerSeconds(value / 700)
+					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(value / 300)
 				}
 				LINK Stability = {
 					IF (value > 0)
@@ -7848,6 +7871,12 @@ Main = {
 					IF (value > 0)
 						COLOR green
 						FLUX value * 0.04
+					ENDIF
+				}
+				LINK Nationalism = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.1
 					ENDIF
 				}
 				TRIGGER_SPAWN RevolutionaryRepublic = {
@@ -10655,12 +10684,20 @@ Main = {
 			RevolutionAttempt = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-				EVENT_DEF [ 20 45 100 50% ]
+				EVENT_DEF [ 20 45 100 100% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
 				
+				SLEEP = {
+				IF  ~RevolutionIdeals
+					EVENT_CHANCE RevolutionIdeals / 100
+				ELSE
+					EVENT_CHANCE 100
+				ENDIF
+				}
 				TICK = {
+					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(0.3 * 0.75 ? 1.25)
 					PROCESS Stability = Stability - PerSeconds(0.5 * 0.75 ? 1.25)
 					PROCESS Population = Population - PerSeconds(1.5 + Population * 0.01 * 0.75 ? 1.25)
 					OVERRIDE_PARAM UrbanMilitia.value = GetParam(UrbanMilitia.value) - PerSeconds(4)
@@ -10727,9 +10764,13 @@ Main = {
 					COLOR red
 					FLUX 1
 				}
+				LINK RevolutionIdeals = {
+					COLOR green
+					FLUX 1
+				}
 				
 				TRIGGER_EVENT = {
-					IF ( ~PeasantRevolt | ( Stability < 10 & ~Democracy == 0 ) & NeighborhoodBellicism.coalitionTrigger == 2
+					IF ( ( ~PeasantRevolt |  Stability < 10 ) | Stability < 50 & ~RevolutionIdeals ) & NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy == 0 & ~RevolutionaryRepublic == 0
 						RISE
 					ENDIF
 				}
