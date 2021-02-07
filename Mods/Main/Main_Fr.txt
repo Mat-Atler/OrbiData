@@ -817,7 +817,7 @@ Main = {
 				LEVEL value = { 
 					0 = "Idéaux très faibles" 
 					25 = "Idéaux faibles"
-					50 = "Idéaux très répendus"
+					50 = "Idéaux très répandus"
 					75 = "Idéaux forts"
 					90 = "Idéaux très fort"
 				}
@@ -826,6 +826,17 @@ Main = {
 			}
 			
 			
+			Reactionnarism = {
+				NAME "Réactionnarisme"
+				LEVEL value = {
+					0 = "Inexistant"
+					10 = "Faible"
+					20 = "Répendu"
+					60 = "Très Répandu"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Le réactionnarisme représentante l'ensemble des idéeaux et des forces souhaitant protéger l'ordre ancien, particulièrement la noblesse et le clergé. Ils rejettent farouchement les réformes jusqu'à prendre les armes."
+				SUMMARY "Le niveau de popularité des idéaux anti-révolution"
+			}	
 				
 		}
 		Levers = {
@@ -2622,6 +2633,11 @@ Main = {
 				NAME "Tentative Révolutionnaire"
 				DESCRIPTION "Une révolte locale de la paysanerie à dégénérer en rébellion ouverte. Notre régime est contesté dans la violence. Notre police intervient mais parvient elle à contenir l'ordre ?"
 				SUMMARY "Nos paysans assaillent nos quartier-généraux et la situation menace de dégénérer"
+			}
+			ReactionnarismRevolt = {
+				NAME "Révolte Réactionnaire"
+				DESCRIPTION "Les forces réactionnaires ont mobilisés leurs efforts dans une insurrection armée. Notre rêve révolutionnaire peut s'évanouir si nous ne répondons pas par la force."
+				SUMMARY "Les forces réactionnaire attaquent les fondements de notre révolution!"
 			}
 			
 		}

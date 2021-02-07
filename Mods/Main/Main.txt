@@ -1081,8 +1081,15 @@ Main = {
 					IF ( ~CelestialMonarchy == 0 & ~ClericalState == 0 )
 						SET Theocracy.value [ : : PriestClass ]
 					ENDIF	
+						PROCESS Reactionnarism = Reactionnarism + PerSeconds(value / 600)
 				}
 				LINK Piety = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.01
+					ENDIF
+				}
+				LINK Reactionnarism = {
 					IF (value > 0)
 						COLOR green
 						FLUX value * 0.01
@@ -2539,7 +2546,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize <= 150 ) & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2654,11 +2661,36 @@ Main = {
 				}
 				TICK = {
 						PROCESS RevolutionIdeals -= PerSeconds( 0.021 * 0.75 ? 1.25 )
+						PROCESS Nationalism = Nationalism + PerSeconds(value / 2500)
+				}
+				LINK Nationalism = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.04
+					ENDIF
 				}
 				
 				
 			}
 			
+			
+			Reactionnarism = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				DISPLAY_VALUE
+				SLEEP = {
+					IF RevolutionIdeals > 5 | ~RevolutionaryRepublic
+						SPAWN
+					ENDIF
+				}
+				TICK = {
+				}
+				
+				TRIGGER_SPAWN Reactionnarism = {
+					PROCESS value = AristocracyClass / 2.5 + PriestClass / 2
+				}
+				
+			}
 			}
 		Levers = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Levers
@@ -6176,6 +6208,7 @@ Main = {
 						PROCESS $Wealth = $Wealth - PerSeconds(value / 35 * AristocracyClass / 100 )
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 800)
+						PROCESS Reactionnarism = Reactionnarism + PerSeconds(value / 600)
 				}
 				
 				LINK VassalPower = {
@@ -6190,7 +6223,13 @@ Main = {
 						COLOR green
 						FLUX value / 20
 					ENDIF
-				}				
+				}		
+				LINK Reactionnarism = {
+					IF value > 0
+						COLOR green
+						FLUX value / 20
+					ENDIF
+				}			
 			}
 			
 			
@@ -6920,6 +6959,33 @@ Main = {
 				UPGRADE = {
 					$PoliticalPower = 4
 					$Wealth = 8
+				}
+				TICK = {
+				}
+				
+				LINK NavyTechnology = {
+						 WEIGHT [ to ] 
+				}
+			
+
+			}
+			
+			ManOfWar = {
+				TYPE Technological
+				VALUE value [ 0 0 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~Caravel
+					ALWAYS
+					CONDITION_VALUE LargeSailboats >= 100
+					CONDITION_VALUE ScienceKnowledge >= 340
+				}
+				PRICE = {
+					$PoliticalPower = 400
+					$Wealth = 1000
+				}
+				UPGRADE = {
+					$PoliticalPower = 5
+					$Wealth = 10
 				}
 				TICK = {
 				}
@@ -7842,10 +7908,11 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT GetCurrentEra() >= GetEra(AbsolutismAge)
 					CONDITION_NODE + Constitution
+					CONDITION_EXCLUDE Government
 					OR
 					CONDITION_VALUE SchoolOfThought >= 65
-					ALWAYS
 					CONDITION_EXCLUDE Government
+					ALWAYS
 					CONDITION_ERA >= AbsolutismAge
 					CONDITION_NODE + Nationalism
 					CONDITION_VALUE PeasantryClass >= 50
@@ -10367,6 +10434,8 @@ Main = {
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(8 + MilitaryManpower.Missile_value * 0.055 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(5 + MilitaryManpower.Mercenaries_value * 0.025 * (1.5 - MilitaryEfficiency /100 ) )
 					
+					
+					
 					PROCESS FoeLandForces -=  PerSeconds(6 + FoeLandForces * 0.022 * (1.5 - 70 /100 ) * ( (Winner - 50 ) / 200 + 1 ) )
 					
 					IF  Winner > 50
@@ -10718,10 +10787,11 @@ Main = {
 						OVERRIDE_PARAM MilitaryDictatorship.value = GetParam(MilitaryDictatorship.value) - PerSeconds(1)
 						PROCESS MilitaryDictatorship = Min( GetParam(MilitaryDictatorship.value), MilitaryDictatorship )
 					ENDIF
-					IF Monarchy < 5 | Empire < 5 | BarbarianMonarchy < 5 | MilitaryDictatorship < 5 | Theocracy < 5  | ~Republic | CelesteMandate < 5
+					IF  ( Monarchy < 5 | Empire < 5 | BarbarianMonarchy < 5 | MilitaryDictatorship < 5 | Theocracy < 5  | ~Republic | CelesteMandate < 5 ) & ~RevolutionaryRepublic == 0
 						REMOVE Government
 						SPAWN Nationalism
 						SPAWN RevolutionaryRepublic
+						REMOVE RevolutionAttempt
 					ENDIF
 				}
 				LINK Population = {
@@ -10742,7 +10812,7 @@ Main = {
 				}
 				LINK UrbanMilitia = {
 					COLOR red
-					FLUX 2
+					FLUX 4
 				}
 				LINK BarbarianMonarchy = {
 					COLOR red
@@ -10771,6 +10841,57 @@ Main = {
 				
 				TRIGGER_EVENT = {
 					IF ( ( ~PeasantRevolt |  Stability < 10 ) | Stability < 50 & ~RevolutionIdeals ) & NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy == 0 & ~RevolutionaryRepublic == 0
+						RISE
+					ENDIF
+				}
+				
+		}
+
+		ReactionnarismRevolt = {
+				SOUND_EVENT "Main/SFX/Riots.wav"
+				SOUND_WINDOW "Main/SFX/Riots.wav"
+				EVENT_DEF [ 10 35 170 33% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				SLEEP = {
+					EVENT_CHANCE Reactionnarism / 100
+				}
+				TICK = {
+					PROCESS RevolutionIdeals = RevolutionIdeals - PerSeconds(0.3 * 0.75 ? 1.25)
+					PROCESS Stability = Stability - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(1 * 0.75 ? 1.25)
+					OVERRIDE_PARAM Republic.value = GetParam(Republic.value) - PerSeconds(1)
+					PROCESS Republic = Min( GetParam(Republic.value), Republic )
+					OVERRIDE_PARAM RevolutionaryRepublic.value = GetParam(RevolutionaryRepublic.value) - PerSeconds(1)
+					PROCESS RevolutionaryRepublic = Min( GetParam(RevolutionaryRepublic.value), RevolutionaryRepublic )
+					IF ( RevolutionaryRepublic < 5 & Republic < 5 ) & ( ~RevolutionaryRepublic | ~Republic )
+						REMOVE Government
+						IF StateSize > 150
+						SPAWN Empire
+						ELSE
+						SPAWN Monarchy
+						ENDIF
+						REMOVE ReactionnarismRevolt
+					ENDIF
+				}
+
+				
+				LINK RevolutionIdeals = {
+					COLOR red
+					FLUX 1
+				}
+			
+				LINK Stability = {
+					COLOR red
+					FLUX 2
+				}
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2
+				}
+				TRIGGER_EVENT = {
+					IF ~Reactionnarism & ~Monarchy == 0 & Empire == 0 & BarbarianMonarchy == 0 & MilitaryDictatorship == 0 & Theocracy == 0 & CelesteMandate < 5
 						RISE
 					ENDIF
 				}
