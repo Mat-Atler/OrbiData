@@ -2659,9 +2659,14 @@ Main = {
 				SUMMARY "Our peasants storm our headquarters"
 			}
 			ReactionnarismRevolt = {
-				NAME "Reactionary revolt"
+				NAME "Reactionary Revolt"
 				DESCRIPTION "Reactionary forces mobilized their efforts in an armed uprising. Our revolutionary dream may vanish if we do not answer by force."
 				SUMMARY "The reactionary forces are attacking the very roots of our revolution!"
+			}
+			ExpensionofTheRevolution = {
+				NAME "Expansion of the Revolution"
+				DESCRIPTION "A pro-revolutionary neighboring country is trying to end our ancestral system by force, we must repel this invader or we will lose our government!"
+				SUMMARY "A neighboring country that succumbed to a Jacobin revolution has invaded us!"
 			}
 		}
 	}

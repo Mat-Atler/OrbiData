@@ -687,7 +687,14 @@ Main = {
 					75 = "Nous gagnons la guerre"
 					90 = "Notre victoire est éclatante"
 				}
-				DESCRIPTION <b> "Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br>"Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences :" <br><br>@[peaceProposal_ColonySize]" Taille de la Colonie <br>"@[peaceProposal_StateSize]" Taille de l'État <br>"@[peaceProposal_Wealth]" Richesse"
+				
+				LEVEL revolutionnaryWar = {
+					0 = ""
+					1 = "Nous pourrions perdre notre gouvernement anti-révolutionnaire"
+					2 = "Nous pourrions perdre notre gouvernement révolutionnaire"
+				}
+				
+				DESCRIPTION <b> "Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br>"Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences :" <br><br>@[peaceProposal_ColonySize]" Taille de la Colonie <br>"@[peaceProposal_StateSize]" Taille de l'État <br>"@[peaceProposal_Wealth]" Richesse<br>"@[revolutionnaryWar,LEVEL]
 				SUMMARY "Décrit l'état de la guerre"
 				}
 				
@@ -2638,6 +2645,11 @@ Main = {
 				NAME "Révolte Réactionnaire"
 				DESCRIPTION "Les forces réactionnaires ont mobilisés leurs efforts dans une insurrection armée. Notre rêve révolutionnaire peut s'évanouir si nous ne répondons pas par la force."
 				SUMMARY "Les forces réactionnaire attaquent les fondements de notre révolution!"
+			}
+			ExpensionofTheRevolution = {
+				NAME "Expension de la Révolution"
+				DESCRIPTION "Un pays voisin pro-révolutionnaire essaye de mettre fin à notre système ancestral par la force, nous devons repousser cet envahisseur ou nous perdrons notre gouvernement!"
+				SUMMARY "Un pays voisin ayant succombé à une révolution jacobine nous a envahis!"
 			}
 			
 		}

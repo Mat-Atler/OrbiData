@@ -41,6 +41,32 @@ Main = {
 			IF WarStatus > 55
 				PROCESS Stability += 5
 			ENDIF
+			
+			IF NeighborhoodBellicism.coalitionTrigger == 2
+				IF ( ~RevolutionaryRepublic | ~Democracy ) & WarStatus < 45
+						REMOVE Government
+						IF StateSize > 150
+							SPAWN Empire
+						ELSE
+							SPAWN Monarchy
+						ENDIF
+						PROCESS Monarchy = 50
+						OVERRIDE_PARAM Monarchy.value = GetParam(Monarchy.value)
+						PROCESS Empire = 50
+						OVERRIDE_PARAM Empire.value = GetParam(Empire.value)
+						PROCESS Stability = 30
+				ENDIF
+				
+				IF ( ~RevolutionaryRepublic == 0 ~Democracy == 0 & WarStatus.revolutionnaryWar == 1 ) & WarStatus < 45
+						REMOVE Government
+						SPAWN Nationalism
+						SPAWN RevolutionaryRepublic
+						PROCESS RevolutionaryRepublic = 50
+						OVERRIDE_PARAM RevolutionaryRepublic.value = GetParam(RevolutionaryRepublic.value)
+						PROCESS Stability = 30
+				ENDIF
+			ENDIF
+			PROCESS WarStatus.revolutionnaryWar = 0
 			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
@@ -366,7 +392,6 @@ Main = {
 			PRIORITY [ 1 ]
 			MUTE_TIME 100
 		}
-		
 		EnforcedPeaceAlert = {
 			PRIORITY [ 1 ]
 			MUTE_TIME 100
@@ -554,7 +579,6 @@ Main = {
 				}
 				
 			}		
-			
 			NewWorld = {
 				VALUE value [ 0 100 100 ]
 				VALUE invaderDiscovered [ 0 0 1 ]
@@ -575,7 +599,6 @@ Main = {
 				}
 				
 			}
-			
 			Flora = {
 				VALUE value [ 0 65 100 ]
 				DISPLAY_VALUE
@@ -1941,8 +1964,6 @@ Main = {
 					GLOBE_SET_AREA ColonyStateMap [ 0 ] [ GetLongitude() : GetLatitude() : value / 3000 : green ]
 				}
 			}
-			
-			
 			ColonialProsperity = {
 				TAG ColonyTag
 				VALUE value [ 0 0 2000 ]
@@ -1968,8 +1989,7 @@ Main = {
 				}
 				
 			}
-			
-		NavalSupremacy = {
+			NavalSupremacy = {
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
@@ -1983,8 +2003,7 @@ Main = {
 					PROCESS value =  value - PerSeconds(value * value / 2000 )
 				}
 				
-			}
-			
+			}		
 			ModernWarfare = {
 				VALUE value [ 0 0 0 ]
 
@@ -2013,8 +2032,7 @@ Main = {
 					REMOVE FlowerWar
 					REMOVE Fortifications
 				}
-			}
-			
+			}		
 			Humanism = {
 				VALUE value [ 0 0 0 ]
 
@@ -2027,10 +2045,6 @@ Main = {
 				}
 
 			}
-			
-			
-			
-			
 			ColonialPiracy = {
 				TAG ColonyTag
 				VALUE value [ 0 0 500 ]
@@ -2059,8 +2073,6 @@ Main = {
 				}
 				
 			}
-			
-			
 			ColonialAutonomyDesire = {
 				TAG ColonyTag
 				VALUE value [ 0 0 100 ]
@@ -2083,8 +2095,6 @@ Main = {
 				}
 				
 			}
-			
-			
 			Colony = {
 				TAG ColonyTag
 				TYPE Cultural
@@ -2163,7 +2173,6 @@ Main = {
 				 PROCESS colonySettled = 0
 				}
 			}
-			
 			InvadersForce = {
 				VALUE value [ 0 10 200 ]
 				DISPLAY_VALUE
@@ -2193,7 +2202,6 @@ Main = {
 				}
 				
 			}
-			
 			WarStatus = {
 				TAG WarSystemTag
 				VALUE value [ 0 50 100 ]
@@ -2203,12 +2211,16 @@ Main = {
 				VALUE peaceProposal_StateSize [ -10000 0 100000 ]
 				VALUE peaceProposal_Wealth [ -10000 0 100000 ]
 				VALUE peaceProposal_ColonialPreference [ 0 0 150 ]
+				VALUE revolutionnaryWar [ 0 0 2 ]
 				DISPLAY_VALUE
 				
 				SLEEP = {
 					IF DropdownIsState(Diplomacy.War)
 						PROCESS value = 50
 						SPAWN
+						IF ~Democracy | ~RevolutionaryRepublic & NeighborhoodBellicism.coalitionTrigger == 2
+							PROCESS WarStatus.revolutionnaryWar = 2
+						ENDIF
 					ENDIF
 				}
 				
@@ -2322,9 +2334,7 @@ Main = {
 				}
 				
 			}
-			
-
-		FoeLandForces = {
+			FoeLandForces = {
 				TAG WarSystemTag
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
@@ -2348,8 +2358,7 @@ Main = {
 				}
 				
 			}
-			
-		FoeNavalForces = {
+			FoeNavalForces = {
 				TAG WarSystemTag
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
@@ -2373,9 +2382,7 @@ Main = {
 				}
 				
 			}		
-
-
-		WarExhaustion = {
+			WarExhaustion = {
 				TAG WarSystemTag
 				VALUE value [ 0 0 2000 ]
 				DISPLAY_VALUE
@@ -2397,7 +2404,6 @@ Main = {
 				}
 				
 			}
-
 			PeasantryClass = {
 				VALUE value [ 0 0 10000 ]
 				DISPLAY_VALUE
@@ -2424,8 +2430,6 @@ Main = {
 				}	
 				
 			}		
-			
-
 			BourgoisieClass = {
 				VALUE value [ 0 0 10000 ]
 				DISPLAY_VALUE
@@ -2456,8 +2460,6 @@ Main = {
 					FLUX value / 100
 				}
 			}		
-			
-			
 			Nationalism = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -2497,8 +2499,6 @@ Main = {
 					WEIGHT [ from ]
 				}	
 			}
-			
-			
 			Allies = {
 				VALUE value [ 0 0 10000 ]
 				DISPLAY_VALUE
@@ -2539,8 +2539,7 @@ Main = {
 					WEIGHT [ from ]
 				}	
 
-			}		
-			
+			}				
 			Coalition = {
 				VALUE value [ 0 1500 10000 ]
 				DISPLAY_VALUE
@@ -2584,7 +2583,6 @@ Main = {
 				}
 
 			}					
-			
 			HostileCoalition = {
 				VALUE value [ 0 1300 10000 ]
 				DISPLAY_VALUE
@@ -2618,8 +2616,6 @@ Main = {
 				
 
 			}
-
-
 			BarbarianThreat = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -2648,14 +2644,12 @@ Main = {
 				}	
 				
 			}
-			
-			
 			RevolutionIdeals = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
+					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ~ExpensionofTheRevolution | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
 						SPAWN
 					ENDIF
 				}
@@ -2672,8 +2666,6 @@ Main = {
 				
 				
 			}
-			
-			
 			Reactionnarism = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
@@ -2988,7 +2980,6 @@ Main = {
 				
 				
 			}	
-			
 			Pottery = {
 				TYPE Technological
 				VALUE value [ 0 5 100 >> 1 ]
@@ -5885,7 +5876,6 @@ Main = {
 						WEIGHT [ to ] 
 				}
 			}
-
 			Feudality = {
 				TYPE Cultural
 				VALUE value [ 0 50 100 >> 1 ]
@@ -5952,7 +5942,6 @@ Main = {
 				}				
 				
 			}
-			
 			Banners = {
 				TYPE Technological
 				VALUE value [ 0 20 50 >> 3 ]
@@ -5992,8 +5981,6 @@ Main = {
 				}		
 
 			}
-			
-			
 			ArmyQuota = {
 				TYPE Cultural
 				VALUE value [ 25 100 1000 >> 1 ]
@@ -6042,8 +6029,6 @@ Main = {
 				}		
 				
 			}
-			
-			
 			NavyQuota = {
 				TYPE Cultural
 				VALUE value [ 25 100 1000 >> 1 ]
@@ -6072,9 +6057,7 @@ Main = {
 						SET Navy.value [ : : 1000 ]
 				}		
 				
-			}
-			
-			
+			}	
 			University = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6120,8 +6103,6 @@ Main = {
 				
 
 			}	
-
-
 			FarmersTax = {
 				TAG Sedentary
 				TYPE Cultural
@@ -6150,8 +6131,6 @@ Main = {
 				}
 
 			}
-
-
 			Mill = {
 				TYPE Technological
 				VALUE value [ 0 5 100 >> 1 ]
@@ -6182,9 +6161,7 @@ Main = {
 				WEIGHT [ to ] 
 				}
 
-			}
-			
-			
+			}		
 			Nobility = {
 				TYPE Cultural
 				VALUE value [ 0 25 100 >> 1 ]
@@ -6230,9 +6207,7 @@ Main = {
 						FLUX value / 20
 					ENDIF
 				}			
-			}
-			
-			
+			}	
 			Castles = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6266,9 +6241,7 @@ Main = {
 				WEIGHT [ to ] 
 				}
 
-			}
-			
-			
+			}	
 			MedievalArmors = {
 				TYPE Technological
 				VALUE value [ 0 5 25 >> 1 ]
@@ -6305,10 +6278,6 @@ Main = {
 				}
 
 			}
-			
-			
-			
-			
 			SiegeWeapons = {
 				TYPE Technological
 				VALUE value [ 0 5 100 >> 1 ]
@@ -6343,9 +6312,6 @@ Main = {
 				}
 
 			}
-
-
-
 			Tribunal = {
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				TYPE Cultural
@@ -6381,7 +6347,6 @@ Main = {
 				ENDIF
 				}	
 			}
-
 			NationState = {
 				TYPE Cultural
 				VALUE value [ 0 0 50 >> 1 ]
@@ -6424,8 +6389,6 @@ Main = {
 				ENDIF
 				}	
 			}
-			
-			
 			Medecine = {
 				TYPE Technological
 				VALUE value [ 0 1 100 >> 1 ]
@@ -6451,8 +6414,6 @@ Main = {
 				ENDIF
 				}	
 			}
-
-
 			Alchemy = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6481,8 +6442,6 @@ Main = {
 				}	
 
 			}	
-
-
 			Gunpowder = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6511,10 +6470,6 @@ Main = {
 			
 
 			}
-			
-			
-			
-			
 			TradeFair = {
 				TYPE Cultural
 				VALUE value [ 0 5 100 >> 1 ]
@@ -6566,8 +6521,6 @@ Main = {
 				}
 
 			}
-			
-			
 			Guilds = {
 				TYPE Cultural
 				VALUE value [ 0 5 100 >> 1 ]
@@ -6595,9 +6548,6 @@ Main = {
 				}
 
 			}
-			
-			
-
 			Banks = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6630,8 +6580,6 @@ Main = {
 				}
 			
 			}
-			
-			
 			ScripturalMoney = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6657,8 +6605,6 @@ Main = {
 			
 
 			}
-			
-			
 			Monasteries = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6695,8 +6641,6 @@ Main = {
 				}
 
 			}
-			
-			
 			ReligiousArt = { 
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6733,8 +6677,6 @@ Main = {
 						WEIGHT [ max ] 100 + value
 				}
 			}
-			
-
 			HolyOrders = {
 				TYPE Cultural
 				VALUE value [ 0 20 50 >> 3 ]
@@ -6787,8 +6729,6 @@ Main = {
 				}
 
 			}
-			
-			
 			HolyWar = {
 				TAG Sedentary
 				TYPE Cultural
@@ -6883,8 +6823,6 @@ Main = {
 				}
 
 			}
-
-
 			NavigationTools = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6915,7 +6853,6 @@ Main = {
 			
 
 			}			
-			
 			Caravel = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6942,7 +6879,6 @@ Main = {
 			
 
 			}
-			
 			LargeSailboats = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6969,7 +6905,6 @@ Main = {
 			
 
 			}
-			
 			ManOfWar = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -6996,8 +6931,6 @@ Main = {
 			
 
 			}
-
-			
 			Arquebus = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7031,9 +6964,7 @@ Main = {
 						FLUX value / 10
 					ENDIF
 			}
-			}
-			
-			
+			}	
 			Musket = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7060,7 +6991,6 @@ Main = {
 					ENDIF
 			}
 			}		
-			
 			LateMusket = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7086,8 +7016,7 @@ Main = {
 						FLUX value / 10
 					ENDIF
 			}
-			}	
-			
+			}			
 			AcrossTheOcean = {
 				TYPE Cultural
 				VALUE value [ 0 0 40 >> 1 ]
@@ -7130,9 +7059,6 @@ Main = {
 					ERA DiscoveryAge
 					}
 			}
-			
-			
-			
 			StockExchange = {
 				TYPE Cultural
 				VALUE value [ 0 0 60 >> 1 ]
@@ -7163,8 +7089,6 @@ Main = {
 						WEIGHT [ max ] 2000 + StockExchange.value * 20
 				}
 			}
-
-
 			TradingPost = {
 				TYPE Cultural
 				VALUE value [ 0 0 40 >> 1 ]
@@ -7195,8 +7119,7 @@ Main = {
 						FLUX value / 5
 					ENDIF
 			}
-			}
-			
+			}		
 			TradeCompagnies = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7225,8 +7148,7 @@ Main = {
 				LINK TradeRoads = {
 						WEIGHT [ max ] 100 + TradeCompagnies.value * 3
 				}
-			}
-			
+			}		
 			CombatPiracy = {
 				TYPE Cultural
 				VALUE value [ 0 0 150 >> 1 ]
@@ -7268,8 +7190,7 @@ Main = {
 						FLUX value / 5
 					ENDIF
 			}
-			}
-			
+			}	
 			ColonialTariffs = {
 				TAG ColonyTag
 				TYPE Cultural
@@ -7323,7 +7244,6 @@ Main = {
 				}
 				
 			}
-			
 			ColonialHelp = {
 				TAG ColonyTag
 				TYPE Cultural
@@ -7367,8 +7287,6 @@ Main = {
 				}
 				
 			}
-			
-			
 			ColonialIronFist = {
 				TAG ColonyTag
 				TYPE Cultural
@@ -7411,8 +7329,7 @@ Main = {
 						FLUX value / 5
 					ENDIF
 			}
-			}
-			
+			}		
 			SlaveTrade = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7448,9 +7365,6 @@ Main = {
 			}			
 			
 			}
-			
-			
-
 			SchoolOfThought = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7470,9 +7384,7 @@ Main = {
 				
 				}
 		
-			}
-			
-			
+			}	
 			Constitution = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7501,7 +7413,6 @@ Main = {
 				}
 		
 			}
-			
 			ScientificMethod = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7532,7 +7443,6 @@ Main = {
 				}
 
 			}
-			
 			MercenariesReform = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7559,8 +7469,6 @@ Main = {
 				}
 				
 			}
-						
-			
 			OfficialLanguage = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7586,7 +7494,6 @@ Main = {
 			
 
 			}
-			
 			Isolationism = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7655,8 +7562,7 @@ Main = {
 				ENDIF
 					}
 			}
-			
-				Embassies = {
+			Embassies = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
@@ -7686,7 +7592,6 @@ Main = {
 				}
 
 			}
-			
 			WarTaxes = {
 				TYPE Cultural
 				VALUE value [ 0 5 20 >> 1 ]
@@ -7714,8 +7619,7 @@ Main = {
 				WEIGHT [ from ] 
 				}
 
-			}
-			
+			}	
 			Conscription = {
 				TYPE Technological
 				VALUE value [ 0 5 50 >> 3 ]
@@ -7772,8 +7676,6 @@ Main = {
 						 WEIGHT [ to ] 
 				}
 			}
-			
-			
 			SteamEngine = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
@@ -7803,8 +7705,6 @@ Main = {
 				}
 
 			}
-			
-			
 			Mercantilism = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]	
@@ -7848,8 +7748,7 @@ Main = {
 					ENDIF
 				}
 			}	
-			
-				LaissezFaire = {
+			LaissezFaire = {
 				TYPE Cultural
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
@@ -7898,8 +7797,7 @@ Main = {
 						REMOVE EconomicCharters
 					}
 
-			}
-			
+			}	
 			RevolutionaryRepublic = {
 				TYPE Cultural
 				TAG Government
@@ -7951,8 +7849,6 @@ Main = {
 					PROCESS TradeTax -= 5
 					}
 				}		
-			
-			
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
@@ -8283,9 +8179,7 @@ Main = {
 						RISE
 					ENDIF
 				}
-			}
-		
-			
+			}	
 			MassiveTroubles = {
 				SOUND_EVENT "Main/SFX/MassiveTroubles.wav"
 				SOUND_WINDOW "Main/SFX/MassiveTroubles.wav"
@@ -9528,7 +9422,6 @@ Main = {
 						
 			
 				}
-
 			MilitaryPlot = {
 				SOUND_EVENT "Main/SFX/MilitaryMarch.wav"
 				SOUND_WINDOW "Main/SFX/MilitaryMarch.wav"
@@ -9577,8 +9470,6 @@ Main = {
 				}
 							
 				}
-				
-
 			MercenaryUprising = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
@@ -9662,8 +9553,7 @@ Main = {
 						RISE
 					ENDIF
 				}
-			}
-			
+			}	
 			MerchantExplorer = {
 				SOUND_EVENT "Main/SFX/MerchantExplorer.wav"
 				SOUND_WINDOW "Main/SFX/MerchantExplorer.wav"
@@ -9692,9 +9582,7 @@ Main = {
 					PROCESS TradeGoods = TradeGoods - 200
 					SPAWN TradeRoads
 				}
-			}		
-			
-			
+			}					
 			UrbanExodus = {
 				SOUND_EVENT "Main/SFX/BuildingFall.wav"
 				SOUND_WINDOW "Main/SFX/BuildingFall.wav"
@@ -9725,9 +9613,7 @@ Main = {
 					}
 						
 			
-				}	
-				
-				
+				}				
 			PeasantRevolt = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
@@ -9777,10 +9663,7 @@ Main = {
 					}
 						
 			
-				}
-				
-				
-			
+				}		
 			GreatEpidemic = {
 				SOUND_EVENT "Main/SFX/Cough.wav"
 				SOUND_WINDOW "Main/SFX/Cough.wav"
@@ -9838,9 +9721,7 @@ Main = {
 				}
 				
 				
-			}
-				
-				
+			}		
 			CulturalRevival = {
 				SOUND_EVENT "Main/SFX/Prosperity.wav"
 				SOUND_WINDOW "Main/SFX/Prosperity.wav"
@@ -9895,8 +9776,6 @@ Main = {
 						
 			
 				}
-				
-
 			WitchHunt = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
@@ -9929,8 +9808,7 @@ Main = {
 							RISE
 						ENDIF
 					}
-				}
-				
+				}		
 			NomadInvasion = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
@@ -10027,8 +9905,6 @@ Main = {
 						
 				
 		}
-		
-		
 			ColonialRebellion = {
 				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
 				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
@@ -10067,9 +9943,8 @@ Main = {
 					ENDIF
 				}
 				
-		}
-		
-		ColonialExpension = {
+		}	
+			ColonialExpension = {
 				SOUND_EVENT "Main/SFX/Jungle.wav"
 				SOUND_WINDOW "Main/SFX/Jungle.wav"
 				EVENT_DEF [ 10 25 170 33% ]
@@ -10092,10 +9967,8 @@ Main = {
 					ENDIF
 				}
 				
-		}
-		
-		
-		Renaissance = {
+		}	
+			Renaissance = {
 				SOUND_EVENT "Main/SFX/Renaissance.wav"
 				SOUND_WINDOW "Main/SFX/Renaissance.wav"
 				EVENT_DEF [ 200 30 50 9% ]
@@ -10155,8 +10028,7 @@ Main = {
 					ENDIF
 				}
 				
-		}
-		
+		}	
 			Invaders = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
@@ -10188,8 +10060,7 @@ Main = {
 				}			
 		
 
-			}
-			
+			}		
 			InvadersEpidemic = {
 				SOUND_EVENT "Main/SFX/Cough.wav"
 				SOUND_WINDOW "Main/SFX/Cough.wav"
@@ -10239,9 +10110,8 @@ Main = {
 						RISE
 					ENDIF
 				}
-			}
-			
-		DeclarationOfWar = {
+			}		
+			DeclarationOfWar = {
 				TAG WarSystemTag
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
 				EVENT_DEF [ 10 30 100 25% ]
@@ -10269,7 +10139,6 @@ Main = {
 				}
 				
 		}
-		
 			EnforcedPeace = {
 				TAG WarSystemTag
 				EVENT_DEF [ 50 30 100 75% ]
@@ -10295,8 +10164,6 @@ Main = {
 				}
 				
 		}
-		
-		
 			CountryPlundered = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
@@ -10343,9 +10210,10 @@ Main = {
 			
 				
 		}
-		
 			Blocade = {
 				TAG WarSystemTag
+				SOUND_EVENT "Main/SFX/NavalBattle.wav"
+				SOUND_WINDOW "Main/SFX/NavalBattle.wav"
 				EVENT_DEF [ 10 30 100 35% ]
 				ARISE = {
 					EVENT_SPEED 1
@@ -10378,8 +10246,6 @@ Main = {
 				}
 				
 		}
-		
-		
 			OccupationResistance = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
@@ -10414,9 +10280,7 @@ Main = {
 					ENDIF
 				}
 				
-		}
-		
-		
+		}	
 			LandBattle = {
 				SOUND_EVENT "Main/SFX/LandBattle.wav"
 				SOUND_WINDOW "Main/SFX/LandBattle.wav"
@@ -10494,8 +10358,7 @@ Main = {
 
 				
 		}
-		
-				NavalBattle = {
+			NavalBattle = {
 				SOUND_EVENT "Main/SFX/NavalBattle.wav"
 				SOUND_WINDOW "Main/SFX/NavalBattle.wav"
 				TAG WarSystemTag
@@ -10566,8 +10429,7 @@ Main = {
 				}
 				
 				
-		}
-		
+		}	
 			SlaveRiots = {
 				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
 				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
@@ -10598,8 +10460,6 @@ Main = {
 				}
 				
 		}
-
-		
 			ForeignInterferance = {
 				SOUND_EVENT "Main/SFX/DiplomacyBadEvent.wav"
 				SOUND_WINDOW "Main/SFX/DiplomacyBadEvent.wav"
@@ -10629,8 +10489,6 @@ Main = {
 				}
 				
 		}
-		
-		
 			FoeGreatGeneral = {
 				SOUND_EVENT "Main/SFX/GreatGeneral.wav"
 				SOUND_WINDOW "Main/SFX/GreatGeneral.wav"
@@ -10681,8 +10539,6 @@ Main = {
 						
 			
 				}
-
-		
 			AlliesDefection = {
 				SOUND_EVENT "Main/SFX/DiplomacyBadEvent.wav"
 				SOUND_WINDOW "Main/SFX/DiplomacyBadEvent.wav"
@@ -10711,8 +10567,6 @@ Main = {
 				}
 				
 		}
-
-
 			AmphibiousAssault = {
 				SOUND_EVENT "Main/SFX/NavalBattle.wav"
 				SOUND_WINDOW "Main/SFX/NavalBattle.wav"
@@ -10748,8 +10602,6 @@ Main = {
 				}
 				
 		}
-		
-
 			RevolutionAttempt = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
@@ -10791,6 +10643,8 @@ Main = {
 						REMOVE Government
 						SPAWN Nationalism
 						SPAWN RevolutionaryRepublic
+						PROCESS RevolutionaryRepublic = 50
+						OVERRIDE_PARAM RevolutionaryRepublic.value = GetParam(RevolutionaryRepublic.value)
 						REMOVE RevolutionAttempt
 					ENDIF
 				}
@@ -10846,8 +10700,7 @@ Main = {
 				}
 				
 		}
-
-		ReactionnarismRevolt = {
+			ReactionnarismRevolt = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
 				EVENT_DEF [ 10 35 170 33% ]
@@ -10860,7 +10713,7 @@ Main = {
 				TICK = {
 					PROCESS RevolutionIdeals = RevolutionIdeals - PerSeconds(0.3 * 0.75 ? 1.25)
 					PROCESS Stability = Stability - PerSeconds(1 * 0.75 ? 1.25)
-					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS NeighborhoodBellicism = NeighborhoodBellicism + PerSeconds(2 * 0.75 ? 1.25)
 					OVERRIDE_PARAM Republic.value = GetParam(Republic.value) - PerSeconds(1)
 					PROCESS Republic = Min( GetParam(Republic.value), Republic )
 					OVERRIDE_PARAM RevolutionaryRepublic.value = GetParam(RevolutionaryRepublic.value) - PerSeconds(1)
@@ -10868,10 +10721,14 @@ Main = {
 					IF ( RevolutionaryRepublic < 5 & Republic < 5 ) & ( ~RevolutionaryRepublic | ~Republic )
 						REMOVE Government
 						IF StateSize > 150
-						SPAWN Empire
-						ELSE
-						SPAWN Monarchy
+							SPAWN Empire
+							ELSE
+							SPAWN Monarchy
 						ENDIF
+						PROCESS Monarchy = 50
+						OVERRIDE_PARAM Monarchy.value = GetParam(Monarchy.value)
+						PROCESS Empire = 50
+						OVERRIDE_PARAM Empire.value = GetParam(Empire.value)
 						REMOVE ReactionnarismRevolt
 					ENDIF
 				}
@@ -10895,9 +10752,45 @@ Main = {
 						RISE
 					ENDIF
 				}
+				TRIGGER_SPAWN ReactionnarismRevolt = {
+					PROCESS Reactionnarism -= 30
+					}
 				
 		}		
-		
+			ExpensionofTheRevolution = {
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				EVENT_DEF [ 20 50 250 30% ]
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				SLEEP = {
+					EVENT_CHANCE NeighborhoodBellicism / 100
+				
+				}
+				
+				TICK = {
+					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(0.4 * 0.75 ? 1.25)
+					CALL_FUNCTION F_WarDeclaration
+					PROCESS WarStatus.revolutionnaryWar = 1
+				}
+			
+				LINK RevolutionIdeals = {
+					COLOR green
+					FLUX 1
+				}
+				
+				
+				TRIGGER_EVENT = {
+					IF NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy == 0 & ~RevolutionaryRepublic == 0
+						RISE
+					ENDIF
+				}
+				TRIGGER_SPAWN ExpensionofTheRevolution = {
+					PROCESS NeighborhoodBellicism -= 15
+					}
+				
+		}
 		}
 }
 }
