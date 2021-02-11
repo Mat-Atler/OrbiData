@@ -42,30 +42,38 @@ Main = {
 				PROCESS Stability += 5
 			ENDIF
 			
-			IF NeighborhoodBellicism.coalitionTrigger == 2
-				IF ( ~RevolutionaryRepublic | ~Democracy ) & WarStatus < 45
-						REMOVE Government
-						IF StateSize > 150
-							SPAWN Empire
-						ELSE
-							SPAWN Monarchy
-						ENDIF
-						PROCESS Monarchy = 50
-						OVERRIDE_PARAM Monarchy.value = GetParam(Monarchy.value)
-						PROCESS Empire = 50
-						OVERRIDE_PARAM Empire.value = GetParam(Empire.value)
-						PROCESS Stability = 30
+			IF ( ~RevolutionaryRepublic | ~Democracy ) & WarStatus < 45 & WarStatus.revolutionnaryWar == 2
+				REMOVE Government
+				IF StateSize > 150
+					SPAWN Empire
+				ELSE
+					SPAWN Monarchy
 				ENDIF
+				PROCESS Monarchy = 50
+				OVERRIDE_PARAM Monarchy.value = GetParam(Monarchy.value)
+				PROCESS Empire = 50
+				OVERRIDE_PARAM Empire.value = GetParam(Empire.value)
+				PROCESS Stability = 30
+			ENDIF
 				
-				IF ( ~RevolutionaryRepublic == 0 ~Democracy == 0 & WarStatus.revolutionnaryWar == 1 ) & WarStatus < 45
+			IF ( ~RevolutionaryRepublic == 0 ~Democracy == 0 & WarStatus.revolutionnaryWar == 1 ) & WarStatus < 45 
 						REMOVE Government
 						SPAWN Nationalism
 						SPAWN RevolutionaryRepublic
 						PROCESS RevolutionaryRepublic = 50
 						OVERRIDE_PARAM RevolutionaryRepublic.value = GetParam(RevolutionaryRepublic.value)
 						PROCESS Stability = 30
-				ENDIF
 			ENDIF
+				
+			IF WarStatus > 55 & ~RevolutionaryRepublic == 0 ~Democracy == 0 & WarStatus.revolutionnaryWar == 1
+				PROCESS RevolutionIdeals -= 30
+			ENDIF
+				
+				
+			IF ( ~RevolutionaryRepublic | ~Democracy ) & WarStatus.revolutionnaryWar == 2
+				PROCESS Reactionnarism -= 30
+			ENDIF
+				
 			PROCESS WarStatus.revolutionnaryWar = 0
 			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace

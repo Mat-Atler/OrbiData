@@ -717,7 +717,13 @@ Main = {
 					75 = "We are winning the war"
 					90 = "Our victory is striking"
 				}
-				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br>@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
+				LEVEL revolutionnaryWar = {
+					0 = ""
+					1 = "We could lose our anti-revolutionary government"
+					2 = "We could lose our revolutionary government"
+				}
+				
+				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br>@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth<br>"@[revolutionnaryWar,LEVEL]
 				SUMMARY "Describes the state of the war"
 				}
 				
