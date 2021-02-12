@@ -858,12 +858,7 @@ Main = {
 					75 = "楽観的"
 					90 = "勝利は目前"
 				}
-				LEVEL revolutionnaryWar = {
-					0 = ""
-					1 = "We could lose our anti-revolutionary government"
-					2 = "We could lose our revolutionary government"
-				}
-				DESCRIPTION <b> "状態: "@[value,LEVEL] </b>" ("@[value] ")" <br>"明日和平を結んだ場合以下のような条件になります:" <br><br>@[peaceProposal_ColonySize]"植民地の大きさ <br>"@[peaceProposal_StateSize]"国の大きさ<br>"@[peaceProposal_Wealth]"冨<br>"@[revolutionnaryWar,LEVEL]
+				DESCRIPTION <b> "状態: "@[value,LEVEL] </b>" ("@[value] ")" <br>"明日和平を結んだ場合以下のような条件になります:" <br><br>@[peaceProposal_ColonySize]"植民地の大きさ <br>"@[peaceProposal_StateSize]"国の大きさ<br>"@[peaceProposal_Wealth]"冨<br>"
 				SUMMARY "戦争が現在どの様な状態かの説明"
 				}
 
