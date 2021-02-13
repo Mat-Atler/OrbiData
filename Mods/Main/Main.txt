@@ -910,7 +910,7 @@ Main = {
 					RELATED_LINK Expensionism TradeGoods
 				}
 				SLEEP = {
-					IF ~Expensionism
+					IF ~Expensionism & ~AbolitionOfSlavery == 0
 						SPAWN
 					ENDIF
 				}
@@ -5100,7 +5100,7 @@ Main = {
 				
 				TICK = {
 					PROCESS $Wealth = $Wealth - PerSeconds(value * value / 2500)
-					IF GetCurrentEra() >= 300
+					IF GetCurrentEra() >= 300 & ~RevolutionaryRepublic == 0
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 400)
 					ENDIF
 					
@@ -5111,7 +5111,7 @@ Main = {
 				}		
 			
 				LINK AristocracyClass = {
-					IF (value > 0 & GetCurrentEra() >= 300)
+					IF (value > 0 & GetCurrentEra() >= 300 & ~RevolutionaryRepublic == 0)
 						COLOR green
 						FLUX value * 0.05
 					ENDIF
@@ -7342,6 +7342,7 @@ Main = {
 					CONDITION_VALUE ColonialProsperity > 20
 					CONDITION_VALUE Navy > 50
 					CONDITION_VALUE AcrossTheOcean >= 60
+					CONDITION_NODE - AbolitionOfSlavery
 				}
 				
 				PRICE = {
@@ -7365,7 +7366,7 @@ Main = {
 						COLOR green
 						FLUX value / 10
 					ENDIF
-			}			
+			}
 			
 			}
 			SchoolOfThought = {
@@ -7851,7 +7852,81 @@ Main = {
 					REMOVE FarmersTax
 					PROCESS TradeTax -= 5
 					}
-				}		
+				}
+
+
+			PrivilegeRevocation = {
+				TYPE Cultural
+				VALUE value [ 0 40 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~RevolutionIdeals | ~RevolutionaryRepublic 
+					CONDITION_VALUE RevolutionaryRepublic >= 20
+					CONDITION_VALUE AristocracyClass > 0
+				}
+				PRICE = {
+					$PoliticalPower = 600
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(PrivilegeRevocation) + 1) * 10
+				}
+				
+				TICK = {
+						PROCESS AristocracyClass =  AristocracyClass - PerSeconds(value / 1500)
+						PROCESS BourgoisieClass =  BourgoisieClass + PerSeconds(value / 1500)
+						PROCESS Reactionnarism =  Reactionnarism + PerSeconds(value / 800)
+						SET Nobility.value [ : : 100 - PrivilegeRevocation.value ]
+				}
+				LINK AristocracyClass = {
+					IF (value > 0)
+						FLUX value / 25
+						COLOR red
+					ENDIF
+				}
+				LINK AristocracyClass = {
+					IF (value > 0)
+						FLUX value / 25
+						COLOR green
+					ENDIF
+				}
+				LINK Reactionnarism = {
+					IF (value > 0)
+						FLUX value / 12
+						COLOR green
+					ENDIF
+				}
+				LINK Nobility = {
+						WEIGHT [ max ] 100 - PrivilegeRevocation.value
+				}
+
+			}
+
+			AbolitionOfSlavery = {
+				TYPE Cultural
+				VALUE value [ 100 100 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~SchoolOfThought
+					CONDITION_VALUE RevolutionaryRepublic >= 20
+					OR
+					CONDITION_VALUE SchoolOfThought >= 80
+				}
+				PRICE = {
+					$PoliticalPower = 600
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(AbolitionOfSlavery) + 1) * 10
+				}
+				
+				TICK = {
+				}
+
+				TRIGGER_SPAWN AbolitionOfSlavery = {
+					PROCESS Population += Slaves / 3
+					REMOVE SlaveTrade
+					REMOVE Slaves
+					}
+
+			}
+			
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
@@ -10436,9 +10511,16 @@ Main = {
 			SlaveRiots = {
 				SOUND_EVENT "Main/SFX/ColonialRebellion.wav"
 				SOUND_WINDOW "Main/SFX/ColonialRebellion.wav"
-				EVENT_DEF [ 15 50 100 35% ]
+				EVENT_DEF [ 15 50 150 35% ]
 				ARISE = {
 					EVENT_SPEED 1
+				}
+				SLEEP = {
+					IF ~Reactionnarism
+					EVENT_CHANCE 50 + SlaveTrade / 5
+					ELSE
+					EVENT_CHANCE 10 + SlaveTrade / 5
+					ENDIF
 				}
 				TICK = {
 					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds(3)
@@ -10457,7 +10539,7 @@ Main = {
 				
 				
 				TRIGGER_EVENT = {
-					IF SlaveTrade > 30 & ~ColonialProsperity
+					IF SlaveTrade > 5 & ~ColonialProsperity
 						RISE
 					ENDIF
 				}

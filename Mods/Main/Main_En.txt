@@ -2281,6 +2281,23 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The people is sovereign. It is on these words that we have built our government, which binds together the citizens of our Nation."
 				SUMMARY "A government in which the people are sovereign"
 			}
+			PrivilegeRevocation = {
+				NAME "Revocation of Privileges"
+				LEVEL value = {
+					0 = "Connivance with the privileged ones"
+					20 = "Anti-noble feelings"
+					50 = "Equality of rights"
+					75 = "Active persecution"
+					100 = "Total abolition of nobility" 
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Once the people is sovereign, we must annihilate this class of profiteers that are the noblemen."
+				SUMMARY "Weakens the aristocratic class"
+			}
+			AbolitionOfSlavery = {
+				NAME "Abolition of Slavery"
+				DESCRIPTION "Slavery has been abolished in our society."
+				SUMMARY "Prevents any organization of slavery"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Events

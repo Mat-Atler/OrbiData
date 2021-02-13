@@ -2268,6 +2268,23 @@ Main = {
 				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le peuple est souverain. C'est sur ces mots que s'est bâti notre gouvernement populaire, qui lie ensemble les citoyens de notre Nation."
 				SUMMARY "Un gouvernement où le peuple est souverain"
 			}
+			PrivilegeRevocation = {
+				NAME "Révocation des privilèges"
+				LEVEL value = {
+					0 = "Connivence avec les privilégiés"
+					20 = "Sentiments anti-noblesse"
+					50 = "Égalité des droits"
+					75 = "Persécutions actives"
+					100 = "Abolition totale de la noblesse"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Une fois le peuple souverain, il convient d'anéantir cette classe de profiteur que sont les nobles."
+				SUMMARY "Affaiblit la classe aristocratique"
+			}
+			AbolitionOfSlavery = {
+				NAME "Abolition de l'Esclavage"
+				DESCRIPTION  "L'Esclavage a été aboli dans notre société."
+				SUMMARY "Empêche toute organization esclavagiste"
+			}
 				
 		}
 		Events = {
