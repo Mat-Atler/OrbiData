@@ -1060,7 +1060,7 @@ Main = {
 						PROCESS value =  value - PerSeconds(AristocracyClass*AristocracyClass/2500)
 					ENDIF
 					IF VassalPower == 0
-						SET Monarchy.value [ : :  Min ( Max ( 50 , AristocracyClass ) , 100 ) ]
+						SET Monarchy.value [ : :  Min ( Max ( 50 , 40 + AristocracyClass ) , 100 ) ]
 					ENDIF
 					IF GetCurrentEra() < 300 
 						SET Officers.value [ : :  Min ( AristocracyClass , 100 ) ]
@@ -1068,7 +1068,7 @@ Main = {
 				}
 				LINK Monarchy = {
 						IF ( ~VassalPower == 0 | VassalPower == 0 ) 
-							WEIGHT [ max ] Max ( 50 , AristocracyClass )
+							WEIGHT [ max ]  Min ( Max ( 50 , 40 + AristocracyClass ) , 100 ) 
 						ENDIF
 				}
 				LINK Officers = {
@@ -8806,7 +8806,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ((StateSize > 150 & GameTime() > 2500) + (GameTime() > 3800) ) & ~HorseDomestication == 0 & ~NewWorld == 0
+					IF  ((StateSize > 150 & GameTime() > 3000) + (GameTime() > 3800) ) & ~HorseDomestication == 0 & ~NewWorld == 0
 						RISE
 					ENDIF
 				}

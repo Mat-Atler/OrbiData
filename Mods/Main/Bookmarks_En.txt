@@ -1,0 +1,8 @@
+Bookmarks = {
+
+	SargonOfAkkad = {
+		NAME "Sargon Of Akkad"
+		DESCRIPTION "This is Sargon Of Akkad."
+		VICTORY "You won Sargon Of Akkad!"
+	}
+}
