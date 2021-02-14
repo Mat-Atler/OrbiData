@@ -2633,7 +2633,7 @@ Main = {
 						IF  ( StateSize > 120 | Stability < 20 )
 							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 8000 )	
 						ENDIF
-						IF GameTime() > 9500
+						IF GameTime() > 9500 | GetCurrentEra() >= GetEra(DiscoveryAge)
 							REMOVE BarbarianThreat
 						ENDIF
 				}
