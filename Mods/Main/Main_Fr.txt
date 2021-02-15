@@ -2283,7 +2283,12 @@ Main = {
 			AbolitionOfSlavery = {
 				NAME "Abolition de l'Esclavage"
 				DESCRIPTION  "L'Esclavage a été aboli dans notre société."
-				SUMMARY "Empêche toute organization esclavagiste"
+				SUMMARY "Empêche toute organisation esclavagiste"
+			}
+			AbolitionOfSerfdom = {
+				NAME "Abolition du Servage"
+				DESCRIPTION  "Le Servage a été aboli dans notre société, cela permet une agriculture plus productive mais un contrôle moins efficace de nos paysans."
+				SUMMARY "Rends nos paysans en petits propriétaires terriens libres"
 			}
 			ConstitutionalMonarchy = {
 				NAME "Monarchie Constitutionnelle"

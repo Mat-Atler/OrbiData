@@ -2304,6 +2304,11 @@ Main = {
 				DESCRIPTION "Slavery has been abolished in our society."
 				SUMMARY "Prevents any organization of slavery"
 			}
+			AbolitionOfSerfdom = {
+				NAME "Abolition of Serfdom"
+				DESCRIPTION "Serfdom has been abolished in our society, it provides a more productive agriculture but a less efficient control of our peasants."
+				SUMMARY "Make our peasants into free small landowners"
+			}
 			ConstitutionalMonarchy = {
 				NAME "Constitutional Monarchy"
 				LEVEL value = {

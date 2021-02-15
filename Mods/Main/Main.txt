@@ -3165,6 +3165,9 @@ Main = {
 					IF ~NationalReligion
 						PROCESS output = output * ( 1 + ( NationalReligion.DevotionToTheHarvestUsedValue / 400 ) )
 					ENDIF
+					IF ~AbolitionOfSerfdom
+						PROCESS output = output * 1.05
+					ENDIF
 					
 					IF ~PeasantryClass
 						PROCESS Food = Food + PerSeconds( ( PeasantryClass / Population) * output * 1.2 )
@@ -4186,7 +4189,7 @@ Main = {
 					// ENDIF
 				// }
 				UNLOCK_CONDITIONS = {
-					HINT ~Bureaucracy | ~Satrapy | ~Republic | ~Philosophy
+					HINT ~Bureaucracy | ~Satrapy | ~Republic | ~Mathematics
 					CONDITION_NODE + Bureaucracy
 					OR
 					CONDITION_NODE + Satrapy
@@ -5684,7 +5687,7 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Population ) / 9.5)
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Population ) / 7.5)
 				}
 				
 				LINK Population = {
@@ -5746,8 +5749,8 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS $Wealth = $Wealth + PerSeconds( NavalTrade * 0.4 * TradeTax / 35 )
-					PROCESS $Wealth = $Wealth + PerSeconds( OverlandTrade.output * 0.23  * TradeTax / 35 )
+					PROCESS $Wealth = $Wealth + PerSeconds( NavalTrade * 0.4 * TradeTax / 42 )
+					PROCESS $Wealth = $Wealth + PerSeconds( OverlandTrade.output * 0.23  * TradeTax / 42 )
 					PROCESS NavalTrade = NavalTrade - PerSeconds( NavalTrade * NavalTrade / 800  * value / 40 * 0.9 ? 1.1 )
 					PROCESS OverlandTrade = OverlandTrade - PerSeconds( OverlandTrade * OverlandTrade / 800  * value / 40 * 0.9 ? 1.1 )
 				}
@@ -6127,7 +6130,7 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 450 * PeasantryClass ) / 10)
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 450 * PeasantryClass ) / 5)
 				}
 				
 				LINK PeasantryClass = {
@@ -7863,6 +7866,7 @@ Main = {
 					HINT ~RevolutionIdeals | ~RevolutionaryRepublic 
 					CONDITION_VALUE RevolutionaryRepublic >= 20
 					CONDITION_VALUE AristocracyClass > 0
+					CONDITION_NODE + AbolitionOfSerfdom
 				}
 				PRICE = {
 					$PoliticalPower = 600
@@ -7928,6 +7932,36 @@ Main = {
 
 			}
 			
+			AbolitionOfSerfdom = {
+				TYPE Cultural
+				VALUE value [ 100 100 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~SchoolOfThought
+					CONDITION_VALUE Democracy >= 80
+					CONDITION_NODE + SchoolOfThought
+					OR
+					CONDITION_VALUE RevolutionaryRepublic >= 60
+				}
+				PRICE = {
+					$PoliticalPower = 400
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(AbolitionOfSerfdom) + 1) * 10
+				}
+				
+				TICK = {
+						SET FarmersTax.value [ : : 5 ]
+				}
+
+				LINK FarmersTax = {
+						WEIGHT [ max ] 5
+				}
+				
+				LINK Agriculture = {
+						 WEIGHT [ to ] 
+				}
+				
+			}
 
 			ConstitutionalMonarchy = {
 				TYPE Cultural
