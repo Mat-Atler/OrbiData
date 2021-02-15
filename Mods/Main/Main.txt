@@ -7928,6 +7928,63 @@ Main = {
 
 			}
 			
+
+			ConstitutionalMonarchy = {
+				TYPE Cultural
+				TAG Government
+				VALUE value [ 0 25 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT GetCurrentEra() >= GetEra(AbsolutismAge) | ~SchoolOfThought
+					CONDITION_ERA >= AbsolutismAge
+					CONDITION_NODE - Republic
+					CONDITION_NODE - RevolutionaryRepublic
+					CONDITION_VALUE Constitution >= 50
+				}
+				PRICE = {
+					$PoliticalPower = 600
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(ConstitutionalMonarchy) + 1) * 5
+				}
+				TICK = {
+					PROCESS Stability = Stability + PerSeconds(value/5000)
+					PROCESS Nationalism = Nationalism + PerSeconds(value / 2000)
+					PROCESS RevolutionIdeals = RevolutionIdeals - PerSeconds(value / 1200)
+					PROCESS Reactionnarism = Reactionnarism - PerSeconds(value / 1200)
+				}
+				LINK Stability = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.02
+					ENDIF
+				}
+				LINK Nationalism = {
+					IF (value > 0)
+						COLOR green
+						FLUX value * 0.01
+					ENDIF
+				}
+				LINK RevolutionIdeals = {
+					IF (value > 0)
+						COLOR red
+						FLUX value * 0.1
+					ENDIF
+				}
+				LINK Reactionnarism = {
+					IF (value > 0)
+						COLOR red
+						FLUX value * 0.1
+					ENDIF
+				}
+				TRIGGER_SPAWN ConstitutionalMonarchy = {
+					ERA AbsolutismAge
+					REMOVE Government
+					PROCESS Reactionnarism += 15
+					PROCESS RevolutionIdeals -= 5
+					}
+				}
+			
 			}
 		Events = {
 		::APPEND "Main/Nomads.txt" Nomads.Nodes.Events
@@ -10834,7 +10891,7 @@ Main = {
 					FLUX 2
 				}
 				TRIGGER_EVENT = {
-					IF ~Reactionnarism & ~Monarchy == 0 & Empire == 0 & BarbarianMonarchy == 0 & MilitaryDictatorship == 0 & Theocracy == 0 & CelesteMandate < 5
+					IF ~Reactionnarism & ~Monarchy == 0 & Empire == 0 & BarbarianMonarchy == 0 & Theocracy == 0 & CelesteMandate < 5
 						RISE
 					ENDIF
 				}

@@ -2285,6 +2285,17 @@ Main = {
 				DESCRIPTION  "L'Esclavage a été aboli dans notre société."
 				SUMMARY "Empêche toute organization esclavagiste"
 			}
+			ConstitutionalMonarchy = {
+				NAME "Monarchie Constitutionnelle"
+				LEVEL value = {
+					0 = "Monarchie en ruine"
+					20 = "Monarchie affaiblie"
+					50 = "Réforme des anciennes lois"
+					75 = "Monarchie moderne"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'absolutisme semble la voie du passé provocant l'ire du peuple et de la bourgeoisie. S'il est intolérable de voir notre monarchie disparaître peut être qu'un geste important soulagerai les tensions populistes."
+				SUMMARY "Un gouvernement où le souverain est lui aussi régit par la loi"
+			}
 				
 		}
 		Events = {

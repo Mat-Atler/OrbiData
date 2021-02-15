@@ -865,6 +865,7 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Reactionaryism represents all ideas and forces seeking to protect the old order, especially the nobility and the clergy. They fiercely reject reforms to the point of taking up arms."
 				SUMMARY "The level of popularity of the anti-revolutionary ideals"
 			}	
+
 		}
 		Levers = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Levers
@@ -2297,6 +2298,17 @@ Main = {
 				NAME "Abolition of Slavery"
 				DESCRIPTION "Slavery has been abolished in our society."
 				SUMMARY "Prevents any organization of slavery"
+			}
+			ConstitutionalMonarchy = {
+				NAME "Constitutional Monarchy"
+				LEVEL value = {
+					0 = "Monarchy in Ruin"
+					20 = "Weakened Monarchy"
+					50 = "Reform of the old laws"
+					75 = "Modern Monarchy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> Absolutism seems the way of the past provoking the wrath of the people and the bourgeoisie. While it's unacceptable to see our monarchy disappear, perhaps an significant act would calm populist tensions."
+				SUMMARY "A government in which the ruler is also bound by the law"
 			}
 		}
 		Events = {
