@@ -2302,6 +2302,17 @@ Main = {
 				SUMMARY "Un gouvernement où le souverain est lui aussi régit par la loi"
 			}
 				
+			PoliticOfTerror = {
+				NAME "Politique de Terreur"
+				LEVEL value = {
+					0 = "République en sécurité"
+					0.01 = "République paranoïaque"
+					15 = "Dénonciations abusives"
+					30 = "Executions de Masses"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'ennemi est partout. Les forces réactionnaires se cachent et nous devons mettre en place un sysème de délation et de prompt jugement pour rétablir la situation."
+				SUMMARY "Élimine toute opposition et même au delà par la guillotine"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Events

@@ -2315,6 +2315,18 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> Absolutism seems the way of the past provoking the wrath of the people and the bourgeoisie. While it's unacceptable to see our monarchy disappear, perhaps an significant act would calm populist tensions."
 				SUMMARY "A government in which the ruler is also bound by the law"
 			}
+			PoliticOfTerror = {
+				NAME "Politic of Terror"
+				LEVEL value = {
+					0 = "Safe Republic"
+					0.01 = "Paranoid Republic"
+					15 = "Abusive denunciations"
+					30 = "Mass Executions"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The enemy is everywhere. The reactionary forces are hiding and we must establish a system of denunciation and swift judgment to fix the situation."
+				SUMMARY "Eliminates all opposition and even beyond by the guillotine"
+			}
+
 		}
 		Events = {
 			::APPEND "Main/Nomads_EN.txt" Nomads.Nodes.Events

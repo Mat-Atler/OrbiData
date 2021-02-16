@@ -7374,7 +7374,7 @@ Main = {
 			
 			}
 			SchoolOfThought = {
-				TYPE Cultural
+				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
@@ -7386,7 +7386,7 @@ Main = {
 					$PoliticalPower = 300
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(SchoolOfThought) + 1) * 20
+					$PoliticalPower =  25
 				}
 				TICK = {
 				
@@ -7854,6 +7854,7 @@ Main = {
 				}
 				TRIGGER_SPAWN RevolutionaryRepublic = {
 					REMOVE FarmersTax
+					PROCESS Reactionnarism += 25
 					PROCESS TradeTax -= 5
 					}
 				}
@@ -7887,7 +7888,7 @@ Main = {
 						COLOR red
 					ENDIF
 				}
-				LINK AristocracyClass = {
+				LINK BourgoisieClass = {
 					IF (value > 0)
 						FLUX value / 25
 						COLOR green
@@ -7938,9 +7939,13 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~SchoolOfThought
 					CONDITION_VALUE Democracy >= 80
-					CONDITION_NODE + SchoolOfThought
 					OR
 					CONDITION_VALUE RevolutionaryRepublic >= 60
+					OR
+					CONDITION_VALUE ConstitutionalMonarchy >= 80
+					ALWAYS
+					CONDITION_VALUE SchoolOfThought >= 30
+					
 				}
 				PRICE = {
 					$PoliticalPower = 400
@@ -8014,10 +8019,68 @@ Main = {
 				TRIGGER_SPAWN ConstitutionalMonarchy = {
 					ERA AbsolutismAge
 					REMOVE Government
+					REMOVE PoliticOfTerror
 					PROCESS Reactionnarism += 15
 					PROCESS RevolutionIdeals -= 5
 					}
 				}
+				
+
+			PoliticOfTerror = {
+				TYPE Cultural
+				VALUE value [ 0 5 30 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~RevolutionIdeals | ~RevolutionaryRepublic 
+					CONDITION_VALUE RevolutionaryRepublic >= 65
+					CONDITION_VALUE PrivilegeRevocation >= 35
+					CONDITION_VALUE Reactionnarism >= 10
+				}
+				PRICE = {
+					$PoliticalPower = 750
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(PoliticofTerror) + 1) * 10
+				}
+				
+				TICK = {
+						PROCESS AristocracyClass =  AristocracyClass - PerSeconds(value / 600)
+						PROCESS Population =  Population - PerSeconds(value / 600)
+						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds(value / 1500)
+						PROCESS Reactionnarism =  Reactionnarism - PerSeconds(value / 600)
+						PROCESS Stability =  Stability - PerSeconds(value / 250)
+				}
+				LINK AristocracyClass = {
+					IF (value > 0)
+						FLUX value / 15
+						COLOR red
+					ENDIF
+				}
+				LINK Population = {
+					IF (value > 0)
+						FLUX value / 12
+						COLOR red
+					ENDIF
+				}
+				LINK BourgoisieClass = {
+					IF (value > 0)
+						FLUX value / 25
+						COLOR red
+					ENDIF
+				}
+				LINK Stability = {
+					IF (value > 0)
+						FLUX value / 8
+						COLOR red
+					ENDIF
+				}
+				LINK Reactionnarism = {
+					IF (value > 0)
+						FLUX value / 12
+						COLOR red
+					ENDIF
+				}
+
+			}
 			
 			}
 		Events = {
@@ -10820,7 +10883,7 @@ Main = {
 						REMOVE Government
 						SPAWN Nationalism
 						SPAWN RevolutionaryRepublic
-						PROCESS RevolutionaryRepublic = 50
+						PROCESS RevolutionaryRepublic = 60
 						OVERRIDE_PARAM RevolutionaryRepublic.value = GetParam(RevolutionaryRepublic.value)
 						REMOVE RevolutionAttempt
 					ENDIF
@@ -10902,6 +10965,10 @@ Main = {
 							ELSE
 							SPAWN Monarchy
 						ENDIF
+						REMOVE PoliticOfTerror
+						REMOVE AbolitionOfSlavery
+						REMOVE AbolitionOfSerfdom
+						REMOVE PrivilegeRevocation
 						PROCESS Monarchy = 50
 						OVERRIDE_PARAM Monarchy.value = GetParam(Monarchy.value)
 						PROCESS Empire = 50
