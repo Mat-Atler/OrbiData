@@ -2653,7 +2653,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ~ExpensionofTheRevolution | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
+					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ~ConstitutionalMonarchy | ~ExpensionofTheRevolution | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
 						SPAWN
 					ENDIF
 				}
@@ -7403,7 +7403,7 @@ Main = {
 					CONDITION_VALUE Philosophy >= 200
 					CONDITION_VALUE Tribunal >= 35
 					CONDITION_VALUE Legislation >= 100
-					CONDITION_VALUE SchoolOfThought >= 100
+					CONDITION_VALUE SchoolOfThought >= 80
 				}
 				PRICE = {
 					$PoliticalPower = 300
@@ -8020,7 +8020,9 @@ Main = {
 					ERA AbsolutismAge
 					REMOVE Government
 					REMOVE PoliticOfTerror
+					SPAWN Reactionnarism
 					PROCESS Reactionnarism += 15
+					SPAWN RevolutionIdeals
 					PROCESS RevolutionIdeals -= 5
 					}
 				}
@@ -8466,7 +8468,7 @@ Main = {
 				EVENT_DEF [ 15 15 100 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 95
-                    IF ~Theocracy + ~CelesteMandate + ~ReligiousLaw + PriestClass < 80
+                    IF ~Theocracy + ~CelesteMandate + ~ReligiousLaw + PriestClass < 80 + ~RevolutionIdeals
                         REMOVE ClergyRebellion
                     ENDIF
 				}
@@ -8489,7 +8491,7 @@ Main = {
 					FLUX 2.5
 				}
 				TRIGGER_EVENT = {
-					IF PriestClass > 85 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
+					IF PriestClass > 85 & ( ~Theocracy == 0 & ~CelesteMandate == 0 & ~ReligiousLaw == 0 & ~RevolutionIdeals == 0 ) & ( DivineRight < Empire + DivineRight < Monarchy + ~DivineRight == 0 )
 						RISE
 					ENDIF
 				}
@@ -8500,7 +8502,7 @@ Main = {
 				EVENT_DEF [ 15 15 100 100% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 70
-                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~CelestialMonarchy + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) 
+                    IF ~Monarchy + AristocracyClass < 70 + ~Empire + ~Oligarchy + ~CelesteMandate + ~CelestialMonarchy + ~BarbarianMonarchy + ( ~Nobility & Nobility > 20 ) + ~RevolutionIdeals
                         REMOVE NoblesRebellion
                     ENDIF
 				}
@@ -8512,7 +8514,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF AristocracyClass > 85 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~CelestialMonarchy == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement
+					IF AristocracyClass > 85 &  ( ~Nobility == 0 | Nobility < 20 ) & ( ~Monarchy == 0 ) & ( ~CelesteMandate == 0 ) & ( ~CelestialMonarchy == 0 ) & ( ~BarbarianMonarchy == 0 ) & ( ~Empire == 0 ) & ( ~Oligarchy == 0 ) & ~Settlement & ~RevolutionIdeals == 0
 						RISE
 					ENDIF
 				}
@@ -8531,14 +8533,14 @@ Main = {
 				EVENT_CHANCE Entreprises / 200 + TradeTax / 200
 				}
 				TICK = {
-					PROCESS Stability = Stability - PerSeconds(0.5)
+					PROCESS Stability = Stability - PerSeconds(0.65)
 				}
 				LINK Stability = {
 					COLOR red
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF Entreprises > 50 & TradeTax > 15 & ( ~EconomicCharters == 0 | EconomicCharters < ((TradeTax -15 ) * 3.833333333 ) ) & ~Stability & ~Republic == 0
+					IF Entreprises > 40 & TradeTax > 15 & ( ~EconomicCharters == 0 | EconomicCharters < ((TradeTax -15 ) * 3.833333333 ) ) & ~Stability & ~Republic == 0 & ~RevolutionaryRepublic == 0
 						RISE
 					ENDIF
 				}
