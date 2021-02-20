@@ -2651,7 +2651,6 @@ Main = {
 			RevolutionIdeals = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
-				DISPLAY_VALUE
 				SLEEP = {
 					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ~ConstitutionalMonarchy | ~ExpensionofTheRevolution | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
 						SPAWN
@@ -2673,7 +2672,6 @@ Main = {
 			Reactionnarism = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
-				DISPLAY_VALUE
 				SLEEP = {
 					IF RevolutionIdeals > 5 | ~RevolutionaryRepublic
 						SPAWN
@@ -2684,6 +2682,18 @@ Main = {
 				
 				TRIGGER_SPAWN Reactionnarism = {
 					PROCESS value = AristocracyClass / 2.5 + PriestClass / 2
+				}
+				
+			}
+			Parliement = {
+				VALUE value [ 0 0 100 ]
+				DISPLAY_VALUE
+				SLEEP = {
+					IF ~UpperHouse
+						SPAWN
+					ENDIF
+				}
+				TICK = {
 				}
 				
 			}
@@ -7853,6 +7863,7 @@ Main = {
 					ENDIF
 				}
 				TRIGGER_SPAWN RevolutionaryRepublic = {
+					SPAWN Constitution
 					REMOVE FarmersTax
 					PROCESS Reactionnarism += 25
 					PROCESS TradeTax -= 5
@@ -8110,6 +8121,33 @@ Main = {
 				WEIGHT [ to ]
 				}
 			}
+			
+			
+			UpperHouse = {
+				TYPE Technological
+				VALUE value [ 100 100 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = {
+					HINT ~SchoolOfThought
+					CONDITION_NODE + ConstitutionalMonarchy
+					OR
+					CONDITION_NODE + RevolutionaryRepublic
+					ALWAYS
+					CONDITION_NODE + Tribunal
+					
+				}
+				PRICE = {
+					$PoliticalPower = 500
+				}
+				UPGRADE = {
+					$PoliticalPower =  1
+				}
+				TICK = {
+					PROCESS $PoliticalPower += PerSeconds(0.5)
+				
+				}
+		
+			}	
 
 			
 			}

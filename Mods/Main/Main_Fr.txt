@@ -2325,6 +2325,11 @@ Main = {
 				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le clergé a toujours influencé notre vie politique et travaille aujourd'hui avec les forces réactionnaires. Nous devons mettre un terme à cette influence."
 				SUMMARY "Réduit l'influence de l'église"
 			}
+			UpperHouse = {
+				NAME "Chambre Haute"
+				DESCRIPTION  "La chambre haute est un organe représentant les intérêts des grands de l'État. "
+				SUMMARY "Première étape pour construire un organe législatif indépendant"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Events
