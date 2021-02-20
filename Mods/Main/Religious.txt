@@ -391,7 +391,7 @@ Religious = {
 				}
 
 				TICK = {
-					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
+					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2 - Secularism * 10
 					PROCESS value = ( tempvalue / ( tempvalue + 1000 ) ) * 100
 				}
 

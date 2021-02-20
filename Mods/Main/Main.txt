@@ -1107,7 +1107,7 @@ Main = {
 					IF ( ~CelestialMonarchy == 0 & ~ClericalState == 0 )
 						SET Theocracy.value [ : : PriestClass ]
 					ENDIF	
-						PROCESS Reactionnarism = Reactionnarism + PerSeconds(value / 600)
+						PROCESS Reactionnarism = Reactionnarism + PerSeconds( Max ( 0, (value - Secularism ) ) / 600)
 				}
 				LINK Piety = {
 					IF (value > 0)
@@ -8083,6 +8083,34 @@ Main = {
 				}
 
 			}
+			Secularism = {
+				TYPE Cultural
+				VALUE value [ 0 5 100 >> 1 ]
+				UNLOCK_CONDITIONS = {
+					HINT ~RevolutionIdeals | ~RevolutionaryRepublic 
+					CONDITION_VALUE ConstitutionalMonarchy >= 100
+					OR
+					CONDITION_VALUE RevolutionaryRepublic >= 20
+					ALWAYS
+					CONDITION_VALUE PriestClass > 0
+					CONDITION_NODE + PrivilegeRevocation
+				}
+				PRICE = {
+					$PoliticalPower = 600
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Secularism) + 1) * 10
+				}
+				
+				TICK = {
+						PROCESS Reactionnarism =  Reactionnarism - PerSeconds(value / 1200)
+				}
+
+				LINK Religiosity = {
+				WEIGHT [ to ]
+				}
+			}
+
 			
 			}
 		Events = {

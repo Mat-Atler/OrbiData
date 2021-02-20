@@ -2313,6 +2313,18 @@ Main = {
 				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'ennemi est partout. Les forces réactionnaires se cachent et nous devons mettre en place un sysème de délation et de prompt jugement pour rétablir la situation."
 				SUMMARY "Élimine toute opposition et même au delà par la guillotine"
 			}
+			Secularism = {
+				NAME "Sécularisme"
+				LEVEL value = {
+					0 = "Respect de l'ifluence du clergé"
+					0.01 = "Critiques de l'influence politique du clergé"
+					25 = "Dénonciation sévère de influence politique du clergé"
+					50 = "Séparation de l'Église et de l'État"
+					100 = "Athéisme d'État"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le clergé a toujours influencé notre vie politique et travaille aujourd'hui avec les forces réactionnaires. Nous devons mettre un terme à cette influence."
+				SUMMARY "Réduit l'influence de l'église"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Events

@@ -2326,6 +2326,18 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The enemy is everywhere. The reactionary forces are hiding and we must establish a system of denunciation and swift judgment to fix the situation."
 				SUMMARY "Eliminates all opposition and even beyond by the guillotine"
 			}
+			Secularism = {
+				NAME "Secularism"
+				LEVEL value = {
+					0 = "Respect for the ifluence of the clergy"
+					0.01 = "Criticisms of the political influence of the clergy"
+					25 = "Severe denunciation of political influence of the clergy"
+					50 = "Separation of Church and State"
+					100 = "State Atheism"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The clergy has always influenced our political life and today works with reactionary forces. We must put an end to this influence."
+				SUMMARY "Reduces the influence of the church"
+			}
 
 		}
 		Events = {
