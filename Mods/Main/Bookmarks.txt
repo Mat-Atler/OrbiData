@@ -34,10 +34,10 @@ Bookmarks = {
 			Main.Stability = [ 0 40 100 ]
 			Main.Natalism = [ 0 55 100 ]
 			Main.Monarchy = [ 0 15 50 ]
-			Main.StateSize = [ 0 75 2000 ]
-			Main.Settlement = [ 0 75 100 ]
-			Main.Urbanization = [ 0 50 100 ]
-			Main.AristocracyClass = [ 0 35 100 ]
+			Main.StateSize = [ 0 55 100 ]
+			Main.Settlement = [ 0 100 100 ]
+			Main.Urbanization = [ 0 100 100 ]
+			Main.AristocracyClass = [ 0 30 100 ]
 			Main.NeighborhoodBellicism = [ 0 60 100 ]
 		}
 		
@@ -54,24 +54,22 @@ Bookmarks = {
 			Main.Piety = [ 0 15 70 ]
 			Main.PriestClass = [ 0 30 100 ]
 			Main.ReligiousOfferings = [ 0 20 100 ]
-			Main.Devotion = [ 0 40 1000 ]
 		}
 		
 		GROUP Folder_Trade = {
 			Main.ArtisanClass = [ 0 40 100 ]
 			Main.Pottery = [ 0 50 100 ]
-			Main.TradeTax = [ 0 22 100 ]
-			Main.Mining = [ 0 35 100 ]
-			Main.Salt = [ 0 30 100 ]
+			Main.TradeTax = [ 0 15 100 ]
+			Main.Mining = [ 0 25 100 ]
+			Main.Salt = [ 0 25 100 ]
 			Main.Gold = [ 0 25 100 ]
-			Main.Spices = [ 0 10 100 ]
+			Main.Spices = [ 0 5 100 ]
 			Main.OverlandTrade = [ 0 15 100 ]
 			Main.NavalTrade = [ 0 5 100 ]
 			Main.TradeGoods = [ 0 100 1000 ]
 		}
 		
 		GROUP Folder_Army = {
-			OFFSET [ 1 2 ]
 			Main.Missile = [ 0 7 50 ]
 			Main.Infantry = [ 0 15 50 ]
 			Main.MilitaryManpower = [ 0 25 1000000 ]
@@ -84,7 +82,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Culture = {
-			OFFSET [ 0 2 ]
+			OFFSET [ 0 5 ]
 			Main.Writing = [ 0 25 100 ]
 			Main.Music = [ 0 30 100 ]
 			Main.Mathematics = [ 0 30 100 ]
@@ -98,9 +96,87 @@ Bookmarks = {
 		OBJECTIVES = {
 			CONDITION_VALUE Empire >= 75
 			CONDITION_VALUE Stability >= 70
-			CONDITION_VALUE MilitaryManpower >= 80
 			CONDITION_VALUE StateSize >= 250
+			CONDITION_VALUE StateSize >= 25
 			CONDITION_VALUE Militarism >= 30
+		}
+	
+	}
+	MinoanCivilization = {
+		PRESET Crete 
+		ERA BronzeAge
+		YEAR -1600
+		GAMETIME 1000
+		DIFFICULTY Difficulty_Easy
+		
+		GROUP Folder_Food = {
+			Main.Humidity = [ 0 70 100 ]
+			Main.Temperature = [ 0 60 100 ]
+			Main.Flora = [ 0 65 100 ]
+			Main.Fauna = [ 0 30 100 ]
+			Main.Foraging = [ 0 30 100 ]
+			Main.Agriculture = [ 0 40 100 ]
+			Main.SoilFertility = [ 0 65 100 ]
+			Main.Food = [ 0 35 100 ]
+		}
+		
+		GROUP Folder_Law = {
+			Main.Population = [ 0 60 10000 ]
+			Main.Stability = [ 0 40 100 ]
+			Main.Natalism = [ 0 55 100 ]
+			Main.StateSize = [ 0 100 100 ]
+			Main.Settlement = [ 0 40 100 ]
+			Main.AristocracyClass = [ 0 5 100 ]
+			Main.NeighborhoodBellicism = [ 0 5 100 ]
+		}
+		
+		GROUP Folder_Sea = {
+			Main.Coastline.value = [ 0 55 100 ]
+			Main.Fishing = [ 0 40 100 ]
+			Main.Harbours = [ 0 20 60 ]
+			Main.Island = [ 0 100 100 ]
+			Main.MilitaryShips = [ 0 5 100 ]
+			Main.Navy = [ 0 10 100 ]
+		}
+		
+		GROUP Folder_Religion = {
+			Main.Pantheon = [ 0 35 100 ]
+			Main.ReligiousMonuments = [ 0 24 30 ]
+			Main.ReligiousCeremony = [ 0 17 35 ]
+			Main.Piety = [ 0 5 70 ]
+			Main.PriestClass = [ 0 5 100 ]
+		}
+		
+		GROUP Folder_Trade = {
+			Main.ArtisanClass = [ 0 10 100 ]
+			Main.Pottery = [ 0 5 100 ]
+			Main.Spices = [ 0 5 100 ]
+			Main.OverlandTrade = [ 0 15 100 ]
+			Main.NavalTrade = [ 0 5 100 ]
+			Main.TradeGoods = [ 0 45 1000 ]
+		}
+		
+		
+		GROUP Folder_Culture = {
+			Main.Music = [ 0 35 100 ]
+			Main.Mathematics = [ 0 25 100 ]
+			Main.Culture = [ 0 45 100 ]
+			Main.SecularEducation = [ 0 15 100 ]
+			Main.Education = [ 0 5 100 ]
+			Main.Philosophy = [ 0 5 100 ]
+		}
+		
+		FREE_NODES = {
+			
+		}
+		
+		OBJECTIVES = {
+			CONDITION_VALUE Stability >= 70
+			CONDITION_VALUE StateSize >= 125
+			CONDITION_VALUE CivilEngineering >= 70
+			CONDITION_VALUE Spices >= 15
+			CONDITION_VALUE NavalTrade  >= 70
+			CONDITION_VALUE Pottery  >= 100
 		}
 	
 	}

@@ -25,7 +25,11 @@ Religious = {
 					ENDIF
 					
 				
-					PROCESS Minorities = Minorities + value * 0.00015
+				PROCESS Minorities = Minorities + value * 0.00015
+				
+				IF value' > 0
+					PROCESS Reactionnarism = Reactionnarism + value' / ( 1 + ToleranceOfHeretics / 100 )
+				ENDIF
 				
 				}
 				
@@ -33,6 +37,12 @@ Religious = {
 					COLOR green
 					FLUX  value * 0.05
 				}
+				
+				LINK Reactionnarism = {
+					COLOR green
+					FLUX  value' / ( 1 + ToleranceOfHeretics / 100 )
+				}
+				
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
 				}	
@@ -66,6 +76,9 @@ Religious = {
 				
 				PROCESS Minorities = Minorities + value * 0.00015
 				
+				IF value' > 0
+					PROCESS Reactionnarism = Reactionnarism + value' / ( 1 + ToleranceOfHeathens / 50 ) 
+				ENDIF
 				}
 				
 				LINK Minorities = {
@@ -73,7 +86,11 @@ Religious = {
 					FLUX  value * 0.05
 				}
 				
-					
+				LINK Reactionnarism = {
+					COLOR green
+					FLUX  value' / ( 1 + ToleranceOfHeathens / 50 )
+				}
+				
 				LINK NationalCohesion = {
 					WEIGHT [ to ]
 				}
@@ -391,13 +408,79 @@ Religious = {
 				}
 
 				TICK = {
-					PROCESS tempvalue = Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2 - Secularism * 10
+					PROCESS tempvalue = Concordat / 2 + Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
 					PROCESS value = ( tempvalue / ( tempvalue + 1000 ) ) * 100
 				}
 
 				LINK NationalReligion = {
 				WEIGHT [ to ]
 				}
+			}
+			
+			HereticsCountry = {
+				VALUE value [ 0 10 100 ]
+				VALUE tempvalue [ 0 0 10 ]
+				DISPLAY_VALUE
+				
+				SLEEP = {
+					IF GetCurrentEra() < GetEra(AbsolutismAge)
+						REMOVE HereticsCountry
+					ENDIF
+				}
+
+				TICK = {
+				IF HereticsCountry.tempvalue >= 7
+					PROCESS value = value + 4
+				ENDIF
+				IF HereticsCountry.tempvalue >= 10
+					PROCESS value = value + 1 ? 5
+				ENDIF
+				IF ~SpawnHereticsCountry == 0
+					PROCESS HereticsCountry.tempvalue = 0
+				ENDIF
+				
+				IF StateSize' > 0
+					PROCESS Heretics = Heretics + StateSize' / 3
+				ENDIF
+				
+				IF HereticsCountry <= 0
+					REMOVE HereticsCountry
+				ENDIF
+				}
+				
+			}
+			
+			HeathensCountry = {
+				VALUE value [ 0 10 100 ]
+				VALUE tempvalue [ 0 0 10 ]
+				DISPLAY_VALUE
+				
+				SLEEP = {
+					IF GetCurrentEra() < GetEra(AbsolutismAge)
+						REMOVE HeathensCountry
+					ENDIF
+				}
+
+				TICK = {
+				IF HeathensCountry.tempvalue >= 7
+					PROCESS value = value + 4
+				ENDIF
+				IF HeathensCountry.tempvalue >= 10
+					PROCESS value = value + 1 ? 5
+				ENDIF
+				IF ~SpawnHeathensCountry == 0
+					PROCESS HeathensCountry.tempvalue = 0
+				ENDIF
+				
+				IF StateSize' > 0
+					PROCESS Heathens = Heathens + StateSize' / 3
+				ENDIF
+				
+				IF HeathensCountry <= 0
+					REMOVE HeathensCountry
+				ENDIF
+				}
+				
 			}
 
 			
@@ -1574,6 +1657,49 @@ Religious = {
 				}
 				
 			}
+			
+			Concordat = {
+				TYPE Cultural
+				VALUE value [ 0 0 100 >> 1 ]
+
+				UNLOCK_CONDITIONS = { 
+					HINT ~Reactionnarism & ~RevolutionaryRepublic == 0  & ~Theocracy == 0 & GetCurrentEra() >= GetEra(AbsolutismAge) 
+					CONDITION_ERA >= AbsolutismAge
+					CONDITION_VALUE  Revolution Ideals > 15
+					CONDITION_VALUE Reactionnarism > 15
+					CONDITION_NODE - RevolutionaryRepublic
+					CONDITION_NODE - Theocracy
+					CONDITION_NODE - CelestialMonarchy
+					CONDITION_NODE - ClericalState
+				}
+				
+				PRICE = {
+					$PoliticalPower = 150
+				}
+				UPGRADE = {
+					$PoliticalPower = (LinkCount(Concordat) + 1) * 1.4
+				}
+				
+				
+				TICK = {
+				IF ~RevolutionaryRepublic | ~Theocracy | ~CelestialMonarchy | ~ClericalState
+					REMOVE Concordat
+				ENDIF
+				
+				PROCESS Reactionnarism = Reactionnarism + PerSeconds( value / ( Reactionnarism * Reactionnarism ) )
+				
+				PROCESS $PoliticalPower = $PoliticalPower - PerSeconds (value/ 150 )		
+					
+				}
+				
+				LINK Reactionnarism = {
+					IF (value > 0 )
+						FLUX value / ( Reactionnarism * Reactionnarism )
+						COLOR green
+					ENDIF
+				}
+
+			}
 				
 			
 			}
@@ -1834,6 +1960,10 @@ Religious = {
 				SOUND_WINDOW "Main/SFX/ToomuchPP.wav"
 				EVENT_DEF [ 15 20 100 15% ]
 				
+				SLEEP = {
+					EVENT_CHANCE 0.15 * ( 1 + Concordat / 100 )
+
+				}
 				
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 200
@@ -1919,7 +2049,7 @@ Religious = {
 				EVENT_DEF [ 30 80 800 100% ]
 				
 				SLEEP = {
-					EVENT_CHANCE Max( 0.1 , ReligiousHeadPower / (Piety / 10 + 1 ) / 100 )
+					EVENT_CHANCE Max( 0.1 * ( 1 - Concordat / 105 ) , ReligiousHeadPower / (Piety / 10 + 1 ) / 100 * ( 1 - Concordat / 105 ) )
 				}
 				
 				ARISE = {
@@ -2033,7 +2163,7 @@ Religious = {
 				EVENT_DEF [ 60 90 200 100% ]
 				
 				SLEEP = {
-					EVENT_CHANCE ClergyIndependance / 2000 + Max( ClergyIndependance' / 10 , 0.1 )
+					EVENT_CHANCE ClergyIndependance / 2000 + Max( ClergyIndependance' / 10 , 0.1 ) * ( 1 - Concordat / 105 )
 				}
 				
 				ARISE = {
@@ -2053,6 +2183,8 @@ Religious = {
 						OVERRIDE_PARAM DivineRight.value = GetParam(DivineRight.value) - PerSeconds( 0.25 * 0.5 ? 1 )
 						PROCESS DivineRight = Max ( GetParam(DivineRight.value), DivineRight )
 					ENDIF
+					
+					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( ( PriestClass + 10 ) / 250 )
 				}
 				
 				LINK Piety = {
@@ -2062,6 +2194,11 @@ Religious = {
 				LINK DivineRight = {
 					COLOR red
 					FLUX 1
+				}
+				
+				LINK Reactionnarism = {
+					COLOR green
+					FLUX ( PriestClass + 10 ) / 25
 				}
 				TRIGGER_EVENT = {
 					IF ~ClergyIndependance & ~CelestialMonarchy == 0 & ~ClericalState == 0 & ~CelesteMandate == 0
@@ -2148,6 +2285,127 @@ Religious = {
 					ENDIF
 				}
 			}
+			
+			Confiscation = {
+				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
+				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
+				EVENT_DEF [ 40 40 1000 15% ]
+				
+				SLEEP = {
+				IF ~Concordat
+					EVENT_CHANCE Min( 100 / ( $Wealth + 200 - RevolutionIdeals ) * ( 1 - Concordat / 100 ) , 0.25 * ( 1 - Concordat / 100 ) )
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1
+					IF $Wealth > 30 + RevolutionIdeals / 2
+						REMOVE Confiscation
+					ENDIF
+                    
+				}
+				
+				TICK = {
+				
+				PROCESS Stability = Stability - PerSeconds ( ReligiousMonuments * ( 1 + Religiosity / 50 ) / 500 )
+				
+				PROCESS ReligiousMonuments = ReligiousMonuments - PerSeconds ( ReligiousMonuments / 100 )
+				PROCESS Reactionnarism = Reactionnarism + PerSeconds ( ( PriestClass + ReligiousMonuments ) * ( 1 + Religiosity / 50 ) / 400 )
+
+				PROCESS Monasteries = Monasteries - PerSeconds ( Monasteries / 50 )
+				PROCESS $Wealth = $Wealth + PerSeconds ( ( ReligiousMonuments + Monasteries * 2 ) / 50 )
+				}
+				
+				LINK ReligiousMonuments = {
+					COLOR red
+					FLUX ReligiousMonuments / 10
+				}
+				
+				LINK Monasteries = {
+					COLOR red
+					FLUX Monasteries / 50
+				}
+				
+				LINK Reactionnarism = {
+					COLOR green
+					FLUX ( PriestClass + ReligiousMonuments ) * ( 1 + Religiosity / 50 ) / 40
+				}
+				
+				TRIGGER_EVENT = {
+					IF ~RevolutionaryRepublic 
+						RISE
+					ENDIF
+				}
+			}
+			
+			SpawnHereticsCountry = {
+				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
+				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
+				EVENT_DEF [ 50 20 1000 15% ]
+				
+				SLEEP = {
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1
+				}
+				
+				TRIGGER_SPAWN SpawnHereticsCountry = {
+				SPAWN HereticsCountry
+				}
+				
+				TICK = {
+				PROCESS HereticsCountry.tempvalue =  1 ? 10 
+				}
+				
+				LINK HereticsCountry = {
+					IF HereticsCountry.tempvalue > 7
+						COLOR green
+						FLUX HereticsCountry.tempvalue / 2
+					ENDIF	
+				}
+				
+				TRIGGER_EVENT = {
+					IF GetCurrentEra() == GetEra(AbsolutismAge) & ~HereticsCountry == 0 & Pantheon > 66
+						RISE
+					ENDIF
+				}
+			}
+			
+			SpawnHeathensCountry = {
+				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
+				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
+				EVENT_DEF [ 50 20 1000 15% ]
+				
+				SLEEP = {
+				}
+				
+				ARISE = {
+					EVENT_SPEED 1
+                    
+				}
+				
+				TRIGGER_SPAWN SpawnHeathensCountry = {
+				SPAWN HeathensCountry
+				}
+				
+				TICK = {
+				PROCESS HeathensCountry.tempvalue =  1 ? 10 
+				}
+				
+				LINK HeathensCountry = {
+					IF HeathensCountry.tempvalue > 7
+						COLOR green
+						FLUX HeathensCountry.tempvalue / 2  
+					ENDIF	
+				}
+				
+				TRIGGER_EVENT = {
+					IF GetCurrentEra() == GetEra(AbsolutismAge) & ~HeathensCountry == 0 & Pantheon <= 66
+						RISE
+					ENDIF
+				}
+			}
+			
 			
 	}
 }

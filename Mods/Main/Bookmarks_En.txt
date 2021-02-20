@@ -5,4 +5,10 @@ Bookmarks = {
 		DESCRIPTION "This is Sargon Of Akkad."
 		VICTORY "You won Sargon Of Akkad!"
 	}
+	
+	MinoanCivilization = {
+		NAME "Minoan Civilization"
+		DESCRIPTION "This is Minoan Civilization."
+		VICTORY "You won Minoan Civilization!"
+	}
 }
