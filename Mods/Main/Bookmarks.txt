@@ -96,7 +96,6 @@ Bookmarks = {
 		OBJECTIVES = {
 			CONDITION_VALUE Empire >= 75
 			CONDITION_VALUE Stability >= 70
-			CONDITION_VALUE StateSize >= 250
 			CONDITION_VALUE StateSize >= 25
 			CONDITION_VALUE Militarism >= 30
 		}
