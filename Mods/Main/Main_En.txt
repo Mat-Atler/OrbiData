@@ -35,9 +35,9 @@ Main = {
 			NAME "Discovery Age"
 			DESCRIPTION "Discovery Age"
 		}
-		AbsolutismAge = {
-			NAME "Absolutism Age"
-			DESCRIPTION "Absolutism Age"
+		ImperialismAge = {
+			NAME "Imperialism Age"
+			DESCRIPTION "Imperialism Age"
 		}
 		IndustrialAge = {
 			NAME "Industrial Age"

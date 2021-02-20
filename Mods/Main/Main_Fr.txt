@@ -36,9 +36,9 @@ Main = {
 			NAME "Âge des Découvertes"
 			DESCRIPTION "Âge des Découvertes"
 		}
-		AbsolutismAge = {
-			NAME "Âge de l'Absolutisme"
-			DESCRIPTION "Âge de l'Absolutisme"
+		ImperialismAge = {
+			NAME "Âge Impérial"
+			DESCRIPTION "Âge Impérial"
 		}
 		IndustrialAge = {
 			NAME "Âge Industriel"

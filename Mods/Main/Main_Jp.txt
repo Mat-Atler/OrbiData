@@ -36,9 +36,9 @@ Main = {
 			NAME "大航海時代"
 			DESCRIPTION "大航海時代"
 		}
-		AbsolutismAge = {
-			NAME "絶対君主制時代"
-			DESCRIPTION "絶対君主制時代"
+		ImperialismAge = {
+			NAME "帝国主義時代"
+			DESCRIPTION "帝国主義代"
 		}
 		IndustrialAge = {
 			NAME "産業時代"

@@ -347,7 +347,7 @@ Main = {
 		LateAntiquity = { AGE 300 }
 		FeudalAge = { AGE 1000 }
 		DiscoveryAge = { AGE 1500 }
-		AbsolutismAge = { AGE 1650 }
+		ImperialismAge = { AGE 1650 }
 		IndustrialAge = { AGE 1820 }
 		AtomicAge = { AGE 1940 }
 	}
@@ -2557,7 +2557,7 @@ Main = {
 				TRIGGER_SPAWN Coalition = {
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
 					PROCESS NeighborhoodBellicism = 100
-					ERA AbsolutismAge
+					ERA ImperialismAge
 					SPAWN FoeGreatAdmiral
 					SPAWN FoeGreatGeneral
 					
@@ -2600,7 +2600,7 @@ Main = {
 				TRIGGER_SPAWN HostileCoalition = {
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
 					PROCESS NeighborhoodBellicism = 100
-					ERA AbsolutismAge
+					ERA ImperialismAge
 				}
 				
 				TICK = {
@@ -7822,14 +7822,14 @@ Main = {
 				VALUE value [ 0 25 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
-					HINT GetCurrentEra() >= GetEra(AbsolutismAge)
+					HINT GetCurrentEra() >= GetEra(ImperialismAge)
 					CONDITION_NODE + Constitution
 					CONDITION_EXCLUDE Government
 					OR
 					CONDITION_VALUE SchoolOfThought >= 65
 					CONDITION_EXCLUDE Government
 					ALWAYS
-					CONDITION_ERA >= AbsolutismAge
+					CONDITION_ERA >= ImperialismAge
 					CONDITION_NODE + Nationalism
 					CONDITION_VALUE PeasantryClass >= 50
 				}
@@ -7985,8 +7985,8 @@ Main = {
 				VALUE value [ 0 25 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = {
-					HINT GetCurrentEra() >= GetEra(AbsolutismAge) | ~SchoolOfThought
-					CONDITION_ERA >= AbsolutismAge
+					HINT GetCurrentEra() >= GetEra(ImperialismAge) | ~SchoolOfThought
+					CONDITION_ERA >= ImperialismAge
 					CONDITION_NODE - Republic
 					CONDITION_NODE - RevolutionaryRepublic
 					CONDITION_VALUE Constitution >= 50
@@ -8028,7 +8028,7 @@ Main = {
 					ENDIF
 				}
 				TRIGGER_SPAWN ConstitutionalMonarchy = {
-					ERA AbsolutismAge
+					ERA ImperialismAge
 					REMOVE Government
 					REMOVE PoliticOfTerror
 					SPAWN Reactionnarism
