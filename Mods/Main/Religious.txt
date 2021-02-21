@@ -21,14 +21,14 @@ Religious = {
 				}
 				TICK = {
 					IF ( Conversion.value <= 0 & Heretics > 50 )
-						PROCESS Heretics = Heretics - Heretics * ToleranceOfHeretics * 0.00003
+						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ToleranceOfHeretics * 0.00003 )
 					ENDIF
 					
 				
 				PROCESS Minorities = Minorities + value * 0.00015
 				
 				IF value' > 0
-					PROCESS Reactionnarism = Reactionnarism + value' / ( 1 + ToleranceOfHeretics / 100 )
+					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeretics / 100 ) )
 				ENDIF
 				
 				}
@@ -64,7 +64,7 @@ Religious = {
 				}
                 TICK = {
 				IF ( Conversion.value <= 0 & Heathens > 50 )
-					PROCESS Heathens = Heathens - Heathens * ToleranceOfHeathens * 0.00002
+					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ToleranceOfHeathens * 0.00002 )
 				ENDIF
 
                 IF StateSize' > 0
@@ -77,7 +77,7 @@ Religious = {
 				PROCESS Minorities = Minorities + value * 0.00015
 				
 				IF value' > 0
-					PROCESS Reactionnarism = Reactionnarism + value' / ( 1 + ToleranceOfHeathens / 50 ) 
+					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeathens / 50 ))
 				ENDIF
 				}
 				
@@ -408,7 +408,7 @@ Religious = {
 				}
 
 				TICK = {
-					PROCESS tempvalue = Concordat / 2 + Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2
+					PROCESS tempvalue = Concordat / 2 + Monasteries + ReligiousArt + HolyOrders + ReligiousMonuments + PriestClass * 3 + ReligiousLaw * 3 + NonSecularEducation * 3 +  Piety * 2.5 + Devotion * 2.5 + DivineRight * 2 + Theocracy * 5 + CelesteMandate * 2 + CelestialMonarchy * 2 + ClericalState * 2 - Secularism * 10
 					PROCESS value = ( tempvalue / ( tempvalue + 1000 ) ) * 100
 				}
 
@@ -423,7 +423,7 @@ Religious = {
 				DISPLAY_VALUE
 				
 				SLEEP = {
-					IF GetCurrentEra() < GetEra(AbsolutismAge)
+					IF GetCurrentEra() < GetEra(ImperialismAge)
 						REMOVE HereticsCountry
 					ENDIF
 				}
@@ -456,7 +456,7 @@ Religious = {
 				DISPLAY_VALUE
 				
 				SLEEP = {
-					IF GetCurrentEra() < GetEra(AbsolutismAge)
+					IF GetCurrentEra() < GetEra(ImperialismAge)
 						REMOVE HeathensCountry
 					ENDIF
 				}
@@ -671,7 +671,7 @@ Religious = {
 				}
 				
 				TICK = {
-					PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * (Heretics + Heathens) ) / 25)
+					PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * ( (Heretics + Heathens) / 25 ) )
 				}
 				
 				LINK Heretics = {
@@ -1635,7 +1635,6 @@ Religious = {
 						PROCESS ColonialConvert = ColonialConvert + PerSeconds ( ( value / 3 ) * ( 1 + Monasteries / 400 ) * ( 1 + Conversion / 400 ) / ( 50 + ColonialHeretic + ColonialProsperity / 2.5  + ColonialStateSize  ))
 					ENDIF
 						
-					
 				}
 
 				LINK Colony = {
@@ -1663,9 +1662,9 @@ Religious = {
 				VALUE value [ 0 0 100 >> 1 ]
 
 				UNLOCK_CONDITIONS = { 
-					HINT ~Reactionnarism & ~RevolutionaryRepublic == 0  & ~Theocracy == 0 & GetCurrentEra() >= GetEra(AbsolutismAge) 
-					CONDITION_ERA >= AbsolutismAge
-					CONDITION_VALUE  Revolution Ideals > 15
+					HINT ~Reactionnarism & ~RevolutionaryRepublic == 0  & ~Theocracy == 0 & GetCurrentEra() >= GetEra(ImperialismAge) 
+					CONDITION_ERA >= ImperialismAge
+					CONDITION_VALUE RevolutionIdeals > 15
 					CONDITION_VALUE Reactionnarism > 15
 					CONDITION_NODE - RevolutionaryRepublic
 					CONDITION_NODE - Theocracy
@@ -2292,7 +2291,6 @@ Religious = {
 				EVENT_DEF [ 40 40 1000 15% ]
 				
 				SLEEP = {
-				IF ~Concordat
 					EVENT_CHANCE Min( 100 / ( $Wealth + 200 - RevolutionIdeals ) * ( 1 - Concordat / 100 ) , 0.25 * ( 1 - Concordat / 100 ) )
 				}
 				
@@ -2365,7 +2363,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF GetCurrentEra() == GetEra(AbsolutismAge) & ~HereticsCountry == 0 & Pantheon > 66
+					IF GetCurrentEra() == GetEra(ImperialismAge) & ~HereticsCountry == 0 & Pantheon > 66
 						RISE
 					ENDIF
 				}
@@ -2400,7 +2398,7 @@ Religious = {
 				}
 				
 				TRIGGER_EVENT = {
-					IF GetCurrentEra() == GetEra(AbsolutismAge) & ~HeathensCountry == 0 & Pantheon <= 66
+					IF GetCurrentEra() == GetEra(ImperialismAge) & ~HeathensCountry == 0 & Pantheon <= 66
 						RISE
 					ENDIF
 				}
