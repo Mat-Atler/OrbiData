@@ -8052,7 +8052,7 @@ Main = {
 					$PoliticalPower = 750
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(PoliticofTerror) + 1) * 10
+					$PoliticalPower = (LinkCount(PoliticOfTerror) + 1) * 10
 				}
 				
 				TICK = {

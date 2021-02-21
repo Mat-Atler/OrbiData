@@ -101,7 +101,32 @@ Bookmarks = {
 			CONDITION_VALUE MilitaryManpower >= 80
 			CONDITION_VALUE StateSize >= 250
 			CONDITION_VALUE Militarism >= 30
+			CONDITION_ERA < LateAntiquity
 		}
 	
 	}
+	
+	HeianJidai = {
+		PRESET Yamatai
+		ERA IronAge
+		YEAR 794
+		GAMETIME 0
+		DIFFICULTY Difficulty_Easy
+		
+	
+		FREE_NODES = {
+			
+		}
+		
+		OBJECTIVES = {
+			CONDITION_VALUE Culture >= 70
+			CONDITION_VALUE Litterature >= 100
+			CONDITION_VALUE Agriculture >= 70
+			CONDITION_VALUE AristocracyClass >= 40
+			CONDITION_VALUE NeighborhoodBellicism <= 10
+			CONDITION_NODE - Militarism
+			CONDITION_NODE - Expensionism
+			CONDITION_ERA < LateAntiquity
+		}
+		}
 }
