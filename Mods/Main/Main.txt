@@ -2624,7 +2624,7 @@ Main = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500
+					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500 & ~BarbarianMonarchy == 0 & VassalPower < 35
 						SPAWN
 					ENDIF
 				}
