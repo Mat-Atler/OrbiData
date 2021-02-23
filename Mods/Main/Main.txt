@@ -2624,7 +2624,7 @@ Main = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500 & ~BarbarianMonarchy == 0 & VassalPower < 35
+					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500 & GetCurrentEra() < GetEra(DiscoveryAge)  & ~BarbarianMonarchy == 0 & VassalPower < 35
 						SPAWN
 					ENDIF
 				}
@@ -8374,7 +8374,7 @@ Main = {
 			Pillaging = {
 				SOUND_EVENT "Main/SFX/Pillards.wav"
 				SOUND_WINDOW "Main/SFX/Pillards.wav"
-				EVENT_DEF [ 15 15 140 33% ]
+				EVENT_DEF [ 15 15 250 25% ]
 				ARISE = {
                     EVENT_SPEED OverlandTrade / 100
                     IF OverlandTrade < 10
@@ -8382,7 +8382,7 @@ Main = {
                     ENDIF
                 }
 				TICK = {
-					PROCESS OverlandTrade = OverlandTrade - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS OverlandTrade = OverlandTrade - PerSeconds(3 * 0.75 ? 1.25)
 					IF ReligiousMonuments > 25
 						OVERRIDE_PARAM ReligiousMonuments.value = GetParam(ReligiousMonuments.value) - PerSeconds(0.25 * 0.75 ? 1.25)
 						PROCESS ReligiousMonuments = Min( GetParam(ReligiousMonuments.value), ReligiousMonuments )
