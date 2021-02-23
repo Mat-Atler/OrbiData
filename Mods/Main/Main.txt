@@ -1435,6 +1435,8 @@ Main = {
 				LINK MilitaryDictatorship = {
 						WEIGHT [ max ] Min(MilitaryManpower.value / 1.5, 100)
 					}
+				LINK WarStatus = {
+					}
 			}
 			MilitaryEfficiency = {
 				VALUE value [ 0 50 100 ]
@@ -2111,7 +2113,7 @@ Main = {
 				VALUE ColonialDistance [ 0 0 500 ]
 				
 				SLEEP = {
-					IF ( ~AcrossTheOcean & AcrossTheOcean >= 30 )
+					IF ( ~AcrossTheOcean & AcrossTheOcean >= 30 & ~ColonialRebellion == 0 )
 						SPAWN
 					ENDIF
 				}
@@ -7229,12 +7231,12 @@ Main = {
 				
 				TICK = {
 				IF ~Blocade == 0
-					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 75  )
+					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 50  )
 					IF ~ColonialAutonomyDesire
 						PROCESS ColonialAutonomyDesire += PerSeconds ( ColonialTariffs / 210 * ColonialStateSize / 150  )
 					ENDIF
 					IF ColonialProsperity > 5
-						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 8.5 )
+						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 13 )
 					ENDIF
 				ENDIF
 				}
@@ -7283,7 +7285,7 @@ Main = {
 				TICK = {
 					PROCESS ColonialProsperity = ColonialProsperity + PerSeconds ( ColonialHelp / 75  )
 					IF ~ColonialAutonomyDesire
-						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialHelp / 500  )
+						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialHelp / 800  )
 					ENDIF
 					PROCESS $Wealth = $Wealth - PerSeconds( value / 5 )
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( value / 20 )
@@ -8614,7 +8616,7 @@ Main = {
 			EconomicCrisis = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-				EVENT_DEF [ 30 15 20 75% ]
+				EVENT_DEF [ 25 15 20 75% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF $Wealth > 10
@@ -8623,16 +8625,16 @@ Main = {
 				}
 				TICK = {
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(0.5)
-					PROCESS Stability = Stability - PerSeconds(0.5 * 0.75 ? 1.25)
-					PROCESS Navy = Navy - PerSeconds(0.05 + Navy * 0.04)
+					PROCESS Stability = Stability - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS Navy = Navy - PerSeconds(0.05 + Navy * 0.08)
 					OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
 					PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					OVERRIDE_PARAM Mercenaries.value = GetParam(Mercenaries.value) - PerSeconds(5)
 					PROCESS Mercenaries = Min( GetParam(CelesteMandate.value), Mercenaries )
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.05 + MilitaryManpower.Infantry_value * 0.04)
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.05 + MilitaryManpower.Cavalry_value * 0.04)
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.05 + MilitaryManpower.Missile_value * 0.04)
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.05 + MilitaryManpower.Mercenaries_value * 0.5)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.05 + MilitaryManpower.Infantry_value * 0.08)
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.05 + MilitaryManpower.Cavalry_value * 0.08)
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.05 + MilitaryManpower.Missile_value * 0.08)
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.05 + MilitaryManpower.Mercenaries_value * 0.8)
 				}
 				LINK Stability = {
 					COLOR red
