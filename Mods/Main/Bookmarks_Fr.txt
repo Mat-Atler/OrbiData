@@ -1,9 +1,9 @@
 Bookmarks = {
 
 	SargonOfAkkad = {
-		NAME "Sargon Of Akkad"
-		DESCRIPTION "This is Sargon Of Akkad."
-		VICTORY "You won Sargon Of Akkad!"
+		NAME "Sargon d'Akkad"
+		DESCRIPTION "Sargon d'Akkad, version traduite de Šarru-kīnu est un monarque puissant originaire du nord de la Mésopotamie. Si ses débuts politiques furent troubles et méconnus, il finit par s'affirmer à Kish, à marcher sur la Babylonie puis sur la Syrie et l'Elam, fondant un état reliant le Golfe Persique à la Mer Méditerranée. Il fonda Akkad, ville prospère aux nombreux édifices religieux. À bien des égards, l'Empire d'Akkad par sa taille et sa domination de plusieurs peuples, peut être considéré comme le tout premier empire de l'Histoire."
+		VICTORY "Notre main mise sur le croissant fertile est totale dans notre main ferme. Les dieux seront satisfaits."
 	}
 	HeianJidai = {
 		NAME "Heian Jidai"

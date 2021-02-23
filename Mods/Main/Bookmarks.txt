@@ -9,9 +9,9 @@ Bookmarks = {
 	SargonOfAkkad = {
 		PRESET Mesopotamia
 		ERA BronzeAge
-		YEAR -2279
+		YEAR -2334
 		GAMETIME 1000
-		DIFFICULTY Difficulty_Easy
+		DIFFICULTY Difficulty_Average
 		
 		GROUP Folder_Food = {
 			Main.Humidity = [ 0 55 100 ]
@@ -98,9 +98,12 @@ Bookmarks = {
 		OBJECTIVES = {
 			CONDITION_VALUE Empire >= 75
 			CONDITION_VALUE Stability >= 70
+			CONDITION_VALUE StateSize >= 200
 			CONDITION_VALUE MilitaryManpower >= 80
-			CONDITION_VALUE StateSize >= 250
 			CONDITION_VALUE Militarism >= 30
+			CONDITION_VALUE Urbanization >= 70
+			CONDITION_VALUE ReligiousMonuments >= 70
+			CONDITION_VALUE Pantheon <= 70
 			CONDITION_ERA < LateAntiquity
 		}
 	
@@ -123,6 +126,7 @@ Bookmarks = {
 			CONDITION_VALUE Litterature >= 100
 			CONDITION_VALUE Agriculture >= 70
 			CONDITION_VALUE AristocracyClass >= 40
+			CONDITION_VALUE Pantheon <= 25
 			CONDITION_VALUE NeighborhoodBellicism <= 10
 			CONDITION_NODE - Militarism
 			CONDITION_NODE - Expensionism

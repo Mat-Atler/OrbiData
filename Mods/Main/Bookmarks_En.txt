@@ -2,12 +2,15 @@ Bookmarks = {
 
 	SargonOfAkkad = {
 		NAME "Sargon Of Akkad"
-		DESCRIPTION "This is Sargon Of Akkad."
-		VICTORY "You won Sargon Of Akkad!"
+		DESCRIPTION "Sargon of Akkad, translated version of Šarru-kīnu is a powerful monarch from northern Mesopotamia. Although his political beginnings were troubled and unknown, he eventually asserted himself at Kish, marching on Babylonia and then on Syria and Elam, founding a state linking the Persian Gulf to the Mediterranean Sea. He founded Akkad, a prosperous city with many religious buildings. In many respects, the Akkadian Empire, by its size and its domination of several peoples, can be considered the very first empire in History."
+		VICTORY "The fertile crescent is entirely in our firm hand. The gods will be satisfied."
 	}
+	
 	HeianJidai = {
 		NAME "Heian Jidai"
 		DESCRIPTION "The Heian period (794-1185) is a division of ancient Japanese history. It is a period when the Chinese influence declined and the national culture flourished. The Heian period is also known as the peak of the imperial court and is famous for its arts, especially poetry and literature. Although the imperial family was powerful on the surface, the real power was held by the Fujiwara clan, a powerful aristocratic family with strong ties to the imperial family. Heian means 'peace' in Japanese."
 		VICTORY "The culture of Japan has matured and the country is at peace. Japan's future looks bright."
+		GROUP Folder_Food "Folder Food"
 	}
+
 }
