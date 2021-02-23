@@ -2551,7 +2551,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2594,7 +2594,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2626,7 +2626,7 @@ Main = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500 & GetCurrentEra() < GetEra(DiscoveryAge)  & ~BarbarianMonarchy == 0 & VassalPower < 35
+					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500 & GetCurrentEra() < GetEra(DiscoveryAge)  & ~BarbarianMonarchy == 0 & VassalPower < 30
 						SPAWN
 					ENDIF
 				}
@@ -4795,10 +4795,10 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.1)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.1)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ENDIF
 					
 				}
