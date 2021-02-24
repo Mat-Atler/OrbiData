@@ -5314,7 +5314,7 @@ Main = {
 					RELATED_LINK MilitaryTechnology
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~BarbarianThreat
+					HINT ~BarbarianThreat | ~Forge
 					CONDITION_VALUE BarbarianThreat >= 100
 					OR
 					CONDITION_NODE + BarbarianAtGates
