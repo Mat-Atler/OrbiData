@@ -6072,7 +6072,7 @@ Main = {
 						 WEIGHT [ max ] NavyQuota
 				}
 				
-				TRIGGER_LEAVE ArmyQuota = {
+				TRIGGER_LEAVE NavyQuota = {
 						SET Navy.value [ : : 1000 ]
 				}		
 				
