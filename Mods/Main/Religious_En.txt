@@ -58,6 +58,30 @@ Religious = {
 				DESCRIPTION <b>"Pantheon: "@[PantheonValue] </b> <br> <b>"Syncretism: "@[SyncretismValue] </b> <br> <b>"Religious Ceremony: "@[ReligiousCeremonyValue] </b> <br> <b>"Religious Offerings: "@[ReligiousOfferingsValue] </b> <br> <b>"Offerings Nature: "@[OfferingsNatureValue] </b> <br> <b>"Sacrifice Nature: "@[SacrificeNatureValue] </b> <br> <b>"Devotion To Craftsmanship: "@[DevotionToCraftsmanshipValue] </b> <br> <b>"Devotion To Nature: "@[DevotionToNatureValue] </b> <br> <b>"Devotion To Sea: "@[DevotionToSeaValue] </b> <br> <b>"Devotion To TheHarvest: "@[DevotionToTheHarvestValue] </b> <br> <b>"Devotion To The Law: "@[DevotionToTheLawValue] </b> <br> <b>"Devotion To Trade: "@[DevotionToTradeValue] </b> <br> <b>"Devotion To War: "@[DevotionToWarValue] </b> <br> <br> "Our religion has undergone many changes over the centuries. But those times are over. Our dogmas are now defined for the centuries to come."
 				SUMMARY "Node that centralizes the aspects of our religion that are no longer modifiable."
 			}
+			HereticsCountry = {
+				NAME "Heretics Country"
+				LEVEL value = {
+					0 = "tiny"
+					20 = "small"
+					40 = ""
+					60 = "large"
+					80 = "great"
+				}
+				DESCRIPTION <b>"Size of the heretical country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heretics, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heretic population increase drastically."
+				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain."
+			}
+			HeathensCountry = {
+				NAME "Heathens Country"
+				LEVEL value = {
+					0 = "tiny"
+					20 = "small"
+					40 = ""
+					60 = "large"
+					80 = "great"
+				}
+				DESCRIPTION <b>"Size of the heathen country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heathens, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heathen population increase drastically."
+				SUMMARY "Increases the strength of massive conversions to a foreign faith and increases the number of heathens in case of territorial gain"
+			}
 		}
 		Levers = {
 			ToleranceOfHeretics = {
@@ -251,6 +275,12 @@ Religious = {
 				NAME "Conversion of colonies"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Religious minorities are a danger to the unity and prosperity of our colonies. Because of the distance we cannot take care of the conversion ourselves, fortunately, a large number of congregations are ready to do it for us. If we help them, the conversion will be all the quicker."
 				SUMMARY "Converting the inhabitants of the colonies to the true faith"
+			}	
+			
+			Concordat = {
+				NAME "Concordat"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Traditional and revolutionary thoughts confront each other about the nature of the power that religion has over society. By negotiating agreements with religious authorities that guarantee them certain rights in exchange for distancing themselves from the affairs of state, we can achieve satisfaction on both sides."
+				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power."
 			}			
 				
 			}
@@ -331,6 +361,21 @@ Religious = {
 				NAME "Perpetuation of dogmas"
 				DESCRIPTION "Anything new is bound to become custom. Our religion is no exception to this rule. Dogmas settle down and stay. Soon it will surely be impossible to influence the main lines of our religion."
 				SUMMARY " After this event it will no longer be possible to directly change many religious nodes."
+			}
+			SpawnHereticsCountry = {
+				NAME "Formation of a heretical state"
+				DESCRIPTION "A country of heretics at our borders is becoming more and more important, so our future international relations will not be able to do so without involving the religious."
+				SUMMARY "Increases the size of the heretical country"
+			}
+			SpawnHeathensCountry = {
+				NAME "Formation of a heathen state"
+				DESCRIPTION "A country of heathens at our borders is becoming more and more important, so our future international relations will not be able to do so without involving the religious."
+				SUMMARY "Increases the size of the heathen country"
+			}
+			Confiscation = {
+				NAME "Confiscation"
+				DESCRIPTION "While our finances are at their lowest point, many members of the revolutionary government propose that the assets of """"the enemies of the revolution"""" be made available to the nation."
+				SUMMARY "Reduces our religious monuments and monasteries but will replenish our treasury."
 			}
 
 		}

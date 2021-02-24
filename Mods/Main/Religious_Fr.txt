@@ -58,7 +58,31 @@ Religious = {
 				DESCRIPTION <b>"Pantheon: "@[PantheonValue] </b> <br> <b>"Syncrétisme: "@[SyncretismValue] </b><br> <b>"Cérémonies Religieuses: "@[ReligiousCeremonyValue] </b><br> <b>"Offrande religieuse: "@[ReligiousOfferingsValue] </b><br> <b>"La nature des offrandes: "@[OfferingsNatureValue] </b><br> <b>"La nature des sacrifices: "@[SacrificeNatureValue] </b><br> <b>"Dévotion à l'artisanat: "@[DevotionToCraftsmanshipValue] </b><br> <b>"Dévotion à la nature: "@[DevotionToNatureValue] </b><br> <b>"Dévotion à la mer: "@[DevotionToSeaValue] </b><br> <b>"Dévotion à la moisson: "@[DevotionToTheHarvestValue] </b><br> <b>"Dévotion à la loi: "@[DevotionToTheLawValue] </b><br> <b>"Dévotion au commerce: "@[DevotionToTradeValue] </b><br> <b>"Dévotion à la guerre: "@[DevotionToWarValue] </b><br><br>"Notre religion a connus de nombreux changement au cours des siècles. Mais ces temps sont révolus. Nos dogmes sont mainetant définie pour les siècles a venir"
 				SUMMARY "Noeud qui centralise les aspects de notre religion qui ne sont plus modifiables"
 			}
-		
+			HereticsCountry = {
+				NAME "Pays hérétiques"
+				LEVEL value = {
+					0 = "minuscule"
+					20 = "petit"
+					40 = ""
+					60 = "grand"
+					80 = "imposant"
+				}
+				DESCRIPTION <b>"Taille du pays hérétiques: "@[value] </b> <br> "Un"<b> @[value,LEVEL] </b> "pays, principalement peuplé et contrôlé par des hérétiques, se trouve à nos frontières. Ils pourraient avoir une influence sur notre peuple et agrandir notre territoire au détriment du leur verrait notre population hérétique augmenter drastiquement."
+				SUMMARY "Augmente la force des schismes et augmente le nombre d'hérétiques en cas de gain territorial"
+			}
+			HeathensCountry = {
+				NAME "Pays païen"
+				LEVEL value = {
+					0 = "minuscule"
+					20 = "petit"
+					40 = ""
+					60 = "grand"
+					80 = "imposant"
+				}
+				DESCRIPTION <b>"Taille du pays païen: "@[value] </b> <br> "Un "<b> @[value,LEVEL] </b> " pays, principalement peuplé et contrôlé par des païens, se trouve à nos frontières. Ils pourraient avoir une influence sur notre peuple et agrandir notre territoire au détriment du leur verrait notre population païenne augmenter drastiquement."
+				SUMMARY "Augmente la force des conversions massive à une foi étrangère et augmente le nombre de païens en cas de gain territorial"
+			}
+			
 			
 		}
 		Levers = {
@@ -244,7 +268,7 @@ Religious = {
 			}	
 			DevotionToCraftsmanship = {
 				NAME "Dévotion à l'artisanat"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "C'est par l'action que le salut s'obtient. C'est donc par le travail acharné que les hommes prouvent leur valeur. Assurons-nous que chaque homme participe à l'effort."
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br> "C'est par l'action que le salut s'obtient. C'est donc par le travail acharné que les hommes prouvent leur valeur. Assurons-nous que chaque hommes participent à l'effort."
 				SUMMARY "Augmente notre production de biens commerciaux"
 			}
 			
@@ -252,6 +276,12 @@ Religious = {
 				NAME "Conversion des colonies"
 				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les minorités religieuses constituent un danger pour l'unité et la prospérité de nos colonies. À cause de la distance nous ne pouvons nous occuper de la conversion nous-même, heureusement, un grand nombre de congrégations sont prêts à le faire pour nous. Si nous les aidons, la conversion ne serra que plus rapide."
 				SUMMARY "Convertir les habitants des colonies à la vrai foi"
+			}
+			
+			Concordat = {
+				NAME "Concordat"
+				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les pensées anciennes et révolutionnaires se confrontent sur la nature du pouvoir que la religion a sur la société. En négociant des accords avec les autorités religieuses qui leur garantissent certains droits en échange d'une distanciation des affaires de l'État de leurs part, nous pouvons arriver à satisfaire les 2 camps."
+				SUMMARY "Réduit les chances d'événements négatifs religieux mais nécessitent un investissement constant de pouvoir politique."
 			}
 				
 		}
@@ -333,7 +363,22 @@ Religious = {
 				DESCRIPTION "Tout chose nouvelle est vouée à devenir habitude. Notre religion n'échappe pas à cette règle. Les dogmes s’installent et restes. Bientôt il serra surement impossible d'influencer les grandes lignes de notre religion."
 				SUMMARY " Après cette événements Il serra plus possible de changer directement de nombreux nœuds religieux"
 			}
-
+			SpawnHereticsCountry = {
+				NAME "Formation d'un état heretique"
+				DESCRIPTION "Un pays d'hérétiques porche de nos frontières est en train de prendre de l'important, a cause de cela nos futures relations internationales ne pourront pas ce faire sans toucher au religieux."
+				SUMMARY "Augmente la taille du pays hérétiques"
+			}
+			SpawnHeathensCountry = {
+				NAME "Formation d'un état païen"
+				DESCRIPTION "Un pays de païen porche de nos frontières est en train de prendre de l'important, a cause de cela nos futures relations internationales ne pourront pas ce faire sans toucher au religieux."
+				SUMMARY "Augmente la taille du pays païen"
+			}
+			Confiscation = {
+				NAME "Confiscation"
+				DESCRIPTION "Pendant que nos finances sont au plus bas, nombreux sont les membres du gouvernement révolutionnaire qui propose que les biens des """"ennemis de la révolution"""" soient mis à la disposition de la Nation."
+				SUMMARY "Réduit nos monuments religieux et nos monastères mais va renflouer nos caisses."
+			}
+			
 		}
 	}
 }

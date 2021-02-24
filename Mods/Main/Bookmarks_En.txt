@@ -11,4 +11,10 @@ Bookmarks = {
 		DESCRIPTION "This is Minoan Civilization."
 		VICTORY "You won Minoan Civilization!"
 	}
+	
+	The Spanish Empire = {
+		NAME "The Spanish Empire"
+		DESCRIPTION "This is The Spanish Empire."
+		VICTORY "You won The Spanish Empire!"
+	}
 }
