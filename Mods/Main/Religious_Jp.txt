@@ -58,6 +58,30 @@ Religious = {
 				DESCRIPTION <b>　"パルテノン: " @[PantheonValue] </b> <br> <b> "習合: "@[SyncretismValue] </b> <br> <b> "宗教儀式: " @[ReligiousCeremonyValue] </b> <br> <b> "供物: " @[ReligiousOfferingsValue] </b> <br> <b> "供物の内容: "@[OfferingsNatureValue] </b> <br> <b> "生贄の内容: "@[SacrificeNatureValue] </b> <br> <b> "職人への献身: " @[DevotionToCraftsmanshipValue] </b> <br> <b> "自然への献身 : "@[DevotionToNatureValue] </b> <br> <b> "海への献身: "@[DevotionToSeaValue] </b> <br> <b> "収穫への献身: "@[DevotionToTheHarvestValue] </b> <br> <b>"法への献身: "@[DevotionToTheLawValue] </b> <br> <b>"貿易への献身: " @[DevotionToTradeValue] </b> <br> <b> "戦争への献身: "@[DevotionToWarValue] </b> <br> <br> "私たちの宗教は何世紀にもわたって多くの変化を遂げてきました。しかしそれらの時代は終わりました。私たちの教義はこれから何世紀にもわたって定義されています。"
 				SUMMARY "もう変更できない私たちの宗教の側面を一元化するノード"
 			}
+			HereticsCountry = {
+				NAME "Heretics Country"
+				LEVEL value = {
+					0 = "tiny"
+					20 = "small"
+					40 = ""
+					60 = "large"
+					80 = "great"
+				}
+				DESCRIPTION <b>"Size of the heretical country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heretics, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heretic population increase drastically."
+				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain."
+			}
+			HeathensCountry = {
+				NAME "Heathens Country"
+				LEVEL value = {
+					0 = "tiny"
+					20 = "small"
+					40 = ""
+					60 = "large"
+					80 = "great"
+				}
+				DESCRIPTION <b>"Size of the heathen country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heathens, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heathen population increase drastically."
+				SUMMARY "Increases the strength of massive conversions to a foreign faith and increases the number of heathens in case of territorial gain"
+			}
 		}
 		Levers = {
 			ToleranceOfHeretics = {
@@ -250,6 +274,11 @@ Religious = {
 				DESCRIPTION <b> "値: "@[value] </b> <br><br> "宗教的少数派は、私たちの植民地の統一と繁栄にとって危険です。遠距離のため私達自身で改宗の世話をする事はできません。幸いな事に多くの修道会が私たちのために改宗を手伝う準備が出来ています。私たちが彼らを手助けすれば改宗を早めることができます。"
 				SUMMARY "植民地の住民を真の信仰に変える"
 			}
+			Concordat = {
+				NAME "Concordat"
+				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Traditional and revolutionary thoughts confront each other about the nature of the power that religion has over society. By negotiating agreements with religious authorities that guarantee them certain rights in exchange for distancing themselves from the affairs of state, we can achieve satisfaction on both sides."
+				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power."
+			}	
 
 		}
 		Events = {
@@ -330,7 +359,21 @@ Religious = {
 				DESCRIPTION "新しいものは全て慣習になる運命です。私たちの宗教も例外ではありません。教義は定着していきます。すぐに私たちの宗教の大綱に影響を与えることは確かに不可能になるでしょう。"
 				SUMMARY "このイベントの後、多くの宗教ノードを直接変更することはできなくなります。"
 			}
-
+			SpawnHereticsCountry = {
+				NAME "Formation of a heretical state"
+				DESCRIPTION "A country of heretics at our borders is becoming more and more important, so our future international relations will not be able to do so without involving the religious."
+				SUMMARY "Increases the size of the heretical country"
+			}
+			SpawnHeathensCountry = {
+				NAME "Formation of a heathen state"
+				DESCRIPTION "A country of heathens at our borders is becoming more and more important, so our future international relations will not be able to do so without involving the religious."
+				SUMMARY "Increases the size of the heathen country"
+			}
+			Confiscation = {
+				NAME "Confiscation"
+				DESCRIPTION "While our finances are at their lowest point, many members of the revolutionary government propose that the assets of """"the enemies of the revolution"""" be made available to the nation."
+				SUMMARY "Reduces our religious monuments and monasteries but will replenish our treasury."
+			}
 
 		}
 	}
