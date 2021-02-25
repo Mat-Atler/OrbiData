@@ -69,6 +69,12 @@ Main = {
 			IF ( ~RevolutionaryRepublic | ~Democracy ) & WarStatus.revolutionnaryWar == 2
 				PROCESS Reactionnarism -= 30
 			ENDIF
+			IF ~HereticsCountry & WarStatus.peaceProposal_StateSize > 0
+                PROCESS HereticsCountry -= WarStatus.peaceProposal_StateSize
+            ENDIF
+            IF ~HeathensCountry & WarStatus.peaceProposal_StateSize > 0
+                PROCESS HeathensCountry -= WarStatus.peaceProposal_StateSize
+            ENDIF
 			PROCESS WarStatus.revolutionnaryWar = 0
 			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace

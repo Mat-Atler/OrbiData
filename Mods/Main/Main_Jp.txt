@@ -702,6 +702,21 @@ Main = {
 				SUMMARY "絶え間のない脅威"
 			}
 
+			WarStatus = {
+				NAME "戦争の状態"
+				LEVEL value = {
+					0 = "敗北"
+					25 = "かなり厳しい"
+					40 = "負けつつある"
+					50 = "拮抗状態"
+					50.001 = "勝ちつつある"
+					75 = "楽観的"
+					90 = "勝利は目前"
+				}
+				DESCRIPTION <b> "状態: "@[value,LEVEL] </b>" ("@[value] ")" <br>"明日和平を結んだ場合以下のような条件になります:" <br><br>@[peaceProposal_ColonySize]"植民地の大きさ <br>"@[peaceProposal_StateSize]"国の大きさ<br>"@[peaceProposal_Wealth]"冨"
+				SUMMARY "戦争が現在どの様な状態かの説明"
+				}
+
 			FoeLandForces = {
 				NAME "敵の陸軍力"
 				LEVEL value = {
@@ -821,46 +836,6 @@ Main = {
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The stability and wealth of our region attracts scavengers. Distant barbarians seem to inevitably come closer to our borders and can cause many problems."
 				SUMMARY "The migration of distant barbarians can be a problem in the long run"
 			}
-			RevolutionIdeals = {
-				NAME "Revolution Ideals"
-				LEVEL value = {
-					0 = "Very weak ideals" 
-					25 = "Weak ideals"
-					50 = "Commonly accepted ideals"
-					75 = "Strong ideals"
-					90 = "Very strong ideals"
-				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The pro-revolutionary movement has become part of the mentality of our people. They reject the old order, the arbitrary of the nobility and the political power of the church."
-				SUMMARY "The level of popularity of pro-revolutionary ideals"
-			}
-			
-			Reactionnarism = {
-				NAME "Reactionnarism"
-				LEVEL value = {
-					0 = "Inexistent"
-					10 = "Low"
-					20 = "Spread"
-					60 = "Widespread"
-				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Reactionaryism represents all ideas and forces seeking to protect the old order, especially the nobility and the clergy. They fiercely reject reforms to the point of taking up arms."
-				SUMMARY "The level of popularity of the anti-revolutionary ideals"
-			}	
-			
-			
-			WarStatus = {
-				NAME "戦争の状態"
-				LEVEL value = {
-					0 = "敗北"
-					25 = "かなり厳しい"
-					40 = "負けつつある"
-					50 = "拮抗状態"
-					50.001 = "勝ちつつある"
-					75 = "楽観的"
-					90 = "勝利は目前"
-				}
-				DESCRIPTION <b> "状態: "@[value,LEVEL] </b>" ("@[value] ")" <br>"明日和平を結んだ場合以下のような条件になります:" <br><br>@[peaceProposal_ColonySize]"植民地の大きさ <br>"@[peaceProposal_StateSize]"国の大きさ<br>"@[peaceProposal_Wealth]"冨<br>"
-				SUMMARY "戦争が現在どの様な状態かの説明"
-				}
 
 		}
 		Levers = {
@@ -2708,16 +2683,6 @@ Main = {
 				NAME "Revolution Attempt"
 				DESCRIPTION "A local peasant revolt degenerates into open rebellion. Our regime is challenged in violence. Our police intervenes, but can they maintain order?"
 				SUMMARY "Our peasants storm our headquarters"
-			}
-			ReactionnarismRevolt = {
-				NAME "Reactionary Revolt"
-				DESCRIPTION "Reactionary forces mobilized their efforts in an armed uprising. Our revolutionary dream may vanish if we do not answer by force."
-				SUMMARY "The reactionary forces are attacking the very roots of our revolution!"
-			}
-			ExpensionofTheRevolution = {
-				NAME "Expansion of the Revolution"
-				DESCRIPTION "A pro-revolutionary neighboring country is trying to end our ancestral system by force, we must repel this invader or we will lose our government!"
-				SUMMARY "A neighboring country that succumbed to a Jacobin revolution has invaded us!"
 			}
 		}
 	}

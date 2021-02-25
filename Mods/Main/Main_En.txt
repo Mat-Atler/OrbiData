@@ -717,8 +717,7 @@ Main = {
 					75 = "We are winning the war"
 					90 = "Our victory is striking"
 				}
-				
-				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br>@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth<br>"
+				DESCRIPTION <b> "Status: "@[value,LEVEL] </b>" ("@[value] ")" <br>"If tomorrow we were signing a peace treaty with our enemy, here are the consequences:" <br><br>@[peaceProposal_ColonySize]" Colonial State Size <br>"@[peaceProposal_StateSize]" State Size <br>"@[peaceProposal_Wealth]" Wealth"
 				SUMMARY "Describes the state of the war"
 				}
 				
@@ -840,18 +839,6 @@ Main = {
 				}
 				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The stability and wealth of our region attracts scavengers. Distant barbarians seem to inevitably come closer to our borders and can cause many problems."
 				SUMMARY "The migration of distant barbarians can be a problem in the long run"
-			}
-			RevolutionIdeals = {
-				NAME "Revolution Ideals"
-				LEVEL value = {
-					0 = "Very weak ideals" 
-					25 = "Weak ideals"
-					50 = "Commonly accepted ideals"
-					75 = "Strong ideals"
-					90 = "Very strong ideals"
-				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The pro-revolutionary movement has become part of the mentality of our people. They reject the old order, the arbitrary of the nobility and the political power of the church."
-				SUMMARY "The level of popularity of pro-revolutionary ideals"
 			}
 			
 			Reactionnarism = {
@@ -2722,16 +2709,6 @@ Main = {
 				NAME "Revolution Attempt"
 				DESCRIPTION "A local peasant revolt degenerates into open rebellion. Our regime is challenged in violence. Our police intervenes, but can they maintain order?"
 				SUMMARY "Our peasants storm our headquarters"
-			}		
-			ReactionnarismRevolt = {
-				NAME "Reactionary Revolt"
-				DESCRIPTION "Reactionary forces mobilized their efforts in an armed uprising. Our revolutionary dream may vanish if we do not answer by force."
-				SUMMARY "The reactionary forces are attacking the very roots of our revolution!"
-			}
-			ExpensionofTheRevolution = {
-				NAME "Expansion of the Revolution"
-				DESCRIPTION "A pro-revolutionary neighboring country is trying to end our ancestral system by force, we must repel this invader or we will lose our government!"
-				SUMMARY "A neighboring country that succumbed to a Jacobin revolution has invaded us!"
 			}
 		}
 	}
