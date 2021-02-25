@@ -36,9 +36,9 @@ Main = {
 			NAME "大航海時代"
 			DESCRIPTION "大航海時代"
 		}
-		AbsolutismAge = {
-			NAME "絶対君主制時代"
-			DESCRIPTION "絶対君主制時代"
+		ImperialismAge = {
+			NAME "帝国主義時代"
+			DESCRIPTION "帝国主義代"
 		}
 		IndustrialAge = {
 			NAME "産業時代"
@@ -2262,6 +2262,68 @@ Main = {
 				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The people is sovereign. It is on these words that we have built our government, which binds together the citizens of our Nation."
 				SUMMARY "A government in which the people are sovereign"
 			}
+			PrivilegeRevocation = {
+				NAME "Revocation of Privileges"
+				LEVEL value = {
+					0 = "Connivance with the privileged ones"
+					20 = "Anti-noble feelings"
+					50 = "Equality of rights"
+					75 = "Active persecution"
+					100 = "Total abolition of nobility" 
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Once the people is sovereign, we must annihilate this class of profiteers that are the noblemen."
+				SUMMARY "Weakens the aristocratic class"
+			}
+			AbolitionOfSlavery = {
+				NAME "Abolition of Slavery"
+				DESCRIPTION "Slavery has been abolished in our society."
+				SUMMARY "Prevents any organization of slavery"
+			}
+			AbolitionOfSerfdom = {
+				NAME "Abolition of Serfdom"
+				DESCRIPTION "Serfdom has been abolished in our society, it provides a more productive agriculture but a less efficient control of our peasants."
+				SUMMARY "Make our peasants into free small landowners"
+			}
+			ConstitutionalMonarchy = {
+				NAME "Constitutional Monarchy"
+				LEVEL value = {
+					0 = "Monarchy in Ruin"
+					20 = "Weakened Monarchy"
+					50 = "Reform of the old laws"
+					75 = "Modern Monarchy"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> Absolutism seems the way of the past provoking the wrath of the people and the bourgeoisie. While it's unacceptable to see our monarchy disappear, perhaps an significant act would calm populist tensions."
+				SUMMARY "A government in which the ruler is also bound by the law"
+			}
+			PoliticOfTerror = {
+				NAME "Politic of Terror"
+				LEVEL value = {
+					0 = "Safe Republic"
+					0.01 = "Paranoid Republic"
+					15 = "Abusive denunciations"
+					30 = "Mass Executions"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The enemy is everywhere. The reactionary forces are hiding and we must establish a system of denunciation and swift judgment to fix the situation."
+				SUMMARY "Eliminates all opposition and even beyond by the guillotine"
+			}
+			Secularism = {
+				NAME "Secularism"
+				LEVEL value = {
+					0 = "Respect for the ifluence of the clergy"
+					0.01 = "Criticisms of the political influence of the clergy"
+					25 = "Severe denunciation of political influence of the clergy"
+					50 = "Separation of Church and State"
+					100 = "State Atheism"
+				}
+				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The clergy has always influenced our political life and today works with reactionary forces. We must put an end to this influence."
+				SUMMARY "Reduces the influence of the church"
+			}
+			UpperHouse = {
+				NAME "Upper House"
+				DESCRIPTION "The upper chamber is a body representing the interests of the important elements of the State. "
+				SUMMARY "First step to build an independent legislative body"
+			}
+
 		}
 		Events = {
 			::APPEND "Main/Nomads_Jp.txt" Nomads.Nodes.Events

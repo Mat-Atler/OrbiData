@@ -36,9 +36,9 @@ Main = {
 			NAME "Âge des Découvertes"
 			DESCRIPTION "Âge des Découvertes"
 		}
-		AbsolutismAge = {
-			NAME "Âge de l'Absolutisme"
-			DESCRIPTION "Âge de l'Absolutisme"
+		ImperialismAge = {
+			NAME "Âge Impérial"
+			DESCRIPTION "Âge Impérial"
 		}
 		IndustrialAge = {
 			NAME "Âge Industriel"
@@ -2243,6 +2243,34 @@ Main = {
 				SUMMARY "Un gouvernement où le peuple est souverain"
 			}
 				
+			PoliticOfTerror = {
+				NAME "Politique de Terreur"
+				LEVEL value = {
+					0 = "République en sécurité"
+					0.01 = "République paranoïaque"
+					15 = "Dénonciations abusives"
+					30 = "Executions de Masses"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'ennemi est partout. Les forces réactionnaires se cachent et nous devons mettre en place un sysème de délation et de prompt jugement pour rétablir la situation."
+				SUMMARY "Élimine toute opposition et même au delà par la guillotine"
+			}
+			Secularism = {
+				NAME "Sécularisme"
+				LEVEL value = {
+					0 = "Respect de l'ifluence du clergé"
+					0.01 = "Critiques de l'influence politique du clergé"
+					25 = "Dénonciation sévère de influence politique du clergé"
+					50 = "Séparation de l'Église et de l'État"
+					100 = "Athéisme d'État"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le clergé a toujours influencé notre vie politique et travaille aujourd'hui avec les forces réactionnaires. Nous devons mettre un terme à cette influence."
+				SUMMARY "Réduit l'influence de l'église"
+			}
+			UpperHouse = {
+				NAME "Chambre Haute"
+				DESCRIPTION  "La chambre haute est un organe représentant les intérêts des grands de l'État. "
+				SUMMARY "Première étape pour construire un organe législatif indépendant"
+			}
 		}
 		Events = {
 			::APPEND "Main/Nomads_Fr.txt" Nomads.Nodes.Events
