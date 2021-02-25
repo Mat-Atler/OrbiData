@@ -69,12 +69,6 @@ Main = {
 			IF ( ~RevolutionaryRepublic | ~Democracy ) & WarStatus.revolutionnaryWar == 2
 				PROCESS Reactionnarism -= 30
 			ENDIF
-			IF ~HereticsCountry & WarStatus.peaceProposal_StateSize > 0
-                PROCESS HereticsCountry -= WarStatus.peaceProposal_StateSize
-            ENDIF
-            IF ~HeathensCountry & WarStatus.peaceProposal_StateSize > 0
-                PROCESS HeathensCountry -= WarStatus.peaceProposal_StateSize
-            ENDIF
 			PROCESS WarStatus.revolutionnaryWar = 0
 			REMOVE_WITHOUT_ALERT WarSystemTag
 			DROPDOWN_SET_STATE Diplomacy.Peace
@@ -1441,6 +1435,8 @@ Main = {
 				LINK MilitaryDictatorship = {
 						WEIGHT [ max ] Min(MilitaryManpower.value / 1.5, 100)
 					}
+				LINK WarStatus = {
+					}
 			}
 			MilitaryEfficiency = {
 				VALUE value [ 0 50 100 ]
@@ -2117,7 +2113,7 @@ Main = {
 				VALUE ColonialDistance [ 0 0 500 ]
 				
 				SLEEP = {
-					IF ( ~AcrossTheOcean & AcrossTheOcean >= 30 )
+					IF ( ~AcrossTheOcean & AcrossTheOcean >= 30 & ~ColonialRebellion == 0 )
 						SPAWN
 					ENDIF
 				}
@@ -2555,7 +2551,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2598,7 +2594,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 35 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2630,7 +2626,7 @@ Main = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500
+					IF ~StateSize & GameTime() > 2800 &  ( GameTime() > 5000 |  GetCurrentEra() >= GetEra(IronAge) ) & GameTime() < 9500 & GetCurrentEra() < GetEra(DiscoveryAge)  & ~BarbarianMonarchy == 0 & VassalPower < 30
 						SPAWN
 					ENDIF
 				}
@@ -4799,10 +4795,10 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.1)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.1)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ENDIF
 					
 				}
@@ -5318,7 +5314,7 @@ Main = {
 					RELATED_LINK MilitaryTechnology
 				}
 				UNLOCK_CONDITIONS = {
-					HINT ~BarbarianThreat
+					HINT ~BarbarianThreat | ~Forge
 					CONDITION_VALUE BarbarianThreat >= 100
 					OR
 					CONDITION_NODE + BarbarianAtGates
@@ -6076,7 +6072,7 @@ Main = {
 						 WEIGHT [ max ] NavyQuota
 				}
 				
-				TRIGGER_LEAVE ArmyQuota = {
+				TRIGGER_LEAVE NavyQuota = {
 						SET Navy.value [ : : 1000 ]
 				}		
 				
@@ -7235,12 +7231,12 @@ Main = {
 				
 				TICK = {
 				IF ~Blocade == 0
-					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 75  )
+					PROCESS ColonialProsperity = ColonialProsperity - PerSeconds ( ColonialTariffs / 50  )
 					IF ~ColonialAutonomyDesire
 						PROCESS ColonialAutonomyDesire += PerSeconds ( ColonialTariffs / 210 * ColonialStateSize / 150  )
 					ENDIF
 					IF ColonialProsperity > 5
-						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 8.5 )
+						PROCESS $Wealth = $Wealth + PerSeconds( ColonialProsperity * value / 13 )
 					ENDIF
 				ENDIF
 				}
@@ -7289,7 +7285,7 @@ Main = {
 				TICK = {
 					PROCESS ColonialProsperity = ColonialProsperity + PerSeconds ( ColonialHelp / 75  )
 					IF ~ColonialAutonomyDesire
-						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialHelp / 500  )
+						PROCESS ColonialAutonomyDesire -= PerSeconds ( ColonialHelp / 800  )
 					ENDIF
 					PROCESS $Wealth = $Wealth - PerSeconds( value / 5 )
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds( value / 20 )
@@ -8058,7 +8054,7 @@ Main = {
 					$PoliticalPower = 750
 				}
 				UPGRADE = {
-					$PoliticalPower = ( LinkCount (PoliticOfTerror) + 1 ) * 10
+					$PoliticalPower = (LinkCount(PoliticOfTerror) + 1) * 10
 				}
 				
 				TICK = {
@@ -8380,7 +8376,7 @@ Main = {
 			Pillaging = {
 				SOUND_EVENT "Main/SFX/Pillards.wav"
 				SOUND_WINDOW "Main/SFX/Pillards.wav"
-				EVENT_DEF [ 15 15 140 33% ]
+				EVENT_DEF [ 15 15 250 25% ]
 				ARISE = {
                     EVENT_SPEED OverlandTrade / 100
                     IF OverlandTrade < 10
@@ -8388,7 +8384,7 @@ Main = {
                     ENDIF
                 }
 				TICK = {
-					PROCESS OverlandTrade = OverlandTrade - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS OverlandTrade = OverlandTrade - PerSeconds(3 * 0.75 ? 1.25)
 					IF ReligiousMonuments > 25
 						OVERRIDE_PARAM ReligiousMonuments.value = GetParam(ReligiousMonuments.value) - PerSeconds(0.25 * 0.75 ? 1.25)
 						PROCESS ReligiousMonuments = Min( GetParam(ReligiousMonuments.value), ReligiousMonuments )
@@ -8620,7 +8616,7 @@ Main = {
 			EconomicCrisis = {
 				SOUND_EVENT "Main/SFX/CoinsBad.wav"
 				SOUND_WINDOW "Main/SFX/CoinsBad.wav"
-				EVENT_DEF [ 30 15 20 75% ]
+				EVENT_DEF [ 25 15 20 75% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF $Wealth > 10
@@ -8629,16 +8625,16 @@ Main = {
 				}
 				TICK = {
 					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(0.5)
-					PROCESS Stability = Stability - PerSeconds(0.5 * 0.75 ? 1.25)
-					PROCESS Navy = Navy - PerSeconds(0.05 + Navy * 0.04)
+					PROCESS Stability = Stability - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS Navy = Navy - PerSeconds(0.05 + Navy * 0.08)
 					OVERRIDE_PARAM CelesteMandate.value = GetParam(CelesteMandate.value) - PerSeconds(0.5)
 					PROCESS CelesteMandate = Min( GetParam(CelesteMandate.value), CelesteMandate )
 					OVERRIDE_PARAM Mercenaries.value = GetParam(Mercenaries.value) - PerSeconds(5)
 					PROCESS Mercenaries = Min( GetParam(CelesteMandate.value), Mercenaries )
-					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.05 + MilitaryManpower.Infantry_value * 0.04)
-					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.05 + MilitaryManpower.Cavalry_value * 0.04)
-					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.05 + MilitaryManpower.Missile_value * 0.04)
-					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.05 + MilitaryManpower.Mercenaries_value * 0.5)
+					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.05 + MilitaryManpower.Infantry_value * 0.08)
+					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.05 + MilitaryManpower.Cavalry_value * 0.08)
+					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.05 + MilitaryManpower.Missile_value * 0.08)
+					PROCESS MilitaryManpower.Mercenaries_value = MilitaryManpower.Mercenaries_value - PerSeconds(0.05 + MilitaryManpower.Mercenaries_value * 0.8)
 				}
 				LINK Stability = {
 					COLOR red

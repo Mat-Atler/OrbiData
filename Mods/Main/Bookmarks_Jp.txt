@@ -1,5 +1,4 @@
 Bookmarks = {
-
 	SargonOfAkkad = {
 		NAME "Sargon Of Akkad"
 		DESCRIPTION "Sargon of Akkad, translated version of Šarru-kīnu is a powerful monarch from northern Mesopotamia. Although his political beginnings were troubled and unknown, he eventually asserted himself at Kish, marching on Babylonia and then on Syria and Elam, founding a state linking the Persian Gulf to the Mediterranean Sea. He founded Akkad, a prosperous city with many religious buildings. In many respects, the Akkadian Empire, by its size and its domination of several peoples, can be considered the very first empire in History."
@@ -12,5 +11,4 @@ Bookmarks = {
 		VICTORY "The culture of Japan has matured and the country is at peace. Japan's future looks bright."
 		GROUP Folder_Food "Folder Food"
 	}
-
 }
