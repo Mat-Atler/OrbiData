@@ -10776,7 +10776,7 @@ Main = {
 				}
 				
 		}
-			ForeignInterferance = {
+			ForeignInterference = {
 				SOUND_EVENT "Main/SFX/DiplomacyBadEvent.wav"
 				SOUND_WINDOW "Main/SFX/DiplomacyBadEvent.wav"
 				EVENT_DEF [ 15 30 100 35% ]
