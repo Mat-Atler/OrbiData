@@ -34,10 +34,10 @@ Bookmarks = {
 			Main.Stability = [ 0 40 100 ]
 			Main.Natalism = [ 0 55 100 ]
 			Main.Monarchy = [ 0 15 50 ]
-			Main.StateSize = [ 0 55 2000 ]
-			Main.Settlement = [ 0 100 100 ]
-			Main.Urbanization = [ 0 100 100 ]
-			Main.AristocracyClass = [ 0 30 100 ]
+			Main.StateSize = [ 0 75 2000 ]
+			Main.Settlement = [ 0 75 75 ]
+			Main.Urbanization = [ 0 50 75 ]
+			Main.AristocracyClass = [ 0 35 100 ]
 			Main.NeighborhoodBellicism = [ 0 60 100 ]
 		}
 		
@@ -54,16 +54,17 @@ Bookmarks = {
 			Main.Piety = [ 0 15 70 ]
 			Main.PriestClass = [ 0 30 100 ]
 			Main.ReligiousOfferings = [ 0 20 100 ]
+			Main.Devotion = [ 0 40 1000 ]
 		}
 		
 		GROUP Folder_Trade = {
 			Main.ArtisanClass = [ 0 40 100 ]
 			Main.Pottery = [ 0 50 100 ]
-			Main.TradeTax = [ 0 15 100 ]
-			Main.Mining = [ 0 25 100 ]
-			Main.Salt = [ 0 25 100 ]
+			Main.TradeTax = [ 0 22 100 ]
+			Main.Mining = [ 0 35 100 ]
+			Main.Salt = [ 0 30 100 ]
 			Main.Gold = [ 0 25 100 ]
-			Main.Spices = [ 0 5 100 ]
+			Main.Spices = [ 0 10 100 ]
 			Main.OverlandTrade = [ 0 15 100 ]
 			Main.NavalTrade = [ 0 5 100 ]
 			Main.TradeGoods = [ 0 100 1000 ]

@@ -687,7 +687,8 @@ Main = {
 					75 = "Nous gagnons la guerre"
 					90 = "Notre victoire est éclatante"
 				}
-				DESCRIPTION <b> "Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br>"Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences :" <br><br>@[peaceProposal_ColonySize]" Taille de la Colonie <br>"@[peaceProposal_StateSize]" Taille de l'État <br>"@[peaceProposal_Wealth]" Richesse"
+				
+				DESCRIPTION <b> "Statut : "@[value,LEVEL] </b>" ("@[value] ")" <br>"Si demain nous signions un traité de paix avec l'ennemi, voici les conséquences :" <br><br>@[peaceProposal_ColonySize]" Taille de la Colonie <br>"@[peaceProposal_StateSize]" Taille de l'État <br>"@[peaceProposal_Wealth]" Richesse<br>"
 				SUMMARY "Décrit l'état de la guerre"
 				}
 				
@@ -812,6 +813,31 @@ Main = {
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"La stabilité et richesse de notre région attire les charognards. Des barbares lointains semblent se rapprocher inéluctablement de nos frontières et peuvent causer de sacrés problèmes."
 				SUMMARY "Les migrations de barbares peuvent nous poser un problème sur le long terme"
 			}
+			RevolutionIdeals = {
+				NAME "Idéaux Révolutionnaire"
+				LEVEL value = { 
+					0 = "Idéaux très faibles" 
+					25 = "Idéaux faibles"
+					50 = "Idéaux très répandus"
+					75 = "Idéaux forts"
+					90 = "Idéaux très fort"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Les mouvement pro-révolutionnaires sont entrées dans la mentalité de notre peuple. Ils rejettent l'ordre ancien, l'abritrarité de la noblesse et la puissance politique de l'église."
+				SUMMARY "Le niveau de popularité des idéaux pro-révolutions"
+			}
+			
+			
+			Reactionnarism = {
+				NAME "Réactionnarisme"
+				LEVEL value = {
+					0 = "Inexistant"
+					10 = "Faible"
+					20 = "Répendu"
+					60 = "Très Répandu"
+				}
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Le réactionnarisme représentante l'ensemble des idéeaux et des forces souhaitant protéger l'ordre ancien, particulièrement la noblesse et le clergé. Ils rejettent farouchement les réformes jusqu'à prendre les armes."
+				SUMMARY "Le niveau de popularité des idéaux anti-révolution"
+			}	
 				
 		}
 		Levers = {
@@ -2242,6 +2268,39 @@ Main = {
 				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Le peuple est souverain. C'est sur ces mots que s'est bâti notre gouvernement populaire, qui lie ensemble les citoyens de notre Nation."
 				SUMMARY "Un gouvernement où le peuple est souverain"
 			}
+			PrivilegeRevocation = {
+				NAME "Révocation des privilèges"
+				LEVEL value = {
+					0 = "Connivence avec les privilégiés"
+					20 = "Sentiments anti-noblesse"
+					50 = "Égalité des droits"
+					75 = "Persécutions actives"
+					100 = "Abolition totale de la noblesse"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>Une fois le peuple souverain, il convient d'anéantir cette classe de profiteur que sont les nobles."
+				SUMMARY "Affaiblit la classe aristocratique"
+			}
+			AbolitionOfSlavery = {
+				NAME "Abolition de l'Esclavage"
+				DESCRIPTION  "L'Esclavage a été aboli dans notre société."
+				SUMMARY "Empêche toute organisation esclavagiste"
+			}
+			AbolitionOfSerfdom = {
+				NAME "Abolition du Servage"
+				DESCRIPTION  "Le Servage a été aboli dans notre société, cela permet une agriculture plus productive mais un contrôle moins efficace de nos paysans."
+				SUMMARY "Rends nos paysans en petits propriétaires terriens libres"
+			}
+			ConstitutionalMonarchy = {
+				NAME "Monarchie Constitutionnelle"
+				LEVEL value = {
+					0 = "Monarchie en ruine"
+					20 = "Monarchie affaiblie"
+					50 = "Réforme des anciennes lois"
+					75 = "Monarchie moderne"
+				}
+				DESCRIPTION  <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'absolutisme semble la voie du passé provocant l'ire du peuple et de la bourgeoisie. S'il est intolérable de voir notre monarchie disparaître peut être qu'un geste important soulagerai les tensions populistes."
+				SUMMARY "Un gouvernement où le souverain est lui aussi régit par la loi"
+			}
 				
 			PoliticOfTerror = {
 				NAME "Politique de Terreur"
@@ -2636,6 +2695,16 @@ Main = {
 				NAME "Tentative Révolutionnaire"
 				DESCRIPTION "Une révolte locale de la paysanerie à dégénérer en rébellion ouverte. Notre régime est contesté dans la violence. Notre police intervient mais parvient elle à contenir l'ordre ?"
 				SUMMARY "Nos paysans assaillent nos quartier-généraux et la situation menace de dégénérer"
+			}
+			ReactionnarismRevolt = {
+				NAME "Révolte Réactionnaire"
+				DESCRIPTION "Les forces réactionnaires ont mobilisés leurs efforts dans une insurrection armée. Notre rêve révolutionnaire peut s'évanouir si nous ne répondons pas par la force."
+				SUMMARY "Les forces réactionnaire attaquent les fondements de notre révolution!"
+			}
+			ExpensionofTheRevolution = {
+				NAME "Expension de la Révolution"
+				DESCRIPTION "Un pays voisin pro-révolutionnaire essaye de mettre fin à notre système ancestral par la force, nous devons repousser cet envahisseur ou nous perdrons notre gouvernement!"
+				SUMMARY "Un pays voisin ayant succombé à une révolution jacobine nous a envahis!"
 			}
 			
 		}
