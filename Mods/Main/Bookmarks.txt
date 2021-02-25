@@ -220,4 +220,13 @@ Bookmarks = {
 			CONDITION_ERA < LateAntiquity
 		}
 		}
+		
+	SengokuJidai = {
+		PRESET Yamatai
+		ERA FeudalAge
+		YEAR 1551
+		GAMETIME 6000
+		DIFFICULTY Difficulty_Very_Hard
+		
+		}
 }
