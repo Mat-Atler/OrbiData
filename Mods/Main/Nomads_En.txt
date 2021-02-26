@@ -49,7 +49,7 @@ Nomads = {
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "The clans will not listen you by pure kindness, teach them a lesson with your army to increase your authority, in the process it will lower their power, temporarily."
 				SUMMARY "Using the army to increase your authority"
 			}
-			Clanicbanners = {
+			ClanicBanners = {
 				NAME "Clanic Banners"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Now that we are a federation you can raise the men of our federated clans to significantly increase the total of talented horsmen in the army."
 				SUMMARY "Use the authority to increase quickly the number of horsemen"

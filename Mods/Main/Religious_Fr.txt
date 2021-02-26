@@ -375,7 +375,7 @@ Religious = {
 			}
 			Confiscation = {
 				NAME "Confiscation"
-				DESCRIPTION "Pendant que nos finances sont au plus bas, nombreux sont les membres du gouvernement révolutionnaire qui propose que les biens des """"ennemis de la révolution"""" soient mis à la disposition de la Nation."
+				DESCRIPTION "Pendant que nos finances sont au plus bas, nombreux sont les membres du gouvernement révolutionnaire qui propose que les biens des 'ennemis de la révolution' soient mis à la disposition de la Nation."
 				SUMMARY "Réduit nos monuments religieux et nos monastères mais va renflouer nos caisses."
 			}
 			
