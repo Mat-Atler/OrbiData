@@ -307,8 +307,8 @@ Bookmarks = {
 	
 	}
 	TheSpanishEmpire = {
-		PRESET Crete 
-		ERA BronzeAge
+		PRESET Iberia  
+		ERA DiscoveryAge 
 		YEAR 1492
 		GAMETIME 9000
 		DIFFICULTY Difficulty_Easy
