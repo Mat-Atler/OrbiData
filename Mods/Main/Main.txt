@@ -1618,9 +1618,9 @@ Main = {
 				TICK = {
 					PROCESS value = 95 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
-					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
+					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 600 )
 					ELSE
-					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 125 )
+					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 150 )
 					ENDIF
 					}
 					
@@ -2478,7 +2478,7 @@ Main = {
 				DISPLAY_DECAY
 
 				SLEEP = {
-					IF ~SchoolOfThought > 50 & ~NationalCohesion > 50
+					IF SchoolOfThought > 50 & NationalCohesion > 50
 						SPAWN
 					ENDIF
 				}
@@ -2557,7 +2557,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2600,7 +2600,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2637,12 +2637,15 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS BarbarianThreat +=  PerSeconds( 0.021 )	
+						PROCESS BarbarianThreat +=  PerSeconds( 0.024 )	
 						IF  ( StateSize > 120 | Stability < 20 )
-							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 8000 )	
+							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 7000 )	
 						ENDIF
 						IF GameTime() > 9500 | GetCurrentEra() >= GetEra(DiscoveryAge)
 							REMOVE BarbarianThreat
+						ENDIF
+						IF  ( value > 99.8 & value < 100)
+							SPAWN BarbarianThrust
 						ENDIF
 				}
 				
@@ -4407,7 +4410,7 @@ Main = {
 				TICK = {
 					PROCESS cost =  value * 0.004
 					IF ( $PoliticalPower > 5)
-						PROCESS Stability = Stability + PerSeconds(value/7500)
+						PROCESS Stability = Stability + PerSeconds(value/5000)
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 					ENDIF
 				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.02)
@@ -6207,7 +6210,7 @@ Main = {
 				}
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55 * AristocracyClass / 100 )
-						PROCESS $Wealth = $Wealth - PerSeconds(value / 35 * AristocracyClass / 100 )
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 25 * AristocracyClass / 100 )
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 800)
 						PROCESS Reactionnarism = Reactionnarism + PerSeconds(value / 600)

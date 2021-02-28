@@ -353,7 +353,7 @@ Religious = {
 				SUMMARY "End of the division of the clergy, only one religious leader remains"
 			}
 			ClergyDiscontent = {
-				NAME "ClergyDiscontent"
+				NAME "Clergy Discontent"
 				DESCRIPTION "The clergy does not like to be interfered with and has decided to counterattack and use all its influence to go against all our plans. "
 				SUMMARY "The clergy works against the interests of our government."
 			}
