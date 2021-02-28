@@ -1324,6 +1324,10 @@ Main = {
 				TICK = {
 					SET Settlement.value [ : : StateSize ]
 
+                IF StateSize' > 0
+					PROCESS Minorities = Minorities + StateSize' / 6
+                ENDIF
+				
 					/// NEW ///
 					IF ~WinStateSize
 						ONCE_EVERY 2
@@ -1343,6 +1347,12 @@ Main = {
 				}
 				LINK Stability = {
 						WEIGHT [ to ]
+				}
+				LINK Stability = {
+				IF StateSize' > 0
+					COLOR green
+					FLUX 1
+				ENDIF
 				}
 				
 				/// NEW ///
@@ -1865,10 +1875,6 @@ Main = {
 						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * ( Max( Money , 1) / 40) * 0.9 ? 1.1 )
 					ENDIF
 					
-                IF StateSize' > 0
-					PROCESS Minorities = Minorities + StateSize' / 8
-                ENDIF
-					
 				}
 				LINK NavalTrade = {
 					IF (value > 0)
@@ -1900,6 +1906,7 @@ Main = {
 					PROCESS value = value + PerSeconds( 0.02 * Guilds / 100 )
 				ENDIF
 				SET Pottery.value [ : : 100 + CraftmanshipSkills ]
+				SET ArtisanClass.value [ : : 100 + CraftmanshipSkills * 3 ]
 				}
 
 				LINK Guilds = {
@@ -1907,6 +1914,9 @@ Main = {
 				}
 				
 				LINK Pottery = {
+						WEIGHT [ max ] 100 + value
+				}
+				LINK ArtisanClass = {
 						WEIGHT [ max ] 100 + value
 				}
 				
@@ -2454,22 +2464,27 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN BourgoisieClass = {
-					PROCESS BourgoisieClass = ( Urbanization * 0.6 )
+					PROCESS BourgoisieClass = ( Urbanization * 0.4 )
 				}
 				
 				TICK = {
-						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( BourgoisieClass / 1500 )					
-						PROCESS OverlandTrade = OverlandTrade + PerSeconds(value / 100)
-						PROCESS NavalTrade = NavalTrade + PerSeconds(value / 100)
+						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( BourgoisieClass / 1200 )					
+						PROCESS OverlandTrade = OverlandTrade + PerSeconds(value / 200)
+						PROCESS NavalTrade = NavalTrade + PerSeconds(value / 200)
+						PROCESS Entreprises = Entreprises + PerSeconds(value / 800)
 				}
 				
 				LINK NavalTrade = {
 					COLOR green
-					FLUX value / 100
+					FLUX value / 50
+				}
+				LINK Entreprises = {
+					COLOR green
+					FLUX value / 25
 				}
 				LINK OverlandTrade = {
 					COLOR green
-					FLUX value / 100
+					FLUX value / 25
 				}
 			}		
 			Nationalism = {
@@ -3330,7 +3345,7 @@ Main = {
 						SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
 					ENDIF
 						
-					PROCESS BourgoisieClass = BourgoisieClass + PerSeconds ( value * 0.005 )
+					PROCESS BourgoisieClass = BourgoisieClass + PerSeconds ( value * 0.002 )
 					
 					IF GetCurrentEra() < 300
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 500)
@@ -5925,7 +5940,7 @@ Main = {
 						SET Infantry.value [ : : Max (50 - Feudality.value / 2, 0) ]
 						SET Cavalry.value [ : : Max (50 - Feudality.value, 0) ]
 						SET Missile.value [ : : Max (50 - Feudality.value / 2.5, 0) ]
-						PROCESS VassalPower = VassalPower + PerSeconds(value / 500)
+						PROCESS VassalPower = VassalPower + PerSeconds(value / 700)
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 250)
 				}
 				LINK VassalPower = {
@@ -6213,7 +6228,13 @@ Main = {
 						PROCESS $Wealth = $Wealth - PerSeconds(value / 25 * AristocracyClass / 100 )
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 800)
+						SET AristocracyClass.value [ : :  30 + Nobility * 2 ]
 						PROCESS Reactionnarism = Reactionnarism + PerSeconds(value / 600)
+				}
+				
+				
+				LINK AristocracyClass = {
+						 WEIGHT [ max ] 30 + Nobility * 2
 				}
 				
 				LINK VassalPower = {
