@@ -1498,12 +1498,12 @@ Religious = {
 					$PoliticalPower = 20
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(EffortAgainstReligiousDissent) + 1 ) * 0.5
+					$PoliticalPower = (LinkCount(EffortAgainstReligiousDissent) + 1 ) * 2.5
 				}
 				TICK = {
 				IF EffortAgainstReligiousDissent > 0 & CompetitingReligiousLeader > 0
-					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( (value + CompetitingReligiousLeader) / 100 * ( 0.75 + ClergyCentralization / 200 ) )
-					PROCESS $Wealth = $Wealth - PerSeconds ( (value + CompetitingReligiousLeader) / 100 * ( 0.75 + ClergyCentralization / 200 ) )
+					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( (value + CompetitingReligiousLeader) / 50 * ( 0.75 + ClergyCentralization / 200 ) )
+					PROCESS $Wealth = $Wealth - PerSeconds ( (value + CompetitingReligiousLeader) / 33 * ( 0.75 + ClergyCentralization / 200 ) )
 				ELSE
 					PROCESS $PoliticalPower = $PoliticalPower
 					PROCESS $Wealth = $Wealth
@@ -1678,7 +1678,7 @@ Religious = {
 				}
 				
 				PRICE = {
-					$PoliticalPower = 150
+					$PoliticalPower = 250
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(Concordat) + 1) * 1.4
@@ -1692,8 +1692,7 @@ Religious = {
 				
 				PROCESS Reactionnarism = Reactionnarism + PerSeconds( value / ( Reactionnarism * Reactionnarism + 100 ) )
 				
-				PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( value / 100 ) 	
-					
+				PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( value / 100 ) 		
 				}
 				
 				LINK Reactionnarism = {
@@ -2354,7 +2353,7 @@ Religious = {
 			SpawnHereticsCountry = {
 				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
 				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
-				EVENT_DEF [ 50 20 1000 15% ]
+				EVENT_DEF [ 50 20 1000 35% ]
 				
 				SLEEP = {
 				}
@@ -2388,7 +2387,7 @@ Religious = {
 			SpawnHeathensCountry = {
 				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
 				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
-				EVENT_DEF [ 50 20 1000 15% ]
+				EVENT_DEF [ 50 20 1000 35% ]
 				
 				SLEEP = {
 				}
