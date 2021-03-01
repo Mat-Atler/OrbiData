@@ -1324,6 +1324,10 @@ Main = {
 				TICK = {
 					SET Settlement.value [ : : StateSize ]
 
+                IF StateSize' > 0
+					PROCESS Minorities = Minorities + StateSize' / 6
+                ENDIF
+				
 					/// NEW ///
 					IF ~WinStateSize
 						ONCE_EVERY 2
@@ -1343,6 +1347,12 @@ Main = {
 				}
 				LINK Stability = {
 						WEIGHT [ to ]
+				}
+				LINK Stability = {
+				IF StateSize' > 0
+					COLOR green
+					FLUX 1
+				ENDIF
 				}
 				
 				/// NEW ///
@@ -1618,9 +1628,9 @@ Main = {
 				TICK = {
 					PROCESS value = 95 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
-					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 200 )
+					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 600 )
 					ELSE
-					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 125 )
+					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 150 )
 					ENDIF
 					}
 					
@@ -1865,10 +1875,6 @@ Main = {
 						PROCESS NavalTrade =  NavalTrade + PerSeconds(value * 0.001 * ( Max( Money , 1) / 40) * 0.9 ? 1.1 )
 					ENDIF
 					
-                IF StateSize' > 0
-					PROCESS Minorities = Minorities + StateSize' / 8
-                ENDIF
-					
 				}
 				LINK NavalTrade = {
 					IF (value > 0)
@@ -1900,6 +1906,7 @@ Main = {
 					PROCESS value = value + PerSeconds( 0.02 * Guilds / 100 )
 				ENDIF
 				SET Pottery.value [ : : 100 + CraftmanshipSkills ]
+				SET ArtisanClass.value [ : : 100 + CraftmanshipSkills * 3 ]
 				}
 
 				LINK Guilds = {
@@ -1907,6 +1914,9 @@ Main = {
 				}
 				
 				LINK Pottery = {
+						WEIGHT [ max ] 100 + value
+				}
+				LINK ArtisanClass = {
 						WEIGHT [ max ] 100 + value
 				}
 				
@@ -2454,22 +2464,27 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN BourgoisieClass = {
-					PROCESS BourgoisieClass = ( Urbanization * 0.6 )
+					PROCESS BourgoisieClass = ( Urbanization * 0.4 )
 				}
 				
 				TICK = {
-						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( BourgoisieClass / 1500 )					
-						PROCESS OverlandTrade = OverlandTrade + PerSeconds(value / 100)
-						PROCESS NavalTrade = NavalTrade + PerSeconds(value / 100)
+						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds( BourgoisieClass / 1200 )					
+						PROCESS OverlandTrade = OverlandTrade + PerSeconds(value / 200)
+						PROCESS NavalTrade = NavalTrade + PerSeconds(value / 200)
+						PROCESS Entreprises = Entreprises + PerSeconds(value / 800)
 				}
 				
 				LINK NavalTrade = {
 					COLOR green
-					FLUX value / 100
+					FLUX value / 50
+				}
+				LINK Entreprises = {
+					COLOR green
+					FLUX value / 25
 				}
 				LINK OverlandTrade = {
 					COLOR green
-					FLUX value / 100
+					FLUX value / 25
 				}
 			}		
 			Nationalism = {
@@ -2478,7 +2493,7 @@ Main = {
 				DISPLAY_DECAY
 
 				SLEEP = {
-					IF ~SchoolOfThought > 50 & ~NationalCohesion > 50
+					IF SchoolOfThought > 50 & NationalCohesion > 50
 						SPAWN
 					ENDIF
 				}
@@ -2557,7 +2572,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2600,7 +2615,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | ~SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2637,12 +2652,15 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS BarbarianThreat +=  PerSeconds( 0.021 )	
+						PROCESS BarbarianThreat +=  PerSeconds( 0.024 )	
 						IF  ( StateSize > 120 | Stability < 20 )
-							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 8000 )	
+							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 7000 )	
 						ENDIF
 						IF GameTime() > 9500 | GetCurrentEra() >= GetEra(DiscoveryAge)
 							REMOVE BarbarianThreat
+						ENDIF
+						IF  ( value > 99.8 & value < 100)
+							SPAWN BarbarianThrust
 						ENDIF
 				}
 				
@@ -3327,7 +3345,7 @@ Main = {
 						SET UrbanMilitia.value [ : : Urbanization.value + 10 ]
 					ENDIF
 						
-					PROCESS BourgoisieClass = BourgoisieClass + PerSeconds ( value * 0.005 )
+					PROCESS BourgoisieClass = BourgoisieClass + PerSeconds ( value * 0.002 )
 					
 					IF GetCurrentEra() < 300
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 500)
@@ -4407,7 +4425,7 @@ Main = {
 				TICK = {
 					PROCESS cost =  value * 0.004
 					IF ( $PoliticalPower > 5)
-						PROCESS Stability = Stability + PerSeconds(value/7500)
+						PROCESS Stability = Stability + PerSeconds(value/5000)
 						PROCESS $PoliticalPower = $PoliticalPower - PerSeconds(cost)
 					ENDIF
 				PROCESS RoadsSafety = RoadsSafety - PerSeconds(value * 0.02)
@@ -5922,7 +5940,7 @@ Main = {
 						SET Infantry.value [ : : Max (50 - Feudality.value / 2, 0) ]
 						SET Cavalry.value [ : : Max (50 - Feudality.value, 0) ]
 						SET Missile.value [ : : Max (50 - Feudality.value / 2.5, 0) ]
-						PROCESS VassalPower = VassalPower + PerSeconds(value / 500)
+						PROCESS VassalPower = VassalPower + PerSeconds(value / 700)
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 250)
 				}
 				LINK VassalPower = {
@@ -6207,10 +6225,16 @@ Main = {
 				}
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55 * AristocracyClass / 100 )
-						PROCESS $Wealth = $Wealth - PerSeconds(value / 35 * AristocracyClass / 100 )
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 25 * AristocracyClass / 100 )
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 800)
+						SET AristocracyClass.value [ : :  30 + Nobility * 2 ]
 						PROCESS Reactionnarism = Reactionnarism + PerSeconds(value / 600)
+				}
+				
+				
+				LINK AristocracyClass = {
+						 WEIGHT [ max ] 30 + Nobility * 2
 				}
 				
 				LINK VassalPower = {
@@ -10776,7 +10800,7 @@ Main = {
 				}
 				
 		}
-			ForeignInterferance = {
+			ForeignInterference = {
 				SOUND_EVENT "Main/SFX/DiplomacyBadEvent.wav"
 				SOUND_WINDOW "Main/SFX/DiplomacyBadEvent.wav"
 				EVENT_DEF [ 15 30 100 35% ]

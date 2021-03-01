@@ -68,7 +68,7 @@ Religious = {
 					80 = "great"
 				}
 				DESCRIPTION <b>"Size of the heretical country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heretics, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heretic population increase drastically."
-				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain"
+				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain."
 			}
 			HeathensCountry = {
 				NAME "Heathens Country"
@@ -280,7 +280,7 @@ Religious = {
 			Concordat = {
 				NAME "Concordat"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Traditional and revolutionary thoughts confront each other about the nature of the power that religion has over society. By negotiating agreements with religious authorities that guarantee them certain rights in exchange for distancing themselves from the affairs of state, we can achieve satisfaction on both sides."
-				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power"
+				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power."
 			}			
 				
 			}
@@ -320,22 +320,22 @@ Religious = {
 			ReinforcementOfTheClergy = {
 				NAME "Reinforcement Of The Clegy"
 				DESCRIPTION "Priests have always insisted on their independence and privileges and it is with fervour that they resist our control."
-				SUMMARY "The clergy increases its independence"
+				SUMMARY "The clergy increases its independence. "
 			}
 			ReinforcementOfTheGouvernement = {
 				NAME "Reinforcement Of The Government"
 				DESCRIPTION "The clergy can have a great influence on our people, which is why it is imperative that we control it. "
-				SUMMARY "The independence of the clergy is diminishing"
+				SUMMARY "The independence of the clergy is diminishing."
 			}
 			ReinforcementOfTheReligiousHead = {
 				NAME "Reinforcement Of The Religious Head"
 				DESCRIPTION "Like any man with power, our spiritual guide will miss no opportunity to increase it further. Even if it means going against us. "
-				SUMMARY "The power of the religious leader increases"
+				SUMMARY "The power of the religious leader increases."
 			}
 			WeakReligiousHead = {
 				NAME "Weak Religious Head"
 				DESCRIPTION "Our current spiritual guide is proving to be incompetent and completely unfit. This is surely a good opportunity to solidify our power over the clergy. "
-				SUMMARY "The power of the religious leader decreases"
+				SUMMARY "The power of the religious leader decreases."
 			}
 			ExclusionFromTheReligion = {
 				NAME "Exclusion From The Religion"
@@ -355,7 +355,7 @@ Religious = {
 			ClergyDiscontent = {
 				NAME "Clergy Discontent"
 				DESCRIPTION "The clergy does not like to be interfered with and has decided to counterattack and use all its influence to go against all our plans. "
-				SUMMARY "The clergy works against the interests of our government"
+				SUMMARY "The clergy works against the interests of our government."
 			}
 			PerpetuationOfDogmas = {
 				NAME "Perpetuation of dogmas"
@@ -374,8 +374,8 @@ Religious = {
 			}
 			Confiscation = {
 				NAME "Confiscation"
-				DESCRIPTION "While our finances are at their lowest point, many members of the revolutionary government propose that the assets of ''the enemies of the revolution'' be made available to the nation."
-				SUMMARY "Reduces our religious monuments and monasteries but will replenish our treasury"
+				DESCRIPTION "While our finances are at their lowest point, many members of the revolutionary government propose that the assets of 'the enemies of the revolution' be made available to the nation."
+				SUMMARY "Reduces our religious monuments and monasteries but will replenish our treasury."
 			}
 
 		}
