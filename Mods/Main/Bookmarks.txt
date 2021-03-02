@@ -351,9 +351,9 @@ Bookmarks = {
 		
 		GROUP Folder_Army = {
 			OFFSET [ 1 0 ]
-			Main.Missile = [ 0 15 50 ]
-			Main.Infantry = [ 0 15 50 ]
-			Main.Cavalry = [ 0 15 50 ]
+			Main.Missile = [ 0 15 20 ]
+			Main.Infantry = [ 0 15 20 ]
+			Main.Cavalry = [ 0 0 0 ]
 			Main.Mercenaries = [ 0 5 50 ]
 			Main.Banners = [ 0 50 64 ]
 			Main.MilitaryManpower = [ 0 67 1000000 ]
@@ -390,6 +390,7 @@ Bookmarks = {
 			OFFSET [ -1 2 ]
 			Main.Culture = [ 0 65 100 ]
 			Main.Writing = [ 0 45 100 ]
+			Main.Litterature = [ 0 70 130 ]
 			Main.Music = [ 0 60 100 ]
 			Main.Mathematics = [ 0 120 100 ]
 			Main.Philosophy = [ 0 120 100 ]
@@ -407,9 +408,9 @@ Bookmarks = {
 		
 		OBJECTIVES = {
 			COLLECTION = {
-			CONDITION_VALUE Empire >= 100
+			CONDITION_VALUE Empire >= 90
 			CONDITION_VALUE StateSize >= 185
-			CONDITION_VALUE StateSize <= 210
+			CONDITION_VALUE StateSize <= 250
 			CONDITION_VALUE NationalCohesion >= 80
 			CONDITION_VALUE NationState >= 50
 			}
