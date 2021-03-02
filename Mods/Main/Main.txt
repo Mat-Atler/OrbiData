@@ -1065,7 +1065,7 @@ Main = {
 				TICK = {
 					PROCESS value =  value - PerSeconds(AristocracyClass/480)
 					IF value > 100
-						PROCESS value =  value - PerSeconds(AristocracyClass*AristocracyClass/2500)
+						PROCESS value =  value - PerSeconds(AristocracyClass*AristocracyClass/15000)
 					ENDIF
 					IF VassalPower == 0
 						SET Monarchy.value [ : :  Min ( Max ( 50 , 40 + AristocracyClass ) , 100 ) ]
@@ -1630,9 +1630,9 @@ Main = {
 				TICK = {
 					PROCESS value = 95 - ( Max (StateSize - 100 - VassalPower * 4 - Satrapy - Bureaucracy, 0) /2 ) - ( Minorities * 1.5 ) + ( Culture * 1 )  + ( Isolationism * 0.5 )  + LinguaFranca + ( ~Democracy * Democracy ) - ((  Heretics * ( 100 - ToleranceOfHeretics ) /200) + (  Heathens * ( 100 - ToleranceOfHeathens ) /100)) - ((Foedus + BarbarianAtGates) * 0.75)
 					IF value > 50
-					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 600 )
+					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 1200 )
 					ELSE
-					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 150 )
+					PROCESS Stability = Stability + PerSeconds( ( value - 50) / 180 )
 					ENDIF
 					}
 					
@@ -1919,7 +1919,7 @@ Main = {
 						WEIGHT [ max ] 100 + value
 				}
 				LINK ArtisanClass = {
-						WEIGHT [ max ] 100 + value
+						WEIGHT [ max ] 100 + CraftmanshipSkills * 3
 				}
 				
 			}			
@@ -2327,7 +2327,7 @@ Main = {
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
 				IF value < 60
-				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 1000
+				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 3000
 				ENDIF
 				
 				
@@ -3693,11 +3693,11 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					HINT ~Monarchy | ~MilitaryDictatorship
-					CONDITION_VALUE Monarchy >= 60
+					CONDITION_VALUE Monarchy >= 50
 					OR
-					CONDITION_VALUE MilitaryDictatorship >= 100
+					CONDITION_VALUE MilitaryDictatorship >= 70
 					ALWAYS
-					CONDITION_VALUE StateSize >= 200
+					CONDITION_VALUE StateSize >= 180
 				}
 				PRICE = {
 					$PoliticalPower = 195
@@ -4155,7 +4155,7 @@ Main = {
 					IF ( $Wealth > 5 & PriestClass > 10)
 						IF ~Monasteries
 							PROCESS Education = Education + PerSeconds(value / ( 150 - Monasteries / 2 ))
-							PROCESS $Wealth = $Wealth - PerSeconds(cost * 1 - Monasteries / 200)
+							PROCESS $Wealth = $Wealth - PerSeconds( Max ( 0 , cost * 1 - Monasteries / 200 ))
 						ELSE
 							PROCESS Education = Education + PerSeconds(value / 150)
 							PROCESS $Wealth = $Wealth - PerSeconds(cost)
@@ -5006,7 +5006,7 @@ Main = {
 				}
 				
 				TICK = {
-				IF ( MilitaryManpower > 40 & ~Island == 0 )
+				IF ( MilitaryManpower > 40 & (  ~Island == 0 | StateSize < 150 ) )
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 40 * ( 1.5 - MilitaryEfficiency /100 ) )
@@ -5020,7 +5020,7 @@ Main = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
 					PROCESS Slaves = Slaves + PerSeconds(value / 150)
 				ENDIF
-				IF (MilitaryManpower > 40 & Navy > 40 & ~Island )
+				IF (MilitaryManpower > 40 & Navy > 40 & ~Island & StateSize >= 150 )
 					PROCESS Navy = Navy - PerSeconds(value / 75)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 100 * ( 1.5 - MilitaryEfficiency /100 ) )
@@ -5725,11 +5725,21 @@ Main = {
 				}
 				
 				TICK = {
-				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Population ) / 7.5)
+				PROCESS $Wealth = $Wealth + PerSeconds(value / 100 * Population ) / 6)
+				PROCESS NavalTrade = NavalTrade - PerSeconds( NavalTrade * NavalTrade / 2500  * value / 40 * 0.9 ? 1.1 )
+				PROCESS OverlandTrade = OverlandTrade - PerSeconds( OverlandTrade * OverlandTrade / 2500  * value / 40 * 0.9 ? 1.1 )
 				}
 				
 				LINK Population = {
 				WEIGHT [ from ] 
+				}
+				LINK OverlandTrade = {
+					COLOR red
+					FLUX value / 25
+				}
+				LINK NavalTrade = {
+					COLOR red
+					FLUX value / 25
 				}
 
 			}	
@@ -6009,11 +6019,11 @@ Main = {
 						PROCESS Banners.multiplier = 1 + 0.3
 					ENDIF
 					IF ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota )
-						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * multiplier / 5000)
-						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * multiplier / 6000)
+						PROCESS MilitaryManpower.Infantry_value += PerSeconds(value * multiplier / 3000)
+						PROCESS MilitaryManpower.Missile_value += PerSeconds(value * multiplier / 4000)
 					ENDIF
 					IF  ( ~HorseDomestication & ( ~ArmyQuota == 0 | MilitaryManpower < ArmyQuota ) )
-						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * multiplier / 5000)
+						PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value + PerSeconds(value * multiplier / 2500)
 					ENDIF
 					
 				}
@@ -6227,7 +6237,7 @@ Main = {
 				}
 				TICK = {
 						PROCESS $PoliticalPower = $PoliticalPower + PerSeconds(value / 55 * AristocracyClass / 100 )
-						PROCESS $Wealth = $Wealth - PerSeconds(value / 25 * AristocracyClass / 100 )
+						PROCESS $Wealth = $Wealth - PerSeconds(value / 22 * AristocracyClass / 75 )
 						PROCESS VassalPower =  VassalPower - PerSeconds(value / 1650 )
 						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 800)
 						SET AristocracyClass.value [ : :  30 + Nobility * 2 ]
@@ -6295,7 +6305,7 @@ Main = {
 			}	
 			MedievalArmors = {
 				TYPE Technological
-				VALUE value [ 0 5 25 >> 1 ]
+				VALUE value [ 0 5 100 >> 1 ]
 				RELATED_INFO = { 
 					RELATED_LINK MilitaryTechnology
 				}
@@ -6404,10 +6414,10 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~NationalCohesion | GetCurrentEra() == GetEra(FeudalAge)
 					CONDITION_VALUE NationalCohesion >= 75
-					CONDITION_VALUE Population >= 100
-					CONDITION_VALUE StateSize >= 120
+					CONDITION_VALUE Population >= 75
+					CONDITION_VALUE StateSize >= 70
 					CONDITION_VALUE Philosophy >= 200
-					CONDITION_VALUE Tribunal >= 50
+					CONDITION_VALUE Tribunal >= 75
 				}
 				PRICE = {
 					$PoliticalPower = 495
@@ -7443,10 +7453,13 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~SchoolOfThought | ~Tribunal
+					CONDITION_VALUE Legislation >= 100
+					OR
+					CONDITION_VALUE ReligiousLaw >= 100
+					ALWAYS
 					CONDITION_NODE + Writing
 					CONDITION_VALUE Philosophy >= 200
 					CONDITION_VALUE Tribunal >= 35
-					CONDITION_VALUE Legislation >= 100
 					CONDITION_VALUE SchoolOfThought >= 80
 				}
 				PRICE = {
@@ -7845,7 +7858,7 @@ Main = {
 				LINK TradeTax = {
 						WEIGHT [ max ] 30 - LaissezFaire / 5
 				}
-				TRIGGER_SPAWN Isolationism = {
+				TRIGGER_SPAWN LaissezFaire = {
 						REMOVE EconomicCharters
 					}
 
@@ -9958,13 +9971,13 @@ Main = {
 				}
 				ARISE = {
 					EVENT_SPEED 1
-							IF FarmersTax < 10
-								REMOVE MercenaryUprising
+							IF FarmersTax < 5
+								REMOVE PeasantRevolt
 							ENDIF
 				}
 					TICK = {
-					PROCESS Stability = Stability - PerSeconds(0.33)
-					PROCESS PeasantryClass = PeasantryClass - PerSeconds(PeasantryClass / 200)
+					PROCESS Stability = Stability - PerSeconds(0.45)
+					PROCESS PeasantryClass = PeasantryClass - PerSeconds(1 + PeasantryClass / 80)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(3 + MilitaryManpower.Infantry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(1 + MilitaryManpower.Cavalry_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(3 + MilitaryManpower.Missile_value * 0.01 * (1.5 - MilitaryEfficiency /100 ) )
@@ -9992,7 +10005,7 @@ Main = {
 					}
 					
 					TRIGGER_EVENT = {
-					IF ( FarmersTax > 10 | ( PeasantryClass > 50 & Stability < 30 ) )
+					IF ( FarmersTax > 5 | ( PeasantryClass > 50 & Stability < 30 ) )
 							RISE
 					ENDIF
 					}
@@ -10306,7 +10319,7 @@ Main = {
 			Renaissance = {
 				SOUND_EVENT "Main/SFX/Renaissance.wav"
 				SOUND_WINDOW "Main/SFX/Renaissance.wav"
-				EVENT_DEF [ 200 30 50 9% ]
+				EVENT_DEF [ 200 30 30 30% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -10357,7 +10370,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ( ~Humanism == 0 & ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 18000 )  & ( ~NewWorld == 0 | ~Embassies ) )
+					IF  ( ~Humanism == 0 & ScienceKnowledge > 30 & University >= 50 & ( Culture >= 50 | GameTime() > 13000 )  & ( ~NewWorld == 0 | ~Embassies ) )
 						ERA DiscoveryAge
 						RISE
 					ENDIF

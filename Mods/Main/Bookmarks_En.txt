@@ -4,6 +4,8 @@ Bookmarks = {
 		NAME "Sargon Of Akkad"
 		DESCRIPTION "Sargon of Akkad, translated version of Šarru-kīnu is a powerful monarch from northern Mesopotamia. Although his political beginnings were troubled and unknown, he eventually asserted himself at Kish, marching on Babylonia and then on Syria and Elam, founding a state linking the Persian Gulf to the Mediterranean Sea. He founded Akkad, a prosperous city with many religious buildings. In many respects, the Akkadian Empire, by its size and its domination of several peoples, can be considered the very first empire in History."
 		VICTORY "The fertile crescent is entirely in our firm hand. The gods will be satisfied."
+		CONDITION_COLLECTION "The First Empire"
+		CONDITION_COLLECTION "The Akkadian Jewel"
 	}
 	
 	MinoanCivilization = {
@@ -18,11 +20,22 @@ Bookmarks = {
 		VICTORY "You won The Spanish Empire!"
 	}
 	
+	SengokuJidai = {
+		NAME "Sengoku Jidai"
+		DESCRIPTION "The Sengoku Jidai (1477-1603) is the most famous period in Japanese history. After the collapse of the Ashikaga power, the country plunges into a chaotic civil war where feudal lords kill eachother. The Oda clan under the leadership of Nobunaga, a small local lord, will however become in just a few years the driving force behind the reunification of Japan."
+		VICTORY "Japan is now stable and reunified under our banner. The civil war is finally over."
+		CONDITION_COLLECTION "Unified Japan"
+		CONDITION_COLLECTION "Modern Army"
+		CONDITION_COLLECTION "Bright future"
+	}
+	
 	HeianJidai = {
 		NAME "Heian Jidai"
 		DESCRIPTION "The Heian period (794-1185) is a division of ancient Japanese history. It is a period when the Chinese influence declined and the national culture flourished. The Heian period is also known as the peak of the imperial court and is famous for its arts, especially poetry and literature. Although the imperial family was powerful on the surface, the real power was held by the Fujiwara clan, a powerful aristocratic family with strong ties to the imperial family. Heian means 'peace' in Japanese."
 		VICTORY "The culture of Japan has matured and the country is at peace. Japan's future looks bright."
-		GROUP Folder_Food "Folder Food"
+		CONDITION_COLLECTION "Culture Golden Age"
+		CONDITION_COLLECTION "The Fujiwara Clan"
+		CONDITION_COLLECTION "Peaceful Times"
 	}
 
 }

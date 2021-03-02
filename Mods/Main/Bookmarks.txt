@@ -14,6 +14,7 @@ Bookmarks = {
 		DIFFICULTY Difficulty_Average
 		
 		GROUP Folder_Food = {
+			OFFSET [ -1 0 ]
 			Main.Humidity = [ 0 55 100 ]
 			Main.Temperature = [ 0 60 100 ]
 			Main.Flora = [ 0 20 100 ]
@@ -30,6 +31,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Law = {
+			OFFSET [ 0 0 ]
 			Main.Population = [ 0 80 10000 ]
 			Main.Stability = [ 0 40 100 ]
 			Main.Natalism = [ 0 55 100 ]
@@ -42,12 +44,14 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Sea = {
+			OFFSET [ -1 -1 ]
 			Main.Coastline.value = [ 0 30 100 ]
 			Main.Fishing = [ 0 30 100 ]
 			Main.Harbours = [ 0 20 60 ]
 		}
 		
 		GROUP Folder_Religion = {
+			OFFSET [ 0 1 ]
 			Main.Pantheon = [ 0 25 100 ]
 			Main.ReligiousMonuments = [ 0 40 48 ]
 			Main.ReligiousCeremony = [ 0 42 50 ]
@@ -58,6 +62,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Trade = {
+			OFFSET [ 0 -1 ]
 			Main.ArtisanClass = [ 0 40 100 ]
 			Main.Pottery = [ 0 50 100 ]
 			Main.TradeTax = [ 0 22 100 ]
@@ -71,6 +76,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Army = {
+			OFFSET [ 1 0 ]
 			Main.Missile = [ 0 7 50 ]
 			Main.Infantry = [ 0 15 50 ]
 			Main.MilitaryManpower = [ 0 25 1000000 ]
@@ -83,7 +89,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Culture = {
-			OFFSET [ 0 5 ]
+			OFFSET [ -1 2 ]
 			Main.Writing = [ 0 25 100 ]
 			Main.Music = [ 0 30 100 ]
 			Main.Mathematics = [ 0 30 100 ]
@@ -95,19 +101,23 @@ Bookmarks = {
 		}
 		
 		OBJECTIVES = {
+			COLLECTION = {
 			CONDITION_VALUE Empire >= 75
 			CONDITION_VALUE Stability >= 70
 			CONDITION_VALUE StateSize >= 200
 			CONDITION_VALUE MilitaryManpower >= 80
 			CONDITION_VALUE Militarism >= 30
+			CONDITION_ERA < LateAntiquity
+			}
+			COLLECTION = {
 			CONDITION_VALUE Urbanization >= 70
 			CONDITION_VALUE ReligiousMonuments >= 70
 			CONDITION_VALUE Pantheon <= 70
-			CONDITION_ERA < LateAntiquity
+			}
 		}
 	
 	}
-	
+
 	HeianJidai = {
 		PRESET Yamatai
 		ERA IronAge
@@ -167,7 +177,6 @@ Bookmarks = {
 			Main.DevotionToTheHarvest = [ 0 10 15 ]
 			Main.DevotionToNature = [ 0 10 15 ]
 			Main.DevotionToCraftsmanship = [ 0 10 15 ]
-			Main.DevotionToCraftsmanship = [ 0 10 15 ]
 			Main.Heathens = [ 0 0 100 ]
 		}
 		
@@ -208,17 +217,216 @@ Bookmarks = {
 		}
 		
 		OBJECTIVES = {
+			COLLECTION = {
 			CONDITION_VALUE Culture >= 70
 			CONDITION_VALUE Litterature >= 100
-			CONDITION_VALUE Agriculture >= 70
+			}
+			
+			COLLECTION = {
 			CONDITION_VALUE AristocracyClass >= 40
+			CONDITION_ERA < LateAntiquity
+			CONDITION_VALUE Agriculture >= 70
 			CONDITION_VALUE Pantheon <= 25
+			}
+			
+			COLLECTION = {
 			CONDITION_VALUE NeighborhoodBellicism <= 10
 			CONDITION_NODE - Militarism
 			CONDITION_NODE - Expensionism
-			CONDITION_ERA < LateAntiquity
+			}
 		}
-	}
+		}
+
+	SengokuJidai = {
+		PRESET Yamatai
+		ERA DiscoveryAge
+		YEAR 1551
+		GAMETIME 10000
+		DIFFICULTY Difficulty_VeryHard
+
+		GROUP Folder_Food = {
+			OFFSET [ -1 0 ]
+			Main.Humidity = [ 0 65 100 ]
+			Main.Temperature = [ 0 60 100 ]
+			Main.Flora = [ 0 50 100 ]
+			Main.Fauna = [ 0 40 100 ]
+			Main.Agriculture = [ 0 70 70 ]
+			Main.SoilFertility = [ 0 55 100 ]
+			Main.Food = [ 0 100 176 ]
+			Main.Livestock = [ 0 75 100 ]
+			Main.Mill = [ 0 85 100 ]
+			Main.Granary = [ 0 50 100 ]
+			Main.AnimalHusbandry = [ 0 70 100 ]
+			Main.FarmingTools = [ 0 100 100 ]
+			Main.DraftAnimals = [ 100 100 100 ]
+		}
+		
+		GROUP Folder_Law = {
+			OFFSET [ 0 0 ]
+			Main.Island = [ 100 100 100 ]
+			Main.Population = [ 0 120 10000 ]
+			Main.Stability = [ 0 45 100 ]
+			Main.Natalism = [ 0 45 100 ]
+			Main.Monarchy = [ 0 23 23 ]
+			Main.DivineRight = [ 0 10 94 ]
+			Main.StateSize = [ 0 50 2000 ]
+			Main.Settlement = [ 0 50 50 ]
+			Main.Urbanization = [ 0 40 50 ]
+			Main.AristocracyClass = [ 0 110 130 ]
+			Main.NeighborhoodBellicism = [ 0 100 100 ]
+			Main.Minorities = [ 0 10 100 ]
+			Main.NationalCohesion = [ 0 100 100 ]
+			Main.PeasantryClass = [ 0 120 10000 ]
+			Main.BourgoisieClass = [ 0 50 10000 ]
+			Main.FarmersTax = [ 0 8 30 ]
+			Main.PopulationTax = [ 0 8 20 ]
+			Main.CivilEngineering = [ 0 40 40 ]
+			Main.Tribunal = [ 0 24 100 ]
+			Main.Legislation = [ 0 45 100 ]
+			Main.LinguaFranca = [ 0 25 100 ]
+			Main.Diplomacy = [ 0 25 35 ]
+			Main.UrbanMilitia = [ 0 40 40 ]
+			Main.BorderControls = [ 0 25 40 ]
+			Main.VassalPower = [ 0 75 100 ]
+			Main.Nobility = [ 0 50 100 ]
+			Main.Feudality = [ 0 60 100 ]
+		}
+		
+		GROUP Folder_Sea = {
+			OFFSET [ -1 -1 ]
+			Main.Coastline.value = [ 0 80 100 ]
+			Main.Fishing = [ 0 75 100 ]
+			Main.Harbours = [ 0 90 234 ]
+			Main.Navy = [ 0 60 160 ]
+			Main.MilitaryShips = [ 0 20 100 ]
+			Main.NavyTechnology = [ 0 50 500 ]
+			Main.GreekFire = [ 0 70 100 ]
+		}
+		
+		GROUP Folder_Religion = {
+			OFFSET [ 0 1 ]
+			Main.Pantheon = [ 0 28 100 ]
+			Main.ReligiousMonuments = [ 0 60 168 ]
+			Main.ReligiousCeremony = [ 0 65 50 ]
+			Main.Piety = [ 0 30 70 ]
+			Main.PriestClass = [ 0 38 38 ]
+			Main.ReligiousOfferings = [ 0 25 100 ]
+			Main.Devotion = [ 0 85 1000 ]
+			Main.DevotionToTheHarvest = [ 0 21 21 ]
+			Main.DevotionToNature = [ 0 21 21 ]
+			Main.DevotionToWar = [ 0 21 21 ]
+			Main.DevotionToCraftsmanship = [ 0 21 21 ]
+			Main.Heathens = [ 0 0 100 ]
+			Main.Conversion = [ 0 45 100 ]
+			Main.ClergyCentralization = [ 0 40 100 ]
+			Main.ClergyIndependance = [ 0 25 100 ]
+			Main.ReligiousHeadPower = [ 0 5 100 ]
+			Main.ReligiousArt = [ 0 68 100 ]
+			Main.Monasteries = [ 0 40 100 ]
+			Main.EffortAgainstReligiousDissent = [ 0 35 100 ]
+		}
+		
+		GROUP Folder_Trade = {
+			OFFSET [ 0 -1 ]
+			Main.ArtisanClass = [ 0 100 145 ]
+			Main.Pottery = [ 0 115 115 ]
+			Main.TradeTax = [ 0 20 100 ]
+			Main.Spices = [ 0 20 100 ]
+			Main.Gold = [ 0 20 100 ]
+			Main.Salt = [ 0 35 100 ]
+			Main.Mining = [ 0 150 200 ]
+			Main.TradeFair = [ 0 60 100 ]
+			Main.OverlandTrade = [ 0 120 130 ]
+			Main.NavalTrade = [ 0 34 151 ]
+			Main.Entreprises = [ 0 50 500 ]
+			Main.TradeGoods = [ 0 400 1000 ]
+			Main.Guilds = [ 0 23 100 ]
+			Main.EconomicCharters = [ 0 25 100 ]
+			Main.Money = [ 0 70 100 ]
+			Main.RoadsSafety = [ 0 20 100 ]
+			Main.TradeRoads = [ 0 30 100 ]
+			Main.Slaves = [ 0 0 100 ]
+			Main.CraftmanshipSkills = [ 0 15 100 ]
+		}
+		
+		GROUP Folder_Army = {
+			OFFSET [ 1 0 ]
+			Main.Missile = [ 0 15 20 ]
+			Main.Infantry = [ 0 15 20 ]
+			Main.Cavalry = [ 0 0 0 ]
+			Main.Mercenaries = [ 0 5 50 ]
+			Main.Banners = [ 0 50 64 ]
+			Main.MilitaryManpower = [ 0 67 1000000 ]
+			Main.MilitaryEfficiency = [ 0 100 100 ]
+			Main.Militarism = [ 0 30 52 ]
+			Main.MilitaryManpower.Infantry_value = [ 0 30 1000 ]
+			Main.MilitaryManpower.Cavalry_value = [ 0 30 1000 ]
+			Main.MilitaryManpower.Missile_value = [ 0 15 1000 ]
+			Main.MilitaryManpower.Mercenaries_value = [ 0 2 1000 ]
+			Main.Fortifications = [ 0 70 233 ]
+			Main.HorseDomestication = [ 100 100 100 ]
+			Main.QualityVsQuantity = [ 0 70 100 ]
+			Main.Expensionism = [ 0 20 40 ]
+			Main.Officers = [ 0 55 100 ]
+			Main.Castles = [ 0 60 100 ]
+			Main.GreatGeneral
+		}
+		
+		GROUP Folder_ArmyTech = {
+			OFFSET [ 2 -1 ]
+			Main.MilitaryTechnology = [ 0 100 100 ]
+			Main.TechnologicDecay = [ 0 155 10000 ]
+			Main.Forge = [ 0 100 100 ]
+			Main.Crossbow = [ 0 100 100 ]
+			Main.GenieCorps = [ 0 100 100 ]
+			Main.BarbariansAdvancement = [ 0 100 100 ]
+			Main.Stirrups = [ 0 100 100 ]
+			Main.Cataphracts = [ 0 100 100 ]
+			Main.MedievalArmors = [ 0 100 100 ]
+			Main.SiegeWeapons = [ 0 100 100 ]
+		}
+		
+		GROUP Folder_Culture = {
+			OFFSET [ -1 2 ]
+			Main.Culture = [ 0 65 100 ]
+			Main.Writing = [ 0 45 100 ]
+			Main.Litterature = [ 0 70 130 ]
+			Main.Music = [ 0 60 100 ]
+			Main.Mathematics = [ 0 120 100 ]
+			Main.Philosophy = [ 0 120 100 ]
+			Main.University = [ 0 30 100 ]
+			Main.Education = [ 0 35 68 ]
+			Main.NonSecularEducation = [ 0 32 100 ]
+			Main.Medecine = [ 0 60 100 ]
+			Main.Alchemy = [ 0 85 100 ]
+			Main.ScienceKnowledge = [ 0 55 10000 ]
+		}
+	
+		FREE_NODES = {
+			
+		}
+		
+		OBJECTIVES = {
+			COLLECTION = {
+			CONDITION_VALUE Empire >= 90
+			CONDITION_VALUE StateSize >= 185
+			CONDITION_VALUE StateSize <= 250
+			CONDITION_VALUE NationalCohesion >= 80
+			CONDITION_VALUE NationState >= 50
+			}
+			COLLECTION = {
+			CONDITION_VALUE MilitaryManpower >= 180
+			CONDITION_VALUE Arquebus >= 100
+			}
+			COLLECTION = {
+			CONDITION_VALUE Stability >= 70
+			CONDITION_VALUE Isolationism >= 30
+			CONDITION_VALUE NeighborhoodBellicism == 0
+			CONDITION_NODE - WarStatus
+			CONDITION_ERA < ImperialismAge
+			}
+		}
+		}
 		
 
 	MinoanCivilization = {
@@ -284,21 +492,7 @@ Bookmarks = {
 			Main.Education = [ 0 5 100 ]
 			Main.Philosophy = [ 0 5 100 ]
 		}
-		
-		FREE_NODES = {
-			
 		}
-		
-		OBJECTIVES = {
-			CONDITION_VALUE Stability >= 70
-			CONDITION_VALUE StateSize >= 120
-			CONDITION_VALUE CivilEngineering >= 70
-			CONDITION_VALUE NavalTrade >= 45
-			CONDITION_VALUE Pottery >= 100
-			CONDITION_NODE + Writing
-			CONDITION_ERA < LateAntiquity
-		}
-	
-	}
-}
 
+
+}
