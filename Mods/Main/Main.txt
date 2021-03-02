@@ -2574,7 +2574,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 13000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2617,14 +2617,14 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 )  & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 13000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
 				
 				TRIGGER_SPAWN HostileCoalition = {
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
-					PROCESS NeighborhoodBellicism = 100
+					PROCESS NeighborhoodBellicism = 100f
 					ERA ImperialismAge
 				}
 				
@@ -7483,7 +7483,7 @@ Main = {
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Alchemy
-					CONDITION_VALUE SchoolOfThought >= 40
+					CONDITION_VALUE SchoolOfThought >= 25
 					CONDITION_VALUE Mathematics >= 230
 					CONDITION_VALUE Philosophy >= 230
 				}
@@ -7860,6 +7860,7 @@ Main = {
 				}
 				TRIGGER_SPAWN LaissezFaire = {
 						REMOVE EconomicCharters
+						REMOVE Guilds
 					}
 
 			}	
@@ -7871,14 +7872,13 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT GetCurrentEra() >= GetEra(ImperialismAge)
 					CONDITION_NODE + Constitution
-					CONDITION_EXCLUDE Government
 					OR
 					CONDITION_VALUE SchoolOfThought >= 65
-					CONDITION_EXCLUDE Government
 					ALWAYS
 					CONDITION_ERA >= ImperialismAge
 					CONDITION_NODE + Nationalism
 					CONDITION_VALUE PeasantryClass >= 50
+					CONDITION_VALUE BourgoisieClass >= 30
 				}
 				PRICE = {
 					$PoliticalPower = 500
@@ -7910,6 +7910,7 @@ Main = {
 					ENDIF
 				}
 				TRIGGER_SPAWN RevolutionaryRepublic = {
+					REMOVE Government
 					SPAWN Constitution
 					REMOVE FarmersTax
 					PROCESS Reactionnarism += 25
@@ -7988,6 +7989,9 @@ Main = {
 					REMOVE SlaveTrade
 					REMOVE Slaves
 					}
+				TRIGGER_LEAVE AbolitionOfSlavery = {
+					SPAWN SlaveRevolt
+					}
 
 			}
 			
@@ -8023,6 +8027,16 @@ Main = {
 				LINK Agriculture = {
 						 WEIGHT [ to ] 
 				}
+				TRIGGER_SPAWN AbolitionOfSerfdom = {
+					PROCESS Reactionnarism += 15
+					PROCESS RevolutionIdeals += 20
+					}
+				TRIGGER_LEAVE AbolitionOfSerfdom = {
+					IF RevolutionaryRepublic == 0
+						PROCESS RevolutionIdeals += 35
+						PROCESS Reactionnarism -= 30
+					ENDIF
+					}
 				
 			}
 
@@ -8152,6 +8166,7 @@ Main = {
 					ALWAYS
 					CONDITION_VALUE PriestClass > 0
 					CONDITION_NODE + PrivilegeRevocation
+					CONDITION_NODE - ReligiousLaw
 				}
 				PRICE = {
 					$PoliticalPower = 600
