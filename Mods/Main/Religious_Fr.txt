@@ -281,7 +281,7 @@ Religious = {
 			Concordat = {
 				NAME "Concordat"
 				DESCRIPTION <b>"Valeur: "@[value] </b> <br><br> "Les pensées anciennes et révolutionnaires se confrontent sur la nature du pouvoir que la religion a sur la société. En négociant des accords avec les autorités religieuses qui leur garantissent certains droits en échange d'une distanciation des affaires de l'État de leurs part, nous pouvons arriver à satisfaire les 2 camps."
-				SUMMARY "Réduit les chances d'événements négatifs religieux mais nécessitent un investissement constant de pouvoir politique."
+				SUMMARY "Réduit les chances d'événements négatifs religieux mais nécessitent un investissement constant de pouvoir politique"
 			}
 				
 		}
@@ -376,7 +376,7 @@ Religious = {
 			Confiscation = {
 				NAME "Confiscation"
 				DESCRIPTION "Pendant que nos finances sont au plus bas, nombreux sont les membres du gouvernement révolutionnaire qui propose que les biens des 'ennemis de la révolution' soient mis à la disposition de la Nation."
-				SUMMARY "Réduit nos monuments religieux et nos monastères mais va renflouer nos caisses."
+				SUMMARY "Réduit nos monuments religieux et nos monastères mais va renflouer nos caisses"
 			}
 			
 		}

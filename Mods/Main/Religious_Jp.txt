@@ -68,7 +68,7 @@ Religious = {
 					80 = "great"
 				}
 				DESCRIPTION <b>"Size of the heretical country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heretics, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heretic population increase drastically."
-				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain."
+				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain"
 			}
 			HeathensCountry = {
 				NAME "Heathens Country"
@@ -277,7 +277,7 @@ Religious = {
 			Concordat = {
 				NAME "Concordat"
 				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Traditional and revolutionary thoughts confront each other about the nature of the power that religion has over society. By negotiating agreements with religious authorities that guarantee them certain rights in exchange for distancing themselves from the affairs of state, we can achieve satisfaction on both sides."
-				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power."
+				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power"
 			}	
 
 		}
