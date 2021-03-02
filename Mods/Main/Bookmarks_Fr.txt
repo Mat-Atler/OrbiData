@@ -11,16 +11,16 @@ Bookmarks = {
 		NAME "Heian Jidai"
 		DESCRIPTION "La période Heian (794-1185) est une division de l'ancienne histoire japonaise. C'est une période où l'influence chinoise s'est atténuée et où la culture nationale s'est affirmée. La période Heian est également connue comme l'apogée de la cour impériale et est célèbre pour ses arts, en particulier la poésie et la littérature. Bien que la famille impériale ait été puissante en surface, le pouvoir réel était détenu par le clan Fujiwara, une famille aristocratique puissante qui nouait des liens importants avec la famille impériale. Heian signifie 'paix' en japonais."
 		VICTORY "La culture du Japon s'est affirmée et le pays est en paix. Le futur du Japon semble radieux."
-		CONDITION_COLLECTION "Âge d'or culturel"
+		CONDITION_COLLECTION "Âge d'Or Culturel"
 		CONDITION_COLLECTION "Le clan Fujiwara"
-		CONDITION_COLLECTION "Temps paisibles"
+		CONDITION_COLLECTION "Temps Paisibles"
 	}
 	SengokuJidai = {
 		NAME "Sengoku Jidai"
-		DESCRIPTION "Le Sengoku Jidai (1477-1603) est la période la plus célèbre de l'histoire japonaise. Après l'effondrement du pouvoir Ashikaga, le pays plonge dans une chaotique guerre civile où les seigneurs féodaux s'entretuent. Le clan Oda sous la directive de Nobunaga, le petite seigneur local va pourtant devenir en l'espace de quelques années la force motrice de la réunification du Japon."
+		DESCRIPTION "Le Sengoku Jidai (1477-1603) est la période la plus célèbre de l'histoire japonaise. Après l'effondrement du pouvoir Ashikaga, le pays plonge dans une chaotique guerre civile où les seigneurs féodaux s'entretuent. Le clan Oda sous la directive de Nobunaga, un petit seigneur local, va pourtant devenir en l'espace de quelques années la force motrice de la réunification du Japon."
 		VICTORY "Le Japon est désormais stable et est réunifié sous notre bannière. La guerre civile est enfin terminée."
-		CONDITION_COLLECTION "Japon unifié
-		CONDITION_COLLECTION "Armée moderne"
-		CONDITION_COLLECTION "Avenir radieux
+		CONDITION_COLLECTION "Japon Unifié
+		CONDITION_COLLECTION "Armée Moderne"
+		CONDITION_COLLECTION "Avenir Radieux
 	}
 }
