@@ -14,6 +14,7 @@ Bookmarks = {
 		DIFFICULTY Difficulty_Average
 		
 		GROUP Folder_Food = {
+			OFFSET [ -1 0 ]
 			Main.Humidity = [ 0 55 100 ]
 			Main.Temperature = [ 0 60 100 ]
 			Main.Flora = [ 0 20 100 ]
@@ -30,6 +31,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Law = {
+			OFFSET [ 0 0 ]
 			Main.Population = [ 0 80 10000 ]
 			Main.Stability = [ 0 40 100 ]
 			Main.Natalism = [ 0 55 100 ]
@@ -42,12 +44,14 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Sea = {
+			OFFSET [ -1 -1 ]
 			Main.Coastline.value = [ 0 30 100 ]
 			Main.Fishing = [ 0 30 100 ]
 			Main.Harbours = [ 0 20 60 ]
 		}
 		
 		GROUP Folder_Religion = {
+			OFFSET [ 0 1 ]
 			Main.Pantheon = [ 0 25 100 ]
 			Main.ReligiousMonuments = [ 0 40 48 ]
 			Main.ReligiousCeremony = [ 0 42 50 ]
@@ -58,6 +62,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Trade = {
+			OFFSET [ 0 -1 ]
 			Main.ArtisanClass = [ 0 40 100 ]
 			Main.Pottery = [ 0 50 100 ]
 			Main.TradeTax = [ 0 22 100 ]
@@ -71,6 +76,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Army = {
+			OFFSET [ 1 0 ]
 			Main.Missile = [ 0 7 50 ]
 			Main.Infantry = [ 0 15 50 ]
 			Main.MilitaryManpower = [ 0 25 1000000 ]
@@ -83,7 +89,7 @@ Bookmarks = {
 		}
 		
 		GROUP Folder_Culture = {
-			OFFSET [ 0 5 ]
+			OFFSET [ -1 2 ]
 			Main.Writing = [ 0 25 100 ]
 			Main.Music = [ 0 30 100 ]
 			Main.Mathematics = [ 0 30 100 ]
