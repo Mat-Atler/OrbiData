@@ -1917,7 +1917,7 @@ Main = {
 						WEIGHT [ max ] 100 + value
 				}
 				LINK ArtisanClass = {
-						WEIGHT [ max ] 100 + value
+						WEIGHT [ max ] 100 + CraftmanshipSkills * 3
 				}
 				
 			}			
@@ -2325,7 +2325,7 @@ Main = {
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
 				IF value < 60
-				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 1000
+				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 3000
 				ENDIF
 				
 				
@@ -5004,7 +5004,7 @@ Main = {
 				}
 				
 				TICK = {
-				IF ( MilitaryManpower > 40 & ~Island == 0 )
+				IF ( MilitaryManpower > 40 & (  ~Island == 0 | StateSize < 150 ) )
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 60 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(value / 40 * ( 1.5 - MilitaryEfficiency /100 ) )
@@ -5018,7 +5018,7 @@ Main = {
 					PROCESS NeighborhoodBellicism = NeighborhoodBellicism - PerSeconds(value * 0.0025)
 					PROCESS Slaves = Slaves + PerSeconds(value / 150)
 				ENDIF
-				IF (MilitaryManpower > 40 & Navy > 40 & ~Island )
+				IF (MilitaryManpower > 40 & Navy > 40 & ~Island & StateSize >= 150 )
 					PROCESS Navy = Navy - PerSeconds(value / 75)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(value / 80 * ( 1.5 - MilitaryEfficiency /100 ) )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(value / 100 * ( 1.5 - MilitaryEfficiency /100 ) )
@@ -6293,7 +6293,7 @@ Main = {
 			}	
 			MedievalArmors = {
 				TYPE Technological
-				VALUE value [ 0 5 25 >> 1 ]
+				VALUE value [ 0 5 100 >> 1 ]
 				RELATED_INFO = { 
 					RELATED_LINK MilitaryTechnology
 				}
@@ -6402,10 +6402,10 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT ~NationalCohesion | GetCurrentEra() == GetEra(FeudalAge)
 					CONDITION_VALUE NationalCohesion >= 75
-					CONDITION_VALUE Population >= 100
-					CONDITION_VALUE StateSize >= 120
+					CONDITION_VALUE Population >= 75
+					CONDITION_VALUE StateSize >= 70
 					CONDITION_VALUE Philosophy >= 200
-					CONDITION_VALUE Tribunal >= 50
+					CONDITION_VALUE Tribunal >= 75
 				}
 				PRICE = {
 					$PoliticalPower = 495
@@ -7441,10 +7441,13 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~SchoolOfThought | ~Tribunal
+					CONDITION_VALUE Legislation >= 100
+					OR
+					CONDITION_VALUE ReligiousLaw >= 100
+					ALWAYS
 					CONDITION_NODE + Writing
 					CONDITION_VALUE Philosophy >= 200
 					CONDITION_VALUE Tribunal >= 35
-					CONDITION_VALUE Legislation >= 100
 					CONDITION_VALUE SchoolOfThought >= 80
 				}
 				PRICE = {
@@ -7843,7 +7846,7 @@ Main = {
 				LINK TradeTax = {
 						WEIGHT [ max ] 30 - LaissezFaire / 5
 				}
-				TRIGGER_SPAWN Isolationism = {
+				TRIGGER_SPAWN LaissezFaire = {
 						REMOVE EconomicCharters
 					}
 
