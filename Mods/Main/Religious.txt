@@ -419,7 +419,7 @@ Religious = {
 			
 			HereticsCountry = {
 				VALUE value [ 0 10 100 ]
-				VALUE tempvalue [ 0 0 10 ]
+				VALUE tempvalue [ 0 0 11 ]
 				DISPLAY_VALUE
 				
 				SLEEP = {
@@ -429,7 +429,7 @@ Religious = {
 				}
 
 				TICK = {
-				PROCESS tempvalue = ( 1 ? 10 )
+				PROCESS tempvalue = ( 1 ? 11 )
 				
 				IF tempvalue >= 7 & ~SpawnHereticsCountry
 					PROCESS value = value + PerSeconds( 4 )
@@ -438,12 +438,9 @@ Religious = {
 					PROCESS value = value + PerSeconds( 1 ? 5 )
 				ENDIF
 				IF ~SpawnHereticsCountry == 0 & tempvalue >= 10
-					PROCESS value = value - PerSeconds( 1 ? 4 )
+					PROCESS value = value - PerSeconds( 1 )
 				ENDIF
 				
-				IF StateSize' > 0
-					PROCESS Heretics = Heretics + PerSeconds( StateSize' / 3 )
-				ENDIF
 				
 				
 				IF HereticsCountry <= 0
@@ -455,7 +452,7 @@ Religious = {
 			
 			HeathensCountry = {
 				VALUE value [ 0 10 100 ]
-				VALUE tempvalue [ 0 0 10 ]
+				VALUE tempvalue [ 0 0 11 ]
 				DISPLAY_VALUE
 				
 				SLEEP = {
@@ -465,7 +462,7 @@ Religious = {
 				}
 
 				TICK = {
-				PROCESS tempvalue = ( 1 ? 10 )
+				PROCESS tempvalue = ( 1 ? 11 )
 				
 				IF tempvalue >= 7 & ~SpawnHeathensCountry
 					PROCESS value = value + PerSeconds( 4 )
@@ -474,12 +471,9 @@ Religious = {
 					PROCESS value = value + PerSeconds( 1 ? 5 )
 				ENDIF
 				IF ~SpawnHeathensCountry == 0 & tempvalue >= 10
-					PROCESS value = value - PerSeconds( 1 ? 4 )
+					PROCESS value = value - PerSeconds( 1 )
 				ENDIF
 				
-				IF StateSize' > 0
-					PROCESS Heathens = Heathens + PerSeconds( StateSize' / 3 )
-				ENDIF
 				
 				IF HeathensCountry <= 0
 					REMOVE HeathensCountry
@@ -1498,12 +1492,12 @@ Religious = {
 					$PoliticalPower = 20
 				}
 				UPGRADE = {
-					$PoliticalPower = (LinkCount(EffortAgainstReligiousDissent) + 1 ) * 0.5
+					$PoliticalPower = (LinkCount(EffortAgainstReligiousDissent) + 1 ) * 2.5
 				}
 				TICK = {
 				IF EffortAgainstReligiousDissent > 0 & CompetitingReligiousLeader > 0
-					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( (value + CompetitingReligiousLeader) / 100 * ( 0.75 + ClergyCentralization / 200 ) )
-					PROCESS $Wealth = $Wealth - PerSeconds ( (value + CompetitingReligiousLeader) / 100 * ( 0.75 + ClergyCentralization / 200 ) )
+					PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( (value + CompetitingReligiousLeader) / 50 * ( 0.75 + ClergyCentralization / 200 ) )
+					PROCESS $Wealth = $Wealth - PerSeconds ( (value + CompetitingReligiousLeader) / 33 * ( 0.75 + ClergyCentralization / 200 ) )
 				ELSE
 					PROCESS $PoliticalPower = $PoliticalPower
 					PROCESS $Wealth = $Wealth
@@ -1678,7 +1672,7 @@ Religious = {
 				}
 				
 				PRICE = {
-					$PoliticalPower = 150
+					$PoliticalPower = 250
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(Concordat) + 1) * 1.4
@@ -1692,8 +1686,7 @@ Religious = {
 				
 				PROCESS Reactionnarism = Reactionnarism + PerSeconds( value / ( Reactionnarism * Reactionnarism + 100 ) )
 				
-				PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( value / 100 ) 	
-					
+				PROCESS $PoliticalPower = $PoliticalPower - PerSeconds ( value / 100 ) 		
 				}
 				
 				LINK Reactionnarism = {
@@ -1743,7 +1736,7 @@ Religious = {
 				
 				SLEEP = {
 				IF ~HeathensCountry
-					EVENT_CHANCE Min( 0.4 , 0.1 + ( Heathens + HeathensCountry ) / 200 )
+					EVENT_CHANCE Min( 0.5 , 0.1 + ( Heathens + HeathensCountry ) / 200 )
 				ELSE
 					EVENT_CHANCE Min( 0.4 , 0.1 + Heathens / 200 )
 				ENDIF
@@ -2065,7 +2058,7 @@ Religious = {
 				EVENT_DEF [ 30 80 800 100% ]
 				
 				SLEEP = {
-					EVENT_CHANCE Max( 0.1 * ( 1 - Concordat / 105 ) , ReligiousHeadPower / (Piety / 10 + 1 ) / 100 * ( 1 - Concordat / 105 ) )
+					EVENT_CHANCE Max( 0.1 * ( 1 - Concordat / 115 ) , ReligiousHeadPower / (Piety / 10 + 1 ) / 100 * ( 1 - Concordat / 115 ) )
 				}
 				
 				ARISE = {
@@ -2179,7 +2172,7 @@ Religious = {
 				EVENT_DEF [ 60 90 200 100% ]
 				
 				SLEEP = {
-					EVENT_CHANCE ClergyIndependance / 2000 + Max( ClergyIndependance' / 10 , 0.1 ) * ( 1 - Concordat / 105 )
+					EVENT_CHANCE ClergyIndependance / 2000 + Max( ClergyIndependance' / 10 , 0.1 ) * ( 1 - Concordat / 115 )
 				}
 				
 				ARISE = {
@@ -2303,17 +2296,21 @@ Religious = {
 			}
 			
 			Confiscation = {
-				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
-				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
-				EVENT_DEF [ 40 40 1000 15% ]
+				SOUND_EVENT "Main/SFX/BuildingFall.wav"
+				SOUND_WINDOW "Main/SFX/BuildingFall.wav"
+				EVENT_DEF [ 40 40 500 15% ]
 				
 				SLEEP = {
-					EVENT_CHANCE Min( 100 / ( $Wealth + 200 - RevolutionIdeals ) * ( 1 - Concordat / 100 ) , 0.25 * ( 1 - Concordat / 100 ) )
+				IF $Wealth > 0
+					EVENT_CHANCE Min( 100 / ( $Wealth + 200 - RevolutionIdeals ) * ( 1 - Concordat / 100 ) , 0.25 )
+				ELSE
+					EVENT_CHANCE 1 * ( 1 - Concordat / 100 )
+				ENDIF
 				}
 				
 				ARISE = {
 					EVENT_SPEED 1
-					IF $Wealth > 30 + RevolutionIdeals / 2
+					IF $Wealth > 20 + RevolutionIdeals / 2
 						REMOVE Confiscation
 					ENDIF
                     
@@ -2321,8 +2318,8 @@ Religious = {
 				
 				TICK = {
 				
-				PROCESS Stability = Stability - PerSeconds ( ( PriestClass + ReligiousMonuments ) * ( 1 + Religiosity / 50 ) / 500 )
-				PROCESS Reactionnarism = Reactionnarism + PerSeconds ( ( PriestClass + ReligiousMonuments ) * ( 1 + Religiosity / 50 ) / 400 )
+				PROCESS Stability = Stability - PerSeconds ( ( PriestClass + ReligiousMonuments ) * ( 1 + Religiosity / 50 ) / 600 )
+				PROCESS Reactionnarism = Reactionnarism + PerSeconds ( ( PriestClass + ReligiousMonuments ) * ( 1 + Religiosity / 50 ) / 500 )
 				
 				PROCESS ReligiousMonuments = ReligiousMonuments - PerSeconds ( ReligiousMonuments / 100 )
 				PROCESS Monasteries = Monasteries - PerSeconds ( Monasteries / 50 )
@@ -2352,9 +2349,9 @@ Religious = {
 			}
 			
 			SpawnHereticsCountry = {
-				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
-				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
-				EVENT_DEF [ 50 20 1000 15% ]
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
+				EVENT_DEF [ 30 40 1000 35% ]
 				
 				SLEEP = {
 				}
@@ -2386,9 +2383,9 @@ Religious = {
 			}
 			
 			SpawnHeathensCountry = {
-				SOUND_EVENT "Main/SFX/ConversionTrueFaith.wav"
-				SOUND_WINDOW "Main/SFX/ConversionTrueFaith.wav"
-				EVENT_DEF [ 50 20 1000 15% ]
+				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
+				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
+				EVENT_DEF [ 30 40 1000 35% ]
 				
 				SLEEP = {
 				}
