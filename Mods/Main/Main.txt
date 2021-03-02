@@ -2624,7 +2624,7 @@ Main = {
 				
 				TRIGGER_SPAWN HostileCoalition = {
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
-					PROCESS NeighborhoodBellicism = 100f
+					PROCESS NeighborhoodBellicism = 100
 					ERA ImperialismAge
 				}
 				

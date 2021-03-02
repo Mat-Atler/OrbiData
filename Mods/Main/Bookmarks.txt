@@ -242,7 +242,7 @@ Bookmarks = {
 		ERA DiscoveryAge
 		YEAR 1551
 		GAMETIME 10000
-		DIFFICULTY Difficulty_VeryHard
+		DIFFICULTY Difficulty_Hard
 
 		GROUP Folder_Food = {
 			OFFSET [ -1 0 ]
