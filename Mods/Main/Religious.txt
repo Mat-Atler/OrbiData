@@ -701,7 +701,7 @@ Religious = {
 				}
 				
 				UPGRADE = {
-					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 0.25
+					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 2
 
 				}
 				
@@ -723,9 +723,9 @@ Religious = {
 				
 				IF ( value > 0)
 					IF ~GreatSchism
-						PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0003 + value / 500 ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS cost =  (( value + Heretics + 1 ) * (value + Heathens + 1 ) * 0.0009 + value / 250 ) * ( 0.75 + ClergyCentralization / 200 )
 					ELSE
-						PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS cost =  (( value + Heretics + 1 ) * (value + Heathens + 1 ) * 0.0003 + value / 500 ) * ( 0.75 + ClergyCentralization / 200 )
 					ENDIF
 				ENDIF
 				IF ( value == 0)
