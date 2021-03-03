@@ -4821,11 +4821,14 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 					ENDIF
+					
+					IF ( Navy < NavyQuota | ~NavyQuota == 0 )
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
+					ENDIF
+					
 					
 				}
 				
