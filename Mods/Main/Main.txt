@@ -1065,7 +1065,7 @@ Main = {
 				TICK = {
 					PROCESS value =  value - PerSeconds(AristocracyClass/480)
 					IF value > 100
-						PROCESS value =  value - PerSeconds(AristocracyClass*AristocracyClass/15000)
+						PROCESS value =  value - PerSeconds(AristocracyClass/4000)
 					ENDIF
 					IF VassalPower == 0
 						SET Monarchy.value [ : :  Min ( Max ( 50 , 40 + AristocracyClass ) , 100 ) ]
@@ -2326,8 +2326,8 @@ Main = {
 				ELSE
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
-				IF value < 60
-				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 3000
+				IF value < 55
+				PROCESS WarExhaustion += PerSeconds(  (60 - value / 3000 ) + WarTimer / 20000 )
 				ENDIF
 				
 				
@@ -2574,7 +2574,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 13000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2617,7 +2617,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 ) & NeighborhoodBellicism >= 70 & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 19000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 )  & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 13000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -4821,11 +4821,14 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
+					ENDIF
+					
+					IF ( Navy < NavyQuota | ~NavyQuota == 0 )
 						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
 					ENDIF
+					
 					
 				}
 				
@@ -7483,7 +7486,7 @@ Main = {
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
 					HINT ~Alchemy
-					CONDITION_VALUE SchoolOfThought >= 40
+					CONDITION_VALUE SchoolOfThought >= 25
 					CONDITION_VALUE Mathematics >= 230
 					CONDITION_VALUE Philosophy >= 230
 				}
@@ -7860,6 +7863,7 @@ Main = {
 				}
 				TRIGGER_SPAWN LaissezFaire = {
 						REMOVE EconomicCharters
+						REMOVE Guilds
 					}
 
 			}	
@@ -7871,14 +7875,13 @@ Main = {
 				UNLOCK_CONDITIONS = {
 					HINT GetCurrentEra() >= GetEra(ImperialismAge)
 					CONDITION_NODE + Constitution
-					CONDITION_EXCLUDE Government
 					OR
 					CONDITION_VALUE SchoolOfThought >= 65
-					CONDITION_EXCLUDE Government
 					ALWAYS
 					CONDITION_ERA >= ImperialismAge
 					CONDITION_NODE + Nationalism
 					CONDITION_VALUE PeasantryClass >= 50
+					CONDITION_VALUE BourgoisieClass >= 30
 				}
 				PRICE = {
 					$PoliticalPower = 500
@@ -7910,6 +7913,7 @@ Main = {
 					ENDIF
 				}
 				TRIGGER_SPAWN RevolutionaryRepublic = {
+					REMOVE Government
 					SPAWN Constitution
 					REMOVE FarmersTax
 					PROCESS Reactionnarism += 25
@@ -7988,6 +7992,9 @@ Main = {
 					REMOVE SlaveTrade
 					REMOVE Slaves
 					}
+				TRIGGER_LEAVE AbolitionOfSlavery = {
+					SPAWN SlaveRevolt
+					}
 
 			}
 			
@@ -8023,6 +8030,16 @@ Main = {
 				LINK Agriculture = {
 						 WEIGHT [ to ] 
 				}
+				TRIGGER_SPAWN AbolitionOfSerfdom = {
+					PROCESS Reactionnarism += 15
+					PROCESS RevolutionIdeals += 20
+					}
+				TRIGGER_LEAVE AbolitionOfSerfdom = {
+					IF RevolutionaryRepublic == 0
+						PROCESS RevolutionIdeals += 35
+						PROCESS Reactionnarism -= 30
+					ENDIF
+					}
 				
 			}
 
@@ -8152,6 +8169,7 @@ Main = {
 					ALWAYS
 					CONDITION_VALUE PriestClass > 0
 					CONDITION_NODE + PrivilegeRevocation
+					CONDITION_NODE - ReligiousLaw
 				}
 				PRICE = {
 					$PoliticalPower = 600
@@ -9008,7 +9026,7 @@ Main = {
 			GreatNomadInvasion = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 150 50 60 50% ]
+				EVENT_DEF [ 150 50 35 75% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -9076,7 +9094,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ((StateSize > 150 & GameTime() > 3000) + (GameTime() > 3800) ) & ~HorseDomestication == 0 & ~NewWorld == 0
+					IF  ((StateSize > 175 & GameTime() > 2000) + (GameTime() > 3000) ) & ~HorseDomestication == 0 & ~NewWorld == 0
 						RISE
 					ENDIF
 				}
@@ -10299,10 +10317,13 @@ Main = {
 				ARISE = {
 					EVENT_SPEED 1
 				}
+				SLEEP = {
+				EVENT_CHANCE Max ( ( ColonialProsperity * 1.5 - ColonialStateSize ) / 200 , 0 ) + 15
+				}
+				
 				TICK = {
 					PROCESS ColonialStateSize += PerSeconds(1.2 * 0.25 ? 1.25)
 				}
-
 				
 				LINK ColonialStateSize = {
 					COLOR green
@@ -11130,7 +11151,6 @@ Main = {
 				
 				TICK = {
 					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(0.4 * 0.75 ? 1.25)
-					CALL_FUNCTION F_WarDeclaration
 					PROCESS WarStatus.revolutionnaryWar = 1
 				}
 			
@@ -11147,6 +11167,7 @@ Main = {
 				}
 				TRIGGER_SPAWN ExpensionofTheRevolution = {
 					PROCESS NeighborhoodBellicism -= 15
+					CALL_FUNCTION F_WarDeclaration
 					}
 				
 		}
