@@ -9023,7 +9023,7 @@ Main = {
 			GreatNomadInvasion = {
 				SOUND_EVENT "Main/SFX/Invasion.wav"
 				SOUND_WINDOW "Main/SFX/Invasion.wav"
-				EVENT_DEF [ 150 50 60 50% ]
+				EVENT_DEF [ 150 50 35 75% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -9091,7 +9091,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-					IF  ((StateSize > 150 & GameTime() > 3000) + (GameTime() > 3800) ) & ~HorseDomestication == 0 & ~NewWorld == 0
+					IF  ((StateSize > 175 & GameTime() > 2000) + (GameTime() > 3000) ) & ~HorseDomestication == 0 & ~NewWorld == 0
 						RISE
 					ENDIF
 				}
@@ -10314,10 +10314,13 @@ Main = {
 				ARISE = {
 					EVENT_SPEED 1
 				}
+				SLEEP = {
+				EVENT_CHANCE Max ( ( ColonialProsperity * 1.5 - ColonialStateSize ) / 200 , 0 ) + 15
+				}
+				
 				TICK = {
 					PROCESS ColonialStateSize += PerSeconds(1.2 * 0.25 ? 1.25)
 				}
-
 				
 				LINK ColonialStateSize = {
 					COLOR green
