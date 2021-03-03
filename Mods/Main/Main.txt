@@ -2327,7 +2327,7 @@ Main = {
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
 				IF value < 60
-				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer * 1.5 / 3000
+				PROCESS WarExhaustion += (60 - value / 200 ) + WarTimer / 5000
 				ENDIF
 				
 				
