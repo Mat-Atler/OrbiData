@@ -1844,7 +1844,7 @@ Main = {
 			
 			Medecine = {
 				NAME "Médecine"
-				DESCRIPTION <b>"Valeur : "@[value,0.###] "<br><br>Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
+				DESCRIPTION <b>"Valeur : "@[value,0.###]</b> "<br><br>Notre savoir grandissant nous a ouvert les portes de la guérison. On faisant une distinction claire entre les maladies et les malédicitions, entre prières et remèdes, nous arriverons petit à petit à combattre les fléaux des hommes."
 				SUMMARY "Atténue les chances d'épidémies"
 			}	
 			

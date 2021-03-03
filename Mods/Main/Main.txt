@@ -1065,7 +1065,7 @@ Main = {
 				TICK = {
 					PROCESS value =  value - PerSeconds(AristocracyClass/480)
 					IF value > 100
-						PROCESS value =  value - PerSeconds(AristocracyClass*AristocracyClass/15000)
+						PROCESS value =  value - PerSeconds(AristocracyClass/4000)
 					ENDIF
 					IF VassalPower == 0
 						SET Monarchy.value [ : :  Min ( Max ( 50 , 40 + AristocracyClass ) , 100 ) ]
@@ -2326,8 +2326,8 @@ Main = {
 				ELSE
 				DROPDOWN_BUTTON_ENABLE Diplomacy.MakePeace
 				ENDIF
-				IF value < 60
-				PROCESS WarExhaustion += PerSeconds(  (60 - value / 250 ) + WarTimer / 4000 )
+				IF value < 55
+				PROCESS WarExhaustion += PerSeconds(  (60 - value / 3000 ) + WarTimer / 20000 )
 				ENDIF
 				
 				
@@ -4821,10 +4821,10 @@ Main = {
 				TICK = {
 					IF ~NavyTechnology == 0
 						PROCESS Navy = Navy + PerSeconds(value * Harbours / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 					ELSE
 						PROCESS Navy = Navy + PerSeconds(value * (NavyTechnology + Harbours ) / 12000)
-						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.15)
+						PROCESS $Wealth = $Wealth - PerSeconds(value * 0.12)
 					ENDIF
 					
 				}
@@ -11148,7 +11148,6 @@ Main = {
 				
 				TICK = {
 					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(0.4 * 0.75 ? 1.25)
-					CALL_FUNCTION F_WarDeclaration
 					PROCESS WarStatus.revolutionnaryWar = 1
 				}
 			
@@ -11165,6 +11164,7 @@ Main = {
 				}
 				TRIGGER_SPAWN ExpensionofTheRevolution = {
 					PROCESS NeighborhoodBellicism -= 15
+					CALL_FUNCTION F_WarDeclaration
 					}
 				
 		}

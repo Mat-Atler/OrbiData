@@ -492,6 +492,17 @@ Bookmarks = {
 			Main.Education = [ 0 5 100 ]
 			Main.Philosophy = [ 0 5 100 ]
 		}
+		OBJECTIVES = {
+            CONDITION_VALUE Stability >= 70
+            CONDITION_VALUE StateSize >= 120
+            CONDITION_VALUE CivilEngineering >= 70
+            CONDITION_VALUE NavalTrade >= 45
+            CONDITION_VALUE Pottery >= 100
+            CONDITION_NODE + Writing
+            CONDITION_ERA < LateAntiquity
+        }
+		
+		
 		}
 
 
