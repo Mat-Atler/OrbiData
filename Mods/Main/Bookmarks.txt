@@ -509,7 +509,7 @@ Bookmarks = {
 		ERA DiscoveryAge
 		YEAR 1492
 		GAMETIME 9000
-		DIFFICULTY Difficulty_Average
+		DIFFICULTY Difficulty_Hard
 		
 		GROUP Folder_Food = {
 			Main.FarmersTax = [ 0 5 30 ]
@@ -679,12 +679,12 @@ Bookmarks = {
 		OBJECTIVES = {
 			CONDITION_NODE + DivineRight
 			CONDITION_VALUE Empire > 90
-			CONDITION_VALUE ColonialProsperity > 100
-			CONDITION_VALUE NavalSupremacy > 50
-			CONDITION_VALUE ColonialStateSize > 300
+			CONDITION_VALUE ColonialProsperity > 200
+			CONDITION_VALUE NavalSupremacy > 40
+			CONDITION_VALUE ColonialStateSize > 250
 			
 			CONDITION_VALUE Navy > 195
-			CONDITION_VALUE NavalTrade > 70
+			CONDITION_VALUE NavalTrade > 65
 			
 			CONDITION_VALUE Heathens <= 0
 			CONDITION_VALUE Heretics <= 5

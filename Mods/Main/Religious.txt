@@ -272,7 +272,7 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = value + PerSeconds ( 1 ? 20 * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity + ColonialStateSize ))
+					PROCESS value = value + PerSeconds ( 1 ? 20 * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity + ColonialStateSize * ( 1 + ColonialStateSize / 100 ) ))
 					
 					IF ColonialProsperity' > 0
 						PROCESS ColonialProsperity = ColonialProsperity + PerSeconds ( ColonialProsperity' * value * value * 0.000005 ) 
@@ -294,15 +294,15 @@ Religious = {
 				DISPLAY_VALUE
 
 				SLEEP = {
-					IF ( ~Colony & Colony.colonySettled == 1 & ColonialStateSize > 40 & ( Heretics * Heretics  > ToleranceOfHeretics * 6 ) )
+					IF ( ~Colony & Colony.colonySettled == 1 & ColonialStateSize > 40 &  Heretics * Heretics  > ToleranceOfHeretics * Max( ToleranceOfHeretics / 10 , 3 ) )
 						SPAWN
 					ENDIF
 				}
 				TICK = {
 					IF ( value < Max ( Heretics + 10 / ( ( ToleranceOfHeretics +1 ) / 10 ) , ( ToleranceOfHeretics +1 ) / 10  ))
-						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + Conversion / 400 ) * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity * 2 + ColonialStateSize ) )
+						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + Conversion / 400 ) * ( 1 + Population / 400 ) * ( 1 + Heretics / 400 ) / ( 100 + Colony.hiddenProsperity * 2 + ColonialStateSize ) )
 					ELSE
-						PROCESS value = value - PerSeconds ( 1 ? 10 * ( 1 + Conversion / 400 ) * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity + ColonialStateSize ) )
+						PROCESS value = value - PerSeconds ( value * 1 ? 10 * ( 1 + Conversion / 400 ) / 5000 )
 					ENDIF
 					
 					SET ColonialConvert.value [ : : 100 - ColonialHeretic.value ]
@@ -313,6 +313,9 @@ Religious = {
 					
 					IF ( value > 0 )
 						PROCESS ColonialAutonomyDesire =  ColonialAutonomyDesire + PerSeconds( value / 1000 )
+					ENDIF
+					IF ( value <= 0 & Heretics * Heretics  < ToleranceOfHeretics * Max( ToleranceOfHeretics / 10 , 3 ) )
+						REMOVE ColonialHeretic
 					ENDIF
 				}
 
@@ -1626,7 +1629,7 @@ Religious = {
 				}
 				
 				TICK = {
-					PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 25 +  ColonialHeretic / 45 )  )
+					PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize * ( 1 + ColonialStateSize / 200 ) / 20 +  ColonialHeretic / 45 )  )
 					IF ColonialHeretic > 0
 						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( ( value / 3 ) * ( 1 + Monasteries / 400 ) * ( 1 + Conversion / 400 ) / ( 50 + ColonialHeretic + ColonialProsperity / 2.5  + ColonialStateSize  ))
 					ENDIF
