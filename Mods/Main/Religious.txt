@@ -20,12 +20,12 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					IF ( Conversion.value <= 0 & Heretics > 50 )
+					IF ( Conversion.value <= 10 & Heretics > 25 )
 						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ToleranceOfHeretics * 0.00003 )
 					ENDIF
 					
 				
-				PROCESS Minorities = Minorities + value * 0.00015
+				PROCESS Minorities = Minorities + value * ( 1 - ToleranceOfHeretics / 200 ) * 0.00015
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeretics / 50 ) )
@@ -63,7 +63,7 @@ Religious = {
 					ENDIF
 				}
                 TICK = {
-				IF ( Conversion.value <= 0 & Heathens > 50 )
+				IF ( Conversion.value <= 10 & Heathens > 25 )
 					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ToleranceOfHeathens * 0.00002 )
 				ENDIF
 
@@ -74,7 +74,7 @@ Religious = {
                 ENDIF
 				
 				
-				PROCESS Minorities = Minorities + value * 0.00015
+				PROCESS Minorities = Minorities + value * ( 1 - ToleranceOfHeathens / 200 ) * 0.00015
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeathens / 75 ))
