@@ -8725,7 +8725,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF $Wealth < 10 & ~Stability  & GameTime() > 600
+					IF $Wealth < 10 & ~Stability  &  ( GameTime() > 1100 | ~MilitaryManpower | ~FoodExchange )
 						RISE
 					ENDIF
 				}
