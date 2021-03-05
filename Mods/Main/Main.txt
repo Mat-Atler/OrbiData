@@ -5177,13 +5177,14 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					HINT ( ~MilitaryManpower + ~ArtisanClass + ~Mining + ~MilitaryTechnology ) > 1
-					CONDITION_VALUE MilitaryManpower > 25
+					CONDITION_VALUE MilitaryManpower > 30
 					OR
-					CONDITION_VALUE OverlandTrade > 30
+					CONDITION_VALUE OverlandTrade > 40
+					OR
+					CONDITION_VALUE NavalTrade > 40
 					ALWAYS
-					CONDITION_VALUE ArtisanClass > 40
-					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE Mining > 40
+					CONDITION_VALUE ArtisanClass > 55
+					CONDITION_VALUE Mining > 65
 				}
 				PRICE = {
 					$PoliticalPower = 100
