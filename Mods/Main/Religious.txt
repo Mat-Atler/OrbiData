@@ -638,7 +638,7 @@ Religious = {
                 }
 				
 				LINK ToleranceOfHeathens = {
-					WEIGHT [ max ] Min( 75 ,(Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 )/100 ) + 25 )
+					WEIGHT [ max ] Min ( 100 , ((NationalReligion.SyncretismValue / 2 * (NationalReligion.PantheonValue * 1.5 + 25 )/100 )+25 ))
 				}
 
 			}

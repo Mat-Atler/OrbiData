@@ -428,6 +428,194 @@ Bookmarks = {
 		}
 		}
 		
+	ARepublicInTroubles = {
+		PRESET Latium
+		ERA IronAge
+		YEAR -60
+		GAMETIME 3500
+		DIFFICULTY Difficulty_VeryHard
+
+		GROUP Folder_Food = {
+			OFFSET [ -1 0 ]
+			Main.Humidity = [ 0 60 100 ]
+			Main.Temperature = [ 0 60 100 ]
+			Main.Flora = [ 0 20 100 ]
+			Main.Fauna = [ 0 30 100 ]
+			Main.Foraging = [ 0 50 100 ]
+			Main.Hunting = [ 0 50 100 ]
+			Main.Agriculture = [ 0 150 200 ]
+			Main.SoilFertility = [ 0 65 100 ]
+			Main.Food = [ 0 150 169 ]
+			Main.Livestock = [ 0 75 100 ]
+			Main.Granary = [ 0 110 110 ]
+			Main.AnimalHusbandry = [ 0 70 100 ]
+			Main.FarmingTools = [ 0 100 100 ]
+			Main.DraftAnimals = [ 100 100 100 ]
+		}
+		
+		GROUP Folder_Law = {
+			OFFSET [ 0 0 ]
+			Main.Population = [ 0 130 10000 ]
+			Main.Stability = [ 0 25 100 ]
+			Main.Natalism = [ 0 45 100 ]
+			Main.Republic = [ 0 15 113 ]
+			Main.Oligarchy = [ 0 15 100 ]
+			Main.Bureaucracy = [ 0 80 200 ]
+			Main.StateSize = [ 0 300 2000 ]
+			Main.Settlement = [ 0 200 300 ]
+			Main.Urbanization = [ 0 65 200 ]
+			Main.AristocracyClass = [ 0 70 100 ]
+			Main.NeighborhoodBellicism = [ 0 25 100 ]
+			Main.Minorities = [ 0 15 100 ]
+			Main.NationalCohesion = [ 0 25 100 ]
+			Main.PopulationTax = [ 0 10 20 ]
+			Main.CivilEngineering = [ 0 65 65 ]
+			Main.Legislation = [ 0 55 100 ]
+			Main.LinguaFranca = [ 0 70 100 ]
+			Main.Diplomacy = [ 0 15 15 ]
+			Main.UrbanMilitia = [ 0 40 75 ]
+			Main.BorderControls = [ 0 50 100 ]
+			Main.BarbarianThreat = [ 0 0 100 ]
+		}
+		
+		GROUP Folder_Sea = {
+			OFFSET [ -1 -1 ]
+			Main.Coastline.value = [ 0 60 100 ]
+			Main.Fishing = [ 0 40 100 ]
+			Main.Harbours = [ 0 95 120 ]
+			Main.Navy = [ 0 50 160 ]
+			Main.MilitaryShips = [ 0 20 100 ]
+		}
+		
+		GROUP Folder_Religion = {
+			OFFSET [ 0 1 ]
+			Main.Pantheon = [ 0 65 100 ]
+			Main.ReligiousMonuments = [ 0 60 168 ]
+			Main.ReligiousCeremony = [ 0 60 75 ]
+			Main.Piety = [ 0 40 70 ]
+			Main.PriestClass = [ 0 76 76 ]
+			Main.ReligiousOfferings = [ 0 50 100 ]
+			Main.OfferingsNature = [ 0 50 100 ]
+			Main.SacrificeNature = [ 0 0 100 ]
+			Main.Syncretism = [ 0 60 100 ]
+			Main.ToleranceOfHeretics = [ 0 75 100 ]
+			Main.ToleranceOfHeathens = [ 0 45 50 ]
+			Main.Devotion = [ 0 110 1000 ]
+			Main.DevotionToTheHarvest = [ 0 21 27 ]
+			Main.DevotionToNature = [ 0 2 27 ]
+			Main.DevotionToWar = [ 0 27 21 ]
+			Main.DevotionToCraftsmanship = [ 0 5 27 ]
+			Main.DevotionToTrade = [ 0 5 27 ]
+			Main.DevotionToTheLaw = [ 0 27 27 ]
+			Main.Heathens = [ 0 40 100 ]
+			Main.Conversion = [ 0 50 100 ]
+			Main.ClergyCentralization = [ 0 60 100 ]
+			Main.ClergyIndependance = [ 0 20 100 ]
+			Main.ReligiousHeadPower = [ 0 20 100 ]
+		}
+		
+		GROUP Folder_Trade = {
+			OFFSET [ 0 -1 ]
+			Main.ArtisanClass = [ 0 70 100 ]
+			Main.Pottery = [ 0 90 100 ]
+			Main.TradeTax = [ 0 20 20 ]
+			Main.Spices = [ 0 5 100 ]
+			Main.Gold = [ 0 20 100 ]
+			Main.Salt = [ 0 60 100 ]
+			Main.Mining = [ 0 150 200 ]
+			Main.OverlandTrade = [ 0 55 100 ]
+			Main.NavalTrade = [ 0 55 100 ]
+			Main.Entreprises = [ 0 40 500 ]
+			Main.TradeGoods = [ 0 98 1000 ]
+			Main.Money = [ 0 50 100 ]
+			Main.Slaves = [ 0 80 100 ]
+		}
+		
+		GROUP Folder_Army = {
+			OFFSET [ 1 0 ]
+			Main.Missile = [ 0 10 50 ]
+			Main.Infantry = [ 0 20 50 ]
+			Main.Cavalry = [ 0 8 50 ]
+			Main.Mercenaries = [ 0 3 50 ]
+			Main.MilitaryManpower = [ 0 180 1000000 ]
+			Main.MilitaryEfficiency = [ 0 98 100 ]
+			Main.Militarism = [ 0 30 52 ]
+			Main.MilitaryManpower.Infantry_value = [ 0 150 1000 ]
+			Main.MilitaryManpower.Cavalry_value = [ 0 60 1000 ]
+			Main.MilitaryManpower.Missile_value = [ 0 60 1000 ]
+			Main.MilitaryManpower.Mercenaries_value = [ 0 10 1000 ]
+			Main.Fortifications = [ 0 50 395 ]
+			Main.HorseDomestication = [ 100 100 100 ]
+			Main.QualityVsQuantity = [ 0 60 100 ]
+			Main.Expensionism = [ 0 50 100 ]
+			Main.Militarism = [ 0 20 52 ]
+			Main.Officers = [ 0 60 100 ]
+			Main.GreatGeneral
+		}
+		
+		GROUP Folder_ArmyTech = {
+			OFFSET [ 2 -1 ]
+			Main.MilitaryTechnology = [ 0 100 100 ]
+			Main.TechnologicDecay = [ 0 30 10000 ]
+			Main.Forge = [ 0 100 100 ]
+			Main.GenieCorps = [ 0 75 100 ]
+		}
+		
+		GROUP Folder_Culture = {
+			OFFSET [ -1 2 ]
+			Main.Culture = [ 0 50 100 ]
+			Main.Writing = [ 0 100 100 ]
+			Main.Litterature = [ 0 45 100 ]
+			Main.Music = [ 0 60 100 ]
+			Main.Mathematics = [ 0 70 100 ]
+			Main.Philosophy = [ 0 70 100 ]
+			Main.Education = [ 0 25 50 ]
+			Main.SecularEducation = [ 0 20 100 ]
+		}
+	
+		FREE_NODES = {
+			
+		}
+		
+		OBJECTIVES = {
+			COLLECTION = {
+			CONDITION_VALUE Empire >= 90
+			CONDITION_VALUE Stability >= 70
+			CONDITION_VALUE StateSize >= 500
+			CONDITION_ERA < FeudalAge
+			}
+			COLLECTION = {
+			CONDITION_VALUE Bureaucracy >= 180
+			CONDITION_VALUE Legislation >= 90
+			CONDITION_VALUE Urbanization >= 120
+			CONDITION_VALUE CivilEngineering >= 80
+			}
+			COLLECTION = {
+			CONDITION_VALUE MilitaryManpower >= 300
+			CONDITION_VALUE MilitaryEfficiency >= 80
+			CONDITION_VALUE Militarism >= 45
+			CONDITION_VALUE DevotionToWar >= 20
+			CONDITION_VALUE QualityVsQuantity >= 80
+			CONDITION_VALUE Infantry >= 30
+			}
+			COLLECTION = {
+			CONDITION_VALUE ReligiousMonuments >= 70
+			CONDITION_VALUE Culture >= 80
+			CONDITION_VALUE Education >= 30
+			CONDITION_VALUE Philosophy >= 100
+			CONDITION_VALUE Mathematics >= 100
+			CONDITION_VALUE SecularEducation >= 40
+			}
+			COLLECTION = {
+			CONDITION_VALUE NeighborhoodBellicism < 20
+			CONDITION_VALUE BorderControls >= 50
+			CONDITION_VALUE Fortifications >= 50
+			CONDITION_VALUE OverlandTrade >= 50
+			CONDITION_VALUE NavalTrade >= 50
+			}
+		}
+		}
+		
 
 	MinoanCivilization = {
 		PRESET Crete 

@@ -19,8 +19,17 @@ Bookmarks = {
 		NAME "Sengoku Jidai"
 		DESCRIPTION "Le Sengoku Jidai (1477-1603) est la période la plus célèbre de l'histoire japonaise. Après l'effondrement du pouvoir Ashikaga, le pays plonge dans une chaotique guerre civile où les seigneurs féodaux s'entretuent. Le clan Oda sous la directive de Nobunaga, un petit seigneur local, va pourtant devenir en l'espace de quelques années la force motrice de la réunification du Japon."
 		VICTORY "Le Japon est désormais stable et est réunifié sous notre bannière. La guerre civile est enfin terminée."
-		CONDITION_COLLECTION "Japon Unifié
+		CONDITION_COLLECTION "Japon Unifié"
 		CONDITION_COLLECTION "Armée Moderne"
-		CONDITION_COLLECTION "Avenir Radieux
+		CONDITION_COLLECTION "Avenir Radieux"
+	}
+		ARepublicInTroubles = {
+		NAME "Une République en danger"
+		DESCRIPTION "Au 1er siècle avant notre ère, l'ancienne petite ville-État de Rome s'était déjà considérablement développée et se trouve au carrefour de son histoire. Une élite corrompue s'affronte et l'instabilité politique règne. Comment pouvons-nous défendre les récentes conquêtes et devenir le phare de la civilisation sans de profondes réformes qui assurent la pérennité du rêve romain ?"
+		CONDITION_COLLECTION "Roma Aeterna"
+		CONDITION_COLLECTION "Un État Bien Administré"
+		CONDITION_COLLECTION "Les Légions"
+		CONDITION_COLLECTION "Âge d'Or Culturel"
+		CONDITION_COLLECTION "Pax Romana"
 	}
 }
