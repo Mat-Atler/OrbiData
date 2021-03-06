@@ -24,4 +24,14 @@ Bookmarks = {
 		CONDITION_COLLECTION "The Fujiwara Clan"
 		CONDITION_COLLECTION "Peaceful Times"
 	}
+	ARepublicInTroubles = {
+		NAME "A Republic In Troubles"
+		DESCRIPTION "In the 1st century B.C.E., the former small city-state of Rome had already considerably expanded and was at the crossroads of its history. A corrupt elite clashed against each other and political instability prevailed. How can we defend the recent conquests and become the beacon of civilization without profound reforms that ensure the durability of the Roman dream?"
+		VICTORY "You have saved Rome by building a powerful and efficient empire that will remain for centuries the paragon of civilization."
+		CONDITION_COLLECTION "Roma Aeterna"
+		CONDITION_COLLECTION "A Well-Administered State"
+		CONDITION_COLLECTION "The Legions"
+		CONDITION_COLLECTION "Culture Golden Age"
+		CONDITION_COLLECTION "Pax Romana"
+	}
 }
