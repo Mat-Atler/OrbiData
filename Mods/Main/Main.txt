@@ -5950,7 +5950,9 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~BarbarianAtGates | ~BarbariansAdvancement
-					CONDITION_NODE + BarbariansAdvancement
+					CONDITION_VALUE BarbariansAdvancement >= 90
+					OR
+					CONDITION_VALUE BarbarianAtGates >= 100
 				}
 				PRICE = {
 					$Wealth = 300

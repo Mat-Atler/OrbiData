@@ -47,5 +47,13 @@ Bookmarks = {
 		CONDITION_COLLECTION "Culture Golden Age"
 		CONDITION_COLLECTION "Pax Romana"
 	}
+	FallOfTheEmpire = {
+		NAME "Fall Of The Empire"
+		DESCRIPTION "The Roman Golden Age is far away now, and the Roman Empire is split in two. The young emperor, Flavius Honorius, is an incompetent, and the Roman army is far from its past glory where its mere presence terrorized all its opponents. The barbarian threats are multiple, the economic stability is in crumbles and the damage to the Empire already seems beyond repair. What will become of the legacy of Caesar and Augustus?"
+		VICTORY "Rome has narrowly avoided complete destruction and seems to be rekindling its glorious past."
+		CONDITION_COLLECTION "A Straightened State"
+		CONDITION_COLLECTION "The Light of Christianity"
+		CONDITION_COLLECTION "Strong Border"
+	}
 
 }
