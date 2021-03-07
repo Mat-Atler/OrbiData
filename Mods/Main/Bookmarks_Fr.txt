@@ -26,6 +26,7 @@ Bookmarks = {
 		ARepublicInTroubles = {
 		NAME "Une République en danger"
 		DESCRIPTION "Au 1er siècle avant notre ère, l'ancienne petite ville-État de Rome s'était déjà considérablement développée et se trouve au carrefour de son histoire. Une élite corrompue s'affronte et l'instabilité politique règne. Comment pouvons-nous défendre les récentes conquêtes et devenir le phare de la civilisation sans de profondes réformes qui assurent la pérennité du rêve romain ?"
+		VICTORY "Vous avez sauvé Rome en construisant un empire puissant et efficace qui restera pendant des siècles le parangon de la civilisation."
 		CONDITION_COLLECTION "Roma Aeterna"
 		CONDITION_COLLECTION "Un État Bien Administré"
 		CONDITION_COLLECTION "Les Légions"
@@ -35,7 +36,7 @@ Bookmarks = {
 	FallOfTheEmpire = {
 		NAME "Chute de l'Empire"
 		DESCRIPTION "L'Âge d'Or Romain est bien loin désormais, et l'Empire Romain est scindé en 2. Le jeune empereur, Flavius Honorius est un incapable, et l'armée romaine est loin de sa gloire passée où sa simple présence terrorisait tout ses adversaires. Les menaces barbares sont multiples, la stabilité économique en miette et les dommages à l'Empire semblent déjà irréparable. Qu'adviendra t-il de l'héritage de César et d’Auguste?"
-		VICTORY "Rome a évite de peu la destruction complète et semble renouer avec son glorieux passé."
+		VICTORY "Rome a évité de peu la destruction complète et semble renouer avec son glorieux passé."
 		CONDITION_COLLECTION "Un État Renforcé"
 		CONDITION_COLLECTION "Lumière du Christianisme"
 		CONDITION_COLLECTION "Frontière Forte"
