@@ -10,14 +10,17 @@ Bookmarks = {
 	
 	MinoanCivilization = {
 		NAME "Minoan Civilization"
-		DESCRIPTION "This is Minoan Civilization."
-		VICTORY "You won Minoan Civilization!"
+		DESCRIPTION "The Minoan civilization represents the first advanced civilization in Europe, leaving behind the first European cities, huge complexes of buildings, tools, works of art, writing systems and an enormous trading network. Their advances, several centuries in some areas, made them the main inspiration for the myth of Atlantis."
+		VICTORY "We rule over the Aegean Sea and the eastern Mediterranean Sea without rival, and our palaces will last for millennia. Greatness is our."
 	}
 	
 	 TheSpanishEmpire = {
-		NAME "The Spanish Empire"
-		DESCRIPTION "This is The Spanish Empire."
-		VICTORY "You won The Spanish Empire!"
+		NAME "Año crucial"
+		DESCRIPTION "The year 1492 is considered the most important year in Spanish history (hence the name Año crucial in Spanish historiography). This year will be marked by the Capture of Granada on January 2nd, which marks the end of the Reconquista and the discovery of America by Christopher Columbus on October 12th. These two events will allow Spain to perpetuate its status as an empire for the next three centuries."
+		VICTORY " We have ensured the purity of faith on our lands and on the other side of the ocean an empire full of wealth belongs to us. The future of Spain is bright."
+		CONDITION_COLLECTION "Plus Ultra"
+		CONDITION_COLLECTION "The Treasure Fleet"
+		CONDITION_COLLECTION "Most Catholic Majesty"
 	}
 	
 	SengokuJidai = {

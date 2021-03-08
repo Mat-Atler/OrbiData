@@ -677,21 +677,28 @@ Bookmarks = {
 		}
 		
 		OBJECTIVES = {
-			CONDITION_NODE + DivineRight
-			CONDITION_VALUE Empire > 90
+			COLLECTION = {
 			CONDITION_VALUE ColonialProsperity > 200
 			CONDITION_VALUE NavalSupremacy > 40
 			CONDITION_VALUE ColonialStateSize > 250
+			}
 			
+			COLLECTION = {
 			CONDITION_VALUE Navy > 195
 			CONDITION_VALUE NavalTrade > 65
+			}
 			
+			COLLECTION = {
+			CONDITION_NODE + DivineRight
+			CONDITION_VALUE Empire > 90
 			CONDITION_VALUE Heathens <= 0
 			CONDITION_VALUE Heretics <= 5
 			CONDITION_NODE - ToleranceOfHeathens
 			CONDITION_NODE - ToleranceOfHeretics
 			CONDITION_VALUE ColonialConvert > 90
 			CONDITION_VALUE Piety > 65
+			}
+			
 		}
 	
 	}

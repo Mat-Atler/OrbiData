@@ -7,6 +7,15 @@ Bookmarks = {
 		CONDITION_COLLECTION "The Akkadian Jewel"
 	}
 	
+	 TheSpanishEmpire = {
+		NAME "Año crucial"
+		DESCRIPTION "The year 1492 is considered the most important year in Spanish history (hence the name Año crucial in Spanish historiography). This year will be marked by the Capture of Granada on January 2nd, which marks the end of the Reconquista and the discovery of America by Christopher Columbus on October 12th. These two events will allow Spain to perpetuate its status as an empire for the next three centuries."
+		VICTORY " We have ensured the purity of faith on our lands and on the other side of the ocean an empire full of wealth belongs to us. The future of Spain is bright."
+		CONDITION_COLLECTION "Plus Ultra"
+		CONDITION_COLLECTION "The Treasure Fleet"
+		CONDITION_COLLECTION "Most Catholic Majesty"
+	}
+	
 	SengokuJidai = {
 		NAME "Sengoku Jidai"
 		DESCRIPTION "The Sengoku Jidai (1477-1603) is the most famous period in Japanese history. After the collapse of the Ashikaga power, the country plunges into a chaotic civil war where feudal lords kill eachother. The Oda clan under the leadership of Nobunaga, a small local lord, will however become in just a few years the driving force behind the reunification of Japan."

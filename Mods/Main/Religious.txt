@@ -20,12 +20,12 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					IF ( Conversion.value <= 10 & Heretics > 25 )
-						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ToleranceOfHeretics * 0.00003 )
+					IF ( Heretics > 25 )
+						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ( ToleranceOfHeretics + ToleranceOfHeretics / 5 ) * 0.00003 * ( 1 - Conversion / 110 ) )
 					ENDIF
 					
 				
-				PROCESS Minorities = Minorities + value * ( 1 - ToleranceOfHeretics / 200 ) * 0.00015
+				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeretics / 200 ) * 0.00015 )
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeretics / 50 ) )
@@ -63,8 +63,8 @@ Religious = {
 					ENDIF
 				}
                 TICK = {
-				IF ( Conversion.value <= 10 & Heathens > 25 )
-					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ToleranceOfHeathens * 0.00002 )
+				IF ( Heathens > 25 )
+					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ( ToleranceOfHeathens + ToleranceOfHeathens / 5 ) * 0.00002 * ( 1 - Conversion / 110 ) )
 				ENDIF
 
                 IF StateSize' > 0
@@ -74,7 +74,7 @@ Religious = {
                 ENDIF
 				
 				
-				PROCESS Minorities = Minorities + value * ( 1 - ToleranceOfHeathens / 200 ) * 0.00015
+				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeathens / 200 ) * 0.00015 )
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeathens / 75 ))
@@ -641,7 +641,12 @@ Religious = {
                 }
 				
 				LINK ToleranceOfHeathens = {
-					WEIGHT [ max ] Min( 75 ,(Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 )/100 ) + 25 )
+					IF ( Pantheon < 50 )
+						WEIGHT [ max ] Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 ) / 100 ) + 25 )) 
+					ENDIF
+					IF (Pantheon >= 50 )
+						WEIGHT [ max ] Min ( 100 ,((Syncretism.value / 2 * (( 100 - Pantheon.value) * 0.02 )) +25 ))
+					ENDIF
 				}
 
 			}
@@ -714,13 +719,13 @@ Religious = {
 				
 				
 					IF NationalReligion.PantheonValue > 10 & ~NationalReligion
-						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 210 - NationalReligion.SyncretismValue ) * 0.006 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 210 - NationalReligion.SyncretismValue ) * 0.006 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 					ENDIF
 				
 					IF Pantheon > 10
-						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 210 - Syncretism ) * 0.006 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 210 - Syncretism ) * 0.006 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 					ENDIF
 
 				

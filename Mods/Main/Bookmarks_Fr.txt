@@ -15,6 +15,22 @@ Bookmarks = {
 		CONDITION_COLLECTION "Le clan Fujiwara"
 		CONDITION_COLLECTION "Temps Paisibles"
 	}
+	
+		MinoanCivilization = {
+		NAME " La civilisation Minoenne"
+		DESCRIPTION " La civilisation Minoenne représente la première civilisation avancée en Europe, laissant derrière elle les premières villes européennes, d'énormes complexes de bâtiments, des outils, des œuvres d'art, des systèmes d'écriture et un énorme réseau de commerce. Leurs avances, de plusieurs siècles dans certains domaines, a fait d'eux l'inspiration principal du mythe de l'Atlantide."
+		VICTORY "Nous régnons sur la mer Égée et l'Est de la mer Méditerranée sans rival, et nos palais vont durer pour des millénaires. La grandeur est notre." 
+	}
+	
+	 TheSpanishEmpire = {
+		NAME "Año crucial"
+		DESCRIPTION "l'année 1492 est considéré comme l'année la plus marquante de l'histoire espagnole (d'où son nom Año crucial dans l'historiographie espagnole). Cette année sera marquée par La Prise de Grenade le 2 janvier ce qui marque la fin de la Reconquista et la découverte de l'Amérique par Christophe Colomb le 12 octobre. Ces 2 événements vont permet à l’Espagne de pérenniser son statut d'empire pour les 3 siècles à venir."
+		VICTORY "Nous avons assuré la pureté de la foi sur nos terres et de l'autre côté de l'océan un empire rempli de richesse nous appartienne. L'avenir de l’Espagne est radieux."
+		CONDITION_COLLECTION "Plus Ultra"
+		CONDITION_COLLECTION "La Flotte des Indes"
+		CONDITION_COLLECTION "Les Roi très Catholique"
+	}
+	
 	SengokuJidai = {
 		NAME "Sengoku Jidai"
 		DESCRIPTION "Le Sengoku Jidai (1477-1603) est la période la plus célèbre de l'histoire japonaise. Après l'effondrement du pouvoir Ashikaga, le pays plonge dans une chaotique guerre civile où les seigneurs féodaux s'entretuent. Le clan Oda sous la directive de Nobunaga, un petit seigneur local, va pourtant devenir en l'espace de quelques années la force motrice de la réunification du Japon."
