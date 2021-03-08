@@ -41,4 +41,26 @@ Bookmarks = {
 		CONDITION_COLLECTION "Lumière du Christianisme"
 		CONDITION_COLLECTION "Frontière Forte"
 	}
+			TheNewEmpire = {
+		NAME "Le Nouveau empire"
+		DESCRIPTION ""
+		CONDITION_COLLECTION "Réformes religieuse"
+		CONDITION_COLLECTION "Les guerres Hittites"
+		CONDITION_COLLECTION "Les dernières demeurent"
+
+	}
+		MississippianCulture = {
+		NAME "La Civilisation Mississipienne"
+		DESCRIPTION ""
+		CONDITION_COLLECTION "Centres religieux"
+		CONDITION_COLLECTION "Une culture commune"
+		CONDITION_COLLECTION "Une civilization de chefferies"
+	}
+		TheQinDynasty = {
+		NAME "La Dynastie Qin"
+		DESCRIPTION "La Chine est brisée en de nombreux royaumes combattants, engendrant et profitant du désordre. Mais un tel chaos permet de faire monter les méritants au sommet et de façonner un empire à leurs image. L’unificateur de la Chine sera posé en modèle pour les siècles à venir et amorcera la création d’une des plus grandes puissances que le monde n'ait jamais portée."
+		CONDITION_COLLECTION "Le centre du monde civilisé"
+		CONDITION_COLLECTION "La centralisation étatique"
+		CONDITION_COLLECTION "La grande muraille de Chine"
+	}
 }

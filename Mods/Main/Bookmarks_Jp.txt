@@ -24,4 +24,5 @@ Bookmarks = {
 		CONDITION_COLLECTION "望月の"
 		CONDITION_COLLECTION "平和な時代"
 	}
+	
 }
