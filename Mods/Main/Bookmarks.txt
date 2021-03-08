@@ -399,7 +399,7 @@ Bookmarks = {
 			Main.NonSecularEducation = [ 0 32 100 ]
 			Main.Medecine = [ 0 60 100 ]
 			Main.Alchemy = [ 0 85 100 ]
-			Main.ScienceKnowledge = [ 0 55 10000 ]
+			Main.ScienceKnowledge = [ 0 20 10000 ]
 		}
 	
 		FREE_NODES = {

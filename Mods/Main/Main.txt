@@ -10425,7 +10425,7 @@ Main = {
 				}
 
 				LINK InvadersForce = {
-					COLOR red
+					COLOR green
 					FLUX 0.75
 				}
 			
