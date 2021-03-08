@@ -790,7 +790,7 @@ Bookmarks = {
 			CONDITION_VALUE Pantheon >= 90
 			CONDITION_VALUE Piety >= 65
 			CONDITION_VALUE OfferingsNature <= 20
-            CONDITION_NODE - SacrificeNature-
+            CONDITION_NODE - SacrificeNature
             CONDITION_NODE - Syncretism
             CONDITION_NODE - ToleranceOfHeathens
             CONDITION_NODE - ToleranceOfHeretics
