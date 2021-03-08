@@ -68,12 +68,12 @@ Main = {
                     DESCRIPTION "戦争の終わり"
                 }
                 WhitePeace = {
-                    NAME "White Peace"
-                    DESCRIPTION "End the War without any conquest"
+                    NAME "空白の和平"
+                    DESCRIPTION "占領を伴わない和平"
                 }
                 SeparatePeace = {
-                    NAME "Separate Peace"
-                    DESCRIPTION "Will reduce ennemy forces but we will loose warscore"
+                    NAME "個別和平"
+                    DESCRIPTION "敵の力を弱めるが戦争スコアを失う"
                 }
             }
         }
@@ -752,98 +752,98 @@ Main = {
 			
 				
 			PeasantryClass = {
-				NAME "Peasant Class"
-				DESCRIPTION "Peasant Class "<b>"Value: "@[value] </b> <br><br>"The workers of the soil form an important social class, in fact, a large part of the population and constitutes the basic line of any sedentary civilization."
-				SUMMARY "Number of peasants in your state"
+				NAME "農民階級"
+				DESCRIPTION "農民階級 "<b>"値: "@[value] </b> <br><br>"農業従事者は社会の重要な構成要素です。実際には人口の大部分を占め文明の基本線を構成しています。"
+				SUMMARY "農民の数"
 			}
 			BourgoisieClass = {
-				NAME "Bourgoisie Class"
-				DESCRIPTION "Bourgeois Class "<b>"Value: "@[value] </b> <br><br>"Our cities are filled with rather wealthy subjects who favor a flourishing trade, hoping that they never claim any kind of priviliged status."
-				SUMMARY "Number of burghers in your state"
+				NAME "市民階級"
+				DESCRIPTION "市民階級 "<b>"値: "@[value] </b> <br><br>"都市部では反映する商業の恩恵を受けた人々で満たされています。彼らがいかなる種類の特権的地位を主張しないよう望んでいます。"
+				SUMMARY "中産階級の数"
 			}
 			
 			Nationalism = {
-				NAME "Nationalism"
+				NAME "ナショナリズム"
 				LEVEL value = {
-					0 = "Inexistent"
-					10 = "Low"
-					20 = "Fair"
-					40 = "Good"
-					60 = "Fanatical"
+					0 = "存在しない"
+					10 = "低い"
+					20 = "普通"
+					40 = "高い"
+					60 = "狂信的"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Nationalism represents our people's sense of belonging to our nation. A nation united under a flag strengthens our foundations, but it can also allow dangerous ideas to grow"
-				SUMMARY "Impacts our stability"
+				DESCRIPTION <b>"値 : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"ナショナリズムは、国民が国に属しているという感覚を表しています。団結した国は基盤を強化しますが、一方危険な考えを成長させる可能性があります。"
+				SUMMARY "安定性に影響を与える"
 			}	
 
 			Allies = {
-				NAME "Allies"
+				NAME "同盟"
 				LEVEL value = {
-					0 = "No ally"
-					0.01 = "A few allies"
-					50 = "Defense network"
-					100 = "Intensive alliance diplomacy"
+					0 = "存在しない"
+					0.01 = "ごく少数の味方"
+					50 = "防衛網"
+					100 = "集中的な同盟外交"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our allies, secured by our active diplomacy, provide us support in times of war. So long as the situation is successful for both of us at least..."
-				SUMMARY "Provides assistance during wartime"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "我々の積極的な外交によって確保された同盟国は、戦争時に支援をしてくれます。少なくともうまいこといっている間は・・・"
+				SUMMARY "戦争中の支援を提供する"
 			}	
 			
 			Coalition = {
-				NAME "Coalition"
+				NAME "連合"
 				LEVEL value = {
-					0 = "Weak Enemy"
-					200 = "Weakened Enemy"
-					500 = "Threatening Enemy"
-					1000 = "Very Threatening Enemy"
+					0 = "敵の強さ：弱"
+					200 = "敵の強さ：中"
+					500 = "敵の強さ：強"
+					1000 = "敵の強さ：強大"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "One of our neighbors has reached such supremacy that it is becoming a threat to the entire continent. All the small nations, including our own, have united against this destructive invader. A long struggle for our survival has just begun."
-				SUMMARY "An opposing empire threatens the balance of the entire continent."
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "隣国の一つが大陸全土への覇権を唱えるほど脅威になりつつあります。我々を含む全ての小国は、この破壊的な侵略者に対して団結しました。生存への長い闘いは始まったばかりです。"
+				SUMMARY "対立する帝国は大陸全土のバランスを脅かしている"
 			}
 			HostileCoalition = {
-				NAME "Hostile Coalition"
+				NAME "敵対的連合"
 				LEVEL value = {
-					0 = "Weak Coalition"
-					200 = "Weakened Coalition"
-					500 = "Coalition Threatening"
-					1000 = "Very Threatening Coalition"
+					0 = "連合の強さ：弱"
+					200 = "連合の強さ：中"
+					500 = "連合の強さ：強"
+					1000 = "連合の強さ：強大"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "Our unchallenged supremacy has led many enemies to band against us. A long struggle for the defense of our empire has just begun."
-				SUMMARY "A vast coalition has risen up against us!"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "我々の何も問題のない主張は多くの敵を作り出しました。私たちの帝国を守るための長い闘いははじまったばかりです。"
+				SUMMARY "巨大な連合が我々に対し立ち上がった！"
 			}
 			BarbarianThreat = {
-				NAME "Barbarian Threat"
+				NAME "蛮族の脅威"
 				LEVEL value = {
-					0 = "Very Far Away "
-					25 = "Far away"
-					50 = "A few echoes"
-					75 = "Disturbing news"
-					1000 = "They're at our door!"
+					0 = "とても遠い "
+					25 = "遠い"
+					50 = "遠くない"
+					75 = "近い"
+					1000 = "あなたの後ろにいるの"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The stability and wealth of our region attracts scavengers. Distant barbarians seem to inevitably come closer to our borders and can cause many problems."
-				SUMMARY "The migration of distant barbarians can be a problem in the long run"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "我々の地域の安定と繁栄は良からぬ勢力も惹きつけます。遠くの野蛮人たちは必然的に国境に近づき、多くの問題を引き起こす可能性があります。"
+				SUMMARY "遠方の野蛮人の移動は長期的な問題になる可能性がある"
 			}
 			RevolutionIdeals = {
-				NAME "Revolution Ideals"
+				NAME "革命の理想"
 				LEVEL value = {
-					0 = "Very weak ideals" 
-					25 = "Weak ideals"
-					50 = "Commonly accepted ideals"
-					75 = "Strong ideals"
-					90 = "Very strong ideals"
+					0 = "とても弱い理想" 
+					25 = "弱い理想"
+					50 = "一般に浸透している理想"
+					75 = "強い理想"
+					90 = "とても強い理想"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br> "The pro-revolutionary movement has become part of the mentality of our people. They reject the old order, the arbitrary of the nobility and the political power of the church."
-				SUMMARY "The level of popularity of pro-revolutionary ideals"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br> "革命前の運動は、人々の考え方の一部になっています。彼らは古い秩序、貴族の既得権、教会の政治力を否定します。"
+				SUMMARY "革命家の理想の人気レベル"
 			}
 			
 			Reactionnarism = {
-				NAME "Reactionnarism"
+				NAME "保守思想"
 				LEVEL value = {
-					0 = "Inexistent"
-					10 = "Low"
-					20 = "Spread"
-					60 = "Widespread"
+					0 = "存在しない"
+					10 = "低い"
+					20 = "普及している"
+					60 = "大勢を占めている"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Reactionaryism represents all ideas and forces seeking to protect the old order, especially the nobility and the clergy. They fiercely reject reforms to the point of taking up arms."
-				SUMMARY "The level of popularity of the anti-revolutionary ideals"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"保守思想は古い秩序、特に貴族と教会を保護しようとする考え方です。彼らは武装するまでの改革を激しく拒否しています。"
+				SUMMARY "反革命的な思想の人気レベル"
 			}	
 			
 			
@@ -2160,193 +2160,193 @@ Main = {
 			}
 			
 			BarbariansAdvancement = {
-				NAME "Barbarians' Advancement"
+				NAME "野蛮人の進歩"
 				LEVEL value = {
 					0 = "なし"
 					0.001 = "試作段階"
 					15 = "研究を進める"
 					100 = "技術をものにした"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"The barbarians threatening our borders are not a threat for no reason. They have made their own technological and doctrinal breakthroughs and we must adapt."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"国境を脅かす蛮族は、理由のない脅威ではありません。彼らは独自の技術的・理論的な進歩を遂げています。我々は対応しなくはいけません。"
 				SUMMARY "軍事技術"
 			}	
 			
 			ColonialHelp = {
-				NAME "Colonial Help"
+				NAME "植民地への援助"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Some subsidies"
-					30 = "Significant funding"
-					60 = "Massive subsidies programs"
+					0 = "なし"
+					0.001 = "いくつかの助成金"
+					30 = "積極的な支援"
+					60 = "大規模な援助プログラム"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> An empire must give with the left hand to take with the right hand, an aid program will calm minds in our colonies and give them financial stability."
-				SUMMARY " Appease and makes our colonies prosper"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 帝国というものは右手で得るために左手で与えなくてはいけません。援助は植民地の心を落ち着かせ、彼らに経済的安定を与えます。"
+				SUMMARY " 植民地を慰撫し繁栄させる"
 			}
 			
 			
 			ColonialIronFist = {
-				NAME "Colonial Iron Fist"
+				NAME "植民地への鉄拳"
 				LEVEL value = {					
-					0 = "Military threats"
-					30 = "Ruthless retaliation"
-					60 = "Permanent Martial Law"
+					0 = "軍事的脅威"
+					30 = "冷酷な報復"
+					60 = "恒久的な戒厳令"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our colonies undoubtedly enjoy too much independence and separatism is gaining ground, it is time to remind our colonists who owns the cannons of our fleet."
-				SUMMARY "Forcibly pacifies our colonies"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 我々の植民地はあまりにも多くの独立を享受しており分離主義が定着しつつあります。入植者たちの持っている艦隊は誰のものであるか思い出させる時がきました。"
+				SUMMARY "植民地を強制的に鎮静化する"
 			}
 			LateMusket = {
-				NAME "Late Musket"
+				NAME "後期マスケット銃"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = "Search for better models"
-					100 = "Mastery"
+					0 = "なし"
+					0.001 = "試作段階"
+					15 = "研究を進める"
+					100 = "技術をものにした"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The late musket sees the appearance of the flintlock."
-				SUMMARY "Military technology"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 後期マスケット銃はフリントロック式のものである。"
+				SUMMARY "軍事技術"
 			}		
 			
 			Conscription = {
-				NAME "Conscription"
+				NAME "徴兵"
 				LEVEL value = {
-					0 = "None"
-					0.001 = "Light"
-					10 = "Moderate"
-					23 = "Intesive"
+					0 = "なし"
+					0.001 = "軽い"
+					10 = "中程度"
+					23 = "集中的"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Our large population is a source of future soldiers. With conscription laws, we will be able to quickly raise fresh troops even if they lack training."
-				SUMMARY "Recruits our population in times of war"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 我々の大規模な人口は将来の兵士の源です。徴兵により訓練がなくても迅速に新兵を育成できるようになります。"
+				SUMMARY "戦争時に国民を徴兵する"
 			}		
 			}			
 			ManOfWar = {
-				NAME "Man'o'war"
+				NAME "Man'o'war "
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = "Search for better models"
-					100 = "Mastery"
+					0 = "なし"
+					0.001 = "試作段階"
+					15 = "研究を進める"
+					100 = "技術をものにした"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>The Man'o'war is the logical evolution of the big warships exploiting all the small technical evolutions and optimizations found through warfare across the seas."
-				SUMMARY "Military technology"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>Man'o'warは海を渡る戦争から得たすべての小さな技術的進化と最適化を大きな軍艦に適用する理論的な進化です。"
+				SUMMARY "軍事技術"
 			}	
 			SteamEngine = {
-				NAME "Steam Engine"
+				NAME "蒸気機関"
 				LEVEL value = {					
-					0 = "None"
-					0.001 = "Unsuccessful searches"
-					15 = "Search for better models"
-					100 = "Mastery"
+					0 = "なし"
+					0.001 = "試作段階"
+					15 = "研究を進める"
+					100 = "技術をものにした"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>First source of mechanical energy mastered by man, it allows the progressive appearance of industrialization."
-				SUMMARY "Important Technology"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>人類が習得した最初の機械的エネルギー源であり、工業化の進歩的な出現を可能にします。"
+				SUMMARY "技術革新"
 			}	
 			
 			Mercantilism = {
-				NAME "Mercantilism"
+				NAME "重商主義"
 				LEVEL value = {
-					0 = "Very Low"
-					15 = "Low"
-					30 = "Moderate"
-					70 = "Intensive"
-					100 = "Not an ounce of gold or silver leaves the country"
+					0 = "とても低い"
+					15 = "低い"
+					30 = "中程度"
+					70 = "高い"
+					100 = "金銀は全て国内のものだ"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>If our wealth is flowing, it would be better to make sure that it never leaves the country. This will slow down our trade but ensure our domestic prosperity."
-				SUMMARY "Strangle our foreign trade to hope inside"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>我々の富が流出しているなら、それを止めたほうが良いでしょう。これは貿易を後退させますが、国内の繁栄を確実にします。"
+				SUMMARY "対外貿易を犠牲にし国内に希望を与える"
 			}
 			LaissezFaire = {
-				NAME "Laissez-Faire"
+				NAME "放任主義"
 				LEVEL value = {
-					0 = "Flexibility in trade rules"
-					15 = "Mild deregulations"
-					50 = "Free market"
-					100 = "Completely deregulated market"
+					0 = "通常のルール"
+					15 = "軽度な規制緩和"
+					50 = "自由な市場"
+					100 = "完全に規制緩和された市場"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>Our merchants are slowed down by many regulations and taxes. If we let the market operate, it will regulate itself and bring us greater prosperity in the long run.."
-				SUMMARY "Eases regulations and taxes to make trade flourish"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br>商業は多くの規制や税金によって減速しています。市場の運営を彼らに任せれば、彼らはルールをつくり長期的にはより大きな繁栄をもたらすでしょう。"
+				SUMMARY "規制や税を緩和し貿易を繁栄させる"
 			}
 			
 			Constitution = {
-				NAME "Constitution"
+				NAME "憲法"
 				LEVEL value = {
-					0 = "Draft of constitution"
-					20 = "Founding text"
-					50 = "Corrected and adapted text"
-					75 = "Adaptive and evolutionary model"
+					0 = "草案"
+					20 = "成文化"
+					50 = "修正および適合"
+					75 = "適応および進化型"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The question of power organization has sometimes been very arbitrary. Clear constitutive texts written by our best jurists allow a flexible and solid organization".
-				SUMMARY "Improves our political power"
+				DESCRIPTION <b>"値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>権力組織の問題はしばしば非常に恣意的なものでした。最高の法律家によって成文化された憲法は、柔軟で堅実な組織を可能にします。"
+				SUMMARY "政治力を向上させる"
 			}
 			 RevolutionaryRepublic = {
-				NAME "Revolutionary Republic"
+				NAME "革命的共和国"
 				LEVEL value = {
-					0 = "Republic in ruins"
-					20 = "Revolutionary Momentum" 
-					50 = "Power Stabilization"
-					75 = "Mature Republic"
+					0 = "廃墟の共和国"
+					20 = "革命的な勢い" 
+					50 = "権力の安定化"
+					75 = "成熟した共和国"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>The people is sovereign. It is on these words that we have built our government, which binds together the citizens of our Nation."
-				SUMMARY "A government in which the people are sovereign"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br>主権者は民衆である。これらの言葉に基づき、市民を結びつける政府をつくりました。"
+				SUMMARY "国民が統治している政府"
 			}
 			PrivilegeRevocation = {
-				NAME "Revocation of Privileges"
+				NAME "特権の取り消し"
 				LEVEL value = {
-					0 = "Connivance with the privileged ones"
-					20 = "Anti-noble feelings"
-					50 = "Equality of rights"
-					75 = "Active persecution"
-					100 = "Total abolition of nobility" 
+					0 = "特権者への共感"
+					20 = "特権への反感"
+					50 = "権利の平等"
+					75 = "積極的な迫害"
+					100 = "貴族制の完全廃止" 
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> Once the people is sovereign, we must annihilate this class of profiteers that are the noblemen."
-				SUMMARY "Weakens the aristocratic class"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 民衆が主権を握ったのなら貴族階級を廃止しなくはいけません。"
+				SUMMARY "貴族階級を弱体化させる"
 			}
 			AbolitionOfSlavery = {
-				NAME "Abolition of Slavery"
-				DESCRIPTION "Slavery has been abolished in our society."
-				SUMMARY "Prevents any organization of slavery"
+				NAME "奴隷制の廃止"
+				DESCRIPTION "我々の社会では奴隷制は廃止されました。"
+				SUMMARY "奴隷制の組織化を防ぐ"
 			}
 			AbolitionOfSerfdom = {
-				NAME "Abolition of Serfdom"
-				DESCRIPTION "Serfdom has been abolished in our society, it provides a more productive agriculture but a less efficient control of our peasants."
-				SUMMARY "Make our peasants into free small landowners"
+				NAME "農奴制の廃止"
+				DESCRIPTION "我々の社会では農奴制は廃止されました。より効率絵t黄な農業を提供しますが、農家の管理には効率的ではありません。"
+				SUMMARY "農民を小さな土地の所有にしよう。"
 			}
 			ConstitutionalMonarchy = {
-				NAME "Constitutional Monarchy"
+				NAME "立憲君主制"
 				LEVEL value = {
-					0 = "Monarchy in Ruin"
-					20 = "Weakened Monarchy"
-					50 = "Reform of the old laws"
-					75 = "Modern Monarchy"
+					0 = "廃墟の君主制"
+					20 = "弱い君主制"
+					50 = "古い法律の改正"
+					75 = "近代的な君主制"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> Absolutism seems the way of the past provoking the wrath of the people and the bourgeoisie. While it's unacceptable to see our monarchy disappear, perhaps an significant act would calm populist tensions."
-				SUMMARY "A government in which the ruler is also bound by the law"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> 絶対主義は人々の怒りを引き起こした過去の方法です。しかし同時に君主制を廃止することも受け入れられず、重要な行為をすることは民衆の緊張を和らげるでしょう。"
+				SUMMARY "統治者も法律に拘束されている政府"
 			}
 			PoliticOfTerror = {
-				NAME "Politic of Terror"
+				NAME "恐怖政治"
 				LEVEL value = {
-					0 = "Safe Republic"
-					0.01 = "Paranoid Republic"
-					15 = "Abusive denunciations"
-					30 = "Mass Executions"
+					0 = "安全な共和国"
+					0.01 = "不安な共和国"
+					15 = "虐待的な排撃"
+					30 = "大量処刑"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> The enemy is everywhere. The reactionary forces are hiding and we must establish a system of denunciation and swift judgment to fix the situation."
-				SUMMARY "Eliminates all opposition and even beyond by the guillotine"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br> 敵はいたるところにいます。反動勢力は隠れており状況を改善するには迅速な判断と排除のシステムを確立しなくてはいけません。"
+				SUMMARY "ギロチンによって、さらにはそれを超えて全ての反対を排除する"
 			}
 			Secularism = {
-				NAME "Secularism"
+				NAME "世俗主義"
 				LEVEL value = {
-					0 = "Respect for the ifluence of the clergy"
-					0.01 = "Criticisms of the political influence of the clergy"
-					25 = "Severe denunciation of political influence of the clergy"
-					50 = "Separation of Church and State"
-					100 = "State Atheism"
+					0 = "聖職者の影響を尊重する"
+					0.01 = "聖職者の政治的影響力に対する批判"
+					25 = "聖職者の政治的影響力に対する厳しい批判"
+					50 = "政教分離"
+					100 = "国家的無神論"
 				}
-				DESCRIPTION <b> "Value: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> The clergy has always influenced our political life and today works with reactionary forces. We must put an end to this influence."
-				SUMMARY "Reduces the influence of the church"
+				DESCRIPTION <b> "値: "@[value,LEVEL] </b> " ( " @[value,0.###] " ) <br><br> 聖職者は常に我々の政治生活に影響を与えており、今日では反動勢力と協力しています。この影響力を排除しなくてはいけません。"
+				SUMMARY "教会の影響力を減らす"
 			}
 			UpperHouse = {
-				NAME "Upper House"
-				DESCRIPTION "The upper chamber is a body representing the interests of the important elements of the State. "
-				SUMMARY "First step to build an independent legislative body"
+				NAME "上院"
+				DESCRIPTION "上院は国の重要な要素の利益を代表する機関です。"
+				SUMMARY "独立した立法機関を作るための最初の一歩"
 			}
 
 		}
@@ -2685,39 +2685,39 @@ Main = {
                 SUMMARY "前例のない文化的復興！"
             }
 			ForeignInterference = {
-				NAME "Foreign Interference" 
-				DESCRIPTION "A foreign power financed separatists in our colony."
-				SUMMARY "A foreign power is provoking riots in our colony!"
+				NAME "外国の干渉" 
+				DESCRIPTION "植民地で外国勢力が分離主義者に資金を提供した。"
+				SUMMARY "外国勢力が我々の植民地で暴動を引き起こしています！"
 			}	
 			SlaveRiots = {
-				NAME "Slave Riots"
-				DESCRIPTION "Our colonies have recently suffered a massive revocation of their slaves, so their prosperity will probably suffer a severe blow."
-				SUMMARY "Our colonies have recently suffered a massive revolt!"
+				NAME "奴隷暴動"
+				DESCRIPTION "我々の植民地は最近、奴隷制の廃止に苦しんでおり、彼らの繁栄に深刻な影を落とすことでしょう。"
+				SUMMARY "我々の植民地は最近大規模な反乱に見舞われました！"
 			}	
 			AlliesDefection = {
-				NAME "Allied Defection"
-				DESCRIPTION "One of our allies has just made a separate peace with the enemy which can only get stronger."
-				SUMMARY "One of our so-called allies has just made a separate peace!"
+				NAME "同盟国の離脱"
+				DESCRIPTION "我々の同盟国の1つが、強大になりつつある敵と個別に和平を結びました。"
+				SUMMARY "同盟国の１つが別の形の平和を受け入れた！"
 			}		
 			AmphibiousAssault = {
-				NAME "Amphibious Assault"
-				DESCRIPTION "Our fleets have complete control of the seas and thanks to that, they attack the enemy rearguard."
-				SUMMARY "Our fleets harass the enemy land forces"
+				NAME "艦隊の対地攻撃"
+				DESCRIPTION "我々の艦隊は完全に海を支配しており、敵の後衛を攻撃します。"
+				SUMMARY "艦隊は敵の陸軍に嫌がらせをする"
 			}
 			RevolutionAttempt = {
-				NAME "Revolution Attempt"
-				DESCRIPTION "A local peasant revolt degenerates into open rebellion. Our regime is challenged in violence. Our police intervenes, but can they maintain order?"
-				SUMMARY "Our peasants storm our headquarters"
+				NAME "革命の試み"
+				DESCRIPTION "地方の農民の反乱は国家的な叛乱に変化します。政権は武力鎮圧に挑んでいます。警察が介入しますが秩序を維持することができますか？"
+				SUMMARY "農民は首都を襲撃する"
 			}
 			ReactionnarismRevolt = {
-				NAME "Reactionary Revolt"
-				DESCRIPTION "Reactionary forces mobilized their efforts in an armed uprising. Our revolutionary dream may vanish if we do not answer by force."
-				SUMMARY "The reactionary forces are attacking the very roots of our revolution!"
+				NAME "反動の反乱"
+				DESCRIPTION "反動勢力は武装蜂起しました。力で抑え込まないと革命的な夢が消えてしまうかもしれません。"
+				SUMMARY "反動勢力が私たちの革命の根源を攻撃している！"
 			}
 			ExpensionofTheRevolution = {
-				NAME "Expansion of the Revolution"
-				DESCRIPTION "A pro-revolutionary neighboring country is trying to end our ancestral system by force, we must repel this invader or we will lose our government!"
-				SUMMARY "A neighboring country that succumbed to a Jacobin revolution has invaded us!"
+				NAME "革命の拡大"
+				DESCRIPTION "革命の種火を支持する隣国は、我々の伝統的な支配体制を力づくで終わらせようとしています。我々はこの侵略者を撃退しなければいけません！"
+				SUMMARY "ジャコビニ革命に屈した隣国が我々に侵略しました！"
 			}
 		}
 	}
