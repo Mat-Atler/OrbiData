@@ -122,16 +122,16 @@
 	
 	Andes = {
 		COORDINATES = 13° 31' S 71° 58' W
-		Main.Humidity.value = 50
-		Main.Temperature.value = 40
+		Main.Humidity.value = 45
+		Main.Temperature.value = 60
 		Main.Flora.value = 40
 		Main.Fauna.value = 50
-		Main.Coastline.value = 0
-		Main.SoilFertility.value = 40
+		Main.Coastline.value = 5
+		Main.SoilFertility.value = 45
 		Main.Gold.value = 90
 		Main.Salt.value = 80
 		Main.Spices.value = 0
-		Main.NeighborhoodBellicism.value = 5
+		Main.NeighborhoodBellicism.value = 2
 		- Main.Island
 	}
 	
