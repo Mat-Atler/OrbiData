@@ -1784,7 +1784,7 @@ Main = {
 					SET Empire.value [ : : 100 - VassalPower.value ]
 					SET BarbarianMonarchy.value [ : : 200 - VassalPower.value * 2 ]
 					SET Monarchy.value [ : : 100 - VassalPower.value ]
-					SET Republic.value [ : : 150 - VassalPower.value ]
+					SET Republic.value [ : : 200 - VassalPower.value ]
 				}
 				
 				LINK Stability = {
@@ -2654,9 +2654,13 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS BarbarianThreat +=  PerSeconds( 0.024 )	
+						IF ~BorderControls
+							PROCESS BarbarianThreat +=  PerSeconds( 0.03 )	
+						ELSE
+							PROCESS BarbarianThreat +=  PerSeconds( 0.023 - BorderControls / 1000 )	
+						ENDIF
 						IF  ( StateSize > 120 | Stability < 20 )
-							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 7000 )	
+							PROCESS BarbarianThreat +=  PerSeconds( StateSize / 7000 - BorderControls / 2000 )	
 						ENDIF
 						IF GameTime() > 9500 | GetCurrentEra() >= GetEra(DiscoveryAge)
 							REMOVE BarbarianThreat
@@ -2670,6 +2674,9 @@ Main = {
 					WEIGHT [ from ]
 				}	
 				LINK Stability = {
+					WEIGHT [ from ]
+				}	
+				LINK BorderControls = {
 					WEIGHT [ from ]
 				}	
 				LINK BarbarianThrust = {
@@ -5177,13 +5184,14 @@ Main = {
 				// }
 				UNLOCK_CONDITIONS = {
 					HINT ( ~MilitaryManpower + ~ArtisanClass + ~Mining + ~MilitaryTechnology ) > 1
-					CONDITION_VALUE MilitaryManpower > 25
+					CONDITION_VALUE MilitaryManpower > 30
 					OR
-					CONDITION_VALUE OverlandTrade > 30
+					CONDITION_VALUE OverlandTrade > 40
+					OR
+					CONDITION_VALUE NavalTrade > 40
 					ALWAYS
-					CONDITION_VALUE ArtisanClass > 40
-					CONDITION_NODE + MilitaryTechnology
-					CONDITION_VALUE Mining > 40
+					CONDITION_VALUE ArtisanClass > 55
+					CONDITION_VALUE Mining > 65
 				}
 				PRICE = {
 					$PoliticalPower = 100
@@ -5942,7 +5950,9 @@ Main = {
 
 				UNLOCK_CONDITIONS = {
 					HINT ~BarbarianAtGates | ~BarbariansAdvancement
-					CONDITION_NODE + BarbariansAdvancement
+					CONDITION_VALUE BarbariansAdvancement >= 90
+					OR
+					CONDITION_VALUE BarbarianAtGates >= 100
 				}
 				PRICE = {
 					$Wealth = 300
@@ -8549,7 +8559,7 @@ Main = {
 			MassiveTroubles = {
 				SOUND_EVENT "Main/SFX/MassiveTroubles.wav"
 				SOUND_WINDOW "Main/SFX/MassiveTroubles.wav"
-				EVENT_DEF [ 15 15 135 30% ]
+				EVENT_DEF [ 15 15 100 50% ]
 				ARISE = {
 					EVENT_SPEED 1 - Stability / 100
                     IF Stability >= 10
@@ -8560,6 +8570,7 @@ Main = {
 					PROCESS Population = Population - PerSeconds(Population * 0.022 + 0.25 * 0.75 ? 1.25)
 					PROCESS Food = Food - PerSeconds(3 * 0.75 ? 1.25)
 					PROCESS Education = Education - PerSeconds(1 * 0.75 ? 1.25)
+					PROCESS Culture = Culture - PerSeconds(1 * 0.75 ? 1.25)
 					PROCESS MilitaryManpower.Infantry_value = MilitaryManpower.Infantry_value - PerSeconds(0.1 + MilitaryManpower.Infantry_value /150 )
 					PROCESS MilitaryManpower.Cavalry_value = MilitaryManpower.Cavalry_value - PerSeconds(0.1 + MilitaryManpower.Cavalry_value /150)
 					PROCESS MilitaryManpower.Missile_value = MilitaryManpower.Missile_value - PerSeconds(0.1 + MilitaryManpower.Missile_value /150)
@@ -8582,6 +8593,10 @@ Main = {
 				}
 				
 				LINK Food = {
+					COLOR red
+					FLUX 2
+				}
+				LINK Culture = {
 					COLOR red
 					FLUX 1
 				}
@@ -8725,7 +8740,7 @@ Main = {
 					FLUX 5
 				}
 				TRIGGER_EVENT = {
-					IF $Wealth < 10 & ~Stability  & GameTime() > 600
+					IF $Wealth < 10 & ~Stability  &  ( GameTime() > 1100 | ~MilitaryManpower | ~FoodExchange )
 						RISE
 					ENDIF
 				}
@@ -10410,7 +10425,7 @@ Main = {
 				}
 
 				LINK InvadersForce = {
-					COLOR red
+					COLOR green
 					FLUX 0.75
 				}
 			

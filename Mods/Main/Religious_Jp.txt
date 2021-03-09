@@ -59,28 +59,28 @@ Religious = {
 				SUMMARY "もう変更できない私たちの宗教の側面を一元化するノード"
 			}
 			HereticsCountry = {
-				NAME "Heretics Country"
+				NAME "異端の国"
 				LEVEL value = {
-					0 = "tiny"
-					20 = "small"
+					0 = "極小"
+					20 = "小さい"
 					40 = ""
-					60 = "large"
-					80 = "great"
+					60 = "大きい"
+					80 = "巨大"
 				}
-				DESCRIPTION <b>"Size of the heretical country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heretics, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heretic population increase drastically."
-				SUMMARY "Increases the strength of schisms and increases the number of heretics in case of territorial gain"
+				DESCRIPTION <b>"異端の国の大きさ: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "主に異端者によって支配されている国と国境を接しています。彼らは私たちに影響を及ぼし、人々を犠牲にして我々の領土を侵犯する可能性があり、国内の異端の人口が劇的に増加するでしょう。"
+				SUMMARY "領土を獲得した場合、分裂の強さを増し、異端者の数が増える"
 			}
 			HeathensCountry = {
-				NAME "Heathens Country"
+				NAME "異教の国"
 				LEVEL value = {
-					0 = "tiny"
-					20 = "small"
+					0 = "極小"
+					20 = "小さい"
 					40 = ""
-					60 = "large"
-					80 = "great"
+					60 = "大きい
+					80 = "巨大"
 				}
-				DESCRIPTION <b>"Size of the heathen country: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "country, mainly populated and controlled by heathens, is on our borders. They could have an influence on our people and enlarge our territory at the expense of theirs would see our heathen population increase drastically."
-				SUMMARY "Increases the strength of massive conversions to a foreign faith and increases the number of heathens in case of territorial gain"
+				DESCRIPTION <b>"異教の国の大きさ: "@[value] </b> <br> "A"<b> @[value,LEVEL] </b> "主に異教徒によって支配されている国と国境を接しています。彼らは私たちに影響を及ぼし、人々を犠牲にして我々の領土を侵犯する可能性があり、国内の異教徒の人口が劇的に増加するでしょう。"
+				SUMMARY "領土を獲得した場合、分裂の強さを増し、異教徒の数が増える"
 			}
 		}
 		Levers = {
@@ -275,9 +275,9 @@ Religious = {
 				SUMMARY "植民地の住民を真の信仰に変える"
 			}
 			Concordat = {
-				NAME "Concordat"
-				DESCRIPTION <b>"Value: "@[value] </b> <br><br> "Traditional and revolutionary thoughts confront each other about the nature of the power that religion has over society. By negotiating agreements with religious authorities that guarantee them certain rights in exchange for distancing themselves from the affairs of state, we can achieve satisfaction on both sides."
-				SUMMARY "Reduces the chances of negative religious events but requires a constant investment of political power"
+				NAME "政教条約"
+				DESCRIPTION <b>"値: "@[value] </b> <br><br> "伝統的思考と革命的思考は、宗教が社会に対して持つ影響力についての意見が対立します。国教から遠ざかることと引き換えに一定の権利の保障をする協定を宗教当局と交渉することにより双方の満足を得ることができます。"
+				SUMMARY "マイナスの宗教的なイベントの確率を減らしますが、常に政治力を消費します。"
 			}	
 
 		}
@@ -360,19 +360,19 @@ Religious = {
 				SUMMARY "このイベントの後、多くの宗教ノードを直接変更することはできなくなります。"
 			}
 			SpawnHereticsCountry = {
-				NAME "Formation of a heretical state"
-				DESCRIPTION "A country of heretics at our borders is becoming more and more important, so our future international relations will not be able to do so without involving the religious."
-				SUMMARY "Increases the size of the heretical country"
+				NAME "異端の国の形成"
+				DESCRIPTION "国境を接している異端の国は重要性を増しています。我々の将来の国際関係は宗教を巻き込まずにはいられないでしょう。"
+				SUMMARY "異端の国のサイズを大きくする"
 			}
 			SpawnHeathensCountry = {
-				NAME "Formation of a heathen state"
-				DESCRIPTION "A country of heathens at our borders is becoming more and more important, so our future international relations will not be able to do so without involving the religious."
-				SUMMARY "Increases the size of the heathen country"
+				NAME "異教の国の形成"
+				DESCRIPTION "国境を接している異教の国は重要性を増しています。我々の将来の国際関係は宗教を巻き込まずにはいられないでしょう。"
+				SUMMARY "異教の国のサイズを大きくする"
 			}
 			Confiscation = {
-				NAME "Confiscation"
-				DESCRIPTION "While our finances are at their lowest point, many members of the revolutionary government propose that the assets of ''the enemies of the revolution'' be made available to the nation."
-				SUMMARY "Reduces our religious monuments and monasteries but will replenish our treasury"
+				NAME "没収"
+				DESCRIPTION "我々の財政は最低水準にありますが、革命政府の多くのメンバーは「革命の敵」の資産を国が利用できるようにすることを提案しています。"
+				SUMMARY "宗教的モニュメントと修道院を減らし、富を補充する"
 			}
 
 		}

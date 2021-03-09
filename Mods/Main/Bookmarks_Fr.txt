@@ -35,8 +35,48 @@ Bookmarks = {
 		NAME "Sengoku Jidai"
 		DESCRIPTION "Le Sengoku Jidai (1477-1603) est la période la plus célèbre de l'histoire japonaise. Après l'effondrement du pouvoir Ashikaga, le pays plonge dans une chaotique guerre civile où les seigneurs féodaux s'entretuent. Le clan Oda sous la directive de Nobunaga, un petit seigneur local, va pourtant devenir en l'espace de quelques années la force motrice de la réunification du Japon."
 		VICTORY "Le Japon est désormais stable et est réunifié sous notre bannière. La guerre civile est enfin terminée."
-		CONDITION_COLLECTION "Japon Unifié
+		CONDITION_COLLECTION "Japon Unifié"
 		CONDITION_COLLECTION "Armée Moderne"
-		CONDITION_COLLECTION "Avenir Radieux
+		CONDITION_COLLECTION "Avenir Radieux"
+	}
+		ARepublicInTroubles = {
+		NAME "Une République en danger"
+		DESCRIPTION "Au 1er siècle avant notre ère, l'ancienne petite ville-État de Rome s'était déjà considérablement développée et se trouve au carrefour de son histoire. Une élite corrompue s'affronte et l'instabilité politique règne. Comment pouvons-nous défendre les récentes conquêtes et devenir le phare de la civilisation sans de profondes réformes qui assurent la pérennité du rêve romain ?"
+		VICTORY "Vous avez sauvé Rome en construisant un empire puissant et efficace qui restera pendant des siècles le parangon de la civilisation."
+		CONDITION_COLLECTION "Roma Aeterna"
+		CONDITION_COLLECTION "Un État Bien Administré"
+		CONDITION_COLLECTION "Les Légions"
+		CONDITION_COLLECTION "Âge d'Or Culturel"
+		CONDITION_COLLECTION "Pax Romana"
+	}
+	FallOfTheEmpire = {
+		NAME "Chute de l'Empire"
+		DESCRIPTION "L'Âge d'Or Romain est bien loin désormais, et l'Empire Romain est scindé en 2. Le jeune empereur, Flavius Honorius est un incapable, et l'armée romaine est loin de sa gloire passée où sa simple présence terrorisait tout ses adversaires. Les menaces barbares sont multiples, la stabilité économique en miette et les dommages à l'Empire semblent déjà irréparable. Qu'adviendra t-il de l'héritage de César et d’Auguste?"
+		VICTORY "Rome a évité de peu la destruction complète et semble renouer avec son glorieux passé."
+		CONDITION_COLLECTION "Un État Renforcé"
+		CONDITION_COLLECTION "Lumière du Christianisme"
+		CONDITION_COLLECTION "Frontière Forte"
+	}
+			TheNewEmpire = {
+		NAME "Le Nouveau empire"
+		DESCRIPTION ""
+		CONDITION_COLLECTION "Réformes religieuse"
+		CONDITION_COLLECTION "Les guerres Hittites"
+		CONDITION_COLLECTION "Les dernières demeurent"
+
+	}
+		MississippianCulture = {
+		NAME "La Civilisation Mississipienne"
+		DESCRIPTION ""
+		CONDITION_COLLECTION "Centres religieux"
+		CONDITION_COLLECTION "Une culture commune"
+		CONDITION_COLLECTION "Une civilization de chefferies"
+	}
+		TheQinDynasty = {
+		NAME "La Dynastie Qin"
+		DESCRIPTION "La Chine est brisée en de nombreux royaumes combattants, engendrant et profitant du désordre. Mais un tel chaos permet de faire monter les méritants au sommet et de façonner un empire à leurs image. L’unificateur de la Chine sera posé en modèle pour les siècles à venir et amorcera la création d’une des plus grandes puissances que le monde n'ait jamais portée."
+		CONDITION_COLLECTION "Le centre du monde civilisé"
+		CONDITION_COLLECTION "La centralisation étatique"
+		CONDITION_COLLECTION "La grande muraille de Chine"
 	}
 }
