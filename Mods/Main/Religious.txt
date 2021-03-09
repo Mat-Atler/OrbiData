@@ -20,12 +20,12 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					IF ( Conversion.value <= 0 & Heretics > 50 )
-						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ToleranceOfHeretics * 0.00003 )
+					IF ( Heretics > 25 )
+						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ( ToleranceOfHeretics + ToleranceOfHeretics / 5 ) * 0.00003 * ( 1 - Conversion / 110 ) )
 					ENDIF
 					
 				
-				PROCESS Minorities = Minorities + value * 0.00015
+				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeretics / 200 ) * 0.00015 )
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeretics / 50 ) )
@@ -63,8 +63,8 @@ Religious = {
 					ENDIF
 				}
                 TICK = {
-				IF ( Conversion.value <= 0 & Heathens > 50 )
-					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ToleranceOfHeathens * 0.00002 )
+				IF ( Heathens > 25 )
+					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ( ToleranceOfHeathens + ToleranceOfHeathens / 5 ) * 0.00002 * ( 1 - Conversion / 110 ) )
 				ENDIF
 
                 IF StateSize' > 0
@@ -74,7 +74,7 @@ Religious = {
                 ENDIF
 				
 				
-				PROCESS Minorities = Minorities + value * 0.00015
+				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeathens / 200 ) * 0.00015 )
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeathens / 75 ))
@@ -272,7 +272,7 @@ Religious = {
 					ENDIF
 				}
 				TICK = {
-					PROCESS value = value + PerSeconds ( 1 ? 20 * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity + ColonialStateSize ))
+					PROCESS value = value + PerSeconds ( 1 ? 20 * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity + ColonialStateSize * ( 1 + ColonialStateSize / 100 ) ))
 					
 					IF ColonialProsperity' > 0
 						PROCESS ColonialProsperity = ColonialProsperity + PerSeconds ( ColonialProsperity' * value * value * 0.000005 ) 
@@ -294,15 +294,15 @@ Religious = {
 				DISPLAY_VALUE
 
 				SLEEP = {
-					IF ( ~Colony & Colony.colonySettled == 1 & ColonialStateSize > 40 & ( Heretics * Heretics  > ToleranceOfHeretics * 6 ) )
+					IF ( ~Colony & Colony.colonySettled == 1 & ColonialStateSize > 40 &  Heretics * Heretics  > ToleranceOfHeretics * Max( ToleranceOfHeretics / 10 , 3 ) )
 						SPAWN
 					ENDIF
 				}
 				TICK = {
 					IF ( value < Max ( Heretics + 10 / ( ( ToleranceOfHeretics +1 ) / 10 ) , ( ToleranceOfHeretics +1 ) / 10  ))
-						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + Conversion / 400 ) * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity * 2 + ColonialStateSize ) )
+						PROCESS value = value + PerSeconds ( 1 ? 15 * ( 1 + Conversion / 400 ) * ( 1 + Population / 400 ) * ( 1 + Heretics / 400 ) / ( 100 + Colony.hiddenProsperity * 2 + ColonialStateSize ) )
 					ELSE
-						PROCESS value = value - PerSeconds ( 1 ? 10 * ( 1 + Conversion / 400 ) * ( 1 + Population / 400 ) / ( 100 + Colony.hiddenProsperity + ColonialStateSize ) )
+						PROCESS value = value - PerSeconds ( value * 1 ? 10 * ( 1 + Conversion / 400 ) / 5000 )
 					ENDIF
 					
 					SET ColonialConvert.value [ : : 100 - ColonialHeretic.value ]
@@ -313,6 +313,9 @@ Religious = {
 					
 					IF ( value > 0 )
 						PROCESS ColonialAutonomyDesire =  ColonialAutonomyDesire + PerSeconds( value / 1000 )
+					ENDIF
+					IF ( value <= 0 & Heretics * Heretics  < ToleranceOfHeretics * Max( ToleranceOfHeretics / 10 , 3 ) )
+						REMOVE ColonialHeretic
 					ENDIF
 				}
 
@@ -638,7 +641,12 @@ Religious = {
                 }
 				
 				LINK ToleranceOfHeathens = {
-					WEIGHT [ max ] Min ( 100 , ((NationalReligion.SyncretismValue / 2 * (NationalReligion.PantheonValue * 1.5 + 25 )/100 )+25 ))
+					IF ( Pantheon < 50 )
+						WEIGHT [ max ] Min ( 100 , ((Syncretism.value / 2 * (Pantheon.value * 1.5 + 25 ) / 100 ) + 25 )) 
+					ENDIF
+					IF (Pantheon >= 50 )
+						WEIGHT [ max ] Min ( 100 ,((Syncretism.value / 2 * (( 100 - Pantheon.value) * 0.02 )) +25 ))
+					ENDIF
 				}
 
 			}
@@ -701,7 +709,7 @@ Religious = {
 				}
 				
 				UPGRADE = {
-					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 0.25
+					$PoliticalPower =  (LinkCount(Conversion) + 1 ) * 2
 
 				}
 				
@@ -711,21 +719,21 @@ Religious = {
 				
 				
 					IF NationalReligion.PantheonValue > 10 & ~NationalReligion
-						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 110 - NationalReligion.SyncretismValue ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 210 - NationalReligion.SyncretismValue ) * 0.006 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * NationalReligion.PantheonValue * (( 210 - NationalReligion.SyncretismValue ) * 0.006 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 					ENDIF
 				
 					IF Pantheon > 10
-						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
-						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 110 - Syncretism ) * 0.01 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heretics =  Heretics - PerSeconds((( value * Philosophy * Pantheon * (( 210 - Syncretism ) * 0.006 ) * 0.00000035 ) ) * ( 0.75 + ClergyCentralization / 200 ))
+						PROCESS Heathens =  Heathens - PerSeconds((( value * Philosophy * Pantheon * (( 210 - Syncretism ) * 0.006 ) * 0.00000025 ) ) * ( 0.75 + ClergyCentralization / 200 ))
 					ENDIF
 
 				
 				IF ( value > 0)
 					IF ~GreatSchism
-						PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0003 + value / 500 ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS cost =  (( value + Heretics + 1 ) * (value + Heathens + 1 ) * 0.0009 + value / 250 ) * ( 0.75 + ClergyCentralization / 200 )
 					ELSE
-						PROCESS cost =  (( value + Heretics ) * (value + Heathens ) * 0.0001 + value / 1000 ) * ( 0.75 + ClergyCentralization / 200 )
+						PROCESS cost =  (( value + Heretics + 1 ) * (value + Heathens + 1 ) * 0.0003 + value / 500 ) * ( 0.75 + ClergyCentralization / 200 )
 					ENDIF
 				ENDIF
 				IF ( value == 0)
@@ -1626,7 +1634,7 @@ Religious = {
 				}
 				
 				TICK = {
-					PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize / 25 +  ColonialHeretic / 45 )  )
+					PROCESS $Wealth = $Wealth - PerSeconds ( ( value / 40 ) * ( 1 +  ColonialProsperity / 100 +  ColonialStateSize * ( 1 + ColonialStateSize / 200 ) / 20 +  ColonialHeretic / 45 )  )
 					IF ColonialHeretic > 0
 						PROCESS ColonialHeretic = ColonialHeretic - PerSeconds ( ( value / 3 ) * ( 1 + Monasteries / 400 ) * ( 1 + Conversion / 400 ) / ( 50 + ColonialHeretic + ColonialProsperity / 2.5  + ColonialStateSize  ))
 					ENDIF
