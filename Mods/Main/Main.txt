@@ -8404,7 +8404,7 @@ Main = {
 			NeighborhoodTroubles = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
-				EVENT_DEF [ 20 15 220 30% ]
+				EVENT_DEF [ 20 15 250 28% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -10442,7 +10442,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF GameTime() > 11000 | ( ~ScienceKnowledge & GameTime() > 9000 )  & ~NewWorld & ~Embassies == 0
+						IF ( GameTime() > 9500 | ( ~ScienceKnowledge & GameTime() > 8000 ) )  & ~NewWorld & ~Embassies == 0
 							RISE
 						ENDIF
 				}
