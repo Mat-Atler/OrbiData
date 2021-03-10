@@ -1,0 +1,109 @@
+Bookmarks = {
+
+	SargonOfAkkad = {
+		NAME "Sargon Of Akkad"
+		DESCRIPTION "Sargon of Akkad, translated version of Šarru-kīnu is a powerful monarch from northern Mesopotamia. Although his political beginnings were troubled and unknown, he eventually asserted himself at Kish, marching on Babylonia and then on Syria and Elam, founding a state linking the Persian Gulf to the Mediterranean Sea. He founded Akkad, a prosperous city with many religious buildings. In many respects, the Akkadian Empire, by its size and its domination of several peoples, can be considered the very first empire in History."
+		VICTORY "The fertile crescent is entirely in our firm hand. The gods will be satisfied."
+		CONDITION_COLLECTION "The First Empire"
+		CONDITION_COLLECTION "The Akkadian Jewel"
+	}
+	
+	MinoanCivilization = {
+		NAME "Minoan Civilization"
+		DESCRIPTION "This is Minoan Civilization."
+		VICTORY "You won Minoan Civilization!"
+	}
+	
+	 TheSpanishEmpire = {
+		NAME "The Spanish Empire"
+		DESCRIPTION "This is The Spanish Empire."
+		VICTORY "You won The Spanish Empire!"
+	}
+	
+	SengokuJidai = {
+		NAME "Sengoku Jidai"
+		DESCRIPTION "The Sengoku Jidai (1477-1603) is the most famous period in Japanese history. After the collapse of the Ashikaga power, the country plunges into a chaotic civil war where feudal lords kill eachother. The Oda clan under the leadership of Nobunaga, a small local lord, will however become in just a few years the driving force behind the reunification of Japan."
+		VICTORY "Japan is now stable and reunified under our banner. The civil war is finally over."
+		CONDITION_COLLECTION "Unified Japan"
+		CONDITION_COLLECTION "Modern Army"
+		CONDITION_COLLECTION "Bright future"
+	}
+	
+	HeianJidai = {
+		NAME "Heian Jidai"
+		DESCRIPTION "The Heian period (794-1185) is a division of ancient Japanese history. It is a period when the Chinese influence declined and the national culture flourished. The Heian period is also known as the peak of the imperial court and is famous for its arts, especially poetry and literature. Although the imperial family was powerful on the surface, the real power was held by the Fujiwara clan, a powerful aristocratic family with strong ties to the imperial family. Heian means 'peace' in Japanese."
+		VICTORY "The culture of Japan has matured and the country is at peace. Japan's future looks bright."
+		CONDITION_COLLECTION "Culture Golden Age"
+		CONDITION_COLLECTION "The Fujiwara Clan"
+		CONDITION_COLLECTION "Peaceful Times"
+	}
+	ARepublicInTroubles = {
+		NAME "A Republic In Troubles"
+		DESCRIPTION "In the 1st century B.C.E., the former small city-state of Rome had already considerably expanded and was at the crossroads of its history. A corrupt elite clashed against each other and political instability prevailed. How can we defend the recent conquests and become the beacon of civilization without profound reforms that ensure the durability of the Roman dream?"
+		VICTORY "You have saved Rome by building a powerful and efficient empire that will remain for centuries the paragon of civilization."
+		CONDITION_COLLECTION "Roma Aeterna"
+		CONDITION_COLLECTION "A Well-Administered State"
+		CONDITION_COLLECTION "The Legions"
+		CONDITION_COLLECTION "Culture Golden Age"
+		CONDITION_COLLECTION "Pax Romana"
+	}
+	FallOfTheEmpire = {
+		NAME "Fall Of The Empire"
+		DESCRIPTION "The Roman Golden Age is far away now, and the Roman Empire is split in two. The young emperor, Flavius Honorius, is an incompetent, and the Roman army is far from its past glory where its mere presence terrorized all its opponents. The barbarian threats are multiple, the economic stability is in crumbles and the damage to the Empire already seems beyond repair. What will become of the legacy of Caesar and Augustus?"
+		VICTORY "Rome has narrowly avoided complete destruction and seems to be rekindling its glorious past."
+		CONDITION_COLLECTION "A Straightened State"
+		CONDITION_COLLECTION "The Light of Christianity"
+		CONDITION_COLLECTION "Strong Border"
+	}
+		TheNewEmpire = {
+		NAME "The new Empire"
+		DESCRIPTION "Egypt is one of the first centres of sedentary civilization. The prosperity of this civilization comes from the Nile, both a highway and a source of food for the whole country. Dynasties and administrations followed one another, all building the greatness of Egypt. It is now up to you to guide this glorious civilization through the most glorious period of its ancient history!"
+		CONDITION_COLLECTION "Religious reforms"
+		CONDITION_COLLECTION "Hittits' wars"
+		CONDITION_COLLECTION "The last resting place"
+
+	}
+	MississippianCulture = {
+		NAME "The Mississippian Culture"
+		DESCRIPTION "The Mississippi is a central river in the history of pre-Columbian American, it saw the emergence of a common culture along its banks. It emerged through an improvement in maize farming techniques allowing a large population. These independent towns were economic and religious centres."
+		CONDITION_COLLECTION "Religious centers"
+		CONDITION_COLLECTION "Common culture"
+		CONDITION_COLLECTION "A chiefdoms civilization"
+	}
+	TheQinDynasty = {
+		NAME "The Qin Dynasty"
+		DESCRIPTION "China is shattered into many fighting kingdoms, breeding and profiting from disorder. But such chaos allows the deserving to rise to the top and shape an empire after their own image. China's unifier will be set as a model for the centuries to come and will initiate the creation of one of the greatest powers the world has ever known."
+		CONDITION_COLLECTION "The center of the civilized world"
+		CONDITION_COLLECTION "The centralization of the state"
+		CONDITION_COLLECTION "The great wall of Chine"
+	}
+	TheKingdomOfFrance = {
+		NAME "The Kingdom of France"
+		DESCRIPTION "The fall of the Western Roman Empire left a vacuum, a vacuum filled for a time by the Carolingians, but they were no longer fit to lead the son of the church. With a new dynasty in place, defend Christendom and make sure the Holy See knows who the most holy ruler in Europe is, Montjoie! Saint Denis!"
+		CONDITION_COLLECTION "The Feudal Monarchy"
+		CONDITION_COLLECTION "The Pope of Avignon"
+		CONDITION_COLLECTION "The 'Frankish' Templars"
+		CONDITION_COLLECTION "Gothic art"
+	}
+		TheGreatHorde = {
+		NAME "The Great Horde"
+		DESCRIPTION "The nomadic tribes are divided, scattered and easily manipulated by the sedentary powers, to the point of strutting around in our yurts. But the sons of the father of the storm are powerful and the day when a chief can unite them behind a common goal the world will tremble under the thunder of hooves. And the steppe will stretch as far as the eye can see under the watchful eye of Tengri."
+		CONDITION_COLLECTION "Units de Mogols clans"
+		CONDITION_COLLECTION "Eternal steppe under Tengri"
+	}
+		TheTradeKingdom = {
+		NAME "The trade Kingdom"
+		DESCRIPTION "The rich archipelago of Indonesia is ideally placed for Asian and oceanic trade. Formed after Wijaya's victory, who had taken advantage of the confusion of a Yuan expedition to Indonesia, his new kingdom is placed at the crossroads of important trade routes. Can you make the most of this start and find new opportunities?"
+		CONDITION_COLLECTION "The Empire of Trade"
+		CONDITION_COLLECTION "Ruling the seas"
+		CONDITION_COLLECTION "Open new trade Roads"
+	}
+		StormingOftheBastille = {
+		NAME "Storming of the Bastille"
+		DESCRIPTION "For too long France has been in the hands of tyrants who have no interest in the good of the people. It is time for the nation to rise up against its oppressors! But beyond the borders, the enemies of our ideal plot with the counter-revolutionaries to kill the Liberty, the Equality and the Fraternity! Let us go children of the fatherland! The day of glory has arrived! Liberty, beloved Liberty! Fight with your defenders!"
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+	}
+
+}
