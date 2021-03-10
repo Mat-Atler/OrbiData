@@ -57,9 +57,9 @@ Bookmarks = {
 		CONDITION_COLLECTION "Lumière du Christianisme"
 		CONDITION_COLLECTION "Frontière Forte"
 	}
-			TheNewEmpire = {
+		TheNewEmpire = {
 		NAME "Le Nouveau empire"
-		DESCRIPTION ""
+		DESCRIPTION "L'Egypte est l'un des premiers centre de civilisation sédentaire, la prospérité de cette civilisation provient du nil, à la fois autoroute et source de nourriture pour tout le pays. Les dynasties et les administrations se sont enchaînées, toutes bâtissant la grandeur de l'Égypte. Il est désormais de votre ressort de guider cette glorieuse civilisation à travers sa plus faste période de son histoire antique !"
 		CONDITION_COLLECTION "Réformes religieuse"
 		CONDITION_COLLECTION "Les guerres Hittites"
 		CONDITION_COLLECTION "Les dernières demeurent"
@@ -67,16 +67,51 @@ Bookmarks = {
 	}
 		MississippianCulture = {
 		NAME "La Civilisation Mississipienne"
-		DESCRIPTION ""
+		DESCRIPTION "Le Mississippi est un fleuve central dans la culture de l’américain précolombien, elle a vu l'émergence d’une culture commune sur ses berges. Elle a émergé par une amélioration des techniques agricoles du maïs permettant une large population. Ces villes indépendantes étaient autant de centres économiques et religieux."
 		CONDITION_COLLECTION "Centres religieux"
 		CONDITION_COLLECTION "Une culture commune"
 		CONDITION_COLLECTION "Une civilization de chefferies"
 	}
 		TheQinDynasty = {
 		NAME "La Dynastie Qin"
-		DESCRIPTION "La Chine est brisée en de nombreux royaumes combattants, engendrant et profitant du désordre. Mais un tel chaos permet de faire monter les méritants au sommet et de façonner un empire à leurs image. L’unificateur de la Chine sera posé en modèle pour les siècles à venir et amorcera la création d’une des plus grandes puissances que le monde n'ait jamais portée."
+		DESCRIPTION "La Chine est brisée en de nombreux royaumes combattants, engendrant et profitant du désordre. Mais un tel chaos permet de faire monter les méritants au sommet et de façonner un empire à leur image. L’unificateur de la Chine sera posé en modèle pour les siècles à venir et amorcera la création d’une des plus grandes puissances que le monde n'ait jamais portée."
 		CONDITION_COLLECTION "Le centre du monde civilisé"
 		CONDITION_COLLECTION "La centralisation étatique"
 		CONDITION_COLLECTION "La grande muraille de Chine"
+	}
+		TheKingdomOfFrance = {
+		NAME "Le Royaume de France"
+		DESCRIPTION "La chute de l'empire romain d'occident a laissé un vide, vide un temps comblé par les Carolingiens, mais il ne sont plus apte à diriger la fille ainé de l'église. A la tête d'une nouvelle dynastie en place, défendez la chrétienté et assurez-vous que le Saint-Siège sache qui est le seul très saint souverain d'Europe, Montjoie ! Saint-Denis !"
+		CONDITION_COLLECTION "La monarchie féodale"
+		CONDITION_COLLECTION "Les Papes en Aviginon"
+		CONDITION_COLLECTION "Les croisées 'Franc'"
+		CONDITION_COLLECTION "Art Gothique"
+	}
+		TheGreatHorde = {
+		NAME "La Grande Horde"
+		DESCRIPTION "Les tribus nomades sont divisées, éparpillées et aisément manipulées par les puissances sédentaires allant jusqu'à se pavaner dans nos Yourtes. Mais les fils du père de l'orage sont puissants et le jour où un chef pourra les unir derrière un but commun le monde tremblera sous le tonnerre des sabots. Et la steppe s'étendra à perte de vue sous l'œil attentif de Tengri."
+		CONDITION_COLLECTION "Unir les clans Mongoles"
+		CONDITION_COLLECTION "La steppe eternelle"
+	}
+		TheTradeKingdom = {
+		NAME "Le Royaume du commerce"
+		DESCRIPTION "L'archipel riche de l'Indonésie est idéalement placé pour le commerce asiatique et océanique. Formé après la victoire de Wijaya, profitant de la confusion d'une expédition Yuan en Indonésie, son nouveau royaume est placé à la croisée d'importantes routes commerciales parviendrez-vous à faire fructifier ce départ et à trouver des nouvelles opportunités ?"
+		CONDITION_COLLECTION "L'Empire du commerce"
+		CONDITION_COLLECTION "Contrôle des mers"
+		CONDITION_COLLECTION "Des nouvelles Routes de commerce"
+	}
+		StormingOftheBastille = {
+		NAME "La prise de la Bastille"
+		DESCRIPTION "Trop longtemps la France fut confiée à des tyrans n’ayant aucun intérêt au bien du peuple. Il est temps à la nation de se soulever contre ses oppresseurs ! Mais au-delà des frontières, les ennemis de notre idéal complotent avec les contre-révolutionnaires pour tuer la Liberté, L'Égalité et la Fraternité ! Allons enfants de la patrie ! Le jour de gloire est arrivé ! Liberté ! Liberté chérie ! Combats avec tes défenseurs !"
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+	}
+				 = {
+		NAME ""
+		DESCRIPTION ""
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
 	}
 }

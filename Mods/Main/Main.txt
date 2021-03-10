@@ -1224,7 +1224,7 @@ Main = {
 				}
 			}
 			NavalTrade = {
-				VALUE value [ 0 0 100 ]
+				VALUE value [ 0 0 10 ]
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				RELATED_INFO = {
@@ -1232,7 +1232,7 @@ Main = {
 					RELATED_LINK Harbours TradeGoods TradeTax Entreprises LootingCampaigns Piety BorderControls Money
 				}
 				SLEEP = {
-					IF OverlandTrade > 15 & ~Harbours
+					IF OverlandTrade > 15 & ( Harbours > 0 | ( Coastline > 0 & OverlandTrade > 40 ) )
 						SPAWN
 					ENDIF
 				}
@@ -2440,7 +2440,9 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN PeasantryClass = {
+				 IF BookmarkInitializing() == 0
 					PROCESS PeasantryClass = ( Population * 0.9)
+				ENDIF
 				}
 				
 				TICK = {
@@ -2466,7 +2468,9 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN BourgoisieClass = {
+				 IF BookmarkInitializing() == 0
 					PROCESS BourgoisieClass = ( Urbanization * 0.4 )
+				ENDIF
 				}
 				
 				TICK = {
@@ -2516,8 +2520,10 @@ Main = {
 				
 				
 				TRIGGER_SPAWN Nationalism = {
+				 IF BookmarkInitializing() == 0
 					PROCESS Nationalism = NationalCohesion / 2.5
 					REMOVE NationalCohesion
+				ENDIF
 				}
 				
 				
@@ -2539,7 +2545,9 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN Allies = {
+				 IF BookmarkInitializing() == 0
 					PROCESS Allies = ( Diplomacy * 0.6 )
+					ENDIF
 				}
 				
 				TICK = {
@@ -2580,12 +2588,13 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN Coalition = {
+				 IF BookmarkInitializing() == 0
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
 					PROCESS NeighborhoodBellicism = 100
 					ERA ImperialismAge
 					SPAWN FoeGreatAdmiral
 					SPAWN FoeGreatGeneral
-					
+					ENDIF
 				}
 				
 				TICK = {
@@ -2623,9 +2632,11 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN HostileCoalition = {
+				 IF BookmarkInitializing() == 0
 					PROCESS NeighborhoodBellicism.coalitionTrigger = 1
 					PROCESS NeighborhoodBellicism = 100
 					ERA ImperialismAge
+				ENDIF
 				}
 				
 				TICK = {
@@ -2716,7 +2727,9 @@ Main = {
 				}
 				
 				TRIGGER_SPAWN Reactionnarism = {
+				 IF BookmarkInitializing() == 0
 					PROCESS value = AristocracyClass / 2.5 + PriestClass / 2
+				ENDIF
 				}
 				
 			}
@@ -2724,7 +2737,7 @@ Main = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
 				SLEEP = {
-					IF ~UpperHouse
+					IF UpperHouse > 500
 						SPAWN
 					ENDIF
 				}
@@ -2848,8 +2861,7 @@ Main = {
 			Harbours = {
 				TAG Sedentary
 				TYPE Technological
-				VALUE value [ 0 0 100 >> 1 ]
-				VALUE output [ 0 0 100 ]
+				VALUE value [ 0 10 100 >> 1 ]
 
 				RELATED_INFO = {
 					RELATED_LINK Coastline NavalTrade Navy
@@ -2873,12 +2885,12 @@ Main = {
 				}
 				
 				PRICE = {
-					$PoliticalPower = 50
-					$Wealth = 10
+					$PoliticalPower = 20
+					$Wealth = 50
 				}
 				UPGRADE = {
-					$PoliticalPower = 2
-					$Wealth = 0.5
+					$PoliticalPower = 0.5
+					$Wealth = 3
 				}
 				
 				
@@ -8392,7 +8404,7 @@ Main = {
 			NeighborhoodTroubles = {
 				SOUND_EVENT "Main/SFX/NeigborhoodTroubles.wav"
 				SOUND_WINDOW "Main/SFX/NeigborhoodTroubles.wav"
-				EVENT_DEF [ 20 15 220 30% ]
+				EVENT_DEF [ 20 15 250 28% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -9905,7 +9917,7 @@ Main = {
 			HarshWinter = {
 				SOUND_EVENT "Main/SFX/Wolf.wav"
 				SOUND_WINDOW "Main/SFX/Wolf.wav"
-				EVENT_DEF [ 15 30 800 50% ]
+				EVENT_DEF [ 15 30 800 40% ]
 				SLEEP = {
 				EVENT_CHANCE = ( 100 - Temperature * 1.5 ) / 100
 				}
@@ -9914,8 +9926,8 @@ Main = {
 				}
 				TICK = {
 					PROCESS Stability = Stability - PerSeconds(0.02 * 0.99 ? 1.01 )
-					PROCESS Population = Population - PerSeconds(0.1 + Population * 0.03 * 0.99 ? 1.01)
-					PROCESS Food = Food - PerSeconds(0.3 + Food * 0.03 * 0.99 ? 1.01)
+					PROCESS Population = Population - PerSeconds(0.1 + Population * 0.035 * 0.99 ? 1.01)
+					PROCESS Food = Food - PerSeconds(0.3 + Food * 0.035 * 0.99 ? 1.01)
 				}
 				LINK Stability = {
 					COLOR red
@@ -9930,7 +9942,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ( Temperature < 65 & GameTime() > 8000 ) 
+					IF ( Temperature < 65 & GameTime() > 3000 ) 
 						RISE
 					ENDIF
 				}
@@ -9938,7 +9950,7 @@ Main = {
 			MerchantExplorer = {
 				SOUND_EVENT "Main/SFX/MerchantExplorer.wav"
 				SOUND_WINDOW "Main/SFX/MerchantExplorer.wav"
-				EVENT_DEF [ 30 30 250 30% ]
+				EVENT_DEF [ 30 30 250 33% ]
 				ARISE = {
 					EVENT_SPEED 1	
 				}
@@ -9954,7 +9966,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF (TradeGoods > 500 & TradeTax < 32 & LootingCampaigns < 20 & StateSize >= 100 & GameTime() > 8000 & AcrossTheOcean == 0 )
+					IF (TradeGoods > 500 & TradeTax < 32 & LootingCampaigns < 20 & GameTime() > 4500 & AcrossTheOcean == 0 )
 						RISE
 					ENDIF
 				}
@@ -10430,7 +10442,7 @@ Main = {
 				}
 			
 				TRIGGER_EVENT = {
-						IF GameTime() > 11000 | ( ~ScienceKnowledge & GameTime() > 9000 )  & ~NewWorld & ~Embassies == 0
+						IF ( GameTime() > 9500 | ( ~ScienceKnowledge & GameTime() > 8000 ) )  & ~NewWorld & ~Embassies == 0
 							RISE
 						ENDIF
 				}
