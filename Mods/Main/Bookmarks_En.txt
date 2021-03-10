@@ -77,5 +77,33 @@ Bookmarks = {
 		CONDITION_COLLECTION "The centralization of the state"
 		CONDITION_COLLECTION "The great wall of Chine"
 	}
+	TheKingdomOfFrance = {
+		NAME "The Kingdom of France"
+		DESCRIPTION "The fall of the Western Roman Empire left a vacuum, a vacuum filled for a time by the Carolingians, but they were no longer fit to lead the son of the church. With a new dynasty in place, defend Christendom and make sure the Holy See knows who the most holy ruler in Europe is, Montjoie! Saint Denis!"
+		CONDITION_COLLECTION "The Feudal Monarchy"
+		CONDITION_COLLECTION "The Pope of Avignon"
+		CONDITION_COLLECTION "The 'Frankish' Templars"
+		CONDITION_COLLECTION "Gothic art"
+	}
+		TheGreatHorde = {
+		NAME "The Great Horde"
+		DESCRIPTION "The nomadic tribes are divided, scattered and easily manipulated by the sedentary powers, to the point of strutting around in our yurts. But the sons of the father of the storm are powerful and the day when a chief can unite them behind a common goal the world will tremble under the thunder of hooves. And the steppe will stretch as far as the eye can see under the watchful eye of Tengri."
+		CONDITION_COLLECTION "Units de Mogols clans"
+		CONDITION_COLLECTION "Eternal steppe under Tengri"
+	}
+		TheTradeKingdom = {
+		NAME "The trade Kingdom"
+		DESCRIPTION "The rich archipelago of Indonesia is ideally placed for Asian and oceanic trade. Formed after Wijaya's victory, who had taken advantage of the confusion of a Yuan expedition to Indonesia, his new kingdom is placed at the crossroads of important trade routes. Can you make the most of this start and find new opportunities?"
+		CONDITION_COLLECTION "The Empire of Trade"
+		CONDITION_COLLECTION "Ruling the seas"
+		CONDITION_COLLECTION "Open new trade Roads"
+	}
+		StormingOftheBastille = {
+		NAME "Storming of the Bastille"
+		DESCRIPTION "For too long France has been in the hands of tyrants who have no interest in the good of the people. It is time for the nation to rise up against its oppressors! But beyond the borders, the enemies of our ideal plot with the counter-revolutionaries to kill the Liberty, the Equality and the Fraternity! Let us go children of the fatherland! The day of glory has arrived! Liberty, beloved Liberty! Fight with your defenders!"
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+		CONDITION_COLLECTION ""
+	}
 
 }
