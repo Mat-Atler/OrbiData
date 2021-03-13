@@ -9942,7 +9942,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ( Temperature < 65 & GameTime() > 3000 ) 
+					IF ( Temperature < 65 & GameTime() > 3000  & ~OrganizedNomadism == 0 ) 
 						RISE
 					ENDIF
 				}
