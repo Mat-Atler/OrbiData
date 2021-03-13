@@ -3747,10 +3747,10 @@ Main = {
 				TAG Government
 				VALUE value [ 0 50 200 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ( ~Monarchy | ~MilitaryDictatorship | ~Empire ) & ~BarbarianAtGates
-					CONDITION_VALUE Monarchy >= 50
+					HINT ~BarbarianAtGates
+					CONDITION_VALUE Monarchy >= 30
 					OR
-					CONDITION_VALUE MilitaryDictatorship >= 100
+					CONDITION_VALUE MilitaryDictatorship >= 50
 					OR
 					CONDITION_VALUE Empire >= 20
 					OR
@@ -3758,7 +3758,7 @@ Main = {
 					OR
 					CONDITION_EXCLUDE Government
 					ALWAYS
-					CONDITION_NODE + BarbarianAtGates
+					CONDITION_NODE + BarbariansAdvancement
 				}
 				PRICE = {
 					$PoliticalPower = 195
@@ -3789,7 +3789,7 @@ Main = {
 					REMOVE Empire
 					REMOVE MilitaryDictatorship
 					PROCESS AristocracyClass -= 25
-					PROCESS BarbarianAtGates -= 20
+					PROCESS BarbarianAtGates -= 30
 					REMOVE Empire
 					REMOVE BarbarianThreat
 					RESOURCE_MAX $PoliticalPower = 500
