@@ -2553,8 +2553,8 @@ Main = {
 				TICK = {
 						PROCESS Allies =  Allies - PerSeconds( ( Allies + StateSize ) / 4000 )		
 						IF ~WarStatus
-							PROCESS Allies =  Allies - PerSeconds( ( Allies + StateSize ) / 3000 )
-							PROCESS WarStatus = WarStatus + PerSeconds(value / 800 )
+							PROCESS Allies =  Allies - PerSeconds( ( Allies + StateSize ) / 1300 )
+							PROCESS WarStatus = WarStatus + PerSeconds(value / 1200 )
 							IF ~Coalition
 								PROCESS WarStatus = WarStatus + PerSeconds( value / 1200 )
 								PROCESS Coalition = Coalition - PerSeconds(value / 500 )
@@ -2697,13 +2697,14 @@ Main = {
 			RevolutionIdeals = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
+				DISPLAY_DECAY
 				SLEEP = {
 					IF ~RevolutionAttempt | ~RevolutionaryRepublic | ~ConstitutionalMonarchy | ~ExpensionofTheRevolution | ( NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy ) 
 						SPAWN
 					ENDIF
 				}
 				TICK = {
-						PROCESS RevolutionIdeals -= PerSeconds( 0.021 * 0.75 ? 1.25 )
+						PROCESS RevolutionIdeals -= PerSeconds( 0.015 * 0.75 ? 1.25 )
 						PROCESS Nationalism = Nationalism + PerSeconds(value / 2500)
 				}
 				LINK Nationalism = {
@@ -2718,12 +2719,14 @@ Main = {
 			Reactionnarism = {
 				VALUE value [ 0 0 100 ]
 				DISPLAY_VALUE
+				DISPLAY_DECAY
 				SLEEP = {
 					IF RevolutionIdeals > 5 | ~RevolutionaryRepublic
 						SPAWN
 					ENDIF
 				}
 				TICK = {
+						PROCESS Reactionnarism -= PerSeconds( 0.007 * 0.75 ? 1.25 )
 				}
 				
 				TRIGGER_SPAWN Reactionnarism = {
@@ -3747,10 +3750,10 @@ Main = {
 				TAG Government
 				VALUE value [ 0 50 200 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ( ~Monarchy | ~MilitaryDictatorship | ~Empire ) & ~BarbarianAtGates
-					CONDITION_VALUE Monarchy >= 50
+					HINT ~BarbarianAtGates
+					CONDITION_VALUE Monarchy >= 30
 					OR
-					CONDITION_VALUE MilitaryDictatorship >= 100
+					CONDITION_VALUE MilitaryDictatorship >= 50
 					OR
 					CONDITION_VALUE Empire >= 20
 					OR
@@ -3758,7 +3761,7 @@ Main = {
 					OR
 					CONDITION_EXCLUDE Government
 					ALWAYS
-					CONDITION_NODE + BarbarianAtGates
+					CONDITION_NODE + BarbariansAdvancement
 				}
 				PRICE = {
 					$PoliticalPower = 195
@@ -3789,7 +3792,7 @@ Main = {
 					REMOVE Empire
 					REMOVE MilitaryDictatorship
 					PROCESS AristocracyClass -= 25
-					PROCESS BarbarianAtGates -= 20
+					PROCESS BarbarianAtGates -= 30
 					REMOVE Empire
 					REMOVE BarbarianThreat
 					RESOURCE_MAX $PoliticalPower = 500
@@ -7914,7 +7917,7 @@ Main = {
 				TICK = {
 					PROCESS Stability = Stability + PerSeconds(value/6000)
 					PROCESS Nationalism = Nationalism + PerSeconds(value / 700)
-					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(value / 300)
+					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(value / 75)
 				}
 				LINK Stability = {
 					IF (value > 0)
@@ -7928,7 +7931,7 @@ Main = {
 						FLUX value * 0.04
 					ENDIF
 				}
-				LINK Nationalism = {
+				LINK RevolutionIdeals = {
 					IF (value > 0)
 						COLOR green
 						FLUX value * 0.1
@@ -8146,6 +8149,7 @@ Main = {
 						PROCESS Population =  Population - PerSeconds(value / 600)
 						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds(value / 1500)
 						PROCESS Reactionnarism =  Reactionnarism - PerSeconds(value / 600)
+						PROCESS RevolutionIdeals =  RevolutionIdeals + PerSeconds(value / 10)
 						PROCESS Stability =  Stability - PerSeconds(value / 250)
 				}
 				LINK AristocracyClass = {
@@ -8176,6 +8180,12 @@ Main = {
 					IF (value > 0)
 						FLUX value / 12
 						COLOR red
+					ENDIF
+				}
+				LINK RevolutionIdeals = {
+					IF (value > 0)
+						FLUX value / 12
+						COLOR green
 					ENDIF
 				}
 
@@ -9942,7 +9952,7 @@ Main = {
 					FLUX 3
 				}
 				TRIGGER_EVENT = {
-					IF ( Temperature < 65 & GameTime() > 3000 ) 
+					IF ( Temperature < 65 & GameTime() > 3000  & ~OrganizedNomadism == 0 ) 
 						RISE
 					ENDIF
 				}
@@ -10954,7 +10964,7 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS Allies = Allies - PerSeconds(1)
+					PROCESS Allies = Allies - PerSeconds(1 + Allies / 200)
 				}
 			
 				LINK Allies = {
@@ -11008,7 +11018,7 @@ Main = {
 			RevolutionAttempt = {
 				SOUND_EVENT "Main/SFX/Riots.wav"
 				SOUND_WINDOW "Main/SFX/Riots.wav"
-				EVENT_DEF [ 20 45 100 100% ]
+				EVENT_DEF [ 20 45 50 100% ]
 				ARISE = {
 					EVENT_SPEED 1
 				}
@@ -11017,8 +11027,11 @@ Main = {
 				IF  ~RevolutionIdeals
 					EVENT_CHANCE RevolutionIdeals / 100
 				ELSE
-					EVENT_CHANCE 100
+					EVENT_CHANCE 1
 				ENDIF
+					IF ( ( ~PeasantRevolt |  Stability < 10 ) ) & NeighborhoodBellicism.coalitionTrigger == 2 & ~Democracy == 0 & ~RevolutionIdeals == 0 & ~RevolutionaryRepublic == 0
+						RISE
+					ENDIF
 				}
 				TICK = {
 					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(0.3 * 0.75 ? 1.25)
@@ -11177,13 +11190,13 @@ Main = {
 				}
 				
 				TICK = {
-					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(0.4 * 0.75 ? 1.25)
+					PROCESS RevolutionIdeals = RevolutionIdeals + PerSeconds(3 * 0.75 ? 1.25)
 					PROCESS WarStatus.revolutionnaryWar = 1
 				}
 			
 				LINK RevolutionIdeals = {
 					COLOR green
-					FLUX 1
+					FLUX 2
 				}
 				
 				
