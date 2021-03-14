@@ -832,6 +832,11 @@ Bookmarks = {
 		GAMETIME 1000
 		DIFFICULTY Difficulty_Easy
 		
+		RESOURCES = {
+            Main.Wealth = 20
+            Main.PoliticalPower = 100
+        }
+		
 		GROUP Folder_Food = {
 			Main.Humidity = [ 0 70 100 ]
 			Main.Temperature = [ 0 60 100 ]
@@ -907,6 +912,11 @@ Bookmarks = {
 		YEAR 1492
 		GAMETIME 9000
 		DIFFICULTY Difficulty_Hard
+		
+		RESOURCES = {
+            Main.Wealth = 100
+            Main.PoliticalPower = 100
+        }
 		
 		GROUP Folder_Food = {
 			Main.FarmersTax = [ 0 5 30 ]
@@ -1069,7 +1079,7 @@ Bookmarks = {
 		}
 		
 		FREE_NODES = {
-			
+		
 		}
 		
 		OBJECTIVES = {
@@ -1095,6 +1105,137 @@ Bookmarks = {
 				}
 		}
 	
+	}
+	MayanGoldenAge = {
+		PRESET Yucatan
+		ERA IronAge
+		YEAR 250
+		GAMETIME 3000
+		DIFFICULTY Difficulty_Average
+
+        RESOURCES = {
+            Main.Wealth = 100
+            Main.PoliticalPower = 100
+        }
+		
+		GROUP Folder_Food = {
+			POSITION [ -5 0 ]
+			Main.Humidity = [ 0 70 100 ]
+			Main.Temperature = [ 0 70 100 ]
+			Main.Flora = [ 0 57 100 ]
+			Main.Fauna = [ 0 30 100 ]
+			Main.Foraging = [ 0 40 100 ]
+			Main.Hunting = [ 0 65 100 ]
+			Main.Agriculture = [ 0 146 146 ]
+			Main.SoilFertility = [ 0 49 100 ]
+			Main.Food = [ 0 100 144 ]
+			Main.Livestock = [ 0 30 100 ]
+			Main.AnimalHusbandry = [ 0 55 100 ]
+			Main.Fishing = [ 0 100 100 ]
+			Main.Natalism = [ 0 1 100 ]
+			Main.Granary = [ 0 35 176 ]
+			Main.FarmingTools = [ 0 100 100 ]
+		}
+		
+		GROUP Folder_Law = {
+			POSITION [ 0 0 ]
+			Main.NewWorld = [ 100 100 100 ]
+			Main.Population = [ 0 104 10000 ]
+			Main.Stability = [ 0 78 100 ]
+			Main.Monarchy = [ 0 95 95 ]
+			Main.StateSize = [ 0 175 2000 ]
+			Main.Settlement = [ 0 175 175 ]
+			Main.Urbanization = [ 0 45 175 ]
+			Main.AristocracyClass = [ 0 55 100 ]
+			Main.NeighborhoodBellicism = [ 0 50 100 ]
+			Main.Minorities = [ 0 21 100 ]
+			Main.NationalCohesion = [ 0 100 100 ]
+			Main.UrbanMilitia = [ 0 55 55 ]
+			Main.CivilEngineering = [ 0 10 45 ]
+			Main.LinguaFranca = [ 0 70 100 ]
+			Main.BorderControls = [ 0 5 100 ]
+			Main.Diplomacy = [ 0 5 100 ]
+			Main. BarbarianThreat = [ 0 5 100 ]
+		}
+		
+		GROUP Folder_Sea = {
+			POSITION [ -5 -5 ]
+			Main.Coastline = [ 0 15 100 ]
+			Main.Harbours = [ 0 10 30 ]
+			Main.MilitaryShips = [ 0 15 100 ]
+			Main.Navy = [ 0 15 1000 ]
+		}
+		
+		GROUP Folder_Religion = {
+			POSITION [ 0 5 ]
+			Main.Pantheon = [ 0 30 100 ]
+			Main.ReligiousMonuments = [ 0 33 62 ]
+			Main.ReligiousCeremony = [ 0 16 44 ]
+			Main.Piety = [ 0 3 70 ]
+			Main.PriestClass = [ 0 15 100 ]
+			Main.Heathens = [ 0 20 100 ]
+		}
+		
+		GROUP Folder_Trade = {
+			POSITION [ 0 -5 ]
+			Main.ArtisanClass = [ 0 62 100 ]
+			Main.Pottery = [ 0 100 100 ]
+			Main.TradeTax = [ 0 40 100 ]
+			Main.Spices = [ 0 20 100 ]
+			Main.OverlandTrade = [ 0 95 100 ]
+			Main.NavalTrade = [ 0 30 100 ]
+			Main.TradeGoods = [ 0 1000 1000 ]
+			Main.Money = [ 0 30 100 ]
+			Main.Mining = [ 0 75 200 ]
+			Main.Gold = [ 0 70 100 ]
+			Main.Salt = [ 0 60 100 ]
+			Main.Slaves = [ 0 60 100 ]
+			Main.Entreprises = [ 0 65 500 ]
+		}
+		
+		GROUP Folder_Army = {
+			POSITION [ 5 0 ]
+			Main.Missile = [ 0 17 50 ]
+			Main.Infantry = [ 0 17 50 ]
+			Main.Mercenaries = [ 0 7 50 ]
+			Main.MilitaryManpower = [ 0 80 1000000 ]
+			Main.MilitaryEfficiency = [ 0 75 100 ]
+			Main.MilitaryManpower.Infantry_value = [ 0 55 1000 ]
+			Main.MilitaryManpower.Missile_value = [ 0 51 1000 ]
+			Main.MilitaryManpower.Mercenaries_value = [ 0 10 1000 ]
+			Main.MilitaryTechnology = [ 0 100 100 ]
+			Main.TechnologicDecay = [ 0 20 10000 ]
+			Main.Forge = [ 0 100 100 ]
+			Main.Expensionism = [ 0 8 82 ]
+			Main.Officers = [ 0 17 55 ]
+			Main.QualityVsQuantity = [ 0 55 100 ]
+			Main.Fortifications = [ 0 60 175 ]
+		}
+		
+		GROUP Folder_Culture = {
+			POSITION [ -5 10 ]
+			Main.Writing = [ 0 28 100 ]
+			Main.Music = [ 0 100 100 ]
+			Main.Mathematics = [ 0 5 200 ]
+			Main.Culture = [ 0 60 100 ]
+			Main.Philosophy = [ 0 10 100 ]
+		}
+	
+		FREE_NODES = {
+			
+		}
+		
+		OBJECTIVES = {
+			COLLECTION = {
+			CONDITION_VALUE Stability >= 70
+			CONDITION_VALUE StateSize >= 200
+			CONDITION_VALUE ReligiousCeremony >= 100
+			CONDITION_VALUE FlowerWar >= 50
+			CONDITION_VALUE Mathematics >= 200
+			CONDITION_VALUE Devotion >= 200
+			}
+
+		}
 	}
 	TheNewEmpire = {
 		PRESET Egypt

@@ -25,7 +25,7 @@ Religious = {
 					ENDIF
 					
 				
-				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeretics / 200 ) * 0.00015 )
+				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeretics / 200 ) * 0.0003 )
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeretics / 50 ) )
@@ -74,7 +74,7 @@ Religious = {
                 ENDIF
 				
 				
-				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeathens / 200 ) * 0.00015 )
+				PROCESS Minorities = Minorities + PerSeconds ( value * ( 1 - ToleranceOfHeathens / 200 ) * 0.0003 )
 				
 				IF value' > 0
 					PROCESS Reactionnarism = Reactionnarism + PerSeconds ( value' / ( 1 + ToleranceOfHeathens / 75 ))
