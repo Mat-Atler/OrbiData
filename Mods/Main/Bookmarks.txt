@@ -1200,4 +1200,193 @@ Bookmarks = {
 		}
 	
 	}
+	TheSunEmpire = {
+		PRESET Andes
+		ERA FeudalAge
+		YEAR 1493
+		GAMETIME 8000
+		DIFFICULTY Difficulty_VeryHard
+
+        RESOURCES = {
+            Main.Wealth = 1000
+            Main.PoliticalPower = 400
+        }
+		
+		GROUP Folder_Food = {
+			POSITION [ -6 0 ]
+			Main.Humidity = [ 0 65 100 ]
+			Main.Temperature = [ 0 60 100 ]
+			Main.Flora = [ 0 50 100 ]
+			Main.Fauna = [ 0 40 100 ]
+			Main.Agriculture = [ 0 150 150 ]
+			Main.SoilFertility = [ 0 50 100 ]
+			Main.Food = [ 0 100 176 ]
+			Main.Livestock = [ 0 75 100 ]
+			Main.Mill = [ 0 100 100 ]
+			Main.Granary = [ 0 80 80 ]
+			Main.AnimalHusbandry = [ 0 70 100 ]
+			Main.FarmingTools = [ 0 100 100 ]
+		}
+		
+		GROUP Folder_Law = {
+			POSITION [ 0 0 ]
+			Main.NewWorld = [ 100 100 100 ]
+			Main.Population = [ 0 180 10000 ]
+			Main.Stability = [ 0 60 100 ]
+			Main.Natalism = [ 0 45 100 ]
+			Main.Empire = [ 0 50 100 ]
+			Main.DivineRight = [ 0 80 100 ]
+			Main.StateSize = [ 0 250 2000 ]
+			Main.Settlement = [ 0 150 250 ]
+			Main.Urbanization = [ 0 80 150 ]
+			Main.AristocracyClass = [ 0 110 110 ]
+			Main.NeighborhoodBellicism = [ 0 100 100 ]
+			Main.Minorities = [ 0 40 100 ]
+			Main.NationalCohesion = [ 0 50 100 ]
+			Main.PeasantryClass = [ 0 140 10000 ]
+			Main.BourgoisieClass = [ 0 60 10000 ]
+			Main.FarmersTax = [ 0 3 30 ]
+			Main.PopulationTax = [ 0 7 20 ]
+			Main.CivilEngineering = [ 0 60 100 ]
+			Main.Tribunal = [ 0 5 100 ]
+			Main.Legislation = [ 0 60 100 ]
+			Main.LinguaFranca = [ 0 25 100 ]
+			Main.Diplomacy = [ 0 35 50 ]
+			Main.UrbanMilitia = [ 0 80 80 ]
+			Main.BorderControls = [ 0 30 100 ]
+			Main.VassalPower = [ 0 40 100 ]
+			Main.Nobility = [ 0 60 100 ]
+			Main.Feudality = [ 0 30 100 ]
+			Main.Bureaucracy = [ 0 60 100 ]
+		}
+		
+		GROUP Folder_Sea = {
+			POSITION [ -5 -5 ]
+			Main.Coastline.value = [ 0 5 100 ]
+			Main.Fishing = [ 0 20 100 ]
+			Main.Harbours = [ 0 10 10 ]
+			Main.Navy = [ 0 0 20 ]
+			Main.MilitaryShips = [ 0 0 100 ]
+		}
+		
+		GROUP Folder_Religion = {
+			POSITION [ 0 7 ]
+			Main.Pantheon = [ 0 80 100 ]
+			Main.ReligiousMonuments = [ 0 80 80 ]
+			Main.ReligiousCeremony = [ 0 60 80 ]
+			Main.Piety = [ 0 70 70 ]
+			Main.PriestClass = [ 0 65 80 ]
+			Main.ReligiousOfferings = [ 0 40 100 ]
+			Main.Devotion = [ 0 180 1000 ]
+			Main.DevotionToTheHarvest = [ 0 53 53 ]
+			Main.DevotionToNature = [ 0 21 53 ]
+			Main.DevotionToWar = [ 0 53 53 ]
+			Main.DevotionToCraftsmanship = [ 0 21 53 ]
+			Main.Heathens = [ 0 25 100 ]
+			Main.Conversion = [ 0 55 100 ]
+			Main.ClergyCentralization = [ 0 70 100 ]
+			Main.ClergyIndependance = [ 0 40 100 ]
+			Main.ReligiousHeadPower = [ 0 50 100 ]
+			Main.ReligiousArt = [ 0 100 100 ]
+			Main.Monasteries = [ 0 40 100 ]
+			Main.EffortAgainstReligiousDissent = [ 0 20 100 ]
+		}
+		
+		GROUP Folder_Trade = {
+			POSITION [ 0 -6 ]
+			Main.ArtisanClass = [ 0 145 145 ]
+			Main.Pottery = [ 0 115 115 ]
+			Main.TradeTax = [ 0 15 100 ]
+			Main.Spices = [ 0 0 100 ]
+			Main.Gold = [ 0 100 100 ]
+			Main.Salt = [ 0 80 100 ]
+			Main.Mining = [ 0 200 200 ]
+			Main.TradeFair = [ 0 45 100 ]
+			Main.OverlandTrade = [ 0 100 150 ]
+			Main.NavalTrade = [ 0 15 20 ]
+			Main.Entreprises = [ 0 60 500 ]
+			Main.TradeGoods = [ 0 400 1000 ]
+			Main.Guilds = [ 0 23 100 ]
+			Main.EconomicCharters = [ 0 25 100 ]
+			Main.Money = [ 0 60 100 ]
+			Main.RoadsSafety = [ 0 0 100 ]
+			Main.TradeRoads = [ 0 50 100 ]
+			Main.Slaves = [ 0 40 100 ]
+			Main.CraftmanshipSkills = [ 0 50 100 ]
+		}
+		
+		GROUP Folder_Army = {
+			POSITION [ 8 0 ]
+			Main.Missile = [ 0 15 30 ]
+			Main.Infantry = [ 0 15 30 ]
+			Main.Mercenaries = [ 0 5 50 ]
+			Main.Banners = [ 0 15 40 ]
+			Main.MilitaryManpower = [ 0 150 1000000 ]
+			Main.MilitaryEfficiency = [ 0 92 100 ]
+			Main.Militarism = [ 0 20 55 ]
+			Main.MilitaryManpower.Infantry_value = [ 0 80 1000 ]
+			Main.MilitaryManpower.Cavalry_value = [ 0 0 1000 ]
+			Main.MilitaryManpower.Missile_value = [ 0 80 1000 ]
+			Main.MilitaryManpower.Mercenaries_value = [ 0 2 1000 ]
+			Main.Fortifications = [ 0 80 250 ]
+			Main.QualityVsQuantity = [ 0 75 100 ]
+			Main.Expensionism = [ 0 5 40 ]
+			Main.Officers = [ 0 70 100 ]
+			Main.Castles = [ 0 20 100 ]
+			Main.BorderControls = [ 0 20 100 ]
+		}
+		
+		GROUP Folder_ArmyTech = {
+			POSITION [ 8 -5 ]
+			Main.MilitaryTechnology = [ 0 100 100 ]
+			Main.TechnologicDecay = [ 0 130 10000 ]
+			Main.Forge = [ 0 100 100 ]
+			Main.Crossbow = [ 0 100 100 ]
+			Main.GenieCorps = [ 0 100 100 ]
+			Main.BarbariansAdvancement = [ 0 100 100 ]
+			Main.MedievalArmors = [ 0 100 100 ]
+			Main.SiegeWeapons = [ 0 100 100 ]
+		}
+		
+		GROUP Folder_Culture = {
+			POSITION [ -6 7 ]
+			Main.Culture = [ 0 65 100 ]
+			Main.Music = [ 0 70 100 ]
+			Main.OralTradition = [ 0 70 100 ]
+			Main.Mathematics = [ 0 100 130 ]
+			Main.Philosophy = [ 0 100 130 ]
+			Main.University = [ 0 30 100 ]
+			Main.Education = [ 0 35 68 ]
+			Main.NonSecularEducation = [ 0 30 100 ]
+			Main.Medecine = [ 0 40 100 ]
+			Main.Alchemy = [ 0 5 100 ]
+			Main.ScienceKnowledge = [ 0 0 10000 ]
+		}
+	
+		FREE_NODES = {
+			
+		}
+		
+		OBJECTIVES = {
+			COLLECTION = {
+			CONDITION_VALUE Empire >= 100
+			CONDITION_VALUE StateSize >= 350
+			CONDITION_VALUE Stability >= 70
+			}
+			COLLECTION = {
+			CONDITION_VALUE MilitaryManpower >= 180
+			CONDITION_VALUE Embassies >= 100
+			CONDITION_NODE - Invaders
+			}
+			COLLECTION = {
+			CONDITION_VALUE Piety >= 65
+			CONDITION_VALUE Culture >= 70
+			CONDITION_VALUE Music >= 100
+			CONDITION_VALUE OralTradition >= 100
+			CONDITION_NODE - Writing
+			}
+		}
+		}
+
+
 }

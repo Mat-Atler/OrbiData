@@ -128,7 +128,7 @@
 		Main.Fauna.value = 50
 		Main.Coastline.value = 5
 		Main.SoilFertility.value = 45
-		Main.Gold.value = 90
+		Main.Gold.value = 100
 		Main.Salt.value = 80
 		Main.Spices.value = 0
 		Main.NeighborhoodBellicism.value = 2
