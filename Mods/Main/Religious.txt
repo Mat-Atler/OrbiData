@@ -21,7 +21,7 @@ Religious = {
 				}
 				TICK = {
 					IF ( Heretics > 25 )
-						PROCESS Heretics = Heretics - PerSeconds ( Heretics * ( ToleranceOfHeretics + ToleranceOfHeretics / 5 ) * 0.00003 * ( 1 - Conversion / 110 ) )
+						PROCESS Heretics = Heretics - PerSeconds ( ( Heretics * 1.5 + ToleranceOfHeretics * ( 1 + ToleranceOfHeretics / 50 ) ) * 0.00009 * ( 1 - Conversion / 110 ) )
 					ENDIF
 					
 				
@@ -64,11 +64,11 @@ Religious = {
 				}
                 TICK = {
 				IF ( Heathens > 25 )
-					PROCESS Heathens = Heathens - PerSeconds ( Heathens * ( ToleranceOfHeathens + ToleranceOfHeathens / 5 ) * 0.00002 * ( 1 - Conversion / 110 ) )
+					PROCESS Heathens = Heathens - PerSeconds ( ( Heathens * 2 + ToleranceOfHeathens * ( 1 + ToleranceOfHeathens / 50 ) ) * 0.00006 * ( 1 - Conversion / 110 ) )
 				ENDIF
 
                 IF StateSize' > 0
-					PROCESS Heathens = Heathens + StateSize' / 3.5
+					PROCESS Heathens = Heathens + StateSize' / 2
                 ELSE
 					PROCESS Heathens = Heathens + StateSize' / 8
                 ENDIF

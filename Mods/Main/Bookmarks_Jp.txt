@@ -7,6 +7,12 @@ Bookmarks = {
 		CONDITION_COLLECTION "アッカドの宝石"
 	}
 	
+	MinoanCivilization = {
+		NAME "Minoan Civilization"
+		DESCRIPTION "The Minoan civilization represents the first advanced civilization in Europe, leaving behind the first European cities, huge complexes of buildings, tools, works of art, writing systems and an enormous trading network. Their advances, several centuries in some areas, made them the main inspiration for the myth of Atlantis."
+		VICTORY "We rule over the Aegean Sea and the eastern Mediterranean Sea without rival, and our palaces will last for millennia. Greatness is our."
+	}
+	
 	 TheSpanishEmpire = {
 		NAME "Año crucial"
 		DESCRIPTION "The year 1492 is considered the most important year in Spanish history (hence the name Año crucial in Spanish historiography). This year will be marked by the Capture of Granada on January 2nd, which marks the end of the Reconquista and the discovery of America by Christopher Columbus on October 12th. These two events will allow Spain to perpetuate its status as an empire for the next three centuries."
@@ -14,6 +20,14 @@ Bookmarks = {
 		CONDITION_COLLECTION "Plus Ultra"
 		CONDITION_COLLECTION "The Treasure Fleet"
 		CONDITION_COLLECTION "Most Catholic Majesty"
+	}
+	
+		 MayanGoldenAge = {
+		NAME "Mayan golden age"
+		DESCRIPTION "In the Yucatan Peninsula, after 3 millennia of history, the Mayan civilization is at its peak. Numerous cities warred to bring back wealth and prisoners destined to be sacrificed at the top of the temples where the priests, with solemnity, studied the stars and counted the days."
+		VICTORY "By the effort of our builders, by the bravery of our warriors and the wisdom of our priests, our place of choice in the eyes of the deities is assured for this cycle of creation."
+		CONDITION_COLLECTION "The great temples under the stars"
+		CONDITION_COLLECTION "The food of the gods"
 	}
 	
 	SengokuJidai = {

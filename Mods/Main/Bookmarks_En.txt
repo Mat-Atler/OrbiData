@@ -23,6 +23,14 @@ Bookmarks = {
 		CONDITION_COLLECTION "Most Catholic Majesty"
 	}
 	
+	 MayanGoldenAge = {
+		NAME "Mayan golden age"
+		DESCRIPTION "In the Yucatan Peninsula, after 3 millennia of history, the Mayan civilization is at its peak. Numerous cities warred to bring back wealth and prisoners destined to be sacrificed at the top of the temples where the priests, with solemnity, studied the stars and counted the days."
+		VICTORY "By the effort of our builders, by the bravery of our warriors and the wisdom of our priests, our place of choice in the eyes of the deities is assured for this cycle of creation."
+		CONDITION_COLLECTION "The great temples under the stars"
+		CONDITION_COLLECTION "The food of the gods"
+	}
+	
 	SengokuJidai = {
 		NAME "Sengoku Jidai"
 		DESCRIPTION "The Sengoku Jidai (1477-1603) is the most famous period in Japanese history. After the collapse of the Ashikaga power, the country plunges into a chaotic civil war where feudal lords kill eachother. The Oda clan under the leadership of Nobunaga, a small local lord, will however become in just a few years the driving force behind the reunification of Japan."

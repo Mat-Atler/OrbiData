@@ -30,6 +30,13 @@ Bookmarks = {
 		CONDITION_COLLECTION "La Flotte des Indes"
 		CONDITION_COLLECTION "Les Roi très Catholique"
 	}
+	 MayanGoldenAge = {
+		NAME "L'âge d'or maya"
+		DESCRIPTION "Dans la péninsule du Yucatán, Après 3 millénaires d'histoire La civilisation Maya connaît son apogée. Ne nombreuses cités se font la guerre pour ramener richesse et prisonnier destiné à être sacrifié au sommet des temples ou les prêtres, avec solennité, étudient les étoiles et comptent les jours."
+		VICTORY "Par l’effort de nos bâtisseurs, par la témérité de nos guerriers et la sagesse de nos prêtres, Notre place de choix aux yeux des divinités est assurée pour ce cycle de la création."
+		CONDITION_COLLECTION "Les grands temples sous les étoiles"
+		CONDITION_COLLECTION "La nourriture des dieux"
+	}
 	
 	SengokuJidai = {
 		NAME "Sengoku Jidai"

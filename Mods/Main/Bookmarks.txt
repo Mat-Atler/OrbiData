@@ -1114,7 +1114,7 @@ Bookmarks = {
 		DIFFICULTY Difficulty_Average
 
         RESOURCES = {
-            Main.Wealth = 100
+            Main.Wealth = 150
             Main.PoliticalPower = 100
         }
 		
@@ -1128,7 +1128,7 @@ Bookmarks = {
 			Main.Hunting = [ 0 65 100 ]
 			Main.Agriculture = [ 0 146 146 ]
 			Main.SoilFertility = [ 0 49 100 ]
-			Main.Food = [ 0 100 144 ]
+			Main.Food = [ 0 140 144 ]
 			Main.Livestock = [ 0 30 100 ]
 			Main.AnimalHusbandry = [ 0 55 100 ]
 			Main.Fishing = [ 0 100 100 ]
@@ -1140,10 +1140,10 @@ Bookmarks = {
 		GROUP Folder_Law = {
 			POSITION [ 0 0 ]
 			Main.NewWorld = [ 100 100 100 ]
-			Main.Population = [ 0 104 10000 ]
+			Main.Population = [ 0 64 10000 ]
 			Main.Stability = [ 0 78 100 ]
 			Main.Monarchy = [ 0 95 95 ]
-			Main.StateSize = [ 0 175 2000 ]
+			Main.StateSize = [ 0 145 2000 ]
 			Main.Settlement = [ 0 175 175 ]
 			Main.Urbanization = [ 0 45 175 ]
 			Main.AristocracyClass = [ 0 55 100 ]
@@ -1200,8 +1200,8 @@ Bookmarks = {
 			Main.Mercenaries = [ 0 7 50 ]
 			Main.MilitaryManpower = [ 0 80 1000000 ]
 			Main.MilitaryEfficiency = [ 0 75 100 ]
-			Main.MilitaryManpower.Infantry_value = [ 0 55 1000 ]
-			Main.MilitaryManpower.Missile_value = [ 0 51 1000 ]
+			Main.MilitaryManpower.Infantry_value = [ 0 50 1000 ]
+			Main.MilitaryManpower.Missile_value = [ 0 50 1000 ]
 			Main.MilitaryManpower.Mercenaries_value = [ 0 10 1000 ]
 			Main.MilitaryTechnology = [ 0 100 100 ]
 			Main.TechnologicDecay = [ 0 20 10000 ]
@@ -1229,10 +1229,15 @@ Bookmarks = {
 			COLLECTION = {
 			CONDITION_VALUE Stability >= 70
 			CONDITION_VALUE StateSize >= 200
-			CONDITION_VALUE ReligiousCeremony >= 100
-			CONDITION_VALUE FlowerWar >= 50
 			CONDITION_VALUE Mathematics >= 200
-			CONDITION_VALUE Devotion >= 200
+			CONDITION_VALUE ReligiousMonuments >= 70
+			CONDITION_ERA < FeudalAge
+			}
+			OBJECTIVES = {
+			CONDITION_VALUE ReligiousCeremony >= 75
+			CONDITION_VALUE SacrificeNature >= 80
+			CONDITION_VALUE Devotion >= 185
+			CONDITION_NODE FlowerWar
 			}
 
 		}
