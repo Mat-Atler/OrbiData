@@ -88,6 +88,8 @@ Main = {
 		}
 		FUNCTION F_WhitePeace = {
 			PLAY_SOUND "Main/SFX/Peace.wav"
+			REMOVE_WITHOUT_ALERT WarSystemTag
+			DROPDOWN_SET_STATE Diplomacy.Peace
 			DROPDOWN_BUTTON_ENABLE Diplomacy.DeclareWar
 			DROPDOWN_BUTTON_DISABLE Diplomacy.MakePeace
 			DROPDOWN_BUTTON_DISABLE Diplomacy.WhitePeace
