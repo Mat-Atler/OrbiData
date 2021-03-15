@@ -1857,6 +1857,12 @@ Main = {
 				TICK = {
 				
 				}
+				TRIGGER_SPAWN ScienceKnowledge = {
+					IF GameTime() > 9000 & BookmarkInitializing() == 0
+						PROCESS ScienceKnowledge =  ( GameTime() - 9000 ) / 100
+					ENDIF
+					
+				}
 				} 			
 			Minorities = {
 				VALUE value [ 0 0 100 ]
@@ -7521,7 +7527,7 @@ Main = {
 					CONDITION_VALUE Philosophy >= 230
 				}
 				PRICE = {
-					$PoliticalPower = 495
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 25
