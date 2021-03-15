@@ -2584,7 +2584,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 50 | GameTime() > 13000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF StateSize <= 150 & ~NeighborhoodRise &  (  ~Musket | ~ManOfWar | SchoolOfThought >= 95 | GameTime() > 14000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -2628,7 +2628,7 @@ Main = {
 				DISPLAY_VALUE
 				DISPLAY_DECAY
 				SLEEP = {
-					IF ( StateSize > 150 | ColonialStateSize > 300 )  & ( ~Musket | ~ManOfWar | SchoolOfThought >= 50 | ColonialStateSize >= 200 | GameTime() > 13000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
+					IF ( StateSize > 150 | ColonialStateSize > 300 )  & ( ~Musket | ~ManOfWar | SchoolOfThought >= 95 | ColonialStateSize >= 200 | GameTime() > 14000 ) & GetCurrentEra() >= GetEra(DiscoveryAge) & NeighborhoodBellicism.coalitionTrigger == 0
 						SPAWN
 					ENDIF
 				}
@@ -6150,7 +6150,7 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 0 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~Education
+					HINT ~Education | ~Writing
 					CONDITION_VALUE Urbanization >= 50
 					CONDITION_VALUE Writing >= 30
 					CONDITION_NODE + Education
@@ -6422,7 +6422,7 @@ Main = {
 					
 				}
 				PRICE = {
-					$PoliticalPower = 400
+					$PoliticalPower = 195
 					$Wealth = 200
 				}
 				UPGRADE = {
@@ -6453,7 +6453,7 @@ Main = {
 					CONDITION_VALUE Tribunal >= 75
 				}
 				PRICE = {
-					$PoliticalPower = 495
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = (LinkCount(NationState) + 1) * 10
@@ -6487,13 +6487,13 @@ Main = {
 				TYPE Technological
 				VALUE value [ 0 1 100 >> 1 ]
 				UNLOCK_CONDITIONS = {
-					HINT ~University | ~CivilEngineering
+					HINT ~University | ~CivilEngineering | GetCurrentEra() == GetEra(FeudalAge)
 					CONDITION_VALUE CivilEngineering >= 20
 					CONDITION_VALUE University >= 50
 					CONDITION_VALUE Philosophy >= 100
 				}
 				PRICE = {
-					$PoliticalPower = 400
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 10
@@ -6520,7 +6520,7 @@ Main = {
 					CONDITION_NODE - ScienceKnowledge
 				}
 				PRICE = {
-					$PoliticalPower = 495
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 12
@@ -6983,7 +6983,7 @@ Main = {
 					CONDITION_VALUE ScienceKnowledge >= 275
 				}
 				PRICE = {
-					$PoliticalPower = 350
+					$PoliticalPower = 195
 					$Wealth = 1000
 				}
 				UPGRADE = {
@@ -7009,7 +7009,7 @@ Main = {
 					CONDITION_VALUE ScienceKnowledge >= 340
 				}
 				PRICE = {
-					$PoliticalPower = 400
+					$PoliticalPower = 195
 					$Wealth = 1000
 				}
 				UPGRADE = {
@@ -7037,7 +7037,7 @@ Main = {
 					CONDITION_VALUE ScienceKnowledge >= 100
 				}
 				PRICE = {
-					$PoliticalPower = 150
+					$PoliticalPower = 195
 				}
 				UPGRADE = {
 					$PoliticalPower = 10
