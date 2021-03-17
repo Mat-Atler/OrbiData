@@ -1117,7 +1117,7 @@ Main = {
 					IF ( ~CelestialMonarchy == 0 & ~ClericalState == 0 )
 						SET Theocracy.value [ : : PriestClass ]
 					ENDIF	
-						PROCESS Reactionnarism = Reactionnarism + PerSeconds( Max ( 0, (value - Secularism ) ) / 600)
+						PROCESS Reactionnarism = Reactionnarism + PerSeconds( Max ( 0, (value - Secularism ) ) / 1200)
 				}
 				LINK Piety = {
 					IF (value > 0)
@@ -1126,7 +1126,7 @@ Main = {
 					ENDIF
 				}
 				LINK Reactionnarism = {
-					IF (value > 0)
+					IF (value > 0 & Secularism < PriestClass)
 						COLOR green
 						FLUX value * 0.01
 					ENDIF
@@ -2734,7 +2734,13 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS Reactionnarism -= PerSeconds( Reactionnarism / 3000 )
+						PROCESS Reactionnarism -= PerSeconds( Reactionnarism / 2500 )
+						PROCESS NeighborhoodBellicism += PerSeconds(value / 450)
+				}
+
+				LINK NeighborhoodBellicism = {
+					COLOR green
+					FLUX 2.5
 				}
 				
 				TRIGGER_SPAWN Reactionnarism = {
@@ -8156,12 +8162,12 @@ Main = {
 				}
 				
 				TICK = {
-						PROCESS AristocracyClass =  AristocracyClass - PerSeconds(value / 600)
-						PROCESS Population =  Population - PerSeconds(value / 600)
-						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds(value / 1500)
-						PROCESS Reactionnarism =  Reactionnarism - PerSeconds(value / 600)
-						PROCESS RevolutionIdeals =  RevolutionIdeals + PerSeconds(value / 10)
-						PROCESS Stability =  Stability - PerSeconds(value / 250)
+						PROCESS AristocracyClass =  AristocracyClass - PerSeconds(value / 300)
+						PROCESS Population =  Population - PerSeconds(value / 150)
+						PROCESS BourgoisieClass =  BourgoisieClass - PerSeconds(value / 1000)
+						PROCESS Reactionnarism =  Reactionnarism - PerSeconds(value / 200)
+						PROCESS RevolutionIdeals =  RevolutionIdeals + PerSeconds(value / 15)
+						PROCESS Stability =  Stability - PerSeconds(value / 150)
 				}
 				LINK AristocracyClass = {
 					IF (value > 0)
@@ -8226,6 +8232,9 @@ Main = {
 				}
 
 				LINK Religiosity = {
+				WEIGHT [ to ]
+				}
+				LINK PriestClass = {
 				WEIGHT [ to ]
 				}
 			}
