@@ -6333,7 +6333,9 @@ Main = {
 					$Wealth = 15
 				}
 				TICK = {
-						PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 700)
+						IF PrivilegeRevocation > 20
+							PROCESS AristocracyClass = AristocracyClass + PerSeconds(value / 700)
+						ENDIF
 				}
 				
 				LINK AristocracyClass = {
@@ -6345,6 +6347,9 @@ Main = {
 				
 				LINK Banners = {
 				WEIGHT [ to ] 
+				}
+				LINK PrivilegeRevocation = {
+				WEIGHT [ from ] 
 				}
 
 			}	
@@ -8007,7 +8012,9 @@ Main = {
 				LINK Nobility = {
 						WEIGHT [ max ] 100 - PrivilegeRevocation.value
 				}
-
+				TRIGGER_SPAWN PrivilegeRevocation = {
+					REMOVE Feudality
+				}
 			}
 
 			AbolitionOfSlavery = {
