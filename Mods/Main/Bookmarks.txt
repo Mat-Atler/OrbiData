@@ -978,7 +978,7 @@ Bookmarks = {
 			Main.PriestClass = [ 0 100 100 ]
 			Main.Minorities = [ 0 25 100 ]
 			Main.Monasteries = [ 0 55 100 ]
-			Main..ClergyIndependance = [ 0 70 100 ]
+			Main.ClergyIndependance = [ 0 70 100 ]
 			Main.ClergyCentralization = [ 0 80 100 ]
 			Main.ReligiousHeadPower = [ 0 60 100 ]
 			Main.EffortAgainstReligiousDissent = [ 0 100 100 ]
@@ -1067,12 +1067,12 @@ Bookmarks = {
 		GROUP Folder_Colony = {
 			Main.Colony = [ 0 0 0 ]
 			
-			Main.Colony.canMoveHere [ 0 0 1 ]
-			Main.Colony.colonySettled [ 0 1 1 ]
-			Main.Colony.hiddenProsperity [ 0 84 100 ]
-			Main.Colony.ColonyLongitude [ -180 -75.765 180 ]
-			Main.Colony.ColonyLatitude [ -180 19.971 180 ]
-			Main.Colony.ColonialDistance [ 0 109.771 500 ]
+			Main.Colony.canMoveHere = [ 0 0 1 ]
+			Main.Colony.colonySettled = [ 0 1 1 ]
+			Main.Colony.hiddenProsperity = [ 0 84 100 ]
+			Main.Colony.ColonyLongitude = [ -180 -75.765 180 ]
+			Main.Colony.ColonyLatitude = [ -180 19.971 180 ]
+			Main.Colony.ColonialDistance = [ 0 109.771 500 ]
 			
 			Main.ColonialStateSize = [ 0 30 2000 ]
 			Main.ColonialProsperity = [ 0 25 2000 ]
@@ -1155,7 +1155,7 @@ Bookmarks = {
 			Main.LinguaFranca = [ 0 70 100 ]
 			Main.BorderControls = [ 0 5 100 ]
 			Main.Diplomacy = [ 0 5 100 ]
-			Main. BarbarianThreat = [ 0 5 100 ]
+			Main.BarbarianThreat = [ 0 5 100 ]
 		}
 		
 		GROUP Folder_Sea = {
@@ -1233,7 +1233,7 @@ Bookmarks = {
 			CONDITION_VALUE ReligiousMonuments >= 70
 			CONDITION_ERA < FeudalAge
 			}
-			OBJECTIVES = {
+			COLLECTION = {
 			CONDITION_VALUE ReligiousCeremony >= 75
 			CONDITION_VALUE SacrificeNature >= 80
 			CONDITION_VALUE Devotion >= 185
