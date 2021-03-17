@@ -2712,7 +2712,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS RevolutionIdeals -= PerSeconds( RevolutionIdeals / 2000 * 0.75 ? 1.25 )
+						PROCESS RevolutionIdeals -= PerSeconds( RevolutionIdeals / 2000 )
 						PROCESS Nationalism = Nationalism + PerSeconds(value / 2500)
 				}
 				LINK Nationalism = {
@@ -2734,7 +2734,7 @@ Main = {
 					ENDIF
 				}
 				TICK = {
-						PROCESS Reactionnarism -= PerSeconds( Reactionnarism / 3000 * 0.75 ? 1.25 )
+						PROCESS Reactionnarism -= PerSeconds( Reactionnarism / 3000 )
 				}
 				
 				TRIGGER_SPAWN Reactionnarism = {
