@@ -896,7 +896,7 @@ Main = {
 					30 = "Fishing culture"
 					80 = "Massive fishing"
 				}
-				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br>"For civilizations with great water access, gathering food from it came naturally in their minds and the best mean to achieve that is by a fishing culture from the coastal fisherman to the great fishing boat.."
+				DESCRIPTION <b>"Value: "@[value,LEVEL] </b> " ( Output " @[output,0.###] " ) " <br><br>"For civilizations with great access to water, harvesting food from the sea's wealth is a logical extension and the best way to do this was to develop a fishing culture, from the coastal fisherman to the large fishing boat."
 				SUMMARY "Gathering food from our coastal water"
 			}
 			Harbours = {

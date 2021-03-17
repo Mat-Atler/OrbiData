@@ -3,11 +3,11 @@ Main = {
 	Resources = {
 		Wealth = {
 			NAME "Richesse"
-			SUMMARY "Représente les capacités économiques de votre empire. Si vous en manquez, une grave crise économique touchera votre pays. Si les caisses sont trop remplies, la corruption commencera à miner votre pays."
+			SUMMARY "Représente les capacités économiques de notre empire. Si vous en manquez, une grave crise économique touchera notre pays. Si les caisses sont trop remplies, la corruption commencera à miner notre pays."
 		}
 		PoliticalPower = {
 			NAME "Pouvoir Politique"
-			SUMMARY "Représente les capacités réformatrices de votre empire, utilisez-le pour ajouter, enlever et ajuster les leviers."
+			SUMMARY "Représente les capacités réformatrices de notre empire, utilisez-le pour ajouter, enlever et ajuster les leviers."
 		}
 	}
 	
@@ -106,7 +106,7 @@ Main = {
 					500 = "Empire"
 					1000 = "Grand Empire"
 			}
-			TEXT "<b>Valeur: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, votre civiliation est perdue."
+			TEXT "<b>Valeur: "@[Main.StateSize.value,LEVEL] "</b> (" @[Main.StateSize.value,0.###] ") <br> La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, notre civiliation est perdue."
 		}
 		
 		WinColonialStateSize = {
@@ -139,7 +139,7 @@ Main = {
 		}
 		Stability = {
 			NAME "Stabilité"
-			DESCRIPTION "Gardez un oeil sur votre stabilité."
+			DESCRIPTION "Gardez un oeil sur notre stabilité."
 		}
 		Invasions = {
 			NAME "Invasions"
@@ -177,7 +177,7 @@ Main = {
 			::APPEND "Main/Religious_Fr.txt" Religious.Nodes.States
 			Population = {
 				NAME "Population"
-				DESCRIPTION "Notre Population: " @[value,0.###]<br><br>" Votre peuple est le centre de toutes civilisations, sans lui, rien ne se créé ou n'arrive."
+				DESCRIPTION "Notre Population: " @[value,0.###]<br><br>" notre peuple est le centre de toutes civilisations, sans lui, rien ne se créé ou n'arrive."
 				SUMMARY "Le nombre de personne dans notre état"
 			}
 			Temperature = {
@@ -231,7 +231,7 @@ Main = {
 					70 = "Trés stable"
 					90 = "Une stabilité hors du commun"
 				}
-				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"Une nation instable est une nation qui s'effondre rapidement, pour éviter cela il vous faut légitimiser votre pouvoir. Plusieurs moyens existent, la religion, une forme gouvernementale plus avancée ou encore une milice."
+				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"Une nation instable est une nation qui s'effondre rapidement, pour éviter cela il vous faut légitimiser notre pouvoir. Plusieurs moyens existent, la religion, une forme gouvernementale plus avancée ou encore une milice."
 				SUMMARY "La crédibilité actuelle de notre État"
 			}
 
@@ -246,7 +246,7 @@ Main = {
 					99 = "Atlantide"
 				}
 				DESCRIPTION @[value,LEVEL]"( "@[value,0.####] " )" <br><br>"La mer est un bon moyen de récolter de la nourriture. Cette valeur représente la largeur de nos côtes et leurs accessibilité."
-				SUMMARY "Détermine votre accès à la mer"
+				SUMMARY "Détermine notre accès à la mer"
 			}
 
 
@@ -319,7 +319,7 @@ Main = {
 					70 = "Éducation avancée"
 					90 = "Éducation supérieure"
 				}
-				DESCRIPTION "Éducation: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br>"L'éducation représente le niveau d'érudition de votre population, surtout de la haute classe, cela vous apporte plus de stabilité et de pouvoir politique."
+				DESCRIPTION "Éducation: "@[value,LEVEL]"( "@[value,0.####] " )" <br><br>"L'éducation représente le niveau d'érudition de notre population, surtout de la haute classe, cela vous apporte plus de stabilité et de pouvoir politique."
 				SUMMARY "Augmente notre stabilité et notre pouvoir politique"
 			}
 			Livestock = {
@@ -338,22 +338,22 @@ Main = {
 			AristocracyClass = {
 				NAME "Classe Aristocratique"
 				DESCRIPTION "Classe Aristocratique "<b>"Valeur: "@[value] </b> <br><br>"Les propriétaires terriens ont formés une classe sociale à part, ils sont utiles pour gérer un grand empire mais si ils deviennent trop puissants, ils risquent de demander une monarchie."
-				SUMMARY "L'importance de la noblesse dans votre état"
+				SUMMARY "L'importance de la noblesse dans notre état"
 			}
 			ArtisanClass = {
 				NAME "Classe Bourgeoise"
 				DESCRIPTION "Classe Bourgeoise "<br><b>"Valeur: "@[value] </b> <br><br>"Avec l'intensification des échanges commerciaux et de la production artisanale, une classe de riches marchands est apparue. Cette classe, de par leurs actions, augmentera l'intensification des échanges commerciaux mais si ils deviennent trop puissants, ils demanderont une république."
-				SUMMARY "L'importance des bourgeois dans votre état"
+				SUMMARY "L'importance des bourgeois dans notre état"
 			}
 			PriestClass = {
 				NAME "Clergé"
-				DESCRIPTION "Classe Religieuse "<br><b>"Valeur: "@[value] </b> <br><br>"Plus le culte est organisé, plus les prêtres seront puissant et influant. Ils sont importants pour augmenter la stabilité de par une augmentation de la foi de votre peuple mais si ils deviennent trop puissant, ils réclameront une théocratie."
-				SUMMARY "L'importance du clergé dans votre état"
+				DESCRIPTION "Classe Religieuse "<br><b>"Valeur: "@[value] </b> <br><br>"Plus le culte est organisé, plus les prêtres seront puissant et influant. Ils sont importants pour augmenter la stabilité de par une augmentation de la foi de notre peuple mais si ils deviennent trop puissant, ils réclameront une théocratie."
+				SUMMARY "L'importance du clergé dans notre état"
 			}
 			OverlandTrade = {
 				NAME "Commerce terrestre"
 				DESCRIPTION "Commerce terrestre "<br><b>"Valeur : "@[value] </b> <br><br>"L'émergence d'artisans et de marchands a intensifié les échanges. D'abords quelques courageux marchands, puis de véritables convois commerciaux prendront la route."
-				SUMMARY "Le commerce dynamise l'économie d'un pays mais les échanges constants risque de dévier votre population du droit chemin"
+				SUMMARY "Le commerce dynamise l'économie d'un pays mais les échanges constants risque de dévier notre population du droit chemin"
 			}	
 			NavalTrade = {
 				NAME "Commerce maritime"
@@ -418,7 +418,7 @@ Main = {
 					500 = "Empire"
 					1000 = "Grand Empire"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> ( @[value,0.###] ) <br><br>"La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, votre civiliation est perdue."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> ( @[value,0.###] ) <br><br>"La taille des terres sous notre contrôle, mais les nouvelles terres doivent être colonisées pour gagner un quelquonque avantage. Si les dernière régions sont perdues, notre civiliation est perdue."
 				SUMMARY "La taille de l'État"
 			}
 			MilitaryEfficiency = {
@@ -464,7 +464,7 @@ Main = {
 					300 = "Très grande armée"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> ( @[value] ) <br> ( infanterie @[Infantry_value] ) <br> ( Cavalerie @[Cavalry_value] ) <br> ( Tireur @[Missile_value] ) <br> ( Mercenaires @[Mercenaries_value] )" "
-				SUMMARY "Votre armée"
+				SUMMARY "notre armée"
 			}				
 				
 			Navy = {
@@ -510,7 +510,7 @@ Main = {
 					100 = "Nation unie"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> <br>" ( "@[value] " )"<br><br>"La nation est un concept complexe exprimant un sentiment d'appartenance à un groupe plus large qu'une cité. Les immenses empires vont souvent avec un sentiment séparatiste fort qui minera la stabilité si aucun effort n'est effectué pour intégrer la nouvelle population conquise."
-				SUMMARY "Impacte votre stabilité"
+				SUMMARY "Impacte notre stabilité"
 			}
 			Culture = {
 				NAME "Culture"
@@ -557,7 +557,7 @@ Main = {
 					300 = "Niveau de l'Impérialisme"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ( "@[value] " )" <br><br>"L'ascendant technologique a toujours été primordial sur le champ de bataille. S'assurer de notre avance sur les mers va vous permettre de créer de loitaines expéditions, d'envahir les nations étrangères et les piller."
-				SUMMARY "La modernité de votre flotte"
+				SUMMARY "La modernité de notre flotte"
 				}
 			VassalPower = {
 				NAME "Pouvoir des vassaux"
@@ -730,7 +730,7 @@ Main = {
 					1000 = "Notre pays est exsangue"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Une guerre menée trop longtemps ruinera notre crédibilité et nous affaiblira."
-				SUMMARY "Diminue votre stabilité"
+				SUMMARY "Diminue notre stabilité"
 			}	
 			
 			
@@ -744,13 +744,13 @@ Main = {
 			PeasantryClass = {
 				NAME "Classe Paysanne"
 				DESCRIPTION "Classe Paysanne "<b>"Valeur: "@[value] </b> <br><br>"Les travailleurs de la terre forment une classe sociale importante, une grande partie de la population en vérité et constitue la ligne de base de toute civilisation sédentaire."
-				SUMMARY "Nombre de paysans dans votre état"
+				SUMMARY "Nombre de paysans dans notre état"
 			}
 			
 			BourgoisieClass = {
 				NAME "Classe Bourgoise"
 				DESCRIPTION "Classe Bourgoise "<b>"Valeur: "@[value] </b> <br><br>"Nos villes se remplissent de sujets plutôt fortunés qui favorisent un commerce florrisant, en espérant qu'ils ne réclament jamais de droits de noblesse."
-				SUMMARY "Nombre de bourgois dans votre état"
+				SUMMARY "Nombre de bourgois dans notre état"
 			}
 			
 			
@@ -763,8 +763,8 @@ Main = {
 					40 = "Bon"
 					60 = "Extatique"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Le nationalisme représentante le sentiment d'appartenance de notre population envers notre nation. Une nation unie sous un drapeau renforce votre assise, mais cela peut aussi permettre de germer des idées dangereuses."
-				SUMMARY "Impacte votre stabilité"
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>" ("@[value] ")" <br><br>"Le nationalisme représentante le sentiment d'appartenance de notre population envers notre nation. Une nation unie sous un drapeau renforce notre assise, mais cela peut aussi permettre de germer des idées dangereuses."
+				SUMMARY "Impacte notre stabilité"
 			}	
 			Allies = {
 				NAME "Alliés"
@@ -864,7 +864,7 @@ Main = {
 					30 = "Culture de la pêche"
 					80 = "Pêche massive"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"Pour les civilisations avec un accès à la mer, récolter de la nourriture de cette source est une évidence. Une culture de pêche va donc se créer : du pêcheur côtier occasionnel au navire de pêche en haute mer."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"Pour les civilisations disposant d'un grand accès à l'eau, la récolte de nourriture grâce aux richesses de la mer est un prolongement logique et le meilleur moyen d'y parvenir était de développer une culture de la pêche, du pêcheur côtier au grand bateau de pêche."
 				SUMMARY "Récolter de la nourriture depuis nos côtes"
 			}
 			Harbours = {
@@ -876,7 +876,7 @@ Main = {
 					30 = "Port commercial"
 					100 = "Centre Maritime"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"Votre civilisation a acquis une certaine connaissance de la mer grâce à la pêche. Vous pouvez acroître votre emprise sur ce millieu par la construction de ports."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( Sortie " @[output,0.###] " ) " <br><br>"notre civilisation a acquis une certaine connaissance de la mer grâce à la pêche. Vous pouvez acroître notre emprise sur ce millieu par la construction de ports."
 				SUMMARY "Base du commerce naval et d'une flotte militaire"
 			}
 			AnimalHusbandry = {
@@ -899,7 +899,7 @@ Main = {
 					45 = "Rien"
 					55 = "Acheter de la nourriture"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Avec l'intensification du commerce, votre gouvernement peut acheter ou vendre de la nourriture sur des marchés étrangers."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Avec l'intensification du commerce, notre gouvernement peut acheter ou vendre de la nourriture sur des marchés étrangers."
 				SUMMARY "Vendre ou acheter de la nourriture"
 			}			
 			
@@ -1006,7 +1006,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Grâce à l'élevage vous pouvez vous mouvoir plus loin et apporter facilement votre nourritures avec vous. Votre peuple se regroupe en clan familiaux."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br> "Grâce à l'élevage vous pouvez vous mouvoir plus loin et apporter facilement notre nourritures avec vous. notre peuple se regroupe en clan familiaux."
 				SUMMARY "Un peuple sans terre fixe"
 			}
 			PastoralNomadism = {
@@ -1017,7 +1017,7 @@ Main = {
 					40 = "Moyen"
 					70 = "Intensif"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Votre clan est basé sur votre bétail, bouger est constamment nécessaire pour trouver de nouveaux paturages."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"Notre clan est basé sur notre bétail, bouger est constamment nécessaire pour trouver de nouveaux paturages."
 				SUMMARY "Une société basé sur l'élevage."
 			}
 			SeasonalNomadism = {
@@ -1109,7 +1109,7 @@ Main = {
 					95 = "Monothéisme orthodoxe"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> <br><br>"La nature de notre religion officielle, plus notre religion est claire et organisée, plus vous pourrez créer une coercition religieuse."
-				SUMMARY "Détermine à quelle point votre clergé peut être organisé"
+				SUMMARY "Détermine à quelle point notre clergé peut être organisé"
 			}
 			Theocracy = {
 				NAME "Théocracie"
@@ -1245,7 +1245,7 @@ Main = {
 					40 = "Recrutements massifs"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Avec la domestication du cheval, l'utilisation d'une force montée est une évidence. Cette nouvelle formation nous apportera un grand avantage contre les pays qui n'en utilise pas."
-				SUMMARY "Recrutements pour votre armée"
+				SUMMARY "Recrutements pour notre armée"
 			}
 			Infantry = {
 				NAME "Infantrie"
@@ -1256,7 +1256,7 @@ Main = {
 					40 = "Recrutement massif"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"L'infanterie est la base de l'armée de tout pays sédentaire. "
-				SUMMARY "Recrutements pour votre armée"
+				SUMMARY "Recrutements pour notre armée"
 			}
 			Missile = {
 				NAME "Tireurs"
@@ -1267,7 +1267,7 @@ Main = {
 					40 = "Recrutement massif"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Archers et tirailleurs forme des corps de soldats parfaits pour compléter une armée déja efficace."
-				SUMMARY "Recrutements pour votre armée"
+				SUMMARY "Recrutements pour notre armée"
 			}
 			Mercenaries = {
 				NAME "Mercenaries"
@@ -1278,7 +1278,7 @@ Main = {
 					40 = "Recrutement massif"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Le recrutement de mercenaires est basé sur le recrutement d'une population étrangère et est historiquement lié à des petits pays mais très riches."
-				SUMMARY "Recrutements pour votre armée"
+				SUMMARY "Recrutements pour notre armée"
 			}
 			Fortifications = {
 				NAME "Fortifications"
@@ -1290,7 +1290,7 @@ Main = {
 					80 = "Défense exeptionelle"
 					150 = "Grand mur"
 				}
-				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Les invasions étrangères sont de très dangereux événements, les fortifications sont faites pour converser notre puissance militaire et garder notre intégrité territoriale. Cela va ponctionner une grande partie de nos richesses mais notre priorité est de garder votre peuple en sécurité."
+				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Les invasions étrangères sont de très dangereux événements, les fortifications sont faites pour converser notre puissance militaire et garder notre intégrité territoriale. Cela va ponctionner une grande partie de nos richesses mais notre priorité est de garder notre peuple en sécurité."
 				SUMMARY "Se protéger des invasions"
 			}
 			Expensionism = {
@@ -1302,7 +1302,7 @@ Main = {
 					70 = "Intensif"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Notre civilisation est la plus avancée, la plus puissante et la plus pure. Nous devons apporter notre modèle à travers les territoires barbares à l'aide de nos forces militaires."
-				SUMMARY "Étend votre territoire à l'aide de votre armée"
+				SUMMARY "Étend notre territoire à l'aide de notre armée"
 			}
 			
 			LootingCampaigns = {
@@ -1314,7 +1314,7 @@ Main = {
 					70 = "Intensive"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Nos voisins sont riches mais pas si puissants, nous pouvons vendre notre protection ou même directement prendre la richesse qui doit appartenir aux puissants. Mais attention la dégradation de la suretée des routes va sûrement affaiblir le commerce."
-				SUMMARY "Piller les voisins avec votre armée"
+				SUMMARY "Piller nos voisins avec notre armée"
 			}
 			
 
@@ -1341,7 +1341,7 @@ Main = {
 					40 = "Important"
 					80 = "Impressionant"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"La place de la guerre dans votre culture est une grande question. Plus de militarisme augmentera l'efficacité de nos soldats, désormais entraînés depuis l'enfance. Mais augmenter votre puissance militaire crée une peur chez nos voisins qui nous verrons comme une potentiel menace."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"La place de la guerre dans notre culture est une grande question. Plus de militarisme augmentera l'efficacité de nos soldats, désormais entraînés depuis l'enfance. Mais augmenter notre puissance militaire crée une peur chez nos voisins qui nous verrons comme une potentiel menace."
 				SUMMARY "Le facteur culturel de notre armée"
 				}
 				
@@ -1354,8 +1354,8 @@ Main = {
 					40 = "Une chaîne de commandement"
 					70 = "Une chaîne de commandement bien huilé"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"Vos aristocrates vont vous produire des cadres pour votre armée. Une armée bien encadrée est une armée victorieuse."
-				SUMMARY "Optimise votre efficacité militaire"
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br>"Vos aristocrates vont vous produire des cadres pour notre armée. Une armée bien encadrée est une armée victorieuse."
+				SUMMARY "Optimise notre efficacité militaire"
 			}
 
 			Forge = {
@@ -1405,7 +1405,7 @@ Main = {
 					100 = "Imperturbable"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"Le commerce s'acroît mais reste très dépendant des moyens de payements. Avec une monnaie stable, le commerceainsi que les richesses vont s'accumuler !"
-				SUMMARY "Améliore votre commerce"
+				SUMMARY "Améliore notre commerce"
 			}
 			FarmingTools = {
 				NAME "Outils Agricole"
@@ -1416,19 +1416,19 @@ Main = {
 					100 = "Transition faites"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "L'arrivée du fer à également permis une inovation de l'outillage agricole augmentant la productivité des sols. Nous devons compléter cette transition."
-				SUMMARY "Améliore votre agriculture"
+				SUMMARY "Améliore notre agriculture"
 			}	
 			
 			Bureaucracy = {
 				NAME "Bureaucracie"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>"Votre empire est trop vaste. Vous devez organiser une efficace bureaucracie afin d'administrer correctement toutes ces possetions."
-				SUMMARY "Minimise l'impacte de la taille de votre empire"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>"notre empire est trop vaste. Vous devez organiser une efficace bureaucracie afin d'administrer correctement toutes ces possetions."
+				SUMMARY "Minimise l'impacte de la taille de notre empire"
 			}	
 			
 			Satrapy = {
 				NAME "Satrapie"
-				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>"Votre Empire est trop vaste. Vous devriez créer des régions plus autonomes dans vos régions les plus contrôllées."
-				SUMMARY "Minimise l'impacte de la taille de votre empire"
+				DESCRIPTION <b>"Valeur : "@[value] </b>  <br><br>"notre Empire est trop vaste. Vous devriez créer des régions plus autonomes dans vos régions les plus contrôllées."
+				SUMMARY "Minimise l'impacte de la taille de notre empire"
 			}	
 			PopulationTax = {
 				NAME "Taxation de la population"
@@ -1462,7 +1462,7 @@ Main = {
 					50 = "Bonne législation"
 					90 = "Législation efficace"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Un code strictement organisé et juste nous permettera plus de flexibilité dans vos action politique. Cela renforcera la fondation même de votre pouvoir."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Un code strictement organisé et juste nous permettera plus de flexibilité dans vos action politique. Cela renforcera la fondation même de notre pouvoir."
 				SUMMARY "Augmente les potentiels de reformation"
 			}
 			MilitaryShips = {
@@ -1485,7 +1485,7 @@ Main = {
 					80 = "Représantant sacrée"
 					100 = "Monarche-Dieu vivant pharaonique"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "Votre clergé a gagné de nombreux pouvoirs et le peuple les écoutes, sacraliser la gouvernance du monarche permettera de stabiliser la situation en donnant au clergé une place plus importante et confirmant la place du monarche par comme une intervention divine."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  "notre clergé a gagné de nombreux pouvoirs et le peuple les écoutes, sacraliser la gouvernance du monarche permettera de stabiliser la situation en donnant au clergé une place plus importante et confirmant la place du monarche par comme une intervention divine."
 				SUMMARY "Sacralisation du pouvoir monarchique"
 			}
 			Diplomacy = {
@@ -1546,7 +1546,7 @@ Main = {
 					50 = "Affaiblissement des dialectes"
 					100 = "Unification lingustique"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La présence de nombreux dialectes sur votre territoires peut être complexe à gérer, avec une politique plus ou moins coercitive vous pouvez créer une langue pour tout votre territoires."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )" <br><br>"La présence de nombreux dialectes sur notre territoires peut être complexe à gérer, avec une politique plus ou moins coercitive vous pouvez créer une langue pour tout notre territoires."
 				SUMMARY "Augmente la cohésions nationale"
 			}
 			BarbariansAdvancement = {
@@ -1639,7 +1639,7 @@ Main = {
 					50 = "Marchands dans des conseils restreints"
 					100 = "Droits étendus garantit aux guildes"
 				}
-				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "La taxations du commerce est un débat acharné dans votre état. Les marchands et bourgeois clament que c'est du vol, en les engageants dans les discussions officielles, nous pouvons calmer ces incidents à la source."
+				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"  <br><br> "La taxations du commerce est un débat acharné dans notre état. Les marchands et bourgeois clament que c'est du vol, en les engageants dans les discussions officielles, nous pouvons calmer ces incidents à la source."
 				SUMMARY "Négocier avec les marchands"
 			}	
 			LongRangeRaid = {
@@ -1651,7 +1651,7 @@ Main = {
 					70 = "Intensif"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Il y a des terres loitaines riches mais aux frontières peu défendues. En utilisant nos puissants navires, nous pouvons faire de très lucratives expéditions sans qu'ils ne puissent pas vraiment y répondre."
-				SUMMARY "Rançonner vos voisins avec votre flotte et armée"
+				SUMMARY "Rançonner vos voisins avec notre flotte et armée"
 			}
 			ReligiousLaw = {
 				NAME "Loi religieuse"
@@ -1763,7 +1763,7 @@ Main = {
 					70 = "Moulins"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " )"<br><br> "Avec le temps, notre compréhension des mécanismes agraire s'est amélioré, nous savons désormais moudre le grain bien plus efficacement. Nous devons répandre cette technique dans tout notre pays."
-				SUMMARY "Améliore votre agriculture"
+				SUMMARY "Améliore notre agriculture"
 			}	
 			
 			
@@ -1942,7 +1942,7 @@ Main = {
 					70 = "Intensive"
 				}
 				DESCRIPTION <b>"Valeur : "@[PARAM,LEVEL] </b> " ( " @[value,0.###] " ) " <br><br>"Notre foi est l'unique vraie, la plus puissante et la plus pure. Nous devons l'exporter par la force des armes afin de soumettre les infidèles."
-				SUMMARY "Étend votre territoire et renforce votre piété à l'aide de votre armée"
+				SUMMARY "Étend notre territoire et renforce notre piété à l'aide de notre armée"
 			}
 			
 			Medecine = {
@@ -2106,7 +2106,7 @@ Main = {
 					100 = "Sakoku Total"
 				}
 				DESCRIPTION <b>"Valeur : "@[value,LEVEL] </b>  " ( " @[value,0.###] " ) <br><br>L'influence de l'étranger est néfaste, nous avons déjà tout ce qu'il nous faut à l'intérieur de nos frontière. Fermons le pays une bonne fois pour toute et notre harmonie n'en sera que renforcée."
-				SUMMARY "Sacrifie vos ambitions militaires et commerciales pour renforcer votre emprise sur l'intérieur"
+				SUMMARY "Sacrifie vos ambitions militaires et commerciales pour renforcer notre emprise sur l'intérieur"
 			}
 		Embassies = {
 				NAME "Ambassades"
@@ -2361,8 +2361,8 @@ Main = {
 			}
 			Epidemic = {
 				NAME "Épidémie"
-				DESCRIPTION "La surpopulation, la promiscuité de notre peuple a transformé une maladie locale en épidémie décimant votre population."
-				SUMMARY "Va réduire la population"
+				DESCRIPTION "La surpopulation, la promiscuité de notre peuple a transformé une maladie locale en épidémie décimant notre population."
+				SUMMARY "Va réduire notre population"
 			}
 			MassiveTroubles = {
 				NAME "Trouble massif"
@@ -2371,13 +2371,13 @@ Main = {
 			}
 			ClergyRebellion = {
 				NAME "Soulèvement du clergé"
-				DESCRIPTION "Les prêtres ne sont pas content de votre façon impie de gouverner, reformer en théocratie ou sinon les gardiens du sacré vous déposeront."
-				SUMMARY "Les prêtres haïssent votre système de gouvernements"
+				DESCRIPTION "Les prêtres ne sont pas content de notre façon impie de gouverner, reformer en théocratie ou sinon les gardiens du sacré vous déposeront."
+				SUMMARY "Les prêtres haïssent notre système gouvernemental"
 			}
 			NoblesRebellion = {
 				NAME "Soulèvement des aristocrates"
 				DESCRIPTION "La noblesse veux saisir le pouvoir, ils vont vous déposer puis couronner un roi parmis les leurs, vous devriez vous reformer vers une monarchie pour éviter plus de trouble."
-				SUMMARY "Les aristocrates haïssent votre système de gouvernements"
+				SUMMARY "Les aristocrates haïssent notre système gouvernemental"
 			}
 			ProTradeRiots = {
 				NAME "Soulèvement pour le libre-échange"
@@ -2386,22 +2386,22 @@ Main = {
 			}
 			Corruption = {
 				NAME "Corruption"
-				DESCRIPTION "La masse d'argent collecté à créer une dynamique de corruption et de petit pot-de-vin dans votre administration."
+				DESCRIPTION "La masse d'argent collecté à créer une dynamique de corruption et de petit pot-de-vin dans notre administration."
 				SUMMARY "Trop d'argent dans les caisses peut aussi être mauvais"
 			}
 			EconomicCrisis = {
 				NAME "Crise économique"
-				DESCRIPTION "Le vide de la finance publique à créer une grave crise. Le peuple ne fait plus confiance dans les échanges et en votre administration."
+				DESCRIPTION "Le vide de la finance publique à créer une grave crise. Le peuple ne fait plus confiance dans les échanges et en notre administration."
 				SUMMARY "Nos coffres sont vides et va réduire le prestige de notre gouvernement"
 			}
 			CitiesInRuins = {
 				NAME "Ville en ruine !"
-				DESCRIPTION "Vous avez construit des villes mais votre population ne suit pas, la ville va petit à petit s'effondrer et l'urbanisation va en pâtir."
+				DESCRIPTION "Vous avez construit des villes mais notre population ne suit pas, la ville va petit à petit s'effondrer et l'urbanisation va en pâtir."
 				SUMMARY "La population ne suit pas l'urbanisation"
 			}
 			GreatFire = {
 				NAME "Grand feu"
-				DESCRIPTION "Votre capital est en plein effervescence, à tout moment une nouvelle personne s'installe et magasin ouvre... il a suffi d'un accident pour l'embraser, des quartiers entiers sont partis en fumée."
+				DESCRIPTION "notre capital est en plein effervescence, à tout moment une nouvelle personne s'installe et magasin ouvre... il a suffi d'un accident pour l'embraser, des quartiers entiers sont partis en fumée."
 				SUMMARY "Un immense incendie ravage notre capitale !"
 			}
 			RegionProsperity = {
@@ -2411,12 +2411,12 @@ Main = {
 			}
 			Separatism = {
 				NAME "Séparatisme"
-				DESCRIPTION "Vos avez de nombreuses terres uniquement sur le papier, car les gens habitants sur ces terres ne vous voient pas comme leurs dirigeant légitimes. La force armée de votre civilisation n'est pas à la hauteur pour garder vos frontières intactes."
+				DESCRIPTION "Vos avez de nombreuses terres uniquement sur le papier, car les gens habitants sur ces terres ne vous voient pas comme leurs dirigeant légitimes. La force armée de notre civilisation n'est pas à la hauteur pour garder vos frontières intactes."
 				SUMMARY "Nous perdons des territoires non-gardé !"
 			}
 			BeingInvaded = {
 				NAME "Invasion Étrangère"
-				DESCRIPTION "Une puissance étrangère est en pleine campagne dans vos terres, si vos fortifications et votre armée s'effondre vous allez perdre des territoires à leur avantage."
+				DESCRIPTION "Une puissance étrangère est en pleine campagne dans vos terres, si vos fortifications et notre armée s'effondre vous allez perdre des territoires à leur avantage."
 				SUMMARY "Repoussez l'envahisseur !"
 			}
 			NeighborhoodTroubles = {
@@ -2433,7 +2433,7 @@ Main = {
 			WeakMonarch = {
 				NAME "Monarque inapte"
 				DESCRIPTION "Notre dirigeant actuelle se révèlent comme étant incompétent et complétement inapte. Le pouvoir gouvernemental va en pâtir tant qu'il sera aux rênes."
-				SUMMARY "Votre gouvernement va en souffrir"
+				SUMMARY "notre gouvernement va en souffrir"
 			}
 			Devaluation = {
 				NAME "Dévaluation"
@@ -2442,12 +2442,12 @@ Main = {
 			}
 			GreatGeneral = {
 				NAME "Grand général"
-				DESCRIPTION "Un de nos officier s'est révélé être un stratège et tacticien sans pareil, augmentant l'efficacité de votre armée. "
-				SUMMARY "Apporte une grande efficacité à votre armée."
+				DESCRIPTION "Un de nos officier s'est révélé être un stratège et tacticien sans pareil, augmentant l'efficacité de notre armée. "
+				SUMMARY "Apporte une grande efficacité à notre armée."
 			}
 			GreatNomadInvasion = {
 				NAME "Grande invasion nomade"
-				DESCRIPTION "Un de nos voisins maîtrisant les chevaux a commencé une invasion. Ils veulent détruire votre gouvernement et s'installer sur les restes."
+				DESCRIPTION "Un de nos voisins maîtrisant les chevaux a commencé une invasion. Ils veulent détruire notre gouvernement et s'installer sur les restes."
 				SUMMARY "Une immense horde de nomade vous attaque !"
 			}
 			Piracy = {
@@ -2467,7 +2467,7 @@ Main = {
 			}
 			NavalInvasion = {
 				NAME "Invasion Navale"
-				DESCRIPTION "Une puissance étrangère va débarquer sur nos côtes. Votre flotte va essayer de les arrêter, en cas d'échec l'armée et les fortification prendrons le relais. Si ces derniers remparts chutent vous allez perdre du territoire."
+				DESCRIPTION "Une puissance étrangère va débarquer sur nos côtes. notre flotte va essayer de les arrêter, en cas d'échec l'armée et les fortification prendrons le relais. Si ces derniers remparts chutent vous allez perdre du territoire."
 				SUMMARY "Repoussez l’envahisseur !"
 			}
 			BarbarianThrust = {
@@ -2497,7 +2497,7 @@ Main = {
 			}
 			SalicSucession = {
 				NAME "Partage Salique"
-				DESCRIPTION "La mort du précédent roi a mené à une dispute entre les héritiers, d'après la loi, vos cadets auront une part de votre territoire. Mais il vous permet de vous recentrer sur une plus petite part de royaume."
+				DESCRIPTION "La mort du précédent roi a mené à une dispute entre les héritiers, d'après la loi, vos cadets auront une part de notre territoire. Mais il vous permet de vous recentrer sur une plus petite part de royaume."
 				SUMMARY "La mort du roi à divisée son territoire"
 			}
 
